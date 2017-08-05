@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# =================================================
+#          CREATED: Dom 05/Jan/2014 hs 07:55
+#      Last Change: Sun May 03, 2015  02:04PM
+# THIS SCRIPT AIMS: English to audio script
+#           AUTHOR: Sérgio Luiz Araújo Silva
+#             SITE: http://vivaotux.blogspot.com
+#          TWITTER: @voyeg3r
+#            SKYPE: sergioaraujosilva
+# =================================================
+# convert any English string in audio
+
+# see this: https://gist.github.com/michalfapso/3110049/raw
+# http://michalfapso.blogspot.com.br/2012/01/using-google-text-to-speech.html
+# http://mostovenko.blogspot.com.br/2012/04/voicing-messages-in-python-or-fun-with.html
+# versão no snipt: https://snipt.net/voyeg3r/
+
+# how truncate string  --> echo ${var:start:end}
+# removendo o último caractere de uma variável   ${var:0:-1}
+# vou precisar truncar a string::::: echo "Sua string contém "${#var}" caracteres"
+  # já existe um script chamado truncastring.sh na pasta bin
+
+# testar se há conexão de forma rápida, talvez sem usar o ping
+
+
+# dependences wget mpg123 xclip
+NEEDED_COMMANDS="wget mpg123 xclip sox"
+missing_counter=0
+for needed_command in $NEEDED_COMMANDS; do
+    if ! hash "$needed_command" >/dev/null 2>&1; then
+        printf "Command not found in PATH: %s\n" "$needed_command" >&2
+        ((missing_counter++))
+    fi
+done
+if ((missing_counter > 0)); then
+    echo "Instale os seguintes programas: $NEEDED_COMMANDS"
+    exit 1
+fi
+
+
+   FILENAME="${@:?Usage: $0 give me some words to speech}"
+   FILENAME=`awk '{print tolower($0)}' <<< "$FILENAME"`
+   url="http://translate.google.com/translate_tts?ie=UTF-8&tl=en&q="
+
+
+   wget -q -U Mozilla -O "${FILENAME// /_}.mp3" "${url}${FILENAME// /+}+' '"
+   [ -f "${FILENAME// /_}.mp3" -a ! -s "${FILENAME// /_}.mp3" ] && { rm -f "${FILENAME// /_}.mp3" ; echo 'error!'; }
+   command -v mpg123 > /dev/null && mpg123 -q "${FILENAME// /_}.mp3"
+   echo "[sound:${FILENAME// /_}.mp3]" | xclip -selection c
+
+
+# after many times having problems with the end of the
+# file I was forced (I had to) figure out a solution, thus
+# the below lines add 1 second silence to the final file
+
+
+oldname="${FILENAME// /_}.mp3"
+
+# the var below gets only the file name, if you wnat to get the
+# extension do this: extension="${filename##*.}"
+
+
+newname=${oldname%.*}-with-silence.mp3
+
+sox $oldname $newname pad 0 1
+
+rm -f $oldname
+mv $newname $oldname

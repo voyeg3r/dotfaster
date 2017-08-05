@@ -1,0 +1,4 @@
+# change to dir and show it content
+function cs {
+    cd "$@" && ls -A
+}

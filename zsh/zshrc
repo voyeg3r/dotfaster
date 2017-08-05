@@ -1,0 +1,98 @@
+
+autoload -U promptinit zrecompile
+promptinit
+prompt bart
+
+autoload -Uz select-word-style
+select-word-style bash
+
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+setopt share_history append_history extended_history hist_no_store hist_ignore_all_dups hist_ignore_space
+export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
+setopt ALWAYS_TO_END
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt COMPLETE_ALIASES
+setopt COMPLETE_IN_WORD
+setopt EXTENDED_GLOB
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+setopt INTERACTIVE_COMMENTS
+setopt NOMATCH
+setopt NO_BEEP
+setopt NO_FLOW_CONTROL
+setopt PROMPT_BANG
+setopt PUSHD_IGNORE_DUPS
+setopt SHARE_HISTORY
+setopt TRANSIENT_RPROMPT
+setopt no_clobber
+
+source ${DOTFILES}/zsh/aliases
+for f in $ZDOTDIR/functions.d/^*.zwc; source $f
+
+source $ZDOTDIR/tools/lazy-load/init.zsh
+
+# lazy_load load_func 
+
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZDOTDIR/plugins/zsh-autopair/autopair.plugin.zsh
+source $ZDOTDIR/plugins/fasd/fasd.plugin.zsh
+# source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# fix delete char
+bindkey "\e[3~" delete-char
+
+# quote pasted URLs
+# it seems kind of uncompatible with substring-search
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+# in order to install auto-suggestions plugin
+# https://github.com/zsh-users/zsh-autosuggestions
+# this key binding must be here at the end because of something I dont know yet
+bindkey '^ ' autosuggest-accept
+
+# zstyle start --------------------------------
+zstyle :compinstall filename "${ZDOTDIR}/.zshrc"
+
+# If you end up using a directory as argument,
+# this will remove the trailing slash (usefull in ln)
+zstyle ':completion:*' squeeze-slashes true
+
+# Use caching so that commands like apt and dpkg complete are useable
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
+
+# Fuzzy matching of completions for when you mistype them:
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# And if you want the number of errors allowed by _approximate to
+# increase with the length of what you have typed so far:
+zstyle -e ':completion:*:approximate:*' \
+    max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+
+zstyle ':completion:*:*:cd:*' ignored-patterns '(*/|)(CVS|SCCS)'
+zstyle ':completion::*:(cvs-add|less|rm|vi):*' ignore-line true
+zstyle ':completion:*' ignore-parents parent pwd
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+#zstyle ':completion:::::' completer _complete _prefix
+#zstyle ':completion::prefix:::' completer _complete
+zstyle ':completion::*:::' completer _complete _prefix
+
+zstyle ':completion:*:warnings' format 'Too bad there is nothing'

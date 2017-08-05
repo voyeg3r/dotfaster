@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Last Change: 2017-01-18 14:35:18
+
+# filename=$(basename "$fullfile")
+# extension="${filename##*.}"
+# filename="${filename%.*}"
+
+if (( ! $# )); then
+    echo "This script changes iso-8859-1 to utf-8"
+    echo "Usage: $0:t input-dosfile output-unixfile"
+    return 1
+fi
+
+
+OUTFILE="${1}".utf-8
+
+cat "$1" > "$OUTFILE"
+
+CODIFICATION="`file -bi "$1" | awk -F"=" '{print $NF}'`"
+
+[[ "$CODIFICATION" != "utf-8" ]]  && iconv -f $CODIFICATION  -t UTF-8 "$1" > $OUTFILE
+
+sed -i 's/\x0D$//' $OUTFILE
+
+mv -f $OUTFILE ${OUTFILE%.utf-8}
