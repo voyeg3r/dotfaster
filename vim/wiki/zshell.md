@@ -59,6 +59,25 @@ There are five startup files that zsh will read commands from:
     zinfo(){info --index-search=$1 zsh} *N*
     ```
 
+### how do I correctly negate zsh globbing expressions?
++ https://superuser.com/a/403617/45032
+
+Try either:
+
+	ls -l ^*.owp
+
+(i.e. match anything except the pattern *.owp)
+
+or:
+
+	``` zsh
+	ls -l *~*.owp
+	```
+
+(i.e. match anything that matches the pattern * but does not match *.owp)
+
+	See man zshexpn => FILENAME GENERATION => Glob Operators for more on this.
+
 ### Testing commands existence
 
 	# not aliasing rm -i, but if safe-rm is available, use condom.
@@ -662,14 +681,29 @@ Nevertheless, you could also check for either
     ls **/*(.DmM+12) .... regular files older thant one year
     ls **/*(L+10M) ...... file more than 10M
     ls **/*(*Lk-5) ...... executable files less than 5kb
+
+	exibir todos menos *.md ou *.zwc
+    for f in $ZDOTDIR/^(*.zwc|*.md)(.); ls $f
+
+	for f in $ZDOTDIR/.*.zwc(.); ls $f
+
+    for f in $ZDOTDIR/.^*.zwc; zcompare $f
     ```
 
-    ls *(.D) ........... D dotfiles '.' regular files
+	``` zsh
+		rm *~*.txt(.)
+		#  ||     ^^^ Only plain files
+		#  ||^^^^^ files ending in ".txt"
+		#  | \Except
+		#   \Everything
 
-    ls -l **/*(.Lm-2mh-1om[1,3])
-    Lm-2 # <2mbs
-    mh-1 # less 1 hr
-    om[1,3] most recent 3
+	    ls *(.D) ........... D dotfiles '.' regular files
+
+	    ls -l **/*(.Lm-2mh-1om[1,3])
+	    Lm-2 # <2mbs
+	    mh-1 # less 1 hr
+	    om[1,3] most recent 3
+	```
 
 (om) tells the glob to sort the remaining files by their modification date.
 

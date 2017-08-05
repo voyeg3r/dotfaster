@@ -1,1 +1,1 @@
-logout
+zlogout
