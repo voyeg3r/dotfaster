@@ -1,7 +1,7 @@
 
-autoload -U promptinit zrecompile compinit
+autoload -Uz promptinit zrecompile
 promptinit
-prompt bart
+prompt adam2
 
 ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
 autoload -Uz compinit
@@ -71,6 +71,7 @@ source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
 
 # fix delete char
 bindkey "\e[3~" delete-char
+bindkey ' ' magic-space
 
 # quote pasted URLs
 # it seems kind of uncompatible with substring-search
