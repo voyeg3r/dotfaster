@@ -139,7 +139,7 @@ cab Wq wq
 cab Q  q
 
 " Required to start Plug:
-call plug#begin(expand('~/.dotfiles/rcfiles/vim/bundle'))
+call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
 Plug 'skywind3000/quickmenu.vim'

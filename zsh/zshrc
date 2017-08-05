@@ -6,11 +6,12 @@ prompt bart
 ZSH_COMPDUMP="${ZDOTDIR}/.zcompdump"
 autoload -Uz compinit
 if [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
-	compinit -i $ZSH_COMPDUMP
+	compinit -i  $ZSH_COMPDUMP
 	zcompile $ZSH_COMPDUMP
 else
-	compinit -C
+	compinit -i -C
 fi
+
 
 autoload -Uz select-word-style
 select-word-style bash
@@ -49,7 +50,7 @@ setopt PROMPT_BANG
 setopt PUSHD_IGNORE_DUPS
 setopt SHARE_HISTORY
 setopt TRANSIENT_RPROMPT
-setopt no_clobber
+# setopt no_clobber
 
 source ${DOTFILES}/zsh/aliases
 for f in $ZDOTDIR/functions.d/^*.zwc; source $f
@@ -118,6 +119,13 @@ zstyle ':completion:*:warnings' format 'Too bad there is nothing'
 
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+
+# define files to ignore for zcompile
+zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
+zstyle ':completion:correct:'          prompt 'correct to: %e'
+
+# now we can type: kill "program-name"
+zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
 
 # path=(${DOTFILES}/bin $path[@])
 typeset -U path cdpath fpath manpath
