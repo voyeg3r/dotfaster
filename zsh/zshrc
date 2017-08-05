@@ -23,8 +23,8 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=800
+SAVEHIST=800
 HISTFILE=~/.zsh_history
 
 setopt share_history append_history extended_history hist_no_store hist_ignore_all_dups hist_ignore_space

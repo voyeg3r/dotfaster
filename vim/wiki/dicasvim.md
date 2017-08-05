@@ -37,6 +37,10 @@ by deleting the lines with manual edit commands), save the file, and quit vim,
     ^c ................ exit it
 
 
+### Auditing vim mappings
+
+	:verbose map <c-a>
+	:verbose imap x
 
 ### spliting funtions into separated files
 

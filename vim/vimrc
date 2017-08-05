@@ -141,7 +141,6 @@ cab Q  q
 " Required to start Plug:
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
-Plug 'tpope/vim-speeddating'
 Plug 'skywind3000/quickmenu.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-markdown'
