@@ -6,6 +6,9 @@ using some cool solutions like:
 + https://github.com/xcv58/prezto/tree/master/modules/lazy-load
 + https://raw.githubusercontent.com/Eriner/zim/master/templates/zlogin
 
+I have an article at Medium.com about this project:
++ https://medium.com/@voyeg3r/holy-grail-of-zsh-performance-a56b3d72265d
+
 ### My current time results
 
 	for i in {1..10}; time zsh -ci exit
