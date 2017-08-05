@@ -6,4 +6,17 @@ using some cool solutions like:
 + https://github.com/xcv58/prezto/tree/master/modules/lazy-load
 + https://raw.githubusercontent.com/Eriner/zim/master/templates/zlogin
 
+### My current time results
+
+	for i in {1..10}; time zsh -ci exit
+	zsh -ci exit  0,03s user 0,03s system 74% cpu 0,081 total
+	zsh -ci exit  0,03s user 0,03s system 73% cpu 0,082 total
+	zsh -ci exit  0,06s user 0,00s system 75% cpu 0,079 total
+	zsh -ci exit  0,05s user 0,01s system 76% cpu 0,079 total
+	zsh -ci exit  0,02s user 0,04s system 74% cpu 0,081 total
+	zsh -ci exit  0,06s user 0,00s system 74% cpu 0,081 total
+	zsh -ci exit  0,04s user 0,02s system 74% cpu 0,081 total
+	zsh -ci exit  0,01s user 0,05s system 72% cpu 0,083 total
+	zsh -ci exit  0,06s user 0,00s system 74% cpu 0,080 total
+	zsh -ci exit  0,03s user 0,03s system 74% cpu 0,080 total
 
