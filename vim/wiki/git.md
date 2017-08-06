@@ -32,7 +32,8 @@ Or, if you're a busy person:
 
     git submodule foreach git pull origin master
 
-### Clonando um repo e também os submódulos
+### Clonando um repo e também os submódulos em paralelo
++ https://stackoverflow.com/a/34762036/2571881
 
     git clone --recursive repo
     git fetch --recurse-submodules --jobs=4
