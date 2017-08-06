@@ -158,7 +158,7 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 PATH="/usr/local/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 cdpath=(. .. ~/Desktop ~/.dotfiles/bin ~/.dotfiles/zsh ~/docs ~/multimedia ~/tmp )
 
-export path=( $DOTFILES/bin $ZDOTDIR/functions.d/  $path )
+export path=( $DOTFILES/bin $ZDOTDIR/functions.d/ /bin  $path )
 
 export fpath=( $ZDOTDIR/functions.d/  $fpath )
 
