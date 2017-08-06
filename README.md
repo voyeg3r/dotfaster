@@ -30,9 +30,8 @@ I have an article at Medium.com about this project:
 
 	```sh
 	# http version
-	git fetch --recurse-submodules --jobs=4 https://github.com/voyeg3r/dotfaster.git
+	git clone --recursive -j4 https://github.com/voyeg3r/dotfaster.git .dotfiles
 
-	# ssh version
-	git fetch --recurse-submodules --jobs=4 git@github.com:voyeg3r/dotfaster.git
+	git fetch --recurse-submodules --jobs=4
 	```
 
