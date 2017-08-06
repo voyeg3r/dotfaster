@@ -62,7 +62,6 @@ There are five startup files that zsh will read commands from:
 ### Conditional expressions
 
 
-
 	``` zsh
 	[[ -n file*(#qN) ]]
 	```
@@ -698,11 +697,21 @@ Nevertheless, you could also check for either
 
 	exibir todos menos *.md ou *.zwc
     for f in $ZDOTDIR/^(*.zwc|*.md)(.); ls $f
+	ls $ZDOTDIR/^(*.zwc|*.md)(.)
 
 	for f in $ZDOTDIR/.*.zwc(.); ls $f
 
     for f in $ZDOTDIR/.^*.zwc; zcompare $f
 	for f in $ZDOTDIR/.^*.zwc; zcompile $f
+
+	Se os scripts estão no $fpath podemos fazer assim:
+
+	autoload -U $ZDOTDIR/functions.d/**/^(*.zwc|*.md)(.:t)
+
+	Estamos excluindo os compilados "zwc e os markdown"
+	e indicando apenas o nome dos arquivos
+	regulares (.) com apenas a extensão :t
+
     ```
 
 	``` zsh

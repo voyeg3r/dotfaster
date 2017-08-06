@@ -53,7 +53,6 @@ setopt TRANSIENT_RPROMPT
 # setopt no_clobber
 
 source ${DOTFILES}/zsh/aliases
-for f in $ZDOTDIR/functions.d/^*.zwc; source $f
 
 source $ZDOTDIR/tools/lazy-load/init.zsh
 
@@ -72,6 +71,12 @@ source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
 # fix delete char
 bindkey "\e[3~" delete-char
 bindkey ' ' magic-space
+
+# alt+s to prepend 'sudo ' to current command and move to EOL
+bindkey -s '\es' '^Asudo ^E '
+
+# alt+d to show current working directory
+bindkey -s '\ed' '^Upwd^M'
 
 # quote pasted URLs
 # it seems kind of uncompatible with substring-search
@@ -134,6 +139,12 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 PATH="/usr/local/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 cdpath=(. .. ~/Desktop ~/.dotfiles/bin ~/.dotfiles/zsh ~/docs ~/multimedia ~/tmp )
 
-export path=( $DOTFILES/bin $path[@] )
+path=( $DOTFILES/bin $ZDOTDIR/functions.d/  $path )
+
+fpath=( $ZDOTDIR/functions.d/  $fpath )
+
+# for f in $ZDOTDIR/functions.d/^*.zwc; source $f
+autoload -U $ZDOTDIR/functions.d/**/^(*.zwc|*.md)(.:t)
+
 typeset -U path cdpath fpath manpath
 

@@ -18,8 +18,6 @@ alias calc='python3 -ic "from math import *; import cmath"'
 
 alias xterm='xterm -rv'
 # alias calc='noglob calc'
-alias path="echo ${PATH//:/$'\n'}"
-alias fpath="echo ${fpath// /$'\n'}"
 alias shell='echo ${SHELL:t}'
 
 alias youindex="youtube-dl -o '%(playlist_index)s. %(title)s.%(ext)s'"
