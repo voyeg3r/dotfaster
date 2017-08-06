@@ -73,3 +73,6 @@
 [submodule "vim/bundle/predawn.vim"]
 	path = vim/bundle/predawn.vim
 	url = https://github.com/juanedi/predawn.vim
+[submodule "zsh/plugins/fast-syntax-highlighting"]
+	path = zsh/plugins/fast-syntax-highlighting
+	url = https://github.com/zdharma/fast-syntax-highlighting
