@@ -30,8 +30,8 @@ I have an article at Medium.com about this project:
 
 	```sh
 	# http version
-	git clone --recursive -j4 https://github.com/voyeg3r/dotfaster.git .dotfiles
+	git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git .dotfiles
 
-	git fetch --recurse-submodules --jobs=4
+	git fetch --recurse-submodules --jobs=8
 	```
 

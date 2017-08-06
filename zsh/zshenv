@@ -9,7 +9,7 @@ export ZDOTDIR="${DOTFILES}/zsh"
 export ZSH_CACHE_DIR="$HOME/.fasd-init-cache"
 
 
-EDITOR=vim
+export EDITOR=vim
 
 export LANG="pt_BR.UTF-8"
 export LANGUAGE="pt_BR:pt:pt_PT"

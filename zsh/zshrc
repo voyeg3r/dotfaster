@@ -12,6 +12,8 @@ else
 	compinit -i -C
 fi
 
+# emacs mode
+bindkey -e
 
 autoload -Uz select-word-style
 select-word-style bash
@@ -22,6 +24,21 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+autoload -Uz history-beginning-search-menu
+zle -N history-beginning-search-menu
+bindkey '' history-beginning-search-menu
+
+# source: https://github.com/grml/zsh-lovers/blob/master/zsh-lovers.1.txt
+rationalise-dot() {
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
 
 HISTSIZE=800
 SAVEHIST=800
@@ -54,10 +71,10 @@ setopt TRANSIENT_RPROMPT
 
 source ${DOTFILES}/zsh/aliases
 
-source $ZDOTDIR/tools/lazy-load/init.zsh
+# source $ZDOTDIR/tools/lazy-load/init.zsh
 
 # based on zim plugin command
-build_cache (){ source "${ZDOTDIR}/zlogin";}
+# build_cache (){ source "${ZDOTDIR}/zlogin";}
 
 # lazy_load load_func
 
@@ -139,12 +156,14 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 PATH="/usr/local/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 cdpath=(. .. ~/Desktop ~/.dotfiles/bin ~/.dotfiles/zsh ~/docs ~/multimedia ~/tmp )
 
-path=( $DOTFILES/bin $ZDOTDIR/functions.d/  $path )
+export path=( $DOTFILES/bin $ZDOTDIR/functions.d/  $path )
 
-fpath=( $ZDOTDIR/functions.d/  $fpath )
+export fpath=( $ZDOTDIR/functions.d/  $fpath )
 
-# for f in $ZDOTDIR/functions.d/^*.zwc; source $f
-autoload -U $ZDOTDIR/functions.d/**/^(*.zwc|*.md)(.:t)
+eval "$(fasd --init auto)"
+
+#for f in $ZDOTDIR/functions.d/^*.zwc; source $f
+autoload -Uz $ZDOTDIR/functions.d/**/^(*.zwc|*.md)(.:t)
 
 typeset -U path cdpath fpath manpath
 

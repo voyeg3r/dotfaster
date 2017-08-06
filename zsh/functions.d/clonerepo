@@ -20,25 +20,25 @@ clonerepo (){
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git zsh/plugins/zsh-autosuggestions
 # ) &!
 
-clonerepo junegunn/vim-plug
-clonerepo skywind3000/quickmenu.vim
-clonerepo jiangmiao/auto-pairs
-clonerepo tpope/vim-markdown
-clonerepo sjl/gundo.vim
-clonerepo chrisbra/NrrwRgn
-clonerepo scrooloose/nerdtree
-clonerepo vim-airline/vim-airline
-clonerepo vim-airline/vim-airline-themes
-clonerepo eparreno/vim-l9
-clonerepo SirVer/ultisnips
-clonerepo honza/vim-snippets
-clonerepo vimwiki/vimwiki
-clonerepo vim-scripts/VisIncr
-clonerepo vim-scripts/AutoComplPop
-clonerepo kshenoy/vim-signature
-clonerepo tomasr/molokai
-clonerepo endel/vim-github-colorscheme
-clonerepo jnurmine/Zenburn
-clonerepo altercation/vim-colors-solarized
-clonerepo juanedi/predawn.vim
+# clonerepo junegunn/vim-plug
+# clonerepo skywind3000/quickmenu.vim
+# clonerepo jiangmiao/auto-pairs
+# clonerepo tpope/vim-markdown
+# clonerepo sjl/gundo.vim
+# clonerepo chrisbra/NrrwRgn
+# clonerepo scrooloose/nerdtree
+# clonerepo vim-airline/vim-airline
+# clonerepo vim-airline/vim-airline-themes
+# clonerepo eparreno/vim-l9
+# clonerepo SirVer/ultisnips
+# clonerepo honza/vim-snippets
+# clonerepo vimwiki/vimwiki
+# clonerepo vim-scripts/VisIncr
+# clonerepo vim-scripts/AutoComplPop
+# clonerepo kshenoy/vim-signature
+# clonerepo tomasr/molokai
+# clonerepo endel/vim-github-colorscheme
+# clonerepo jnurmine/Zenburn
+# clonerepo altercation/vim-colors-solarized
+# clonerepo juanedi/predawn.vim
 

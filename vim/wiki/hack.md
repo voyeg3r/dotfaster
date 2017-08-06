@@ -167,7 +167,7 @@ zip etc…
 This searches the password for “Website Access Analyzer”, a Japanese software that creates webstatistics. For those who can read Japanese, check out the
 author’s site at: coara.or.jp/~passy/ [coara.or.jp/~passy/]
 
-    “http://*:*@www” domainname
+    "http://*:*@www" domainname
 
 This is a query to get inline passwords from search engines (not just Google),
 you must type in the query followed with the the domain name without the .com
@@ -191,7 +191,7 @@ or .net
      program(!!!). Some lists are bigger than others, all are fun, and all belong to
      googledorks. =)
 
-         intitle:”Index of” config.php
+         intitle:"Index of" config.php
 
      This search brings up sites with “config.php” files. To skip the technical
      discussion, this configuration file contains both a username and a password for
@@ -217,3 +217,4 @@ or .net
 + http://tinyurl.com/HB3mega
 + http://tinyurl.com/HB4mega
 + http://tinyurl.com/HB5mega
+
