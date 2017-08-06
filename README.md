@@ -28,7 +28,7 @@ I have an article at Medium.com about this project:
 
 ### Clonig this repo
 
-	``` sh
+	```sh
 	# http version
 	git fetch --recurse-submodules --jobs=4 https://github.com/voyeg3r/dotfaster.git
 
