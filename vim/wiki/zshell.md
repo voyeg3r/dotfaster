@@ -59,6 +59,18 @@ There are five startup files that zsh will read commands from:
     zinfo(){info --index-search=$1 zsh} *N*
     ```
 
+### Conditional expressions
+
+
+
+	``` zsh
+	[[ -n file*(#qN) ]]
+	```
+
+produces status zero if and only if there is at least one file in the current
+directory beginning with the string ‘file’. The globbing qualifier N ensures
+that the expression is empty if there is no matching file.
+
 ### how do I correctly negate zsh globbing expressions?
 + https://superuser.com/a/403617/45032
 
@@ -72,6 +84,8 @@ or:
 
 	``` zsh
 	ls -l *~*.owp
+
+	for i in **/*.mp3; mpg123 $i
 	```
 
 (i.e. match anything that matches the pattern * but does not match *.owp)
@@ -688,6 +702,7 @@ Nevertheless, you could also check for either
 	for f in $ZDOTDIR/.*.zwc(.); ls $f
 
     for f in $ZDOTDIR/.^*.zwc; zcompare $f
+	for f in $ZDOTDIR/.^*.zwc; zcompile $f
     ```
 
 	``` zsh

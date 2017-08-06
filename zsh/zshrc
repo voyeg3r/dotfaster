@@ -112,6 +112,8 @@ zstyle ':completion::*:(cvs-add|less|rm|vi):*' ignore-line true
 zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+zstyle ':completion:*' menu select=20
+
 #zstyle ':completion:::::' completer _complete _prefix
 #zstyle ':completion::prefix:::' completer _complete
 zstyle ':completion::*:::' completer _complete _prefix
@@ -128,6 +130,10 @@ zstyle ':completion:correct:'          prompt 'correct to: %e'
 # now we can type: kill "program-name"
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
 
-# path=(${DOTFILES}/bin $path[@])
+
+PATH="/usr/local/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+cdpath=(. .. ~/Desktop ~/.dotfiles/bin ~/.dotfiles/zsh ~/docs ~/multimedia ~/tmp )
+
+export path=( $DOTFILES/bin $path[@] )
 typeset -U path cdpath fpath manpath
 

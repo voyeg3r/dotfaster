@@ -8,6 +8,7 @@ export ZSH_CONFIG="${DOTFILES}/zsh"
 export ZDOTDIR="${DOTFILES}/zsh"
 export ZSH_CACHE_DIR="$HOME/.fasd-init-cache"
 
+
 EDITOR=vim
 
 export LANG="pt_BR.UTF-8"

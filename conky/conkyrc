@@ -50,7 +50,7 @@ uppercase no
 cpu_avg_samples 2
 net_avg_samples 1
 override_utf8_locale yes
-use_spacer yes
+use_spacer right
 
 # Phenomena font: http://www.fontfabric.com/phenomena-font/
 TEXT
