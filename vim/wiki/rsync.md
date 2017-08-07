@@ -8,6 +8,14 @@ Script de backup http://va.mu/XteF
 rsync -avz /origem /backup
 
 rsync -avz /home/aluno sergio@172.30.10.234:/home/sergio/backup
+
+
+scp -P 2222 -r user@remote-host:/home/user/.dotfiles ./
+
+rsync -av -e "ssh -l sergio -p 2222" user@server:/home/user/.dotfiles ./dotfiles
+
+rsync -av -e 'ssh -l user -p 2222' --exclude='.git/' --update --delete user@server:/home/sergio/.dotfiles ./dotfiles
+
 ```
 
 ### se quizer aumentar um pouco a segurança faça:

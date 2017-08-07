@@ -8,6 +8,8 @@ veja um exemplo em que copiamos arquivos *.jpg para a pasta atual
 
 	scp fulano@172.30.34.5:/home/fulano/*.jpg ./
 
+	scp -rvz -e 'ssh -p 2222' --progress user@server:~/.vimrc .
+
 ### copiando pastas remotamente
 Neste caso temos que usar o parâmtro 'r' do scp
 
