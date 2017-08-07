@@ -1,6 +1,10 @@
 ### Como acessei meu computador ativando o servidor virtual DMZ
 no modem vivo
 
+Pra debugar a conexão user a opção -vvv no ssh tipo
+
+    ssh -vvv -p 2222 user@external-ip
+
 Configurações:
 	ssh
 	tcpip (obvio)
@@ -16,6 +20,10 @@ No archlinux instalei o openssh
 	AllowUsers myname
 
 	sudo systemctl restart sshd
+
+### mey hostname no no-ip
+
+	archgeek.ddns.net
 
 
 ### Como acessar ssh por túner reverso
