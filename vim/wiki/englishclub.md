@@ -121,9 +121,10 @@ tape technology became widespread in the 1970s.
 
 That’s a great channel and one of the most important discoveries that I have made lately
 because in order to grow up in hability on english we have be able to listen precisely all sounds -- to get all videos do this:
-youtube-dl -citw  http://www.youtube.com/user/dailydictation/videos
 
-       youtube-dl -citw http://va.mu/XdYW
+	youtube-dl -citw  http://www.youtube.com/user/dailydictation/videos
+
+    youtube-dl -citw http://va.mu/XdYW
 
 * Picture yourself fluent english speaker
 * Conversação real através do google talk e skype, facebook twitter, etc. Para tornar o inglês parte da vida dos membros do clube.
