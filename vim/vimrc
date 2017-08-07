@@ -626,6 +626,33 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
+inoremap <C-K> <c-r>=CtrlK()<cr>
+
+
+" 1 - If used at the end of a line, it kills the line-ending newline character,
+" merging the next line into the current one (thus, a blank line is entirely
+" removed).
+"
+" 2 - Otherwise, C-k kills all the text from point up to the end of the
+" line;
+"
+" 3 - if point was originally at the beginning of the line, this leaves the
+" line blank.
+"
+" source: https://stackoverflow.com/a/45539414/2571881
+function! CtrlK()
+    let col = col('.')
+    let end = col('$')
+
+    if col == end
+        return "\<Del>"
+    elseif col == 1
+        return "\<Esc>cc"
+    else
+        return "\<Esc>lc$"
+    endif
+endfunction
+
 " Toggle 0 and ^
 " source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 "function! ToggleHomeZero()
