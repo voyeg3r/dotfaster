@@ -5,7 +5,7 @@ Pra debugar a conexão user a opção -vvv no ssh tipo
 
     ssh -vvv -p 2222 user@external-ip
 
-Configurações:
+	CONFIGURAÇÕES:
 	ssh
 	tcpip (obvio)
 	configuração Wan (interface)
@@ -15,7 +15,7 @@ Configurações:
 
 	Na seção disparo de portas 2222 entrando e saindo
 
-No archlinux instalei o openssh
+	NO ARCHLINUX INSTALEI O OPENSSH
 	Port 2222
 	AllowUsers myname
 
@@ -28,7 +28,42 @@ No archlinux instalei o openssh
 
 ### Como acessar ssh por túner reverso
 
-[ssh por tunel reverso](ssh-por-tunel-reverso)
+### Segundo passo de autenticação
+
+Crie o script:
+
+	#!/usr/bin/env sh
+	set -eu
+	while read -rp 'What is your birthday? ' REPLY
+	do
+		case "$REPLY" in
+			'')
+				# empty input; ask again
+				;;
+
+			'08.12.69')
+				# Run original command if available or simply the user's log-in shell
+				echo "Welcome to my ssh sever"
+				sleep 2
+				exec ${SSH_ORIGINAL_COMMAND-$SHELL -l};;
+
+			*)
+				break;;
+		esac
+	done
+
+	echo "You're not welcome here. Go away!" >&2
+	exit 1
+
+OBS: altere a pergunta de acordo com a sua preferência
+
+Agora no arquivo `/etc/ssh/sshd_config` adicione essas linhas
+
+	Match user root
+		ForceCommand /root/login-with-birthday.sh
+
+
+### [ssh por tunel reverso](ssh-por-tunel-reverso)
 
 	ssh -R 10000:localhost:22 usermiddle@middle
 
@@ -84,8 +119,8 @@ Control Master/Control Path
 Se a máquina que você vai acessar mudar de ip o ssh
 dá erro, o que fazer então?
 
-ssh-keygen -R ip
-ssh-keygen -R 192.168.1.217
+	ssh-keygen -R ip
+	ssh-keygen -R 192.168.1.217
 
 ### descobrindo servidores ssh ativos na rede local
 
@@ -96,11 +131,11 @@ ssh-keygen -R 192.168.1.217
 * http://www.commandlinefu.com/commands/view/2844/ssh-and-attach-to-a-screen-in-one-line
 ### Executando um sed sobre ssh
 
-ssh coordenador@host "sed -i '10s/^/#/g' /etc/X11/xorg.conf"
+	ssh coordenador@host "sed -i '10s/^/#/g' /etc/X11/xorg.conf"
 
 ### sincronizando a data de um servidor com outro
 
-sudo date -s "$(ssh user@server.com "date -u")"
+	sudo date -s "$(ssh user@server.com "date -u")"
 
 # ajustar a hora com o servidor da escola
 # coloque as linhas abaixo no arquivo /etc/rc.local
@@ -109,15 +144,15 @@ date +%Y%m%d%T -s "`ssh manager@192.168.1.11 'date "+%Y%m%d %T"'`"
 
 ### restaurando backup tar.bz2 via ssh
 
-ssh user@host "cat /path/to/backup/backupfile.tar.bz2" |tar jpxf -
+	ssh user@host "cat /path/to/backup/backupfile.tar.bz2" |tar jpxf -
 
 ### Enviar som via ssh
 
-arecord -f dat | ssh -C user@host aplay -f dat
+	arecord -f dat | ssh -C user@host aplay -f dat
 
 ### manter conexão ativa evitando timeout
 
-echo 'ServerAliveInterval 60' >> /etc/ssh/ssh_config
+	echo 'ServerAliveInterval 60' >> /etc/ssh/ssh_config
 
 ### Como criar aliases no ssh para facilitar o acesso
 
@@ -126,7 +161,7 @@ para usuário Efetuar estas configurações com usuário diferente do usuário r
 neste exemplo utilizarei o usuário smith. Caso o diretório .ssh não exista,
 basta cria-lo com comando abaixo
 
-  $ mkdir ~/.ssh
+   mkdir ~/.ssh
 
 Conceder a permissão necessária
 
@@ -172,14 +207,14 @@ O arquivo **config** deve ter permissão 600, ou seja, deve estar acessível ape
 edite o arquivo /etc/ssh/ssh_config
 comente as duas linhas
 
-GSSAPIAuthentication yes
-GSSAPIDelegateCredentials no
+	GSSAPIAuthentication yes
+	GSSAPIDelegateCredentials no
 
-set "GSSAPIKeyExchange no" in your client configuration file which is usually in /etc/ssh_config
+	set "GSSAPIKeyExchange no" in your client configuration file which is usually in /etc/ssh_config
 
 Pode-se também comprimir e forçar o uso de IPV4
 
-ssh -4 -C user@host
+	ssh -4 -C user@host
 
 ### Enviando mensagem tipo net send
 fonte: http://andregondim.eti.br/?p=619
@@ -189,59 +224,69 @@ Depois de logado na máquina destino por ssh, é só fazer:
 
 Exemplo:
 
-    $ xmessage Teste http://andregondim.eti.br -display :0 &
+    xmessage Teste http://andregondim.eti.br -display :0 &
 
 ### tunel reverso
 
 ssh -R 2001:localhost:22 [username]@[remote server ip]
 
-Allows you to establish a tunnel to your home pc froma company pc. Then from your home pc you can use the command `ssh localhost -p 2001` to ssh to your company PC.
+Allows you to establish a tunnel to your home pc froma company pc. Then from
+your home pc you can use the command `ssh localhost -p 2001` to ssh to your
+company PC.
+
 ### definindo um range de acesso
 fonte: [[http://forums.opensuse.org/archives/novell-archives/308388-how-define-ip-ranges-etc-hosts-allow.html|forum do opensuse]]
 No arquivo /etc/hosts.deny negue o acesso de todos os hots e todos os protocolos
 
-ALL:PARANOID
-ALL:ALL
+	ALL:PARANOID
+	ALL:ALL
 
 ===Liberando um range===
 
-sshd: 10.3.0.*
+	sshd: 10.3.0.*
 
 Outra forma seria
 
-sshd: 10.3.0.0/255.0.0.0
+	sshd: 10.3.0.0/255.0.0.0
 
 ### Para liberar o acesso apenas para alguns hosts
 
-sshd: ALL EXCEPT 195.168.26.56, 85.216.25.368
+	sshd: ALL EXCEPT 195.168.26.56, 85.216.25.368
 
 ### acessando arquivos gráficos remotamente
 
-ssh -C -X user@remotehost gui_command
+	ssh -C -X user@remotehost gui_command
 
 ### configurando o atalho do putty
 
-C:\tmp\PUTTY\putty.exe -load proxy
+	C:\tmp\PUTTY\putty.exe -load proxy
 
 ### hosts.allow
 
-sshd: 127.0.0.1
-sshd: 10.1.1.2
-sshd: 10.1.1.5
-sshd: 10.1.1.15
+	sshd: 127.0.0.1
+	sshd: 10.1.1.2
+	sshd: 10.1.1.5
+	sshd: 10.1.1.15
 
 ### Acesso pelo modo gráfico
-ssh significa secure shell, ou shell seguro pois os dados trafegam criptografados. Podemos acessar graficamente pelo konqueror usando:
+
+ssh significa secure shell, ou shell seguro pois os dados trafegam
+criptografados. Podemos acessar graficamente pelo konqueror usando:
 
   fish://usuario@ip
 
-onde usuario tem que existir no sistema e ip tem que ser o da máquina a ser acessada. A máquina a ser acessada tem que estar com o servidor ssh instalado e rodando.
+onde usuario tem que existir no sistema e ip tem que ser o da máquina a ser
+acessada. A máquina a ser acessada tem que estar com o servidor ssh instalado e
+rodando.
 
   /etc/init.d/ssh start
 
-Se for acessar usando o linux ubuntu, a forma de conexão muda um pouco pois a interface gráfica é o Gnome e portanto o gerenciador de arquivos é outro, no caso o nautilus. Faça:
-ssh://usuario@ip
-no kurumin
+Se for acessar usando o linux ubuntu, a forma de conexão muda um pouco pois a
+interface gráfica é o Gnome e portanto o gerenciador de arquivos é outro, no
+caso o nautilus. Faça:
+
+	ssh://usuario@ip
+
 
 ### Minha conta ssh no voyeg3r@tty.sdf.org
 
@@ -270,11 +315,11 @@ Para saber quem está logoado em sua máquina usando ssh
 
 ### copiando arquivos remotamente pelo ssh
 
-scp opções origem destino
+	scp opções origem destino
 
 veja agora como seria
 
-  scp -Crp dirlocal user@IP:/dirremoto
+	  scp -Crp dirlocal user@IP:/dirremoto
 
 Em caso de falha de conexão
 
@@ -294,14 +339,13 @@ testar se a máquina a ser acessada tem
   Caso não tenha o pbcopy pode colocar esses dois aliases no seu
   zshrc ou bashrc
 
-
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
 
 ### Exportando a chave do ssh
 
-ssh-keygen -b 1024 -t dsa
-ssh-copy-id -i ~/.ssh/id_dsa.pub usuario@maquina_remota
+	ssh-keygen -b 1024 -t dsa
+	ssh-copy-id -i ~/.ssh/id_dsa.pub usuario@maquina_remota
 
 Backup de uma partição em rede usando dd, gzip e ssh
 
@@ -410,28 +454,29 @@ exmeplo bem simplista seria:
 
 * Crie (ou edite acrescentando no inicio) um .bash_profile para o usuário do ssh com o seguinte conteudo:
 
-#!/bin/bash
-trap '' SIGINT SIGTERM
-./eu.sh
-if [ -e sou_eu.txt ]; then
-   echo "Acesso Autorizado"
-   rm -f sou_eu.txt
-else
-   echo "Acesso Negado"
-   logout
-fi
-trap SIGINT SIGTERM
+	#!/bin/bash
+	trap '' SIGINT SIGTERM
+	./eu.sh
+	if [ -e sou_eu.txt ]; then
+	   echo "Acesso Autorizado"
+	   rm -f sou_eu.txt
+	else
+	   echo "Acesso Negado"
+	   logout
+	fi
+	trap SIGINT SIGTERM
 
 Crie um arquivo chamado eu.sh no home do usuário do ssh, com:
 
-#!/bin/bash
-echo "Qual a senha do seu cartao?"
-read resp
-if [ "$resp" == "123456" ]; then
- touch sou_eu.txt
-fi
+	#!/bin/pbash
+	echo "Qual a senha do seu cartao?"
+	read resp
+	if [ "$resp" == "123456" ]; then
+	 touch sou_eu.txt
+	fi
 
 E não se esqueça de torna-lo executavel: chmod +x eu.sh
+
 
 7. Se possivel, limite os endereços IPs que podem acessar a maquina
 por ssh: Caso você sempre acesse a máquina através de um número
