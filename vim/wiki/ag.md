@@ -1,3 +1,13 @@
+``` markdown
+Arquivo: ag.md (the silver search)
+Created: dom 06/ago/2017 hs 21:08
+Last Change: dom 06 ago 2017 21:09:28 -03
+autor: <+digite seu nome+>
+site: <+digite o endereço de seu site+>
+twitter: <+your twitter here+>
+email: <+seu email+>
+```
+
 # Recursively search for PATTERN in PATH. Like grep or ack, but faster.
 
       ag [file-type] [options] PATTERN [PATH]

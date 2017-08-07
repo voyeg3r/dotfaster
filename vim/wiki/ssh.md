@@ -1,3 +1,37 @@
+### Como acessei meu computador ativando o servidor virtual DMZ
+no modem vivo
+
+Configurações:
+	ssh
+	tcpip (obvio)
+	configuração Wan (interface)
+	Interface Wan (any ou qualquer)
+	porta Wan 2222
+	porta aberta LAN 2222
+
+	Na seção disparo de portas 2222 entrando e saindo
+
+No archlinux instalei o openssh
+	Port 2222
+	AllowUsers myname
+
+	sudo systemctl restart sshd
+
+
+### Como acessar ssh por túner reverso
+
+[ssh por tunel reverso](ssh-por-tunel-reverso)
+
+	ssh -R 10000:localhost:22 usermiddle@middle
+
+No meu caso
+
+	ssh -R 10000:localhost:22 voyeg3r@tty.sdf.org
+
+Então, quando for se conectar pelo notebook, executar o seguinte comando:
+
+	ssh voyeg3r@middle -p 10000
+
 ###9 Awesome SSH Trics
 http://tychoish.com/rhizome/9-awesome-ssh-tricks/
 
@@ -201,22 +235,30 @@ Se for acessar usando o linux ubuntu, a forma de conexão muda um pouco pois a i
 ssh://usuario@ip
 no kurumin
 
+### Minha conta ssh no voyeg3r@tty.sdf.org
+
+	Minha senha é aquela
+
 No kurumin para ativar o serviço faça
 
-service ssh start
+	service ssh start
+
+No archlinux
+
+	systemctl start sshd
 
 Acesso pela linha de comando
 
-ssh usuario@ip
+	ssh usuario@ip
 
 Para saber quem está logoado em sua máquina usando ssh
 
-zago@speedy zago$ echo $SSH_CLIENT
-192.168.1.53 33033 22
+	zago@speedy zago$ echo $SSH_CLIENT
+	192.168.1.53 33033 22
 
 ### pegando variável remotamente
 
-versao="$(ssh $servidor cat $arquivo)"
+	versao="$(ssh $servidor cat $arquivo)"
 
 ### copiando arquivos remotamente pelo ssh
 

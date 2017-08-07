@@ -586,6 +586,7 @@ fun! InsertChangeLog()
     normal gg
   endif
 endfun
+command! -nargs=0 Icl :call InsertChangeLog()
 
 " Esta função Modifica o change log
 " If buffer modified, update any 'Last modified: ' in the first 20 lines.
@@ -613,7 +614,7 @@ fun! ChangeHeader()
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfun
-command! -nargs=0 CH :call ChangeHeader()
+command! -nargs=0 Ch :call ChangeHeader()
 
 " jump to next place holder
 function! JumpToNextPlaceholder()

@@ -155,7 +155,8 @@ alias cbanews='mplayer http://abclive.abcnews.com/i/abc_live2@136328/index_2500_
 alias vbros='mplayer http://adultswim-vodlive.cdn.turner.com/the-venture-bros/stream_4.m3u8'
 
 # alias myexternalip='curl http://myexternalip.com/raw'
-alias myexternalip='curl https://api.ipify.org'
+# alias myexternalip='curl https://api.ipify.org'
+alias myexternalip='curl ifconfig.me'
 alias ipaddress='hostname -i'
 alias iso2utf='iconv -f iso-8859-1 -t utf-8'
 alias utf2iso='iconv -f utf-8 -t iso-8859-1'
