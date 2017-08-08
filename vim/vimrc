@@ -770,7 +770,10 @@ set showmode
 " :PymodeLintToggle* -- Toggle code checking
 " :PymodeLintAuto* -- Fix PEP8 errors in current buffer automatically
 
-nnoremap <F5> :GundoToggle<CR>
+"set pastetoggle<F5>
+nnoremap <F5> :set invpaste paste?<CR>
+set pastetoggle=<F5>
+set showmode
 
 " muda o tema de cores
 let g:nextcs_map = '<F12>'

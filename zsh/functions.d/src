@@ -6,14 +6,13 @@
 
 src () {
 	autoload -U zrecompile
-	cd ${ZDOTDIR:-$HOME}
 
-	zrecompile -p .zshrc
-	zrecompile -p .zshenv
-	zrecompile -p .zlogout
-	zrecompile -p .zlogin
-    zrecompile -p .zcompdump
-	rm -f *.old(.N)
+	zrecompile -p "$ZDOTDIR/.zshrc"
+	zrecompile -p "$ZDOTDIR/.zshenv"
+	zrecompile -p "$ZDOTDIR/.zlogout"
+	zrecompile -p "$ZDOTDIR/.zlogin"
+    zrecompile -p "$ZDOTDIR/.zcompdump"
+	rm -f "$ZDOTDIR/*.old(.N)"
 
 	for f in $ZDOTDIR/functions.d/^(*.zwc)(.); do
 		zrecompile -p $f
