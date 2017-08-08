@@ -12,6 +12,17 @@ http://www.twitter.com/voyeg3r
 
     echo $XDG_SESSION_TYPE
 
+### primary selection and wayland
+
+```sh
+[[ ! -d ~/.config/gtk-3.0 ]] || mkdir ~/.config/gtk-3.0/
+if [[ ! -f ~/.config/gtk-3.0/settings.ini ]]; then
+cat <<-EOF > ~/.config/gtk-3.0/settings.ini
+	[Settings]
+	gtk-enable-primary-paste=true
+EOF
+```
+
 ### Fixing dir names
 + https://askubuntu.com/a/737236/3798
 

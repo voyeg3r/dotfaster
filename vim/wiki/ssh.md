@@ -25,7 +25,6 @@ Pra debugar a conexão user a opção -vvv no ssh tipo
 
 	archgeek.ddns.net
 
-
 ### Como acessar ssh por túner reverso
 
 ### Segundo passo de autenticação

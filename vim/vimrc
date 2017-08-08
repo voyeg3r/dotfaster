@@ -924,10 +924,9 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-"" Copy/Paste/Cut
-"if has('unnamedplus')
-"  set clipboard=unnamed,unnamedplus
-"endif
+" set primary selection "just select on the web for example"
+set clipboard+=autoselect
+set guioptions+=a
 
 noremap YY "+y<CR>
 noremap <leader>p "+gP<CR>
