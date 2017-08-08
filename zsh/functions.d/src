@@ -1,25 +1,24 @@
 
 # optimization for zsh
 # source: http://www.zsh.org/mla/users/2005/msg00423.html
+#
+# The zrecompile module is used to seepd up zsh startup
+# ceating optimized zsh files
 
 src () {
 	echo "runing zrecompile ..."
-	cd ${ZDOTDIR:-$HOME}
 	autoload -U zrecompile
-	[ -f .zshrc ] && zrecompile -p .zshrc
-	[ -f .zlogout ] && zrecompile -p .zlogout
-	[ -f .zlogin ] && zrecompile -p .zlogin
-	[ -f .zcompdump ] && zrecompile -p .zcompdump
+	cd ${ZDOTDIR:-$HOME}
 
-	for f in $ZDOTDIR/functions.d/; do
-		zrecompile $f $f/*(N)
-	done
+	zrecompile -p .zshrc
+	zrecompile -p .zshenv
+	zrecompile -p .zlogout
+	zrecompile -p .zlogin
+    zrecompile -p .zcompdump
+	rm -f *.old(.N)
 
-	#   [ -f /etc/profile ] && zrecompile -p /etc/profile
-	#	[ -f /etc/profile.env ] && zrecompile -p /etc/profile.env
-	#	for a in $fpath
-	#	do
-	#		[ -d $a ] && zrecompile -p $a.zwc $a/*
-	#	done
-
+	for f in $ZDOTDIR/functions.d/^(*.zwc)(.); do
+		zrecompile -p $f
+		rm -f $f.zwc.old
+    done
 }

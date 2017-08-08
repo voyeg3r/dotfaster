@@ -9,24 +9,26 @@
   # Function to determine the need of a zcompile. If the .zwc file
   # does not exist, or the base file is newer, we need to compile.
   # These jobs are asynchronous, and will not impact the interactive shell
-  zcompare() {
-    if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
-      zcompile ${1}
-    fi
-  }
+  # zcompare() {
+  #   if [[ -s ${1} && ( ! -s ${1}.zwc || ${1} -nt ${1}.zwc) ]]; then
+  #     zcompile ${1}
+  #   fi
+  # }
 
   #zim_mods=${ZDOTDIR:-${HOME}}/.zim/modules
   setopt EXTENDED_GLOB
 
   # zcompile the completion cache; siginificant speedup.
-  for file in ${ZDOTDIR:-${HOME}}/.zcomp^(*.zwc)(.); do
-    zcompare ${file}
-  done
+  # for file in ${ZDOTDIR:-${HOME}}/.zcomp^(*.zwc)(.); do
+  #   zcompare ${file}
+  # done
+
+  for f in $ZDOTDIR/.*^(*.zwc|*.md)(.); zrecompile $f && command rm -f $f.zwc.old
 
   # for f in $ZDOTDIR/.^*.zwc; zcompare $f
 
   # zcompile .zshrc
-  zcompare ${ZDOTDIR:-${HOME}}/.zshrc
+  #zcompare ${ZDOTDIR:-${HOME}}/.zshrc
 
   # ---------------------------------------
   # ZCOMPILE SOME LIGHT MODULE INIT SCRIPTS
@@ -45,7 +47,8 @@
 
   # zcompile all autoloaded functions
   for file in ${ZDOTDIR}/functions.d/^(*.zwc)(.); do
-    zcompare ${file}
+    # zcompare ${file}
+	zrecompile ${file}
   done
 
   # syntax-highlighting
