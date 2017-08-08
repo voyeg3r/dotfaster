@@ -20,7 +20,7 @@ src () {
 		rm -f $f.zwc.old
     done
 
-	for f in $ZDOTDIR/plugins/**/*.zsh; ls $f
+	for f in $ZDOTDIR/plugins/**/*.zsh; do
 		zrecompile -p $f
 		rm -f $f.zwc.old
     done
