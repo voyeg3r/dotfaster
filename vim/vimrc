@@ -153,6 +153,7 @@ Plug 'eparreno/vim-l9'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/VisIncr'
+Plug 'vim-scripts/nextCS'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 
@@ -384,7 +385,7 @@ if has('gui_running')
 else
     set background=dark
 endif
-"colorscheme solarized
+colorscheme aldmeris
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
@@ -626,33 +627,6 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
-inoremap <C-K> <c-r>=CtrlK()<cr>
-
-
-" 1 - If used at the end of a line, it kills the line-ending newline character,
-" merging the next line into the current one (thus, a blank line is entirely
-" removed).
-"
-" 2 - Otherwise, C-k kills all the text from point up to the end of the
-" line;
-"
-" 3 - if point was originally at the beginning of the line, this leaves the
-" line blank.
-"
-" source: https://stackoverflow.com/a/45539414/2571881
-function! CtrlK()
-    let col = col('.')
-    let end = col('$')
-
-    if col == end
-        return "\<Del>"
-    elseif col == 1
-        return "\<Esc>cc"
-    else
-        return "\<Esc>lc$"
-    endif
-endfunction
-
 " Toggle 0 and ^
 " source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 "function! ToggleHomeZero()
@@ -798,10 +772,10 @@ set showmode
 
 nnoremap <F5> :GundoToggle<CR>
 
-"let g:nextcs_map = '<F6>'
-"let g:nextcs_map = '<s-F6>'
-map <F6> <Plug>NextCS
-map <s-F11> <Plug>PreviousCS
+" muda o tema de cores
+let g:nextcs_map = '<F12>'
+let g:previouscs_map = '<F11>'
+
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir

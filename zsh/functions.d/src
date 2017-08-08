@@ -1,0 +1,25 @@
+
+# optimization for zsh
+# source: http://www.zsh.org/mla/users/2005/msg00423.html
+
+src () {
+	echo "runing zrecompile ..."
+	cd ${ZDOTDIR:-$HOME}
+	autoload -U zrecompile
+	[ -f .zshrc ] && zrecompile -p .zshrc
+	[ -f .zlogout ] && zrecompile -p .zlogout
+	[ -f .zlogin ] && zrecompile -p .zlogin
+	[ -f .zcompdump ] && zrecompile -p .zcompdump
+
+	for f in $ZDOTDIR/functions.d/; do
+		zrecompile $f $f/*(N)
+	done
+
+	#   [ -f /etc/profile ] && zrecompile -p /etc/profile
+	#	[ -f /etc/profile.env ] && zrecompile -p /etc/profile.env
+	#	for a in $fpath
+	#	do
+	#		[ -d $a ] && zrecompile -p $a.zwc $a/*
+	#	done
+
+}
