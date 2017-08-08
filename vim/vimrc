@@ -773,6 +773,7 @@ set showmode
 "set pastetoggle<F5>
 nnoremap <F5> :set invpaste paste?<CR>
 set pastetoggle=<F5>
+imap <F5> <C-O>:set invpaste paste?<CR>
 set showmode
 
 " muda o tema de cores

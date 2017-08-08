@@ -74,6 +74,10 @@ source ${DOTFILES}/zsh/aliases
 # source $ZDOTDIR/tools/lazy-load/init.zsh
 source $ZDOTDIR/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+source $ZDOTDIR/plugins/zshnip/zshnip.zsh
+bindkey '\ej' zshnip-expand-or-edit # Alt-J
+bindkey '\ee' zshnip-edit-and-expand # Alt-E
+
 
 # based on zim plugin command
 # build_cache (){ source "${ZDOTDIR}/zlogin";}

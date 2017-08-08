@@ -76,3 +76,6 @@
 [submodule "zsh/plugins/fast-syntax-highlighting"]
 	path = zsh/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule "zsh/plugins/zshnip"]
+	path = zsh/plugins/zshnip
+	url = https://github.com/facetframer/zshnip.git
