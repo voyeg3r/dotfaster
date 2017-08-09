@@ -21,6 +21,14 @@ twitter: http://www.twitter.com/voyeg3r
     X-GNOME-Autostart-enabled=true
     X-GNOME-Autostart-Delay=60
 
+### Dealing with primary selection clipboard
+
+if you you want to copy and paste easily withou thinking if you
+copied or not, just selected a text, use Shif-inert or
+
+	alias xpaste='xclip -i -selection primary 2>/dev/null'
+	alias xcopy='xclip -selection primary 2/dev/null'
+
 ### Tema elementary Dark
 
 	http://aaron-a-arts.deviantart.com/art/elementary-Dark-Gtk-190822873
