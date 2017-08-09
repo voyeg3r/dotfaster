@@ -13,10 +13,13 @@ Github:      https://github.com/voyeg3r
 
 See more at [dicasgoogle](dicasgoogle.md)
 
-### Senha do roteador Vivo
+### Senha do roteador Vivo ou GVT
 
       admin
       vivo12345
+
+	  admin
+	  gvt12345
 
 ### 3* new 3eg* account key
 

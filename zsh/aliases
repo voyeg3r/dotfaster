@@ -13,6 +13,7 @@ alias aedit="$EDITOR $ZSH_CONFIG/aliases; source $ZSH_CONFIG/aliases"
 
 alias html2pdf='wkhtmltopdf'
 alias roteador='awk "/UG/ {print \$2}" <<(route -n)'
+alias router='awk "/UG/ {print \$2}" <<(route -n)'
 
 # source: https://www.reddit.com/r/linux/comments/3ly2zl/lpt_use_python_interpreter_as_an_advanced/
 alias calc='python3 -ic "from math import *; import cmath"'
@@ -30,6 +31,7 @@ alias fullsnd='pactl set-sink-volume 0 +100%'
 alias downsnd='pactl set-sink-volume 0 -10%'
 
 alias dairy='vim +VimwikiMakeDiaryNote'
+alias vinone='vim -u NONE -N'
 
 alias mkdir='mkdir -pv'
 alias hg='history | grep'

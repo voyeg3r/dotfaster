@@ -15,6 +15,15 @@ Github:      https://github.com/voyeg3r
 
 See also: [Regex](Regex.md) page
 
+### Inserting primary selection content
+
+For those who do not know what "primary selection is", putting it simple.
+
+	"The text selected and is just captured automatically to its
+	special clipboard space"
+
+On vim just press: Shift-insert
+
 ### Editing .viminfo file
 + https://stackoverflow.com/a/2833376/2571881
 
