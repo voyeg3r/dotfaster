@@ -22,7 +22,26 @@ For those who do not know what "primary selection is", putting it simple.
 	"The text selected and is just captured automatically to its
 	special clipboard space"
 
-On vim just press: Shift-insert
+On vim just press: Shift-insert "primary selection"
+
+
+While in insert mode, you can use Ctrl-R {register}, where register can be:
+
+    + for the clipboard,
+    * for the X clipboard (last selected text in X),
+    " for the unnamed register (last delete or yank in Vim),
+    or a number of others (see :h registers).
+
+	Ctrl-R {register} inserts the text as if it were typed.
+
+	Ctrl-R Ctrl-O {register} inserts the text with the original indentation.
+
+	Ctrl-R Ctrl-P {register} inserts the text and auto-indents it.
+
+	Ctrl-O can be used to run any normal mode command before returning to insert mode, so
+	Ctrl-O "+p can also be used, for example.
+
+For more information, view the documentation with :h i_ctrl-r
 
 ### Editing .viminfo file
 + https://stackoverflow.com/a/2833376/2571881

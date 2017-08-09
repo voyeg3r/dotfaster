@@ -580,10 +580,11 @@ fun! InsertChangeLog()
     call append(0, "Arquivo: <+Description+>")
     call append(1, "Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
     call append(2, "Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
-    call append(3, "autor: <+digite seu nome+>")
-    call append(4, "site: <+digite o endereço de seu site+>")
-    call append(5, "twitter: <+your twitter here+>")
-    call append(6, "email: <+seu email+>")
+    call append(3, "autor: Sérgio Luiz Araújo Silva
+    call append(4, "site: vivaotuxSérgio Luiz Araújo Silva
+    call append(5, "twitter: http://www.twitter.com/voyeg3r
+    call append(6, "email: <voyeg3r  gmail.com>
+    <+ ctrl-j jump to this placeholder +>
     normal gg
   endif
 endfun
@@ -896,7 +897,7 @@ if exists(":python3")
     let g:ultisnipsusepythonversion = 3
 endif
 
-let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/rcfiles/vim/snips/")
+let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
 map <leader>u :UltiSnipsEdit<cr>
 " Snippets variables

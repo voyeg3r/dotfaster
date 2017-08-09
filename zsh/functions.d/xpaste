@@ -1,4 +1,6 @@
 
+# paste from primary clipboard
+
 xpaste (){
 
 	xclip -i -selection primary -o
