@@ -1,10 +1,13 @@
-Arquivo: <+Description+>
-Created: qua 09/ago/2017 hs 13:21
-Last Change: qua 09/ago/2017 hs 13:21
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: @voyeg3r
-email: <voyeg3r  gmail.com>
+``` markdown
+File:		 Awesomesites.md
+Created:	 qua 09 ago 2017 13:36:38 -03
+Last Change: qua 09 ago 2017 13:36:38 -03
+Author:		 Sergio Araujo
+Site:		 http://vivaotux.blogspot.com
+e-mail:      <voyeg3r ✉ gmail.com>
+Twitter:	 @voyeg3r
+Github:      https://github.com/voyeg3r
+```
 
 + https://Youtube.com/TV Watch Youtube in a different way
 + https://archive.org/ Internet archive

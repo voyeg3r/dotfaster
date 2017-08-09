@@ -1167,6 +1167,39 @@ To paste text from the system clipbo ard use Shift + Ins in Insert mode or
 "*p in Normal mode.  Conversely, "+y yanks the current selection to the system
 clipbo ard.
 
+
+### Numbering lines in sequence
+
+	partridge in a pear tree
+	turtle doves
+	French hens
+	calling birds
+	golden rings
+
+Make above lines become this way
+
+
+	1) partridge in a pear tree
+	2) turtle doves
+	3) French hens
+	4) calling birds
+	5) golden rings
+
+	:let i=1
+	qa
+	I<C-r>=i<CR>)
+	<Esc>
+	:let i += 1
+	q
+
+### Editing a macro on vim
+
+	:put a
+
+	the above command will place register a on my current buffer
+
+	"ap ...... pastes the register after the cursor
+
 ### Executing a macro over all files
 
 ``` vim
@@ -1552,6 +1585,40 @@ ou
 Para colocar o nome do arquivo em uma substituição faça
 
       /<c-r>%
+
+
+### Brincando com regex no vim
++ https://stackoverflow.com/a/45600892/2571881
+
+No stackoverflow apareceu a seguinte questão
+
+Replace all strings except the parenthesis part in vim
+I have a text as follows.
+
+	cat
+	dog
+	elephant
+	cat (1)
+	zebra(1)
+	snow leopard
+	shark (other)
+
+and I want to replace them as follows.
+
+	[[cat]]
+	[[dog]]
+	[[elephant]]
+	[[cat]] (1)
+	[[zebra]](1)
+	[[snow leopard]]
+	[[shark]] (other)
+
+	/\v(^\w+( ?\w+)?)
+	:1,7s,,[[\1]],g
+
+Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora quebrando a cabeça, pois meu objetivo era aprender um pouco mais sobre regex no vim e de modo greal, pois é um assunto que me intriga.
+
+Para poucas linhas de código, obviamente a solução manual é a melhor escolha, mas imagina se esse código tivesse centenas de linhas, o que provavelmente corresponde à realidade do cara que a postou.
 
 ### Some regex tips
 
