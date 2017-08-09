@@ -1,0 +1,6 @@
+
+xcopy (){
+
+	xclip xclip -selection primary
+
+}

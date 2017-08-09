@@ -1,0 +1,6 @@
+
+xpaste (){
+
+	xclip -i -selection primary -o
+
+}
