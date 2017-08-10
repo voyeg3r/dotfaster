@@ -79,3 +79,6 @@
 [submodule "zsh/plugins/zshnip"]
 	path = zsh/plugins/zshnip
 	url = https://github.com/facetframer/zshnip.git
+[submodule "zsh/plugins/zsh-fzy"]
+	path = zsh/plugins/zsh-fzy
+	url = https://github.com/aperezdc/zsh-fzy.git

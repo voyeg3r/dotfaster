@@ -1613,8 +1613,19 @@ and I want to replace them as follows.
 	[[snow leopard]]
 	[[shark]] (other)
 
-	/\v(^\w+( ?\w+)?)
-	:1,7s,,[[\1]],g
+	/\v(^\w+( \w+)?)
+	:%s,,[[\1]],g
+
+	Utilizamos o modo very magic que nos permite
+	usar expressões regulares modernas
+
+	A expressão regular usada é composta de dois grupos
+	sendo que o segudo está dentro do primeiro, na substituição
+	usamos só o primeiro
+
+	uma palavra pelo menos --> \w+
+	seguida de outro grupo opcional ( \w+)?
+
 
 Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora quebrando a cabeça, pois meu objetivo era aprender um pouco mais sobre regex no vim e de modo greal, pois é um assunto que me intriga.
 
