@@ -25,7 +25,11 @@ ${0}
 endsnippet
 
 snippet 'clip(board)?' "past clipboard" !r
-`xclip -selection clipboard -o`
+`xclip -i -selection clipboard -o`
+endsnippet
+
+snippet primary "primary selection clipboard"
+`xclip -i -selection primary -o`
 endsnippet
 
 snippet 75wrds "Log a 750words.com session" b
