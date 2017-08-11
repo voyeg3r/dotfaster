@@ -568,7 +568,7 @@ cabal install pandoc
 
 graphictools () {
 sudo pacman -S adobe-source-code-pro-fonts
-sudo pacman -Syu inkscape extra/python2-lxml gimp imagemagick xclip
+sudo pacman -Syu inkscape extra/python2-lxml gimp imagemagick xclip xsel
 sudo yaourt -S --noconfirm gloobus-sushi-bzr
 sudo yaourt -S --noconfirm cairo-ubuntu fontconfig-ubuntu freetype2-ubuntu
 sudo yaourt --noconfirm -S ttf-ubuntu-font-family

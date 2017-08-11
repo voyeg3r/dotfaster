@@ -2,6 +2,16 @@ priority 2
 
 extends vim
 
+snippet header "description"
+"Arquivo: <+Description+>")
+"Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
+"Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
+"autor: <+digite seu nome+>")
+"site: <+digite o endereço de seu site+>")
+"twitter: <+your twitter here+>")
+"email: <+seu email+>")
+endsnippet
+
 snippet filename "insert filename" w
 `!p snip.rv = snip.fn`
 endsnippet
