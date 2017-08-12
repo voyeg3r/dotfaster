@@ -5,7 +5,7 @@ see also [Best of vim tips](vimbesttips.md)
 ```
 File:		 DicasVim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 17 jan 2017 17:50:13 BRT
+Last Change: sáb 12 ago 2017 10:48:05 -03
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -14,6 +14,17 @@ Github:      https://github.com/voyeg3r
 ```
 
 See also: [Regex](Regex.md) page
+
+### Using vim with no plugins
+
+  set path+="**"
+
+  find filename<tab>
+
+  gf any file on the cursor is over will go to file
+
+  :ls ......... list buffers
+  :b 2 ........ go to buffer 2
 
 ### Inserting primary selection content
 

@@ -8,6 +8,20 @@ if executable('zsh')
     set shell=zsh\ -l
 endif
 
+if !has('nvim')
+  set viminfo+=n~/.viminfo
+endif
+
+set viminfo=%,<800,'10,/50,:100,h,f1
+"           | |    |   |   |    | |
+"           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+"           | |    |   |   |    + disable 'hlsearch' loading viminfo
+"           | |    |   |   + command-line history saved
+"           | |    |   + search history saved
+"           | |    + files marks saved
+"           | + lines saved each register (old name for <, vi6.2)
+"           + save/restore buffer list
+
 if empty(glob('~/.dotfiles/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -29,6 +43,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'eparreno/vim-l9'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
@@ -55,6 +71,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 map ,u :UltiSnipsEdit<cr>
+nmap ,v <esc>:e ~/.dotfiles/nvim/init.vim<cr>
+nmap ,ww <esc> :VimwikiIndex<cr>
 
 let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
@@ -70,6 +88,10 @@ let g:UltiSnipsEditSplit="horizontal"
 if !exists("g:syntax_on")
     syntax enable
 endif
+
+map ,f <esc>:FZF<cr>
+map ,d <esc>:FZF ~/.dotfiles<cr>
+" :FZF ~/.dotfiles
 
 set mouse=a
 set path+=**
@@ -282,3 +304,27 @@ endfun
 command! -nargs=0 LM :call LastModified()<cr>
 autocmd BufWritePre * :call LastModified()
 map <silent> <F9> <esc>:call LastModified()<cr>
+
+
+" jump to next place holder
+function! JumpToNextPlaceholder()
+    let old_query = getreg('/')
+    echo search("<+.\\++>")
+    exec "norm! c/+>/e\<CR>"
+    call setreg('/', old_query)
+endfunction
+nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+
+
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+com! Cls :call CleanExtraSpaces()
+
+au! BufwritePre * :call CleanExtraSpaces()
+
