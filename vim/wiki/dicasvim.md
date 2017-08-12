@@ -25,6 +25,7 @@ See also: [Regex](Regex.md) page
 
   :ls ......... list buffers
   :b 2 ........ go to buffer 2
+  :b substring  opens any file with substring
 
 ### Inserting primary selection content
 

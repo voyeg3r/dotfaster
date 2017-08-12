@@ -73,6 +73,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 map ,u :UltiSnipsEdit<cr>
 nmap ,v <esc>:e ~/.dotfiles/nvim/init.vim<cr>
 nmap ,ww <esc> :VimwikiIndex<cr>
+nmap ç :
 
 let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
@@ -92,6 +93,14 @@ endif
 map ,f <esc>:FZF<cr>
 map ,d <esc>:FZF ~/.dotfiles<cr>
 " :FZF ~/.dotfiles
+
+" Better command history with q:
+command! CmdHist call fzf#vim#command_history({'bottom': '40'})
+nnoremap q: :CmdHist<CR>
+
+" Better search history
+command! QHist call fzf#vim#search_history({'bottom': '40'})
+nnoremap q/ :QHist<CR>
 
 set mouse=a
 set path+=**
