@@ -73,6 +73,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 map ,u :UltiSnipsEdit<cr>
 nmap ,v <esc>:e ~/.dotfiles/nvim/init.vim<cr>
 nmap ,ww <esc> :VimwikiIndex<cr>
+nmap ,i "*p
 nmap ç :
 
 let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
@@ -101,6 +102,13 @@ nnoremap q: :CmdHist<CR>
 " Better search history
 command! QHist call fzf#vim#search_history({'bottom': '40'})
 nnoremap q/ :QHist<CR>
+
+" rename current file
+" https://stackoverflow.com/a/40947088/2571881
+command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # | endtry
+
+" select last paste in visual mode
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 set mouse=a
 set path+=**

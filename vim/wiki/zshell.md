@@ -91,6 +91,10 @@ or:
 
 	See man zshexpn => FILENAME GENERATION => Glob Operators for more on this.
 
+### A better fuzzy finder
+
+  fzy
+
 ### Testing commands existence
 
 	# not aliasing rm -i, but if safe-rm is available, use condom.
@@ -608,6 +612,9 @@ make file and directory names lowercase
     (u{owner}): a specific file owner
     (f{permission string ala chmod}): a specific file permissions
 
+### Show today's files
+
+    ls -1 -- *(.m-1)
 
 #### is equivalent to:
 

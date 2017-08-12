@@ -91,6 +91,7 @@
 [free](free.md)
 [freenx](freenx.md)
 [fuser](fuser.md)
+[fzy](fzy.md)
 [gimp](gimp.md)
 [git](git.md)
 [github](github.md)

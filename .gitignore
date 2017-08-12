@@ -1,3 +1,5 @@
+# ZSH
 *.zwc
 *.zwc.old
+
 bin/login-with-age.sh
