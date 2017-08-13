@@ -13,7 +13,7 @@ alias python='/usr/bin/python3'
 alias aedit="$EDITOR $ZSH_CONFIG/aliases; source $ZSH_CONFIG/aliases"
 
 # Fuzzy (fzy) nvim edit file
-alias fzn='nvim $(find ~/.dotfiles -type f | fzy)'
+alias nfu='nvim $(find ~/.dotfiles -type f | fzy)'
 
 alias html2pdf='wkhtmltopdf'
 alias roteador='awk "/UG/ {print \$2}" <<(route -n)'

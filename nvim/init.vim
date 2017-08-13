@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 13 ago 2017 10:32:15 -03
+" Last Change: dom 13 ago 2017 11:14:59 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -28,6 +28,9 @@ if executable('zsh')
 endif
 
 set mouse=a
+
+" Avoid lags
+set lazyredraw
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
@@ -192,6 +195,8 @@ nmap <special> <c-down> ddp
 xmap <c-up> xkP`[V`]
 xmap <c-down> xp`[V`]
 
+nmap ,f :FZF ~/.dotfiles<cr>
+
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
@@ -321,20 +326,6 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 noremap <F2> :NERDTreeToggle<CR>
 
-" grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
-let Grep_Default_Options = '-IR'
-let Grep_Skip_Files = '*.log *.db'
-let Grep_Skip_Dirs = '.git node_modules'
-
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
-
-"*****************************************************************************
-"" Functions
-"*****************************************************************************
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
@@ -343,9 +334,6 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
-"*****************************************************************************
-"" Autocmd Rules
-"*****************************************************************************
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
