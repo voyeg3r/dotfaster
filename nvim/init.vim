@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 13 ago 2017 07:42:30 -03
+" Last Change: dom 13 ago 2017 07:44:43 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -144,7 +144,6 @@ map <silent> <leader>z :e ~/.dotfiles/zsh/zshrc<cr>
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-
 " snippets settings
 "let g:UltiSnips#ListSnippets="<C-tab>"
 let g:UltiSnipsListSnippets = "<c-tab>"
@@ -170,7 +169,6 @@ let g:snips_site='http://vivaotux.blogspot.com'
 let g:snips_email='<voyeg3r ✉ gmail.com>'
 let g:snips_github='https://github.com/voyeg3r'
 let g:snips_twitter='@voyeg3r'
-let g:UltiSnipsEditSplit="horizontal"
 
 " Buble single lines - mover linhas
 " http://vimcasts.org/episodes/bubbling-text/
@@ -422,7 +420,6 @@ nnoremap <silent> <leader>e :FZF -m<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
