@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 13 ago 2017 07:44:43 -03
+" Last Change: dom 13 ago 2017 10:32:15 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -53,6 +53,15 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+"
+Plug 'endel/vim-github-colorscheme'
+Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
+Plug 'vim-scripts/AutoComplPop'
+Plug 'vim-scripts/VisIncr'
+Plug 'chrisbra/NrrwRgn'
+Plug 'tpope/vim-markdown'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-speeddating'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -132,6 +141,11 @@ set expandtab
 
 "" Map leader to ,
 let mapleader=','
+
+
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+set lcs+=space:·
+
 
 nnoremap <F23> :set hls!<CR>
 inoremap <F23> <C-o>:set hls!<cr>

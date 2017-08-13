@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: ter 10 jan 2017 12:55:32 BRT
+" Last Change: dom 13 ago 2017 07:58:30 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -139,7 +139,6 @@ cab Q  q
 call plug#begin(expand('~/.dotfiles/rcfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
-Plug 'skywind3000/quickmenu.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
@@ -168,12 +167,6 @@ noremap <silent>,q :call quickmenu#toggle(0)<cr>
 
 " enable cursorline (L) and cmdline help (H)
 let g:quickmenu_options = "HL"
-
-" new section
-call quickmenu#append("# Misc", '')
-call quickmenu#append("Turn paste %{&paste? 'off':'on'}", "set paste!", "enable/disable paste mode (:set paste!)")
-call quickmenu#append("Turn spell %{&spell? 'off':'on'}", "set spell!", "enable/disable spell check (:set spell!)")
-call quickmenu#append("Function List", "TagbarToggle", "Switch Tagbar on/off")
 
 " Autopep8 plugin mapping
 "autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
@@ -960,12 +953,6 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-
-"" Include user's local vim config
-if filereadable(expand("~/.config/nvimrc.local"))
-  source ~/.config/nvimrc.local
-endif
-
 
 " vim-airline
 if !exists('g:airline_symbols')
