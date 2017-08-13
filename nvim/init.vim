@@ -1,5 +1,30 @@
+" vim:set et sw=4 ts=4:fdl=3
+" Arquivo de configuração do vim
+" Criado: Qua 02/Ago/2006 hs 09:19
+" Last Change: dom 13 ago 2017 07:42:30 -03
+" Autor: Sergio Luiz Araujo Silva
+" Codificação: utf-8
+" Site: http://vivaotux.blogspot.com
+" Mail: voyeg3r ✉ gmail
+" Twitter: http://www.twitter.com/voyeg3r
+" Licence: Licença: Este arquivo é de domínio público
+
+"                 ( O O )
+"  +===========oOO==(_)==OOo==============+
+"  |                                      |
+"  |    °v°    Sergio Luiz Araujo Silva   |
+"  |   /(_)\  Linux User #423493          |
+"  |    ^ ^    voyeg3r ✉ gmail.com        |
+"  +======================================+
+
 if has('vim_starting')
   set nocompatible               " Be iMproved
+endif
+
+set path+=**
+
+if executable('zsh')
+    set shell=zsh\ -l
 endif
 
 set mouse=a
@@ -107,6 +132,59 @@ set expandtab
 
 "" Map leader to ,
 let mapleader=','
+
+nnoremap <F23> :set hls!<CR>
+inoremap <F23> <C-o>:set hls!<cr>
+vnoremap <F23> <ESC>:set hls!<cr> <bar> gv
+
+map <silent> <leader>v :e ~/.dotfiles/nvim/init.vim<cr>
+map <silent> <leader>z :e ~/.dotfiles/zsh/zshrc<cr>
+
+" mapeamento para abrir e fechar folders em modo normal usando
+" a barra de espaços -- zR abre todos os folders
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+
+" snippets settings
+"let g:UltiSnips#ListSnippets="<C-tab>"
+let g:UltiSnipsListSnippets = "<c-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="horizontal"
+
+map <leader>u :UltisnipsEdit<cr>
+imap <leader>u <c-o>:UltisnipsEdit<cr>
+
+if exists(":python3")
+   let g:_uspy=":python3"
+    let g:ultisnipsusepythonversion = 3
+endif
+
+let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
+let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
+map <leader>u :UltiSnipsEdit<cr>
+" Snippets variables
+let g:snips_author='Sergio Araujo'
+let g:snips_site='http://vivaotux.blogspot.com'
+let g:snips_email='<voyeg3r ✉ gmail.com>'
+let g:snips_github='https://github.com/voyeg3r'
+let g:snips_twitter='@voyeg3r'
+let g:UltiSnipsEditSplit="horizontal"
+
+" Buble single lines - mover linhas
+" http://vimcasts.org/episodes/bubbling-text/
+nmap <special> <c-up> ddkP
+nmap <special> <c-down> ddp
+"buble multiple lines
+xmap <c-up> xkP`[V`]
+xmap <c-down> xp`[V`]
+
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
 "" Enable hidden buffers
 set hidden
@@ -417,3 +495,303 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+
+fun! CleanExtraSpaces()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+com! Cls :call CleanExtraSpaces()
+
+" remove consecutive blank lines
+" see Preserve function definition
+fun! DelBlankLines()
+    keepjumps call Preserve("g/^\\n\\{2,}/d")
+    "keepjumps call Preserve("g/^$/,/./-j")
+endfun
+command! -nargs=0 DelBlank :call DelBlankLines()
+
+"    dos2unix ^M
+fun! Dos2unixFunction()
+    call Preserve("%s/$//g")
+    "call Preserve("%s/\\x0D$//")
+    set ff=unix
+    set bomb
+    set encoding=utf-8
+    set fileencoding=utf-8
+endfun
+com! Dos2Unix call Dos2unixFunction()
+
+" The function must be used in a piece of subtitles
+" in order to clean it, join the lines and put the results
+" on clipboard to be pasted on anki
+fun! CleanSubtitles()
+    let old_query = getreg('/')
+    :g/^\(\s\+\)\=\d\+$/d
+    :g/^\(\s\+\)\=\d\+.*-->\s\d[^,]*,\d\d\d$/d
+    :%j
+    :%s/,/, /g
+    :%s,\s\+, ,g
+    :%y+
+    call setreg('/', old_query)
+endfun
+command! -nargs=0 GetSubs :call CleanSubtitles()
+
+fun! ChangeHeader()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfun
+command! -nargs=0 CH :call ChangeHeader()
+
+" Esta função Modifica o change log
+" If buffer modified, update any 'Last modified: ' in the first 20 lines.
+" 'Last modified: ' can have up to 10 characters before (they are retained).
+" Restores cursor and window position using save_cursor variable.
+" source: http://vim.wikia.com/wiki/Insert_current_date_or_time
+function! LastModified()
+    if &modified
+        let save_cursor = getpos(".")
+        let old_query = getreg('/')
+            "1,10s/\v^.*Last Change:(\s+|\t+)\zs.*/\=strftime("%c")/e
+            1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
+        call setpos('.', save_cursor)
+        call setreg('/', old_query)
+    endif
+endfun
+command! -nargs=0 LM :call LastModified()<cr>
+autocmd BufWritePre * :call LastModified()
+map <silent> <F9> <esc>:call LastModified()<cr>
+
+" Esta função insere um change log
+" se nelas não houver "Last Change" ele passa batido
+" ou seja não insere o cabeçalho
+" usr_41.txt
+fun! InsertChangeLog()
+  let l:flag=0
+  for i in range(1,5)
+    if getline(i) !~ '.*Last Change.*'
+      let l:flag = l:flag + 1
+    endif
+  endfor
+  if l:flag >= 5
+    normal(1G)
+    call append(0, "Arquivo: <+Description+>")
+    call append(1, "Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
+    call append(2, "Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
+    call append(3, "autor: <+digite seu nome+>")
+    call append(4, "site: <+digite o endereço de seu site+>")
+    call append(5, "twitter: <+your twitter here+>")
+    call append(6, "email: <+seu email+>")
+    normal gg
+  endif
+endfun
+
+" this function gets last 20 cmds to new buffer
+fun! s:RedirHistoryCommands()
+    set paste
+    redir @r
+    history : -20,
+    redir End
+    new
+    put r
+    set nopaste
+    :%s/^\s\+//g
+    :g/^$/d
+endfun
+command! -nargs=0 GetHistory call s:RedirHistoryCommands()
+
+" function to clear all registers
+" http://stackoverflow.com/questions/19430200/how-to-clear-vim-registers-effectively
+fun! s:ClearRegs()
+    "let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    "for r in regs
+    "    call setreg(r, [])
+
+    "endfor
+    for i in range(34,122) | silent! call setreg(nr2char(i), [])  | endfor
+endfun
+command! -nargs=0 Cregs call s:ClearRegs()
+
+iab -> →
+iab tambem também
+iab fro for
+iab ,m <voyeg3r  gmail.com>
+iab mymail <voyeg3r  gmail.com>
+iab slas Sérgio Luiz Araújo Silva
+iab vc você
+iab teh the
+iab a. ª
+iab analize análise
+iab angulo ângulo
+iab apos após
+iab apra para
+iab aqeule aquele
+iab aqiulo aquilo
+iab arcoíris arco-íris
+iab aré até
+iab asim assim
+iab aspeto aspecto
+iab assenção ascenção
+iab assin assim
+iab assougue açougue
+iab aue que
+iab augum algum
+iab augun algum
+iab ben bem
+iab beringela berinjela
+iab bon bom
+iab cafe café
+iab caichote caixote
+iab capitões capitães
+iab cidadães cidadãos
+iab ckaro claro
+iab cliche clichê
+iab compreenssão compreensão
+iab comprensão compreensão
+iab comun comum
+iab con com
+iab contezto contexto
+iab corrijir corrigir
+iab coxixar cochichar
+iab cpm com
+iab cppara para
+iab dai daí
+iab danca dança
+iab decer descer
+iab definitamente definitivamente
+iab deshonestidade desonestidade
+iab deshonesto desonesto
+iab detale detalhe
+iab deven devem
+iab díficil difícil
+iab distingeu distingue
+iab dsa das
+iab dze dez
+iab ecessão exceção
+iab ecessões exceções
+iab eentão e então
+iab emb bem
+iab ems sem
+iab emu meu
+iab en em
+iab enbora embora
+iab equ que
+iab ero erro
+iab erv ver
+iab ese esse
+iab esselência excelência
+iab esu seu
+iab excessão exceção
+iab Excesões exceções
+iab excurção excursão
+iab Exenplo exemplo
+iab exeplo exemplo
+iab exijência exigência
+iab exijir exigir
+iab expontâneo espontâneo
+iab ezemplo exemplo
+iab ezercício exercício
+iab faciu fácil
+iab fas faz
+iab fente gente
+iab ferias férias
+iab geito jeito
+iab gibóia jibóia
+iab gipe jipe
+iab ha há
+iab hezitação hesitação
+iab hezitar hesitar
+iab http:\\ http:
+iab iigor igor
+iab interesado interessado
+iab interese interesse
+iab Irria Iria
+iab isot isto
+iab ítens itens
+iab ja já
+iab jente gente
+iab linguiça lingüiça
+iab masi mais
+iab maz mas
+iab con com
+iab mema mesma
+iab mes mês
+iab muinto muito
+iab nao não
+iab nehum nenhum
+iab nenina menina
+iab noã não
+iab no. nº
+iab N. Nº
+iab o. º
+iab obiter obter
+iab observacao observação
+iab ons nos
+iab orijem origem
+iab ospital hospital
+iab poden podem
+iab portugu6es português
+iab potuguês português
+iab precisan precisam
+iab própio próprio
+iab quado quando
+iab quiz quis
+iab recizão rescisão
+iab sanque sangue
+iab sao são
+iab sen sem
+iab sensivel sensível
+iab sequéncia seqüência
+iab significatimente significativam
+iab sinceranete sinceramente
+iab sovre sobre
+iab susseder suceder
+iab tanbem também
+iab testo texto
+iab téxtil têxtil
+iab tydo tudo
+iab tuiter http://www.twitter.com/voyeg3r
+iab una uma
+iab unico único
+iab utilise utilize
+iab vega veja
+iab vivaotux http://vivaotux.blogspot.com
+iab vja veja
+iab voc6e você
+iab wue que
+iab xave chave
+
+iab 1a. 1ª
+iab 2a. 2ª
+iab 3a. 3ª
+iab 4a. 4ª
+iab 5a. 5ª
+iab 6a. 6ª
+iab 7a. 7ª
+iab 8a. 8ª
+iab 9a. 9ª
+iab 10a. 10ª
+iab 11a. 11ª
+iab 12a. 12ª
+iab 13a. 13ª
+iab 14a. 14ª
+iab 15a. 15ª
+
+" caso o teclado esteja desconfigurado use:
+"iab 'a á
+"iab 'e é
+"iab 'i í
+"iab 'o ó
+"iab ~a ã
+"iab ^a â
+"iab `a à
+"iab ,c ç
+"iab ^e ê
+"iab ^o ô
+"iab ~o õ
+"iab 'u ú

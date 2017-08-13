@@ -17,7 +17,9 @@ See also: [Regex](Regex.md) page
 
 ### Using vim with no plugins
 
+```vim
   set path+="**"
+```
 
   find filename<tab>
 
