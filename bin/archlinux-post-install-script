@@ -44,6 +44,7 @@ sudo wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysct
 # nvim with python support
 sudo pip install neovim
 pip3 install --user --upgrade neovim
+sudo pip install nfasd
 
 
 # setando o muse para ser destacado com o ctrl ou não

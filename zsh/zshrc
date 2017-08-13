@@ -167,6 +167,8 @@ export path=( $DOTFILES/bin $ZDOTDIR/functions.d/ /bin  $path )
 export fpath=( $ZDOTDIR/functions.d/  $fpath )
 
 eval "$(fasd --init auto)"
+eval "$(register-python-argcomplete-menu nfasd)"
+setopt NO_LIST_BEEP
 
 #for f in $ZDOTDIR/functions.d/^*.zwc; source $f
 autoload -Uz $ZDOTDIR/functions.d/**/^(*.zwc|*.md)(.:t)

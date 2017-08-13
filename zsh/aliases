@@ -6,10 +6,14 @@
 # alias ls='/bin/ls'
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
+alias vim='nvim'
 
 # https://askubuntu.com/a/590030/3798
 alias python='/usr/bin/python3'
 alias aedit="$EDITOR $ZSH_CONFIG/aliases; source $ZSH_CONFIG/aliases"
+
+# Fuzzy (fzy) nvim edit file
+alias fzn='nvim $(find ~/.dotfiles -type f | fzy)'
 
 alias html2pdf='wkhtmltopdf'
 alias roteador='awk "/UG/ {print \$2}" <<(route -n)'
@@ -185,11 +189,12 @@ alias sd='fasd -sid' # interactive directory selection
 alias sf='fasd -sif' # interactive file selection
 alias z='fasd_cd -d' # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
-alias v='f -e vim' # open file with vim
-alias v='f -t -e vim -b viminfo'
+alias v='f -e nvim' # open file with vim
+alias v='f -t -e nvim -b viminfo'
 alias o='a -e xdg-open' # quick opening files with xdg-open
 alias _!='fc -e "sed -i -e \"s/^/sudo /\""' # sudo last command
 # para abrir um arquivo recem editado com o vim faça: v nome
+
 
 alias pbpaste='xclip -i -selection clipboard -o'
 alias pbcopy='xclip -selection clipboard'

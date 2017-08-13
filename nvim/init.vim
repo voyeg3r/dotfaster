@@ -1,154 +1,456 @@
-" File: init.vim
-" Author: Sergio Araujo
-" Description: Improve nvim
-" Last Modified: agosto 11, 2017
-" my old vimrc: https://raw.githubusercontent.com/voyeg3r/dotfiles/master/rcfiles/vim/vimrc
+" vim-bootstrap 8b38590
 
-if executable('zsh')
-    set shell=zsh\ -l
+"*****************************************************************************
+"" Vim-PLug core
+"*****************************************************************************
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 endif
 
-if !has('nvim')
-  set viminfo+=n~/.viminfo
+set mouse=a
+
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+
+let g:vim_bootstrap_langs = ""
+let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+
+if !filereadable(vimplug_exists)
+  if !executable("curl")
+    echoerr "You have to install curl or first install vim-plug yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
 endif
 
-set viminfo=%,<800,'10,/50,:100,h,f1
-"           | |    |   |   |    | |
-"           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
-"           | |    |   |   |    + disable 'hlsearch' loading viminfo
-"           | |    |   |   + command-line history saved
-"           | |    |   + search history saved
-"           | |    + files marks saved
-"           | + lines saved each register (old name for <, vi6.2)
-"           + save/restore buffer list
+" Required:
+call plug#begin(expand('~/.config/nvim/plugged'))
 
-if empty(glob('~/.dotfiles/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    silent !ln -sfvn ~/.dotfiles/nvim ~/.config/nvim
-    autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.viim
-endif
-
-" Required to start Plug:
-call plug#begin(expand('~/.dotfiles/nvim/bundle'))
-
-Plug 'tpope/vim-speeddating'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-markdown'
-Plug 'sjl/gundo.vim'
-Plug 'chrisbra/NrrwRgn'
+"*****************************************************************************
+"" Plug install packages
+"*****************************************************************************
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'eparreno/vim-l9'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'vimwiki/vimwiki'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'vim-scripts/VisIncr'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-scripts/grep.vim'
+Plug 'vim-scripts/CSApprox'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'Raimondi/delimitMate'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'Yggdroot/indentLine'
+Plug 'avelino/vim-bootstrap-updater'
+Plug 'sheerun/vim-polyglot'
+if isdirectory('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+endif
+let g:make = 'gmake'
+if exists('make')
+        let g:make = 'make'
+endif
+Plug 'Shougo/vimproc.vim', {'do': g:make}
+
+"" Vim-Session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+if v:version >= 703
+  Plug 'Shougo/vimshell.vim'
+endif
+
+if v:version >= 704
+  "" Snippets
+  Plug 'SirVer/ultisnips'
+endif
+
+Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
-Plug 'endel/vim-github-colorscheme'
-Plug 'jnurmine/Zenburn'
-Plug 'altercation/vim-colors-solarized'
-Plug 'https://github.com/juanedi/predawn.vim'
+
+"*****************************************************************************
+"" Custom bundles
+"*****************************************************************************
+
+"*****************************************************************************
+"*****************************************************************************
+
+"" Include user's extra bundle
+if filereadable(expand("~/.config/nvim/local_bundles.vim"))
+  source ~/.config/nvim/local_bundles.vim
+endif
 
 call plug#end()
 
-" index do vim wiki
-let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki',
-                     \ 'index': 'main', 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_table_mappings = 0
+" Required:
+filetype plugin indent on
 
-" snippets settings
-"let g:UltiSnips#ListSnippets="<C-tab>"
-let g:UltiSnipsListSnippets = "<c-tab>"
+
+"*****************************************************************************
+"" Basic Setup
+"*****************************************************************************"
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+
+
+"" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Tabs. May be overriten by autocmd rules
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set expandtab
+
+"" Map leader to ,
+let mapleader=','
+
+"" Enable hidden buffers
+set hidden
+
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+"" Directories for swp files
+set nobackup
+set noswapfile
+
+set fileformats=unix,dos,mac
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
+" session management
+let g:session_directory = "~/.config/nvim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+
+"*****************************************************************************
+"" Visual Settings
+"*****************************************************************************
+syntax on
+set ruler
+set number
+
+let no_buffers_menu=1
+if !exists('g:not_finish_vimplug')
+  colorscheme molokai
+endif
+
+set mousemodel=popup
+set t_Co=256
+set guioptions=egmrti
+set gfn=Monospace\ 10
+
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=Menlo:h12
+    set transparency=7
+  endif
+else
+  let g:CSApprox_loaded = 1
+
+  " IndentLine
+  let g:indentLine_enabled = 1
+  let g:indentLine_concealcursor = 0
+  let g:indentLine_char = '┆'
+  let g:indentLine_faster = 1
+
+  
+endif
+
+
+
+"" Disable the blinking cursor.
+set gcr=a:blinkon0
+set scrolloff=3
+
+"" Status bar
+set laststatus=2
+
+"" Use modeline overrides
+set modeline
+set modelines=10
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+if exists("*fugitive#statusline")
+  set statusline+=%{fugitive#statusline()}
+endif
+
+" vim-airline
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
+
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" no one is really happy until you have this shortcuts
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+
+"" NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+noremap <F3> :NERDTreeToggle<CR>
+
+" grep.vim
+nnoremap <silent> <leader>f :Rgrep<CR>
+let Grep_Default_Options = '-IR'
+let Grep_Skip_Files = '*.log *.db'
+let Grep_Skip_Dirs = '.git node_modules'
+
+" vimshell.vim
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt =  '$ '
+
+" terminal emulation
+if g:vim_bootstrap_editor == 'nvim'
+  nnoremap <silent> <leader>sh :terminal<CR>
+else
+  nnoremap <silent> <leader>sh :VimShellCreate<CR>
+endif
+
+"*****************************************************************************
+"" Functions
+"*****************************************************************************
+if !exists('*s:setupWrapping')
+  function s:setupWrapping()
+    set wrap
+    set wm=2
+    set textwidth=79
+  endfunction
+endif
+
+"*****************************************************************************
+"" Autocmd Rules
+"*****************************************************************************
+"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync maxlines=200
+augroup END
+
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+"" txt
+augroup vimrc-wrapping
+  autocmd!
+  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+augroup END
+
+"" make/cmake
+augroup vimrc-make-cmake
+  autocmd!
+  autocmd FileType make setlocal noexpandtab
+  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+augroup END
+
+set autoread
+
+"*****************************************************************************
+"" Mappings
+"*****************************************************************************
+
+"" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Git
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
+
+" session management
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
+"" Tabs
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <S-t> :tabnew<CR>
+
+"" Set working directory
+nnoremap <leader>. :lcd %:p:h<CR>
+
+"" Opens an edit command with the path of the currently edited file filled in
+noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+"" Opens a tab edit command with the path of the currently edited file filled
+noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+"" fzf.vim
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
+
+" The Silver Searcher
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>e :FZF -m<CR>
+
+" snippets
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 
-map ,u :UltiSnipsEdit<cr>
-nmap ,v <esc>:e ~/.dotfiles/nvim/init.vim<cr>
-nmap ,ww <esc> :VimwikiIndex<cr>
-nmap ,i "*p
-nmap ç :
+" syntastic
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
 
-let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
-let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
-map <leader>u :UltiSnipsEdit<cr>
-" Snippets variables
-let g:snips_author='Sergio Araujo'
-let g:snips_site='http://vivaotux.blogspot.com'
-let g:snips_email='<voyeg3r ✉ gmail.com>'
-let g:snips_github='https://github.com/voyeg3r'
-let g:snips_twitter='@voyeg3r'
-let g:UltiSnipsEditSplit="horizontal"
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
-if !exists("g:syntax_on")
-    syntax enable
+" Disable visualbell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
 endif
 
-map ,f <esc>:FZF<cr>
-map ,d <esc>:FZF ~/.dotfiles<cr>
-" :FZF ~/.dotfiles
-
-" Better command history with q:
-command! CmdHist call fzf#vim#command_history({'bottom': '40'})
-nnoremap q: :CmdHist<CR>
-
-" Better search history
-command! QHist call fzf#vim#search_history({'bottom': '40'})
-nnoremap q/ :QHist<CR>
-
-" rename current file
-" https://stackoverflow.com/a/40947088/2571881
-command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # | endtry
-
-" select last paste in visual mode
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-set mouse=a
-set path+=**
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
-set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of the cursor.
-set number              " Show the line numbers on the left side.
-set formatoptions+=o    " Continue comment marker in new lines.
-set textwidth=0         " Hard-wrap long lines as you type them.
-set expandtab           " Insert spaces when TAB is pressed.
-set tabstop=2           " Render TABs using this many spaces.
-set shiftwidth=2        " Indentation amount for < and > commands.
-
-set noerrorbells        " No beeps.
-set modeline            " Enable modeline.
-set linespace=0         " Set line-spacing to minimum.
-set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
-
-" More natural splits
-set splitbelow          " Horizontal split below current.
-set splitright          " Vertical split to right of current.
-
-if !&scrolloff
-  set scrolloff=3       " Show next 3 lines while scrolling.
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
 endif
-if !&sidescrolloff
-  set sidescrolloff=5   " Show next 5 columns while side-scrolling.
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+if has('macunix')
+  " pbcopy for OSX copy/paste
+  vmap <C-x> :!pbcopy<CR>
+  vmap <C-c> :w !pbcopy<CR><CR>
 endif
-set nostartofline
 
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
 
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+"" Clean search (highlight)
+nnoremap <silent> <leader><space> :noh<cr>
+
+"" Switching windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
+
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+"" Open current line on GitHub
+nnoremap <Leader>o :.Gbrowse<CR>
+
+"*****************************************************************************
+"" Custom configs
+"*****************************************************************************
+
+"*****************************************************************************
+"*****************************************************************************
+
+"" Include user's local vim config
+if filereadable(expand("~/.config/nvim/local_init.vim"))
+  source ~/.config/nvim/local_init.vim
+endif
+
+"*****************************************************************************
+"" Convenience variables
+"*****************************************************************************
 
 " vim-airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-
-let g:airline_theme= 'gruvbox'
 
 if !exists('g:airline_powerline_fonts')
   let g:airline#extensions#tabline#left_sep = ' '
@@ -180,168 +482,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
-" Highlight redundant whitespace and tabs.
-" This has the advantage of not highlighting each space you type at
-" the end of the line, only when you open a file or leave insert
-" mode. Very neat."
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
-
-"set background=light
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-"colorscheme solarized
-" source: http://tilvim.com/2013/07/31/swapping-bg.html
-nmap <F8> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
-nmap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
-
-" this function gets last 20 cmds to new buffer
-fun! s:RedirHistoryCommands()
-    set paste
-    redir @r
-    history : -20,
-    redir End
-    new
-    put r
-    set nopaste
-    :%s/^\s\+//g
-    :g/^$/d
-endfun
-command! -nargs=0 GetHistory call s:RedirHistoryCommands()
-
-" The function must be used in a piece of subtitles
-" in order to clean it, join the lines and put the results
-" on clipboard to be pasted on anki
-fun! CleanSubtitles()
-    let old_query = getreg('/')
-    :g/^\(\s\+\)\=\d\+$/d
-    :g/^\(\s\+\)\=\d\+.*-->\s\d[^,]*,\d\d\d$/d
-    :%j
-    :%s/,/, /g
-    :%s,\s\+, ,g
-    :%y+
-    call setreg('/', old_query)
-endfun
-command! -nargs=0 GetSubs :call CleanSubtitles()
-
-"dos2unix ^M
-fun! Dos2unixFunction()
-    call Preserve("%s/$//g")
-    "call Preserve("%s/\\x0D$//")
-    set ff=unix
-    set bomb
-    set encoding=utf-8
-    set fileencoding=utf-8
-endfun
-com! Dos2Unix call Dos2unixFunction()
-
-" one liner rename file
-" source: http://stackoverflow.com/questions/1205286/renaming-the-current-file-in-vim
-command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # | endtry
-
-" remove consecutive blank lines
-" see Preserve function definition
-fun! DelBlankLines()
-    keepjumps call Preserve("g/^\\n\\{2,}/d")
-    "keepjumps call Preserve("g/^$/,/./-j")
-endfun
-command! -nargs=0 DelBlank :call DelBlankLines()
-
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-com! Cls :call CleanExtraSpaces()
-
-"" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-augroup END
-
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-com! Cls :call CleanExtraSpaces()
-
-" Esta função insere um change log
-" se nelas não houver "Last Change" ele passa batido
-" ou seja não insere o cabeçalho
-" usr_41.txt
-fun! InsertChangeLog()
-  let l:flag=0
-  for i in range(1,5)
-    if getline(i) !~ '.*Last Change.*'
-      let l:flag = l:flag + 1
-    endif
-  endfor
-  if l:flag >= 5
-    normal(1G)
-    call append(0, "Arquivo: <+Description+>")
-    call append(1, "Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
-    call append(2, "Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
-    call append(3, "autor: <+digite seu nome+>")
-    call append(4, "site: <+digite o endereço de seu site+>")
-    call append(5, "twitter: <+your twitter here+>")
-    call append(6, "email: <+seu email+>")
-    normal gg
-  endif
-endfun
-
-" Esta função Modifica o change log
-" If buffer modified, update any 'Last modified: ' in the first 20 lines.
-" 'Last modified: ' can have up to 10 characters before (they are retained).
-" Restores cursor and window position using save_cursor variable.
-" source: http://vim.wikia.com/wiki/Insert_current_date_or_time
-function! LastModified()
-    if &modified
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
-            "1,10s/\v^.*Last Change:(\s+|\t+)\zs.*/\=strftime("%c")/e
-            1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
-    endif
-endfun
-command! -nargs=0 LM :call LastModified()<cr>
-autocmd BufWritePre * :call LastModified()
-map <silent> <F9> <esc>:call LastModified()<cr>
-
-
-" jump to next place holder
-function! JumpToNextPlaceholder()
-    let old_query = getreg('/')
-    echo search("<+.\\++>")
-    exec "norm! c/+>/e\<CR>"
-    call setreg('/', old_query)
-endfunction
-nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
-
-
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-com! Cls :call CleanExtraSpaces()
-
-au! BufwritePre * :call CleanExtraSpaces()
-
