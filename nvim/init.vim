@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 13 ago 2017 11:14:59 -03
+" Last Change: dom 13 ago 2017 12:49:38 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -56,7 +56,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-"
+Plug 'godlygeek/csapprox'
 Plug 'endel/vim-github-colorscheme'
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vim-scripts/AutoComplPop'
@@ -86,30 +86,11 @@ if exists('make')
         let g:make = 'make'
 endif
 
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
-endif
-
-if v:version >= 704
-  "" Snippets
-  Plug 'SirVer/ultisnips'
-endif
-
+Plug 'Shougo/vimshell.vim'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-"" Color
 Plug 'tomasr/molokai'
 
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
-
-"*****************************************************************************
-"*****************************************************************************
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
@@ -145,6 +126,12 @@ set expandtab
 "" Map leader to ,
 let mapleader=','
 
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
+
+" mostra +++ no começo de linhas longas sem wrap
+set showbreak=+++
+nnoremap <leader>l :set list! list?<cr>
 
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lcs+=space:·
@@ -495,6 +482,49 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+function! <SID>SwitchColorSchemes()
+ if exists("g:colors_name")
+	  if g:colors_name == 'molokai'
+			colorscheme xoria256
+	  elseif g:colors_name == 'xoria256'
+			colorscheme tango-morning
+	  elseif g:colors_name == 'tango-morning'
+			colorscheme guepardo
+	  elseif g:colors_name == 'guepardo'
+			colorscheme tango
+	  elseif g:colors_name == 'tango'
+			colorscheme vividchalk
+	  elseif g:colors_name == 'vividchalk'
+			colorscheme mustang
+	  elseif g:colors_name == 'mustang'
+			colorscheme underwater-mod
+	  elseif g:colors_name == 'underwater-mod'
+			colorscheme maroloccio
+	  elseif g:colors_name == 'maroloccio'
+			colorscheme wombat
+	  elseif g:colors_name == 'wombat'
+			colorscheme chrysoprase
+	  elseif g:colors_name == 'chrysoprase'
+			colorscheme quagmire
+	  elseif g:colors_name == 'quagmire'
+			colorscheme digerati
+	  elseif g:colors_name == 'digerati'
+			colorscheme vitamins
+	  elseif g:colors_name == 'vitamins'
+			colorscheme eclm_wombat
+	  elseif g:colors_name == 'eclm_wombat'
+			colorscheme native
+	  elseif g:colors_name == 'native'
+			colorscheme vibrantink
+	  elseif g:colors_name == 'vibrantink'
+			colorscheme ir_black
+	  elseif g:colors_name == 'ir_black'
+			colorscheme molokai
+	  endif
+ endif
+endfunction
+map <silent> <F18> <esc>:call <SID>SwitchColorSchemes()<CR><bar>:echo g:colors_name<cr>
+
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
@@ -503,6 +533,18 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 com! Cls :call CleanExtraSpaces()
+
+" rola janela alternativa
+fun! ScrollOtherWindow(dir)
+    if a:dir == "down"
+    let move = "\<C-E>"
+    elseif a:dir == "up"
+    let move = "\<C-Y>"
+    endif
+    exec "normal \<C-W>p" . move . "\<C-W>p"
+endfun
+nmap <silent> <M-Down> :call ScrollOtherWindow("down")<CR>
+nmap <silent> <M-Up> :call ScrollOtherWindow("up")<CR>
 
 " remove consecutive blank lines
 " see Preserve function definition
