@@ -28,4 +28,8 @@ other instalations, run this:
 
     sudo pacman -R package-name
 
+### Generating a list of all packages
 
+	sudo pacman -Qqe > package_list.txt
+
+	for x in $(cat package_list.txt); do pacman -S $x; done
