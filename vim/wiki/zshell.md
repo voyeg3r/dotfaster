@@ -98,7 +98,7 @@ or
 
 A bit more correct version (as noted by @Stéphane Chazelas) would be
 
-	print -rl -- *(/) 
+	print -rl -- *(/)
 
 or
 

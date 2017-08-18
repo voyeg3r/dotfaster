@@ -881,7 +881,7 @@ if exists(":python3")
     let g:ultisnipsusepythonversion = 3
 endif
 
-let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/rcfiles/vim/snips/")
+let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
 map <leader>u :UltiSnipsEdit<cr>
 " Snippets variables

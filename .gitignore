@@ -1,5 +1,7 @@
 # ZSH
 *.zwc
 *.zwc.old
+*.zcompdump
+*.zhistory
 
 bin/login-with-age.sh
