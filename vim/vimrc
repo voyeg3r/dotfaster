@@ -26,8 +26,8 @@ if executable('zsh')
 endif
 
 "" Plug bootstrap - Install Plug if it is not already installed
-"if empty(glob('~/.dotfiles/rcfiles/vim/autoload/plug.vim'))
-"    silent !curl -fLo ~/.dotfiles/rcfiles/vim/autoload/plug.vim --create-dirs
+"if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
+"    silent !curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs
 "                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "    autocmd VimEnter * PlugInstall | source $MYVIMRC
 "endif
@@ -136,7 +136,7 @@ cab Wq wq
 cab Q  q
 
 " Required to start Plug:
-call plug#begin(expand('~/.dotfiles/rcfiles/vim/bundle'))
+call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
@@ -272,7 +272,7 @@ nnoremap ,ag :Ag<SPACE>
 filetype plugin indent on
 
 " index do vim wiki
-let g:vimwiki_list = [{'path': '~/.dotfiles/rcfiles/vim/wiki',
+let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki',
                      \ 'index': 'main', 'syntax': 'markdown', 'ext': '.md'}]
 nmap == <Plug>VimwikiAddHeaderLevel
 nmap -- <Plug>VimwikiRemoveHeaderLevel
