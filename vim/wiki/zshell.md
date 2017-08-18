@@ -85,7 +85,39 @@ or:
 	ls -l *~*.owp
 
 	for i in **/*.mp3; mpg123 $i
+
 	```
+
+Yet another way to achieve it is
+
+	 print *(/)
+
+or
+
+	 echo *(/)
+
+A bit more correct version (as noted by @Stéphane Chazelas) would be
+
+	print -rl -- *(/) 
+
+or
+
+	echo -E - *(/)
+
+to take care about spaces (-l), escape sequences (-r/-E) and leading hyphens (--/-) inside filenames.
+
+
+Yet even more correct version is print -rN which additionally takes care of linebreaks inside filenames (linux allows them, windows doesn't) by separating the results with nulls, for example:
+
+	print -rN -- **/*(/) |xargs -0 -n10 chmod g+s
+
+which recursively sets setguid bit - selectively addressing directories, as opposed to chmod -R g+s.
+
+
+For huge trees this only processes a part of files (due to the limit on command line length) and silently leave the rest as is. The following commands can handle this situation:
+
+	find . -type d -print0 |xargs -0 -n10 chmod g+s
+
 
 (i.e. match anything that matches the pattern * but does not match *.owp)
 

@@ -6,7 +6,6 @@
 # alias ls='/bin/ls'
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
-alias vim='nvim'
 
 # https://askubuntu.com/a/590030/3798
 alias python='/usr/bin/python3'
