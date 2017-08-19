@@ -235,7 +235,7 @@ makepkg -sc PKGBUILD
 -c  limpar arquivos desnecessários após o fim do processo
 ```
 
-### load keymap
+### load keymap (pt-br)
 
 	loadkeys br-abnt2
 

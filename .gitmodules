@@ -88,3 +88,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/powerline/fonts.git
+[submodule "zsh/themes/powerlevel9k"]
+	path = zsh/themes/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git
