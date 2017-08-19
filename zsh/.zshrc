@@ -1,6 +1,6 @@
 
 # todo: clean bin dir to make load faster
-# path=( ~/.dotfiles/bin $path )
+path=( ~/.dotfiles/bin $path )
 
 
 setopt extended_glob

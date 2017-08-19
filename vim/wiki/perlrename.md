@@ -29,7 +29,11 @@ to get real rename follow this instructions:
 ### Adding leading zeros
 [from stackoverflow](http://stackoverflow.com/a/13250820/2571881)
 
+    OBS: use `-n` to see the result before performing this action
+
     perl-rename 's/\d+/sprintf("%02d",$&)/e' *.mkv
+
+    perl-rename 's/-\d+/sprintf("%03d",$&)/e' *.mp3
 
     OBS: remember, if you want to test first use `-n`, it will only show
     how it will be after using the command
