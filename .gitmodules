@@ -85,3 +85,6 @@
 [submodule "/home/sergio/.dotfiles/zsh/zplug"]
 	path = /home/sergio/.dotfiles/zsh/zplug
 	url = https://github.com/zplug/zplug
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/powerline/fonts.git

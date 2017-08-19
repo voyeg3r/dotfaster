@@ -42,14 +42,6 @@ set viminfo=%,<800,'10,/50,:100,h,f1,n~/.viminfo
 "           | + lines saved each register (old name for <, vi6.2)
 "           + save/restore buffer list
 
-" This syntax is better
-" set viminfo       ='100                  " previously edited files
-" set viminfo       +=/10                  " search pattern items
-" set viminfo       +=f1                   " save file marks
-" set viminfo       +=h                    " disable hlsearch
-" set viminfo       +=s10                  " maximum number of KB to save from a register
-" set viminfo +=n~/.vim/viminfo      " set viminfo file name
-
 if !exists("*VimReloadFunction")
     fun! VimReloadFunction()
         " the idea for this function happened when I realized
@@ -61,10 +53,7 @@ if !exists("*VimReloadFunction")
 endif
 com! ReloadVim call VimReloadFunction()
 
-" nocompatible
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-endif
+set nocompatible
 
 " we can open files in path just pressing gf
 " http://www.hazaah.com/programming/textmate-and-vim/
@@ -87,53 +76,8 @@ set completeopt=menu,preview
 set complete=.,w,k
 setlocal complete=.,w,k,b,u
 
-" Exchange words position
-" exchange word under cursor with the next word without moving the cursor
-" nnoremap gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
-
-" push word under cursor to the left
-nnoremap <leader><Left> "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o><C-l>
-
-" push word under cursor to the right
-nnoremap <leader><Right> "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>/\w\+\_W\+<CR><C-l>
-
-" execute current line on shell zsh or bash
-" map <S-F12> :exec '!'.getline('.')<cr>
-
-" this map reads shell commands into current file
-" and clean extra spaces due Preserve funtion call
-" nnoremap <F12> !!$SHELL <cr> <bar> :silent! call Preserve("%s/\\s\\+$//e")<cr>
-
-" redo the last substituition keeping the flags
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-
-
-" this map executes the currente line as a vim command ":"
-nnoremap <space>l yy:@" <cr>
-
-" fold text object
-" http://vim.wikia.com/wiki/Creating_new_text_objects
-vnoremap af :<C-U>silent! normal! [zV]z<CR>
-omap af :normal Vaf<CR>
-set foldlevel=3
-set fdm=marker
-
-set paste
-
-" select text you just pasted
-" http://stackoverflow.com/questions/4312664/is-there-a-vim-command-to-select-pasted-text
-" http://vimcasts.org/episodes/bubbling-text/
-" o mapeamento abaixo permite reselecionar texto recem colado ou selecionado
-nmap gV `[v`]
-
 " entrar no modo comando mais rápido
 nnoremap ç :
-
-" some command line Abbreviations
-cab W  w
-cab Wq wq
-cab Q  q
 
 " Required to start Plug:
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
@@ -161,96 +105,6 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/juanedi/predawn.vim'
 
 call plug#end()
-
-" choose a favorite key to show/hide quickmenu
-noremap <silent>,q :call quickmenu#toggle(0)<cr>
-
-" enable cursorline (L) and cmdline help (H)
-let g:quickmenu_options = "HL"
-
-" Autopep8 plugin mapping
-"autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
-"autocmd FileType python set equalprg=autopep8\ -
-
-" sources:
-" + https://gist.github.com/sjl/1171642
-" + https://gist.github.com/AndrewRadev/1171559
-" Motion for "next/last object". For example, "din(" would go to the next "()" pair
-" and delete its contents.
-
-onoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-xnoremap an :<c-u>call <SID>NextTextObject('a', 'f')<cr>
-onoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-xnoremap in :<c-u>call <SID>NextTextObject('i', 'f')<cr>
-
-onoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-xnoremap al :<c-u>call <SID>NextTextObject('a', 'F')<cr>
-onoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-xnoremap il :<c-u>call <SID>NextTextObject('i', 'F')<cr>
-
-function! s:NextTextObject(motion, dir)
-  let c = nr2char(getchar())
-
-  if c ==# "b"
-      let c = "("
-  elseif c ==# "B"
-      let c = "{"
-  elseif c ==# "d"
-      let c = "["
-  endif
-
-  exe "normal! ".a:dir.c."v".a:motion.c
-endfunction
-" and of next/last object
-
-"Pandoc related keymaps
-"nnoremap <leader>gq :%!pandoc -f html -t markdown<CR>
-"vnoremap <leader>gq : !pandoc -f html -t markdown<CR>
-
-fun! HtmlToMarkdown()
-    :%!pandoc -f html -t markdown<CR>
-endfun
-command! -nargs=0 H2M :%!pandoc -f html -t markdown<CR>
-
-
-
-" The Silver Searcher
-if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-endif
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
-
-" this code implements seven new text objects on vim: ":",".","|" . . .
-" source: https://www.youtube.com/watch?v=0F4FgiVWvB8
-let pairs = { ":" : ":",
-            \ "." : ".",
-            \ "/" : "/",
-            \ '\|' : '\|',
-            \ "*" : "*",
-            \ "-" : "-",
-            \ "_" : "_" }
-
-for [key, value] in items(pairs)
-    exe "nnoremap ci".key." T".key."ct".value
-    exe "nnoremap ca".key." F".key."cf".value
-    exe "nnoremap vi".key." T".key."vt".value
-    exe "nnoremap va".key." F".key."vf".value
-    exe "nnoremap di".key." T".key."dt".value
-    exe "nnoremap da".key." F".key."df".value
-    exe "nnoremap yi".key." T".key."yt".value
-    exe "nnoremap ya".key." F".key."yf".value
-endfor
 
 " fzf configuration
 " <C-p> to search files
@@ -414,7 +268,6 @@ nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
-
 " alternate between relative number, number and no number
 set nu
 "nmap ,r :set rnu!<cr>
@@ -426,24 +279,6 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-
-" easy way to underline a row
-nmap <silent> ,= :t.<cr>Vr=k
-nmap <silent> ,- :t.<cr>Vr-k
-
-" :h g:incsearch#auto_nohlsearch
-set hlsearch
-" let g:incsearch#auto_nohlsearch = 1
-" map n  <Plug>(incsearch-nohl-n)
-" map N  <Plug>(incsearch-nohl-N)
-" map *  <Plug>(incsearch-nohl-*)
-" map #  <Plug>(incsearch-nohl-#)
-" map g* <Plug>(incsearch-nohl-g*)
-" map g# <Plug>(incsearch-nohl-g#)
-
-" asteris now keeps its position
-"nnoremap <leader>* *``cgn
-"nnoremap <leader># #``cgN
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
@@ -506,7 +341,7 @@ let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
 
-"" set wrapping
+" set wrapping
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
@@ -514,11 +349,6 @@ if !exists('*s:setupWrapping')
     set textwidth=79
   endfunction
 endif
-
-" Scientifc Calculator using python3 -->  :Calc sin(30)
-" :Calc sum([x^2 for x in range(100)])
-" command! -nargs=+ Calc :py print(<args>)
-" py from math import *
 
 " function to clear all registers
 " http://stackoverflow.com/questions/19430200/how-to-clear-vim-registers-effectively
@@ -531,14 +361,6 @@ fun! s:ClearRegs()
     for i in range(34,122) | silent! call setreg(nr2char(i), [])  | endfor
 endfun
 command! -nargs=0 Cregs call s:ClearRegs()
-
-" reference: https://sanctum.geek.nz/arabesque/advanced-vim-macros/
-fun! s:CalculateAge()
-    normal 0f1yiwea age (=strftime("%Y")-")0j
-endfun
-command! -nargs=0 Age call s:CalculateAge()
-nmap <leader>a :Age<cr>
-
 
 " this function gets last 20 cmds to new buffer
 fun! s:RedirHistoryCommands()
@@ -616,18 +438,6 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
-" Toggle 0 and ^
-" source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
-"function! ToggleHomeZero()
-"    let pos = getpos('.')
-"    execute "normal! ^"
-"    if pos == getpos('.')
-"        execute "normal! 0"
-"    endif
-"endfunction
-"nnoremap 0 :call ToggleHomeZero()<CR>
-" if you would like to go to the first column just press g0
-
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results
 " on clipboard to be pasted on anki
@@ -665,7 +475,6 @@ if !exists('*Preserve')
     endfunction
 endif
 
-
 "http://vi.stackexchange.com/questions/9646/how-do-i-capitalize-the-first-word-after-each-period-question-mark-or-exclamati
 fun! UpperCaseSentences()
     let save_cursor = getpos(".")
@@ -675,7 +484,7 @@ fun! UpperCaseSentences()
     call setreg('/', old_query)
 endfun
 
-"    dos2unix ^M
+" dos2unix ^M
 fun! Dos2unixFunction()
     call Preserve("%s/$//g")
     "call Preserve("%s/\\x0D$//")
@@ -730,46 +539,10 @@ set nopaste
 set pastetoggle=<F2>
 set showmode
 
-"nnoremap <F10> :call Flake8()<CR>
-"let g:flake8_show_quickfix=0
-"
-"let g:pymode = 1
-"let g:pymode_quickfix_minheight = 3
-"let g:pymode_quickfix_maxheight = 6
-"let g:pymode_indent = 1
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_run = 1
-"let g:pymode_run_bind = '<leader>r'
-"let g:pymode_breakpoint = 1
-"let g:pymode_breakpoint_bind = '<leader>b'
-"let g:pymode_lint = 1
-"let g:pymode_lint_on_write = 1
-"let g:pymode_lint_cwindow = 1
-"let g:pymode_lint_signs = 1
-"let g:pymode_rope_completion = 1
-"let g:pymode_rope_complete_on_dot = 1
-"let g:pymode_rope_completion_bind = '<C-Space>'
-"let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime']
-"let g:pymode_rope_autoimport_import_after_complete = 0
-"let g:pymode_lint_checkers = ['pep8']
-
-" Commands:
-" :PymodeLint* -- Check code in current buffer
-" :PymodeLintToggle* -- Toggle code checking
-" :PymodeLintAuto* -- Fix PEP8 errors in current buffer automatically
-
 nnoremap <F5> :GundoToggle<CR>
-
-"let g:nextcs_map = '<F6>'
-"let g:nextcs_map = '<s-F6>'
-map <F6> <Plug>NextCS
-map <s-F11> <Plug>PreviousCS
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
-
-" toggle hightli
 
 " move vertically by visual line
 nnoremap j gj
@@ -784,13 +557,9 @@ nnoremap <S-F11> <ESC>:set hls!<cr>
 inoremap <S-F11> <C-o>:set hls!<cr>
 vnoremap <S-F11> <ESC>:set hls!<cr> <bar> gv
 
-
 " make copying from visual selection more sane
 " source: http://ddrscott.github.io/blog/2016/yank-without-jank/
 vnoremap <expr>y "my\"" . v:register . "y`y"
-
-" make p in Visual mode replace the selected text with the yank register
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Buble single lines - mover linhas
 " http://vimcasts.org/episodes/bubbling-text/
@@ -799,8 +568,6 @@ nmap <special> <c-down> ddp
 "buble multiple lines
 xmap <c-up> xkP`[V`]
 xmap <c-down> xp`[V`]
-
-"" Autocmd Rules
 
 "" The PC is fast enough, do syntax highlight syncing from start
 augroup vimrc-sync-fromstart

@@ -1,6 +1,7 @@
 
-# todo: clean bin dir
+# todo: clean bin dir to make load faster
 # path=( ~/.dotfiles/bin $path )
+
 
 setopt extended_glob
 setopt glob_dots
@@ -39,6 +40,7 @@ source $ZDOTDIR/plugins/zsh-autopair/autopair.zsh
 
 source ~/.dotfiles/zsh/aliases
 source ~/.dotfiles/bin/fasd
+
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f
 
 eval "$(fasd --init auto)"

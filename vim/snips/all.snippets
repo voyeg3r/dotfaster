@@ -28,10 +28,6 @@ snippet 'clip(board)?' "past clipboard" !r
 `xclip -i -selection clipboard -o`
 endsnippet
 
-snippet primary "primary selection clipboard"
-`xclip -i -selection primary -o`
-endsnippet
-
 snippet 75wrds "Log a 750words.com session" b
 750words.com: ${1:750} words in ${2:20} minutes - `!p
 snip.rv = fraction(t[1], t[2])
@@ -41,16 +37,6 @@ endsnippet
 # snippet modeline "Modeline" b
 # vim: set ft=${1:vim} ts=${2:8} sw=${3:4} tw=${4:0} noet :$0
 # endsnippet
-
-##########################
-# VIM MODELINE GENERATOR #
-##########################
-# See advice on `:help 'tabstop'` for why these values are set. Uses second
-# modeline form ('set') to work in languages with comment terminators
-# (/* like C */).
-snippet modeline "Vim modeline"
-vim`!v ':set '. (&expandtab ? printf('et sw=%i ts=%i', &sw, &ts) : printf('noet sts=%i sw=%i ts=%i', &sts, &sw, &ts)) . (&tw ? ' tw='. &tw : '') . ':'`
-endsnippet
 
 snippet '\bul(ine)?' "underline" r
 ${1:your text here}
@@ -79,10 +65,3 @@ Github:      `!v g:snips_github`
 ${0}
 endsnippet
 
-
-snippet us "replace specials with underscores" w
-`!p
-import re
-snip.rv = re.sub("[^0-9a-zA-Z]", "_", snip.v.text)
-`
-endsnippet
