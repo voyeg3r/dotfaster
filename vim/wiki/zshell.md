@@ -158,7 +158,7 @@ For huge trees this only processes a part of files (due to the limit on command 
 
 ### Fixing delete char on zsh
 
-    bindkey "\e[3~" delete-char
+	bindkey "\e[3~" delete-char
 
 What are the step to move all your dotfiles into XDG directories?
 + https://superuser.com/a/874924/45032

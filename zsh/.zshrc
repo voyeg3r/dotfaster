@@ -1,4 +1,10 @@
-setopt EXTENDED_GLOB
+
+# todo: clean bin dir
+# path=( ~/.dotfiles/bin $path )
+
+setopt extended_glob
+setopt glob_dots
+
 autoload -Uz compinit
 autoload -Uz zrecompile
 if [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
@@ -8,33 +14,62 @@ else
 	compinit -C
 fi
 
+# Vcs info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn hg
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
+precmd() {  # run before each prompt
+    vcs_info
+}
+
+# Prompt
+setopt prompt_subst     # allow funky stuff in prompt
+color="blue"
+if [ "$USER" = "root" ]; then
+    color="red"         # root is red, user is blue
+fi;
+prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
+RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
+
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source $ZDOTDIR/plugins/fasd/fasd.plugin.zsh
+source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
+source $ZDOTDIR/plugins/zsh-autopair/autopair.zsh
+
 source ~/.dotfiles/zsh/aliases
-source ${DOTFILES}/bin/fasd
+source ~/.dotfiles/bin/fasd
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f
 
+eval "$(fasd --init auto)"
+
 bindkey '^ ' autosuggest-accept
+bindkey "\e[3~" delete-char
+
 
 # User configuration
 # export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
 export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
-setopt HIST_IGNORE_DUPS
-setopt SHARE_HISTORY
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-setopt NO_BEEP
+setopt autocd
+setopt hist_ignore_dups
+setopt share_history
+setopt extended_history
+setopt inc_append_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt no_beep
 
-setopt COMPLETE_ALIASES # complete aliases before executing
-setopt NO_FLOW_CONTROL # deactvates XOFF
-setopt INTERACTIVE_COMMENTS # allow inline comments like this one
-setopt HIST_VERIFY
-setopt PROMPT_BANG # enables '!' substituition on prompt
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
+setopt complete_aliases # complete aliases before executing
+setopt no_flow_control # deactvates xoff
+setopt interactive_comments # allow inline comments like this one
+setopt hist_verify
+setopt prompt_bang # enables '!' substituition on prompt
+setopt inc_append_history
+setopt share_history
 setopt complete_in_word
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end
 
 autoload -Uz select-word-style
 select-word-style bash
@@ -96,8 +131,17 @@ zstyle ':completion:*:warnings' format 'Too bad there is nothing'
 
 # current_wallpaper=$(gsettings get org.gnome.desktop.background picture-uri | sed 's,file:///,/,g' )
 
-# emacs mode
-bindkey -e
+bindkey -e                      # emacs keybindings
+bindkey '\e[1;5C' forward-word            # C-Right
+bindkey '\e[1;5D' backward-word           # C-Left
+bindkey '\e[2~'   overwrite-mode          # Insert
+bindkey '\e[3~'   delete-char             # Del
+bindkey '\e[5~'   history-search-backward # PgUp
+bindkey '\e[6~'   history-search-forward  # PgDn
+bindkey '^A'      beginning-of-line       # Home
+bindkey '^D'      delete-char             # Del
+bindkey '^E'      end-of-line             # End
+bindkey '^R'      history-incremental-pattern-search-backward
 
 autoload -z edit-command-line
 zle -N edit-command-line
@@ -209,3 +253,18 @@ bindkey '^X^A' fasd-complete
 bindkey '^X^F' fasd-complete-f
 bindkey '^X^D' fasd-complete-d
 
+# rationalize dot by Mikael Magnusson (Mikachu)
+function rationalise-dot {
+    local MATCH # keep the regex match from leaking to the environment
+    if [[ $LBUFFER =~ '(^|/| |      |'$'\n''|\||;|&)\.\.$' ]]; then
+        LBUFFER+=/
+        zle self-insert
+        zle self-insert
+    else
+        zle self-insert
+    fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
+# without this, typing a . aborts incremental history search
+bindkey -M isearch . self-insert
