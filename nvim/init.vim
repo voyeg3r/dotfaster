@@ -33,6 +33,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
@@ -67,6 +68,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 "" Color
 Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
+Plug 'tpope/vim-vividchalk'
 
 call plug#end()
 
@@ -118,6 +120,9 @@ let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   colorscheme molokai
 endif
+
+" source: http://tilvim.com/2013/07/31/swapping-bg.html
+ nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 set mousemodel=popup
 set t_Co=256
