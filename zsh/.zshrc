@@ -38,7 +38,6 @@ source $ZDOTDIR/plugins/fasd/fasd.plugin.zsh
 source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autopair/autopair.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh
-source /home/sergio/.dotfiles/zsh/plugins/zsh-fzy/fzy.plugin.zsh
 
 source ~/.dotfiles/zsh/aliases
 source ~/.dotfiles/bin/fasd
