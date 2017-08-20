@@ -1843,10 +1843,14 @@ I want to re-arrage the file so that I get
     %s,\v(.*) (I.*),\2 \1
 
 
-
 ### Colando o que foi selecionado com o mouse
 
-`Ctrl-r *` Or `"*p`
+    ``` markdown
+    `Ctrl-r *` Or `"*p`
+    ```
+
+    Asterisco corresponde à seleção primária
+    o que foi recentemente copiado fica no registro 0
 
 ### Artigos e links legais sobre o vim
 

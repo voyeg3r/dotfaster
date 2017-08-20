@@ -66,6 +66,7 @@ alias vimessential='vim -u ~/.dotfiles/rcfiles/vim/essential.vim'
 alias compilalivro='make clean; make && make show'
 alias 4shared='cadaver http://webdav.4shared.com/'
 
+alias nprnews='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/364916/v1/npr.akacast.akamaistream.net/nprdmp_live01_mp3'
 alias chicago='mpv http://relay.broadcastify.com:80/il_chicago_police2\?xan\=7C80215A2A84B01D154525F05BD80095'
 # Listen to Air Traffic Control, used to be scripts.
 alias miami='mplayer http://relay.broadcastify.com:80/540894049\?xan\=7C80215A2A84B01D154525F05BD80095'
