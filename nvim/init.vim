@@ -69,6 +69,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
+Plug 'noahfrederick/vim-hemisu'
 
 call plug#end()
 
@@ -142,9 +143,7 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
 endif
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -207,7 +206,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
-
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
@@ -252,7 +250,6 @@ augroup vimrc-make-cmake
 augroup END
 
 set autoread
-
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>

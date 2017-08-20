@@ -1663,6 +1663,28 @@ Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora 
 
 Para poucas linhas de código, obviamente a solução manual é a melhor escolha, mas imagina se esse código tivesse centenas de linhas, o que provavelmente corresponde à realidade do cara que a postou.
 
+### Delete anything other than pattern
+
+Let's say this is my text:
+
+    this is my text this
+    is my text this is my text
+    my text is this
+
+I would like to highlight all text except pattern and delete the highlighted text.
+p.e. text: this must be the result.
+
+    text
+    texttext
+    text
+
+Solution
+
+    /\v(^|(text)@<=).{-}($|text)@=
+    %s,,\1,g
+
+    type :help /\@<= and :help /\@= or more generally :help pattern
+
 ### Some regex tips
 
 ``` markdown
