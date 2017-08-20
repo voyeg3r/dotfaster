@@ -124,7 +124,7 @@ endif
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
+set mouse=a
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti

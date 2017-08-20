@@ -107,6 +107,8 @@ zstyle ':completion:*' ignore-parents parent pwd
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # completions made case insensitive
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 #zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*'
 #zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'm:{a-zA-Z}={A-Za-z}'

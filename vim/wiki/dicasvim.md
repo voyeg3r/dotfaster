@@ -1683,7 +1683,55 @@ Solution
     /\v(^|(text)@<=).{-}($|text)@=
     %s,,\1,g
 
+```viml
+/\v(^|(text)@<=)   # means start of line, or some point preceded by “text”
+.{-}               # as few characters as possible
+($|text)@=         # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+
     type :help /\@<= and :help /\@= or more generally :help pattern
+
+### In Vim how can I search and replace every other match?
++ https://stackoverflow.com/a/45785816/2571881
+
+Lets say you have
+
+    <block>
+        <foo val="bar"/>
+        <foo val="bar"/>
+    </block>
+    <block>
+        <foo val="bar"/>
+        <foo val="bar"/>
+    </block>
+
+How could I make that into
+
+    <block>
+        <foo val="bar1"/>
+        <foo val="bar"/>
+    </block>
+    <block>
+        <foo val="bar1"/>
+        <foo val="bar"/>
+    </block>
+
+
+    \v%(block>\_.{-})\zsbar1
+    %s,,&1,g
+
+    \v ............ very magic (avoid lots of scapes)
+    %  ............ ignore whats flows
+    (  ............ starts (ignored) group
+    \_ ............ multiline search
+    .{-} .......... non-greedy
+    \zs ........... start pattern for substituition
+    bar  .......... pattern we want to change
+
+    % ............. whole file
+    s ............. substituition
+    ,, ............ use last search (could be //)
+    & ............. use searched pattern
+    1 ............. add 1 after it
 
 ### Some regex tips
 
