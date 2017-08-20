@@ -14,6 +14,7 @@ alias arch='uname -m'
 
 # Fuzzy (fzy) nvim edit file
 alias nfu='nvim $(find ~/.dotfiles -type f | fzy)'
+alias ff='vim $(find ~/.dotfiles -type f | fzy)'
 
 alias html2pdf='wkhtmltopdf'
 alias roteador='awk "/UG/ {print \$2}" <<(route -n)'

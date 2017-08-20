@@ -442,6 +442,7 @@ ${(k)commands} (that last one lists external commands only).
 
     zsh -f
 
+
 that will start a clean instance of zsh using the
 default settings.
 
@@ -450,6 +451,10 @@ configuration files in another folder by setting the parameter ZDOTDIR
 to a directory of your choice in your .zshenv file under $HOME:
 
     ZDOTDIR=/etc/my_kewl_folder/.zshrc
+
+    Generating a log file
+
+    zsh -x 2>&1 | tee zsh.log
 
 #### aliases are cumulative
 

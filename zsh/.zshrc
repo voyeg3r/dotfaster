@@ -1,10 +1,15 @@
-
 # todo: clean bin dir to make load faster
 path=( ~/.dotfiles/bin $path )
 
 
 setopt extended_glob
 setopt glob_dots
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^T' fzy-file-widget
 
 autoload -Uz compinit
 autoload -Uz zrecompile
@@ -33,11 +38,14 @@ fi;
 prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
 RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
 
-source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
-source $ZDOTDIR/plugins/fasd/fasd.plugin.zsh
-source $ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh
-source $ZDOTDIR/plugins/zsh-autopair/autopair.zsh
-source $ZDOTDIR/plugins/extract/extract.plugin.zsh
+#source "$ZDOTDIR/plugins/fasd/fasd.plugin.zsh"
+#source "$ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh"
+source "$ZDOTDIR/plugins/fzy/fzy.plugin.zsh"
+source "$ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh"
+source "$ZDOTDIR/plugins/extract/extract.plugin.zsh"
+source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+
+# for f in $ZDOTDIR/plugins/**/*.plugin.zsh; source $f
 
 source ~/.dotfiles/zsh/aliases
 source ~/.dotfiles/bin/fasd
@@ -273,3 +281,4 @@ zle -N rationalise-dot
 bindkey . rationalise-dot
 # without this, typing a . aborts incremental history search
 bindkey -M isearch . self-insert
+
