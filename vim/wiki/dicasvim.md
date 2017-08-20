@@ -1372,7 +1372,25 @@ See :help registers for the full reference.
 ``` vim
 " coloque no ~/.bashrc
 alias lvim='vim -c "normal '\''0"'
+alias lnvim="nvim -c':e#<1'"
 ```
+
+Opening the last nvim file:
+
+``` viml
+" This function allows you to open the last edited file
+" Reference: https://www.reddit.com/r/vim/comments/fx6l5/
+fun! MruFile()
+    let filename = get(v:oldfiles, 0, '')
+    if filename != ''
+        exe "edit " . filename
+    endif
+endfun
+nmap ,l :call MruFile()<cr>
+command! -nargs=0 Mrf call MruFile()
+
+```
+
 
 ### Vim delete HTML tag, but not content
 

@@ -173,7 +173,6 @@ let mapleader = ","
 
 let no_buffers_menu=1
 
-
 set mousemodel=popup
 
 " enable mouse
@@ -700,20 +699,13 @@ vnoremap K :m '<-2<CR>gv=gv
 
 
 " Make the dot command work as expected in visual mode (via
-" https://www.reddit.com/r/vim/comments/3y2mgt/do_you_have_any_minor_customizationsmappings_that/cya0x04)
+" https://www.reddit.com/r/vim/comments/3y2mgt/
 vnoremap . :norm.<CR>
 
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
-
-"***************************************************************************
-"" Custom configs
-"***************************************************************************
 
 " html
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1

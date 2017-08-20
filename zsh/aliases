@@ -62,6 +62,7 @@ alias getsinglepage='wget -E -H -k -K -nd -N -p -P pagedir'
 alias lynx='lynx -dump -display_charset=utf-8'
 
 alias lvim="vim -c \"normal '0\""
+alias lnvim="nvim -c':e#<1'"
 alias vimessential='vim -u ~/.dotfiles/rcfiles/vim/essential.vim'
 alias compilalivro='make clean; make && make show'
 alias 4shared='cadaver http://webdav.4shared.com/'
