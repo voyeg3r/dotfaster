@@ -82,7 +82,7 @@ nnoremap ç :
 " Required to start Plug:
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
-Plug 'tpope/vim-speeddating'
+"Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
@@ -255,7 +255,7 @@ else
 endif
 "colorscheme solarized
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
- nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Create a red/red scheme
 highlight Problem ctermbg=red guibg=red
@@ -590,15 +590,11 @@ nnoremap <silent> N :call SearchPrev()<CR>
 " Use <C-L> to clear some highlighting
 nnoremap <silent> <C-L> :silent! call matchdelete(b:ring)<CR>:nohlsearch<CR>:set nolist nospell<CR><C-L>
 " End hlnext
-" ********************************************************
-
-
 
 " ************************ End functions *****************
 
 set nopaste
-" nnoremap <F2> :set invpaste paste?<CR>
-
+nnoremap <F3> :set invpaste paste?<CR>
 
 set pastetoggle=<F2>
 set showmode
@@ -745,10 +741,6 @@ if has('autocmd')
 endif
 
 set clipboard=unnamed,unnamedplus
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
 
 " Identação de textos e códigos com o TAB no modo visual
 " URL: http://gustavodutra.com/post/72/dicas-de-movimentacao-e-identacao-no-gvim/

@@ -293,6 +293,10 @@ bindkey . rationalise-dot
 # without this, typing a . aborts incremental history search
 bindkey -M isearch . self-insert
 
+autoload -Uz history-beginning-search-menu
+zle -N history-beginning-search-menu
+bindkey '' history-beginning-search-menu
+
 source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh

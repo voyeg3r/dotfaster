@@ -9,7 +9,6 @@
 "  |    ^ ^    voyeg3r ✉ gmail.com        |
 "  +======================================+
 
-
 set nocompatible
 set path+=**
 
@@ -264,12 +263,6 @@ noremap <Leader>gr :Gremove<CR>
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
-"" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-"" Opens a tab edit command with the path of the currently edited file filled
-noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
 "" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -283,7 +276,7 @@ endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -326,13 +319,6 @@ vnoremap K :m '<-2<CR>gv=gv
 
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
-
-
-"" Include user's local vim config
-if filereadable(expand("~/.config/nvim/local_init.vim"))
-  source ~/.config/nvim/local_init.vim
-endif
-
 
 " vim-airline
 if !exists('g:airline_symbols')

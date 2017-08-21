@@ -127,6 +127,14 @@ For huge trees this only processes a part of files (due to the limit on command 
 
   fzy
 
+
+### Get directory of an executable using which
++ https://stackoverflow.com/a/45664616/2571881
+
+This tip only works on zsh
+
+    cd =python3(:h)
+
 ### Testing commands existence
 
 	# not aliasing rm -i, but if safe-rm is available, use condom.
