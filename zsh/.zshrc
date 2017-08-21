@@ -1,5 +1,6 @@
 # todo: clean bin dir to make load faster
 
+autoload colors && colors
 autoload -Uz compinit
 autoload -Uz zrecompile
 if [[ -n $ZSH_COMPDUMP(#qN.mh+24) ]]; then
@@ -19,23 +20,23 @@ bindkey '^xe' edit-command-line
 bindkey '^T' fzy-file-widget
 
 
-# # Vcs info
-# autoload -Uz vcs_info
-# zstyle ':vcs_info:*' enable git svn hg
-# zstyle ':vcs_info:*' check-for-changes true
-# zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
-# precmd() {  # run before each prompt
-#     vcs_info
-# }
-#
-# # Prompt
-# setopt prompt_subst     # allow funky stuff in prompt
-# color="blue"
-# if [ "$USER" = "root" ]; then
-#     color="red"         # root is red, user is blue
-# fi;
-# prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
-# RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
+# Vcs info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn hg
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
+precmd() {  # run before each prompt
+    vcs_info
+}
+
+# Prompt
+setopt prompt_subst     # allow funky stuff in prompt
+color="blue"
+if [ "$USER" = "root" ]; then
+    color="red"         # root is red, user is blue
+fi;
+prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
+RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
 
 
 
@@ -43,6 +44,7 @@ bindkey '^T' fzy-file-widget
 
 source ~/.dotfiles/zsh/aliases
 source ~/.dotfiles/bin/fasd
+source .dotfiles/zsh/themes/xxf/xxf.zsh-theme
 
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f
 
