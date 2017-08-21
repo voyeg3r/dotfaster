@@ -1,8 +1,10 @@
 ### introduction
 
-# command-line downloader and uploader for rapidshare, mediafire and other
-# file sharing websites.
-# site: https://github.com/mcrapet/plowshare
+```
+command-line downloader and uploader for rapidshare, mediafire and other
+file sharing websites.
+site: https://github.com/mcrapet/plowshare
+```
 
 ### references:
 # http://blog.gypsydave5.com/2016/02/04/xargs-and-curl/
@@ -30,3 +32,8 @@
     your terminal or SSH connection. Don't worry, you can still
     kill it if you've made a mistake.
 
+### Geting file list to download
+
+    plowlist -R url > list.txt
+
+    plowdow -m list.txt
