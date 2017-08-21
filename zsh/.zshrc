@@ -1,15 +1,4 @@
 # todo: clean bin dir to make load faster
-path=( ~/.dotfiles/bin $path )
-
-
-setopt extended_glob
-setopt glob_dots
-
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
-bindkey '^xe' edit-command-line
-bindkey '^T' fzy-file-widget
 
 autoload -Uz compinit
 autoload -Uz zrecompile
@@ -20,30 +9,35 @@ else
 	compinit -C
 fi
 
-# Vcs info
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn hg
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
-precmd() {  # run before each prompt
-    vcs_info
-}
+setopt extended_glob
+setopt glob_dots
 
-# Prompt
-setopt prompt_subst     # allow funky stuff in prompt
-color="blue"
-if [ "$USER" = "root" ]; then
-    color="red"         # root is red, user is blue
-fi;
-prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
-RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^T' fzy-file-widget
 
-#source "$ZDOTDIR/plugins/fasd/fasd.plugin.zsh"
-#source "$ZDOTDIR/plugins/zsh-completions/zsh-completions.plugin.zsh"
-source "$ZDOTDIR/plugins/fzy/fzy.plugin.zsh"
-source "$ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh"
-source "$ZDOTDIR/plugins/extract/extract.plugin.zsh"
-source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+
+# # Vcs info
+# autoload -Uz vcs_info
+# zstyle ':vcs_info:*' enable git svn hg
+# zstyle ':vcs_info:*' check-for-changes true
+# zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
+# precmd() {  # run before each prompt
+#     vcs_info
+# }
+#
+# # Prompt
+# setopt prompt_subst     # allow funky stuff in prompt
+# color="blue"
+# if [ "$USER" = "root" ]; then
+#     color="red"         # root is red, user is blue
+# fi;
+# prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
+# RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
+
+
 
 # for f in $ZDOTDIR/plugins/**/*.plugin.zsh; source $f
 
@@ -282,3 +276,7 @@ bindkey . rationalise-dot
 # without this, typing a . aborts incremental history search
 bindkey -M isearch . self-insert
 
+source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
+source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
+source $ZDOTDIR/plugins/extract/extract.plugin.zsh
+source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh

@@ -14,3 +14,7 @@ export LANG="pt_BR.UTF-8"
 export LANGUAGE="pt_BR:pt:pt_PT"
 export LC_ALL="pt_BR.UTF-8"
 
+path=( $path ~/.dotfiles/bin )
+#fpath=( ~/.dotfiles/zsh/functions.d/ $fpath )
+
+

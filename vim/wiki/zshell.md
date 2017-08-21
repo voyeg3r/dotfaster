@@ -455,6 +455,7 @@ to a directory of your choice in your .zshenv file under $HOME:
     Generating a log file
 
     zsh -x 2>&1 | tee zsh.log
+    zsh -xv 2>&1 | tee zsh.log
 
 #### aliases are cumulative
 
