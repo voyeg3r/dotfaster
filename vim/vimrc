@@ -294,6 +294,7 @@ hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 set nu
 "nmap ,r :set rnu!<cr>
 nmap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+nmap ,f /
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzz

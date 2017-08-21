@@ -163,6 +163,8 @@ sudo pacman -S perl-rename
 
 # two lightweigh terminal
 sudo pacman -S sakura tilix
+sudo pacman -S xfce4-terminal
+# ~/.config/Terminal/terminalrc
 
 # tradutor via linha de comando
 # https://aur.archlinux.org/packages/translate-shell/

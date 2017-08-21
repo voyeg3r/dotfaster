@@ -385,6 +385,11 @@ endfun
 nmap ,l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
+nmap ,f /
+vmap ,f <esc>/
+cmap ,f <esc>/
+nmap ç :
+
 " fzf configuration
 " <C-p> to search files
 nnoremap <silent> <c-p> :FZF -m ~/.dotfiles<cr>
