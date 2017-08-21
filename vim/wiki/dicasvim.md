@@ -1391,6 +1391,34 @@ command! -nargs=0 Mrf call MruFile()
 
 ```
 
+### Multiple choice substitute
+
+    person: Alice
+    dog: Tobby
+    person: Bob
+
+    Pattern 1 :%s/person:/woman:/c
+
+    Pattern 2 :%s/person:/man:/c
+
+Pattern 1 and 2 have the same search pattern but different replacement
+patterns. I want to unify them into one pattern with the option of pressing (1)
+for replacement 1, (2) for replacement 2 or (n) for no replacement.
+
+
+The implementation of :s//c is fixed; what you're looking for is replacement
+with a Vimscript expression (:help sub-replace-expr). You can query a
+single-digit via getchar(), or prompt for longer numbers via input():
+
+    :%s/person:/\=get(['woman', 'man'], getchar() - char2nr(1), submatch(0)) . ':'/
+    :%s/person:/\=get(['woman', 'man'], input('Your choice: ') - 1, submatch(0)) . ':'/
+
+You can enter a higher number (3 in your example) to perform no replacement.
+
+If you need this often, it would make sense to define a custom Query() function
+for that. In there, you could also add a :redraw, so that you see the
+replacements that have already happened.
+
 
 ### Vim delete HTML tag, but not content
 
