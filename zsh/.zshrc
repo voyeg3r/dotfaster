@@ -19,7 +19,6 @@ bindkey "^X^E" edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^T' fzy-file-widget
 
-
 # Vcs info
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg
@@ -38,8 +37,6 @@ fi;
 prompt="%{$fg[$color]%}%n%{$reset_color%}@%U%{$fg[yellow]%}%m%{$reset_color%}%u %T %B%~%b "
 RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
 
-
-
 # for f in $ZDOTDIR/plugins/**/*.plugin.zsh; source $f
 
 source ~/.dotfiles/zsh/aliases
@@ -52,7 +49,6 @@ eval "$(fasd --init auto)"
 
 bindkey '^ ' autosuggest-accept
 bindkey "\e[3~" delete-char
-
 
 # User configuration
 # export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
@@ -104,7 +100,6 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 # List all processes for killall
 zstyle ':completion:*:processes-names' command "ps -eo cmd= | sed 's:\([^ ]*\).*:\1:;s:\(/[^ ]*/\)::;/^\[/d'"
 
-
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion::complete:*' use-cache on
@@ -151,7 +146,6 @@ zstyle ':completion:*:warnings' format 'Too bad there is nothing'
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
 
 # current_wallpaper=$(gsettings get org.gnome.desktop.background picture-uri | sed 's,file:///,/,g' )
 
@@ -296,8 +290,6 @@ bindkey -M isearch . self-insert
 autoload -Uz history-beginning-search-menu
 zle -N history-beginning-search-menu
 bindkey '' history-beginning-search-menu
-
-
 
 source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh

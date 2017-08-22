@@ -218,11 +218,11 @@ alias cl="fc -e -| pbcopy"
 alias newest='ls -lt  **/*(.om[1,20])' # list 20 newest files anywhere in directory hierarchy (very useful) *N*'
 #alias lad='ls -d -- .*(/)'				# only show dot-directories
 #alias lsa='ls -a -- .*(.)'				# only show dot-files
-#alias lsd='ls -d -- *(/)'				  # only show directories
-
+#alias lsd='ls -d -- *(/)'			    # only show directories
+alias ll='ls -lh'
+alias la='ls -a'
 
 alias ls='ls --color=auto'
-alias la='ls -a'
 alias cd=' cd'
 alias fixmp4='detox * && m4a2mp3 && prename 'tr/A-Z/a-z/' *'
 alias -s {md,txt,text}=vim

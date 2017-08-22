@@ -3,7 +3,7 @@
 
 	 # to enable auto startup
 	 # save the above conde at
-	 # ~/config/Autostart/conky.desktop
+	 # ~/config/autostart/conky.desktop
 
 	 [Desktop Entry]
 	 Encoding=UTF-8

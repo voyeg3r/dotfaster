@@ -8,6 +8,15 @@ site: http://vivaotux.blogspot.com twitter:
 http://www.twitter.com/voyeg3r
 ```
 
+### Taking a screenshot
+
+    Take a screenshot                                      | PrintScr
+    Take a screenshot of a window                          | Alt+Print
+    Take a screenshot of a region                          | Shift+Print
+    Take a screenshot and paste in a clipboard             | Ctrl+Print
+    Take a screenshot of a window and paste in a clipboard | Ctrl+Alt+Print
+    Take a screenshot of a region and paste in a clipboard | Ctrl+Shift+Print
+
 ### Am I using wayland or X11?
 
     echo $XDG_SESSION_TYPE
