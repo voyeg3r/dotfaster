@@ -25,4 +25,12 @@ Agora pode fazer algo do tipo
 
 instead of worrying about using middle mouse button or even keyboard shortcuts
 
+### Adding ssh key to your github account
+
+    $ sudo pacman -S xclip
+    # Downloads and installs xclip. If you don't have `pacman`, you might need to use another installer (like `yum`)
+
+    $ xclip -sel clip < ~/.ssh/id_rsa.pub
+    # Copies the contents of the id_rsa.pub file to your clipbo
+
 
