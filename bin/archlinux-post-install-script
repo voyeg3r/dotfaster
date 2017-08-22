@@ -166,6 +166,10 @@ sudo pacman -S sakura tilix
 sudo pacman -S xfce4-terminal
 # ~/.config/Terminal/terminalrc
 
+# needed packages to install ghome-terminal-fedora
+# sudo pacman -S automake
+# sudo pacman -S pkg-config
+
 # tradutor via linha de comando
 # https://aur.archlinux.org/packages/translate-shell/
 yaourt -Syua translate-shell

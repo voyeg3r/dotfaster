@@ -1,0 +1,17 @@
+
+### Enable conky at startup
+
+	 # to enable auto startup
+	 # save the above conde at
+	 # ~/config/Autostart/conky.desktop
+
+	 [Desktop Entry]
+	 Encoding=UTF-8
+	 Type=Application
+	 Name=Conky
+	 Name[en_US]=Conky
+	 Exec=/usr/bin/conky
+	 Comment[en_US]=
+	 StartupNotify=true
+	 X-GNOME-Autostart-Delay=60
+

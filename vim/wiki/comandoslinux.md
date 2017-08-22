@@ -46,6 +46,7 @@
 [clonezilla](clonezilla.md)
 [column](column.md)
 [comm](comm.md)
+[conky](conky.md)
 [convert](convert.md)
 [convmv](convmv.md)
 [cp](cp.md)
