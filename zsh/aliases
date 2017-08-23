@@ -59,6 +59,7 @@ alias zdot='cd $ZDOTDIR'
 # pipe a download file to standard output on shell
 alias wgetn='wget -O - -o /dev/null'
 alias getsinglepage='wget -E -H -k -K -nd -N -p -P pagedir'
+alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
 
 alias lynx='lynx -dump -display_charset=utf-8'
 

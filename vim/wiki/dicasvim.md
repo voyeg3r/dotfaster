@@ -1282,6 +1282,10 @@ zug ......... undo add word as good one
 
     :%s/PATTERN/&\r/g
 
+    add a line before a pattern
+
+    :g/^wget/ normal O
+
 ### How to add a line after every few lines in vim
 I wanted to add a line after every 3 lines in a file (having about 1000 lines) using vim editor. Can someone help me out?
 
