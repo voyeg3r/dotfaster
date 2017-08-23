@@ -82,3 +82,12 @@ replace id_rsa in the command with the name of your private key file.
 
     $ xclip -sel clip < ~/.ssh/id_rsa.pub
     # Copies the contents of the id_rsa.pub file to your clipbo
+
+### Mirroing a github repo on gitlab
+
+    ``` markdown
+    https://gitlab.com/voyeg3r/dotfaster/settings/repository
+
+    Pull from a remote repository
+    check mirror repository
+    ```
