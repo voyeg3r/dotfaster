@@ -2551,6 +2551,28 @@ isto evita o erro E77: muitos arquivos para editar
     normal ........... executa em modo normal
     ^v^A ............. incrementa o número
 
+### Delete multiline comments using global command
++ https://stackoverflow.com/a/45853309/2571881
+
+I am trying to delete a bunch of comments that are all in the following format:
+
+    /**
+     * @ngdoc
+
+     ... comment body (delete me, too!)
+
+    */
+
+The best solutions I think are:
+
+    Using macro
+    qa/\/\*\*V/\*\/d
+
+    :g/\v^\/\*\*$/,/\v\*\/$/d_
+
+    :g  .......... starts global command
+    /^\/\*\*
+
 ### How to use vim to do multiple line edit?
 + https://stackoverflow.com/questions/44172121/
 
