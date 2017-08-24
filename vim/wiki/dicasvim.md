@@ -2568,10 +2568,14 @@ The best solutions I think are:
     Using macro
     qa/\/\*\*<Ctrl-v><Enter>V/\*\/<Ctrl-v><Enter>d
 
-    :g/\v^\/\*\*$/,/\v\*\/$/d_
+    :g/\v^\/\*\*$/,/\*\/$/d_
 
     :g  .......... starts global command
-    /^\/\*\*
+    /^\/\*\*  .... comment beginning
+    $ ............ end of line
+    , ............ interval delimiter
+    /\*\/$d_ ..... delete until the end to the black hole register "d_"
+
 
 ### How to use vim to do multiple line edit?
 + https://stackoverflow.com/questions/44172121/
