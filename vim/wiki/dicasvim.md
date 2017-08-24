@@ -2566,7 +2566,7 @@ I am trying to delete a bunch of comments that are all in the following format:
 The best solutions I think are:
 
     Using macro
-    qa/\/\*\*V/\*\/d
+    qa/\/\*\*<Ctrl-v><Enter>V/\*\/<Ctrl-v><Enter>d
 
     :g/\v^\/\*\*$/,/\v\*\/$/d_
 
