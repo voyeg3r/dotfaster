@@ -84,8 +84,9 @@ nnoremap K :help <C-r><C-w><CR>
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 "Plug 'tpope/vim-speeddating'
-Plug 'timakro/vim-searchant'
 Plug 'jiangmiao/auto-pairs'
+Plug 'haya14busa/incsearch.vim'
+Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
@@ -116,6 +117,26 @@ endif
 call plug#end()
 
 colorscheme molokai
+
+" pulse search integration with incsearch PlugIn
+" incsearch and vim search pulse
+let g:vim_search_pulse_disable_auto_mappings = 0
+let g:incsearch#auto_nohlsearch = 0
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Next or previous match is followed by a Pulse
+map n <Plug>(incsearch-nohl-n)<Plug>Pulse
+map N <Plug>(incsearch-nohl-N)<Plug>Pulse
+map * <Plug>(incsearch-nohl-*)<Plug>Pulse
+map # <Plug>(incsearch-nohl-#)<Plug>Pulse
+map g* <Plug>(incsearch-nohl-g*)<Plug>Pulse
+map g# <Plug>(incsearch-nohl-g#)<Plug>Pulse
+
+" Pulses the first match after hitting the enter keyan
+autocmd! User IncSearchExecute
+autocmd User IncSearchExecute :call search_pulse#Pulse()
 
 " fzf configuration
 " <C-p> to search files

@@ -32,7 +32,9 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
-Plug 'timakro/vim-searchant'
+Plug 'haya14busa/incsearch.vim'
+"Plug 'timakro/vim-searchant'
+Plug 'inside/vim-search-pulse'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
@@ -75,6 +77,26 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
+
+" pulse search integration with incsearch PlugIn
+" incsearch and vim search pulse
+let g:vim_search_pulse_disable_auto_mappings = 0
+let g:incsearch#auto_nohlsearch = 0
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Next or previous match is followed by a Pulse
+map n <Plug>(incsearch-nohl-n)<Plug>Pulse
+map N <Plug>(incsearch-nohl-N)<Plug>Pulse
+map * <Plug>(incsearch-nohl-*)<Plug>Pulse
+map # <Plug>(incsearch-nohl-#)<Plug>Pulse
+map g* <Plug>(incsearch-nohl-g*)<Plug>Pulse
+map g# <Plug>(incsearch-nohl-g#)<Plug>Pulse
+
+" Pulses the first match after hitting the enter keyan
+autocmd! User IncSearchExecute
+autocmd User IncSearchExecute :call search_pulse#Pulse()
 
 set encoding=utf-8
 set fileencoding=utf-8

@@ -1701,6 +1701,20 @@ Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora 
 
 Para poucas linhas de código, obviamente a solução manual é a melhor escolha, mas imagina se esse código tivesse centenas de linhas, o que provavelmente corresponde à realidade do cara que a postou.
 
+
+### How search for a word not preceded by another
+
+    /\v(the )@<!word    any "word" not preceded by "the"
+    /\vfoo( bar)@!      any "foo" not followerd by "bar"
+
+the folowing searcch will match 'word' not preceded by 'the'
+
+    /\v(the )@<!word
+
+    the word
+    one word
+    find word
+
 ### Delete anything other than pattern
 
 Let's say this is my text:
