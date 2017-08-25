@@ -513,6 +513,7 @@ done
 # phanteon-terminal could be changed using dconf
 # https://gist.github.com/davidgomes/5162998
 yaourt -S roxterm pantheon-terminal
+gsettings set org.pantheon.terminal.settings natural-copy-paste false
 
 # making zsh my default shell
 sudo chsh -s $(which zsh) $(whoami)

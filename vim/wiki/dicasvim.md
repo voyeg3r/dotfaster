@@ -57,6 +57,12 @@ While in insert mode, you can use Ctrl-R {register}, where register can be:
 
 For more information, view the documentation with :h i_ctrl-r
 
+### Moving around
+
+    g; ....... goes to older position on changelist
+    g, ....... goes to newer positoin on changelist
+
+
 ### Editing .viminfo file
 + https://stackoverflow.com/a/2833376/2571881
 
@@ -2569,6 +2575,8 @@ The best solutions I think are:
     qa/\/\*\*<Ctrl-v><Enter>V/\*\/<Ctrl-v><Enter>d
 
     :g/\v^\/\*\*$/,/\*\/$/d_
+
+Or using a global command. (both are similar)
 
     :g  .......... starts global command
     /^\/\*\*  .... comment beginning

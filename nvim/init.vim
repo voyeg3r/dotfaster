@@ -32,6 +32,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'timakro/vim-searchant'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
@@ -165,6 +166,7 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap K :help <C-r><C-w><CR>
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -293,7 +295,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
+nnoremap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " Disable visualbell
@@ -367,13 +369,13 @@ fun! MruFile()
         exe "edit " . filename
     endif
 endfun
-nmap ,l :call MruFile()<cr>
+nnoremap ,l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
-nmap ,f /
+nnoremap ,f /
 vmap ,f <esc>/
-cmap ,f <esc>/
-nmap ç :
+cnoremap ,f <esc>/
+nnoremap ç :
 
 " fzf configuration
 " <C-p> to search files
@@ -385,8 +387,8 @@ nnoremap ,ag :Ag<SPACE>
 " index do vim wiki
 let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki',
                      \ 'index': 'main', 'syntax': 'markdown', 'ext': '.md'}]
-nmap == <Plug>VimwikiAddHeaderLevel
-nmap -- <Plug>VimwikiRemoveHeaderLevel
+nnoremap == <Plug>VimwikiAddHeaderLevel
+nnoremap -- <Plug>VimwikiRemoveHeaderLevel
 "*:VimwikiSearch* /pattern/
 "*:VWS* /pattern/
 "    Search for /pattern/ in all files of current wiki.
@@ -400,12 +402,11 @@ let g:vimwiki_table_mappings = 0
 " This has the advantage of not highlighting each space you type at
 " the end of the line, only when you open a file or leave insert
 " mode. Very neat."
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
+" Reference: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
-
+"au BufEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave * redraw!
 
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
@@ -493,7 +494,7 @@ endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 
 " Sudo to write
-cmap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo tee % >/dev/null
 command! SaveAsRoot w !sudo tee %
 
 " to reselect use gv in normal mode
@@ -501,7 +502,7 @@ nnoremap <F23> <ESC>:set hls!<cr>
 inoremap <F23> <C-o>:set hls!<cr>
 vnoremap <F23> <ESC>:set hls!<cr> <bar> gv
 
-map <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
+noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders

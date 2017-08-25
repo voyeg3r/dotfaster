@@ -78,11 +78,13 @@ setlocal complete=.,w,k,b,u
 
 " entrar no modo comando mais rápido
 nnoremap ç :
+nnoremap K :help <C-r><C-w><CR>
 
 " Required to start Plug:
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 "Plug 'tpope/vim-speeddating'
+Plug 'timakro/vim-searchant'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
@@ -153,8 +155,8 @@ filetype plugin indent on
 " index do vim wiki
 let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki',
                      \ 'index': 'main', 'syntax': 'markdown', 'ext': '.md'}]
-nmap == <Plug>VimwikiAddHeaderLevel
-nmap -- <Plug>VimwikiRemoveHeaderLevel
+nnoremap == <Plug>VimwikiAddHeaderLevel
+nnoremap -- <Plug>VimwikiRemoveHeaderLevel
 "*:VimwikiSearch* /pattern/
 "*:VWS* /pattern/
 "    Search for /pattern/ in all files of current wiki.
@@ -241,11 +243,11 @@ let g:airline_skip_empty_sections = 1
 " This has the advantage of not highlighting each space you type at
 " the end of the line, only when you open a file or leave insert
 " mode. Very neat."
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
+" Reference: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+"au BufEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave * redraw!
 
 "set background=light
 if has('gui_running')
@@ -255,7 +257,7 @@ else
 endif
 "colorscheme solarized
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
-nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Create a red/red scheme
 highlight Problem ctermbg=red guibg=red
@@ -295,15 +297,15 @@ hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 " alternate between relative number, number and no number
 set nu
 "nmap ,r :set rnu!<cr>
-nmap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
-nmap ,f /
+nnoremap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+nnoremap ,f /
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzz
-nmap * *zz
-nmap # #zz
-nmap g* g*zz
-nmap g# g#zz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
@@ -344,8 +346,8 @@ augroup tex
     au Bufnewfile,BufRead *.tex set ft=tex
     au BufNewFile *.tex 0r ~/.vim/skel/template.tex
     au BufNewFile *.tex exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
-    vmap e <tab>em<tab>
-    vmap ' <tab>'<tab>
+    vnoremap e <tab>em<tab>
+    vnoremap ' <tab>'<tab>
     iab latex \LaTeX\
     iab tex \Tex\
     normal gg
@@ -545,8 +547,8 @@ command! -nargs=0 DelBlank :call DelBlankLines()
 
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call Preserve(DelBlank())<cr>
-nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-nmap _= :call Preserve("normal gg=G")<CR>
+nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+nnoremap _= :call Preserve("normal gg=G")<CR>
 
 fun! CleanExtraSpaces()
         let save_cursor = getpos(".")
@@ -589,8 +591,8 @@ vnoremap <expr>y "my\"" . v:register . "y`y"
 
 " Buble single lines - mover linhas
 " http://vimcasts.org/episodes/bubbling-text/
-nmap <special> <c-up> ddkP
-nmap <special> <c-down> ddp
+nnoremap <special> <c-up> ddkP
+nnoremap <special> <c-down> ddp
 "buble multiple lines
 xmap <c-up> xkP`[V`]
 xmap <c-down> xp`[V`]
@@ -625,8 +627,8 @@ set autoread
 map <silent> <leader>v :e ~/.vimrc<cr>
 map <silent> <leader>z :e ~/.zshrc<cr>
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "" Git stuff
 noremap <Leader>ga :Gwrite<CR>
