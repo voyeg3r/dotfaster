@@ -144,6 +144,10 @@ After instaling Tim Pope's speeddating plugin you can do something like:
 
     echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
+### Inserting a range of numbers
+
+    :put =range(1,10)
+
 ### Open file read-only
 
 edit /etc/nginx/nginx.conf in read-only mode:
@@ -257,6 +261,11 @@ I also have this line on my `~/.vimrc`, it allows me to insert the filename easi
 iab fname <c-r>=expand("%:p")<cr>
 ```
 
+### Inserting blank lines below and above
++ https://superuser.com/a/607193/45032
+
+    nnoremap <Enter> :call append(line('.'), '')<CR>
+    nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 
 ### Tips on searching
 [Read more here](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
@@ -1265,8 +1274,9 @@ zug ......... undo add word as good one
 ```
 
 ### How add a line after every few lines in vim
++ https://stackoverflow.com/a/10414708/2571881
 
-    :%s/^/\=line(".")%4==0?"\n":"")/g
+    :%s/^/\=(line(".")%4==0?"\n":"")/g
 
 ### How add a new line after a pattern
 

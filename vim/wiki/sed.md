@@ -536,6 +536,10 @@ Append an empty line after a line with exactly 42 characters
 
      sed '/regex/{x;p;x;}'
 
+### Insert a blank line after each second line
+
+    seq 10 | sed '0~2G'
+
 ### Modificando a profundidade de cores do xorg.conf
 
       sed -i.backup 's/\(DefaultDepth\s\+\)24$/\116/g' /etc/X11/xorg.conf

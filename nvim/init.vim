@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 20 ago 2017 12:31:02 -03
+" Last Change: seg 28 ago 2017 12:55:21 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -444,6 +444,9 @@ fun! ChangeHeader()
 endfun
 command! -nargs=0 CH :call ChangeHeader()
 au! BufReadPost * :silent call ChangeHeader()
+
+nnoremap <Enter> :call append(line('.'), '')<CR>
+nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 
 " jump to next place holder
 function! JumpToNextPlaceholder()

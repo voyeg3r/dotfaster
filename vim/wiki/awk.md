@@ -102,7 +102,13 @@ it to xargs which will perform the task.
 
 ### adding a new line after each second line
 
-    awk ' {print;} NR % 2 == 0 { print ""; }' file.txt
+    ``` markdown
+    awk '{print (NR%2==0 ? $0 "\n": $0)}' file.txt
+    awk 'ORS=NR % 2 ? RS:RS RS' file.txt
+    ```
+
+    On the seccond solution we have ORS "Output Record Separator" which
+    by default is <newline>
 
 ### Using awk to filter out students in a list
 
@@ -816,11 +822,10 @@ awk '{printf("%s%s", $0, (NR%5 ? " " : "\n"))}'
 
 
 ### Referências
-* http://br.geocities.com/cesarakg/awk-1.html
-* http://student.northpark.edu/pemente/awk/awk1line.txt
 * http://www.zago.eti.br/script/awk.html
 * http://teknowlogic.org/soft/linux-tips/awk-oneliners/
 * http://www.rberaldo.com.br/blog/2009/05/07/tutorial-awk/
 * http://www.vivaolinux.com.br/dica/Awk-Uma-poderosa-ferramenta-de-analise/
 * http://stackoverflow.com/questions/2332252/
 * http://goo.gl/zwJ5
+* https://gist.github.com/wookietreiber/6901420

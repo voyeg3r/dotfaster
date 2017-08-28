@@ -477,7 +477,10 @@ fun! ChangeHeader()
     call setreg('/', old_query)
 endfun
 command! -nargs=0 CH :call ChangeHeader()
-au BufWritePost * :silent call ChangeHeader()
+"au BufWritePost * :silent call ChangeHeader()
+
+nnoremap <Enter> :call append(line('.'), '')<CR>
+nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 
 " jump to next place holder
 function! JumpToNextPlaceholder()
@@ -505,11 +508,6 @@ endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
 au! BufwritePre * :call CleanExtraSpaces()
-
-" auto clean trailing spaces
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh :call CleanExtraSpaces()
-endif
 
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
@@ -675,16 +673,6 @@ endif
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-
-
-"" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
-
-"" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-"" Opens a tab edit command with the path of the currently edited file filled
-noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " snippets settings
 "let g:UltiSnips#ListSnippets="<C-tab>"
