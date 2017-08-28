@@ -46,3 +46,7 @@ Podem ter títulos apagados e ainda assim vão apontar pro mesmo endereço
 
     quando se tratar de uma resposta "answer" pode-se abreviar para "a"
 
+
+### Inserting ttyrecordings at stackexchange
+
+    [![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14) https://asciinema.org/docs/embedding

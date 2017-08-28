@@ -5,7 +5,7 @@ see also [Best of vim tips](vimbesttips.md)
 ```
 File:		 DicasVim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 12 ago 2017 10:48:05 -03
+Last Change: dom 27 ago 2017 19:11:11 -03
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -18,16 +18,16 @@ See also: [Regex](Regex.md) page
 ### Using vim with no plugins
 
 ```vim
-  set path+="**"
+    set path+="**"
 ```
 
-  find filename<tab>
+    :find filename<tab>
 
-  gf any file on the cursor is over will go to file
+    gf any file on the cursor is over will go to file
 
-  :ls ......... list buffers
-  :b 2 ........ go to buffer 2
-  :b substring  opens any file with substring
+    :ls ......... list buffers
+    :b 2 ........ go to buffer 2
+    :b substring  opens any file with substring
 
 ### Inserting primary selection content
 
@@ -62,7 +62,6 @@ For more information, view the documentation with :h i_ctrl-r
     g; ....... goes to older position on changelist
     g, ....... goes to newer positoin on changelist
 
-
 ### Editing .viminfo file
 + https://stackoverflow.com/a/2833376/2571881
 
@@ -74,16 +73,10 @@ you don't do this, Vim will overwrite all your changes when you quit,
 Remove everything you don't want (perhaps by using Johnsyweb's answer, or just
 by deleting the lines with manual edit commands), save the file, and quit vim,
 
-### Switch from visual to insert mode
-
-    ^I .............. starts insert mode at the beginin
-    ^A .............. starts insert mode at the end
-
 ### Exit ex mode
 
     q:  ............... eters ex mode
     ^c ................ exit it
-
 
 ### Auditing vim mappings
 
@@ -118,7 +111,6 @@ The selections starts with
 alternatively you can use sed:
 
      sed -i 18d .ssh/known_hosts
-
 
 ### Erase / delete change history
 + https://superuser.com/a/263406/45032
@@ -370,15 +362,6 @@ endsnippet
 
 ### Remove parenthesis of current line
 
-    %s/(\([^)]\+\))/\1/g
-
-    ( ................... patenthesis
-    \( .................. start group 1
-    [^)] ................ denied )
-    \+   ................ at least once
-    \) .................. end group 1
-    ) ................... close parenthesis
-
     :s,(\|),,g
 
 
@@ -539,21 +522,19 @@ Using a "register" on search
 ### Insert a command rnnge easily
 Reference: http://stackoverflow.com/questions/35693335/
 
-``` vim
-4:   equals to :.,.+3
+    4:   equals to :.,.+3
 
 for example if you want to save only the next three lines
 you cand do this:
 
-3:   then vim will show this:
-:.,.+2  what means the current line "." plus the next two lines
+    3:   then vim will show this:
+    :.,.+2  what means the current line "." plus the next two lines
 
 and finally you type wq!
 
 the entire line will be:
 
-:.,.+2wq!
-```
+    :.,.+2wq!
 
 ### Adjusting columns of text on vim
 
@@ -646,7 +627,7 @@ I would like to have this in my clipboard :
     userid
     requestFields
 
-### Solutions
+Solutions
 
     :%norm 0"Zyt:     ................ this one for intire file
     :'<,'>norm! "Qye  ................ this one for selection are only
@@ -807,6 +788,7 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
     :-7t.
 
+
     command 	action
     :9t. 	    copy line 9 placing a duplicate below the current line
     :t5 	    copy the current line placing a duplicate below the line 5 (and moving the cursor)
@@ -814,6 +796,8 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
     :+4t. 	    copy the line 4 after the current cursor position placing a duplicate below the current line
     :9,11t. 	copy the lines 9 to 11 placing the duplicate lines below the current cursor position
     :-5t.       copy the line 5 rows above to the current line
+    :1m.        move line one to the current line
+    :-3m.       move the line up 3 to this position
 
 ### Formating text on vim
 
@@ -910,8 +894,8 @@ This is some text about topic one.
 It has multiple paragraphs.
 Topic Two
 =========
-
 ```
+
 ``` vim
 :onoremap ah :<c-u>execute "normal! ?^==\\+\r:nohlsearch\rg_vk0"<cr>
 ```
@@ -1091,7 +1075,7 @@ que delimita a busca ficando assim:
 
 ### Opening two files side by side
 
-      vim -O file1.txt [[file2.txt]]
+      vim -O file1.txt file2.txt
 
 ### Setting utf-8 encoding
 
@@ -2555,6 +2539,26 @@ isto evita o erro E77: muitos arquivos para editar
 ### Deletando linhas que não contém padrão
 
     :v/pattern/d
+
+### Using global to join lines
+
+If you have the following pattern
+
+    hostname:
+    output
+    hostname2:
+    output2
+
+And want to change to this:
+
+    hostname: output
+    hostname2: output2
+
+You can use a global negator like this:
+
+    :%v/:$/-1j
+
+... (considering all lines (%) for those which don't match the following regular expression (v) /(regular expression of lines ending in colon)/ go to the previous line (-1) and join that line to the next one (j)).
 
 ### Destacando as linhas duplicadas
 

@@ -443,6 +443,7 @@ fun! ChangeHeader()
     call setreg('/', old_query)
 endfun
 command! -nargs=0 CH :call ChangeHeader()
+au! BufReadPost * :silent call ChangeHeader()
 
 " jump to next place holder
 function! JumpToNextPlaceholder()

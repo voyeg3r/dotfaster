@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 13 ago 2017 07:58:30 -03
+" Last Change: dom 27 ago 2017 18:35:34 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -477,6 +477,7 @@ fun! ChangeHeader()
     call setreg('/', old_query)
 endfun
 command! -nargs=0 CH :call ChangeHeader()
+au BufWritePost * :silent call ChangeHeader()
 
 " jump to next place holder
 function! JumpToNextPlaceholder()
