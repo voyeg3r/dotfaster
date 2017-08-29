@@ -1278,6 +1278,47 @@ zug ......... undo add word as good one
 
     :%s/^/\=(line(".")%4==0?"\n":"")/g
 
+
+### Vim - Adding empty line between lines
++ https://superuser.com/a/592508/45032
+
+How do I insert a blank line between every non-blank lines?
+
+eg. from
+
+    line 1
+    line 2
+    line 3
+
+    line 4
+    line 5
+
+to
+
+    line 1
+
+    line 2
+
+    line 3
+
+    line 4
+
+    line
+
+Vim's :g command is designed for exactly this sort of task; running a single
+action on every line which matches a particular pattern. Here's my answer:
+
+    :g/.\n\n\@!/norm o
+
+The pattern I use is `/.\n\n\@!/.` Breaking that down into its component pieces:
+
+    . Matches any character in the line. (used to immediately discard any existing empty lines from consideration)
+    \n Matches a single \n at the end of the character above
+    \n\@! Fails the match if there's another \n immediately after the earlier \n.
+
+(Check `:h E59 `for more information on `\@!` and similar match specifiers in
+regular expressions -- there are a couple others, too!)
+
 ### How add a new line after a pattern
 
     :%s/PATTERN/&\r/g
