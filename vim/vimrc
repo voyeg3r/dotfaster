@@ -143,12 +143,17 @@ autocmd User IncSearchExecute :call search_pulse#Pulse()
 nnoremap <silent> <c-p> :FZF -m ~/.dotfiles<cr>
 " end - fzf configuration
 
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+
 " bind K to grep word under cursor
 "nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap ,ag :Ag<SPACE>
-
 
 "" fzf.vim
 set wildmode=list:longest,list:full
@@ -659,9 +664,6 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
-
-nnoremap <silent> <leader>O :pu! _<cr>:']+1<cr>
-nnoremap <silent> <leader>o :pu _<cr>:'[-1<cr>
 
 if exists('+autochdir')
     set autochdir

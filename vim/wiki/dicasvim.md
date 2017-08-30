@@ -1436,6 +1436,15 @@ command! -nargs=0 Mrf call MruFile()
 
 ```
 
+### Mostrando os ultimos arquivos editados baseado em um padrão
++ https://vi.stackexchange.com/a/11829/7339
+
+    :browse filter /pattern/ oldfiles
+
+Pode-se abreviar
+
+    :bro filter /dicas/ ol
+
 ### Multiple choice substitute
 
     person: Alice
@@ -1741,6 +1750,18 @@ Para poucas linhas de código, obviamente a solução manual é a melhor escolha
 
     /\v(the )@<!word    any "word" not preceded by "the"
     /\vfoo( bar)@!      any "foo" not followerd by "bar"
+
+    Capability                  in Vimspeak   in Perlspeak
+    ----------------------------------------------------------------
+    force case insensitivity    \c            (?i)
+    force case sensitivity      \C            (?-i)
+    backref-less grouping       \%(atom\)     (?:atom)
+    conservative quantifiers    \{-n,m}       *?, +?, ??, {}?
+    0-width match               atom\@=       (?=atom)
+    0-width non-match           atom\@!       (?!atom)
+    0-width preceding match     atom\@<=      (?<=atom)
+    0-width preceding non-match atom\@<!      (?<!atom)
+    match without retry         atom\@>       (?>atom)
 
 the folowing searcch will match 'word' not preceded by 'the'
 

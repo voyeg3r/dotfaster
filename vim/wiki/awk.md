@@ -406,6 +406,35 @@ outro exemplo
 
     awk '{sum+=$2} END {print sum}' arquivo
 
+### Calculando a compra de livros
+Fiz um apanhado na web pra compra de livros buscando o menor preço, algo assim:
+
+    + Português 9 araribá Plus 4ª Edição | https://goo.gl/CkmDtb | Saraiva: 136,90
+    + Redação - Todos os Textos          | https://goo.gl/XCBAbf | Saraiva: 135,50
+    + Gramática Reflexiva 9º Ano         | https://goo.gl/Ad7WZe | Saraiva: 134,90
+    + Matemática Bianchini 9º Ano        | https://goo.gl/vNz5pH | Saraiva: 139,90
+    + Geografia 9 proj araribá plus 4 ed | https://goo.gl/QqfBzU | Saraiva: 150,90
+    + Investigar e conhecer ciê da natur | https://goo.gl/6GHUcK | Saraiva: 147,60
+    + Ensino Religioso entre amigos      | https://goo.gl/JtXoeG | Submarino: 106,39
+      coleção microkids tecnologia educacional 9
+    + Literatura primeiro bimestre       | https://goo.gl/Yi2Y9J | Shoptime: 42,00
+    + Entre Rios Domingos Pelegrine      | https://goo.gl/JwC8hx | Cultura: 44,90
+    + O Heroi Invisível                  | https://goo.gl/1f9yiv | Cultura: 46,08
+      A escrava Isaura
+
+O comando ficou assim:
+
+    grep '^+' livros-gabriel.md | sed 's|,|.|' | awk '{sum += $NF} END {print sum}'
+    1085.07
+
+Filtra-se com o própiro sed as linhs que começam com o sinal de mais, a opção `-n` instrui
+o sed a não imprimir nada sem que lhe seja soliticado, então nas linhas filtradas trocamos
+a vírgula por ponto, uma vez que o awk e outros programas unix seguem o padrão matematico
+norte americano que usa ponto ao invés de vírgulas.
+
+    sed -n '/^+/ s/,/./gp' livros-gabriel.md | awk '{sum += $NF} END {print sum}'
+
+
 ### Trocar de posição os campos 1 e 2 de um arquivo e imprimir a linha
 
   { temp = $1 ; $1 = $2 ; $2 = temp ; print }

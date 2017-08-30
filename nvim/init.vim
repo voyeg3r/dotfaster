@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: seg 28 ago 2017 12:55:21 -03
+" Last Change: ter 29 ago 2017 19:21:29 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -392,11 +392,15 @@ fun! MruFile()
     endif
 endfun
 nnoremap ,l :call MruFile()<cr>
-command! -nargs=0 Mrf call MruFile()
+command! -nargs=0 Mru call MruFile()
 
-nnoremap ,f /
-vmap ,f <esc>/
-cnoremap ,f <esc>/
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+nnoremap ,m :FZFMru<cr>
+
 nnoremap ç :
 
 " fzf configuration
@@ -444,9 +448,6 @@ fun! ChangeHeader()
 endfun
 command! -nargs=0 CH :call ChangeHeader()
 au! BufReadPost * :silent call ChangeHeader()
-
-nnoremap <Enter> :call append(line('.'), '')<CR>
-nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 
 " jump to next place holder
 function! JumpToNextPlaceholder()
