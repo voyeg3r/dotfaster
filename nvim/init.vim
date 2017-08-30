@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 30 ago 2017 16:09:12 -03
+" Last Change: qua 30 ago 2017 16:17:50 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -301,6 +301,14 @@ endif
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>m :History<cr>
 nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
+
+" Better command history with q:
+command! CmdHist call fzf#vim#command_history({'right': '40'})
+nnoremap q: :CmdHist<CR>
+
+" Better search history
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap q/ :QHist<CR>
 
 "command! FZFMru call fzf#run({
 "\  'source':  v:oldfiles,

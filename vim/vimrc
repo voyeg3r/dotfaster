@@ -150,6 +150,14 @@ nnoremap <silent> <leader>b :Buffers<cr>
 " <M-S-p> for MRU
 nnoremap <silent> <leader>m :History<cr>
 
+" Better command history with q:
+command! CmdHist call fzf#vim#command_history({'right': '40'})
+nnoremap q: :CmdHist<CR>
+
+" Better search history
+command! QHist call fzf#vim#search_history({'right': '40'})
+nnoremap q/ :QHist<CR>
+
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
 \  'sink':    'e',
