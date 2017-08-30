@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 29 ago 2017 19:21:29 -03
+" Last Change: qua 30 ago 2017 16:09:12 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -299,7 +299,15 @@ if executable('ag')
 endif
 
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>m :History<cr>
 nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
+
+"command! FZFMru call fzf#run({
+"\  'source':  v:oldfiles,
+"\  'sink':    'e',
+"\  'options': '-m -x +s',
+"\  'down':    '40%'})
+"nnoremap ,m :FZFMru<cr>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -394,12 +402,6 @@ endfun
 nnoremap ,l :call MruFile()<cr>
 command! -nargs=0 Mru call MruFile()
 
-command! FZFMru call fzf#run({
-\  'source':  v:oldfiles,
-\  'sink':    'e',
-\  'options': '-m -x +s',
-\  'down':    '40%'})
-nnoremap ,m :FZFMru<cr>
 
 nnoremap ç :
 

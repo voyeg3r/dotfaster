@@ -75,6 +75,7 @@ set wildmode=full
 set completeopt=menu,preview
 set complete=.,w,k
 setlocal complete=.,w,k,b,u
+let mapleader=','
 
 " entrar no modo comando mais rápido
 nnoremap ç :
@@ -142,6 +143,12 @@ autocmd User IncSearchExecute :call search_pulse#Pulse()
 " <C-p> to search files
 nnoremap <silent> <c-p> :FZF -m ~/.dotfiles<cr>
 " end - fzf configuration
+
+" <M-p> for open buffers
+nnoremap <silent> <leader>b :Buffers<cr>
+
+" <M-S-p> for MRU
+nnoremap <silent> <leader>m :History<cr>
 
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
@@ -791,7 +798,7 @@ iab fname <c-r>=expand("%:p")<cr>
 iab -> →
 iab tambem também
 iab fro for
-iab ,m <voyeg3r  gmail.com>
+"iab ,m <voyeg3r  gmail.com>
 iab mymail <voyeg3r  gmail.com>
 iab slas Sérgio Luiz Araújo Silva
 iab vc você
