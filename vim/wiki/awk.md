@@ -424,16 +424,16 @@ Fiz um apanhado na web pra compra de livros buscando o menor preço, algo assim:
 
 O comando ficou assim:
 
-    grep '^+' livros-gabriel.md | sed 's|,|.|' | awk '{sum += $NF} END {print sum}'
-    1085.07
-
 Filtra-se com o própiro sed as linhs que começam com o sinal de mais, a opção `-n` instrui
 o sed a não imprimir nada sem que lhe seja soliticado, então nas linhas filtradas trocamos
 a vírgula por ponto, uma vez que o awk e outros programas unix seguem o padrão matematico
 norte americano que usa ponto ao invés de vírgulas.
 
     sed -n '/^+/ s/,/./gp' livros-gabriel.md | awk '{sum += $NF} END {print sum}'
+    1085.07
 
+Na solução awk usamos o operador `$NF` que corresponde ao último campo, independente
+de quantos campos existam.
 
 ### Trocar de posição os campos 1 e 2 de um arquivo e imprimir a linha
 
