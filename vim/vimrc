@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qui 31 ago 2017 15:33:11 -03
+" Last Change: qui 31 ago 2017 16:32:08 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -477,8 +477,8 @@ map <silent> <F9> <esc>:call LastModified()<cr>
 fun! ChangeHeader()
     keepjumps call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
 endfun
-command! -nargs=0 CH :call ChangeHeader()
-au BufWritePost * :silent call ChangeHeader()
+command! -nargs=0 CH :keepjumps call ChangeHeader()
+au BufWritePost * :silent keepjumps call ChangeHeader()
 
 " jump to next place holder
 function! JumpToNextPlaceholder()
@@ -553,12 +553,10 @@ function! SetTabSize(size)
 endfunction
 command! -nargs=1 Sts call SetTabSize(<f-args>)
 
-" remove consecutive blank lines
-" see Preserve function definition
 fun! DelBlankLines()
-    silent keepjumps call Preserve('g/\v^\n{2,}/d')
+    keepjumps call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
-command! -nargs=0 DelBlank :call DelBlankLines()<cr>
+command! -nargs=0 DelBlank :call DelBlankLines()
 
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call DelBlankLines()<cr>

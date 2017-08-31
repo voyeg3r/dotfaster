@@ -35,6 +35,14 @@ let s:bin = {
 \ 'preview': s:bin_dir.(executable('ruby') ? 'preview.rb' : 'preview.sh'),
 \ 'tags':    s:bin_dir.'tags.pl' }
 let s:TYPE = {'dict': type({}), 'funcref': type(function('call')), 'string': type(''), 'list': type([])}
+if s:is_win
+  if has('nvim')
+    let s:bin.preview = split(system('for %A in ("'.s:bin.preview.'") do echo %~sA'), "\n")[1]
+  else
+    let s:bin.preview = fnamemodify(s:bin.preview, ':8')
+  endif
+  let s:bin.preview = escape(s:bin.preview, '\')
+endif
 
 function! s:merge_opts(dict, eopts)
   if empty(a:eopts)
@@ -63,9 +71,6 @@ function! fzf#vim#with_preview(...)
   if len(args) && type(args[0]) == s:TYPE.dict
     let options = copy(args[0])
     call remove(args, 0)
-  endif
-  if s:is_win
-    return options
   endif
 
   " Preview window
@@ -199,6 +204,10 @@ function! s:fzf(name, opts, extra)
   let eopts  = has_key(extra, 'options') ? remove(extra, 'options') : ''
   let merged = extend(copy(a:opts), extra)
   call s:merge_opts(merged, eopts)
+  let mopts = get(merged, 'options', '')
+  if s:is_win && empty(get(merged, 'source', '')) && empty($FZF_DEFAULT_COMMAND) && (type(mopts) == s:TYPE.list ? join(mopts) : mopts) =~# s:bin.preview
+    return s:warn('preview script is incompatible with the default command in Windows')
+  endif
   return fzf#run(s:wrap(a:name, merged, bang))
 endfunction
 
@@ -408,9 +417,11 @@ endfunction
 " History[:/]
 " ------------------------------------------------------------------
 function! s:all_files()
-  return extend(
-  \ filter(reverse(copy(v:oldfiles)), "filereadable(expand(v:val))"),
-  \ filter(map(s:buflisted(), 'bufname(v:val)'), '!empty(v:val)'))
+  return fzf#vim#_uniq(map(
+    \ filter([expand('%')], 'len(v:val)')
+    \   + filter(map(s:buflisted_sorted(), 'bufname(v:val)'), 'len(v:val)')
+    \   + filter(copy(v:oldfiles), "filereadable(expand(v:val))"),
+    \ 'fnamemodify(v:val, ":~:.")'))
 endfunction
 
 function! s:history_source(type)
@@ -464,8 +475,8 @@ endfunction
 
 function! fzf#vim#history(...)
   return s:fzf('history-files', {
-  \ 'source':  filter(reverse(s:all_files()), 'v:val != expand("%")'),
-  \ 'options': '-m --prompt "Hist> "'
+  \ 'source':  s:all_files(),
+  \ 'options': ['-m', '--header-lines', !empty(expand('%')), '--prompt', 'Hist> ']
   \}, a:000)
 endfunction
 
@@ -565,16 +576,18 @@ endfunction
 function! s:sort_buffers(...)
   let [b1, b2] = map(copy(a:000), 'get(g:fzf#vim#buffers, v:val, v:val)')
   " Using minus between a float and a number in a sort function causes an error
-  return b1 > b2 ? 1 : -1
+  return b1 < b2 ? 1 : -1
+endfunction
+
+function! s:buflisted_sorted()
+  return sort(s:buflisted(), 's:sort_buffers')
 endfunction
 
 function! fzf#vim#buffers(...)
-  let bufs = map(sort(s:buflisted(), 's:sort_buffers'), 's:format_buffer(v:val)')
-
   let [query, args] = (a:0 && type(a:1) == type('')) ?
         \ [a:1, a:000[1:]] : ['', a:000]
   return s:fzf('buffers', {
-  \ 'source':  reverse(bufs),
+  \ 'source':  map(s:buflisted_sorted(), 's:format_buffer(v:val)'),
   \ 'sink*':   s:function('s:bufopen'),
   \ 'options': '+m -x --tiebreak=index --header-lines=1 --ansi -d "\t" -n 2,1..2 --prompt="Buf> "'.s:q(query)
   \}, args)
@@ -630,7 +643,7 @@ function! fzf#vim#ag(query, ...)
   let query = empty(a:query) ? '^(?=.)' : a:query
   let args = copy(a:000)
   let ag_opts = len(args) > 1 && type(args[0]) == s:TYPE.string ? remove(args, 0) : ''
-  let command = ag_opts . ' ' . shellescape(query)
+  let command = ag_opts . ' ' . fzf#shellescape(query)
   return call('fzf#vim#ag_raw', insert(args, command, 0))
 endfunction
 
@@ -654,9 +667,9 @@ function! fzf#vim#grep(grep_command, with_column, ...)
   let opts = {
   \ 'source':  a:grep_command,
   \ 'column':  a:with_column,
-  \ 'options': '--ansi --prompt "'.capname.'> " '.
-  \            '--multi --bind alt-a:select-all,alt-d:deselect-all '.
-  \            '--color hl:68,hl+:110'
+  \ 'options': ['--ansi', '--prompt', capname.'> ',
+  \             '--multi', '--bind', 'alt-a:select-all,alt-d:deselect-all',
+  \             '--color', 'hl:68,hl+:110']
   \}
   function! opts.sink(lines)
     return s:ag_handler(a:lines, self.column)
@@ -1042,11 +1055,11 @@ function! s:commits(buffer_local, args)
     return s:warn('Not in git repository')
   endif
 
-  let source = 'git log '.get(g:, 'fzf_commits_log_options', '--graph --color=always --format="%C(auto)%h%d %s %C(green)%cr"')
-  let current = expand('%:S')
+  let source = 'git log '.get(g:, 'fzf_commits_log_options', '--graph --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'))
+  let current = expand('%')
   let managed = 0
   if !empty(current)
-    call system('git show '.current.' 2> /dev/null')
+    call system('git show '.fzf#shellescape(current).' 2> '.(s:is_win ? 'nul' : '/dev/null'))
     let managed = !v:shell_error
   endif
 
@@ -1054,7 +1067,7 @@ function! s:commits(buffer_local, args)
     if !managed
       return s:warn('The current buffer is not in the working tree')
     endif
-    let source .= ' --follow '.current
+    let source .= ' --follow '.fzf#shellescape(current)
   endif
 
   let command = a:buffer_local ? 'BCommits' : 'Commits'
@@ -1062,15 +1075,15 @@ function! s:commits(buffer_local, args)
   let options = {
   \ 'source':  source,
   \ 'sink*':   s:function('s:commits_sink'),
-  \ 'options': '--ansi --multi --tiebreak=index --reverse '.
-  \   '--inline-info --prompt "'.command.'> " --bind=ctrl-s:toggle-sort '.
-  \   '--expect='.expect_keys
+  \ 'options': ['--ansi', '--multi', '--tiebreak=index', '--reverse',
+  \   '--inline-info', '--prompt', command.'> ', '--bind=ctrl-s:toggle-sort',
+  \   '--header', ':: Press '.s:magenta('CTRL-S', 'Special').' to toggle sort',
+  \   '--expect='.expect_keys]
   \ }
 
   if a:buffer_local
-    let options.options .= ',ctrl-d --header ":: Press '.s:magenta('CTRL-S', 'Special').' to toggle sort, '.s:magenta('CTRL-D', 'Special').' to diff"'
-  else
-    let options.options .=        ' --header ":: Press '.s:magenta('CTRL-S', 'Special').' to toggle sort"'
+    let options.options[-2] .= ', '.s:magenta('CTRL-D', 'Special').' to diff'
+    let options.options[-1] .= ',ctrl-d'
   endif
 
   return s:fzf(a:buffer_local ? 'bcommits' : 'commits', options, a:args)
@@ -1158,7 +1171,7 @@ endfunction
 
 function! s:complete_trigger()
   let opts = copy(s:opts)
-  let opts.options = printf('+m -q %s %s', shellescape(s:query), get(opts, 'options', ''))
+  call s:merge_opts(opts, ['+m', '-q', s:query])
   let opts['sink*'] = s:function('s:complete_insert')
   let s:reducer = s:pluck(opts, 'reducer', s:function('s:first_line'))
   call fzf#run(opts)
@@ -1239,12 +1252,14 @@ function! fzf#vim#complete(...)
   let s:opts = s:eval(s:opts, 'options', s:query)
   let s:opts = s:eval(s:opts, 'extra_options', s:query)
   if has_key(s:opts, 'extra_options')
-    let s:opts.options =
-      \ join(filter([get(s:opts, 'options', ''), remove(s:opts, 'extra_options')], '!empty(v:val)'))
+    call s:merge_opts(s:opts, remove(s:opts, 'extra_options'))
   endif
   if has_key(s:opts, 'options')
-    " FIXME: fzf currently doesn't have --no-expect option
-    let s:opts.options = substitute(s:opts.options, '--expect=[^ ]*', '', 'g')
+    if type(s:opts.options) == s:TYPE.list
+      call add(s:opts.options, '--no-expect')
+    else
+      let s:opts.options .= ' --no-expect'
+    endif
   endif
 
   call feedkeys("\<Plug>(-fzf-complete-trigger)")
