@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 31 ago 2017 16:14:44 -03
+" Last Change: qui 31 ago 2017 18:41:54 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -474,7 +474,7 @@ endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
 fun! CleanExtraSpaces()
-    keepjumps call Preserve("s/\s\+$//e")
+    call Preserve('%s/\s\+$//ge')
 endfun
 com! Cls :call CleanExtraSpaces()
 au! BufwritePre * :call CleanExtraSpaces()
@@ -491,7 +491,7 @@ endfun
 " dos2unix ^M
 fun! Dos2unixFunction()
     "call Preserve('%s/$//ge')
-    keepjumps call Preserve("%s/\x0D$//e")
+    call Preserve("%s/\x0D$//e")
     set ff=unix
     set bomb
     set encoding=utf-8
@@ -511,7 +511,7 @@ if !exists('*Preserve')
         " Preparation: save last search, and cursor position.
         let save_cursor = getpos(".")
         let old_query = getreg('/')
-        execute a:command
+        execute 'keepjumps' . a:command
         " Clean up: restore previous search history, and cursor position
         call setpos('.', save_cursor)
         call setreg('/', old_query)
@@ -521,7 +521,7 @@ endif
 " remove consecutive blank lines
 " see Preserve function definition
 fun! DelBlankLines()
-    keepjumps call Preserve('%s/^\n\{2,}/\r/ge')
+    call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 
