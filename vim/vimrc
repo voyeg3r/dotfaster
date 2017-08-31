@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qui 31 ago 2017 16:32:08 -03
+" Last Change: qui 31 ago 2017 16:37:49 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -44,11 +44,7 @@ set viminfo=%,<800,'10,/50,:100,h,f1,n~/.viminfo
 
 if !exists("*VimReloadFunction")
     fun! VimReloadFunction()
-        " the idea for this function happened when I realized
-        " that every time I reload vim it puts the cursor at the
-        " begginingbeggining of the file
         keepjumps call Preserve(":source ~/.vimrc")
-        " See how the function Preserve is defined
     endfu
 endif
 com! ReloadVim call VimReloadFunction()
