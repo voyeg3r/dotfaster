@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 30 ago 2017 16:17:50 -03
+" Last Change: qui 31 ago 2017 14:15:45 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -72,6 +72,8 @@ Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'NLKNguyen/papercolor-theme'
+
 
 call plug#end()
 
@@ -140,9 +142,10 @@ set ruler
 set number
 
 let no_buffers_menu=1
-if !exists('g:not_finish_vimplug')
-  colorscheme molokai
-endif
+
+colorscheme PaperColor
+let g:airline_theme='papercolor'
+set background=dark
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -301,14 +304,6 @@ endif
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>m :History<cr>
 nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
-
-" Better command history with q:
-command! CmdHist call fzf#vim#command_history({'right': '40'})
-nnoremap q: :CmdHist<CR>
-
-" Better search history
-command! QHist call fzf#vim#search_history({'right': '40'})
-nnoremap q/ :QHist<CR>
 
 "command! FZFMru call fzf#run({
 "\  'source':  v:oldfiles,
@@ -485,16 +480,12 @@ fun! CleanSubtitles()
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
-au! BufwritePre * :call CleanExtraSpaces()
 
 fun! CleanExtraSpaces()
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
-        :%s/\s\+$//e
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
+    keepjumps call Preserve("s/\s\+$//e")
 endfun
 com! Cls :call CleanExtraSpaces()
+au! BufwritePre * :call CleanExtraSpaces()
 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
@@ -507,14 +498,14 @@ endfun
 
 " dos2unix ^M
 fun! Dos2unixFunction()
-    call Preserve("%s/$//g")
-    "call Preserve("%s/\\x0D$//")
+    "call Preserve('%s/$//ge')
+    keepjumps call Preserve("%s/\x0D$//e")
     set ff=unix
     set bomb
     set encoding=utf-8
     set fileencoding=utf-8
 endfun
-com! Dos2Unix call Dos2unixFunction()
+com! Dos2Unix :call Dos2unixFunction()
 
 
 " one liner rename file
@@ -522,11 +513,25 @@ com! Dos2Unix call Dos2unixFunction()
 command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # | endtry
 
 
+" Utility function that save last search and cursor position
+" http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
+" video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
+if !exists('*Preserve')
+    function! Preserve(command)
+        " Preparation: save last search, and cursor position.
+        let save_cursor = getpos(".")
+        let old_query = getreg('/')
+        execute a:command
+        " Clean up: restore previous search history, and cursor position
+        call setpos('.', save_cursor)
+        call setreg('/', old_query)
+    endfunction
+endif
+
 " remove consecutive blank lines
 " see Preserve function definition
 fun! DelBlankLines()
-    keepjumps call Preserve("g/^\\n\\{2,}/d")
-    "keepjumps call Preserve("g/^$/,/./-j")
+    keepjumps call Preserve("g/^$/,/./-j")
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 

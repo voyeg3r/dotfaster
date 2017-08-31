@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 27 ago 2017 18:35:34 -03
+" Last Change: qui 31 ago 2017 14:54:55 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -107,6 +107,8 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/juanedi/predawn.vim'
+Plug 'NLKNguyen/papercolor-theme'
+
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -117,7 +119,9 @@ endif
 
 call plug#end()
 
-colorscheme molokai
+"colorscheme molokai
+colorscheme PaperColor
+let g:airline_theme='papercolor'
 
 " pulse search integration with incsearch PlugIn
 " incsearch and vim search pulse
@@ -149,14 +153,6 @@ nnoremap <silent> <leader>b :Buffers<cr>
 
 " <M-S-p> for MRU
 nnoremap <silent> <leader>m :History<cr>
-
-" Better command history with q:
-command! CmdHist call fzf#vim#command_history({'right': '40'})
-nnoremap q: :CmdHist<CR>
-
-" Better search history
-command! QHist call fzf#vim#search_history({'right': '40'})
-nnoremap q/ :QHist<CR>
 
 command! FZFMru call fzf#run({
 \  'source':  v:oldfiles,
@@ -477,12 +473,7 @@ endfun
 " source: http://vim.wikia.com/wiki/Insert_current_date_or_time
 function! LastModified()
     if &modified
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
-            "1,10s/\v^.*Last Change:(\s+|\t+)\zs.*/\=strftime("%c")/e
-            1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
+        keepjumps call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
     endif
 endfun
 command! -nargs=0 LM :call LastModified()<cr>
@@ -490,14 +481,10 @@ autocmd BufWritePre * :call LastModified()
 map <silent> <F9> <esc>:call LastModified()<cr>
 
 fun! ChangeHeader()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
+    keepjumps call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
 endfun
 command! -nargs=0 CH :call ChangeHeader()
-"au BufWritePost * :silent call ChangeHeader()
+au BufWritePost * :silent call ChangeHeader()
 
 nnoremap <Enter> :call append(line('.'), '')<CR>
 nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
@@ -529,6 +516,7 @@ command! -nargs=0 GetSubs :call CleanSubtitles()
 
 au! BufwritePre * :call CleanExtraSpaces()
 
+
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
 " video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
@@ -555,7 +543,7 @@ endfun
 
 " dos2unix ^M
 fun! Dos2unixFunction()
-    call Preserve("%s/$//g")
+    call Preserve("%s/$//ge")
     "call Preserve("%s/\\x0D$//")
     set ff=unix
     set bomb
@@ -579,14 +567,12 @@ command! -nargs=1 Sts call SetTabSize(<f-args>)
 " remove consecutive blank lines
 " see Preserve function definition
 fun! DelBlankLines()
-    keepjumps call Preserve("g/^\\n\\{2,}/d")
-    "keepjumps call Preserve("g/^$/,/./-j")
+    silent keepjumps call Preserve('g/\v^\n{2,}/d')
 endfun
-command! -nargs=0 DelBlank :call DelBlankLines()
-
+command! -nargs=0 DelBlank :call DelBlankLines()<cr>
 
 " delete sucessive blank lines and trailing spces
-nnoremap <special> <leader>d :call Preserve(DelBlank())<cr>
+nnoremap <special> <leader>d :call DelBlankLines()<cr>
 nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 nnoremap _= :call Preserve("normal gg=G")<CR>
 
