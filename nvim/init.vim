@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 31 ago 2017 14:15:45 -03
+" Last Change: qui 31 ago 2017 16:13:53 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -13,7 +13,6 @@ set nocompatible
 set path+=**
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -73,7 +72,6 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
 Plug 'NLKNguyen/papercolor-theme'
-
 
 call plug#end()
 
@@ -342,7 +340,6 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
@@ -390,7 +387,6 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-
 " This function allows you to open the last edited file
 " in order to open the last file from the SHELL
 " on nvim you have to create an alias
@@ -404,7 +400,6 @@ fun! MruFile()
 endfun
 nnoremap ,l :call MruFile()<cr>
 command! -nargs=0 Mru call MruFile()
-
 
 nnoremap ç :
 
@@ -427,7 +422,6 @@ nnoremap -- <Plug>VimwikiRemoveHeaderLevel
 "    To display next match use |:lnext| command.
 "    To display previous match use |:lprevious| command.
 let g:vimwiki_table_mappings = 0
-
 
 " Highlight redundant whitespace and tabs.
 " This has the advantage of not highlighting each space you type at
@@ -464,7 +458,6 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
-
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results
 " on clipboard to be pasted on anki
@@ -479,7 +472,6 @@ fun! CleanSubtitles()
     call setreg('/', old_query)
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
-
 
 fun! CleanExtraSpaces()
     keepjumps call Preserve("s/\s\+$//e")
@@ -507,11 +499,9 @@ fun! Dos2unixFunction()
 endfun
 com! Dos2Unix :call Dos2unixFunction()
 
-
 " one liner rename file
 " source: http://stackoverflow.com/questions/1205286/renaming-the-current-file-in-vim
 command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # | endtry
-
 
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
@@ -531,7 +521,7 @@ endif
 " remove consecutive blank lines
 " see Preserve function definition
 fun! DelBlankLines()
-    keepjumps call Preserve("g/^$/,/./-j")
+    keepjumps call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 
