@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qui 31 ago 2017 18:18:25 -03
+" Last Change: sex 01 set 2017 07:16:25 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -457,13 +457,14 @@ fun! InsertChangeLog()
 endfun
 
 " Esta função Modifica o change log
-" If buffer modified, update any 'Last modified: ' in the first 20 lines.
-" 'Last modified: ' can have up to 10 characters before (they are retained).
+" If buffer modified, update any 'Last modified: ' in the first 5 lines.
 " Restores cursor and window position using save_cursor variable.
 " source: http://vim.wikia.com/wiki/Insert_current_date_or_time
 function! LastModified()
     if &modified
-        call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+        if line('$')>=5
+            call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+        endif
     endif
 endfun
 command! -nargs=0 LM :call LastModified()<cr>
@@ -471,7 +472,9 @@ autocmd BufWritePre * :call LastModified()
 map <silent> <F9> <esc>:call LastModified()<cr>
 
 fun! ChangeHeader()
-    call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+    if line('$')>=5
+        call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+    endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()
 au BufWritePost * :call ChangeHeader()
@@ -501,19 +504,18 @@ fun! CleanSubtitles()
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
-
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
 " video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
 if !exists('*Preserve')
     function! Preserve(command)
         " Preparation: save last search, and cursor position.
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
         execute 'keepjumps ' . a:command
         " Clean up: restore previous search history, and cursor position
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
     endfunction
 endif
 

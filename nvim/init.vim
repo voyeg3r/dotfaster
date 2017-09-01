@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 31 ago 2017 18:41:54 -03
+" Last Change: sex 01 set 2017 07:16:36 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -439,11 +439,9 @@ nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
 fun! ChangeHeader()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    1,10s/\vLast Change:(\s+|\t+)\zs(.*)/\=strftime("%c")/e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
+    if line('$')>=5
+        call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+    endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()
 au! BufReadPost * :silent call ChangeHeader()
@@ -509,12 +507,12 @@ command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # |
 if !exists('*Preserve')
     function! Preserve(command)
         " Preparation: save last search, and cursor position.
-        let save_cursor = getpos(".")
-        let old_query = getreg('/')
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
         execute 'keepjumps' . a:command
         " Clean up: restore previous search history, and cursor position
-        call setpos('.', save_cursor)
-        call setreg('/', old_query)
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
     endfunction
 endif
 
