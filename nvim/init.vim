@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 01 set 2017 07:16:36 -03
+" Last Change: sex 01 set 2017 17:18:12 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -509,7 +509,7 @@ if !exists('*Preserve')
         " Preparation: save last search, and cursor position.
         let l:win_view = winsaveview()
         let l:old_query = getreg('/')
-        execute 'keepjumps' . a:command
+        silent! execute 'keepjumps' . a:command
         " Clean up: restore previous search history, and cursor position
         call winrestview(l:win_view)
         call setreg('/', l:old_query)

@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 01 set 2017 07:16:25 -03
+" Last Change: sex 01 set 2017 17:17:57 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -512,7 +512,7 @@ if !exists('*Preserve')
         " Preparation: save last search, and cursor position.
         let l:win_view = winsaveview()
         let l:old_query = getreg('/')
-        execute 'keepjumps ' . a:command
+        silent! execute 'keepjumps ' . a:command
         " Clean up: restore previous search history, and cursor position
         call winrestview(l:win_view)
         call setreg('/', l:old_query)
@@ -558,8 +558,6 @@ command! -nargs=0 DelBlank :call DelBlankLines()
 
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call DelBlankLines()<cr>
-nnoremap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-nnoremap _= :call Preserve("normal gg=G")<CR>
 
 fun! CleanExtraSpaces()
     call Preserve('%s/\s\+$//ge')
