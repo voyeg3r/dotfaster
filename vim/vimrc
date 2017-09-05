@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: seg 04 set 2017 18:38:14 -03
+" Last Change: ter 05 set 2017 18:46:08 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -80,6 +80,7 @@ nnoremap K :help <C-r><C-w><CR>
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 "Plug 'tpope/vim-speeddating'
+Plug 'nelstrom/vim-markdown-folding'
 Plug 'jiangmiao/auto-pairs'
 Plug 'haya14busa/incsearch.vim'
 Plug 'inside/vim-search-pulse'
@@ -392,7 +393,7 @@ if has("autocmd") && exists("+omnifunc")
 endif
 
 " select last paste in visual mode
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
@@ -579,8 +580,9 @@ set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
 
 " move vertically by visual line
-nnoremap j gj
-nnoremap k gk
+" source: https://stackoverflow.com/a/21000307/2571881
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null

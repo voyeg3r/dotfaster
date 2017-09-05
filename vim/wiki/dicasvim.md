@@ -1,24 +1,12 @@
 ``` markdown
 Arquivo: dicasvim.md
-Created: ter 05/set/2017 hs 14:05
-Last Change: ter 05 set 2017 14:05:33 -03
+Created:     Sáb 06/Nov/2010 hs 18:10
+Last Change: ter 05 set 2017 17:10:23 -03
 ```
 
 # Vim tips for everyone
 
 see also [Best of vim tips](vimbesttips.md)
-
-```
-File:		 DicasVim.md
-Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 27 ago 2017 19:11:11 -03
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
-
 See also: [Regex](Regex.md) page
 
 ### Using vim with no plugins
@@ -40,10 +28,9 @@ See also: [Regex](Regex.md) page
 For those who do not know what "primary selection is", putting it simple.
 
 	"The text selected and is just captured automatically to its
-	special clipboard space"
+	special clipboard space (Linux only)"
 
 On vim just press: Shift-insert "primary selection"
-
 
 While in insert mode, you can use Ctrl-R {register}, where register can be:
 
@@ -73,17 +60,6 @@ For more information, view the documentation with :h i_ctrl-r
 
     g; ....... goes to older position on changelist
     g, ....... goes to newer positoin on changelist
-
-### Editing .viminfo file
-+ https://stackoverflow.com/a/2833376/2571881
-
-    Open the .viminfo file in vim,
-
-`:set viminfo=` to turn off the auto-saving of info to the `.viminfo` file. If
-you don't do this, Vim will overwrite all your changes when you quit,
-
-Remove everything you don't want (perhaps by using Johnsyweb's answer, or just
-by deleting the lines with manual edit commands), save the file, and quit vim,
 
 ### Exit ex mode
 
@@ -167,7 +143,7 @@ edit /etc/nginx/nginx.conf in read-only mode:
      sudo vim +M /etc/nginx/nginx.conf
 
 ### Scrolling down both parts of a split-window at the same time in Vim
-source [Stack Overflow](http://stackoverflow.com/a/2986980/2571881)
+source http://stackoverflow.com/a/2986980/2571881
 
 First you can open two files, each in its window, doing this:
 
@@ -2029,10 +2005,14 @@ set foldcolumn=3
 ```
 
 ``` markdown
-zi .............  opens and closes all folders
+zi ................  opens and closes all folders
+za ................  toggles current fold
 zO ................  open all folders
 zM ................  close all folders
 ```
+
+    zMzv ..........  closes all folders and opens at the cursor position
+    set foldmethod?  shows current foldmethod
 
 ### I have a file which has contents like so:
 + https://stackoverflow.com/a/45477513/2571881

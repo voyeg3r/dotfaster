@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 05 set 2017 14:01:26 -03
+" Last Change: ter 05 set 2017 18:46:16 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -31,6 +31,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'nelstrom/vim-markdown-folding'
 Plug 'haya14busa/incsearch.vim'
 "Plug 'timakro/vim-searchant'
 Plug 'inside/vim-search-pulse'
@@ -191,7 +192,12 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap K :help <C-r><C-w><CR>
 
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" move vertically by visual line
+" source: https://stackoverflow.com/a/21000307/2571881
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
