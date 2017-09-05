@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 01 set 2017 17:17:57 -03
+" Last Change: seg 04 set 2017 18:38:14 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -392,7 +392,7 @@ if has("autocmd") && exists("+omnifunc")
 endif
 
 " select last paste in visual mode
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'

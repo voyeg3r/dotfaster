@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 01 set 2017 17:18:12 -03
+" Last Change: ter 05 set 2017 14:01:26 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -190,6 +190,8 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap K :help <C-r><C-w><CR>
+
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}

@@ -1,3 +1,9 @@
+``` markdown
+Arquivo: awk.md
+Created: ter 05/set/2017 hs 13:55
+Last Change: ter 05 set 2017 14:03:35 -03
+```
+
 # Introdução
 O awk trabalha sempre dessa forma:
 
@@ -32,7 +38,6 @@ pois o cifrão "$" representa para o awk indicador de campos
 usadas aspas simples o shell tentará interpretar primeiro
 buscando alí uma variável que na verdade não existe.
 
-
 ### Variáveis do awk
 
     NR     Contém o número do registro atual (linha)
@@ -51,6 +56,38 @@ buscando alí uma variável que na verdade não existe.
 
     cat -n /etc/passwd | awk 'NR != 1 {print $0}'
 
+### Registers separated by blank lines
+
+Let's say you have a file like this:
+
+    HostName: Empresa1-AD1
+    TaskName: Veracid
+    Last Result: 1
+    Start Time: 07:00:00
+    Start Date: 18/12/2011
+    Power Management: No Start On Batteries, Stop On Battery Mode
+
+    HostName: Empresa2-AD1
+    TaskName: Veracid-01
+    Last Result: 0
+    Start Time: 08:00:00
+    Start Date: 18/12/2011
+    Power Management: No Start On Batteries, Stop On Battery Mode
+
+    HostName: Empresa1-AD2
+    TaskName: Veracid-02
+    Last Result: 01d
+    Start Time: 18:00:00
+    Start Date: 17/11/2011
+    Power Management: No Start On Batteries, Stop On Battery Mode
+
+And you want to print all registers in wich the field "Last Result" does not
+end with zero
+
+The solution is:
+
+    awk 'BEGIN {RS="";FS="\n"} {if ($3 ~ /[^0]$/) print $0,"\n"}' teste.txt
+
 ### convert DOS file to Unix file
 
     To use awk to convert a Windows file to Unix, enter:
@@ -60,7 +97,6 @@ buscando alí uma variável que na verdade não existe.
     To convert a Unix file to Windows, enter:
 
         awk 'sub("$", "\r")' unixfile.txt > winfile.txt
-
 
     Usei este recurso para manipular meus contatos do telefone que
     estavam no formato vcf mas que usavam terminador de linha do windows
@@ -131,7 +167,6 @@ Edit, filter engineering :
 
     awk '$5=="A" && $3=="Engineering"{print $1, $2}' file
 ```
-
 
 ### How to print third column to last column?
 + https://stackoverflow.com/a/1602063/2571881
@@ -218,12 +253,10 @@ estou precisando formatá-los pegando apenas o primeiro e o último nome, o úni
 problema é que eles não tem o mesmo tamanho... como devo fazer? alguem pode me
 ajudar?
 
-
 JJ.Santanna
 ```
 
     awk '{print $1,$NF}' teste.txt
-
 
 ### Pegando o número ip
    pegando a interface conectada
@@ -367,7 +400,6 @@ fazer isso?
 
     calc(){ awk "BEGIN{ print $* }" ;}
 
-
 ### Exibindo os maiores arquivos
 Insira estas linhas no bashrc
 
@@ -452,7 +484,6 @@ de quantos campos existam.
     ls -l | awk ’$6 == "Nov" { sum += $5 }
              END { print sum }’
 
-
 ### Localizando processos por usuário
 
      ``` sh
@@ -499,7 +530,6 @@ Eu tenho uma fatura assim:
 ```
 
     awk '{ total = total + $3} END {print total} ' fatura.txt
-
 
 ``` markdown
 A variável total recebe o valor dela + o acumulado
@@ -593,7 +623,6 @@ teste
 20
 teste
 
-
 ... e quer definir como delimitador de registros a palavra "teste"
 e o delimitador de campos para quebra de linha faça:
 
@@ -607,7 +636,6 @@ awk 'BEGIN { FS="\n"; RS="teste"} {if (NR=="2") print }' teste.txt
 
             cat -vet target-file
 
-
 ### Imprimir valores negativos
 Como imprimir somente os valores negativos usando o awk?
 Queremos imprimir somente os valores negativos do seguinte arquivo
@@ -616,8 +644,6 @@ Queremos imprimir somente os valores negativos do seguinte arquivo
 -2233,25644,23233,2
 6211,-1212,4343,43
 -2434,621171,9121,-33
-
-
 
 awk  'BEGIN {RS=",|\n"}/^-/ {print}' file.txt
 
@@ -631,21 +657,17 @@ como sendo uma linha, em seguida usamos uma expressão regular para pegar o come
 
 awk '{print $1,($2<0.1) ? 0.0 : $2}' file1.txt
 
-
 ### Imprimir somente usuários com UID igual a 1.000 ou maior
 
 awk -F: '$3 > 999 {print $0}' /etc/passwd
-
 
 ### Imprimir a última linha
 
 awk 'END {print $0}' /etc/passwd
 
-
 ### contar o número de linhas em um arquivo
 
  awk 'END { print NR }' <arquivo>
-
 
 ### Problemas da lista shell script
 
@@ -664,7 +686,6 @@ teste tty2 Thu Nov 13 13:09 - 13:31 (00:22)
 usuario pts/0 Thu Nov 13 12:49 - 12:50 (00:00)
 usuario tty1 Thu Nov 13 12:49 - 13:04 (00:14)
 usuario tty1 Thu Nov 13 13:09 - 13:23 (00:14)
-
 
 e preciso dessas informações
 
@@ -685,7 +706,6 @@ solução
 
   awk '{$1, $6, $8, $9}' arquivo
 
-
 ### print the total number of lines that contain "Beth"
 
  awk '/Beth/{n++}; END {print n+0}' file
@@ -694,12 +714,10 @@ solução
 
 seq 50| awk 'BEGIN {a=1; b=1} {print a; c=a+b; a=b; b=c}'
 
-
 ### Awk - replace blank spaces with single space
 Fonte: http://unstableme.blogspot.com/2009/11/awk-replace-blank-spaces-with-single.html
 
 Input file 'file.txt' contains fields separated with uneven spaces (or tabs)
-
 
 $ cat file.txt
 6767            1212   9090 12
@@ -707,10 +725,8 @@ $ cat file.txt
 76767           12121 909090    121212
 12      9090            1212                            21
 
-
 Required: Replace one or more space with single space or single tab or comma.
 The solutions using awk:
-
 
 $ awk -v OFS="," '$1=$1' file.txt
 Output:
@@ -719,16 +735,12 @@ Output:
 76767,12121,909090,121212
 12,9090,1212,21
 
-
-
 $ awk -v OFS="\t" '$1=$1' file.txt
 Output:
 6767    1212    9090    12
 657676  1212    21212   21232
 76767   12121   909090  121212
 12      9090    1212    21
-
-
 
 $ awk -v OFS=" " '$1=$1' file.txt
 Output:
@@ -740,9 +752,7 @@ Output:
 ### Recebendo variáveis do shell
 + https://stackoverflow.com/a/19075707/2571881
 
-
     read_val=0301; awk -v var=${read_val} '{sub(/0019/,var); print}' infile
-
 
     echo "Enter ID: "
     read ID
@@ -758,7 +768,6 @@ Output:
 
 ### extraindo dados de um arquivo
 Você tem um arquivo assim:
-
 
     a.txt
     {some data}
@@ -778,7 +787,6 @@ Você tem um arquivo assim:
     b.txt: success
     c.txt: error
 
-
     com awk dá pra fazer assim:
 
     ``` sh
@@ -794,11 +802,9 @@ awk '{print $1": "$4}' RS="\n\n" results.txt
 
  Pegando o registro 1 e 3 imprimimos eth0 e wlan0
 
-
 Abaixo imprimimos o mac address da placa eth0 e wlan0
 
  ifconfig | awk '/ether/ {print $2}'
-
 
 ### juntando linhas a cada 5 linhas
 * fonte: http://br.groups.yahoo.com/group/shell-script/message/31367
@@ -848,7 +854,6 @@ Alessandro Almeida.
 solução
 
 awk '{printf("%s%s", $0, (NR%5 ? " " : "\n"))}'
-
 
 ### Referências
 * http://www.zago.eti.br/script/awk.html

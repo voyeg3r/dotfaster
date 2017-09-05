@@ -1,3 +1,9 @@
+``` markdown
+Arquivo: dicasvim.md
+Created: ter 05/set/2017 hs 14:05
+Last Change: ter 05 set 2017 14:05:33 -03
+```
+
 # Vim tips for everyone
 
 see also [Best of vim tips](vimbesttips.md)
@@ -56,6 +62,12 @@ While in insert mode, you can use Ctrl-R {register}, where register can be:
 	Ctrl-O "+p can also be used, for example.
 
 For more information, view the documentation with :h i_ctrl-r
+
+### gn command
+
+    cgn ............. change next searched pattern
+    n ............... go to next occurrence
+    . ............... repeat last change
 
 ### Moving around
 
@@ -700,7 +712,7 @@ source: http://stackoverflow.com/q/40414720/
  in order to select previous pasted text put this in your .vimrc
 
  " select last paste in visual mode
- nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
  to select the same ammount of lines for example
  use 1v
