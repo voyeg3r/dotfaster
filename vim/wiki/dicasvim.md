@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 05 set 2017 17:10:23 -03
+Last Change: qua 06 set 2017 10:12:35 -03
 ```
 
 # Vim tips for everyone
@@ -2009,6 +2009,8 @@ zi ................  opens and closes all folders
 za ................  toggles current fold
 zO ................  open all folders
 zM ................  close all folders
+zj ................  go to start of next fold
+zk ................  move to the end of previous fold
 ```
 
     zMzv ..........  closes all folders and opens at the cursor position
@@ -2255,6 +2257,10 @@ voltar. i_CTRL-X_s
 ### Seleção
 
 see [vim text objects the definitive guide](http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/)
+
+    cis .............. change inner sentence
+    yat .............. copy a tag
+    vip .............. visual select inner paragraph
 
 selecionar
 

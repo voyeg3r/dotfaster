@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 05 set 2017 18:46:16 -03
+" Last Change: ter 05 set 2017 18:59:42 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -193,6 +193,7 @@ nnoremap N Nzzzv
 nnoremap K :help <C-r><C-w><CR>
 
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+noremap gV `[v`]
 
 " move vertically by visual line
 " source: https://stackoverflow.com/a/21000307/2571881

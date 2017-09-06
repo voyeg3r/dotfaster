@@ -1,15 +1,9 @@
-# How use pandoc
-
 ``` markdown
 File:		 PanDoc.md
 Created:	 July 31 2014
-Last Change: ter 10 jan 2017 14:11:53 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: qua 06 set 2017 09:48:15 -03
 ```
+# How use pandoc
 
 ### Synopsis
 
@@ -39,7 +33,6 @@ pandoc -f html -t markdown http://www.fsf.org
 A paragraph is one or more lines of text followed by one or more blank line.
 Newlines are treated as spaces, so you can reflow your paragraphs as you like.
 If you need a hard line break, put two or more spaces at the end of a line.
-
 
 ### Footnotes
 
