@@ -14,7 +14,7 @@ there’s nothing like the warm fuzzy feeling of running the latest version
 While you’re at it, you should also get oh-my-zsh, a framework that makes Zsh
 easier to configure. It’s pretty easy to install, just run this:
 
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+    curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 ``` sh
 echo $0

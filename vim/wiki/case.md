@@ -1,6 +1,6 @@
 ### Introdução
 
- case $var in
-      foo|bar|more) ... ;;
-   esac
+    case $var in
+        foo|bar|more) ... ;;
+    esac
 

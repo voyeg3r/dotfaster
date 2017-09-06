@@ -12,13 +12,13 @@ O awk trabalha sempre dessa forma:
 O padrão é um termo buscado, pode ser imprimir as linhas que contém
 a palavra sérgio do arquivo de grupos:
 
-   awk -F: '/sergio/ {print $1}' /etc/group
+    awk -F: '/sergio/ {print $1}' /etc/group
 
 O awk considera o espaço como separador de campos padrão,
 devido à extrutura do arquivo "/etc/group" modificamos o
 separador de campos usando:
 
-  -F:
+    -F:
 
 O que está entre barras "/" é o padrão a ser buscado
 e o "$1" diz ao awk para imprimir o primeiro campo.
@@ -26,7 +26,7 @@ e o "$1" diz ao awk para imprimir o primeiro campo.
 Caso não seja informado nenhum padrão o awk imprime a linha inteira,
 a menos que peçamos para imprimir um campo, veja:
 
-  awk -F: '{print $1}' /etc/group
+    awk -F: '{print $1}' /etc/group
 
 No comando acima não foi informado nenhum padrão, apenas
 foi informado ao awk qual o separador de campos e qual

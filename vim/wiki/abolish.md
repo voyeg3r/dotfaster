@@ -1,12 +1,14 @@
+``` markdown
+Arquivo: abolish.md
+Last Change: qua 06 set 2017 19:55:26 -03
+```
 
 # O plugin abolish permite abreviações mais complexas como:
 
   :Abolish! {col,hon}our{,s,ed,ing} {}or{}
 
-
   Usando a exclamação o plugin já adiciona a abreviação no arquivo
   necessário ao carregamento da mesma
-
 
   Changing variables  - you can use cr followed by:
 

@@ -1,4 +1,4 @@
- Agradeço, Senhor
+Agradeço, Senhor
 
 Maria Dolores
 

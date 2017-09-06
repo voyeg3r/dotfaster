@@ -1,7 +1,7 @@
-" Arquivo de configuração do vim {{{1
 " vim:set et sw=4 ts=4:fdl=3: fdm=marker:
+" Arquivo de configuração do vim {{{1
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qua 06 set 2017 10:25:19 -03
+" Last Change: qua 06 set 2017 20:03:58 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -102,7 +102,6 @@ Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
-Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'eparreno/vim-l9'
@@ -128,6 +127,11 @@ else
 endif
 
 call plug#end()"}}}
+
+" netrw config
+let g:netrw_banner = 0
+let g:netrw_browse_split = 1
+let g:netrw_winsize = 25
 
 "colorscheme molokai
 colorscheme PaperColor
@@ -233,7 +237,8 @@ set mouse=a
 set t_Co=256
 set guioptions=egmrti
 "set gfn=Monospace\ 13
-set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 14
+"set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 14
+set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
 set anti enc=utf-8
 " https://gist.github.com/epegzz/1634235/fe5100a91157c5d0f0c8b7b6dedd126c6396ae19
 "set guifont=Monaco\ for\ Powerline:h13
@@ -302,17 +307,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
 
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
@@ -499,6 +494,12 @@ fun! CleanSubtitles()
     call setreg('/', old_query)
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
+
+fun! CountBuffers()
+    let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    echom "you have " . l:total . " opened buffers!"
+endfun
+command! -nargs=0 Nbuf :call CountBuffers()
 
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
@@ -761,7 +762,8 @@ endif
 
 iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 iab ihora <c-r>=strftime("%H:%M:%S")<cr>
-iab fname <c-r>=expand("%:p")<cr>
+"iab fname <c-r>=expand("%:p")<cr>
+iab fname <c-r>=expand("%")<cr>
 
 iab -> →
 iab mymail <voyeg3r ✉ gmail.com>

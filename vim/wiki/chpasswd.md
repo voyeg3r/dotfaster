@@ -8,7 +8,5 @@ ser usado da seguinte maneira:
 
    echo usuario:senha | chpasswd
 
-
-
 Essa dica surgiu em uma resposta da Daniele na lista do gus-br...
 

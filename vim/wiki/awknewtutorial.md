@@ -1,15 +1,10 @@
-# A newbie tutorial on UNIX AWK utility
-
 ``` markdown
 File:		 AwkNewieTutorial.md
 Created:	 ter 10 jan 2017 13:16:16 BRT
-Last Change: ter 10 jan 2017 13:16:11 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: qua 06 set 2017 20:08:44 -03
 ```
+
+# A newbie tutorial on UNIX AWK utility
 
 source: http://unstableme.blogspot.com/2010/11/newbie-tutorial-on-unix-awk-utility.html
 
@@ -17,12 +12,11 @@ Sharing a few Awk one liners (very basic and random) which will help the Awk new
 
 Meaning of some of the Awk Built-in Variables used below:
 
-
-NF : Number of fields in current line/record
-NR : Ordial number of current line/record
-FS : Field Separator (Also -F can be used)
-OFS : Output Field Separator (default=blank)
-FILENAME : Name of current input file
+    NF : Number of fields in current line/record
+    NR : Ordial number of current line/record
+    FS : Field Separator (Also -F can be used)
+    OFS : Output Field Separator (default=blank)
+    FILENAME : Name of current input file
 
     All of following Awk one liners are based on the following input file 'test1.txt'
 

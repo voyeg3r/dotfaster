@@ -1,18 +1,12 @@
-### Introdução
-
 ``` markdown
 File:		 aria2c.md
 Created:	 qua 11 jan 2017 12:55:47 BRT
-Last Change: qua 11 jan 2017 12:55:55 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: qua 06 set 2017 20:01:10 -03
 ```
 
-
+### Introdução
 O programa aria2 suporta vários protocolos
+
 * ftp
 * http
 * torrents
@@ -29,7 +23,6 @@ aria2c http://a/f.iso ftp://b/f.iso
 
     $HOME/.aria2/aria2.conf
 
-
 # this is a comment
 file-allocation=none
 max-upload-limit=50K
@@ -38,9 +31,7 @@ all-proxy=http://user:pass@proxy:8888
 
 ### Baixar em paralelo (padrão 5 links)
 
-
-aria2c -s 6 http://download.gnome.org/binaries/win32/evince/2.30/evince-2.30.0.msi
-
+    aria2c -s 6 http://download.gnome.org/binaries/win32/evince/2.30/evince-2.30.0.msi
 
 ### continuar donwload
 
@@ -71,7 +62,6 @@ aria2c -s 6 http://download.gnome.org/binaries/win32/evince/2.30/evince-2.30.0.m
 
     sudo apt-get -y --print-uris upgrade | egrep -o -e "http://[^\']+" | \
     sudo aria2c -c -d /var/cache/apt/archives -i -; sudo aptitude safe-upgrade
-
 
 ### Referências
 * http://ubuntuforum-br.org/index.php?topic=43052.0

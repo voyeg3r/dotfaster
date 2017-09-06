@@ -2,8 +2,8 @@
 
 Adiciona usuários ao sistema
 
- adduser nome
+    adduser nome
 
 ### usando uma pasta existente como home
 
-adduser fulano --home=/home/fulano
+    adduser fulano --home=/home/fulano

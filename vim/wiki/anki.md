@@ -1,17 +1,13 @@
+``` markdown
+File:		 Anki.md
+Created:	 ter 10 jan 2017 13:13:26 BRT
+Last Change: qua 06 set 2017 19:58:29 -03
+```
+
 ### O que é o Anki?
 
 E um programa de aprendizado baseado na repetição espaçada
 
-``` markdown
-File:		 Anki.md
-Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: ter 10 jan 2017 14:35:34 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
 
 ### Novo processo de instalação:
 + https://apps.ankiweb.net/#linux

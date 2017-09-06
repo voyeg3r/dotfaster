@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 06 set 2017 10:12:35 -03
+Last Change: qua 06 set 2017 13:13:09 -03
 ```
 
 # Vim tips for everyone
@@ -1158,6 +1158,16 @@ In orde to insert digraphs you have:
 
 1 - :set paste
 2 - in insert mode type the correpondent code of digraph
+
+In order to insert Unicode symbols:
+
+    Ctrl-Shift U + code
+
+    U+260e →  ☎    U+2702 →  ✂
+    U+261e →  ☞    U+2709 →  ✉
+    U+27BD →  ➽
+    U+2600 →  ☀
+    U+2620 →  ☠
 
 ### How insert one arrow - type  →
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 05 set 2017 18:59:42 -03
+" Last Change: qua 06 set 2017 20:56:17 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -253,6 +253,12 @@ if !exists('*s:setupWrapping')
     set textwidth=79
   endfunction
 endif
+
+fun! CountBuffers()
+    let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    echom "you have " . l:total . " opened buffers!"
+endfun
+command! -nargs=0 Nbuf :call CountBuffers()
 
 "*****************************************************************************
 "" Autocmd Rules

@@ -1,20 +1,15 @@
+``` markdown
+File:		 ZsHell.md
+Created:	 sex 06 jan 2017 10:18:17 BRT
+Last Change: qua 06 set 2017 20:13:49 -03
+```
+
 # Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
 
 see also [zshtips](zshtips.md)
-
-``` markdown
-File:		 ZsHell.md
-Created:	 sex 06 jan 2017 10:18:17 BRT
-Last Change: ter 10 jan 2017 15:05:14 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
 
 #### References:
 + http://zshwiki.org/home/builtin/functions/zmv
@@ -61,7 +56,6 @@ There are five startup files that zsh will read commands from:
 
 ### Conditional expressions
 
-
 	``` zsh
 	[[ -n file*(#qN) ]]
 	```
@@ -106,18 +100,15 @@ or
 
 to take care about spaces (-l), escape sequences (-r/-E) and leading hyphens (--/-) inside filenames.
 
-
 Yet even more correct version is print -rN which additionally takes care of linebreaks inside filenames (linux allows them, windows doesn't) by separating the results with nulls, for example:
 
 	print -rN -- **/*(/) |xargs -0 -n10 chmod g+s
 
 which recursively sets setguid bit - selectively addressing directories, as opposed to chmod -R g+s.
 
-
 For huge trees this only processes a part of files (due to the limit on command line length) and silently leave the rest as is. The following commands can handle this situation:
 
 	find . -type d -print0 |xargs -0 -n10 chmod g+s
-
 
 (i.e. match anything that matches the pattern * but does not match *.owp)
 
@@ -125,8 +116,7 @@ For huge trees this only processes a part of files (due to the limit on command 
 
 ### A better fuzzy finder
 
-  fzy
-
+    fzy
 
 ### Get directory of an executable using which
 + https://stackoverflow.com/a/45664616/2571881
@@ -198,14 +188,11 @@ export ICEAUTHORITY=${XDG_CACHE_HOME}/ICEauthority
 export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
 export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
 
-
-
 # mplayer
 export MPLAYER_HOME=$XDG_CONFIG_HOME/mplayer
 
 # subversion
 export SUBVERSION_HOME=$XDG_CONFIG_HOME/subversion
-
 
 # vim
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
@@ -258,7 +245,6 @@ then
 fi
 ```
 
-
 ### Better completion
 
     zmodload zsh/complist
@@ -279,7 +265,6 @@ there is something in zsh called history-beginning-search-menu. if you put:
     bindkey '' history-beginning-search-menu
 
 in your .zshrc file. then for example:
-
 
 ### Adicionando uma linha ao histórico do zsh sem rodar o comando
 
@@ -414,7 +399,6 @@ source ${ZDOTDIR:-${HOME}}/.zlogin
     cd ~/projects/sample/src/main/java/com/arun/examples/
     cd java scala
 
-
 #### defining ZDOTDIR
 This var is used in many zsh frameworks during git clone
 
@@ -449,7 +433,6 @@ ${(k)commands} (that last one lists external commands only).
 #### loading zsh clean
 
     zsh -f
-
 
 that will start a clean instance of zsh using the
 default settings.
@@ -617,7 +600,6 @@ you can use =command instead $(which command)
 make file and directory names lowercase
 + http://onethingwell.org/post/24608988305/zmv
 
-
     Uppercase or lowercase filenames
 
     zmv '*' '${(U)f}'
@@ -637,7 +619,6 @@ make file and directory names lowercase
     ``` sh
     ls -1 */**/*.sh
     ```
-
 
     (.): regular files
 
@@ -836,7 +817,6 @@ one three
 #### print file name without extension
 
     echo $filename:r
-
     echo $filename:t  (basename)
     echo $filename:h  (dirname)
     echo $filename:r  (extension removed)

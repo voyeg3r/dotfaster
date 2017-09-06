@@ -1,13 +1,13 @@
-cadaver http://webdav.4shared.com/
-digite seu usuário
-digite sua senha
+# cadaver http://webdav.4shared.com/
 
-cd /diretorio
-mget *.ogv
+    digite seu usuário
+    digite sua senha
 
+    cd /diretorio
+    mget *.ogv
 
 No gnome shell pode-se acessar usando:
 
-  davs://webdav.4shared.com
+    davs://webdav.4shared.com
 
 
