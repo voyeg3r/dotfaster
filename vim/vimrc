@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3: fdm=marker:
 " Arquivo de configuração do vim {{{1
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 08 set 2017 15:05:09 -03
+" Last Change: sex 08 set 2017 17:02:53 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -313,6 +313,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 nnoremap <leader>s :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+nnoremap <leader>* *``cgn
 
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
@@ -559,6 +560,10 @@ command! -nargs=0 DelBlank :call DelBlankLines()
 
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call DelBlankLines()<cr>
+
+" Insert lines below and above (with count)
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 fun! CleanExtraSpaces()
     call Preserve('%s/\s\+$//ge')

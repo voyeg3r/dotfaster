@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 06 set 2017 21:33:04 -03
+" Last Change: sex 08 set 2017 17:03:14 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -262,6 +262,10 @@ fun! CountBuffers()
     echom "you have " . l:total . " opened buffers!"
 endfun
 command! -nargs=0 Nbufs :call CountBuffers()
+
+" Insert lines below and above (with count)
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 "*****************************************************************************
 "" Autocmd Rules
@@ -540,6 +544,9 @@ fun! DelBlankLines()
     call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
+
+" delete sucessive blank lines and trailing spces
+nnoremap <special> <leader>d :call DelBlankLines()<cr>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
