@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 06 set 2017 20:56:17 -03
+" Last Change: qua 06 set 2017 21:33:04 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -254,11 +254,14 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
+" sometimes you need to know how many opened buffers you have
+" source: https://superuser.com/a/1221514/45032
 fun! CountBuffers()
-    let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    "let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let l:total = len(getbufinfo({'buflisted':1}))
     echom "you have " . l:total . " opened buffers!"
 endfun
-command! -nargs=0 Nbuf :call CountBuffers()
+command! -nargs=0 Nbufs :call CountBuffers()
 
 "*****************************************************************************
 "" Autocmd Rules

@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3: fdm=marker:
 " Arquivo de configuração do vim {{{1
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qua 06 set 2017 20:03:58 -03
+" Last Change: sex 08 set 2017 15:05:09 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -204,8 +204,9 @@ nnoremap <silent> <leader>e :FZF -m<CR>
 filetype plugin indent on
 
 " index do vim wiki
-let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki',
-                     \ 'index': 'main', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/.dotfiles/vim/wiki', 'index': 'main', 'syntax': 'markdown', 'ext': '.md',
+                     \  'automatic_nested_syntaxes': 1, 'auto_toc': 1}]
+let g:vimwiki_folding = 'syntax'
 nnoremap == <Plug>VimwikiAddHeaderLevel
 nnoremap -- <Plug>VimwikiRemoveHeaderLevel
 "*:VimwikiSearch* /pattern/
@@ -311,7 +312,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
-nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+nnoremap <leader>s :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
@@ -495,11 +496,14 @@ fun! CleanSubtitles()
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
+" sometimes you need to know how many opened buffers you have
+" source: https://superuser.com/a/1221514/45032
 fun! CountBuffers()
-    let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    "let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let l:total = len(getbufinfo({'buflisted':1}))
     echom "you have " . l:total . " opened buffers!"
 endfun
-command! -nargs=0 Nbuf :call CountBuffers()
+command! -nargs=0 Nbufs :call CountBuffers()
 
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
@@ -630,9 +634,6 @@ set autoread
 
 map <silent> <leader>v :e ~/.vimrc<cr>
 map <silent> <leader>z :e ~/.zshrc<cr>
-" Quickly edit/reload the vimrc file
-nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
-nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
 "" Git stuff
 noremap <Leader>ga :Gwrite<CR>

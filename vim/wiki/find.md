@@ -1,15 +1,10 @@
-### Introdução
 
 ``` markdown
 File:		 find.md
 Created:	 qua 11 jan 2017 14:42:46 BRT
-Last Change: qua 11 jan 2017 14:42:49 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: qui 07 set 2017 07:53:27 -03
 ```
+### Introdução
 
 O comando find é extremamente poderoso veja algumas construções do mesmo
 
@@ -56,7 +51,6 @@ Uma variação possível - Mostrando de forma detalhada
 find . -type f -ctime -1 -ls
 ```
 
-
 ### localizando arquivos modificados em um intervalo de tempo
 
 ``` sh
@@ -88,7 +82,6 @@ Outra opção seria
 chown -R fulano.fulano
 ```
 
-
 ### melhorar desempenho do firefox
 
 ``` sh
@@ -105,7 +98,6 @@ find . -type d -empty -delete
 find <top_level_dir> -depth -type d -empty -exec rmdir -v {} \;
 ```
 
-
 ### adicionando extensão a arquivos
 Eu tinha um monte de arquivos sem extensão e queria colocar
 no final txt, segue a solução.
@@ -114,14 +106,11 @@ no final txt, segue a solução.
 find ./ -maxdepth 1 -type f -print0 | xargs -0 -i mv ./{} ./{}.txt
 ```
 
-
 ### Procurando por um padrão no $PATH
-
 
 ``` sh
 find ${PATH//:/ } -iname "*pattern*"
 ```
-
 
 ### Apagando somente arquivos de um tipo
 
@@ -160,21 +149,17 @@ find -iname *.doc -o -iname *.odt
 find -atime +5 \( -name "*.o" -o -name "*.tmp" \)
 ```
 
-
 ### find + tar
 
 ``` sh
 find /home/zago/guiaz -mtime -1 -type f -print | tar jcvf meusarq.tar.bz2 -T -
 ```
 
-
 ### Localizando arquivos maiores que 3G
-
 
 ``` sh
 find . -type f -size +3G | xargs -I% du -sh %
 ```
-
 
 ### find + rsync
 
@@ -182,7 +167,6 @@ find . -type f -size +3G | xargs -I% du -sh %
 rsync -avz -e ssh --files-from=<(find -mtime +30 -mtime -60) origem destino
 find . -name "whatever.*" -print0 | rsync -av --files-from=- --from0 ./ .
 ```
-
 
 ### copiar arquivos
 
@@ -206,7 +190,6 @@ Observe também a opção -u do comando cp que faz com que o cp
 copie apenas se o arquivo copiado for mais novo, ou seja, se
 no destino houver o mesmo arquivo que está sendo copiado, a cópia
 só será efetivada se o arquivo de origem for mais novo.
-
 
 O comando abaixo exibe arquivos modificados a mais de 7 dias (somente o nome e data)
 
@@ -437,8 +420,6 @@ serii.txt   04-01-2007   12:42:07
 %T(caractere)  "mtime"
 ```
 
-
-
 ### Um último exemplo
 
 ``` sh
@@ -450,7 +431,6 @@ isto retorna algo como:
 ``` sh
 /caminho/leia-me.txt 644 sexta 23 de junho de 2006 10:30:53
 ```
-
 
 ### Para imprimir o nome do arquivo com o modo de permissão octal use
 
@@ -541,8 +521,6 @@ Usando expressões regulares
 find ~/.thumbnails -type f -atime +7 -exec rm {} ;
 ```
 
-
-
 manual do find "man find"
 
 ``` sh
@@ -557,7 +535,6 @@ find ~/ -iname "*.odt" -o -iname "*.pdf"
 
 # procura arquivos odt ou pdf
 
-
 ``` sh
 find . -regex './ch0[1-2]_0[1-3].*'
 ```
@@ -570,13 +547,11 @@ find ~/ -type f -print0 | xargs -0 chmod 755
 
 # usando o print0 conseguimos pegar arquivos com nomes que contenham espaços
 
-
 ``` sh
 find /originalPath/ -name *.mp3 -print0 | xargs -0 -i cp ./{} /destinationPath/
 
 find ./ -maxdepth 1 -iname "*.doc" -print0 | xargs -0 -i cp ./{} /home/germana/Desktop/
 ```
-
 
 Contar o tamanho do nome de arquivos
 fonte: http://br.groups.yahoo.com/group/shell-script/message/25733

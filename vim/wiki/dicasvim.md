@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 06 set 2017 13:13:09 -03
+Last Change: qui 07 set 2017 07:49:53 -03
 ```
 
 # Vim tips for everyone
@@ -132,13 +132,18 @@ After instaling Tim Pope's speeddating plugin you can do something like:
 
     echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
+### How do I search the open buffers in Vim?
++ https://stackoverflow.com/a/11976158/2571881
+
+    :bufdo vimgrepadd pattern % | copen+
+
 ### Inserting a range of numbers
 
     :put =range(1,10)
 
 ### Open file read-only
 
-edit /etc/nginx/nginx.conf in read-only mode:
+edit `/etc/nginx/nginx.conf` in read-only mode:
 
      sudo vim +M /etc/nginx/nginx.conf
 

@@ -2,11 +2,12 @@
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: dom 08 jan 2017 12:03:30 BRT
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com twitter:
-http://www.twitter.com/voyeg3r
+Last Change: qui 07 set 2017 08:31:40 -03
 ```
+
+### Getting gnome-shell version
+
+    gnome-shell --version
 
 ### Taking a screenshot
 

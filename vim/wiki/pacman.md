@@ -1,3 +1,8 @@
+``` markdown
+Arquivo: pacman.md
+Created: sex 08/set/2017 hs 12:58
+Last Change: sex 08 set 2017 12:58:28 -03
+```
 
 If pacman is not running and has a lock package avoiding
 other instalations, run this:

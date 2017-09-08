@@ -1,10 +1,11 @@
+### zshell.md
 ``` markdown
 File:		 ZsHell.md
 Created:	 sex 06 jan 2017 10:18:17 BRT
-Last Change: qua 06 set 2017 20:13:49 -03
+Last Change: qui 07 set 2017 07:56:37 -03
 ```
 
-# Arquivo: zshell tips and tricks
+### Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -127,10 +128,12 @@ This tip only works on zsh
 
 ### Testing commands existence
 
+	``` zsh
 	# not aliasing rm -i, but if safe-rm is available, use condom.
-	if (( ${+commands[safe-rm]} )); then
-	  alias rm='safe-rm'
-	fi
+    if (( ${+commands[safe-rm]} )); then
+      alias rm='safe-rm'
+    fi
+	```
 
 ### improving zsh performance
 + https://www.zsh.org/mla/users/2015/msg00904.html
