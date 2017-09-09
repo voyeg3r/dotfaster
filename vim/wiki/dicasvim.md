@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 09 set 2017 13:47:39 -03
+Last Change: sáb 09 set 2017 13:56:28 -03
 ```
 
 # Vim tips for everyone
@@ -731,11 +731,10 @@ source: http://stackoverflow.com/q/40414720/
 
  in order to select previous pasted text put this in your .vimrc
 
- " select last paste in visual mode
- nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+     " select last paste in visual mode
+     nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
- to select the same ammount of lines for example
- use 1v
+ to select the same ammount of lines for example use `1v`
 
 ### Non-greedy search on vim
 
