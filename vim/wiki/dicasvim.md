@@ -614,7 +614,6 @@ perform a substituition on that register, replacing the newline
 
     ic-R=c-Ra Enter
 
-
     Total = 69.5
 
 ### Vim duplicate line multiple times with 2 keypresses

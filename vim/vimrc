@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim {{{1
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 08 set 2017 20:43:43 -03
+" Last Change: sáb 09 set 2017 15:08:41 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -498,13 +498,16 @@ command! -nargs=0 Nbufs :call CountBuffers()
 " video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
 if !exists('*Preserve')
     function! Preserve(command)
-        " Preparation: save last search, and cursor position.
-        let l:win_view = winsaveview()
-        let l:old_query = getreg('/')
-        silent! execute 'keepjumps ' . a:command
-        " Clean up: restore previous search history, and cursor position
-        call winrestview(l:win_view)
-        call setreg('/', l:old_query)
+        try
+            " Preparation: save last search, and cursor position.
+            let l:win_view = winsaveview()
+            let l:old_query = getreg('/')
+            silent! execute 'keepjumps ' . a:command
+         finally
+            " Clean up: restore previous search history, and cursor position
+            call winrestview(l:win_view)
+            call setreg('/', l:old_query)
+         endtry
     endfunction
 endif
 
