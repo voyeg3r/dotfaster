@@ -1,7 +1,7 @@
-" vim:set et sw=4 ts=4:fdl=3: fdm=marker:
+" vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim {{{1
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 08 set 2017 17:02:53 -03
+" Last Change: sex 08 set 2017 20:43:43 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -55,6 +55,22 @@ com! ReloadVim call VimReloadFunction()
 "}}}
 
 " some settings {{{1
+set mousemodel=popup
+set ruler
+set number
+set mouse=a
+set t_Co=256
+set guioptions=egmrti
+set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
+set anti enc=utf-8
+set scrolloff=3
+set laststatus=2
+set modeline
+set modelines=10
+set title
+set titleold="Terminal"
+set titlestring=%F
+set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set nocompatible
 set path+=**
 set history=200
@@ -217,47 +233,17 @@ nnoremap -- <Plug>VimwikiRemoveHeaderLevel
 "    To display previous match use |:lprevious| command.
 let g:vimwiki_table_mappings = 0
 
-
 " Visual Settings
 " Notice: syntax enable is better than syntax on
 if !exists("g:syntax_on")
     syntax enable
 endif
 
-set ruler
-set number
 
 let mapleader = ","
 
 let no_buffers_menu=1
 
-set mousemodel=popup
-
-" enable mouse
-set mouse=a
-set t_Co=256
-set guioptions=egmrti
-"set gfn=Monospace\ 13
-"set gfn=Source\ Code\ Pro\ for\ Powerline\ Medium\ 14
-set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
-set anti enc=utf-8
-" https://gist.github.com/epegzz/1634235/fe5100a91157c5d0f0c8b7b6dedd126c6396ae19
-"set guifont=Monaco\ for\ Powerline:h13
-
-set scrolloff=3
-
-"" Status bar
-set laststatus=2
-
-"" Use modeline overrides
-set modeline
-set modelines=10
-
-set title
-set titleold="Terminal"
-set titlestring=%F
-
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -386,6 +372,7 @@ endif
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
+"nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
 
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'

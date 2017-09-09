@@ -15,19 +15,22 @@ O programa aria2 suporta vários protocolos
 ### sobre metalink
 "Metalink é um padrão aberto que engloba as várias maneiras (FTP/HTTP/P2P)
 de baixar arquivos em determinado formato com downloads mais fáceis.
+
 ### baixar de dois links simultaneamente
 
-aria2c http://a/f.iso ftp://b/f.iso
+    aria2c http://a/f.iso ftp://b/f.iso
 
 ### arquivo de configuração
 
+    ``` markdown
     $HOME/.aria2/aria2.conf
 
-# this is a comment
-file-allocation=none
-max-upload-limit=50K
-remote-time=true
-all-proxy=http://user:pass@proxy:8888
+    # this is a comment
+    file-allocation=none
+    max-upload-limit=50K
+    remote-time=true
+    all-proxy=http://user:pass@proxy:8888
+    ```
 
 ### Baixar em paralelo (padrão 5 links)
 

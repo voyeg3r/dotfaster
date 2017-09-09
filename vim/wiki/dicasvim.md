@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qui 07 set 2017 07:49:53 -03
+Last Change: sáb 09 set 2017 13:47:39 -03
 ```
 
 # Vim tips for everyone
@@ -213,6 +213,15 @@ to see more:
 ``` vim
 :h ]}
 ```
+
+### Open blank new file with the same name as existing file in one step, in VIM?
+
+    vim -c '%d' file.txt
+
+### Vimscript: adding text to the current line
++ https://vi.stackexchange.com/a/12450/7339
+
+    call setline('.', getline('.') . 'new text')
 
 ### Making vim show spaces tabs and other things
 [Source stackoverflow](http://stackoverflow.com/a/38652646/2571881)
@@ -565,6 +574,36 @@ The command typed to perform the above change was:
 to sort by surname just do this:
 
     :%!sort -k1
+
+
+### Sum second column using awk
+Let's say you have this file:
+
+    index  1
+    other  2
+    one    3
+    two    6
+
+In order to sum column two you can use this command
+
+    :r!awk 'NR<=4 {sum+=$2} END {print "total: "sum}' %
+
+Another similar example:
+
+OBS: as we have spaces and awk considers it as field separator,
+we do not have to worry about changing field separator.
+
+    delta: 0.146577 -- loop: before imiu
+    delta: 0.146109 -- loop: before imiu
+    delta: 0.146568 -- loop: before imiu
+    delta: 0.146971 -- loop: before imiu
+    delta: 0.147879 -- loop: before imiu
+    delta: 0.147153 -- loop: before imiu
+    delta: 0.146387 -- loop: before imiu
+
+    :r!awk 'NR<=7 {sum+=$2} END {print "total: "sum}' %
+
+    total: 1.02764
 
 ### Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881

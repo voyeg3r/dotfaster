@@ -1,12 +1,15 @@
 ``` markdown
 Arquivo: bc.md
 Created: qua 06/set/2017 hs 20:27
-Last Change: qua 06/set/2017 hs 20:27
+Last Change: sex 08 set 2017 19:37:03 -03
 ```
-
 ### Introdução
 
     seq 1 100 | paste -sd+ | bc
+
+Same result using awk
+
+    seq 1 100 | awk '{sum+=$1} END {print sum}'
 
 ### somando os numeros de 1 a 100
 

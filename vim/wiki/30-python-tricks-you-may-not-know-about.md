@@ -2,14 +2,13 @@
 Arquivo: 30-python-tricks-you-may-not-know-about.md
 Created: dom 06/ago/2017 hs 21:06
 Last Change: dom 06 ago 2017 21:07:17 -03
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
 ```
 ### link: http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html
 
 30 Python Language Features and Tricks You May Not Know About
 Posted on Mar 05, 2014 , last modified on May 19, 2014 - Permanent link
-1   Introduction
+
+1 - Introduction
 
 Since I started learning Python, I decided to maintain an often visited list of
 "tricks". Any time I saw a piece of code (in an example, on Stack Overflow, in

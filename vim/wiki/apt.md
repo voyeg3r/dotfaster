@@ -3,9 +3,9 @@ efetua uma comparação entre os pacotes que estão
 instalados em sua maquina e se na lista houver um pacote com a versão
 mais nova ele faz o download a faz a atualização.
 
-apt-get upgrade
-# /usr/share/debconf/fix_db.pl --> fix debconf
-#
+    apt-get upgrade
+    # /usr/share/debconf/fix_db.pl --> fix debconf
+
 
 ### how install apt-proz e prozila
 http://ppa.launchpad.net/tahutek-team/prozilla/ubuntu/pool/main/
@@ -18,66 +18,68 @@ run following command.
 
 ### Instalar apt-fast e apt-metalink
 
-apt-get install -y aria2
+    apt-get install -y aria2
 
-# o comando abaixo deverá ser colocado nos scripts de instalação
-# testa se o apt-fast está instalado o define como instalador padrão
+o comando abaixo deverá ser colocado nos scripts de instalação
+testa se o apt-fast está instalado o define como instalador padrão
 
 	command -v apt-fast >/dev/null  && APT="apt-fast" || APT="apt-get"
 
-if ! which apt-fast >/dev/null; then
-	wget -c http://va.mu/EL5u -O /etc/bash_completion.d/apt-fast
-	wget -c http://va.mu/EL57 -O /usr/bin/apt-fast && chmod 0755 $_
-	apt-fast update
-fi
+    if ! which apt-fast >/dev/null; then
+        wget -c http://va.mu/EL5u -O /etc/bash_completion.d/apt-fast
+        wget -c http://va.mu/EL57 -O /usr/bin/apt-fast && chmod 0755 $_
+        apt-fast update
+    fi
 
-wget -c https://raw.github.com/tatsuhiro-t/apt-metalink/master/apt-metalink -O /usr/bin/apt-metalink && chmod +x $_
+    wget -c https://raw.github.com/tatsuhiro-t/apt-metalink/master/apt-metalink -O /usr/bin/apt-metalink && chmod +x $_
 
 ### ativar a possibilidade de instalar pacotes de repositórios não oficiais via synaptic
 
-sudo update-apt-xapian-index
+    sudo update-apt-xapian-index
 
 ### resolvendo problemas no apt-get
 * http://www.ubuntu-ac.org/archives/319
 
 ### atualizar a distribuição
 
-sudo su -
+    sudo su -
 
-apt-get -qq --print-uris dist-upgrade |  egrep -o -e "http://[^\']+" | \
-aria2c -c -d /var/cache/apt/archives -i -; apt-get dist-upgrade
+    apt-get -qq --print-uris dist-upgrade |  egrep -o -e "http://[^\']+" | \
+    aria2c -c -d /var/cache/apt/archives -i -; apt-get dist-upgrade
 
-apt-get -qq --print-uris upgrade | awk -F"'" '{print "wget -c", $2}' >> baixar-pacotes.sh
+    apt-get -qq --print-uris upgrade | awk -F"'" '{print "wget -c", $2}' >> baixar-pacotes.sh
 
 
 # para pegar os linkd do vim
-apt-get -qq --print-uris -y install vim-gnome vim-doc | egrep -o -e "http://[^\']+"
 
-http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-runtime_7.2.330-1ubuntu3_all.deb
-http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-gnome_7.2.330-1ubuntu3_i386.deb
+    apt-get -qq --print-uris -y install vim-gnome vim-doc | egrep -o -e "http://[^\']+"
+
+    http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-runtime_7.2.330-1ubuntu3_all.deb
+    http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-gnome_7.2.330-1ubuntu3_i386.deb
 
 Sometimes some files you have installed is not cached. If so, you
 need to retrieve them from the internet. First we need to generate
 the list of files to be downloaded.
 
 # fonte http://xlylith.blogspot.com/
-sudo apt-get install $(dpkg -l|grep ^ii|awk '{print $2}') --reinstall --print-uris \
--y |awk '{print $1}'|sed "s/'//g"|grep tp:// > downlist
+    sudo apt-get install $(dpkg -l|grep ^ii|awk '{print $2}') --reinstall --print-uris \
+    -y |awk '{print $1}'|sed "s/'//g"|grep tp:// > downlist
 
 Then download it using wget
 
-wget -ci downlist -P ~/mydebs
+    wget -ci downlist -P ~/mydebs
 
 
 ### listar dependências
 
-sudo apt-get –print-uris –yes install PACKAGE_NAME | grep ^\’ | cut -d\’ -f2 >mydownload.txt
+    sudo apt-get –print-uris –yes install PACKAGE_NAME | grep ^\’ | cut -d\’ -f2 >mydownload.txt
 
-wget –input-file mydownload.txt
-sudo dpkg -i *.deb
+    wget –input-file mydownload.txt
+    sudo dpkg -i *.deb
 
 # para baixar os codecs em uma máquina que ainda não tem nada instalado
-sudo apt-get --print-uris --yes install ubuntu-restricted-extras | grep ^\' | cut -d\' -f2 >mydownload.txt
+
+    sudo apt-get --print-uris --yes install ubuntu-restricted-extras | grep ^\' | cut -d\' -f2 >mydownload.txt
 
 Important: the mydownload.txt file will be empty if you run
 this command for an application which is already installed and
@@ -120,24 +122,22 @@ sudo apt-get install squid-deb-proxy avahi-tools
 # agora vamos fazer todo o comando anterior virar argumento do comando "apt-get install"
 # basta colocar o comando dentro de `crases`
 
-apt-get install `apt-cache search openoffice.org-style.* | awk '{print $1}'`
+    apt-get install `apt-cache search openoffice.org-style.* | awk '{print $1}'`
 
 ### Para atualizar os repositórios consumindo pouca banda
 
-sudo apt-get -o Acquire::http::Dl-Limit=30 upgrade
+    sudo apt-get -o Acquire::http::Dl-Limit=30 upgrade
 
 ### Instalar um pacote consumindo pouca banda
 
-sudo apt-get -o Acquire::http::Dl-Limit=25 install <package>
+    sudo apt-get -o Acquire::http::Dl-Limit=25 install <package>
 
 ### Referências:
 * [[@http://www.gdhpress.com.br/blog/dicas-apt-get-aptitude/]]
 
 
-deb http://archive.ubuntustudio.org/ubuntustudio feisty main
-wget http://archive.ubuntustudio.org/ubuntustudio.gpg -O- | sudo apt-key add -
-ubuntustudio-icon-theme
-
+    deb http://archive.ubuntustudio.org/ubuntustudio feisty main
+    wget http://archive.ubuntustudio.org/ubuntustudio.gpg -O- | sudo apt-key add - ubuntustudio-icon-theme
 
 ### Mostrar meta informação de um pacote (distribuições derivadas do debian) (dependências, status etc)
 

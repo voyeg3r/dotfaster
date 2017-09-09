@@ -351,6 +351,9 @@ yaourt -Syua --devel
 
 yaourt -S aur/firefox-nightly
 
+# cml read.it client
+yaourt rtv
+
 yaourt -S opera-developer
 
 yaourt -S community/html2text

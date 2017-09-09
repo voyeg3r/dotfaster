@@ -7,7 +7,7 @@ Last Change: qua 06 set 2017 20:05:53 -03
 ### Introdução
 Execute o comando at para agendar uma atividade a ser executada apenas uma vez :
 
-     $ echo 'comando -argumentos'| at 3:40 monday
+     echo 'comando -argumentos'| at 3:40 monday
 
 Por exemplo, agendar o download de uma distro
 

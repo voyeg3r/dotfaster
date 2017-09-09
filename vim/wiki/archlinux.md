@@ -1,12 +1,9 @@
 # Arquivo: archlinux.wiki
-
+``` markdown
 Criado: Sat 17/Jan/2015 hs 06:52
-Last Change: ter 10 jan 2017 13:15:28 BRT
+Last Change: sex 08 set 2017 19:34:14 -03
 autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
-email: <voyeg3r  gmail.com>
-
+```
 
 ### archanywhere
 Facilitador para instalaçaõ do archlinux
@@ -17,15 +14,18 @@ http://danpla.github.io/fontlink/
 https://askubuntu.com/questions/531479/install-fonts-temporarily/623236#623236
 
 # instaling yaourt
-# https://revryl.com/2013/07/11/yaourt-installation-arch-linux/
-# sudo vim /etc/pacman.conf.
++ https://revryl.com/2013/07/11/yaourt-installation-arch-linux/
+     sudo vim /etc/pacman.conf.
+
+``` sh
 # add this repo:
 #
 #    [archlinuxfr]
 #    SigLevel = Never
 #    Server = http://repo.archlinux.fr/$arch
-#
-#     sudo pacman -Sy yaourt
+```
+
+     sudo pacman -Sy yaourt
 
 ``` sh
 yaourt -S extra/python2-gobject2
@@ -38,7 +38,6 @@ https://wiki.archlinux.org/index.php/Pdnsd
 
 ### acessando ssh
 https://wiki.archlinux.org/index.php/Secure_Shell#Installing_OpenSSH
-
 
 Configuring SSHD
 
@@ -59,14 +58,12 @@ systemctl start sshd.service
 systemctl enable sshd.service
 ```
 
-
 ### configurando o touchpad para colar com toque de dois dedos
 [ source: wiki archlinux ](https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Buttonless_TouchPads_.28aka_ClickPads.29)
 
     /etc/X11/xorg.conf.d/50-synaptics.conf
 
     sudo cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d/
-
 
 ### usando seu pendrive como memória swap
 
@@ -122,7 +119,7 @@ source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
     Check whether a unit is already enabled or not:
 
-    $ systemctl is-enabled unit
+    systemctl is-enabled unit
 
 ### improving network speed
 
@@ -265,7 +262,6 @@ https://aur.archlinux.org/packages/conky-colors/?setlang=pt_BR
 
 ### fontes micro$oft
 + https://aur.archlinux.org/packages/ttf-ms-fonts/
-
 
 ### how use aur packages
 

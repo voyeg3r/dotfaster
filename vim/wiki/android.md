@@ -1,5 +1,4 @@
 # dicas android
-
 ``` markdown
 File:		 AnDroid.md
 Created:	 ter 10 jan 2017 13:12:38 BRT

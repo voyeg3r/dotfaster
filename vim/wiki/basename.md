@@ -27,6 +27,7 @@ tipo:
 isso exibirá somente o nome dos arquivos, para ver mais dicas
 acesse [zshell md](zshell.md)
 
+``` sh
 ### script de exemplo
 
     # Criado em:Dom 26/Out/2008 hs 12:11
@@ -64,3 +65,4 @@ acesse [zshell md](zshell.md)
 
     xbacklight -set $1
 
+```
