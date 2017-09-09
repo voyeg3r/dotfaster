@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 09 set 2017 13:56:28 -03
+Last Change: sáb 09 set 2017 14:01:25 -03
 ```
 
 # Vim tips for everyone
@@ -605,6 +605,18 @@ we do not have to worry about changing field separator.
 
     total: 1.02764
 
+Another solution is: Make a visual selection and copy
+the numbers to a register, let's say 'a', and then
+perform a substituition on that register, replacing the newline
+'c-V c-J' with a plus signal, and finally using
+
+    let @a=substitute(@a, 'c-V c-J', '+', 'g')
+
+    ic-R=c-Ra Enter
+
+
+    Total = 69.5
+
 ### Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
 
@@ -998,21 +1010,22 @@ corretor ortográfico? Seus problemas se acabaram!!!
 success_vim-273x300
 Preparando ambiente:
 
-# Cd ~ ; mkdir corretor ; cd corretor
+    Cd ~ ; mkdir corretor ; cd corretor
+
 Baixando a base de palavras:
 
-# Wget http://extensions.libreoffice.org/extension-center/vero-verificador-ortografico-e-hifenizador-em-portugues-do-brasil/pscreleasefolder.2012-01-04.1563120832/2.1.2/vero_pt_br_v212aoc.oxt
+    Wget http://extensions.libreoffice.org/extension-center/vero-verificador-ortografico-e-hifenizador-em-portugues-do-brasil/pscreleasefolder.2012-01-04.1563120832/2.1.2/vero_pt_br_v212aoc.oxt
 
 # Unzip -x vero_pt_br_v212aoc.oxt
 Aplicando no vim
 
 Acesse o vim com o comando abaixo:
 
-# Vim
+    Vim
 
 No vim digite:
 
-:mkspell pt pt_BR
+    :mkspell pt pt_BR
 
 Obs: Pode demorar um pouco e dará alguns erros de arquivos duplicados, ok?
 
@@ -1025,7 +1038,7 @@ set spell spelllang=pt,en
 
 Caso queira que o corretor seja habilitado automaticamente sempre que acessar o vim:
 
-# Echo ‘set spell spelllang=pt,en’ >> ~/.vimrc
+     echo 'set spell spelllang=pt,en' >> ~/.vimrc
 
 ### Conertendo o formato de arquivo de Windows para Linux
 
