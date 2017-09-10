@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
-" Arquivo de configuração do vim {{{1
+" Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 10 set 2017 11:59:59 -03
+" Last Change: dom 10 set 2017 15:58:46 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -19,13 +19,7 @@
 "  |   /(_)\  Linux User #423493         |
 "  |    ^ ^   voyeg3r ✉ gmail.com        |
 "  +=====================================+
-"}}}
 
-" if there is zsh use it  {{{1
-if executable('zsh')
-    set shell=zsh\ -l
-endif
-"}}}
 
 "" Plug bootstrap - Install Plug if it is not already installed{{{
 "if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
@@ -46,23 +40,22 @@ set viminfo=%,<800,'10,/50,:100,h,f1,n~/.viminfo "{{{1
 "           + save/restore buffer list
 "}}}
 
-if !exists("*VimReloadFunction") "{{{1
+if !exists("*VimReloadFunction")
     fun! VimReloadFunction()
         call Preserve(":source ~/.vimrc")
     endfu
 endif
 com! ReloadVim call VimReloadFunction()
-"}}}
 
 " some settings {{{1
-set mousemodel=popup
-set ruler
-set number
-set mouse=a
-set t_Co=256
-set guioptions=egmrti
-set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
-set anti enc=utf-8
+"set mousemodel=popup
+"set ruler
+"set number
+"set mouse=a
+"set t_Co=256
+"set guioptions=egmrti
+"set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
+"set anti enc=utf-8
 set scrolloff=3
 set laststatus=2
 set modeline
@@ -76,8 +69,9 @@ set path+=**
 set history=200
 set isfname+={,}
 set wildmenu
-set wildmode=full
-set completeopt=menu,preview
+set wildmode=longest:full,full
+set completeopt=longest,menuone
+"set completeopt=menu,preview
 set complete=.,w,k
 set encoding=utf-8
 set fileencoding=utf-8
@@ -110,7 +104,7 @@ nnoremap K :help <C-r><C-w><CR>
 
 call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
 
-"Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
@@ -199,7 +193,7 @@ command! FZFMru call fzf#run({
 nnoremap ,ag :Ag<SPACE>
 
 "" fzf.vim
-set wildmode=list:longest,list:full
+"set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
