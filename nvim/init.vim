@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 08 set 2017 17:03:14 -03
+" Last Change: dom 10 set 2017 12:00:16 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -31,6 +31,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'haya14busa/incsearch.vim'
 "Plug 'timakro/vim-searchant'
@@ -253,6 +254,21 @@ if !exists('*s:setupWrapping')
     set textwidth=79
   endfunction
 endif
+
+" This function requires you select the numbers
+" source: https://vi.stackexchange.com/a/4699/7339
+fun! SumVis()
+    try
+        let l:a_save = @a
+        norm! gv"ay
+        let @a = substitute(@a,'[^0-9. ]','+','g')
+        exec "norm! gv\<esc>\<esc>o"
+        exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
+     finally
+        let @a = l:a_save
+     endtry
+endfun
+vnoremap <s-s> :<C-u>call SumVis()<cr>
 
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032

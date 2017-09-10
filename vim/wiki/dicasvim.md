@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 09 set 2017 14:01:25 -03
+Last Change: dom 10 set 2017 11:10:06 -03
 ```
 
 # Vim tips for everyone
@@ -616,6 +616,32 @@ perform a substituition on that register, replacing the newline
 
     Total = 69.5
 
+Function to sum visual selection
+
+    " This function requires you select the numbers
+    " source: https://vi.stackexchange.com/a/4699/7339
+    fun! SumVis()
+        try
+            let l:a_save = @a
+            norm! gv"ay
+            let @a = substitute(@a,'[^0-9. ]','+','g')
+            exec "norm! gv\<esc>\<esc>o"
+            exec "norm! iTotal \<c-r>=\<c-r>a\<cr>"
+         finally
+            let @a = l:a_save
+         endtry
+    endfun
+    vnoremap <c-s> :<C-u>call SumVis()<cr>
+
+### Generating random numbers in vim
++ https://stackoverflow.com/a/20430735/2571881
+
+    :r! echo $RANDOM
+
+then
+
+    9@:
+
 ### Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
 
@@ -642,19 +668,19 @@ into a register 'z'
 you cand do
 
 ``` vim
-:%norm f'"Zya'
+    :%norm f'"Zya'
 
 and to paste it into a file you can do:
 
-:put Z
+    :put Z
 
 To make it available outside of Vim you can do:
 
-:let @+ = @z
+    :let @+ = @z
 
 if your register z is not clean you can clear it by doing
 
-qzq
+    qzq
 ```
 
 
@@ -920,13 +946,13 @@ Para o trecho acima usamos
        <c-r>"......... cola o texto copiado dentro do registro
 
 ``` vim
-:put =sqrt(81)   "inserts result in a new line
+    :put =sqrt(81)   "inserts result in a new line
 
-:h function-list
+    :h function-list
 
-:put =system('ruby fake-creds.rb')
-:read! ruby fake-credentials.rb
-:h :r!
+    :put =system('ruby fake-creds.rb')
+    :read! ruby fake-credentials.rb
+    :h :r!
 ```
 
 ### Writing vim functions
@@ -1454,6 +1480,9 @@ _ (like /dev/null, this is a black hole),
 / (the search pattern register),
 : (last command register),
 a to z for your own use (capitalized A to Z are for appending to corresponding registers).
+@@ or @" ..... unnamed register
+
+So, @@ will have the value of the text deleted with a d, c, s or x command, or the the text yanked with a y command.
 ```
 
 See :help registers for the full reference.
@@ -1579,15 +1608,19 @@ gk ............ sobe
 
 ### Como fechar o arquivo sem fechar o vim?
 
-      :bd
+      :bd!
 
       :enew .......... é melhor porque preserva o arquivo anterior na lista de buffers
 
       Source: http://stackoverflow.com/q/256204/
 
-### Para executar uma função do vim que está na área de transferência
+### Para carregar uma função do vim que está na área de transferência
 
       :@"
+
+O nome da função estará disponivel para ser chamado normalmente com o comando call (por exemplo):
+
+    :call FuncName()
 
 ### Pular para fechamento ou abertura de uma função
 
