@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 10 set 2017 12:00:16 -03
+" Last Change: dom 10 set 2017 12:10:16 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -268,7 +268,7 @@ fun! SumVis()
         let @a = l:a_save
      endtry
 endfun
-vnoremap <s-s> :<C-u>call SumVis()<cr>
+vnoremap <C-s> :<C-u>call SumVis()<cr>
 
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032

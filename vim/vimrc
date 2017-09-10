@@ -315,7 +315,7 @@ fun! SumVis()
         let @a = l:a_save
      endtry
 endfun
-vnoremap <s-s> :<C-u>call SumVis()<cr>
+vnoremap <C-s> :<C-u>call SumVis()<cr>
 
 " alternate between relative number, number and no number
 set nu

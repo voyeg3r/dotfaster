@@ -220,6 +220,11 @@ bindkey '\eg' _git-status
 # Inserts 'sudo ' at the beginning of the line.
 stty ixany
 
+# enable control-s and control-q
+stty start undef
+stty stop undef
+setopt noflowcontrol
+
 # function prepend-sudo {
 #   if [[ "$BUFFER" != su(do|)\ * ]]; then
 #     BUFFER="sudo $BUFFER"
