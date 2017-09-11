@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 10 set 2017 12:28:55 -03
+" Last Change: dom 10 set 2017 16:30:12 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -46,19 +46,19 @@ Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -74,7 +74,7 @@ Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'NLKNguyen/papercolor-theme'
+"Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()
 
@@ -144,8 +144,7 @@ set number
 
 let no_buffers_menu=1
 
-colorscheme PaperColor
-let g:airline_theme='papercolor'
+colorscheme molokai
 set background=dark
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
@@ -206,13 +205,13 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+"  vim-airline
+"let g:airline_theme = 'powerlineish'
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline_skip_empty_sections = 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -391,40 +390,40 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <Leader>o :.Gbrowse<CR>
 
 " vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
 
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
+"if !exists('g:airline_powerline_fonts')
+"  let g:airline#extensions#tabline#left_sep = ' '
+"  let g:airline#extensions#tabline#left_alt_sep = '|'
+"  let g:airline_left_sep          = '▶'
+"  let g:airline_left_alt_sep      = '»'
+"  let g:airline_right_sep         = '◀'
+"  let g:airline_right_alt_sep     = '«'
+"  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+"  let g:airline#extensions#readonly#symbol   = '⊘'
+"  let g:airline#extensions#linecolumn#prefix = '¶'
+"  let g:airline#extensions#paste#symbol      = 'ρ'
+"  let g:airline_symbols.linenr    = '␊'
+"  let g:airline_symbols.branch    = '⎇'
+"  let g:airline_symbols.paste     = 'ρ'
+"  let g:airline_symbols.paste     = 'Þ'
+"  let g:airline_symbols.paste     = '∥'
+"  let g:airline_symbols.whitespace = 'Ξ'
+"else
+"  let g:airline#extensions#tabline#left_sep = ''
+"  let g:airline#extensions#tabline#left_alt_sep = ''
+"
+"  " powerline symbols
+"  let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+"  let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_symbols.branch = ''
+"  let g:airline_symbols.readonly = ''
+"  let g:airline_symbols.linenr = ''
+"endif
 
 " This function allows you to open the last edited file
 " in order to open the last file from the SHELL

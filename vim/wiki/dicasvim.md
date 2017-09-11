@@ -1,13 +1,14 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 10 set 2017 11:10:06 -03
+Last Change: dom 10 set 2017 19:18:14 -03
 ```
 
 # Vim tips for everyone
 
 see also [Best of vim tips](vimbesttips.md)
 See also: [Regex](Regex.md) page
+vim profiler: https://github.com/bchretien/vim-profiler
 
 ### Using vim with no plugins
 
@@ -17,7 +18,7 @@ See also: [Regex](Regex.md) page
 
     :find filename<tab>
 
-    gf any file on the cursor is over will go to file
+    gf  at any file on the cursor is over will jump to the file
 
     :ls ......... list buffers
     :b 2 ........ go to buffer 2
@@ -40,11 +41,8 @@ While in insert mode, you can use Ctrl-R {register}, where register can be:
     or a number of others (see :h registers).
 
 	Ctrl-R {register} inserts the text as if it were typed.
-
 	Ctrl-R Ctrl-O {register} inserts the text with the original indentation.
-
 	Ctrl-R Ctrl-P {register} inserts the text and auto-indents it.
-
 	Ctrl-O can be used to run any normal mode command before returning to insert mode, so
 	Ctrl-O "+p can also be used, for example.
 

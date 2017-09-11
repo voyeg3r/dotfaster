@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 10 set 2017 15:58:46 -03
+" Last Change: seg 11 set 2017 13:12:38 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -48,14 +48,14 @@ endif
 com! ReloadVim call VimReloadFunction()
 
 " some settings {{{1
-"set mousemodel=popup
-"set ruler
-"set number
-"set mouse=a
-"set t_Co=256
-"set guioptions=egmrti
-"set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
-"set anti enc=utf-8
+set mousemodel=popup
+set ruler
+set number
+set mouse=a
+set t_Co=256
+set guioptions=egmrti
+set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
+set anti enc=utf-8
 set scrolloff=3
 set laststatus=2
 set modeline
@@ -114,14 +114,14 @@ Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'eparreno/vim-l9'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
-Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
+"Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 
 "" Color
 Plug 'tomasr/molokai'
@@ -129,7 +129,7 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/juanedi/predawn.vim'
-Plug 'NLKNguyen/papercolor-theme'
+"Plug 'NLKNguyen/papercolor-theme'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -145,9 +145,7 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
 
-"colorscheme molokai
-colorscheme PaperColor
-let g:airline_theme='papercolor'
+colorscheme molokai
 
 " pulse search integration with incsearch PlugIn
 " incsearch and vim search pulse
@@ -207,11 +205,6 @@ cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 
-" settings for incsearch plugin
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
-
 " Required:
 filetype plugin indent on
 
@@ -244,12 +237,12 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
+"let g:airline_theme = 'powerlineish'
+"let g:airline#extensions#syntastic#enabled = 1
+"let g:airline#extensions#branch#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline_skip_empty_sections = 1
 
 " Highlight redundant whitespace and tabs.
 " This has the advantage of not highlighting each space you type at
@@ -727,43 +720,43 @@ vnoremap . :norm.<CR>
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " vim-airline
-let g:airline#extensions#virtualenv#enabled = 1
+"let g:airline#extensions#virtualenv#enabled = 1
 
 " vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
 
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
-  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-  let g:airline#extensions#readonly#symbol   = '⊘'
-  let g:airline#extensions#linecolumn#prefix = '¶'
-  let g:airline#extensions#paste#symbol      = 'ρ'
-  let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
-  let g:airline_symbols.paste     = 'ρ'
-  let g:airline_symbols.paste     = 'Þ'
-  let g:airline_symbols.paste     = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
-
-  " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-endif
+"if !exists('g:airline_powerline_fonts')
+"  let g:airline#extensions#tabline#left_sep = ' '
+"  let g:airline#extensions#tabline#left_alt_sep = '|'
+"  let g:airline_left_sep          = '▶'
+"  let g:airline_left_alt_sep      = '»'
+"  let g:airline_right_sep         = '◀'
+"  let g:airline_right_alt_sep     = '«'
+"  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+"  let g:airline#extensions#readonly#symbol   = '⊘'
+"  let g:airline#extensions#linecolumn#prefix = '¶'
+"  let g:airline#extensions#paste#symbol      = 'ρ'
+"  let g:airline_symbols.linenr    = '␊'
+"  let g:airline_symbols.branch    = '⎇'
+"  let g:airline_symbols.paste     = 'ρ'
+"  let g:airline_symbols.paste     = 'Þ'
+"  let g:airline_symbols.paste     = '∥'
+"  let g:airline_symbols.whitespace = 'Ξ'
+"else
+"  let g:airline#extensions#tabline#left_sep = ''
+"  let g:airline#extensions#tabline#left_alt_sep = ''
+"
+"  " powerline symbols
+"  let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+"  let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_symbols.branch = ''
+"  let g:airline_symbols.readonly = ''
+"  let g:airline_symbols.linenr = ''
+"endif
 
 iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 iab ihora <c-r>=strftime("%H:%M:%S")<cr>
