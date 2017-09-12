@@ -46,6 +46,11 @@ sudo pip install neovim
 pip3 install --user --upgrade neovim
 sudo pip install nfasd
 
+# paragraph formater (useful for vim)
+# https://aur.archlinux.org/packages/par/
+# sudo pacman -U par-1.52-2-i686.pkg.tar.xz
+wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
+
 
 # setando o muse para ser destacado com o ctrl ou não
 gsettings set org.gnome.settings-daemon.peripherals.mouse locate-pointer false

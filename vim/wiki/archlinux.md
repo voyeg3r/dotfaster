@@ -227,6 +227,9 @@ yaourt -Cd – clean AUR packages database
 yaourt -R package_name – remove package
 
 makepkg -sc PKGBUILD
+makepkg -sri PKGBUILD
+
+    the option -i means 'install'
 
 -s  instalar dependências caso tiver
 -c  limpar arquivos desnecessários após o fim do processo

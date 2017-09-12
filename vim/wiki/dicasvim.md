@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 12 set 2017 14:07:31 -03
+Last Change: ter 12 set 2017 14:52:13 -03
 ```
 
 # Vim tips for everyone
@@ -26,6 +26,15 @@ vim profiler: https://github.com/bchretien/vim-profiler
     :ls ......... list buffers
     :b 2 ........ go to buffer 2
     :b substring  opens any file with substring
+
+### Nice paragraph formating
+
+``` markdown
+# paragraph formater (useful for vim)
+# https://aur.archlinux.org/packages/par/
+# sudo pacman -U par-1.52-2-i686.pkg.tar.xz
+wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
+```
 
 ### Inserting primary selection content
 
@@ -2649,6 +2658,8 @@ words place by doing:
 
     cxi)  .................... exchange inner parenthesis block
     .  ....................... type dot to finish the operation
+
+    cxc ...................... clears exchange operation
 
 ### Trabalhando com janelas
 

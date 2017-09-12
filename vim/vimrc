@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: ter 12 set 2017 12:52:12 -03
+" Last Change: ter 12 set 2017 15:03:36 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -202,6 +202,10 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+if executable('par')
+    set formatprg=par\ -w60rj
+endif
+
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
@@ -387,7 +391,8 @@ if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
     set wm=2
-    set textwidth=79
+    set textwidth=66
+    set formatoptions+=t
   endfunction
 endif
 

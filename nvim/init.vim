@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 12 set 2017 13:51:58 -03
+" Last Change: ter 12 set 2017 15:06:47 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -252,7 +252,8 @@ if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
     set wm=2
-    set textwidth=79
+    set textwidth=66
+    set formatoptions+=t
   endfunction
 endif
 
@@ -336,6 +337,10 @@ let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
   set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+if executable('par')
+    set formatprg=par\ -w60rj
 endif
 
 nnoremap <silent> <leader>b :Buffers<CR>
