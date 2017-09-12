@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 10 set 2017 19:18:14 -03
+Last Change: ter 12 set 2017 14:07:31 -03
 ```
 
 # Vim tips for everyone
@@ -9,6 +9,9 @@ Last Change: dom 10 set 2017 19:18:14 -03
 see also [Best of vim tips](vimbesttips.md)
 See also: [Regex](Regex.md) page
 vim profiler: https://github.com/bchretien/vim-profiler
+
+    git clone https://github.com/vim-jp/vital.vim.git
+    A comprehensive Vim utility functions for Vim plugins
 
 ### Using vim with no plugins
 
@@ -573,6 +576,17 @@ to sort by surname just do this:
 
     :%!sort -k1
 
+Sorting by last name
+
+    first name,last name,email
+    john,smith,john@example.com
+    drew,neil,drew@vimcasts.org
+    jane,doe,jane@example.com
+
+    :2,$!sort -t',' -k2
+
+    -t represents field separator
+    -k2 relates to the second field
 
 ### Sum second column using awk
 Let's say you have this file:
@@ -635,6 +649,10 @@ Function to sum visual selection
 + https://stackoverflow.com/a/20430735/2571881
 
     :r! echo $RANDOM
+
+    function! Random()
+        return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+    endfunction
 
 then
 
@@ -959,6 +977,8 @@ Para o trecho acima usamos
     9@:  ....................... 9 times last command
 
     :onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+
+    :put +
 
 The above map can change sections like this:
 
@@ -2423,6 +2443,11 @@ gd ........... go to definition
     :bd  .............. tira o buffer atual da lista
     :bufdo ............ executa um comando para todos os buffers
 
+    :bdelete N1 N2
+    :N,M bdelete
+    :bn ............... buffer next
+    :wn ............... save buffer and go next
+
 ### Função para inverte strings no vim
 
     function! InvertString(str)
@@ -2574,50 +2599,56 @@ quais arquivos serão instalados assim:
 
 ### Plugins do vim
 
-First try install vundle
+First try install vim Plug
 
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    ``` sh
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```
 
 ``` vim
-:PluginInstall(!) - install (update) plugins
-:PluginUpdate
-:PluginSearch! plugin_query
+:PlugInstall(!) - install (update) plugins
+:PlugUpdate
+:PlugClean
 
-Plugin 'rking/ag.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ompugao/ctrlp-z'
-Plugin 'sjl/gundo.vim'
-Plugin 'edsono/vim-matchit'
-Plugin 'scrooloose/nerdtree'
-Plugin 'chrisbra/NrrwRgn'
-Plugin 'rstacruz/sparkup'
-Plugin 'scrooloose/syntastic'
-Plugin 'godlygeek/tabular'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-abolish'
-Plugin 'bling/vim-airline'
-Plugin 'eparreno/vim-l9'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-repeat'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-Plugin 'vimwiki/vimwiki'
-Plugin 'vim-scripts/VisIncr'
+Plug 'rking/ag.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'kien/ctrlp.vim'
+Plug 'ompugao/ctrlp-z'
+Plug 'sjl/gundo.vim'
+Plug 'edsono/vim-matchit'
+Plug 'scrooloose/nerdtree'
+Plug 'chrisbra/NrrwRgn'
+Plug 'rstacruz/sparkup'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-abolish'
+Plug 'bling/vim-airline'
+Plug 'eparreno/vim-l9'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-repeat'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+Plug 'vim-scripts/VisIncr'
 ```
 
-``` markdown
-ProjectPlugin
-AirLine...............https://github.com/bling/vim-airline
-VisincrPlugin
-SurroundPlugin........https://github.com/tpope/vim-surround
-GundoPlugin
-RepeatPlugin .........https://github.com/tpope/vim-repeat
-PathogenPlugin........https://github.com/tpope/vim-pathogen
-[[Abolish]] ..............https://github.com/tpope/vim-abolish
-[[vim-system-copy]] ....... https://github.com/christoomey/vim-system-copy
-```
+**Plugin list**
 
+    Plug tommcdo/vim-exchange .................... exchange words
+    Plug 'chrisbra/NrrwRgn'....................... operates over a selected area
+
+### Exchanging words place
+
+Using [vim exchange](https://github.com/tommcdo/vim-exchange) plugin we can exchange
+words place by doing:
+
+    cxiw ..................... exchange inner word
+    .   ...................... type dot in the other word
+
+    cxi)  .................... exchange inner parenthesis block
+    .  ....................... type dot to finish the operation
 
 ### Trabalhando com janelas
 

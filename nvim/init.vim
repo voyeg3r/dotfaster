@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 10 set 2017 16:30:12 -03
+" Last Change: ter 12 set 2017 13:51:58 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -32,6 +32,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
 Plug 'coderifous/textobj-word-column.vim'
+Plug 'tommcdo/vim-exchange'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'haya14busa/incsearch.vim'

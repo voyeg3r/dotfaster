@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: seg 11 set 2017 13:12:38 -03
+" Last Change: ter 12 set 2017 12:52:12 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -50,7 +50,7 @@ com! ReloadVim call VimReloadFunction()
 " some settings {{{1
 set mousemodel=popup
 set ruler
-set number
+set relativenumber
 set mouse=a
 set t_Co=256
 set guioptions=egmrti
@@ -105,6 +105,7 @@ nnoremap K :help <C-r><C-w><CR>
 call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
 
 Plug 'tpope/vim-speeddating'
+Plug 'tommcdo/vim-exchange'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
@@ -306,9 +307,10 @@ endfun
 vnoremap <C-s> :<C-u>call SumVis()<cr>
 
 " alternate between relative number, number and no number
-set nu
 "nmap ,r :set rnu!<cr>
-nnoremap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+"nnoremap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+
+inoremap <leader>r <C-r>=system('echo "$(($RANDOM % 1000))"')<cr>
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzz
