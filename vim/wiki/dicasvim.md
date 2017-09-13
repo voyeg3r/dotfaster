@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 13 set 2017 10:07:49 -03
+Last Change: qua 13 set 2017 15:01:46 -03
 ```
 
 ### Vim tips for everyone
@@ -180,15 +180,44 @@ After instaling Tim Pope's speeddating plugin you can do something like:
 
     :put =range(1,10)
 
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+
+Joining (puting) even and odd lines at the same line
+
+    :%norm J
+
+    1 2
+    3 4
+    5 6
+    7 8
+    9 10
+
+Merge vertical lists in Vim (doiing the oposite of above
+
+This is simple, just place the cursor on the column between the lists. Insert
+visualblock-mode <C-v>, mark the whole column, hit r to replace it, and then
+<CR> and you have what you want. source: https://stackoverflow.com/a/46034410/2571881
+
+Doing a visual block selection you can do:
+
+    :'<,'>s/\%V /\r/g
+
+The `\%V` will make sure the substitution happens only in the selection area
+
 ### Open file read-only
-
 edit `/etc/nginx/nginx.conf` in read-only mode:
-
-     sudo vim +M /etc/nginx/nginx.conf
-
+sudo vim +M /etc/nginx/nginx.conf
 ### Scrolling down both parts of a split-window at the same time in Vim
 source http://stackoverflow.com/a/2986980/2571881
-
 First you can open two files, each in its window, doing this:
 
     vim -o file1.txt file2.txt
@@ -379,8 +408,8 @@ at the beginning of your file
     ou backtickets in English
 
 ### Insere a data usando interpolação do vim
-    !v strftime('%Y-%m-%d')
 
+    !v strftime('%Y-%m-%d')
     !p  interpolação python
 
     !p snip.rv = "return value"
@@ -718,6 +747,17 @@ Function to sum visual selection
 then
 
     9@:
+
+Vim doesn't offer native random generator, however if you have vim compiled
+with Python, the following method will append a random digit at the end of
+your line:
+
+    py import vim, random; vim.current.line += str(random.randint(1, 100))
+
+If you don't have access to shell and Python, as for workaround, you use last
+few digits from the current timestamp, in example:
+
+    :put =reltimestr(reltime())[-2:]
 
 ### Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
