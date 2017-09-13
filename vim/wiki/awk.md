@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: ter 05/set/2017 hs 13:55
-Last Change: ter 05 set 2017 14:03:35 -03
+Last Change: qua 13 set 2017 10:24:29 -03
 ```
 
 # Introdução
@@ -854,6 +854,39 @@ Alessandro Almeida.
 solução
 
 awk '{printf("%s%s", $0, (NR%5 ? " " : "\n"))}'
+
+### Join every odd line
+
+a bash commands outputs this:
+
+    Runtime Name: vmhba2:C0:T3:L14
+    Group State: active
+    Runtime Name: vmhba3:C0:T0:L14
+    Group State: active unoptimized
+    Runtime Name: vmhba2:C0:T1:L14
+    Group State: active unoptimized
+    Runtime Name: vmhba3:C0:T3:L14
+    Group State: active
+    Runtime Name: vmhba2:C0:T2:L14
+    Group State: active
+
+I'd like to pipe it to something to make it look like this:
+
+    Runtime Name: vmhba2:C0:T1:L14 Group State: active
+    Runtime Name: vmhba3:C0:T3:L14 Group State: active unoptimized
+    Runtime Name: vmhba2:C0:T2:L14 Group State: active
+
+    awk 'ORS=NR%2?" ":"\n"'
+
+    awk 'ORS=NR%2?FS:RS'
+
+A vim solution would be
+
+    :%norm J
+
+Using sed:
+
+    sed 'N;s/\n/ /' inputfile
 
 ### Referências
 * http://www.zago.eti.br/script/awk.html

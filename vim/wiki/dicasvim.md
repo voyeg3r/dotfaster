@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 13 set 2017 09:47:37 -03
+Last Change: qua 13 set 2017 10:07:49 -03
 ```
 
 ### Vim tips for everyone
@@ -45,6 +45,20 @@ Recursive mapping
 
     :map <C-o> ddj<C-o>
     <C-o>
+
+### Inserting a-z using macro
+
+Using set nrformats+=alpha:
+
+    ia<Esc>qqylp<C-a>q24@q
+
+Step by step:
+
+    ia<Esc>      " Start with 'a'
+    qqylp<C-a>q  " @q will duplicate the last character and increment it
+    24@q         " Append c..z
+
+    :r !printf '\%s' {a..z}
 
 ### Show filetype
 
@@ -400,7 +414,6 @@ endsnippet
 
     :s,(\|),,g
 
-
 ### Quickfix list manipulations and :cdo command
 
 ``` vim
@@ -442,7 +455,6 @@ Gravei todos os arquivos depois do teste
 Fechei  todos os arquivos
 
         :qall
-
 
 ### Links or worth clicking
 
@@ -497,7 +509,6 @@ customizations won’t be applied and plugins will be disabled. When Vim starts
 up without loading a vimrc file, it reverts to vi compatible mode, which causes
 many useful features to be disabled. The -N flag prevents this by setting the
 ‘nocompatible’ option.
-
 
 ### Magic with expression register
 
@@ -749,7 +760,6 @@ if your register z is not clean you can clear it by doing
     qzq
 ```
 
-
 # I would like to copy the first words of multiple lines.
 + http://stackoverflow.com/a/43003031/2571881
 
@@ -900,7 +910,6 @@ and adding the closing curly brackets (A })
 If you are wondering, the ctrl+v allows us to type a non-digit literally in
 command line (in our case the ESC or Ctrl+C).
 
-
 References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
             one two
@@ -930,7 +939,6 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
     Usando relative numbers
 
     :-7t.
-
 
     command 	action
     :9t. 	    copy line 9 placing a duplicate below the current line
@@ -976,7 +984,6 @@ Supose you have these lines:
 " promote each digit matched in the above search
 
         :%s//\=submatch(0)-1/g
-
 
 		:s/\d\+/\=submatch(0) + 1/
         increases digits
@@ -1201,7 +1208,6 @@ Explicando:
     ] .................. fechamento do grupo
     * .................. quantificador para o grupo (zero ou mais)
 
-
 		%s,</\?font[^>]*>,,g
 
 Para evitar usar muitos escapes usamos no comando final (acima) um
@@ -1269,7 +1275,6 @@ installvim () {
 g!/\.mp3/d
 ```
 
-
 ### How to append to clipboard?
 
     let @+ .= my_expression
@@ -1322,11 +1327,9 @@ In order to insert Unicode symbols:
 
 to view the code of carachter below of cursor type 'ga'
 
-
 To paste text from the system clipbo ard use Shift + Ins in Insert mode or
 "*p in Normal mode.  Conversely, "+y yanks the current selection to the system
 clipbo ard.
-
 
 ### Numbering lines in sequence
 
@@ -1337,7 +1340,6 @@ clipbo ard.
 	golden rings
 
 Make above lines become this way
-
 
 	1) partridge in a pear tree
 	2) turtle doves
@@ -1405,7 +1407,6 @@ Note that the <delete> is necessary because the stamp line contained a carriage
 return. If it did not (i.e. yanking using y$ rather than yy) the <delete> could
 be omitted.
 
-
 ### Correct all occurrences of misspelled word
 
 ``` markdown
@@ -1424,7 +1425,6 @@ zug ......... undo add word as good one
 + https://stackoverflow.com/a/10414708/2571881
 
     :%s/^/\=(line(".")%4==0?"\n":"")/g
-
 
 ### Vim - Adding empty line between lines
 + https://superuser.com/a/592508/45032
@@ -1555,7 +1555,6 @@ So, @@ will have the value of the text deleted with a d, c, s or x command, or t
 
 See :help registers for the full reference.
 
-
 ### Editando arquivos remotamente
 
     :e scp://username@someremotehost/./path/to/file
@@ -1609,7 +1608,6 @@ Pattern 1 and 2 have the same search pattern but different replacement
 patterns. I want to unify them into one pattern with the option of pressing (1)
 for replacement 1, (2) for replacement 2 or (n) for no replacement.
 
-
 The implementation of :s//c is fixed; what you're looking for is replacement
 with a Vimscript expression (:help sub-replace-expr). You can query a
 single-digit via getchar(), or prompt for longer numbers via input():
@@ -1622,7 +1620,6 @@ You can enter a higher number (3 in your example) to perform no replacement.
 If you need this often, it would make sense to define a custom Query() function
 for that. In there, you could also add a :redraw, so that you see the
 replacements that have already happened.
-
 
 ### Vim delete HTML tag, but not content
 
@@ -1765,7 +1762,6 @@ Outro modo de fazer é rodar o comado:
 
        '<,'>g/star/ normal<c-v><c-a>
 
-
 Lembrando que o Control-v é para inserir o Control-x
 que decrementa em modo normal
 
@@ -1779,7 +1775,6 @@ V`] ...... reseleciona trecho colado
 `[v`] .... reseleciona trecho colado
 '[ ....... local anterior ao último insert
 ```
-
 
 ### Abrir ajuda em tela cheia em nova aba
 
@@ -1854,7 +1849,6 @@ Para colocar o nome do arquivo em uma substituição faça
 
       /<c-r>%
 
-
 ### Brincando com regex no vim
 + https://stackoverflow.com/a/45600892/2571881
 
@@ -1894,11 +1888,9 @@ and I want to replace them as follows.
 	uma palavra pelo menos --> \w+
 	seguida de outro grupo opcional ( \w+)?
 
-
 Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora quebrando a cabeça, pois meu objetivo era aprender um pouco mais sobre regex no vim e de modo greal, pois é um assunto que me intriga.
 
 Para poucas linhas de código, obviamente a solução manual é a melhor escolha, mas imagina se esse código tivesse centenas de linhas, o que provavelmente corresponde à realidade do cara que a postou.
-
 
 ### How search for a word not preceded by another
 
@@ -1976,7 +1968,6 @@ How could I make that into
         <foo val="bar1"/>
         <foo val="bar"/>
     </block>
-
 
     \v%(block>\_.{-})\zsbar1
     %s,,&1,g
@@ -2138,7 +2129,6 @@ This string doesn't contain any quotes, isn't it.
 
 ```
 
-
 ``` markdown
 ----------------------------------------------------------
 " a explicação
@@ -2195,9 +2185,7 @@ I want to re-arrage the file so that I get
     Identifier is Y1 size is X1
     Identifier is Y1 size is X
 
-
     %s,\v(.*) (I.*),\2 \1
-
 
 ### Colando o que foi selecionado com o mouse
 
@@ -2270,8 +2258,6 @@ Para abrir os arquivos que correspondem ao padrão
 
 :copen ......... abre a lista - use Ctrl-w-f
 ```
-
-
 
 ### Usando o grep nativo do vim
 
@@ -2533,7 +2519,6 @@ copie a saida deste comando
 
      :set gfn?
 
-
 Agora coloque no vimrc o resultado
 
      set anti gfn="nome da fonte que você pegou"
@@ -2541,7 +2526,6 @@ Agora coloque no vimrc o resultado
 Alternatively, enter the following to insert the current font setting into the buffer:
 
     :put =&guifont
-
 
    ** no modo gráfico (gvim) **
 
@@ -2851,7 +2835,6 @@ Or using a global command. (both are similar)
     , ............ interval delimiter
     /\*\/$d_ ..... delete until the end to the black hole register "d_"
 
-
 ### How to use vim to do multiple line edit?
 + https://stackoverflow.com/questions/44172121/
 
@@ -3006,7 +2989,6 @@ command! -nargs=0 H2M :%!pandoc -f html -t markdown<CR>
 Lets say you have lines as folows
 ---------------------------------
 
-
 amixer is a command-line mixer for ALSA soundcard driver.
 
 Increase volume by 10%
@@ -3032,7 +3014,6 @@ Shows a complete list of simple mixer controls
 And you want to add ### at non indented lines
 
 the command will be:
-
 
     .,$/^[^ \t]*/### &/g
 

@@ -106,10 +106,12 @@ source: http://askubuntu.com/questions/357248/how-to-remove-special-m-bm-charact
 
 ### Imprimir somente as linhas impares
 
-    sed -n '1~2p'
+    sed -n '1~2p' input.txt
 
     Em inglês "odd lines"
     as pares seriam "even lines"
+
+    sed -n '2~2 p' input.txt
 
 ### Removendo o caratere ' de uma string
 
