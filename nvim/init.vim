@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 12 set 2017 15:06:47 -03
+" Last Change: ter 12 set 2017 17:18:12 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -46,7 +46,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-speeddating'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'rstacruz/vim-closer'
 "Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -311,6 +312,10 @@ augroup vimrc-make-cmake
   autocmd!
   autocmd FileType make setlocal noexpandtab
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+augroup END
+
+augroup markdown
+    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
 augroup END
 
 set autoread

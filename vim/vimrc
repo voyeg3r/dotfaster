@@ -109,7 +109,8 @@ Plug 'tommcdo/vim-exchange'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'rstacruz/vim-closer'
 Plug 'haya14busa/incsearch.vim'
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
@@ -632,6 +633,10 @@ augroup vimrc-make-cmake
   autocmd!
   autocmd FileType make setlocal noexpandtab
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+augroup END
+
+augroup markdown
+    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
 augroup END
 
 set autoread

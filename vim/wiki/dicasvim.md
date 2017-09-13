@@ -1,10 +1,10 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 12 set 2017 14:52:13 -03
+Last Change: qua 13 set 2017 09:47:37 -03
 ```
 
-# Vim tips for everyone
+### Vim tips for everyone
 
 see also [Best of vim tips](vimbesttips.md)
 See also: [Regex](Regex.md) page
@@ -35,6 +35,21 @@ vim profiler: https://github.com/bchretien/vim-profiler
 # sudo pacman -U par-1.52-2-i686.pkg.tar.xz
 wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
 ```
+
+### Deleting every other line (deleta linhas pares)
+
+    :g/^/+d .................. deletes even lines
+    :d|g/^/+d ................ deletes odd lines
+
+Recursive mapping
+
+    :map <C-o> ddj<C-o>
+    <C-o>
+
+### Show filetype
+
+    :se ft?
+    :echo &ft
 
 ### Inserting primary selection content
 
@@ -443,6 +458,32 @@ ao instalar o vimgolf como recomenda o site digite
     PATH=$PATH:/home/sergio/.gem/ruby/2.3.0/bin
 
 See also [vimbesttips](vimbesttips.md)
+
+**VimGolf Chalenges**
+
+initial file http://www.vimgolf.com/challenges/59381bd3652ee10dec000005
+
+    milk
+    coffe
+    toothpaste
+    potatoes
+    tomatoes
+    nuts
+    tuna cans
+
+Result
+
+    milk      -->
+    coffe     -->
+    toothpaste-->
+    potatoes  -->
+    tomatoes  -->
+    nuts      -->
+    tuna cans -->
+
+Solution
+
+    <C-v>)A --><ESC>ZZ
 
 ### Start vim with no plugins
 source: Book practical vim
