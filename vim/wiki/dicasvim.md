@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 13 set 2017 15:01:46 -03
+Last Change: qui 14 set 2017 17:22:18 -03
 ```
 
 ### Vim tips for everyone
@@ -28,6 +28,8 @@ vim profiler: https://github.com/bchretien/vim-profiler
     :b substring  opens any file with substring
 
 ### Nice paragraph formating
++ http://vimcasts.org/episodes/formatting-text-with-par/
++ http://www.nicemice.net/par/
 
 ``` markdown
 # paragraph formater (useful for vim)
@@ -48,7 +50,7 @@ Recursive mapping
 
 ### Inserting a-z using macro
 
-Using set nrformats+=alpha:
+Using set `nrformats+=alpha:`
 
     ia<Esc>qqylp<C-a>q24@q
 
@@ -72,9 +74,9 @@ For those who do not know what "primary selection is", putting it simple.
 	"The text selected and is just captured automatically to its
 	special clipboard space (Linux only)"
 
-On vim just press: Shift-insert "primary selection"
+On vim just press: `Shift-insert` "primary selection"
 
-While in insert mode, you can use Ctrl-R {register}, where register can be:
+While in insert mode, you can use `Ctrl-R` {register}, where register can be:
 
     + for the clipboard,
     * for the X clipboard (last selected text in X),
@@ -87,8 +89,7 @@ While in insert mode, you can use Ctrl-R {register}, where register can be:
 	Ctrl-O can be used to run any normal mode command before returning to insert mode, so
 	Ctrl-O "+p can also be used, for example.
 
-For more information, view the documentation with :h i_ctrl-r
-
+For more information, view the documentation with `:h i_ctrl-r`
 ### gn command
 
     cgn ............. change next searched pattern
@@ -153,17 +154,20 @@ After instaling Tim Pope's speeddating plugin you can do something like:
     :g/\v^\d{2}:\d{2}:/execute "normal t,10\<C-x>2t,10\<C-x>"
 
 ### Swap two words fast
++ Plug tommcdo/vim-exchange
 
-   one word
+or
 
-   "acw .......... "a register 'a'
-   cw ............ change word
+    one word
 
-   after that jump the next word and do:
-   ^ra
+    "acw .......... "a register 'a'
+    cw ............ change word
 
-   ^r ................ Ctrl-r
-   a ................. paste register 'a'
+    after that jump the next word and do:
+    ^ra
+
+    ^r ................ Ctrl-r
+    a ................. paste register 'a'
 
 ### How many open buffers?
 + http://superuser.com/a/345593/45032
@@ -289,7 +293,7 @@ to see more:
 ### Vimscript: adding text to the current line
 + https://vi.stackexchange.com/a/12450/7339
 
-    call setline('.', getline('.') . 'new text')
+     call setline('.', getline('.') . 'new text')
 
 ### Making vim show spaces tabs and other things
 [Source stackoverflow](http://stackoverflow.com/a/38652646/2571881)
@@ -334,8 +338,10 @@ iab fname <c-r>=expand("%:p")<cr>
 ### Inserting blank lines below and above
 + https://superuser.com/a/607193/45032
 
-    nnoremap <Enter> :call append(line('.'), '')<CR>
-    nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
+``` vimscript
+nnoremap <Enter> :call append(line('.'), '')<CR>
+nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
+```
 
 ### Tips on searching
 [Read more here](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
@@ -368,7 +374,7 @@ Executar uma substituição apenas na área selecionada
 The `\%V \%V` will make the search pattern work over
 only in selected area.
 
-    <a href="https://example.com/hello world hi">hello-world-hi</a>
+    <a href="https://example.com/hello-world-hi">hello world hi</a>
 
     :s/\%V-\%V/ /g
 
@@ -617,11 +623,11 @@ Using a "register" on search
 :exe '%s/' . @a . '/foo/g'
 ```
 
-### How to knwo if vim has python support
+### How to know if vim has python support
 
     vim --version | grep python
 
-### Insert a command rnnge easily
+### Insert a command range easily
 Reference: http://stackoverflow.com/questions/35693335/
 
     4:   equals to :.,.+3
@@ -727,7 +733,8 @@ Function to sum visual selection
             let l:a_save = @a
             norm! gv"ay
             let @a = substitute(@a,'[^0-9. ]','+','g')
-            exec "norm! gv\<esc>\<esc>o"
+            "exec "norm! gv\<esc>\<esc>o"
+            exec "norm! '>o"
             exec "norm! iTotal \<c-r>=\<c-r>a\<cr>"
          finally
             let @a = l:a_save
@@ -738,26 +745,26 @@ Function to sum visual selection
 ### Generating random numbers in vim
 + https://stackoverflow.com/a/20430735/2571881
 
-    :r! echo $RANDOM
+     :r! echo $RANDOM
 
-    function! Random()
-        return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
-    endfunction
+     function! Random()
+         return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+     endfunction
 
 then
 
-    9@:
+     9@:
 
 Vim doesn't offer native random generator, however if you have vim compiled
 with Python, the following method will append a random digit at the end of
 your line:
 
-    py import vim, random; vim.current.line += str(random.randint(1, 100))
+     py import vim, random; vim.current.line += str(random.randint(1, 100))
 
 If you don't have access to shell and Python, as for workaround, you use last
 few digits from the current timestamp, in example:
 
-    :put =reltimestr(reltime())[-2:]
+     :put =reltimestr(reltime())[-2:]
 
 ### Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
@@ -881,6 +888,9 @@ source: http://stackoverflow.com/q/40414720/
 ### Select yanked and pasted text
 
      gv ............ reselects last visual selection
+     `< ............ goes to first character of last selection
+     '< ............ first line of last selection
+     '> ............ last line of last selection
 
  in order to select previous pasted text put this in your .vimrc
 
@@ -1321,7 +1331,7 @@ g!/\.mp3/d
 
 ### Repeating last subtituition
 
-      &  ........... in normal mode
+    &  ........... in normal mode
 
 repetir ultima substituição  &
 
@@ -1464,7 +1474,7 @@ zug ......... undo add word as good one
 ### How add a line after every few lines in vim
 + https://stackoverflow.com/a/10414708/2571881
 
-    :%s/^/\=(line(".")%4==0?"\n":"")/g
+     :%s/^/\=(line(".")%4==0?"\n":"")/g
 
 ### Vim - Adding empty line between lines
 + https://superuser.com/a/592508/45032

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 12 set 2017 17:18:12 -03
+" Last Change: qui 14 set 2017 17:18:15 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -265,7 +265,7 @@ fun! SumVis()
         let l:a_save = @a
         norm! gv"ay
         let @a = substitute(@a,'[^0-9. ]','+','g')
-        exec "norm! gv\<esc>\<esc>o"
+        exec "norm! '>o"
         exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
      finally
         let @a = l:a_save

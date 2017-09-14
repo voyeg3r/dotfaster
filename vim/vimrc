@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: ter 12 set 2017 15:03:36 -03
+" Last Change: qui 14 set 2017 17:13:09 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -303,7 +303,7 @@ fun! SumVis()
         let l:a_save = @a
         norm! gv"ay
         let @a = substitute(@a,'[^0-9. ]','+','g')
-        exec "norm! gv\<esc>\<esc>o"
+        exec "norm! '>o"
         exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
      finally
         let @a = l:a_save

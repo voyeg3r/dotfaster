@@ -4,7 +4,7 @@ Created: sex 08/set/2017 hs 12:58
 Last Change: sex 08 set 2017 12:58:28 -03
 ```
 
-If pacman is not running and has a lock package avoiding
+If pacman is not running and has a lock package preventing
 other instalations, run this:
 
     rm /var/lib/pacman/db.lck
