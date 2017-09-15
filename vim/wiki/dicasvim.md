@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qui 14 set 2017 17:22:18 -03
+Last Change: sex 15 set 2017 14:52:44 -03
 ```
 
 ### Vim tips for everyone
@@ -47,6 +47,25 @@ Recursive mapping
 
     :map <C-o> ddj<C-o>
     <C-o>
+
+### Virtualedit
++ https://stackoverflow.com/a/30323328/2571881
+
+This allows you to put characters virtually everywhere on your text
+
+    :let x=&ve
+    :set ve=all|2,5norm! 19|r#
+    :let &ve=x
+
+    :set virtualedit=all
+
+``` markdown
++--------------------------------------------------------------------------------+
+|  The above setting allows you to put your mouse even where does not exist text |
+|  and create a vertical selection to put something linke this box               |
++--------------------------------------------------------------------------------+
+```
+The problem happens more when you have many lines in different sizes
 
 ### Inserting a-z using macro
 
@@ -733,7 +752,6 @@ Function to sum visual selection
             let l:a_save = @a
             norm! gv"ay
             let @a = substitute(@a,'[^0-9. ]','+','g')
-            "exec "norm! gv\<esc>\<esc>o"
             exec "norm! '>o"
             exec "norm! iTotal \<c-r>=\<c-r>a\<cr>"
          finally
@@ -741,6 +759,10 @@ Function to sum visual selection
          endtry
     endfun
     vnoremap <c-s> :<C-u>call SumVis()<cr>
+
+Another solution:
+
+    command! -range=% -nargs=* SumColumn <line1>,<line2>!bash -c 'awk -F ${2:-|} "{print; sum+=\$(${1:-NF - 2} + 1)} END {print \"Total: \"sum}"' sumcolumn <args>
 
 ### Generating random numbers in vim
 + https://stackoverflow.com/a/20430735/2571881
@@ -962,43 +984,50 @@ command line (in our case the ESC or Ctrl+C).
 
 References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
-            one two
-            three
+In some situations, for example: If you want to change
+a word, putting parenthesis around it, you have to use a literal
+default registr --> "
 
-            (one) (two)
-            (three)
+        three
+        one two
 
-       temos que usar
+        (one) (two)
+        (three)
 
-            <c-r><c-o>"
+temos que usar
+
+        <c-r><c-o>"
 
 ### Command line tricks
 
     :9 copy 13
 
-    copia a linha 9 para a linha 13
+copia a linha 9 para a linha 13
 
     :9t16
 
-    does the same faster
+does the same faster
 
     :[range]copy {address}
 
     :9t.
 
-    Usando relative numbers
+Usando relative numbers
 
     :-7t.
 
-    command 	action
-    :9t. 	    copy line 9 placing a duplicate below the current line
-    :t5 	    copy the current line placing a duplicate below the line 5 (and moving the cursor)
-    :-7t. 	    copy the line 7 before the current cursor position placing a duplicate below the current line
-    :+4t. 	    copy the line 4 after the current cursor position placing a duplicate below the current line
-    :9,11t. 	copy the lines 9 to 11 placing the duplicate lines below the current cursor position
-    :-5t.       copy the line 5 rows above to the current line
-    :1m.        move line one to the current line
-    :-3m.       move the line up 3 to this position
+    +------------+-------------------------------------------------------------------------------------------------+
+    |  command 	 |  action
+    +------------+-------------------------------------------------------------------------------------------------+
+    |  :9t. 	 |  copy line 9 placing a duplicate below the current line                                         |
+    |  :t5 	     |  copy the current line placing a duplicate below the line 5 (and moving the cursor)             |
+    |  :-7t. 	 |  copy the line 7 before the current cursor position placing a duplicate below the current line  |
+    |  :+4t. 	 |  copy the line 4 after the current cursor position placing a duplicate below the current line   |
+    |  :9,11t. 	 |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position           |
+    |  :-5t.     |  copy the line 5 rows above to the current line                                                 |
+    |  :1m.      |  move line one to the current line                                                              |
+    |  :-3m.     |  move the line up 3 to this position                                                            |
+    +------------+-------------------------------------------------------------------------------------------------+
 
 ### Formating text on vim
 
@@ -2884,6 +2913,15 @@ Or using a global command. (both are similar)
     $ ............ end of line
     , ............ interval delimiter
     /\*\/$d_ ..... delete until the end to the black hole register "d_"
+
+### get multiline mp3 links
+
+The key to get mp3 links over multilne is to search for:
+
+    /http.*\_.mp3
+
+After that you can manipulate your html in order to clean the links
+accordingly with the situation
 
 ### How to use vim to do multiple line edit?
 + https://stackoverflow.com/questions/44172121/

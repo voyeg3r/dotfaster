@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qui 14 set 2017 17:13:09 -03
+" Last Change: sex 15 set 2017 14:41:47 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -10,7 +10,7 @@
 " Licence: Licença: Use esse código sob os termos da licença GNU versão 3
 " Garantia: O autor não se responsabiliza por eventuais danos
 " causados pelo uso deste arquivo.
-" my old vimrc:https://github.com/voyeg3r/dotfiles/blob/02b8a11b9f9e98c33d7290aea509004110305989/rcfiles/vim/vimrc
+" my old vimrc: https://github.com/voyeg3r/dotfiles/blob/02b8a11b9f9e98c33d7290aea509004110305989/rcfiles/vim/vimrc
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo=============+
@@ -19,7 +19,6 @@
 "  |   /(_)\  Linux User #423493         |
 "  |    ^ ^   voyeg3r ✉ gmail.com        |
 "  +=====================================+
-
 
 "" Plug bootstrap - Install Plug if it is not already installed{{{
 "if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
@@ -64,6 +63,7 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+"set statusline=%F%m%r%h%w\ %{&ff}\ %Y\ ascii=\%03.3b\ hex=\%02.2B\ line=%l\ col=%02v\ %p%%\ len=%L
 set nocompatible
 set path+=**
 set history=200
@@ -107,12 +107,12 @@ call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
 Plug 'tpope/vim-speeddating'
 Plug 'tommcdo/vim-exchange'
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'nelstrom/vim-visual-star-search'
+"Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'rstacruz/vim-closer'
-Plug 'haya14busa/incsearch.vim'
-Plug 'inside/vim-search-pulse'
+"Plug 'haya14busa/incsearch.vim'
+"Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
@@ -148,26 +148,6 @@ let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
 
 colorscheme molokai
-
-" pulse search integration with incsearch PlugIn
-" incsearch and vim search pulse
-let g:vim_search_pulse_disable_auto_mappings = 0
-let g:incsearch#auto_nohlsearch = 0
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Next or previous match is followed by a Pulse
-map n <Plug>(incsearch-nohl-n)<Plug>Pulse
-map N <Plug>(incsearch-nohl-N)<Plug>Pulse
-map * <Plug>(incsearch-nohl-*)<Plug>Pulse
-map # <Plug>(incsearch-nohl-#)<Plug>Pulse
-map g* <Plug>(incsearch-nohl-g*)<Plug>Pulse
-map g# <Plug>(incsearch-nohl-g#)<Plug>Pulse
-
-" Pulses the first match after hitting the enter keyan
-autocmd! User IncSearchExecute
-autocmd User IncSearchExecute :call search_pulse#Pulse()
 
 " fzf configuration
 " <C-p> to search files

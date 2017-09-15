@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 14 set 2017 17:18:15 -03
+" Last Change: sex 15 set 2017 14:52:57 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -35,9 +35,9 @@ Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'nelstrom/vim-markdown-folding'
-Plug 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch.vim'
 "Plug 'timakro/vim-searchant'
-Plug 'inside/vim-search-pulse'
+"Plug 'inside/vim-search-pulse'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
@@ -82,26 +82,6 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
-
-" pulse search integration with incsearch PlugIn
-" incsearch and vim search pulse
-let g:vim_search_pulse_disable_auto_mappings = 0
-let g:incsearch#auto_nohlsearch = 0
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Next or previous match is followed by a Pulse
-map n <Plug>(incsearch-nohl-n)<Plug>Pulse
-map N <Plug>(incsearch-nohl-N)<Plug>Pulse
-map * <Plug>(incsearch-nohl-*)<Plug>Pulse
-map # <Plug>(incsearch-nohl-#)<Plug>Pulse
-map g* <Plug>(incsearch-nohl-g*)<Plug>Pulse
-map g# <Plug>(incsearch-nohl-g#)<Plug>Pulse
-
-" Pulses the first match after hitting the enter keyan
-autocmd! User IncSearchExecute
-autocmd User IncSearchExecute :call search_pulse#Pulse()
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -189,11 +169,14 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
 nnoremap K :help <C-r><C-w><CR>
+
+"  when searching next patter put it in the middle of screen
+nnoremap n nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
