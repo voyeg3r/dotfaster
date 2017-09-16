@@ -4,7 +4,7 @@ Created:     Sáb 06/Nov/2010 hs 18:10
 Last Change: sex 15 set 2017 14:52:44 -03
 ```
 
-### Vim tips for everyone
+# Vim tips for everyone
 
 see also [Best of vim tips](vimbesttips.md)
 See also: [Regex](Regex.md) page
@@ -13,7 +13,7 @@ vim profiler: https://github.com/bchretien/vim-profiler
     git clone https://github.com/vim-jp/vital.vim.git
     A comprehensive Vim utility functions for Vim plugins
 
-### Using vim with no plugins
+# Using vim with no plugins
 
 ```vim
     set path+="**"
@@ -27,7 +27,7 @@ vim profiler: https://github.com/bchretien/vim-profiler
     :b 2 ........ go to buffer 2
     :b substring  opens any file with substring
 
-### Nice paragraph formating
+[#](#) Nice paragraph formating
 + http://vimcasts.org/episodes/formatting-text-with-par/
 + http://www.nicemice.net/par/
 
@@ -38,7 +38,7 @@ vim profiler: https://github.com/bchretien/vim-profiler
 wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
 ```
 
-### Deleting every other line (deleta linhas pares)
+# Deleting every other line (deleta linhas pares)
 
     :g/^/+d .................. deletes even lines
     :d|g/^/+d ................ deletes odd lines
@@ -48,7 +48,7 @@ Recursive mapping
     :map <C-o> ddj<C-o>
     <C-o>
 
-### Virtualedit
+# Virtualedit
 + https://stackoverflow.com/a/30323328/2571881
 
 This allows you to put characters virtually everywhere on your text
@@ -67,7 +67,7 @@ This allows you to put characters virtually everywhere on your text
 ```
 The problem happens more when you have many lines in different sizes
 
-### Inserting a-z using macro
+# Inserting a-z using macro
 
 Using set `nrformats+=alpha:`
 
@@ -81,12 +81,12 @@ Step by step:
 
     :r !printf '\%s' {a..z}
 
-### Show filetype
+# Show filetype
 
     :se ft?
     :echo &ft
 
-### Inserting primary selection content
+# Inserting primary selection content
 
 For those who do not know what "primary selection is", putting it simple.
 
@@ -109,28 +109,28 @@ While in insert mode, you can use `Ctrl-R` {register}, where register can be:
 	Ctrl-O "+p can also be used, for example.
 
 For more information, view the documentation with `:h i_ctrl-r`
-### gn command
+# gn command
 
     cgn ............. change next searched pattern
     n ............... go to next occurrence
     . ............... repeat last change
 
-### Moving around
+# Moving around
 
     g; ....... goes to older position on changelist
     g, ....... goes to newer positoin on changelist
 
-### Exit ex mode
+# Exit ex mode
 
     q:  ............... eters ex mode
     ^c ................ exit it
 
-### Auditing vim mappings
+# Auditing vim mappings
 
 	:verbose map <c-a>
 	:verbose imap x
 
-### spliting funtions into separated files
+# spliting funtions into separated files
 
 The selections starts with
 
@@ -151,7 +151,7 @@ The selections starts with
 	isso corresponde ao começo da função, daí é só
 	dar um vip em modo normal
 
-### Remove offending key from known_hosts file with one swift move
+# Remove offending key from known_hosts file with one swift move
 
      vi +18d +wq ~/.ssh/known_hosts
 
@@ -159,12 +159,12 @@ alternatively you can use sed:
 
      sed -i 18d .ssh/known_hosts
 
-### Erase / delete change history
+# Erase / delete change history
 + https://superuser.com/a/263406/45032
 
     :set undoreload=0 | edit
 
-### Edit subtitles with vim
+# Edit subtitles with vim
 + https://github.com/tpope/vim-speeddating
 + https://stackoverflow.com/a/24149171/2571881
 
@@ -172,7 +172,7 @@ After instaling Tim Pope's speeddating plugin you can do something like:
 
     :g/\v^\d{2}:\d{2}:/execute "normal t,10\<C-x>2t,10\<C-x>"
 
-### Swap two words fast
+# Swap two words fast
 + Plug tommcdo/vim-exchange
 
 or
@@ -188,18 +188,18 @@ or
     ^r ................ Ctrl-r
     a ................. paste register 'a'
 
-### How many open buffers?
+# How many open buffers?
 + http://superuser.com/a/345593/45032
 + http://stackoverflow.com/a/42024307/2571881
 
     echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
 
-### How do I search the open buffers in Vim?
+# How do I search the open buffers in Vim?
 + https://stackoverflow.com/a/11976158/2571881
 
     :bufdo vimgrepadd pattern % | copen+
 
-### Inserting a range of numbers
+# Inserting a range of numbers
 
     :put =range(1,10)
 
@@ -236,10 +236,10 @@ Doing a visual block selection you can do:
 
 The `\%V` will make sure the substitution happens only in the selection area
 
-### Open file read-only
+# Open file read-only
 edit `/etc/nginx/nginx.conf` in read-only mode:
 sudo vim +M /etc/nginx/nginx.conf
-### Scrolling down both parts of a split-window at the same time in Vim
+# Scrolling down both parts of a split-window at the same time in Vim
 source http://stackoverflow.com/a/2986980/2571881
 First you can open two files, each in its window, doing this:
 
@@ -253,11 +253,11 @@ In the second file:
 
     :set scrollbind
 
-### Browsing vim help
+# Browsing vim help
 
 To open a link just press `Ctrl-]` and to jump back `Ctrl-t` or `Ctrl-o`
 
-### open the file on the line where the 3rd occurrence of the pattern appears
+# open the file on the line where the 3rd occurrence of the pattern appears
 [tecmint.com](http://www.tecmint.com/how-to-use-vi-and-vim-editor-in-linux/)
 
     vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
@@ -273,7 +273,7 @@ Finally,
     cut -d: -f1 returns the first field of the previous pipeline with the colon
     (:) is the field separator.
 
-### Delete till end of current parenthesis block in vim
+# Delete till end of current parenthesis block in vim
 
 Say I am editing this json
 
@@ -305,16 +305,16 @@ to see more:
 :h ]}
 ```
 
-### Open blank new file with the same name as existing file in one step, in VIM?
+# Open blank new file with the same name as existing file in one step, in VIM?
 
     vim -c '%d' file.txt
 
-### Vimscript: adding text to the current line
+# Vimscript: adding text to the current line
 + https://vi.stackexchange.com/a/12450/7339
 
      call setline('.', getline('.') . 'new text')
 
-### Making vim show spaces tabs and other things
+# Making vim show spaces tabs and other things
 [Source stackoverflow](http://stackoverflow.com/a/38652646/2571881)
 
 ``` vim
@@ -322,7 +322,7 @@ set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lcs+=space:·
 ```
 
-### Editing complex commands and search
+# Editing complex commands and search
 
 When you have complex commands and searches you can open for each of theses modes a special window
 
@@ -332,7 +332,7 @@ When you have complex commands and searches you can open for each of theses mode
 
     /ctrl-p inserts my last search
 
-### Inserting filename
+# Inserting filename
 
 The following commands insert lines consisting of the full path of the current
 and alternate files into the buffer:
@@ -354,7 +354,7 @@ I also have this line on my `~/.vimrc`, it allows me to insert the filename easi
 iab fname <c-r>=expand("%:p")<cr>
 ```
 
-### Inserting blank lines below and above
+# Inserting blank lines below and above
 + https://superuser.com/a/607193/45032
 
 ``` vimscript
@@ -362,7 +362,7 @@ nnoremap <Enter> :call append(line('.'), '')<CR>
 nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 ```
 
-### Tips on searching
+# Tips on searching
 [Read more here](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
 
 ``` markdown
@@ -372,7 +372,7 @@ nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 /string/e-3 will place the cursor on the third character from the last character of the matched string.
 ```
 
-### Função para converter wiki para markdown
+# Função para converter wiki para markdown
 [Source: stackoverflow](http://stackoverflow.com/a/3024430/2571881)
 
 ``` vim
@@ -385,7 +385,7 @@ endfun
 command! -nargs=0 W2MD :call FuncWikiToMd()
 ```
 
-### Getting rid of '-' on html links
+# Getting rid of '-' on html links
 [Source: stackoverflow](http://stackoverflow.com/questions/41529264/)
 
 Executar uma substituição apenas na área selecionada
@@ -413,7 +413,7 @@ OBS: the `\%V` option only selects up to the cursor, leavin
 one char out of the substituition, that's way we are using
 a dot '.' in the searh, to add a extra char.
 
-### Tips about ultisnips
+# Tips about ultisnips
 source: http://vimcasts.org/episodes/ultisnips-visual-placeholder/
 
 If you wnat to overwrite a snippet definition just put
@@ -421,7 +421,7 @@ at the beginning of your file
 
     priority 1
 
-### Editing your snippets quickly
+# Editing your snippets quickly
 
     :UltiSnipsEdit
 
@@ -432,7 +432,7 @@ at the beginning of your file
     As interpolações tem que estar dentro de crases
     ou backtickets in English
 
-### Insere a data usando interpolação do vim
+# Insere a data usando interpolação do vim
 
     !v strftime('%Y-%m-%d')
     !p  interpolação python
@@ -440,7 +440,7 @@ at the beginning of your file
     !p snip.rv = "return value"
     t[1] --> tabstop 1
 
-### Usando snippets espelho ou não
+# Usando snippets espelho ou não
 
 ``` markdown
 snippet req "require a module" b
@@ -464,11 +464,11 @@ snip.rv = re.sub("[^0-9a-zA-Z]", "_", snip.v.text)
 endsnippet
 ```
 
-### Remove parenthesis of current line
+# Remove parenthesis of current line
 
     :s,(\|),,g
 
-### Quickfix list manipulations and :cdo command
+# Quickfix list manipulations and :cdo command
 
 ``` vim
 copen
@@ -510,11 +510,11 @@ Fechei  todos os arquivos
 
         :qall
 
-### Links or worth clicking
+# Links or worth clicking
 
     http://www.mileszs.com/vimlinks.html
 
-### Vimgolf
+# Vimgolf
 
 Search vimgolf chalenges to vim users
 ao instalar o vimgolf como recomenda o site digite
@@ -551,7 +551,11 @@ Solution
 
     <C-v>)A --><ESC>ZZ
 
-### Start vim with no plugins
+Another interesting solution is to enable virtualedit
+
+    :set virtualedit=all
+
+# Start vim with no plugins
 source: Book practical vim
 https://pragprog.com/book/dnvim2/practical-vim-second-edition
 
@@ -564,7 +568,7 @@ up without loading a vimrc file, it reverts to vi compatible mode, which causes
 many useful features to be disabled. The -N flag prevents this by setting the
 ‘nocompatible’ option.
 
-### Magic with expression register
+# Magic with expression register
 
 ``` markdown
 6 chairs, each costing $35, totals $
@@ -574,7 +578,7 @@ Ctrl-r = ........ starts expression register (cursor at the bottom)
 6 * 35 <enter> .. inserts the result
 ```
 
-### Viewing where maps are setted
+# Viewing where maps are setted
 
     :verbose map
 
@@ -582,11 +586,11 @@ Ctrl-r = ........ starts expression register (cursor at the bottom)
     :silent verbose map
     :redir END
 
-### Reopen previous buffer in a new window
+# Reopen previous buffer in a new window
 
     Ctrl-w Ctrl-6
 
-### Copy from one buffer to another
+# Copy from one buffer to another
 [stackoverflow](http://stackoverflow.com/q/41259890/)
 
 I try to copy the lines 7,11 from buffer 2 to my buffer 3 without leaving
@@ -600,7 +604,7 @@ buffer. You can :put that into the current buffer via the expression register:
 
      :put =getbufline(2, 7, 11)
 
-### Setting and getting position on vim
+# Setting and getting position on vim
 
 References: http://vi.stackexchange.com/questions/6208/
 http://stackoverflow.com/questions/3922384/
@@ -642,11 +646,11 @@ Using a "register" on search
 :exe '%s/' . @a . '/foo/g'
 ```
 
-### How to know if vim has python support
+# How to know if vim has python support
 
     vim --version | grep python
 
-### Insert a command range easily
+# Insert a command range easily
 Reference: http://stackoverflow.com/questions/35693335/
 
     4:   equals to :.,.+3
@@ -663,7 +667,7 @@ the entire line will be:
 
     :.,.+2wq!
 
-### Adjusting columns of text on vim
+# Adjusting columns of text on vim
 
 ``` markdown
 Stallman  Richard GNU 1953  USA
@@ -703,7 +707,7 @@ Sorting by last name
     -t represents field separator
     -k2 relates to the second field
 
-### Sum second column using awk
+# Sum second column using awk
 Let's say you have this file:
 
     index  1
@@ -764,7 +768,7 @@ Another solution:
 
     command! -range=% -nargs=* SumColumn <line1>,<line2>!bash -c 'awk -F ${2:-|} "{print; sum+=\$(${1:-NF - 2} + 1)} END {print \"Total: \"sum}"' sumcolumn <args>
 
-### Generating random numbers in vim
+# Generating random numbers in vim
 + https://stackoverflow.com/a/20430735/2571881
 
      :r! echo $RANDOM
@@ -788,14 +792,14 @@ few digits from the current timestamp, in example:
 
      :put =reltimestr(reltime())[-2:]
 
-### Vim duplicate line multiple times with 2 keypresses
+# Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
 
 This solution uses the expression register <c-r>= or @=
 
     nnoremap , @='mqYp`q'<cr>
 
-### Yank text object on multiple lines
+# Yank text object on multiple lines
 
  Let's say you have:
 
@@ -866,18 +870,18 @@ To see all cpoptions:
 
     :verbose set cpoptions?
 
-### Inserting ttyrecordings at stackexchange
+# Inserting ttyrecordings at stackexchange
 
 [![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14) https://asciinema.org/docs/embedding
 
-### Avoiding error messages on vim substituitions
+# Avoiding error messages on vim substituitions
 
 ``` vim
 :%s/\s\+$//e
 :silent! %s/\s\+$//
 ```
 
-### Clipboard manipulation
+# Clipboard manipulation
 [souce stackoverflow](http://stackoverflow.com/a/11489440/2571881)
 
 Faster way to paste data into vim than with paste mode? When I try to paste
@@ -901,13 +905,13 @@ clipboard proper).
 In order to preserve indentation during paste you could use <c-r><c-p>* or
 <cr>c-p>+ see more at `:help i_CTRL-R_CTRL-P`
 
-### Como criar um diário no vim usando o vimwiki
+# Como criar um diário no vim usando o vimwiki
 
 source: http://stackoverflow.com/q/40414720/
 
     vim +VimwikiMakeDiaryNote
 
-### Select yanked and pasted text
+# Select yanked and pasted text
 
      gv ............ reselects last visual selection
      `< ............ goes to first character of last selection
@@ -921,18 +925,18 @@ source: http://stackoverflow.com/q/40414720/
 
  to select the same ammount of lines for example use `1v`
 
-### Non-greedy search on vim
+# Non-greedy search on vim
 
     /abc\_.\{-}def
 
 Finds abc followed by any characters or newlines (as few as possible) then def.
 Finds abcdef or abc followed by any characters then def.
 
-### Changing modes on ctrl-p
+# Changing modes on ctrl-p
 
    just press Ctrl-f or Ctrl-b
 
-### Fixing subtitles with vim
+# Fixing subtitles with vim
 
 My problem: subtitles whithout space like this;
 
@@ -955,7 +959,7 @@ The solution
 
 References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
-### Appending registers with global command
+# Appending registers with global command
 
     :g/TODO/yank A
 
@@ -998,7 +1002,7 @@ temos que usar
 
         <c-r><c-o>"
 
-### Command line tricks
+# Command line tricks
 
     :9 copy 13
 
@@ -1029,11 +1033,11 @@ Usando relative numbers
     |  :-3m.     |  move the line up 3 to this position                                                            |
     +------------+-------------------------------------------------------------------------------------------------+
 
-### Formating text on vim
+# Formating text on vim
 
     gwip .... formats paragraph and restores cursor position
 
-### How repeat last command in vim - repetir ultimo comando
+# How repeat last command in vim - repetir ultimo comando
 
     @:
 
@@ -1046,7 +1050,7 @@ Following the same logic you can repeat last search by pressing @/ or just //
     Repeating the last substituition using &
     Repeat last substituition over whole file g&
 
-### Using submatch in vim search
+# Using submatch in vim search
 
 Supose you have these lines:
 
@@ -1067,7 +1071,7 @@ Supose you have these lines:
 		:s/\d\+/\=submatch(0) + 1/
         increases digits
 
-### Jumping to edit positions and insert position
+# Jumping to edit positions and insert position
 
 ``` markdown
 gi ................. start insert mode at the latest insert position
@@ -1078,7 +1082,7 @@ Ctrl-o ............. jumplist go previous
 Ctrl-i ............. go forward in the jumplist
 ```
 
-### Registros
+# Registros
 
 Registro de expressões
 
@@ -1107,7 +1111,7 @@ Para o trecho acima usamos
     :h :r!
 ```
 
-### Writing vim functions
+# Writing vim functions
 
     :put =system('echo $RANDOM')
     9@:  ....................... 9 times last command
@@ -1136,7 +1140,7 @@ This time Vim will delete not only the heading’s text but also the
 line of equal signs that denotes a heading. You can think of this
 movement as “around this section’s heading”.
 
-### Neovim
+# Neovim
 
 O problema de instalar o neovim no arch são as dependências
 mas é fácil de resolver, basta rodar esta função:
@@ -1151,7 +1155,7 @@ installneovim (){
     } && installneovim
 ```
 
-### Dica sobre como debugar vim script
+# Dica sobre como debugar vim script
 
     :echom 'Cria uma saida permanente de echo'
 
@@ -1159,7 +1163,7 @@ installneovim (){
 
     :messages
 
-### Gerando os helptag para navegar na ajuda
+# Gerando os helptag para navegar na ajuda
 
 http://stackoverflow.com/questions/4180590/
 
@@ -1174,11 +1178,11 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 ```
 
-### Configuração do airline
+# Configuração do airline
 Uma barra de status mais bacana para o vim
 https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
 
-### Corretor ortográfico no vim
+# Corretor ortográfico no vim
 
 Corretor ortográfico para VIM
 Standard
@@ -1219,13 +1223,13 @@ Caso queira que o corretor seja habilitado automaticamente sempre que acessar o 
 
      echo 'set spell spelllang=pt,en' >> ~/.vimrc
 
-### Conertendo o formato de arquivo de Windows para Linux
+# Conertendo o formato de arquivo de Windows para Linux
 
    :set ff=unix
 
    Para inserir  use o atalho Ctrl-v Ctrl-m no modo [[insert]]
 
-### Colocando o nome do arquivo no proprio
+# Colocando o nome do arquivo no proprio
 
       :put =expand('%:p')
 
@@ -1233,7 +1237,7 @@ Para somente exibir o full name do arquivo corrente faça:
 
      1 Ctrl-g   (em modo normal)
 
-### Como limpar os cartões exportados do anki
+# Como limpar os cartões exportados do anki
 
 ``` vim
 ""Primeiro remover as tags html
@@ -1254,7 +1258,7 @@ Para somente exibir o full name do arquivo corrente faça:
 		sound: .......... a palavra sound seguida de dois pontos
 		[^]]*] .......... uma lista negada que pega tudo dentro dos colchetes em qualquer quantidade
 
-### Como apagar tags do tipo </font*> no vim
+# Como apagar tags do tipo </font*> no vim
 
 Toda vez que for fazer uma ação de substituição complexa no
 vim recomendamos primeiro fazer uma busca incremental pela ocorrência
@@ -1304,30 +1308,30 @@ que delimita a busca ficando assim:
 
     :%subsitua,isto,poristo,g
 
-### Opening two files side by side
+# Opening two files side by side
 
       vim -O file1.txt file2.txt
 
-### Setting utf-8 encoding
+# Setting utf-8 encoding
 
 ``` vim
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 ```
 
-### Reindenting whole file
+# Reindenting whole file
 
 		gg=G
 
-### Move some line to current line
+# Move some line to current line
 
 		:3m .
 
-### Numbering operators
+# Numbering operators
 
 as you know 'u' refers to undo, then you can do this  3u or 3.
 
-### How install new version of vim from source
+# How install new version of vim from source
 
 ``` sh
 installvim () {
@@ -1347,24 +1351,24 @@ installvim () {
 } && installvim
 ```
 
-### How extract urls
+# How extract urls
 
 ``` vim
 %s/.*\(http.*.mp3\).*/\1/g
 g!/\.mp3/d
 ```
 
-### How to append to clipboard?
+# How to append to clipboard?
 
     let @+ .= my_expression
 
-### Repeating last subtituition
+# Repeating last subtituition
 
     &  ........... in normal mode
 
 repetir ultima substituição  &
 
-### Simplest way to show current colorschem
+# Simplest way to show current colorschem
 
 ``` vim
 :colo
@@ -1374,7 +1378,7 @@ this is the same
 :ec g:colors_name
 ```
 
-### Showing number of lines
+# Showing number of lines
 
 besides tradicional  g Ctrl-g that shows in statusbar some
 information u can do this
@@ -1383,7 +1387,7 @@ information u can do this
 
 or even map some keystroke to this result
 
-### How insert digraphs in vim
+# How insert digraphs in vim
 first we explain what are digraphs - are simbols,
 to see a complete list of them type  :dig<enter>
 
@@ -1402,7 +1406,7 @@ In order to insert Unicode symbols:
     U+2600 →  ☀
     U+2620 →  ☠
 
-### How insert one arrow - type  →
+# How insert one arrow - type  →
 
 to view the code of carachter below of cursor type 'ga'
 
@@ -1410,7 +1414,7 @@ To paste text from the system clipbo ard use Shift + Ins in Insert mode or
 "*p in Normal mode.  Conversely, "+y yanks the current selection to the system
 clipbo ard.
 
-### Numbering lines in sequence
+# Numbering lines in sequence
 
 	partridge in a pear tree
 	turtle doves
@@ -1433,7 +1437,7 @@ Make above lines become this way
 	:let i += 1
 	q
 
-### Editing a macro on vim
+# Editing a macro on vim
 
 	:put a
 
@@ -1441,14 +1445,14 @@ Make above lines become this way
 
 	"ap ...... pastes the register after the cursor
 
-### Executing a macro over all files
+# Executing a macro over all files
 
 ``` vim
 vim *.txt
 :bufdo execute "normal @a" | write
 ```
 
-### Changing a vim macro
+# Changing a vim macro
 
 Let's say you have a macro 'a' to insert it into your texto just do:
 
@@ -1461,7 +1465,7 @@ or in insert mode:
 ctrl-r a
 ```
 
-### Dealig with previous yank register
+# Dealig with previous yank register
 http://stackoverflow.com/q/12547369/
 
 EDIT 1: repeating using a macro
@@ -1486,7 +1490,7 @@ Note that the <delete> is necessary because the stamp line contained a carriage
 return. If it did not (i.e. yanking using y$ rather than yy) the <delete> could
 be omitted.
 
-### Correct all occurrences of misspelled word
+# Correct all occurrences of misspelled word
 
 ``` markdown
 :spellr
@@ -1500,12 +1504,12 @@ zuw ......... undo add word as wrong
 zug ......... undo add word as good one
 ```
 
-### How add a line after every few lines in vim
+# How add a line after every few lines in vim
 + https://stackoverflow.com/a/10414708/2571881
 
      :%s/^/\=(line(".")%4==0?"\n":"")/g
 
-### Vim - Adding empty line between lines
+# Vim - Adding empty line between lines
 + https://superuser.com/a/592508/45032
 
 How do I insert a blank line between every non-blank lines?
@@ -1545,7 +1549,7 @@ The pattern I use is `/.\n\n\@!/.` Breaking that down into its component pieces:
 (Check `:h E59 `for more information on `\@!` and similar match specifiers in
 regular expressions -- there are a couple others, too!)
 
-### How add a new line after a pattern
+# How add a new line after a pattern
 
     :%s/PATTERN/&\r/g
 
@@ -1553,7 +1557,7 @@ regular expressions -- there are a couple others, too!)
 
     :g/^wget/ normal O
 
-### How to add a line after every few lines in vim
+# How to add a line after every few lines in vim
 I wanted to add a line after every 3 lines in a file (having about 1000 lines) using vim editor. Can someone help me out?
 
 Solution one:
@@ -1561,18 +1565,18 @@ Solution one:
 Solution two:
     :%s/^/\=(line(".")%4==0?"\n":"")/g
 
-### How join lines whithin xml <div>s
+# How join lines whithin xml <div>s
 
      :g/<div>/+1,/<\/div>/-1 join
 
-### Vim search pattern for a piece of text line yanked in visual mode
+# Vim search pattern for a piece of text line yanked in visual mode
 
 First you would select and copy chunk of text, after that you
 start a search typing /  then you press Ctrl-r 0
 
 This tip was copied in stackoverflow in this link http://va.mu/UIs6
 
-### How do condicional replace on vim
+# How do condicional replace on vim
 from: http://stackoverflow.com/questions/8814069/
 
 ``` vim
@@ -1580,7 +1584,7 @@ from: http://stackoverflow.com/questions/8814069/
 :%g/^-/s/word/WORD/g
 ```
 
-### Saindo temporariamente do vim para o shell
+# Saindo temporariamente do vim para o shell
 
         Ctrl-z
 
@@ -1588,25 +1592,25 @@ Execute os comandos do shell
 
         fg
 
-### Apagando linhas intercaladas
+# Apagando linhas intercaladas
 Vim: how to delete every second row?
 
 reference: http://stackoverflow.com/questions/1946738/
 
     g/^/+d
 
-### Como saber onde um atalho de teclas foi definido no vim
+# Como saber onde um atalho de teclas foi definido no vim
 
 ``` vim
 :verbose map atalho
 :verbose command Dos2Unix
 ```
 
-### Remapear caps lock para ESC
+# Remapear caps lock para ESC
 
         xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
-### Vim - paste in insert mode?
+# Vim - paste in insert mode?
 
 While in insert mode hit CTRL-R {register}. For example, CTRL-R * will
 insert in the contents of the clipboard and CTRL-R " (the unnamed register)
@@ -1614,7 +1618,7 @@ inserts the the last delete or yank.
 
 To find this in vim's help type :h i_ctrl-r
 
-### Vim How to paste text into Vim command line
+# Vim How to paste text into Vim command line
 
 ``` markdown
 Ctrl-r 0
@@ -1634,13 +1638,13 @@ So, @@ will have the value of the text deleted with a d, c, s or x command, or t
 
 See :help registers for the full reference.
 
-### Editando arquivos remotamente
+# Editando arquivos remotamente
 
     :e scp://username@someremotehost/./path/to/file
 
 	gvim scp://manager@192.168.1.11/./bashrc
 
-### Alias para abrir arquivos recem editados
+# Alias para abrir arquivos recem editados
 
 ``` vim
 " coloque no ~/.bashrc
@@ -1664,7 +1668,7 @@ command! -nargs=0 Mrf call MruFile()
 
 ```
 
-### Mostrando os ultimos arquivos editados baseado em um padrão
+# Mostrando os ultimos arquivos editados baseado em um padrão
 + https://vi.stackexchange.com/a/11829/7339
 
     :browse filter /pattern/ oldfiles
@@ -1673,7 +1677,7 @@ Pode-se abreviar
 
     :bro filter /dicas/ ol
 
-### Multiple choice substitute
+# Multiple choice substitute
 
     person: Alice
     dog: Tobby
@@ -1700,7 +1704,7 @@ If you need this often, it would make sense to define a custom Query() function
 for that. In there, you could also add a :redraw, so that you see the
 replacements that have already happened.
 
-### Vim delete HTML tag, but not content
+# Vim delete HTML tag, but not content
 
     yit vat p
 
@@ -1711,7 +1715,7 @@ What this does is yanks:
     vat - selects the entire tag
     p - pastes the previously yanked text over it
 
-### VIM: append to clipboard
+# VIM: append to clipboard
 
 http://stackoverflow.com/questions/6303882/
 
@@ -1723,34 +1727,34 @@ or shorter:
 
 Reference: :help :let.=
 
-### Put the clipboard content into a register
+# Put the clipboard content into a register
 
 	:let @a="<C-r>*"
 
-### Navegando em linhas longas no vim
+# Navegando em linhas longas no vim
 
 ``` markdown
 gj ............ desce
 gk ............ sobe
 ```
 
-### Como buscar pela palavra sob o cursor?
+# Como buscar pela palavra sob o cursor?
 
  ``` vim
  *  ........... busca para frente
  #  ........... busca para traz
  ```
 
-### Como sair do vim direto do modo normal
+# Como sair do vim direto do modo normal
 
         ZZ .......... o mesmo que :x
 
-### Como colar texto posicionando o cursor depois do texto?
+# Como colar texto posicionando o cursor depois do texto?
 
     Em modo insert <Ctrl>r +
     em modo normal "+gp
 
-### Como fechar o arquivo sem fechar o vim?
+# Como fechar o arquivo sem fechar o vim?
 
       :bd!
 
@@ -1758,7 +1762,7 @@ gk ............ sobe
 
       Source: http://stackoverflow.com/q/256204/
 
-### Para carregar uma função do vim que está na área de transferência
+# Para carregar uma função do vim que está na área de transferência
 
       :@"
 
@@ -1766,7 +1770,7 @@ O nome da função estará disponivel para ser chamado normalmente com o comando
 
     :call FuncName()
 
-### Pular para fechamento ou abertura de uma função
+# Pular para fechamento ou abertura de uma função
 
  se temos uma função do tipo:
 
@@ -1783,7 +1787,7 @@ bla bla bla
     Podemos pular para a chave de abertura ou fechamento
     simplesmente usando [{  ou ]}
 
-### Incrementando números ou decrementando com uma função
+# Incrementando números ou decrementando com uma função
 
 source: http://stackoverflow.com/q/4951533/
 
@@ -1844,7 +1848,7 @@ Outro modo de fazer é rodar o comado:
 Lembrando que o Control-v é para inserir o Control-x
 que decrementa em modo normal
 
-### Como selecionar texto recém colado
+# Como selecionar texto recém colado
 
 ``` markdown
 `[  ...... inicio do trecho colado
@@ -1855,11 +1859,11 @@ V`] ...... reseleciona trecho colado
 '[ ....... local anterior ao último insert
 ```
 
-### Abrir ajuda em tela cheia em nova aba
+# Abrir ajuda em tela cheia em nova aba
 
       :tab h
 
-### Incrementando números em modo normal
+# Incrementando números em modo normal
 
 ``` markdown
 Ctrl-a ........... incrementa em um
@@ -1875,7 +1879,7 @@ começado com width contendo dois dígitos faz-se assim
 
     :%s/width="\zs\d\{2}\ze"/\=submatch(0)+10/g
 
-### Copiando linhas que contém um padrão para um registro
+# Copiando linhas que contém um padrão para um registro
 
     :g/pattern/y A
 
@@ -1883,12 +1887,12 @@ Exibir apenas as linhas que contém um padrão
 
     :g/pattern/#
 
-### Remapeando a tecla ESC
+# Remapeando a tecla ESC
 
 veja o arqtigo neste link
 http://vim.wikia.com/wiki/VimTip166
 
-### Trabalhando com intervalos
+# Trabalhando com intervalos
 Numa substituição se desejar atuar sobre linhas subsequêntes
 a um determinado ponto é possível omitir a linha atual como visto
 abaixo.
@@ -1898,21 +1902,21 @@ abaixo.
     "salvando da linha 1 a 7 do arquivo atual em novo arquivo
     :1,7 w ~/tmp/teste.txt
 
-### Sobrescrevendo algo entre aspas
+# Sobrescrevendo algo entre aspas
 
     vi"p
 
-### Salvar um intervalo em outro arquivo
+# Salvar um intervalo em outro arquivo
 
     :25,$w teste.txt
 
-### Modo alternativo de sair do modo insert
+# Modo alternativo de sair do modo insert
 
 Ao invés de usar <Esc> para sair do insert use:
 
     Ctrl + [
 
-### Retirando a syntaxe das buscas
+# Retirando a syntaxe das buscas
 
     :noh
 
@@ -1920,7 +1924,7 @@ ou
 
     map <leader>h :set hls!<cr>
 
-### Como colocar a palavra sob o cursor em uma substituição
+# Como colocar a palavra sob o cursor em uma substituição
 
       :%s/<c-r><c-w>/new-word/g
 
@@ -1928,7 +1932,7 @@ Para colocar o nome do arquivo em uma substituição faça
 
       /<c-r>%
 
-### Brincando com regex no vim
+# Brincando com regex no vim
 + https://stackoverflow.com/a/45600892/2571881
 
 No stackoverflow apareceu a seguinte questão
@@ -1971,7 +1975,7 @@ Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora 
 
 Para poucas linhas de código, obviamente a solução manual é a melhor escolha, mas imagina se esse código tivesse centenas de linhas, o que provavelmente corresponde à realidade do cara que a postou.
 
-### How search for a word not preceded by another
+# How search for a word not preceded by another
 
     /\v(the )@<!word    any "word" not preceded by "the"
     /\vfoo( bar)@!      any "foo" not followerd by "bar"
@@ -1996,7 +2000,7 @@ the folowing searcch will match 'word' not preceded by 'the'
     one word
     find word
 
-### Delete anything other than pattern
+# Delete anything other than pattern
 
 Let's say this is my text:
 
@@ -2023,7 +2027,7 @@ Solution
 
     type :help /\@<= and :help /\@= or more generally :help pattern
 
-### In Vim how can I search and replace every other match?
+# In Vim how can I search and replace every other match?
 + https://stackoverflow.com/a/45785816/2571881
 
 Lets say you have
@@ -2065,7 +2069,7 @@ How could I make that into
     & ............. use searched pattern
     1 ............. add 1 after it
 
-### Some regex tips
+# Some regex tips
 
 ``` markdown
 "if " not followed by "then"
@@ -2143,7 +2147,7 @@ Vim's regex has some anchors for matching positions in the buffer.
 ```
 This is useful for things like [highlighting trailing whitespace except when you're typing at the end of the line](http://vim.wikia.com/wiki/Highlight_unwanted_spaces)
 
-####  Anoter approach to similar situation
+##  Anoter approach to similar situation
 
   If you have to change or copy only quoted text but
   not want to catch quotes you [can](can) make use of this vim resource:
@@ -2159,7 +2163,7 @@ This is useful for things like [highlighting trailing whitespace except when you
 \ze ................. tells vim to stop selecting at this point
 ```
 
-### Finding words no larger than 5 chars
+# Finding words no larger than 5 chars
 
     /\v<\w>{5}
 
@@ -2174,7 +2178,7 @@ This is useful for things like [highlighting trailing whitespace except when you
     In the previous search "words 1 up to five chars" ignoring
     white spaces \ze stands for end of search
 
-### Regex to uppercase multiple patterns at once
+# Regex to uppercase multiple patterns at once
 
 Let's say you have these lines:
 
@@ -2187,7 +2191,7 @@ And you want to uppercase "Xhtml" "Xml" at once
 
     :%s,\vX(ht)?ml,\U&,g
 
-### Regex para pegar aspas simples
+# Regex para pegar aspas simples
 
 source: http://vimcasts.org/episodes/refining-search-patterns-with-the-command-line-window/
 
@@ -2220,7 +2224,7 @@ This string doesn't contain any quotes, isn't it.
 %s/\v\w@<!'((\w'|[^'])+)'(\w)@!/"\1"/g
 ```
 
-### Numerando linhas com novo comando
+# Numerando linhas com novo comando
 source: http://stackoverflow.com/q/4224410/
 
 ``` vim
@@ -2232,7 +2236,7 @@ command! -nargs=0 -range=% Number <line1>,<line2>s/^\zs/\=(line('.') - <line1>+1
 :%s/^/\=substitute(printf("%2d",line("."))," ","0","g")
 ```
 
-### Abrindo e fechando folders com o mouse
+# Abrindo e fechando folders com o mouse
 
 ``` vim
 " se setar-mos como abaixo mostra os subníveis dos folders
@@ -2251,7 +2255,7 @@ zk ................  move to the end of previous fold
     zMzv ..........  closes all folders and opens at the cursor position
     set foldmethod?  shows current foldmethod
 
-### I have a file which has contents like so:
+# I have a file which has contents like so:
 + https://stackoverflow.com/a/45477513/2571881
 
     size is X1 Identifier is Y1
@@ -2266,7 +2270,7 @@ I want to re-arrage the file so that I get
 
     %s,\v(.*) (I.*),\2 \1
 
-### Colando o que foi selecionado com o mouse
+# Colando o que foi selecionado com o mouse
 
     ``` markdown
     `Ctrl-r *` Or `"*p`
@@ -2275,11 +2279,11 @@ I want to re-arrage the file so that I get
     Asterisco corresponde à seleção primária
     o que foi recentemente copiado fica no registro 0
 
-### Artigos e links legais sobre o vim
+# Artigos e links legais sobre o vim
 
  * http://stevelosh.com/blog/2010/09/coming-home-to-vim
 
-### Vim script
+# Vim script
 
 * http://www.swaroopch.com/notes/Vim_en:Scripting
 
@@ -2304,7 +2308,7 @@ endfunction
 
 See :help function-list for a huge list of functions available.
 
-### Para listar o caminho completo de cada esquema de cores do vim
+# Para listar o caminho completo de cada esquema de cores do vim
 
 ``` vim
 ec split(globpath(&runtimepath, 'colors/*.vim'),"\n")
@@ -2316,11 +2320,11 @@ let g:mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n")
 ec split(glob(expand("$HOME")."/.vim/colors/*.vim"), "\n")
 ```
 
-### Script para trocar o esquema de cores
+# Script para trocar o esquema de cores
 
 * http://vim.wikia.com/wiki/Switch_color_schemes
 
-### Setando o programa grep
+# Setando o programa grep
 
 Instale o programa grin
 
@@ -2338,7 +2342,7 @@ Para abrir os arquivos que correspondem ao padrão
 :copen ......... abre a lista - use Ctrl-w-f
 ```
 
-### Usando o grep nativo do vim
+# Usando o grep nativo do vim
 
 ``` vim
 " para continuar usando autochdir configure o formato do erro
@@ -2365,14 +2369,14 @@ set grepformat=%f:%l:%m
 
         :cnewer
 
-### Como exibir as opções de formatação?
+# Como exibir as opções de formatação?
 
 ``` vim
 :ec &fo
 :ec &rtp
 ```
 
-### Como indentar um bloco de código vuado
+# Como indentar um bloco de código vuado
 
      ={
 
@@ -2384,14 +2388,14 @@ set grepformat=%f:%l:%m
 
      :%< 99
 
-### Atalhos para marcas
+# Atalhos para marcas
 
 ``` markdown
 ]' .......... próxima marca
 [' .......... marca prévia
 ```
 
-### Função para criar marcas visíveis
+# Função para criar marcas visíveis
 
 ``` vim
 function! SignLines() range
@@ -2407,7 +2411,7 @@ endfunction
 map <S-F5> :call SignLines()<CR>
 ```
 
-### Saltos para alterações
+# Saltos para alterações
 
 ``` vim
 g, ...... alteração mais recente
@@ -2419,7 +2423,7 @@ somente lista de saltos
     Ctrl-o
     Ctrl-i
 
-### Manipulando o histórico
+# Manipulando o histórico
 
 ``` vim
 q:
@@ -2443,13 +2447,13 @@ O registro @: contém o último comando e
 o registro @/ contém a última busca
 ```
 
-### Limpando um registro de forma fácil
+# Limpando um registro de forma fácil
 
       qaq .......... limpa o registro 'a'
 
       let @a=''
 
-### Corretor ortográfico do vim
+# Corretor ortográfico do vim
 
     Fonte: http://www.dicas-l.com.br/arquivo/corretor_ortografico__em_portugues__no_vim.php
 
@@ -2485,7 +2489,7 @@ você pode usar Ctrl-x s para procurar sugestões. Use Ctrl-n ou Ctrl-p para
 voltar. i_CTRL-X_s
 ```
 
-### Seleção
+# Seleção
 
 see [vim text objects the definitive guide](http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/)
 
@@ -2522,7 +2526,7 @@ ci(
 cib
 ```
 
-### Movendo-se
+# Movendo-se
 
 ``` markdown
 fx ........... para o próximo 'x'
@@ -2533,7 +2537,7 @@ gf ........... go to file
 gd ........... go to definition
 ```
 
-### Completar caminhos no modo insert
+# Completar caminhos no modo insert
 
     Ctrl-x Ctrl-f
 
@@ -2551,7 +2555,7 @@ gd ........... go to definition
     sugestões de spelling ...... Ctrl-x _s
     complemento ................ Ctrl-x Ctrl-n
 
-### Manipulando buffers
+# Manipulando buffers
 
     :ls ............... lista os buffers
     :b mat<tab> ....... mostra os buffers começados com 'mat'
@@ -2563,7 +2567,7 @@ gd ........... go to definition
     :bn ............... buffer next
     :wn ............... save buffer and go next
 
-### Função para inverte strings no vim
+# Função para inverte strings no vim
 
     function! InvertString(str)
         " Courtesy of Preben "Peppe" Guldberg
@@ -2582,7 +2586,7 @@ gd ........... go to definition
     " em modo normal
     map <Leader>rv Yo<C-O>:set revins<cr><C-R>"<esc>:set norevins<cr>
 
-### Comando para inverter palavras de uma linha
+# Comando para inverter palavras de uma linha
 
     inverter uma string por palavras
 
@@ -2590,7 +2594,7 @@ gd ........... go to definition
 
     command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
 
-### Como definir a fonte no vim
+# Como definir a fonte no vim
 [referencias: Ask Ubuntu](http://askubuntu.com/q/363142)
 
 Você pode até escolher a fonte graficamente e em seguida
@@ -2613,7 +2617,7 @@ Alternatively, enter the following to insert the current font setting into the b
 Você pode também aumentar a fonte do terminal (se estiver usando um)
 com o atalho `Ctrl-Shif-+`
 
-### Contando quantas vezes uma palavra ocorre
+# Contando quantas vezes uma palavra ocorre
 
 You can use the following set of commands to count the number of times a
 particular word occurs in a buffer: >
@@ -2624,7 +2628,7 @@ particular word occurs in a buffer: >
 :echo cnt
 ```
 
-### Name spaces para variáveis no vim
+# Name spaces para variáveis no vim
 
 There are several name spaces for variables.  Which one is to be used is
 specified by what is prepended:
@@ -2639,7 +2643,7 @@ specified by what is prepended:
 |function-argument|  a:	  Function argument (only inside a function).
 |vim-variable|	     v:	  Global, predefined by Vim.
 
-### Contar os caracteres da linha atual
+# Contar os caracteres da linha atual
 
     :echo strlen(getline("."))
 
@@ -2651,11 +2655,11 @@ specified by what is prepended:
     :    return len
     :endfunction
 
-### Contar ocorrências de uma palavra
+# Contar ocorrências de uma palavra
 
   :%s/<c-r><c-w>//gn
 
-### Dicas para substituições
+# Dicas para substituições
 
  A opção \zs quando usada em uma substituição faz com
 que tudo que estiver a sua esquerda seja ignorado na substituição
@@ -2663,7 +2667,7 @@ evitando o uso de \1 \2 (back references das expressões regulares)
 
 Para mais detalhes :h zs
 
-### Como instalar plugins com a extensão vba no vim
+# Como instalar plugins com a extensão vba no vim
 
 Plugins com a extensão vba usam o seguinte método:
 você baixa o plugin, abre ele com o vim e executa este comando
@@ -2690,7 +2694,7 @@ quais arquivos serão instalados assim:
     :let g:vimball_home="/home/sergio/.vim/bundle/plugin"
     :so %
 
-### Manipulando visualização da janela e lista de saltos
+# Manipulando visualização da janela e lista de saltos
 
     let a = winsaveview()
     call winrestview(a)
@@ -2705,12 +2709,12 @@ quais arquivos serão instalados assim:
    há uma discussão na web a respeito desta função
    http://tech.groups.yahoo.com/group/vim/message/51005
 
-### Exibindo o histórico de comandos no vim
+# Exibindo o histórico de comandos no vim
 
      :history : -20,
      :his / -20,
 
-### Plugins do vim
+# Plugins do vim
 
 First try install vim Plug
 
@@ -2752,7 +2756,7 @@ Plug 'vim-scripts/VisIncr'
     Plug tommcdo/vim-exchange .................... exchange words
     Plug 'chrisbra/NrrwRgn'....................... operates over a selected area
 
-### Exchanging words place
+# Exchanging words place
 
 Using [vim exchange](https://github.com/tommcdo/vim-exchange) plugin we can exchange
 words place by doing:
@@ -2765,11 +2769,11 @@ words place by doing:
 
     cxc ...................... clears exchange operation
 
-### Trabalhando com janelas
+# Trabalhando com janelas
 
        Ctrl-w_^ .......... divide a janela atual e edita arquivo alternativo
 
-### Colando do clipboard em modo insert
+# Colando do clipboard em modo insert
 
 Em modo normal colamos o conteúdo da área de transferência usando o clássico "+p já em modo insert faça:
 
@@ -2819,7 +2823,7 @@ another application.
 :nmap p :let @* = substitute(@*,'[^[:print:]]','','g')"*pr
 ```
 
-### Convertendo temas do texmate para o vim
+# Convertendo temas do texmate para o vim
 
 http://coloration.sickill.net/
 
@@ -2829,30 +2833,30 @@ usando este site: http://coloration.sickill.net/
 
     apt-fast install -y libplist-utils
 
-### Videos bacanas sobre o vim
+# Videos bacanas sobre o vim
 
 http://vimeo.com/user1690209/videos
 
 muito louco, tranformando um xml em texto plano http://vimeo.com/15443936
 
-### Busca dentro de seleção visual
+# Busca dentro de seleção visual
 
 ``` vim
 /\%V
 :%s/\%Visto/aquilo/ge
 ```
 
-### Como abrir vários arquivos no gvim
+# Como abrir vários arquivos no gvim
 
       :args ~/path/*.py
 
 isto evita o erro E77: muitos arquivos para editar
 
-### Deletando linhas que não contém padrão
+# Deletando linhas que não contém padrão
 
     :v/pattern/d
 
-### Using global to join lines
+# Using global to join lines
 
 If you have the following pattern
 
@@ -2872,11 +2876,11 @@ You can use a global negator like this:
 
 ... (considering all lines (%) for those which don't match the following regular expression (v) /(regular expression of lines ending in colon)/ go to the previous line (-1) and join that line to the next one (j)).
 
-### Destacando as linhas duplicadas
+# Destacando as linhas duplicadas
 
     :g/^\(.*\)\n\ze\%(.*\n\)*\1$/#
 
-### incrementar as linhas contendo "# Lesson + number"
+# incrementar as linhas contendo "# Lesson + number"
 
     :.,$g/# Lesson \d\+/normal 
 
@@ -2887,7 +2891,7 @@ You can use a global negator like this:
     normal ........... executa em modo normal
     ^v^A ............. incrementa o número
 
-### Delete multiline comments using global command
+# Delete multiline comments using global command
 + https://stackoverflow.com/a/45853309/2571881
 
 I am trying to delete a bunch of comments that are all in the following format:
@@ -2914,7 +2918,7 @@ Or using a global command. (both are similar)
     , ............ interval delimiter
     /\*\/$d_ ..... delete until the end to the black hole register "d_"
 
-### get multiline mp3 links
+# get multiline mp3 links
 
 The key to get mp3 links over multilne is to search for:
 
@@ -2923,7 +2927,7 @@ The key to get mp3 links over multilne is to search for:
 After that you can manipulate your html in order to clean the links
 accordingly with the situation
 
-### How to use vim to do multiple line edit?
+# How to use vim to do multiple line edit?
 + https://stackoverflow.com/questions/44172121/
 
 I have text like this:
@@ -2945,15 +2949,15 @@ now I want to change to this:
 My solution
     %s/\v(\w ?\w+),/"\1",/g
 
-### Pegar linha que começa com palavra e sublinhar
+# Pegar linha que começa com palavra e sublinhar
 
     g/^\w/t.|s/./=/g
 
-### Adicionar uma linha em branco após linhas que começam com espaço
+# Adicionar uma linha em branco após linhas que começam com espaço
 
     :g/^\s*-/normal O
 
-### Função para deletar linhas em branco duplicadas
+# Função para deletar linhas em branco duplicadas
 
 ``` vim
 fun! DelBlank()
@@ -2978,7 +2982,7 @@ function! Preserve(command)
 endfunction"}}}
 ```
 
-### Adding blank lines  - adding empty lines between lines
+# Adding blank lines  - adding empty lines between lines
 source: [superuser.com](http://superuser.com/q/592503/)
 
     :g/.\n\n\@!/norm o
@@ -2990,7 +2994,7 @@ existing empty lines from consideration) \n Matches a single \n at the end
 of the character above \n\@! Fails the match if there's another \n
 immediately after the earlier \n.
 
-### Visualizar o histórico de comandos do vim
+# Visualizar o histórico de comandos do vim
 
 Com o cursor na linha de comandos do vim pressione <C-f>
 
@@ -3007,13 +3011,13 @@ Comando para colar o histórico dos ultimos 22 comandos
 
      q:22kyG Ctrl-w-q p
 
-### Mapeamento para inserir números randomicos no vim
+# Mapeamento para inserir números randomicos no vim
 
 ``` vim
 imap <leader>r <C-r>=system('echo "$(($RANDOM % 100))"')<cr>
 ```
 
-### Adicionado espaços em títulos markdown
+# Adicionado espaços em títulos markdown
 
 Se você tem um título ou subtitulo markdown com o texto
 colado no titulo como em  ##titulo podemos adicionar um espaço assim:
@@ -3027,7 +3031,7 @@ grupo 1 ---> comço de linha # Ou mais
 grup 2  ---> tudo menos # E espaço
 ```
 
-### Fazer com que subseções markdown virem subsubseções
+# Fazer com que subseções markdown virem subsubseções
 
 ``` vim
 :g/^##[^#]/ normal I#
@@ -3035,7 +3039,7 @@ grup 2  ---> tudo menos # E espaço
 
 Obs: os caracteres ^[ são obtidos digitando-se Ctrl-v + [
 
-### Trocar título tipo == assim == para markdown
+# Trocar título tipo == assim == para markdown
 
 O código abaixo troca dois iguais por três ###
 
@@ -3043,7 +3047,7 @@ O código abaixo troca dois iguais por três ###
 %s/\v^\=\=([^\=]+)\=\=/### \1/g
 ```
 
-### Delet the character before cursor
+# Delet the character before cursor
 
 Let's say you have:
 
@@ -3052,10 +3056,10 @@ Let's say you have:
 And you want to delete the space before caret, in command mode
 just press X
 
-### How to convert html to markdown using vim-pandoc
+# How to convert html to markdown using vim-pandoc
 [link here](http://amandogra.github.io/blog/how-to-convert-html-to-markdown-using-vim-pandoc/)
 
-#### Install pandoc
+## Install pandoc
 after that install these plugins with your favorite vim plugin manager
 
 ``` vim
@@ -3071,7 +3075,7 @@ endfun
 command! -nargs=0 H2M :%!pandoc -f html -t markdown<CR>
 ```
 
-### Adding markdown sections
+# Adding markdown sections
 
 ``` txt
 Lets say you have lines as folows
@@ -3107,7 +3111,7 @@ the command will be:
 
 ```
 
-### References
+# References
 + http://vi.stackexchange.com/q/2268/
 + http://dalibornasevic.com/posts/43-12-vim-tips
 + https://vimvalley.com/

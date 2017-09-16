@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 15 set 2017 14:41:47 -03
+" Last Change: sáb 16 set 2017 15:01:34 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -49,7 +49,7 @@ com! ReloadVim call VimReloadFunction()
 " some settings {{{1
 set mousemodel=popup
 set ruler
-set relativenumber
+set number relativenumber
 set mouse=a
 set t_Co=256
 set guioptions=egmrti
@@ -100,6 +100,7 @@ let mapleader=','
 
 " entrar no modo comando mais rápido
 nnoremap ç :
+noremap ' `
 nnoremap K :help <C-r><C-w><CR>
 
 call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
@@ -132,6 +133,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'https://github.com/juanedi/predawn.vim'
 "Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/tomorrow-theme'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -147,7 +149,7 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 1
 let g:netrw_winsize = 25
 
-colorscheme molokai
+colorscheme tomorrow
 
 " fzf configuration
 " <C-p> to search files
@@ -171,6 +173,41 @@ command! FZFMru call fzf#run({
 " bind \ (backward slash) to grep shortcut
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap ,ag :Ag<SPACE>
+
+
+
+" pairs
+for mapmode in [ "o", "x" ]
+    for delimiter in [ "{}", "()", "[]", "<>" ]
+        let opening = delimiter[0]
+        let closing = delimiter[1]
+        for modifier in [ "i", "a" ]
+            for trigger in [ opening, closing ]
+                execute mapmode . "noremap <silent> " . modifier . "n" . trigger . " :<C-U>normal! f" . opening . "v" . modifier . closing . "<CR>"
+                execute mapmode . "noremap <silent> " . modifier . "l" . trigger . " :<C-U>normal! F" . closing . "v" . modifier . opening . "<CR>"
+            endfor
+        endfor
+    endfor
+
+    " single (text objects like da. delete one dot)
+    for delimiter in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
+        execute mapmode . "noremap <silent> i"  . delimiter . " :<C-U>normal! t" . delimiter .  "vT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> a"  . delimiter . " :<C-U>normal! f" . delimiter .  "vT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter . "lvf" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vT" . delimiter . "<CR>"
+    endfor
+
+    " double (text objects like dan" delete both quotes)
+    " doesn't handle one surrounding whitespace like da" does
+    for delimiter in [ "\"", "'", "`" ]
+        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>" | " same as above
+        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter .  "vf" . delimiter . "<CR>" | " same as above
+        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vF" . delimiter . "<CR>"
+    endfor
+endfor
 
 "" fzf.vim
 "set wildmode=list:longest,list:full
@@ -303,6 +340,11 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
@@ -459,6 +501,10 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
+" join lines without moving the cursor (gJ prevent adding spaces between lines joined)
+nnoremap J :call Preserve("exec 'normal! J'")<cr>
+nnoremap gJ :call Preserve("exec 'normal! gJ'")<cr>
+
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results
 " on clipboard to be pasted on anki
@@ -537,6 +583,8 @@ fun! DelBlankLines()
     call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
+
+command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call DelBlankLines()<cr>

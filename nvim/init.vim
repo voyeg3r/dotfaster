@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 15 set 2017 14:52:57 -03
+" Last Change: sáb 16 set 2017 17:08:18 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -77,6 +77,7 @@ Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
 "Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/tomorrow-theme'
 
 call plug#end()
 
@@ -122,7 +123,7 @@ endif
 
 syntax on
 set ruler
-set number
+set number relativenumber
 
 let no_buffers_menu=1
 
@@ -144,13 +145,45 @@ if has("gui_running")
   endif
 else
   let g:CSApprox_loaded = 1
-
   " IndentLine
   let g:indentLine_enabled = 1
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 endif
+
+" pairs
+for mapmode in [ "o", "x" ]
+    for delimiter in [ "{}", "()", "[]", "<>" ]
+        let opening = delimiter[0]
+        let closing = delimiter[1]
+        for modifier in [ "i", "a" ]
+            for trigger in [ opening, closing ]
+                execute mapmode . "noremap <silent> " . modifier . "n" . trigger . " :<C-U>normal! f" . opening . "v" . modifier . closing . "<CR>"
+                execute mapmode . "noremap <silent> " . modifier . "l" . trigger . " :<C-U>normal! F" . closing . "v" . modifier . opening . "<CR>"
+            endfor
+        endfor
+    endfor
+
+    " single (text objects like da. delete one dot)
+    for delimiter in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
+        execute mapmode . "noremap <silent> i"  . delimiter . " :<C-U>normal! t" . delimiter .  "vT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> a"  . delimiter . " :<C-U>normal! f" . delimiter .  "vT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter . "lvf" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vT" . delimiter . "<CR>"
+    endfor
+
+    " double (text objects like dan" delete both quotes)
+    " doesn't handle one surrounding whitespace like da" does
+    for delimiter in [ "\"", "'", "`" ]
+        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>" | " same as above
+        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter .  "vf" . delimiter . "<CR>" | " same as above
+        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vF" . delimiter . "<CR>"
+    endfor
+endfor
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -169,7 +202,11 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
+nnoremap ' `
+nnoremap ç :
 nnoremap K :help <C-r><C-w><CR>
+
+command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzz
@@ -177,6 +214,11 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap <c-o> <c-o>zz
 
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
