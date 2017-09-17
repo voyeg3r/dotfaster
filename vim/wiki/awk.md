@@ -83,7 +83,7 @@ TOTAL 30000
 **Solution**
 
     ``` awk
-    awk '{print (NF==5 ? $5" "$2" "$3" "$4:$0)}' test.txt
+    awk '{print (NF==5 ? $5"/"$2"/"$3" "$4:$0)}' test.txt
     ```
 
 # Delete first line

@@ -248,41 +248,11 @@ TOTAL 30000
 Expressão regular para solução
 
 ``` sh
-(^[A-Z][a-z]{2})\s([A-Z][a-z]{2})\s([0-9]{2})\s([0-9]{2}):([0-9]{2}):([0-9]{2})\s([0-9]{4}$)
+sed -r '%s,([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+) ([^ ]+),\5/\2/\3 \4,g'
+
+Usamos expressões regulares extendidas "-r" e grupos de caracteres não
+seguidos de espaço ([^ ]+) para casar os cinco campos que contém as datas
 ```
-
-tudo que estiver dentro de parênteses é um grupo (grupo) e pode ser chamado
-assim \1  grupo 1    \2 grupo 2
-
-^ ... começo de linha
-seguido de uma letra maiúscula de A até Z [A-Z]
-seguido de duas letras minúsculas de a até z [a-z]{2}  {2,3} --> isso daria de 2 até tres vezes
-\s .... seguido de um espaço \s corresponde a um espaço
-o próximo grupo tem o mesmo padrão do grupo 1  ([A-Z][a-z]{2})
-segue-se um grupo de dois números ([0-9]{2}) --> grupo 3
-depois vem um grupo de dois números seguido de dois pontos  ([0-9]{2}):
-repete-se o grupo de dois números seguidos de dois pontos  ([0-9]{2}):
-no penúltimo grupo dois números seguidos de um espaço ([0-9]{2})\s
-o último grupo são quatro números seguidos de final de linha ([0-9]{4}$)
-
-agora faço referências na substituição, por exemplo o ano que está
-no último grupo (grupo 7) referencio com \7
-
-No sed a substituição é feia assim:
-
-sed -i.backup -r 's/isto/aquilo/g'
-mas o delimitador pode ser uma vírgula como estou usando abaixo, veja
-uma vírgula logo após o 's' de substituição.
-
-sed -r -i.backup 's,(^[A-Z][a-z]{2})\s([A-Z][a-z]{2})\s([0-9]{2})\s([0-9]{2}):([0-9]{2}):([0-9]{2})\s([0-9]{4}$),\7/\2/\3 \4:\5:\6,g' teste.txt
-
-então estou pedindo carinhosamente ao sed para me dar
-o grupo 7 seguido de uma barra /
-seguido do grupo 2 seguido de uma /
-seguido do grupo 3 seguido de um espaço
-seguido do grupo 4 seguido de dois pontos
-seguido do grupo 5 seguido de dois pontos
-seguido do grupo 6 seguido de dois pontos
 
 **Neste caso usando o awk fica mais fácil**
 
