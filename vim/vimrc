@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sáb 16 set 2017 15:01:34 -03
+" Last Change: dom 17 set 2017 18:18:05 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -227,6 +227,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+cnoremap <c-k> <end><c-w>
 
 " Required:
 filetype plugin indent on

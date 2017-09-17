@@ -1,14 +1,8 @@
 # Introdução
-
 ``` markdown
 File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: qua 11 jan 2017 12:42:56 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: dom 17 set 2017 16:40:56 -03
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -315,7 +309,6 @@ Com o sed faz-se assim:
 
         sed -i.backup '/^<abc/{N;N;s/\n\| //g}' file
 
-
 Com o awk faz-se assim:
 
         awk '{printf("%s%s", $0, (NR%3 ? "" : "\n"))}' teste.txt | awk '{gsub(/ /,"");print}'
@@ -356,7 +349,7 @@ To accomplish the same thing using <span style="font-family: monospace;">sed</sp
 
 # Adicionando os repositórios universe e multiverse
 
-sed -i.backup -r '/^#\s?deb\s?(http|ftp|-src).*(partner|multiverse|universe)/s/^#\s?//g' /etc/apt/sources.list
+    sed -i.backup -r '/^#\s?deb\s?(http|ftp|-src).*(partner|multiverse|universe)/s/^#\s?//g' /etc/apt/sources.list
 
 # baixando atualizações para usar em outra máquin
 
@@ -547,8 +540,8 @@ lá na substituição \1 isto cola o grupo acima
 
 4 - Agora entra a substituição
 
-\1 ............. DefaultDepth + espaços
-16 ............. Valor que deverá substituir o 24
+    \1 ............. DefaultDepth + espaços
+    16 ............. Valor que deverá substituir o 24
 
 # Desabilitando terminais
 No ubuntu a inicialização dos terminais fica em arquivos /etc/event.d/tty[1-6]
@@ -666,9 +659,12 @@ CMD=$(echo $LINUX_CMDS | sed 's,^.*(\([^)]*\)),\1,g')
 echo "arquivo $CMD"
 awk 'BEGIN { RS="/#+.*$/"; FS="$"} {print NF}' $CMD
 ```
-O objetivo final será pegar somente os comandos linux, por isso
-leio o conteúdo de comandoslinux.md, daí vou pegar um nome aletório
-provavelmente usando o comando shuf e finalmente exibir uma seção aleatória de um dos manuais durante o login no shell ou possivelmente crie uma função dica de comando que posso chamar através de um nome tipo: cmdtip
+
+O objetivo final será pegar somente os comandos linux, por isso leio o
+conteúdo de comandoslinux.md, daí vou pegar um nome aletório provavelmente
+usando o comando shuf e finalmente exibir uma seção aleatória de um dos
+manuais durante o login no shell ou possivelmente crie uma função dica de
+comando que posso chamar através de um nome tipo: cmdtip
 
 Com o awk podemos pegar o número de campos de um arquivo markdown assim:
 

@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: dom 17 set 2017 13:40:31 -03
+Last Change: dom 17 set 2017 19:46:00 -03
 ```
 
 # Introdução
@@ -254,7 +254,7 @@ a solução é indicar dois delimitadores de campo:
 # imprimir ultimo campo
 Lembrando que para o awk linha é registro e coluna é campo
 
-  awk '{print $NF}' file
+    awk '{print $NF}' file
 
   Observer que NF = number field, ou seja, número do campo
 
@@ -689,29 +689,31 @@ Indicamos duas alternativas para o Separador de Registros, vírgula ou quebra de
 como sendo uma linha, em seguida usamos uma expressão regular para pegar o começo de linha com o sinal de menos
 # Remover linhas em branco
 
-  awk 'NF>0' texto.txt
+    awk 'NF>0' texto.txt
 
 # Modificar campo 2 mediante uma condição
 
-awk '{print $1,($2<0.1) ? 0.0 : $2}' file1.txt
+    awk '{print $1,($2<0.1) ? 0.0 : $2}' file1.txt
 
 # Imprimir somente usuários com UID igual a 1.000 ou maior
 
-awk -F: '$3 > 999 {print $0}' /etc/passwd
+    awk -F: '$3 > 999 {print $0}' /etc/passwd
 
 # Imprimir a última linha
 
-awk 'END {print $0}' /etc/passwd
+    awk 'END {print $0}' /etc/passwd
 
 # contar o número de linhas em um arquivo
 
- awk 'END { print NR }' <arquivo>
+     awk 'END { print NR }' <arquivo>
 
 # Problemas da lista shell script
 
 Olá pessoal... tenho o seguinte arquivo:
+
 cat file.txt
 
+``` markdown
 bdacp tty1 Thu Nov 13 12:16 - down (00:31)
 bdacp tty3 Thu Nov 13 12:53 - down (00:13)
 bdacp tty3 Thu Nov 13 13:09 - down (02:34)
@@ -724,9 +726,11 @@ teste tty2 Thu Nov 13 13:09 - 13:31 (00:22)
 usuario pts/0 Thu Nov 13 12:49 - 12:50 (00:00)
 usuario tty1 Thu Nov 13 12:49 - 13:04 (00:14)
 usuario tty1 Thu Nov 13 13:09 - 13:23 (00:14)
+```
 
 e preciso dessas informações
 
+``` markdown
 bdacp 12:16 - down (00:31)
 bdacp 12:53 - down (00:13)
 bdacp 13:09 - down (02:34)
@@ -739,53 +743,70 @@ teste 13:09 - 13:31 (00:22)
 usuario 12:49 - 12:50 (00:00)
 usuario 12:49 - 13:04 (00:14)
 usuario 13:09 - 13:23 (00:14)
+```
 
 solução
 
-  awk '{$1, $6, $8, $9}' arquivo
+    ``` markdown
+    awk '{print $1,$6,$7,$8,$9}' teste3.txt
+    ```
 
 # print the total number of lines that contain "Beth"
 
- awk '/Beth/{n++}; END {print n+0}' file
+     awk '/Beth/{n++}; END {print n+0}' file
 
 # sequencia de fibonacci em awk
 
-seq 50| awk 'BEGIN {a=1; b=1} {print a; c=a+b; a=b; b=c}'
+    seq 50 | awk 'BEGIN {a=1; b=1} {print a; c=a+b; a=b; b=c}'
 
 # Awk - replace blank spaces with single space
 Fonte: http://unstableme.blogspot.com/2009/11/awk-replace-blank-spaces-with-single.html
 
 Input file 'file.txt' contains fields separated with uneven spaces (or tabs)
 
+``` markdown
 $ cat file.txt
 6767            1212   9090 12
 657676 1212  21212                      21232
 76767           12121 909090    121212
 12      9090            1212                            21
+```
 
 Required: Replace one or more space with single space or single tab or comma.
 The solutions using awk:
 
-$ awk -v OFS="," '$1=$1' file.txt
+``` markdown
+awk -v OFS="," '$1=$1' file.txt
+
 Output:
+
 6767,1212,9090,12
 657676,1212,21212,21232
 76767,12121,909090,121212
 12,9090,1212,21
+```
 
-$ awk -v OFS="\t" '$1=$1' file.txt
+``` markdown
+awk -v OFS="\t" '$1=$1' file.txt
+
 Output:
+
 6767    1212    9090    12
 657676  1212    21212   21232
 76767   12121   909090  121212
 12      9090    1212    21
+```
 
-$ awk -v OFS=" " '$1=$1' file.txt
+``` markdown
+awk -v OFS=" " '$1=$1' file.txt
+
 Output:
+
 6767 1212 9090 12
 657676 1212 21212 21232
 76767 12121 909090 121212
 12 9090 1212 21
+```
 
 # Recebendo variáveis do shell
 + https://stackoverflow.com/a/19075707/2571881
@@ -831,18 +852,22 @@ Você tem um arquivo assim:
     awk 'BEGIN {RS="\n\n"} {gsub("!!","",$NF);print $1": "$NF}' teste.txt
     ```
 
-# um jeito bem mais simples
-awk '{print $1": "$4}' RS="\n\n" results.txt
+### um jeito bem mais simples
+
+    ``` sh
+    awk '{print $1": "$4}' RS="\n\n" results.txt
+    awk 'BEGIN {RS="\n\n"} {print $1,$4}' teste4.txt
+    ```
 
 # imprimindo a saida do ifconfig
 
- sudo ifconfig | awk 'BEGIN {RS="";FS="\n"} {if (NR=="1" || NR=="3") print}'
+     sudo ifconfig | awk 'BEGIN {RS="";FS="\n"} {if (NR=="1" || NR=="3") print}'
 
  Pegando o registro 1 e 3 imprimimos eth0 e wlan0
 
 Abaixo imprimimos o mac address da placa eth0 e wlan0
 
- ifconfig | awk '/ether/ {print $2}'
+     ifconfig | awk '/ether/ {print $2}'
 
 # juntando linhas a cada 5 linhas (concatenate lines with awk)
 * fonte: http://br.groups.yahoo.com/group/shell-script/message/31367
@@ -898,7 +923,7 @@ Alessandro Almeida.
 
 solução
 
-    awk 'ORS=NR%5?" ":"\n"' teste3.txt
+    awk 'ORS=NR%5?FS:RS' teste3.txt
 
 # Join every odd line (concatenate)
 

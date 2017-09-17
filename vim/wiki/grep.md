@@ -64,7 +64,6 @@ O comando abaixo filtra comandos que começam com a palavra man dentro do histó
 
 history | grep ' [0-9]* man'
 
-
 ### Imprimir texto na vertical
 
 echo "vertical text" | grep -o '.'
@@ -90,14 +89,12 @@ Se você sabe exatamente o que buscar pode fazer assim por exemplo ^B (hex \x02)
 $ grep ^B /tmp/file.txt
 # * ^B to be typed as ctrl V and ctrl B
 
-
 Para encontrar caracteres não imprimiveis há um outro jeito, usando
 classes POSIX
 
 $ grep '[^[:print:]]' /tmp/file.txt
 
 Para imprimir caracteres não imprimiveis usando o comando cat faça
-
 
 $ cat -v -e -t /tmp/s
 
@@ -106,7 +103,6 @@ $ cat -v -e -t /tmp/s
     grep -v '^$' input.txt > output.txt
 
     grep . inpute.txt > output
-
 
 Você pode fazer um teste interativo assim
 
@@ -159,7 +155,6 @@ Para exibir as linhas anteriores e posteriores a um padrão
 
     grep --context=5 'pattern' file
 
-
 ### Para usar expressões regulares extendidas
 Use a opção -E do grep
 ### filtrando uma palavra em um tipo de arquivo específico
@@ -168,7 +163,6 @@ Use a opção -E do grep
     find . -name "*.[ch]" | xargs grep "TODO"
 
 ### Intercessão entre dois arquivos
-
 
 ``` markdown
 Tenho dois arquivos txt:
@@ -200,7 +194,6 @@ outro modo de fazer
 
     grep -f <(cat arq1.txt | xargs -i echo ^{}) arq2.txt
 
-
 ### Mostrar linhas próximas a um padrão
 
     > Uma dúvida amigos tenho o seguinte:
@@ -219,12 +212,9 @@ outro modo de fazer
     > abaixo dele, mas só se encontrar pedro
     > agradeço toda a ajuda.
 
-
-
     grep 'pedro' -A1 texto
 
     Filtra ocorrência de palavras em arquivos
-
 
      grep -rn --color "\<vim\>" ~/
 

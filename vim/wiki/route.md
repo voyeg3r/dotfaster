@@ -1,6 +1,6 @@
-### Introdução
+# Introdução
 
-### Adicionando rotas permanentes no linux
+# Adicionando rotas permanentes no linux
 fonte: http://ubuntuforums.org/showthread.php?p=217263
 
 ``` sh
@@ -9,9 +9,7 @@ up route add -net 192.168.0.0 netmask 255.255.0.0 gw 10.0.0.1 dev eth0
 sudo /etc/init.d/networking restart
 ```
 
-
-
-### route no windows
+# route no windows
 
 ``` sh
 route -p add 172.17.0.0 mask 255.255.0.0 172.30.34.150
@@ -28,7 +26,9 @@ Se os usuários tentarem configurar outro proxy, por exemplo
 
 ele vai dar erro de DNS, ou seja a criança não navega!
 
-### Default gateway
+# Default gateway
 The command below shows your default gateway on Linux
 
     route -n | awk '/UG/ {print $2}'
+
+    awk 'NR==2 {print $1}' /proc/net/arp
