@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: dom 17 set 2017 06:18:01 -03
+Last Change: dom 17 set 2017 13:40:31 -03
 ```
 
 # Introdução
@@ -265,6 +265,10 @@ Lembrando que para o awk linha é registro e coluna é campo
 # numerar linhas
 
      awk '{print FNR "\t" $0}' files*
+
+This way is better because the field with numbers will always have the same size
+
+     awk '{printf "%3d %s", NR, $0}' somefile
 
 # imprimir numero da linha de um padrão
 
@@ -840,14 +844,17 @@ Abaixo imprimimos o mac address da placa eth0 e wlan0
 
  ifconfig | awk '/ether/ {print $2}'
 
-# juntando linhas a cada 5 linhas
+# juntando linhas a cada 5 linhas (concatenate lines with awk)
 * fonte: http://br.groups.yahoo.com/group/shell-script/message/31367
 
+``` markdown
 Pessoal,
 
 tenho uma comando que gera a seguinte saida, onde a unica padronagem é uma
 sequencia de 5 linhas:
+```
 
+``` markdown
 0
 r5
 751625160
@@ -873,23 +880,27 @@ r5
 2522508840
 2242230016
 388346880
+```
 
 Eu precisava gerar a saida neste formato, em 5 colunas:
 
+``` markdown
 0 r5 751625160 601300096 391584768
 1 r5 1401393800 1121115008 621056
 12 r5 1401393800 1121115008 68344320
 45 r5 1401393800 1121115008 1235456
 223 r5 2522508840 2242230016 388346880
+
 Como poderei fazer?
 Obrigado,
 Alessandro Almeida.
+```
 
 solução
 
-awk '{printf("%s%s", $0, (NR%5 ? " " : "\n"))}'
+    awk 'ORS=NR%5?" ":"\n"' teste3.txt
 
-# Join every odd line
+# Join every odd line (concatenate)
 
 a bash commands outputs this:
 
@@ -914,6 +925,11 @@ I'd like to pipe it to something to make it look like this:
 
     awk 'ORS=NR%2?FS:RS'
 
+O Field Separator `FS` separador de campos é por padrão espaço e o Register
+Separator, Separador de Registros é o Enter, o awk aplicará como Operador
+de Registro de Saída ORS, um dos dois dempendendo do resto da divisão do
+número do registro NR (linha)
+
 A vim solution would be
 
     :%norm J
@@ -921,6 +937,38 @@ A vim solution would be
 Using sed:
 
     sed 'N;s/\n/ /' inputfile
+
+
+**You have the folowing**
+
+``` html
+<abc a="1">
+   <val>0.25</val>
+</abc>
+<abc a="2">
+    <val>0.25</val>
+</abc>
+<abc a="3">
+   <val>0.35</val>
+</abc>
+```
+
+**And want something like**
+
+``` html
+<abc a="1"><val>0.25</val></abc>
+<abc a="2"><val>0.25</val></abc>
+<abc a="3"><val>0.35</val></abc>
+```
+
+        awk '{printf("%s%s", $0, (NR%3 ? "" : "\n"))}' teste.txt | awk '{gsub(/ /,"");print}'
+        awk '{printf (NR%3==0 ? $0"\n":$0)}' teste.txt  | awk '{gsub(/ /,"");print}'
+        awk 'NR%3{printf $0;next;}1' teste.txt | awk '{gsub(/ /,"");print}'
+        awk 'ORS=NR%3?FS:RS' teste.txt | awk '{gsub(/ |%/,"");print}'
+
+        <abc a="1"><val>0.25</val></abc>
+        <abc a="2"><val>0.25</val></abc>
+        <abc a="3"><val>0.35</val></abc>
 
 # Referências
 * http://www.zago.eti.br/script/awk.html

@@ -311,9 +311,19 @@ sed '/baz/s/foo/bar/g'
 <abc a="3"><val>0.35</val></abc>
 ```
 
-Com o sed faz-se assim
+Com o sed faz-se assim:
 
         sed -i.backup '/^<abc/{N;N;s/\n\| //g}' file
+
+
+Com o awk faz-se assim:
+
+        awk '{printf("%s%s", $0, (NR%3 ? "" : "\n"))}' teste.txt | awk '{gsub(/ /,"");print}'
+        awk 'NR%3{printf $0;next;}1' teste.txt | awk '{gsub(/ /,"");print}'
+
+        <abc a="1"><val>0.25</val></abc>
+        <abc a="2"><val>0.25</val></abc>
+        <abc a="3"><val>0.35</val></abc>
 
 # Converte formatos de arquivos (terminador de linha) dos unix
 
