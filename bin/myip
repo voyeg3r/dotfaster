@@ -1,12 +1,14 @@
 #!/bin/bash
 # Criado em:Qui 05/Jan/2006 hs 13:13
-# Last Change: dom 06 ago 2017 21:01:02 -03
+# Last Change: sáb 16 set 2017 19:43:19 -03
 # Autor: Sérgio Luiz Araújo Silva
 # Retorna o seu ip
 
-INTERFACE=$(route | awk '/UG/ {print $8}')
-IFCONFIG=$(which ifconfig)
-MYIP=$($IFCONFIG $INTERFACE | awk '/inet / {print $2}')
+# INTERFACE=$(route | awk '/UG/ {print $8}')
+# IFCONFIG=$(which ifconfig)
+# MYIP=$($IFCONFIG $INTERFACE | awk '/inet / {print $2}')
+
+MYIP=$(hostname --ip-address)
 
 echo
 [[ -z $MYIP ]] && echo ' offline' || echo $MYIP

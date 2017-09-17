@@ -174,8 +174,6 @@ command! FZFMru call fzf#run({
 "command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap ,ag :Ag<SPACE>
 
-
-
 " pairs
 for mapmode in [ "o", "x" ]
     for delimiter in [ "{}", "()", "[]", "<>" ]
@@ -227,6 +225,8 @@ endif
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
 
 " Required:
 filetype plugin indent on

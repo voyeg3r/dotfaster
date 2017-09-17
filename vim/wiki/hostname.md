@@ -5,7 +5,7 @@
 
 ### retornar o IP
 
-    hostname -i
+    hostname --ip-addresses
 
 ### Changing hostiname without resarting the system
 + https://askubuntu.com/questions/87665/how-do-i-change-the-hostname-without-a-restart

@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: qui 14 set 2017 17:55:02 -03
+Last Change: dom 17 set 2017 06:18:01 -03
 ```
 
 # Introdução
@@ -51,6 +51,40 @@ buscando alí uma variável que na verdade não existe.
 # How to determine the line number of the last occurrence of a string in a file
 
     awk '/Fedora/ { ln = FNR } END { print ln }'
+
+# Exchange fields order
+
+``` markdown
+> > > File to this format:
+> > >
+> > > AAAA/MM/DD HH:MM:SS
+
+ARQUIVO ORIGINAL
+----------------8<---------------
+Mon Apr 12 00:04:55 2010
+TOTAL 0
+Mon Apr 12 00:04:55 2010
+Mon Apr 12 08:18:32 2010
+1142 10000
+TOTAL 10000
+Mon Apr 12 08:27:20 2010
+Mon Apr 12 10:24:33 2010
+1142 20000
+TOTAL 20000
+Mon Apr 12 10:29:52 2010
+Mon Apr 12 13:17:44 2010
+1142 24940
+1162 3076
+1171 1984
+TOTAL 30000
+---------8<--------------------------------
+```
+
+**Solution**
+
+    ``` awk
+    awk '{print (NF==5 ? $5" "$2" "$3" "$4:$0)}' test.txt
+    ```
 
 # Delete first line
 

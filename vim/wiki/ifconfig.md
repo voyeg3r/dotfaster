@@ -1,6 +1,6 @@
 Arquivo: ifconfig.wiki
 Criado: Sun 18/Jan/2015 hs 09:41
-Last Change: dom 08 jan 2017 12:02:57 BRT
+Last Change: sáb 16 set 2017 19:44:49 -03
 autor: Sérgio Luiz Araújo Silva
 site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r

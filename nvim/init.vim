@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 16 set 2017 17:08:18 -03
+" Last Change: sáb 16 set 2017 17:10:36 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -603,6 +603,8 @@ nnoremap <special> <leader>d :call DelBlankLines()<cr>
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 command! SaveAsRoot w !sudo tee %
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
 
 " to reselect use gv in normal mode
 nnoremap <F23> <ESC>:set hls!<cr>
