@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: dom 17 set 2017 18:18:05 -03
+" Last Change: seg 18 set 2017 19:42:25 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -295,14 +295,14 @@ match Problem /^\s\*\t\+\s\*/
 
 " more command line Abbreviations
 cnoreabbrev W! w!
-cnoreabbrev Q! q!
+"cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w
-cnoreabbrev Q q
+"cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
@@ -591,6 +591,7 @@ command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 nnoremap <special> <leader>d :call DelBlankLines()<cr>
 
 " Insert lines below and above (with count)
+" source: https://vi.stackexchange.com/a/3881/7339
 nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
