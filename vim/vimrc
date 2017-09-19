@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: seg 18 set 2017 19:42:25 -03
+" Last Change: ter 19 set 2017 06:24:01 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -100,7 +100,6 @@ let mapleader=','
 
 " entrar no modo comando mais rápido
 nnoremap ç :
-noremap ' `
 nnoremap K :help <C-r><C-w><CR>
 
 call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
@@ -592,8 +591,22 @@ nnoremap <special> <leader>d :call DelBlankLines()<cr>
 
 " Insert lines below and above (with count)
 " source: https://vi.stackexchange.com/a/3881/7339
-nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
-nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+" I am keeping this lines in order to save the information related
+" nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+" nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+" https://vi.stackexchange.com/a/7278/7339
+nnoremap <c-n> @="m`o\eg``"<cr>
+nnoremap <c-p> @="m`O\eg``"<cr>
+
+" Explanation about above command:
+" We are setting the contextual mark with m` to jump back with g``
+" after open new lines below with 'o' and above with 'O'
+" \e stands for <Esc>
+" OBS: That command accepsts count
+"
+" nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+" nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 
 fun! CleanExtraSpaces()
     call Preserve('%s/\s\+$//ge')

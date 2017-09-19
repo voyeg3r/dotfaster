@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 16 set 2017 17:10:36 -03
+" Last Change: ter 19 set 2017 06:24:14 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -308,8 +308,12 @@ endfun
 command! -nargs=0 Nbufs :call CountBuffers()
 
 " Insert lines below and above (with count)
-nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
-nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+" nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+" nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+" https://vi.stackexchange.com/a/7278/7339
+nnoremap <c-n> @="m`o\eg``"<cr>
+nnoremap <c-p> @="m`O\eg``"<cr>
 
 "*****************************************************************************
 "" Autocmd Rules

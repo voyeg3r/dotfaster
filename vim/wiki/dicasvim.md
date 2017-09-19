@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 15 set 2017 14:52:44 -03
+Last Change: ter 19 set 2017 05:55:10 -03
 ```
 
 # Vim tips for everyone
@@ -2414,8 +2414,24 @@ map <S-F5> :call SignLines()<CR>
 # Saltos para alterações
 
 ``` vim
-g, ...... alteração mais recente
-g; ...... alteração mais antiga
+g, ............... alteração mais recente
+g; ............... alteração mais antiga
+g` ............... jump to the last know position without changing jumplist
+```
+
+### Jumping to the begining/end of the last yanked/changed text
+
+``` viml
+`[ or `] ......... jump to beginning/end of previously changed or yanked text
+`< or `> ......... jump to beginning/end of last visual selection
+```
+
+``` markdown
+m< ............... define o começo da seleção "gv"
+m> ............... define o fim da seleção "gv"
+
+OBS: If last selection was linewise the new positon will be set accordingly,
+     the same happens if the last selection was blockwise
 ```
 
 somente lista de saltos
