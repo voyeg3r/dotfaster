@@ -1,26 +1,101 @@
-
-Referências: http://www.emacswiki.org/emacs-pt/NovatoNoEmacs
+# Referências:
++ http://www.emacswiki.org/emacs-pt/NovatoNoEmacs
++ https://blog.aaronbieber.com/2015/07/05/a-gentle-introduction-to-emacs-configuration.html
 
 Para fechar ^xc
 para salvar ^xs
 
-      Para iniciar o tutorial ^ht
-      para fechar o buffer    ^xk
-      para fazer uma busca    ^s
-      para ir para o começo da linha ^a
-      para ir para o final da linha ^e
+Carregar um tema escuro
 
-      ^f  move para a direita
-      ^b  move para a esquerda
-      ^p  sobe uma linha
-      ^n  desce uma linha
-      
- 
-       para inserir nova linha ^j
-       para desfazer ^xu undo
-       para apagar o restante da linha 
+    M-x load-theme
+    manojo<tab>
 
-       para ir para o começo do arquivo M-S-<
+    Customise-theme ......... M-x customize-th <tab>
+
+
+    next line ............. ^n
+    previous line ......... ^p
+
+# Open customize options
+
+    M-x customize
+
+# Some similar features of vim/emacs
+
+    k .............. ^p
+    j .............. ^n
+    zz  ............ ^l
+
+    Actually ^l in Emacs does more, it alternates between top, middle and
+    botton screen
+
+# Incremental Search
+
+  	      C-s
+	      C-g ........... cancel and go back where you started
+
+# Transpose chars
++ http://pragmaticemacs.com/emacs/transpose-characters/
+
+    ;; adjust transpose-chars to switch previous two characters
+    (global-set-key (kbd "C-t")
+                    (lambda () (interactive)
+                      (backward-char)
+                      (transpose-chars 1)))
+
+# Inserting new line
+
+I am using prelude, and S-RET is equivalent to vi's o and C-S-RET is equivalent to vi's O.
+
+# Opening recent files
+
+To enable ‘recentf-mode’, put this in your `~/.emacs’:
+
+    (recentf-mode 1)
+    (setq recentf-max-menu-items 25)
+    (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+# Split screen
+
+    C-x 2
+
+To close the second window just type
+
+    C-x 1
+
+# jumping to the end/beginning of file
+
+    Esc-<
+
+    paragraph   C-↑
+
+# Jumping to the last postion
+
+    usually bound to C-x C-@ and C-x C-SPC.
+
+# Jumping to the last/next buffer
+
+    C-x left-arrow
+    C-x right-arrow
+
+
+    Like in vim you can count a moviment, so if you want to
+    jump down 6 lines you have to type: 6 ^n
+
+    Para iniciar o tutorial ^ht
+    para fechar o buffer    ^xk
+    para fazer uma busca    ^s
+    para ir para o começo da linha ^a
+    para ir para o final da linha ^e
+
+    ^f  move para a direita
+    ^b  move para a esquerda
+
+    para inserir nova linha ^j
+    para desfazer ^xu undo
+    para apagar o restante da linha
+
+    para ir para o começo do arquivo M-S-<
 
 =======================================
 Key translations:
@@ -1030,4 +1105,3 @@ C-x @ s		event-apply-super-modifier
 
 
 * http://code.google.com/p/yasnippet/
- 

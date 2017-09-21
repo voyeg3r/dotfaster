@@ -1071,6 +1071,43 @@ Supose you have these lines:
 		:s/\d\+/\=submatch(0) + 1/
         increases digits
 
+### More submatch operations
++ https://stackoverflow.com/a/46295517/2571881
+
+This transforms
+
+``` markdown
+0010|C|||N55555555|E0222222220010
+0010|C|||N55514200|E0222222220300
+0010|C|||N55514200|E0222222220301
+0010|C|||N55514200|E0222222229301
+```
+
+into
+
+``` markdown
+0010|C|||N55555555|E022222222|1.0
+0010|C|||N55514200|E022222222|30.0
+0010|C|||N55514200|E022222222|30.1
+0010|C|||N55514200|E022222222|930.1
+```
+
+You can use a sub-replace-expression (see :help sub-replace-\=):
+
+    :%s#\d\{4}$#\=printf('|%.1f', str2nr(submatch(0)) / 10.0)#
+
+That is:
+
+    :%s#: execute this substitute for every line in the file (using # as the delimiter here as I need to use / in the \= part)
+    \d\{4}$: match the last four digits of the line
+
+    \=: interprete the following:
+        printf('|%.1f: print a | followed by a 1-precision float (the second argument)
+        str2nr(submatch(0)): transform the match 4-digit group into a decimal number
+        (removes the trailing 0 to avoid reading 0XYZ as octal values)
+        / 10.0: divide the value by 10
+
+
 # Jumping to edit positions and insert position
 
 ``` markdown
