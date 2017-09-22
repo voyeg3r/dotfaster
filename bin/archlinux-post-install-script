@@ -37,6 +37,9 @@
 # chenge workspace easyly on gnome shell
 # https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/
 
+# fast and powerful spreesheet
+sudo pacman -S gnumeric
+
 # network performance
 sudo cp /etc/sysct.conf{,-backup}
 sudo wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf -O /etc/sysctl.d/99-sysctl.conf

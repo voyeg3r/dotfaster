@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 19 set 2017 05:55:10 -03
+Last Change: sex 22 set 2017 16:10:12 -03
 ```
 
 # Vim tips for everyone
@@ -238,7 +238,9 @@ The `\%V` will make sure the substitution happens only in the selection area
 
 # Open file read-only
 edit `/etc/nginx/nginx.conf` in read-only mode:
-sudo vim +M /etc/nginx/nginx.conf
+
+    sudo vim +M /etc/nginx/nginx.conf
+
 # Scrolling down both parts of a split-window at the same time in Vim
 source http://stackoverflow.com/a/2986980/2571881
 First you can open two files, each in its window, doing this:
@@ -258,7 +260,7 @@ In the second file:
 To open a link just press `Ctrl-]` and to jump back `Ctrl-t` or `Ctrl-o`
 
 # open the file on the line where the 3rd occurrence of the pattern appears
-[tecmint.com](http://www.tecmint.com/how-to-use-vi-and-vim-editor-in-linux/)
++ [tecmint.com](http://www.tecmint.com/how-to-use-vi-and-vim-editor-in-linux/)
 
     vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
 
@@ -324,7 +326,8 @@ set lcs+=space:·
 
 # Editing complex commands and search
 
-When you have complex commands and searches you can open for each of theses modes a special window
+When you have complex commands and searches you can open for each of theses
+modes a special window
 
     Ctrl-f in command mode opens 'command line window'
     q: also open command line window
@@ -360,6 +363,14 @@ iab fname <c-r>=expand("%:p")<cr>
 ``` vimscript
 nnoremap <Enter> :call append(line('.'), '')<CR>
 nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
+```
+
+another similar solution
+
+``` viml
+" https://vi.stackexchange.com/a/7278/7339
+nnoremap <leader>o @="m`o\eg``"<cr>
+nnoremap <leader>O @="m`O\eg``"<cr>
 ```
 
 # Tips on searching
@@ -439,6 +450,11 @@ at the beginning of your file
 
     !p snip.rv = "return value"
     t[1] --> tabstop 1
+
+Ou abreviações do próprio vim
+
+
+    iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 
 # Usando snippets espelho ou não
 
@@ -589,6 +605,14 @@ Ctrl-r = ........ starts expression register (cursor at the bottom)
 # Reopen previous buffer in a new window
 
     Ctrl-w Ctrl-6
+
+If you want to jump to buffer 7 just type:
+
+    7 Ctrl-6
+
+You can also type part of the buffer name or even use a mapping like this:
+
+    nnoremap <Leader>b :ls<CR>:b<Space>
 
 # Copy from one buffer to another
 [stackoverflow](http://stackoverflow.com/q/41259890/)
@@ -918,6 +942,11 @@ source: http://stackoverflow.com/q/40414720/
      '< ............ first line of last selection
      '> ............ last line of last selection
 
+If you want to change the boundaries of the previous selection just type:
+
+    m< .............. sets selection start
+    m> .............. sets selection end
+
  in order to select previous pasted text put this in your .vimrc
 
      " select last paste in visual mode
@@ -1020,18 +1049,20 @@ Usando relative numbers
 
     :-7t.
 
-    +------------+-------------------------------------------------------------------------------------------------+
-    |  command 	 |  action
-    +------------+-------------------------------------------------------------------------------------------------+
-    |  :9t. 	 |  copy line 9 placing a duplicate below the current line                                         |
-    |  :t5 	     |  copy the current line placing a duplicate below the line 5 (and moving the cursor)             |
-    |  :-7t. 	 |  copy the line 7 before the current cursor position placing a duplicate below the current line  |
-    |  :+4t. 	 |  copy the line 4 after the current cursor position placing a duplicate below the current line   |
-    |  :9,11t. 	 |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position           |
-    |  :-5t.     |  copy the line 5 rows above to the current line                                                 |
-    |  :1m.      |  move line one to the current line                                                              |
-    |  :-3m.     |  move the line up 3 to this position                                                            |
-    +------------+-------------------------------------------------------------------------------------------------+
+ ``` markdown
+ +------------+-----------------------------------------------------------------------------------------------+
+ |  command   |  action                                                                                       |
+ +------------+-----------------------------------------------------------------------------------------------+
+ |  :9t. 	  |  copy line 9 below the current line                                                           |
+ |  :t5 	  |  copy the current line placing a duplicate below the line 5 (and moving the cursor)           |
+ |  :-7t. 	  |  copy the line 7 before the current cursor position placing a duplicate below the current line|
+ |  :+4t. 	  |  copy the line 4 after the current cursor position placing a duplicate below the current line |
+ |  :9,11t.   |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position         |
+ |  :-5t.     |  copy the line 5 rows above to the current line                                               |
+ |  :1m.      |  move line one to the current line                                                            |
+ |  :-3m.     |  move the line up 3 to this position                                                          |
+ +------------+-----------------------------------------------------------------------------------------------+
+ ```
 
 # Formating text on vim
 
@@ -1063,6 +1094,8 @@ Supose you have these lines:
 " highlight only digits inside html tags
 
         \v<\/?h\zs\d\ze
+
+        h\zs\d\ze   →   this version works and is easy to type
 
 " promote each digit matched in the above search
 
@@ -1106,7 +1139,6 @@ That is:
         str2nr(submatch(0)): transform the match 4-digit group into a decimal number
         (removes the trailing 0 to avoid reading 0XYZ as octal values)
         / 10.0: divide the value by 10
-
 
 # Jumping to edit positions and insert position
 
@@ -1358,7 +1390,11 @@ set fileencoding=utf-8  " The encoding written to file.
 
 # Reindenting whole file
 
-		gg=G
+	gg=G
+
+    command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
+
+    "OBS: you need Preserve() function
 
 # Move some line to current line
 
@@ -1546,6 +1582,9 @@ zug ......... undo add word as good one
 
      :%s/^/\=(line(".")%4==0?"\n":"")/g
 
+This solution makes use of ternary oparator that gives us a newline "\n" or
+nothing "" depending on rest of division of line number "line('.')" by 4
+
 # Vim - Adding empty line between lines
 + https://superuser.com/a/592508/45032
 
@@ -1595,7 +1634,9 @@ regular expressions -- there are a couple others, too!)
     :g/^wget/ normal O
 
 # How to add a line after every few lines in vim
-I wanted to add a line after every 3 lines in a file (having about 1000 lines) using vim editor. Can someone help me out?
+
+I wanted to add a line after every 3 lines in a file (having about 1000 lines)
+using vim editor. Can someone help me out?
 
 Solution one:
     :%s/\v(.*\n){3}/&\r
@@ -1605,6 +1646,8 @@ Solution two:
 # How join lines whithin xml <div>s
 
      :g/<div>/+1,/<\/div>/-1 join
+
+    :g/one/+1,/two/-1 w ~/tmp/test.txt
 
 # Vim search pattern for a piece of text line yanked in visual mode
 
@@ -2824,7 +2867,7 @@ words place by doing:
 
 # Trabalhando com janelas
 
-       Ctrl-w_^ .......... divide a janela atual e edita arquivo alternativo
+       Ctrl-w Ctrl-6 ..... divide a janela e edita arquivo alternativo
 
 # Colando do clipboard em modo insert
 
@@ -2925,9 +2968,11 @@ And want to change to this:
 
 You can use a global negator like this:
 
-    :%v/:$/-1j
+    :v/:$/-1j
 
-... (considering all lines (%) for those which don't match the following regular expression (v) /(regular expression of lines ending in colon)/ go to the previous line (-1) and join that line to the next one (j)).
+for those which don't match the following regular expression (v) /(regular
+expression of lines ending in colon)/ go to the previous line (-1) and join
+that line to the next one (j)).
 
 # Destacando as linhas duplicadas
 
@@ -2935,7 +2980,7 @@ You can use a global negator like this:
 
 # incrementar as linhas contendo "# Lesson + number"
 
-    :.,$g/# Lesson \d\+/normal 
+    :.,$g/# Lesson \d\+/normal 
 
     . ................ linha atual
     $ ................ final do arquivo
@@ -3008,7 +3053,7 @@ My solution
 
 # Adicionar uma linha em branco após linhas que começam com espaço
 
-    :g/^\s*-/normal O
+    :g/^\s\+/normal o
 
 # Função para deletar linhas em branco duplicadas
 
@@ -3100,16 +3145,7 @@ O código abaixo troca dois iguais por três ###
 %s/\v^\=\=([^\=]+)\=\=/### \1/g
 ```
 
-# Delet the character before cursor
-
-Let's say you have:
-
-    sales_tax: row["sales tax"] ,
-
-And you want to delete the space before caret, in command mode
-just press X
-
-# How to convert html to markdown using vim-pandoc
+[#](#) How to convert html to markdown using vim-pandoc
 [link here](http://amandogra.github.io/blog/how-to-convert-html-to-markdown-using-vim-pandoc/)
 
 ## Install pandoc

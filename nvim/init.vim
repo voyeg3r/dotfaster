@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 19 set 2017 06:24:14 -03
+" Last Change: qui 21 set 2017 13:44:45 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -312,8 +312,8 @@ command! -nargs=0 Nbufs :call CountBuffers()
 " nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
-nnoremap <c-n> @="m`o\eg``"<cr>
-nnoremap <c-p> @="m`O\eg``"<cr>
+nnoremap <leader>o @="m`o\eg``"<cr>
+nnoremap <leader>O @="m`O\eg``"<cr>
 
 "*****************************************************************************
 "" Autocmd Rules

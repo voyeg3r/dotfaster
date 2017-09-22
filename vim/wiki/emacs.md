@@ -8,6 +8,7 @@ para salvar ^xs
 Carregar um tema escuro
 
     M-x load-theme
+
     manojo<tab>
 
     Customise-theme ......... M-x customize-th <tab>
@@ -34,6 +35,8 @@ Carregar um tema escuro
   	      C-s
 	      C-g ........... cancel and go back where you started
 
+          To continue searching just press c-s again
+
 # Transpose chars
 + http://pragmaticemacs.com/emacs/transpose-characters/
 
@@ -57,17 +60,27 @@ To enable ‘recentf-mode’, put this in your `~/.emacs’:
 
 # Split screen
 
-    C-x 2
+    c-x 2
+
+In order to jump to another window
+
+    c-x o
 
 To close the second window just type
 
-    C-x 1
+    c-x 1
+
+To close the current window press
+
+    c-x 0
 
 # jumping to the end/beginning of file
 
     Esc-<
 
     paragraph   C-↑
+    M-e ........ end of paragraph
+    M-a ........ beginning of paragraph
 
 # Jumping to the last postion
 
@@ -78,6 +91,10 @@ To close the second window just type
     C-x left-arrow
     C-x right-arrow
 
+    Enabling ido-mode you can use c-x b  to activate the mini
+    buffer list
+
+    c-x b  ............ show mini-buffer list (needs ido-mod activated)
 
     Like in vim you can count a moviment, so if you want to
     jump down 6 lines you have to type: 6 ^n
