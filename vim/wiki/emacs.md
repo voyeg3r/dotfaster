@@ -21,6 +21,12 @@ Carregar um tema escuro
 
     M-x customize
 
+# Setting marks to delete regions
+
+    C-<SPC> ....... emacs will show MARK SET
+    move arround
+    c-w ........... deletes the whole region
+
 # Some similar features of vim/emacs
 
     k .............. ^p

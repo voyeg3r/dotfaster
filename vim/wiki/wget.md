@@ -60,6 +60,11 @@ Se desejar baixar um arquivo com o wget direto para um local faça:
   wget http://endereco/do/arquivo/vimrc -O ~/.vimrc
   wget --limit-rate=15k -i links.txt
 
+Pode-se ainda limitar a velocidade de download do pacman (instalador de pacotes
+do archlinux)
+
+    XferCommand = /usr/bin/wget --limit-rate=15k --passive-ftp -c -O %o %u
+
 ### pegando seu ip externo
 
     wget -qO- ifconfig.me/ip

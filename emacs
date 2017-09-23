@@ -71,15 +71,15 @@
 (show-paren-mode 1)
 
 ; source: https://stackoverflow.com/a/88828/2571881
-(defun duplicate-line()
-  (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (newline)
-  (yank)
-)
-(global-set-key (kbd "C-d") 'duplicate-line)
+; (defun duplicate-line()
+;   (interactive)
+;   (move-beginning-of-line 1)
+;   (kill-line)
+;   (yank)
+;   (newline)
+;   (yank)
+; )
+; (global-set-key (kbd "C-d") 'duplicate-line)
 
 ; https://stackoverflow.com/a/3446738/2571881
 (defun duplicate-line (&optional arg)

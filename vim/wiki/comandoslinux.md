@@ -239,6 +239,7 @@
 [top](top.md)
 [touch](touch.md)
 [tr](tr.md)
+[type](type.md)
 [trap](trap.md)
 [tree](tree.md)
 [tricke](tricke.md)

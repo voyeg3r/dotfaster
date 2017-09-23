@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 22 set 2017 16:10:12 -03
+Last Change: sáb 23 set 2017 06:13:21 -03
 ```
 
 # Vim tips for everyone
@@ -12,6 +12,11 @@ vim profiler: https://github.com/bchretien/vim-profiler
 
     git clone https://github.com/vim-jp/vital.vim.git
     A comprehensive Vim utility functions for Vim plugins
+
+# jumping to the first non-blank character
+
+    _ ................ jump to the first non-blank character
+    ^ ................ jump to the First non-blank character
 
 # Using vim with no plugins
 
@@ -1063,6 +1068,14 @@ Usando relative numbers
  |  :-3m.     |  move the line up 3 to this position                                                          |
  +------------+-----------------------------------------------------------------------------------------------+
  ```
+
+The offsets can also be used with the other items in a range.  Look at this
+one: >
+
+	:.+3,$-5
+
+This specifies the range that starts three lines below the cursor and ends
+five lines before the last line in the file.
 
 # Formating text on vim
 
