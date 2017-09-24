@@ -288,6 +288,13 @@ ou rode o comando (Alt+F2) dialog run:
 
     gnome-session-properties
 
+# Screen zooming in
++ https://unix.stackexchange.com/a/192896/3157
+
+    Super+Alt+8 : Toggle zoom enabled/disabled (when enabled, the next two keyboard shortcuts become active)
+    Super+Alt+'+' : Zoom in (increases zoom factor by 1.0)
+    Super+Alt+'-' : Zoom out (decreases zoom factor by 1.0, until it is 1.0)
+
 ### Set wallpaper mode
 + https://bbs.archlinux.org/viewtopic.php?id=152571
 Possible values are "none", "wallpaper", "centered", "scaled", "stretched", "zoom", "spanned".

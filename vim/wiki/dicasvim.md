@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 23 set 2017 06:13:21 -03
+Last Change: dom 24 set 2017 12:39:32 -03
 ```
 
 # Vim tips for everyone
@@ -72,7 +72,7 @@ This allows you to put characters virtually everywhere on your text
 ```
 The problem happens more when you have many lines in different sizes
 
-# Inserting a-z using macro
+# Inserting a-z using macro - incrementando letas com ctrl-a
 
 Using set `nrformats+=alpha:`
 
@@ -458,7 +458,6 @@ at the beginning of your file
 
 Ou abreviações do próprio vim
 
-
     iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 
 # Usando snippets espelho ou não
@@ -535,7 +534,7 @@ Fechei  todos os arquivos
 
     http://www.mileszs.com/vimlinks.html
 
-# Vimgolf
+# [Vimgolf](Vimgolf)
 
 Search vimgolf chalenges to vim users
 ao instalar o vimgolf como recomenda o site digite
@@ -575,6 +574,39 @@ Solution
 Another interesting solution is to enable virtualedit
 
     :set virtualedit=all
+
+# vimgolf: Simple text editing with vim
+
+    Make the pairs of lines match up by making each second line same as first:
+
+    # Appending text:
+    The name "Vim" is an acronym for "Vi IMproved"
+    The name "Vim" is an acronym for
+
+    # Editing text:
+    Vim is a text editor originally released by Bram Moolenaar in 1991 for the Amiga
+    Trivia: Vim is a text editor released by Bram Moolenaar in 1991 for the Amiga
+
+    # Deleting text:
+    Vim has a vi compatibility mode
+    Vim has a vi compatibility mode but when not in this mode Vim has many enhancements over vi
+
+Solutions: https://stackoverflow.com/a/6680048/2571881
+
+    :g/V/t.|+d<CR>ZZ
+
+On every line that has a "V", copy it down and delete the next line. Write and quit.
+
+    qa3jYjVpq3@aZZ
+
+Seeing the firts solution that uses "V" as a search pattern I ended up asking
+me: How to make a search in a range of lines?
+
+    :580,592/Vim/
+
+1 - select the range using v, V or whatever
+2 - press ESC to unselect the range
+3 - search using /\%Vwhat_to_search to search for 'what_to_search' in the previously selected range.
 
 # Start vim with no plugins
 source: Book practical vim
@@ -1117,6 +1149,13 @@ Supose you have these lines:
 		:s/\d\+/\=submatch(0) + 1/
         increases digits
 
+# Converting numbers to chars
+The range of printable chars spams from 32 to 93
+
+    :put =range(32,93)
+    :%s,.*,\=nrm2char(submatch(0))
+    :%j
+
 ### More submatch operations
 + https://stackoverflow.com/a/46295517/2571881
 
@@ -1202,6 +1241,13 @@ Para o trecho acima usamos
 
     :put +
 
+The line above says: put in the line below the content of + register
+
+    :s/\<./\u&/g
+
+The line above says: make uppercase `\u&` the last searched pattern
+which is `\<.` (start of any word)
+
 The above map can change sections like this:
 
 ``` markdown
@@ -1221,6 +1267,39 @@ Try it by putting your cursor in a section’s text and typing cah .
 This time Vim will delete not only the heading’s text but also the
 line of equal signs that denotes a heading. You can think of this
 movement as “around this section’s heading”.
+
+# Runing a macro over last pasted text
++ https://stackoverflow.com/a/46380937/2571881
++ https://www.linuxquestions.org/questions/programming-9/vim-how-pass-argument-to-key-mapping-933036/
+
+In the link above you see the title: vim how pass argument to key mapping
+
+The guy intended to paste some text and perform a macro over it. So we need
+to make:
+
+1 - Selection number of lines;
+2 - Provide an argument with the macro name
+3 - Combine the number with the macro name
+
+    fun! MacroOverSelection(macroname)
+        let l:how_many = line("']") - line("'[") + 1
+        execute "normal! ". l:how_many . "@" . a:macroname
+    endfun
+
+    :call MacroOverSelection("a")
+
+    :com -nargs=1 Mover :call MacroOverSelection(<f-args>)
+
+    :Mover a
+
+A better function that runs over exactly last change/yank block
+
+    fun! RunMacroOver(macroname)
+        execute "'[,']normal @". a:macroname
+    endfun
+
+    :com -nargs=1 Rover :call RunMacroOver(<f-args>)
+    :nnoremap <leader>r :Rover<space>
 
 # Neovim
 
@@ -2877,6 +2956,14 @@ words place by doing:
     .  ....................... type dot to finish the operation
 
     cxc ...................... clears exchange operation
+
+Without vim-exchange plugin you can switch two words by doing
+
+    dWwP
+
+    dW ............ delete words even hyphenated ones
+    w ............. jump to the next word
+    P ............. paste before
 
 # Trabalhando com janelas
 

@@ -410,6 +410,9 @@ yaourt -S community/gnome-packagekit
 yaourt -S trickle
 # sudo trickle -d 50 pacman -Syuw --noconfirm
 
+# screen zooming in
+yaourt gnome-shell-mousewheel-zoom
+
 # cmd line image viwever
 yaourt -S extra/feh
 

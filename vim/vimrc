@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sex 22 set 2017 14:24:06 -03
+" Last Change: sáb 23 set 2017 15:33:49 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -68,7 +68,7 @@ set path+=**
 set history=200
 set isfname+={,}
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest,list
 set completeopt=longest,menuone
 "set completeopt=menu,preview
 set complete=.,w,k
@@ -319,7 +319,7 @@ fun! SumVis()
     try
         let l:a_save = @a
         norm! gv"ay
-        let @a = substitute(@a,'[^0-9. ]','+','g')
+        let @a = substitute(@a,'[^0-9., ]','+','g')
         exec "norm! '>o"
         exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
      finally
@@ -327,6 +327,14 @@ fun! SumVis()
      endtry
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<cr>
+
+" This function allows me to execute a macro over
+" the last changed/yanked text fast
+fun! RunMacroOver(macroname)
+    execute "'[,']normal @". a:macroname
+endfun
+com -nargs=1 Rover :call RunMacroOver(<f-args>)
+nnoremap <leader>r :Rover<space>
 
 " alternate between relative number, number and no number
 "nmap ,r :set rnu!<cr>
@@ -404,6 +412,12 @@ endif
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 "nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
+
+
+" newline, and punctuation is "skipped"):
+" Swap the word the cursor is on with the next word (which can be on a
+" https://superuser.com/a/290384/45032
+nmap <silent> gw "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><C-o>:noh<CR>
 
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
