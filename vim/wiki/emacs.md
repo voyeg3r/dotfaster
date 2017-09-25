@@ -116,6 +116,7 @@ To close the current window press
 
     para inserir nova linha ^j
     para desfazer ^xu undo
+    para desfazer [Ctrl](Ctrl-/)
     para apagar o restante da linha
 
     para ir para o começo do arquivo M-S-<
