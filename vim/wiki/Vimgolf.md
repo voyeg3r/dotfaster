@@ -131,3 +131,97 @@ This solution takes 16 keystrokes
 This one takes only 15 keystrokes
 
     <C-V>M$A<Tab><Esc>gvd11JPZZ
+
+    <C-V> ......... visual block
+    M ............. middle of screen
+    $ ............. end of block
+    TAB ........... literal TAB
+    <Esc> ......... exit insert mode
+    gv ............ reselects visual
+    d ............. take selection to default register
+    11J ........... erase blank lines by joining them
+    P ............. paste default register
+
+# multiple cursor alternative
+
+
+Start file
+
+    <section class="top-bar-selection">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="active">
+          <a href="homepage.html">Page 1</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="homepage.html">Page 2</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="homepage.html">Page 3</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="homepage.html">Page 4</a></li>
+      </ul>
+    </section>
+
+End file
+
+    <section class="top-bar-selection">
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="active">
+          <a href="Page1.html">Page 1</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="Page2.html">Page 2</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="Page3.html">Page 3</a></li>
+        <li class="divider"></li>
+        <li>
+          <a href="Page4.html">Page 4</a></li>
+      </ul>
+    </section>
+
+This solution spends 19 keystrokes
+
+    :%norm yitTgvbpX<CR>ZZ
+
+    :% ............. whole file
+    norm ........... normal mode
+    yit ............ yank inner tag
+    Tg ............. till before back g
+    v .............. visual
+    b .............. beggining
+    p .............. paste
+    X .............. erase last char
+    ZZ ............. save and exit
+
+OBS: The "yit" (used to copy inner tag) only works on tags
+     that have any text.
+
+# Just the middle
++ vimgolf put 54862fbb3f90ac0002904cf5
+
+
+Start file
+
+    Leave only the
+    numbered lines.
+    LINE 1
+    LINE 2
+    LINE 3
+    That's all.
+    Thank you
+    very much.
+
+End file
+
+    LINE 1
+    LINE 2
+    LINE 3
+
+Solution:
+
+    )3:wq!<CR>
+

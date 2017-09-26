@@ -1,16 +1,8 @@
 
-{{{
-
 ### Introdução
 ### fonte consolas no linux
 * http://igordevlog.blogspot.com/2007/05/how-to-consolas-font-in-linux.html
 
-### usando o plugin vimball
-
-mkdir ~/.vim/bundle/neocomplcache
-
-:let g:vimball_home="~/.vim/bundle/neocomplcache"
-:so %
 
 ### inserindo uma linha em branco após cada seguda linha
 
@@ -54,97 +46,85 @@ cmap w!! %!sudo tee > /dev/null %
 
 ### setando uma variável ao abrir
 
-vi +"se nu" Pessoa.py
+    vi +"se nu" Pessoa.py
 
 ### inserindo comentários
 
-" Perl, Python and shell scripts
-autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap u :-1/^#/s///<CR>
-autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap c :-1/^/s//#/<CR>
+    " Perl, Python and shell scripts
+    autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap u :-1/^#/s///<CR>
+    autocmd BufNewFile,BufRead *.py,*.pl,*.sh vmap c :-1/^/s//#/<CR>
 
 ### Que tal fazer substituição somente nas próximas 4 linhas?
 
-:s/isto/aquilo/g 4
+    :s/isto/aquilo/g 4
 
 ### Editando o histórico de comandos do vim
 
-Com o cursor posicionado na linha de comandos do vim pressione:
-<ctrl-f> abre o histórico de comandos do vim para edição
+    Com o cursor posicionado na linha de comandos do vim pressione:
+    <ctrl-f> abre o histórico de comandos do vim para edição
 
 ### tirando linhas em branco duplicadas
 
-:%v/./,/./-j
+    :%v/./,/./-j
 
 ### destacando linhas duplicadas
 
-:g/^\(.*\)\n\ze\%(.*\n\)*\1$/#
+    :g/^\(.*\)\n\ze\%(.*\n\)*\1$/#
 
 ### juntando todas as linhas do arquivo
 
-:g/./-j
+    :g/./-j
 
-:%j
+    :%j
 
 ### salvando um trecho para outro arquivo
 
-:20,45 w! ~/tmp/file.txt
+    :20,45 w! ~/tmp/file.txt
 
 ### incrementando números
 
-:4,$s/\d\+/\=submatch(0) + 1/
+    :4,$s/\d\+/\=submatch(0) + 1/
 
 veja também o plugin visincr - faz incremento de um trecho selecionado
 [[@http://www.vim.org/scripts/script.php?script_id=670]]
 ### mantendo uma linha a mais visível ao fazer a rolagem
 
-set scrolloff=2
+    set scrolloff=2
 
 ### ignorando espaços no modo diff
 
-set diffopt+=iwhite
+    set diffopt+=iwhite
 
 ### destacando a linha ativa
 
-:set cursorline
+    :set cursorline
 
 ### correções para o livro
 
-haverpa .... procure e corrija esta palavra
-no modo normal, ato de deletar...
-("mudança")
-na seção 2.11 citar o a seção "trabalhando com janelas"
+    haverpa .... procure e corrija esta palavra
+    no modo normal, ato de deletar...
+    ("mudança")
+    na seção 2.11 citar o a seção "trabalhando com janelas"
 
 ### inserção em bloco vertical
 
-ctrl-v  shift-v + insert
+    ctrl-v  shift-v + insert
 
 ### comparando dois arquivos remotamente com o vim
 
-vimdiff <file> scp://[<user>@]<host>/<file>
+    vimdiff <file> scp://[<user>@]<host>/<file>
 
 ### comando vim
 
-vim -c "5,10s/a/b/g | wq" filename
-
-###<span class="mw-headline">Boolean options</span>
-fonte - wikia
-The many ways to set a boolean option are best illustrated by a simple example. In the following, the 'number' option is used. Any boolean option, such as wrap, linebreak, diff, etc can be set in these ways.
-|| {{:set number}} || Turn line numbers on ||
-|| {{:set nonumber}} || Turn line numbers off ||
-|| {{:set invnumber}}
-{{:set number!}} || Toggle line numbers ||
-|| {{:set number&}} || Set option to default value ||
-|| {{:set number?}} || Show value of option ||
-
-map <F2> :set wrap!<CR>
+    vim -c "5,10s/a/b/g | wq" filename
 
 Para listar todas definições de uma macro use:
 
-:dlist EOF
+    :dlist EOF
 
 É semelhante a
 
-[D e ]D
+    [D e ]D
 
 mas permite também selecionar um intervalo de linhas a serem pesquisadas.
 O comando:
@@ -155,21 +135,22 @@ pesquisa definições também, mas só lista a primeira.
 
 ### setando a barra de título
 
-let &titlestring = hostname() . " - " . expand("%:p")
+    let &titlestring = hostname() . " - " . expand("%:p")
 
-===[[http://vim-anotacoes.blogspot.com/2009/05/abrindo-uma-janela-com-o-primeiro.html|Abrindo uma janela com o primeiro arquivo com uma palavra]]===
+###[[http://vim-anotacoes.blogspot.com/2009/05/abrindo-uma-janela-com-o-primeiro.html|Abrindo uma janela com o primeiro arquivo com uma palavra]]
 Se você posicionar o cursor sob uma palavra e pressionar:
 
-<Ctrl-W><Ctrl-I>
+    <Ctrl-W><Ctrl-I>
 
 o vim pesquisará no arquivo corrente e nos includes, retornando a primeira
 ocorrência na nova janela.
+
 ### contanto ocorrências de palavras
 
-:%s/palavra//gn
-" contagem de ocorrências de uma palavra (case insensitive)
-nmap <F4> <esc>mz:%s/\c\<\(<c-r>=expand("<cword>")<cr>\)\>//gn<cr>`z
-nmap <s-F4> <esc>mz:%s/\c\(<c-r>=expand("<cword>")<cr>\)//gn<cr>`z
+    :%s/palavra//gn
+    " contagem de ocorrências de uma palavra (case insensitive)
+    nmap <F4> <esc>mz:%s/\c\<\(<c-r>=expand("<cword>")<cr>\)\>//gn<cr>`z
+    nmap <s-F4> <esc>mz:%s/\c\(<c-r>=expand("<cword>")<cr>\)//gn<cr>`z
 
 ### plugin fontsize
 aumenta a fonte com <leader>++
@@ -178,85 +159,83 @@ aumenta a fonte com <leader>++
 ### exibindo todos os snippets disponíveis
 No plugin snipmate
 
-<c-r><tab>
+    <c-r><tab>
 
 ### Abrir com o vim o último arquivo/diretório editado
 
-vim $( ls -t | head -n1 )
-:nohls ..... desabilita cores nas buscas
+    vim $( ls -t | head -n1 )
 
 ### Manipulando o nome do arquivo
 
-amenu 20.351 &Edit.Copy\ fName :let @*=expand("%:t")<CR>
-amenu 20.352 &Edit.Copy\ fPath :let @*=expand("%:p:h")<CR>
-amenu 20.353 &Edit.Copy\ rName :let @*=expand("%:.")<CR>
+    amenu 20.351 &Edit.Copy\ fName :let @*=expand("%:t")<CR>
+    amenu 20.352 &Edit.Copy\ fPath :let @*=expand("%:p:h")<CR>
+    amenu 20.353 &Edit.Copy\ rName :let @*=expand("%:.")<CR>
 
 ### salvar ao sair do modo insert
 
-:au InsertLeave <buffer> w
+    :au InsertLeave <buffer> w
 
 ### buscar global clicável
 
-:vimgrep /pattern/ %.
+    :vimgrep /pattern/ %.
 
 ### Após instalar um doc
 
-:helptags ~/.vim/doc
+    :helptags ~/.vim/doc
 
 ### dicas de busca
 
-" contagem de ocorrências de uma palavra (case insensitive)
-nmap <F4> :%s/\c\(<c-r>=expand("<cword>")<cr>\)//gn<cr>
+    " contagem de ocorrências de uma palavra (case insensitive)
+    nmap <F4> :%s/\c\(<c-r>=expand("<cword>")<cr>\)//gn<cr>
 
-" mapeamento para colocar palavra sob o cursor na busca
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+    " mapeamento para colocar palavra sob o cursor na busca
+    nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
 
 ### Definindo a fonte e estilo do mouse
 
-"use our custom font
-if has("gui")
-  set guifont=Courier_New:h10:cANSI
-  "set anti gfn=Monaco:h9
-
-  "see: http://vim.wikia.com/wiki/VimTip1
-  set mousemodel=extend
-endif
+    "use our custom font
+    if has("gui")
+      set guifont=Courier_New:h10:cANSI
+      "set anti gfn=Monaco:h9
+      "see: http://vim.wikia.com/wiki/VimTip1
+      set mousemodel=extend
+    endif
 
 ### estou tentando pegar uma palavra para um comando isto é só anotação
 
-function! OnlineDoc()
-  let s:browser = "firefox"
-  let s:wordUnderCursor = expand("<cword>")
-  if &ft == "cpp" || &ft == "c" || &ft == "ruby" || &ft == "php" || &ft == "python"
-    let s:url = "http://www.google.com/codesearch?q=".s:wordUnderCursor."+lang:".&ft
-  elseif &ft == "vim"
-    let s:url = "http://www.google.com/codesearch?q=".s:wordUnderCursor
-  else
-    return
-  endif
-  let s:cmd = "silent !" . s:browser . " " . s:url
-  execute s:cmd
-  redraw!
-endfunction
-" Online doc search.
-map <LocalLeader>k :call OnlineDoc()<CR>
+    function! OnlineDoc()
+      let s:browser = "firefox"
+      let s:wordUnderCursor = expand("<cword>")
+      if &ft == "cpp" || &ft == "c" || &ft == "ruby" || &ft == "php" || &ft == "python"
+        let s:url = "http://www.google.com/codesearch?q=".s:wordUnderCursor."+lang:".&ft
+      elseif &ft == "vim"
+        let s:url = "http://www.google.com/codesearch?q=".s:wordUnderCursor
+      else
+        return
+      endif
+      let s:cmd = "silent !" . s:browser . " " . s:url
+      execute s:cmd
+      redraw!
+    endfunction
+    " Online doc search.
+    map <LocalLeader>k :call OnlineDoc()<CR>
 
 ### Sempre usar unicode utf-8
 
-" *always* use Unicode
-set encoding=utf-8 fileencodings=
+    " *always* use Unicode
+    set encoding=utf-8 fileencodings=
 
 ### Definindo o Compilador
 
-if has("autocmd")
-  autocmd BufRead,BufNewFile *.java set makeprg=javac\ %
-  "autocmd BufRead BufNewFile *.java set makeprg=ant\ -emacs
+    if has("autocmd")
+      autocmd BufRead,BufNewFile *.java set makeprg=javac\ %
+      "autocmd BufRead BufNewFile *.java set makeprg=ant\ -emacs
 
-  " Mark Klips as XML files (17/2/2005)
-  autocmd BufRead,BufNewFile *.klip set filetype=xml
+      " Mark Klips as XML files (17/2/2005)
+      autocmd BufRead,BufNewFile *.klip set filetype=xml
 
-  autocmd BufRead,BufNewFile *.tex set makeprg=latex\ %
-endif
+      autocmd BufRead,BufNewFile *.tex set makeprg=latex\ %
+    endif
 
 ### project plugin
 * http://www.vim.org/scripts/script.php?script_id=69
@@ -267,13 +246,13 @@ Project quickstart guide
 I have to agree with GavinSinclair about the ease of use of
 Project. Here is a quick guide to get you started after installing Project.
 
-   1. Type :Project in Vim to launch the Project plugin.
-   2. Type \C to launch the create project routine.
-   3. Enter a name for the project (e.g. @RailsApp@)
-   4. Enter the directory path (e.g. /Users/me/Development/RailsApp)
-   5. Type . as the CD parameter.
-   6. Type * as the filter.
-   7. Type \r to load all files and directories.
+1. Type :Project in Vim to launch the Project plugin.
+2. Type \C to launch the create project routine.
+3. Enter a name for the project (e.g. @RailsApp@)
+4. Enter the directory path (e.g. /Users/me/Development/RailsApp)
+5. Type . as the CD parameter.
+6. Type * as the filter.
+7. Type \r to load all files and directories.
 
 You should now have a full directory list of your rails
 application accessible from within Project. A lot of directories
@@ -284,179 +263,135 @@ To save you project settings, simply do a :w as you would any
 other file. For Project settings, refer to :help project.
 
 Para carregar o vim com a janela do plugin Project carregada faça
-[g]vim +Project
 
-Para mostrar um status do projeto
-\i
+    [g]vim +Project
 
-" --------------------
-" Project
-" --------------------
-map <A-S-p> :Project<CR>
-map <A-S-o> :Project<CR>:redraw<CR>/
-nmap <silent> <F3> <Plug>ToggleProject
-let g:proj_window_width = 30
-let g:proj_window_increment = 50
-" habilitar e desabilitar o plugin
-nmap <silent> ,p <Plug>ToggleProject<cr>
+    Para mostrar um status do projeto
+    \i
+
+    " --------------------
+    " Project
+    " --------------------
+    map <A-S-p> :Project<CR>
+    map <A-S-o> :Project<CR>:redraw<CR>/
+    nmap <silent> <F3> <Plug>ToggleProject
+    let g:proj_window_width = 30
+    let g:proj_window_increment = 50
+    " habilitar e desabilitar o plugin
+    nmap <silent> ,p <Plug>ToggleProject<cr>
 
 ### dicas de substituição
 
-:%s/foo/\=@a/g ...... \=@a (conteúdo do registro a)
+    :%s/foo/\=@a/g ...... \=@a (conteúdo do registro a)
 
 ### dica do comando global
 
- :g/pattern/# ...... o '#' faz exibir o número da linha
+     :g/pattern/# ...... o '#' faz exibir o número da linha
 
 ### dicas para nmap
 
-nnoremap <Space> :
+    nnoremap <Space> :
 
 ### dica para bufdo
 
-:bufdo %s/pattern/substitution/ge | update
+    :bufdo %s/pattern/substitution/ge | update
 
-bufdo – apply the following command to all buffers – see :help :bufdo.
-%s – search and replace the whole file
-g – change all instances in a line
-e – avoid an error when the pattern doesn’t exist in a buffer
-update – write the file only if changes were made
-See also :help :argdo.
+    bufdo – apply the following command to all buffers – see :help :bufdo.
+    %s – search and replace the whole file
+    g – change all instances in a line
+    e – avoid an error when the pattern doesn’t exist in a buffer
+    update – write the file only if changes were made
+    See also :help :argdo.
+
 ### gerando uma lista
 * http://vim.wikia.com/wiki/Increasing_or_decreasing_numbers
 
-:0put =range(11,15)
-11
-12
-13
-14
-15
+    :0put =range(11,15)
+    11
+    12
+    13
+    14
+    15
 
-" outro exemplo
-:for i in range(1,10) | put ='192.168.0.'.i | endfor
-192.168.0.1
-192.168.0.2
-192.168.0.3
-192.168.0.4
-192.168.0.5
-192.168.0.6
-192.168.0.7
-192.168.0.8
-192.168.0.9
-192.168.0.10
+    " outro exemplo
+    :for i in range(1,10) | put ='192.168.0.'.i | endfor
+    192.168.0.1
+    192.168.0.2
+    192.168.0.3
+    192.168.0.4
+    192.168.0.5
+    192.168.0.6
+    192.168.0.7
+    192.168.0.8
+    192.168.0.9
+    192.168.0.10
 
 Usando comandos externos
 
-:.!seq -w 1 010
-001
-002
-003
-004
-005
-006
-007
-008
-009
-010
+    :.!seq -w 1 010
+    001
+    002
+    003
+    004
+    005
+    006
+    007
+    008
+    009
+    010
 
 ### copiando o arquivo para o clipboard
 
-:%y+
-
-### change case
-* http://vim.wikia.com/wiki/Switching_case_of_characters
-"widdle case
-"With the following (for example, in vimrc), you can visually select text then press ~ to convert "the text to UPPER CASE, then to lower case, then to Title Case. Keep pressing ~ until you get the "case you want.
-
-function! TwiddleCase(str)
-  if a:str ==# toupper(a:str)
-    let result = tolower(a:str)
-  elseif a:str ==# tolower(a:str)
-    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
-  else
-    let result = toupper(a:str)
-  endif
-  return result
-endfunction
-vnoremap ~ ygv"=TwiddleCase(@")<CR>Pgv
+    :%y+
 
 ### Comando global para colocar sublinhado
 
-:g/^Chapter/t.|s/./-/g
+    :g/^Chapter/t.|s/./-/g
 
-g ........... global
-/ ........... inicio da busca
-^ ........... começo de linha
-Chapter ..... palavra considerada literal
-/ ........... fim do padrão de busca
-t ........... coresponde a cópia
-. ........... o ponto indica que é para a linha atual
-| ........... o pipe separa o próximo comando
-s ........... substituição
-. ........... qualquer caractere
-- ........... por traço
-g ........... globalmente
+    g ........... global
+    / ........... inicio da busca
+    ^ ........... começo de linha
+    Chapter ..... palavra considerada literal
+    / ........... fim do padrão de busca
+    t ........... coresponde a cópia
+    . ........... o ponto indica que é para a linha atual
+    | ........... o pipe separa o próximo comando
+    s ........... substituição
+    . ........... qualquer caractere
+    - ........... por traço
+    g ........... globalmente
 
-### Syntax em regiões do texto
-* http://vim.wikia.com/wiki/Creating_your_own_syntax_files
 ### dicas do modo de inserção
 
- ^w ............ apaga palavra anterior ao cursor
- ^rp = "+p
- ^t ............ indenta
- ^d ............ remove indentação
- ^e ............ repete linha abaixo
- ^y ............ repete linha acima
-
-### fuzzyfinder
-
-map <leader>f <esc>:FuzzyFinderFile<cr>
-map <leader>b <esc>:FuzzyFinderBookmark<cr>
-map <leader>a <esc>:FuzzyFinderAddBookmark<cr>
-map <leader>d <esc>:FuzzyFinderDir<cr>
-map <leader>m <esc>:FuzzyFinderMruFile<cr>
-let g:fuzzy_matching_limit=25
-
-### set
-
-set shiftwidth=3
-set tabstop=3
-set expandtab
-
-### mostrar caracteres ocultos
-
-set listchars=tab:\|\ ,extends:>,precedes:<,trail:-,nbsp:%
-nmap <silent> <leader>s :set nolist!<CR>
+     ^w ............ apaga palavra anterior ao cursor
+     ^rp = "+p
+     ^t ............ indenta
+     ^d ............ remove indentação
+     ^e ............ repete linha abaixo
+     ^y ............ repete linha acima
 
 ### Abrir novos arquivos em abas
 fonte: http://eustaquiorangel.com/blog/show/477
 
-alias tvim="gvim --servername `gvim --serverlist | head -1` --remote-tab"
-
-### path
-Para fazer buscas mais legais use...
-
-set path+=**
-nmap <d-t> :e **/
-:find filename
+    alias tvim="gvim --servername `gvim --serverlist | head -1` --remote-tab"
 
 ### bufdo
 
-:bufdo exe "normal @q" | w   : perform a recording on open files
+    :bufdo exe "normal @q" | w   :perform a recording on open files
 
 ### Opções
 
-set ve=all     "permite mover o cursor para áreas onde não há texto
-set ttyfast    "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
+    set ve=all     "permite mover o cursor para áreas onde não há texto
+    set ttyfast    "Envia mais caracteres ao terminal, melhorando o redraw de janelas.
 
 ### Vim como editor binário
 
- :%!xxd ........... entra em modo binário
- :%!xxd -r ........ volta ao modo normal
+     :%!xxd ........... entra em modo binário
+     :%!xxd -r ........ volta ao modo normal
 
 ### Livros
-* aprendendo vim (inglês) http://www.mediafire.com/download.php?3yzmzzykzyi
-* hackeando o vim (inglês) http://www.mediafire.com/download.php?mbjxhmjznmo
++ aprendendo vim (inglês) http://www.mediafire.com/download.php?3yzmzzykzyi
++ hackeando o vim (inglês) http://www.mediafire.com/download.php?mbjxhmjznmo
 
 ### spell
 1. É necessário o dicionário do [[http://www.broffice.org/verortografico/baixar|broffice]] (vero).
@@ -466,8 +401,6 @@ set ttyfast    "Envia mais caracteres ao terminal, melhorando o redraw de janela
 5. sudo cp ~/pt.utf-8.spl /usr/share/vim/vim71/spell/
 6. echo 'set spell spelllang=pt' > ~/.vimrc
 
-===Atalhos do spell===
-
   ]s ............. vai para a próxima palavra
   zg ............. adiciona palavra
   zw ............. retira palavra
@@ -475,118 +408,100 @@ set ttyfast    "Envia mais caracteres ao terminal, melhorando o redraw de janela
 
 Para definir a quantidade de sugestões do spell
 
-set sps=10
+    set sps=10
 
 Para detalhes
 
-:h sps
+    :h sps
 
-" função para exibir conteúdo de folders e sugestões do spell"{{{
-set spell spelllang=pt
-function! FoldSpellBalloon()
-    let foldStart = foldclosed(v:beval_lnum )
-    let foldEnd = foldclosedend(v:beval_lnum)
-    let lines = []
-    " Detec if we are in a fold
-    if foldStart < 0
-        " Detect if we are on a misspelled word
-        let lines = spellsuggest(spellbadword(v:beval_text)[0],10,0)
-    else
-        " we are in a fold
-        let numLines = foldEnd - foldStart + 1
-        " if we have too many lines in fold, show, only the first 14
-        " and the last 14 lines
-        if ( numLines > 31 )
-            let lines = getline(foldStart, foldStart + 14 )
-            let lines += [ '--Snipped ' . (numLines - 30 ) . 'lines --' ]
-            let lines += getline(foldEnd - 14, foldEnd )
+    " função para exibir conteúdo de folders e sugestões do spell"{{{
+    set spell spelllang=pt
+    function! FoldSpellBalloon()
+        let foldStart = foldclosed(v:beval_lnum )
+        let foldEnd = foldclosedend(v:beval_lnum)
+        let lines = []
+        " Detec if we are in a fold
+        if foldStart < 0
+            " Detect if we are on a misspelled word
+            let lines = spellsuggest(spellbadword(v:beval_text)[0],10,0)
         else
-            "less than 30 lines, lets show all of them
-            let lines = getline(foldStart, foldEnd)
+            " we are in a fold
+            let numLines = foldEnd - foldStart + 1
+            " if we have too many lines in fold, show, only the first 14
+            " and the last 14 lines
+            if ( numLines > 31 )
+                let lines = getline(foldStart, foldStart + 14 )
+                let lines += [ '--Snipped ' . (numLines - 30 ) . 'lines --' ]
+                let lines += getline(foldEnd - 14, foldEnd )
+            else
+                "less than 30 lines, lets show all of them
+                let lines = getline(foldStart, foldEnd)
+            endif
         endif
-    endif
-    " return result
-    return join(lines, has( "balloon_multiline" ) ? "\n" : " " )
-endfunction
-set balloonexpr=FoldSpellBalloon()
-set ballooneval"}}}
-
-### syntaxe
-
-syn match   txtH1         "=[^=].*="hs=s+1,he=e-1
-syn match   txtH2         "==[^=].*=="hs=s+2,he=e-2
-syn match   txtH3         "===[^=].*==="hs=s+3,he=e-3
-
-hi link txtH1           String
-hi link txtH2           String
-hi link txtH3           String
+        " return result
+        return join(lines, has( "balloon_multiline" ) ? "\n" : " " )
+    endfunction
+    set balloonexpr=FoldSpellBalloon()
+    set ballooneval"}}}
 
 ### Atalhos do plugin surround
 
-Text              Command    New Text
----------------   -------    -----------
-"Hello |world!"   cs"'       'Hello world!'
-"Hello |world!"   cs"<q>     <q>Hello world!</q>
-(123+4|56)/2      cs)]       [123+456]/2
-(123+4|56)/2      cs)[       [ 123+456 ]/2
-<div>foo|</div>   cst<p>     <p>foo</p>
-fo|o!             csw'       'foo'!
-fo|o!             csW'       'foo!'
+    Text              Command    New Text
+    ---------------   -------    -----------
+    "Hello |world!"   cs"'       'Hello world!'
+    "Hello |world!"   cs"<q>     <q>Hello world!</q>
+    (123+4|56)/2      cs)]       [123+456]/2
+    (123+4|56)/2      cs)[       [ 123+456 ]/2
+    <div>foo|</div>   cst<p>     <p>foo</p>
+    fo|o!             csw'       'foo'!
+    fo|o!             csW'       'foo!'
 
-(| is the position of cursor in these examples)
+    (| is the position of cursor in these examples)
 
-Text              Command      New Text
----------------   -------      -----------
-Hello w|orld!     ysiw)        Hello (world)!
-Hello w|orld!     csw)         Hello (world)!
-fo|o              ysiwt<html>  <html>foo</html>
-foo quu|x baz     yss"         "foo quux baz"
-foo quu|x baz     ySS"         "
+    Text              Command      New Text
+    ---------------   -------      -----------
+    Hello w|orld!     ysiw)        Hello (world)!
+    Hello w|orld!     csw)         Hello (world)!
+    fo|o              ysiwt<html>  <html>foo</html>
+    foo quu|x baz     yss"         "foo quux baz"
+    foo quu|x baz     ySS"         "
                                    foo quux baz
                                "
 
-(| is the position of cursor in these examples)
+    (| is the position of cursor in these examples)
 
-Command                  New Text
--------                  ------------
-<CTRL-s>"                ""
-<CTRL-s><CTRL-s><html>   <html>
-                             |
-                         </html>
+    Normal mode
+    -----------
+    ds  - delete a surrounding
+    cs  - change a surrounding
+    ys  - add a surrounding
+    yS  - add a surrounding and place the surrounded text on a new line + indent it
+    yss - add a surrounding to the whole line
+    ySs - add a surrounding to the whole line, place it on a new line + indent it
+    ySS - same as ySs
 
-(| is the position of cursor in these examples)
-Normal mode
------------
-ds  - delete a surrounding
-cs  - change a surrounding
-ys  - add a surrounding
-yS  - add a surrounding and place the surrounded text on a new line + indent it
-yss - add a surrounding to the whole line
-ySs - add a surrounding to the whole line, place it on a new line + indent it
-ySS - same as ySs
+    Visual mode
+    -----------
+    s   - in visual mode, add a surrounding
+    S   - in visual mode, add a surrounding but place text on new line + indent it
 
-Visual mode
------------
-s   - in visual mode, add a surrounding
-S   - in visual mode, add a surrounding but place text on new line + indent it
-
-Insert mode
------------
-<CTRL-s> - in insert mode, add a surrounding
-<CTRL-s><CTRL-s> - in insert mode, add a new line + surrounding + indent
-<CTRL-g>s - same as <CTRL-s>
-<CTRL-g>S - same as <CTRL-s><CTRL-s>
+    Insert mode
+    -----------
+    <CTRL-s> - in insert mode, add a surrounding
+    <CTRL-s><CTRL-s> - in insert mode, add a new line + surrounding + indent
+    <CTRL-g>s - same as <CTRL-s>
+    <CTRL-g>S - same as <CTRL-s><CTRL-s>
 
 ### site que indica muitos plugins
 * http://mysite.verizon.net/astronaut/vim/
 
 ### alterar a cor da linha de status
 
-" altera a cor da linha de status dependendo do modo
-if version >= 700
-  au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-  au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
-endif
+    " altera a cor da linha de status dependendo do modo
+    if version >= 700
+      au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+      au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+    endif
 
 ### vimrc para windows
 * http://download104.mediafire.com/00lis3ieyjwg/2yonejyowl1/_vimrc
@@ -606,17 +521,17 @@ The cure is:
     set ttimeout
     set timeoutlen=100
 
-:g/\d\+.*/m $   .... move números para o final
-:g/^/m0 ............ inverte a odem das linhas
-:g/Line commented/d  remove linhas que contém o padrão
-:global /^Capítulo [0-9]$/ . w >> index.txt   .... joga linhas para um
-arquivo
+    :g/\d\+.*/m $   .... move números para o final
+    :g/^/m0 ............ inverte a odem das linhas
+    :g/Line commented/d  remove linhas que contém o padrão
+    :global /^Capítulo [0-9]$/ . w >> index.txt   .... joga linhas para um arquivo
 
 ### Junção de linhas com vim
 * Colaboração: Rubens Queiroz de Almeida
 * original do dicas-l: http://www.dicas-l.com.br/dicas-l/20081228.php
 
-Recentemente precisei combinar, em um arquivo, duas linhas consecutivas. O arquivo original continha linhas como
+Recentemente precisei combinar, em um arquivo, duas linhas consecutivas. O
+arquivo original continha linhas como
 
   Matrícula: 123456
   Senha: yatVind7kned
@@ -631,19 +546,24 @@ E assim por diante. Eu precisava converter este arquivo para algo como:
 Para isto, basta emitir o comando:
 
   :g/^Matrícula/s/\n/ - /
+  :v/Mat/-1j
 
-Explicando:
+A primeira solução sustitui quebras de linha nas linhas contendo "Matrícula"
+por "-". Já a segunda solução usa um comando global de negação, ou seja, nas
+linhas que não existir o padrão "Mat", suba uma linha e aplique o comando "j"
+que junta linhas
 
-g/^Matrícula     busca, no arquivo inteiro (g) pela palavra Matrícula na primeira coluna
-s/\n/ - /     substitui a quebra de linha (\n), pelos caracteres ** - **. Esta substituição faz a junção das duas linhas adjacentes
+Se houver uma área selecionada o comando será assim:
+
+    :'<,'>v/Mat/-1j
 
 ### backup
 * fonte: http://www.dicas-l.com.br/dicas-l/20081212.php
 * http://writequit.org/blog/?cat=464
 A primeira define que quero backups e a segunda onde devem ser mantidas as cópias dos trabalhos.
 
-set backup
-set backupdir=~/.backup,./.backup
+    set backup
+    set backupdir=~/.backup,./.backup
 
 ### extensão para o firefox usar o vim
 * https://addons.mozilla.org/pt-BR/firefox/addon/4125
@@ -658,127 +578,104 @@ nmap <F4> `
 
 ### destacar palavra sob o cursor
 
-" mostra a palavra atual destacada
-nnoremap <F10> :set hls<CR>:let @/="<C-r><C-w>"<CR>
+    " mostra a palavra atual destacada
+    nnoremap <F10> :set hls<CR>:let @/="<C-r><C-w>"<CR>
 
-python_highlight_numbers
-python_highlight_builtins
-python_highlight_exceptions
+    python_highlight_numbers
+    python_highlight_builtins
+    python_highlight_exceptions
 
 ### prevent vim from going to replace mode
 Simpliest trick on the block. Took me long time to figure out.
 
-imap <Insert> <Nop>
+    imap <Insert> <Nop>
 
 ### funções para html
 
 "http://pastebin.com/f784c635a
 
-" funções para html
-""============================================================
-" HTML: Funcoes particulares para editar arquivos HTML
-" Cria um esqueleto de arquivo HTML ao abrir um arquivo novo .html
-" Should stop HTML Files auto-indenting fecha tags com  \c
-""============================================================
+    " funções para html
+    ""============================================================
+    " HTML: Funcoes particulares para editar arquivos HTML
+    " Cria um esqueleto de arquivo HTML ao abrir um arquivo novo .html
+    " Should stop HTML Files auto-indenting fecha tags com  \c
+    ""============================================================
 
-augroup html
-" au! <--> Remove all html autocommands
-au!
-  au BufNewFile,BufRead *.html,*.shtml,*.htm set ft=html
-  "au BufNewFile,BufRead,BufEnter  *.html,*.shtml,*.htm so ~/docs/vim/.vimrc-html
-  au BufNewFile *.html 0r ~/vimfiles/skel/skel.html
-  "au BufNewFile *.html*.shtml,*.htm /body/+
-  au BufNewFile,BufRead *.html,*.shtml,*.htm set noautoindent nolist
-  " para fechar uma tag html faça \c
-  nnoremap \hc :call InsertCloseTag()<CR>
-  inoremap <leader>c <Space><BS><Esc>\hca<esc>F<F>a<space><space><left>
-augroup end
+    augroup html
+    " au! <--> Remove all html autocommands
+    au!
+      au BufNewFile,BufRead *.html,*.shtml,*.htm set ft=html
+      "au BufNewFile,BufRead,BufEnter  *.html,*.shtml,*.htm so ~/docs/vim/.vimrc-html
+      au BufNewFile *.html 0r ~/vimfiles/skel/skel.html
+      "au BufNewFile *.html*.shtml,*.htm /body/+
+      au BufNewFile,BufRead *.html,*.shtml,*.htm set noautoindent nolist
+      " para fechar uma tag html faça \c
+      nnoremap \hc :call InsertCloseTag()<CR>
+      inoremap <leader>c <Space><BS><Esc>\hca<esc>F<F>a<space><space><left>
+    augroup end
 
-function! InsertCloseTag()
-" fonte: http://www.stripey.com/vim/html.html
-" inserts the appropriate closing HTML tag; used for the \hc operation defined
-" above;
-" requires ignorecase to be set, or to type HTML tags in exactly the same case
-" that I do;
-" doesn't treat <P> as something that needs closing;
-" clobbers register z and mark z
-" by Smylers  http://www.stripey.com/vim/
-" 2000 May 3
+    function! InsertCloseTag()
+    " fonte: http://www.stripey.com/vim/html.html
+    " inserts the appropriate closing HTML tag; used for the \hc operation defined
+    " above;
+    " requires ignorecase to be set, or to type HTML tags in exactly the same case
+    " that I do;
+    " doesn't treat <P> as something that needs closing;
+    " clobbers register z and mark z
+    " by Smylers  http://www.stripey.com/vim/
+    " 2000 May 3
 
-  if &filetype == 'html'
+      if &filetype == 'html'
 
-    " list of tags which shouldn't be closed:
-    let UnaryTags = ' Area Base Br DD DT HR Img Input LI Link Meta P Param '
+        " list of tags which shouldn't be closed:
+        let UnaryTags = ' Area Base Br DD DT HR Img Input LI Link Meta P Param '
 
-    " remember current position:
-    normal mz
+        " remember current position:
+        normal mz
 
-    " loop backwards looking for tags:
-    let Found = 0
-    while Found == 0
-      " find the previous <, then go forwards one character and grab the first
-      " character plus the entire word:
-      execute "normal ?\<LT>\<CR>l"
-      normal "zyl
-      let Tag = expand('<cword>')
+        " loop backwards looking for tags:
+        let Found = 0
+        while Found == 0
+          " find the previous <, then go forwards one character and grab the first
+          " character plus the entire word:
+          execute "normal ?\<LT>\<CR>l"
+          normal "zyl
+          let Tag = expand('<cword>')
 
-      " if this is a closing tag, skip back to its matching opening tag:
-      if @z == '/'
-        execute "normal ?\<LT>" . Tag . "\<CR>"
+          " if this is a closing tag, skip back to its matching opening tag:
+          if @z == '/'
+            execute "normal ?\<LT>" . Tag . "\<CR>"
 
-      " if this is a unary tag, then position the cursor for the next
-      " iteration:
-      elseif match(UnaryTags, ' ' . Tag . ' ') > 0
-        normal h
+          " if this is a unary tag, then position the cursor for the next
+          " iteration:
+          elseif match(UnaryTags, ' ' . Tag . ' ') > 0
+            normal h
 
-      " otherwise this is the tag that needs closing:
-      else
-        let Found = 1
+          " otherwise this is the tag that needs closing:
+          else
+            let Found = 1
 
-      endif
-    endwhile " not yet found match
+          endif
+        endwhile " not yet found match
 
-    " create the closing tag and insert it:
-    let @z = '</' . Tag . '>'
-    normal `z"zp
+        " create the closing tag and insert it:
+        let @z = '</' . Tag . '>'
+        normal `z"zp
 
-  else " filetype is not HTML
-    echohl ErrorMsg
-    echo 'The InsertCloseTag() function is only intended to be used in HTML ' .
-      \ 'files.'
-    sleep
-    echohl None
-  endif " check on filetype
+      else " filetype is not HTML
+        echohl ErrorMsg
+        echo 'The InsertCloseTag() function is only intended to be used in HTML ' .
+          \ 'files.'
+        sleep
+        echohl None
+      endif " check on filetype
 
-endfunction " InsertCloseTag()
-""============================================================
-" fim das funções para html
+    endfunction " InsertCloseTag()
+    ""============================================================
+    " fim das funções para html
 
 ### vimrc
 * http://amix.dk/vim/vimrc.html
-
-### Alguns mapeamentos
-
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-### mapeamento para fechar tags html
-
-:imap > >   <esc>yF<A<esc>p<esc>F<a/<esc>F<F><right>
-
- descrevendo:
-
-  Ao inserir (modo insert imap) um fechamento de tag
-  1 - colocar o próprio fechamento
-  2 - seguido de três espaços
-  3 - sai do modo insert
-  4 - copia até o menor que anterioro 'yF<'
-  5 - vai para o final da linha em modo insert 'A'
-  6 - sai do modo insert <esc> e cola o que foi copiado 'p'
-  7 - sai novament do modo insert
-  8 - vai para o '<' anterior e insere após o mesmo uma barra '/'
-  9 - sai do modo insert <esc>
-  10 - vai para '<' anterior
-  11 - vai para o '>' anterior e avança para a direita <right>
 
 ### skel html
 Eu uso duas abordagens para inserir modelos (templates) de
@@ -792,33 +689,34 @@ As funções estão me parecendo uma melhor abordagem por dois motivos
 
 Abaixo um modelo 'skel' para uma página html
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!--
-Criado em: <+data+>
-Last Change: <+data+>
-Instituicao: <+nome+>
-Autor: <+seu nome aqui+>
--->
-<html>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<!-- comentario -->
-<head>
-<!-- estilo css -->
-<link rel="stylesheet" href="estilo.css" type="text/css">
-    <title>
-            <+titulo+>
-    </title>
-</head>
-<body>
-    <+corpo do site+>
-</body>
-</html>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+    <!--
+    Criado em: <+data+>
+    Last Change: <+data+>
+    Instituicao: <+nome+>
+    Autor: <+seu nome aqui+>
+    -->
+    <html>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- comentario -->
+    <head>
+    <!-- estilo css -->
+    <link rel="stylesheet" href="estilo.css" type="text/css">
+        <title>
+                <+titulo+>
+        </title>
+    </head>
+    <body>
+        <+corpo do site+>
+    </body>
+    </html>
 
 ### função para ordenação
 O vim 7 tem uma função interna chamada 'sort'
 
 :sort
 
+``` markdown
 * http://vim.wikia.com/wiki/Sort_lines_by_a_specified_word_number
 "Here is an improved version. Sort lines by word# count or visual area.
 "To sort by visual area, select a visual area (with a visual block) and enter "v" when prompted for a word# count.
@@ -887,7 +785,9 @@ function SortR(start, end, first, last, wnum, order, cmp)
   call SortR(a:start, partition - 1, a:first, a:last, a:wnum, a:order, a:cmp)
   call SortR(partition + 1, a:end, a:first, a:last, a:wnum, a:order, a:cmp)
 endfunction
+```
 
+``` markdown
 "determine compare strings
 function Words2(line, first, last, wnum)
   if a:wnum == "v"
@@ -902,7 +802,8 @@ function Words2(line, first, last, wnum)
     return a:line
   endif
 endfunction
-
+```
+``` markdown
 "compare two strings
 function Strcmp(str1, str2)
   if a:str1 < a:str2
@@ -927,6 +828,7 @@ function Prompt(str, ...)
 endfunction
 
     '<,'>!sort -n
+```
 
 ### dicas úteis
 * referência: http://www.dicas-l.com.br/dicas-l/19970430.php
@@ -959,9 +861,9 @@ coloque no seu .bashrc
 
   set -o vi
 
-let python_highlight_all=1
-let python_highlight_exceptions=0
-let python_highlight_builtins=0
+    let python_highlight_all=1
+    let python_highlight_exceptions=0
+    let python_highlight_builtins=0
 
 ### Editando via puty com cores
 fonte: http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
@@ -972,6 +874,7 @@ Para usar faça:
 
    :Find nome
 
+``` markdown
 function! Find(name)
   let l:_name = substitute(a:name, "\\s", "*", "g")
   let l:list=system("find . -iname '*".l:_name."*' -not -name \"*.class\" -and -not -name \"*.swp\" | perl -ne 'print \"$.\\t$_\"'")
@@ -1009,10 +912,14 @@ function! Find(name)
 endfunction
 
 command! -nargs=1 Find :call Find("<args>")
+```
 
 ### Verbose Regular Expressions for Vim
 fonte: http://vim.wikia.com/wiki/Verbose_Regular_Expressions_for_Vim
-Many regular expression engines have support for verbose regular expressions, but unfortunately Vim seems to lack built in support. In order to simulate the effect, you can build a regular expression gradually:
+
+Many regular expression engines have support for verbose regular expressions,
+but unfortunately Vim seems to lack built in support. In order to simulate the
+effect, you can build a regular expression gradually:
 
 let s:VREM  = '^'                   " Start of line
 let s:VREM .= '\s*'                 " This gets rid of leading spaces
@@ -1032,49 +939,52 @@ let result = matchstr("    else if (xyz == 1)", s:VerboseRegularExpressionMatche
 
 Os arquivos fonte encontram-se em formato rest (rst) e para trocar
 
-=================================
-Capítulo 1: O caminho do programa
-=================================
+    =================================
+    Capítulo 1: O caminho do programa
+    =================================
 
 por
 
-\chapter{O caminho do programa}
-\label{cha:O caminho do programa}
+    \chapter{O caminho do programa}
+    \label{cha:O caminho do programa}
 
-Comecei usando uma abordagem descrita no próprio livro:
-Começe de um algorítimo mais simples e vá incrementando até chegar ao ponto desejado, no vim fiz primeiro uma busca.
+Comecei usando uma abordagem descrita no próprio livro: çe de um algorítimo
+Comemais simples e vá incrementando até chegar ao ponto desejado, no vim fiz
+Comeprimeiro uma busca.
 
-/=\+\n\D\+\d:\s\+.*\n=\+
+    /=\+\n\D\+\d:\s\+.*\n=\+
 
-discecando   /=\+   .........  uma igualdade ou mais
-           \n  ............  seguido de uma quebra de linha
-           \D\+............  seguido de um "não dígito" ou mais
-           \d\+ ...........  seguido de um dígito ou mias
-           :   ............  seguido de dois pontos
-           \s\+  ..........  seguido de um espaço ou mais
-           .*  ............  seguido de qualquer coisa
-           \n  ............  seguido de uma quebra de linha
-           =\+  ...........  seguido de uma igualdade ou mais
+discecando...
+
+             /=\+   .........  uma igualdade ou mais
+             \n  ............  seguido de uma quebra de linha
+             \D\+............  seguido de um "não dígito" ou mais
+             \d\+ ...........  seguido de um dígito ou mias
+             :   ............  seguido de dois pontos
+             \s\+  ..........  seguido de um espaço ou mais
+             .*  ............  seguido de qualquer coisa
+             \n  ............  seguido de uma quebra de linha
+             =\+  ...........  seguido de uma igualdade ou mais
 
 Esse grpo ".*" (qualquer coisa agora vai para dentro de parênteses)
 
-/=\+\n\D\+\d:\s\+\(.*\)\n=\+
+    /=\+\n\D\+\d:\s\+\(.*\)\n=\+
 
 Para o gran finale (referenciar numa substituição a última busca "//")//
 
-//:%s//\\chapter{\1}\r\\label{\1}/g//
+    //:%s//\\chapter{\1}\r\\label{\1}/g//
 
-//Agora vou dar a ordem para executar em todos os arquivos//
+    //Agora vou dar a ordem para executar em todos os arquivos//
 
-//:bufdo :%s//\\chapter{\1}\r\\label{cha:\1}/g//
+    //:bufdo :%s//\\chapter{\1}\r\\label{cha:\1}/g//
 
-//Para as imagens faça://
+    //Para as imagens faça://
 
-//:bufdo :%s//\\includegraphics[scale=0.7]{.img\/\1}/g//
+    //:bufdo :%s//\\includegraphics[scale=0.7]{.img\/\1}/g//
 
-//para salvar tudo://
+    //para salvar tudo://
 
-//:wall
+    //:wall
 
 Localizar trechos ````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````palavra````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
  /\`\`[^`]*\`\`

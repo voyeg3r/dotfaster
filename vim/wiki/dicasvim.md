@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 24 set 2017 12:39:32 -03
+Last Change: ter 26 set 2017 06:19:57 -03
 ```
 
 # Vim tips for everyone
@@ -12,6 +12,18 @@ vim profiler: https://github.com/bchretien/vim-profiler
 
     git clone https://github.com/vim-jp/vital.vim.git
     A comprehensive Vim utility functions for Vim plugins
+
+# Delete preceding char (use X)
+
+For example: if your cursor is placed in "m" in
+
+    # my comment
+
+and if you want to erase the space:
+
+Just type
+
+    X
 
 # jumping to the first non-blank character
 
@@ -184,8 +196,8 @@ or
 
     one word
 
-    "acw .......... "a register 'a'
-    cw ............ change word
+    dw .......... delete word
+    wP .......... jump to the next word and paste
 
     after that jump the next word and do:
     ^ra
@@ -193,7 +205,7 @@ or
     ^r ................ Ctrl-r
     a ................. paste register 'a'
 
-# How many open buffers?
+# How many open buffers do I have?
 + http://superuser.com/a/345593/45032
 + http://stackoverflow.com/a/42024307/2571881
 
@@ -206,7 +218,7 @@ or
 
 # Inserting a range of numbers
 
-    :put =range(1,10)
+    :0put =range(1,10)
 
     1
     2

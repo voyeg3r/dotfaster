@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: sáb 23 set 2017 15:33:49 -03
+" Last Change: ter 26 set 2017 06:52:17 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -515,6 +515,7 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
+
 " join lines without moving the cursor (gJ prevent adding spaces between lines joined)
 nnoremap J :call Preserve("exec 'normal! J'")<cr>
 nnoremap gJ :call Preserve("exec 'normal! gJ'")<cr>
@@ -654,6 +655,9 @@ command! SaveAsRoot w !sudo tee %
 nnoremap <S-F11> <ESC>:set hls!<cr>
 inoremap <S-F11> <C-o>:set hls!<cr>
 vnoremap <S-F11> <ESC>:set hls!<cr> <bar> gv
+
+" Preventing vim replace mode
+inoremap <Insert> <Nop>
 
 " make copying from visual selection more sane
 " source: http://ddrscott.github.io/blog/2016/yank-without-jank/
