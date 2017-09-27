@@ -226,6 +226,7 @@ Solution:
 
 # One number per line
 + vimgolf put 56fb2e75ccffcc0009026473
++ youtube explanation: https://www.youtube.com/watch?v=GvRSiY_UFSw
 
 Just give me the numbers.
 
