@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 26 set 2017 06:19:57 -03
+Last Change: qua 27 set 2017 14:51:57 -03
 ```
 
 # Vim tips for everyone
@@ -205,6 +205,29 @@ or
     ^r ................ Ctrl-r
     a ................. paste register 'a'
 
+# Swap two columns separated by space
++ https://stackoverflow.com/a/24424034/2571881
+
+I have two columns:
+
+    dog cats
+    dog cats
+
+I want to swap the two columns:
+
+    cats dog
+    cats dog
+
+Solutions:
+
+    :%!awk '{print $2, $1}'
+
+    :'<,'>normal "adt xA cats
+
+    :.normal "adt xA <Ctrl-v><Ctrl-r>a
+
+    :%s,\v(\w+) (\w+),\2 \1,g
+
 # How many open buffers do I have?
 + http://superuser.com/a/345593/45032
 + http://stackoverflow.com/a/42024307/2571881
@@ -241,17 +264,34 @@ Joining (puting) even and odd lines at the same line
     7 8
     9 10
 
-Merge vertical lists in Vim (doiing the oposite of above
+Merge vertical lists in Vim (doiing the oposite of above)
 
 This is simple, just place the cursor on the column between the lists. Insert
 visualblock-mode <C-v>, mark the whole column, hit r to replace it, and then
 <CR> and you have what you want. source: https://stackoverflow.com/a/46034410/2571881
+
+# Substitution on visual selection
+
+Before block with old and s First told abc old sold g Another is old, goldold.
+but not c Last is older, fold not b After block with fold and older and b old.
+
+    %s/\%Vold/NEW/g
+
+Before block with NEW and s First tNEW abc NEW sNEW g Another is NEW, gNEWNEW.
+but not c Last is NEWer, fNEW not b After block with fNEW and NEWer and b NEW.
 
 Doing a visual block selection you can do:
 
     :'<,'>s/\%V /\r/g
 
 The `\%V` will make sure the substitution happens only in the selection area
+
+Here are two further examples that do not use a visual selection. The first
+command searches only in lines 10 to 20 inclusive. The second searches only
+between marks a and b.
+
+    /\%>9l\%<21lgreen
+    /\%>'a\%<'bgreen
 
 # Open file read-only
 edit `/etc/nginx/nginx.conf` in read-only mode:
@@ -305,7 +345,8 @@ Say I am editing this json
 }
 ```
 
-My cursor is at b of `"b": {}`. I want to delete till the end of current `{}` block. So it'll look like,
+My cursor is at b of `"b": {}`. I want to delete till the end of current `{}`
+block. So it'll look like,
 
 ``` json
 {
@@ -548,7 +589,6 @@ Fechei  todos os arquivos
 
 # [Vimgolf](Vimgolf)
 
-
 # Start vim with no plugins
 source: Book practical vim
 https://pragprog.com/book/dnvim2/practical-vim-second-edition
@@ -770,6 +810,42 @@ Another solution:
 
     command! -range=% -nargs=* SumColumn <line1>,<line2>!bash -c 'awk -F ${2:-|} "{print; sum+=\$(${1:-NF - 2} + 1)} END {print \"Total: \"sum}"' sumcolumn <args>
 
+# Vimscript: programatically get visual selection point
+
+    :ec getpos("'<")
+
+    The result is a |List| with four numbers:
+    [bufnum, lnum, col, off]
+
+    Using this way
+    let l:vistart = getpos("'<")[1:2]
+
+    It will set l:vistart to line number + column
+
+    :call setpos("'<", [0, 5, 19, 0])
+    The line above sets visual marks start on line 5 column 19
+
+    " Locate block boundaries...
+    let [buf_left,  line_left,  col_left,  offset_left ] = getpos("'<")
+    let [buf_right, line_right, col_right, offset_right] = getpos("'>")
+
+# Manipulation visual block
+
+``` viml
+function! GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+```
+
 # Generating random numbers in vim
 + https://stackoverflow.com/a/20430735/2571881
 
@@ -930,7 +1006,13 @@ If you want to change the boundaries of the previous selection just type:
      " select last paste in visual mode
      nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+# vim shift selection in column mode (not text)
++ https://stackoverflow.com/a/41170193/2571881
+
  to select the same ammount of lines for example use `1v`
+
+     :5mark < | 10mark > | normal gvV
+     :5mark < | 10mark > | normal gv
 
 # Non-greedy search on vim
 

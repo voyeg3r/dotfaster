@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: ter 26 set 2017 06:52:17 -03
+" Last Change: qua 27 set 2017 14:43:07 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -334,7 +334,7 @@ fun! RunMacroOver(macroname)
     execute "'[,']normal @". a:macroname
 endfun
 com -nargs=1 Rover :call RunMacroOver(<f-args>)
-nnoremap <leader>r :Rover<space>
+" nnoremap <leader>r :Rover<space>
 
 " alternate between relative number, number and no number
 "nmap ,r :set rnu!<cr>
@@ -670,6 +670,19 @@ nnoremap <special> <c-down> ddp
 "buble multiple lines
 xmap <c-up> xkP`[V`]
 xmap <c-down> xp`[V`]
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
+"" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" To increase indentation you can you in insert mode
+" Ctrl-t and to decrease use Ctrl-d
+vnoremap < <gv
+vnoremap > >gv
+
 
 "" The PC is fast enough, do syntax highlight syncing from start
 augroup vimrc-sync-fromstart
@@ -775,14 +788,6 @@ set clipboard=unnamed,unnamedplus
 " Identação de textos e códigos com o TAB no modo visual
 " URL: http://gustavodutra.com/post/72/dicas-de-movimentacao-e-identacao-no-gvim/
 
-" To increase indentation you can you in insert mode
-" Ctrl-t and to decrease use Ctrl-d
-vnoremap < <gv
-vnoremap > >gv
-
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
 " Make the dot command work as expected in visual mode (via
 " https://www.reddit.com/r/vim/comments/3y2mgt/

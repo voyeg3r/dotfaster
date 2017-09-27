@@ -144,7 +144,6 @@ This one takes only 15 keystrokes
 
 # multiple cursor alternative
 
-
 Start file
 
     <section class="top-bar-selection">
@@ -202,7 +201,6 @@ OBS: The "yit" (used to copy inner tag) only works on tags
 
 # Just the middle
 + vimgolf put 54862fbb3f90ac0002904cf5
-
 
 Start file
 
