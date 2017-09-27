@@ -1,7 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qua 27 set 2017 14:43:07 -03
+" Last Change: qua 27 set 2017 15:19:17 -03
 " Autor: Sergio Luiz Araujo Silva
 " Codificação: utf-8
 " Site: http://vivaotux.blogspot.com
@@ -665,8 +665,11 @@ vnoremap <expr>y "my\"" . v:register . "y`y"
 
 " Buble single lines - mover linhas
 " http://vimcasts.org/episodes/bubbling-text/
+"" Move visual block
 nnoremap <special> <c-up> ddkP
 nnoremap <special> <c-down> ddp
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 "buble multiple lines
 xmap <c-up> xkP`[V`]
 xmap <c-down> xp`[V`]
@@ -674,9 +677,19 @@ nnoremap <S-Up> :m-2<CR>
 nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+
+" In some  editors it  is possible to  make a  block selection
+" by  holding  the  Alt-key  and the  left  mouse  key.  Since
+" <M-LeftMouse> is not used in Vim, nor is <M-LeftDrag>, it is
+" reasonable to enable this behavior  in Vim, too. To do this,
+" just add the following mappings to your vimrc file:
+" source: http://vim.wikia.com/wiki/Easy_block_selection_with_mouse
+noremap <M-LeftMouse> <4-LeftMouse>
+inoremap <M-LeftMouse> <4-LeftMouse>
+onoremap <M-LeftMouse> <C-C><4-LeftMouse>
+noremap <M-LeftDrag> <LeftDrag>
+inoremap <M-LeftDrag> <LeftDrag>
+onoremap <M-LeftDrag> <C-C><LeftDrag>
 
 " To increase indentation you can you in insert mode
 " Ctrl-t and to decrease use Ctrl-d

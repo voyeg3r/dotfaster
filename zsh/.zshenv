@@ -17,8 +17,8 @@ export LC_ALL="pt_BR.UTF-8"
 export MOZ_DISABLE_PANGO=1
 
 
-path=( $path /home/sergio/.gem/ruby/2.4.0/bin )
-#path=( ~/.dotfiles/bin $path )
+#path=( $path /home/sergio/.gem/ruby/2.4.0/bin )
+path=( ~/.dotfiles/bin $path )
 #fpath=( ~/.dotfiles/zsh/functions.d/ $fpath )
 
 

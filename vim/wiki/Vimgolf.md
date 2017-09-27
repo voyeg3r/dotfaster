@@ -223,3 +223,44 @@ Solution:
 
     )3:wq!<CR>
 
+
+# One number per line
++ vimgolf put 56fb2e75ccffcc0009026473
+
+Just give me the numbers.
+
+Start file
+
+    - One number per line -
+    -----------------------
+    2,3,5,7,
+    11,13,17,
+    19,23,29,
+
+End file
+
+    2
+    3
+    5
+    7
+    11
+    13
+    17
+    19
+    23
+    29
+
+Solutions:
+
+This one takes 17 keystrokes
+
+    5JxF xV"=[<C-R><C-A>]<CR>pZZ
+
+This one takes 14 keystrokes
+
+    5gJV"=[<C-R><C-A>]<CR>pZZ
+
+In this challenge we have learned
+
+1 - how to store a list into a register (one per line)
+2 - how to join lines whitout any space between them

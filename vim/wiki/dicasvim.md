@@ -825,9 +825,16 @@ Another solution:
     :call setpos("'<", [0, 5, 19, 0])
     The line above sets visual marks start on line 5 column 19
 
-    " Locate block boundaries...
+    " Locate visual block boundaries...
     let [buf_left,  line_left,  col_left,  offset_left ] = getpos("'<")
     let [buf_right, line_right, col_right, offset_right] = getpos("'>")
+
+    locate cursor position
+    getpos('.')[1:2]  --> line and column
+
+    locate visual start precisely
+    virtcol("'<")
+
 
 # Manipulation visual block
 
