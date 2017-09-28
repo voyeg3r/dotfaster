@@ -41,6 +41,7 @@ Another interesting solution is to enable virtualedit
     :set virtualedit=all
 
 # vimgolf: Simple text editing with vim
++ vimgolf put 4d1a34ccfa85f32065000004
 
     Make the pairs of lines match up by making each second line same as first:
 
@@ -265,3 +266,65 @@ In this challenge we have learned
 
 1 - how to store a list into a register (one per line)
 2 - how to join lines whitout any space between them
+
+
+# Words in parens - vimgolf put 5192f96ad8df110002000002
+
+We should all ace this, right?
+
+Start file
+
+    one two
+    three
+
+End file
+
+    (one) (two)
+    (three)
+
+Solution:
+
+    cw(<C-R><C-O>")<Esc>w.w.ZZ
+
+The trick here is to insert the default register literally using
+Ctrl-r Ctrl-o
+
+# Increment, increment, increment - http://vimgolf.com/challenges/4d1cc35a35b40650b800043a
+
+Start file
+
+    1
+
+End file
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+    19
+    20
+    21
+    22
+    23
+    24
+    25
+
+Best solution
+
+    Y24pVGg<C-A>ZZ
+
+    See :help v_g_CTRL-A
