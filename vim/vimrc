@@ -286,6 +286,7 @@ endif
 "colorscheme solarized
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
 nnoremap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap <F8> :call Preserve("normal gqap")<CR>
 
 " Create a red/red scheme
 highlight Problem ctermbg=red guibg=red
@@ -435,7 +436,7 @@ endif
 
 " function to clear all registers
 " http://stackoverflow.com/questions/19430200/how-to-clear-vim-registers-effectively
-fun! s:ClearRegs()
+fun! ClearRegs()
     "let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
     "for r in regs
     "    call setreg(r, [])

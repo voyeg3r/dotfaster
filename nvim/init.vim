@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 21 set 2017 13:44:45 -03
+" Last Change: qui 28 set 2017 17:17:13 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -132,6 +132,10 @@ set background=dark
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" format paragraph keeping cursor position
+nnoremap <F8> :call Preserve("normal gqap")<CR>
+
 set mouse=a
 set mousemodel=popup
 set t_Co=256

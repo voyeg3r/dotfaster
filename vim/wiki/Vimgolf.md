@@ -289,6 +289,11 @@ Solution:
 The trick here is to insert the default register literally using
 Ctrl-r Ctrl-o
 
+Basically, it causes the '<C-R><C-O>' command itself to go into the '.'
+register, instead of the literal text which was in the register when you gave
+command the. This means that when you repeat the operation with '.', you'll
+get whatever's
+
 # Increment, increment, increment - http://vimgolf.com/challenges/4d1cc35a35b40650b800043a
 
 Start file
@@ -328,3 +333,43 @@ Best solution
     Y24pVGg<C-A>ZZ
 
     See :help v_g_CTRL-A
+
+# I forgot quotes
++ http://vimgolf.com/challenges/5462e3f41198b80002512673
+
+
+Start file
+
+    foo = a
+          ab
+          abc
+
+End file
+
+    foo = "a"
+          "ab"
+          "abc"
+
+Solution:
+
+    Score 10 - Final. Block select, back one char, append, then repeat at EOL.
+    <C-V>GhA"<Esc>$.ZZ
+
+# Swap values - http://vimgolf.com/challenges/56d70389bbbe462aff01d42a
+
+Start file
+
+    name=www-data, groups=developer
+
+End file
+
+    name=developer, groups=www-data
+
+Best Solution:
+
+    E8X}vbp<c-o>PZZ
+
+What I have learned in this challenge?
+
+1 - Using <C-O> to jump back my initial normal point
+
