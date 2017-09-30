@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 28 set 2017 17:17:13 -03
+:" Last Change: sáb 30 set 2017 17:27:05 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -9,10 +9,39 @@
 "  |    ^ ^    voyeg3r ✉ gmail.com        |
 "  +======================================+
 
-set nocompatible
-set path+=**
-
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+
+set path+=**            " gf to open files under cursor
+set nocompatible        " use vim defaults
+set scrolloff=3         " keep 3 lines when scrolling
+set ai                  " set auto-indenting on for programming
+set hidden              " Switch buffers without saving them
+set showcmd             " display incomplete commands
+set nobackup            " do not keep a backup file
+set number              " show line numbers
+set ruler               " show the current row and column
+set hlsearch            " highlight searches
+set incsearch           " do incremental searching
+set showmatch           " jump to matches when entering regexp
+set ignorecase          " ignore case when searching
+set smartcase           " no ignorecase if Uppercase char present
+set visualbell t_vb=    " turn off error beep/flash
+set novisualbell        " turn off visual bell
+set backspace=indent,eol,start  " make that backspace key work the way it should
+set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+set lcs+=space:·
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set nopaste
+set pastetoggle=<F2>
+set showmode
+set undofile " Maintain undo history between sessions
+set undodir=~/.vimundodir
+set autoread
+set noerrorbells visualbell t_vb=
+set clipboard=unnamed,unnamedplus
+
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -27,10 +56,10 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
-" Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'bitc/vim-bad-whitespace'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'nelstrom/vim-visual-star-search'
@@ -84,37 +113,6 @@ call plug#end()
 " Required:
 filetype plugin indent on
 
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set binary
-set backspace=indent,eol,start
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
-
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-
-"" Map leader to ,
-let mapleader=','
-
-"" Enable hidden buffers
-set hidden
-
-"" Searching
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-"" Directories for swp files
-set nobackup
-set noswapfile
-
-set fileformats=unix,dos,mac
-
 if exists('$SHELL')
     set shell=$SHELL
 else
@@ -122,13 +120,10 @@ else
 endif
 
 syntax on
-set ruler
-set number relativenumber
 
 let no_buffers_menu=1
 
 colorscheme molokai
-set background=dark
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -136,11 +131,11 @@ set background=dark
 " format paragraph keeping cursor position
 nnoremap <F8> :call Preserve("normal gqap")<CR>
 
-set mouse=a
-set mousemodel=popup
-set t_Co=256
-set guioptions=egmrti
-set gfn=Monospace\ 10
+syntax on               " turn syntax highlighting on by default
+filetype on             " detect type of file
+filetype indent on      " load indent file for specific file type
+
+let mapleader=','
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -190,24 +185,8 @@ for mapmode in [ "o", "x" ]
 endfor
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0
-set scrolloff=3
-
-"" Status bar
-set laststatus=2
-
-"" Use modeline overrides
-set modeline
-set modelines=10
-
-set title
-set titleold="Terminal"
-set titlestring=%F
-
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 nnoremap ' `
-nnoremap ç :
 nnoremap K :help <C-r><C-w><CR>
 
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
@@ -251,7 +230,6 @@ endif
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
@@ -267,7 +245,6 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
@@ -351,8 +328,6 @@ augroup markdown
     autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
 augroup END
 
-set autoread
-
 "" Git
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -367,8 +342,6 @@ noremap <Leader>gr :Gremove<CR>
 nnoremap <leader>. :lcd %:p:h<CR>
 
 "" fzf.vim
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " The Silver Searcher
@@ -412,7 +385,6 @@ nnoremap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 " Disable visualbell
-set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
@@ -436,37 +408,6 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " vim-airline
 "if !exists('g:airline_symbols')
 "  let g:airline_symbols = {}
-"endif
-
-"if !exists('g:airline_powerline_fonts')
-"  let g:airline#extensions#tabline#left_sep = ' '
-"  let g:airline#extensions#tabline#left_alt_sep = '|'
-"  let g:airline_left_sep          = '▶'
-"  let g:airline_left_alt_sep      = '»'
-"  let g:airline_right_sep         = '◀'
-"  let g:airline_right_alt_sep     = '«'
-"  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-"  let g:airline#extensions#readonly#symbol   = '⊘'
-"  let g:airline#extensions#linecolumn#prefix = '¶'
-"  let g:airline#extensions#paste#symbol      = 'ρ'
-"  let g:airline_symbols.linenr    = '␊'
-"  let g:airline_symbols.branch    = '⎇'
-"  let g:airline_symbols.paste     = 'ρ'
-"  let g:airline_symbols.paste     = 'Þ'
-"  let g:airline_symbols.paste     = '∥'
-"  let g:airline_symbols.whitespace = 'Ξ'
-"else
-"  let g:airline#extensions#tabline#left_sep = ''
-"  let g:airline#extensions#tabline#left_alt_sep = ''
-"
-"  " powerline symbols
-"  let g:airline_left_sep = ''
-"  let g:airline_left_alt_sep = ''
-"  let g:airline_right_sep = ''
-"  let g:airline_right_alt_sep = ''
-"  let g:airline_symbols.branch = ''
-"  let g:airline_symbols.readonly = ''
-"  let g:airline_symbols.linenr = ''
 "endif
 
 " This function allows you to open the last edited file

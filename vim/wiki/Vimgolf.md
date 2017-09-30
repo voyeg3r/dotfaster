@@ -86,6 +86,7 @@ On this chalenge you have to print nr2char() numbers from 32 to 93
 
 # Vertical Limit
 + http://vimgolf.com/challenges/50048db8cdc4060002000004# vimgolf put 50048db8cdc4060002000004
++ https://www.youtube.com/watch?v=_cECidIga14&feature=youtu.be
 
 initial file
 
@@ -110,6 +111,8 @@ Solution:
 + http://www.vimgolf.com/challenges/4dcd7b572c8e510001000005
 + vimgolf put 4dcd7b572c8e510001000005
 
+Initial file
+
     one
     two
     three
@@ -130,6 +133,20 @@ Solution:
     8
     9
     10
+
+Final file
+
+    one	    1
+    two	    2
+    three	3
+    four	4
+    five	5
+    six	    6
+    seven	7
+    eight	8
+    nine	9
+    ten	    10
+
 
 This solution takes 16 keystrokes
 
@@ -259,10 +276,6 @@ End file
     29
 
 Solutions:
-
-This one takes 17 keystrokes
-
-    5JxF xV"=[<C-R><C-A>]<CR>pZZ
 
 This one takes 14 keystrokes
 
@@ -411,4 +424,45 @@ register with '~ ' 4 times. Then it is used as register in nromal mode
 
 In fourth solution we make use of a recursive macro, and it will always
 give us the same result
+
+# Put hyphens everywhere.
+
+    -a-b-c-
+
+Start file
+
+    abcdefghijklm
+
+End file
+
+    -a-b-c-d-e-f-g-h-i-j-k-l-m-
+
+Solutions:
+
+    :s/\n*/-/g<CR>ZZ
+
+# Transposition
+
+Transpose the original lines in separate columns, one for each line.
+Start file
+
+    ultricies, vehicula, felis, sed, auctor, aenean, euismod, semper, quam, dapibus
+    nibh, consequat, consequat, maecenas, sit, amet, mauris, justo, quis, porttitor
+    curabitur, pharetra, euismod, orci, sit, amet, ullamcorper, mi, tincidunt, et
+    vitae, lorem, at, mi, feugiat, convallis, ac, eget, dui, fusce
+    blandit, iaculis, nulla, sit, amet, dolor, nec, est, ornare, volutpat
+
+End file
+
+    ultricies  nibh       curabitur    vitae      blandit
+    vehicula   consequat  pharetra     lorem      iaculis
+    felis      consequat  euismod      at         nulla
+    sed        maecenas   orci         mi         sit
+    auctor     sit        sit          feugiat    amet
+    aenean     amet       amet         convallis  dolor
+    euismod    mauris     ullamcorper  ac         nec
+    semper     justo      mi           eget       est
+    quam       quis       tincidunt    dui        ornare
+    dapibus    porttitor  et           fusce      volutpat
+
 

@@ -1,15 +1,7 @@
 " vim:set et sw=4 ts=4:fdl=3:
 " Arquivo de configuração do vim
 " Criado: Qua 02/Ago/2006 hs 09:19
-" Last Change: qua 27 set 2017 15:19:17 -03
 " Autor: Sergio Luiz Araujo Silva
-" Codificação: utf-8
-" Site: http://vivaotux.blogspot.com
-" Mail: voyeg3r ✉ gmail
-" Twitter: http://www.twitter.com/voyeg3r
-" Licence: Licença: Use esse código sob os termos da licença GNU versão sex 22 set 2017 14:58:24 -03" Garantia: O autor não se responsabiliza por eventuais danos
-" causados pelo uso deste arquivo.
-" my old vimrc: https://github.com/voyeg3r/dotfiles/blob/02b8a11b9f9e98c33d7290aea509004110305989/rcfiles/vim/vimrc
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo=============+
@@ -45,65 +37,47 @@ if !exists("*VimReloadFunction")
 endif
 com! ReloadVim call VimReloadFunction()
 
-" some settings {{{1
-set mousemodel=popup
-set ruler
-set number relativenumber
-set mouse=a
-set t_Co=256
-set guioptions=egmrti
-set gfn=Ubuntu\ Mono\ derivative\ Powerline\ 14
-set anti enc=utf-8
-set scrolloff=3
-set laststatus=2
-set modeline
-set modelines=10
-set title
-set titleold="Terminal"
-set titlestring=%F
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-"set statusline=%F%m%r%h%w\ %{&ff}\ %Y\ ascii=\%03.3b\ hex=\%02.2B\ line=%l\ col=%02v\ %p%%\ len=%L
-set nocompatible
-set path+=**
-set history=200
-set isfname+={,}
-set wildmenu
-set wildmode=longest,list
-set completeopt=longest,menuone
-"set completeopt=menu,preview
-set complete=.,w,k
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set binary
-set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-set hidden
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set nobackup
-set fileformats=unix,dos,mac
-set showcmd
+set path+=**            " gf to open files under cursor
+set nocompatible        " use vim defaults
+set scrolloff=3         " keep 3 lines when scrolling
+set ai                  " set auto-indenting on for programming
+set hidden              " Switch buffers without saving them
+
+set showcmd             " display incomplete commands
+set nobackup            " do not keep a backup file
+set number              " show line numbers
+set ruler               " show the current row and column
+
+set hlsearch            " highlight searches
+set incsearch           " do incremental searching
+set showmatch           " jump to matches when entering regexp
+set ignorecase          " ignore case when searching
+set smartcase           " no ignorecase if Uppercase char present
+
+set visualbell t_vb=    " turn off error beep/flash
+set novisualbell        " turn off visual bell
+
+set backspace=indent,eol,start  " make that backspace key work the way it should
+
+syntax on               " turn syntax highlighting on by default
+filetype on             " detect type of file
+filetype indent on      " load indent file for specific file type
+
+set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
+
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lcs+=space:·
-"}}}
 
-setlocal complete=.,w,k,b,u
 let mapleader=','
 
 " entrar no modo comando mais rápido
 nnoremap ç :
 nnoremap K :help <C-r><C-w><CR>
 
-call plug#begin(expand('~/.dotfiles/vim/bundle')) "{{{1
+call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
+Plug 'bitc/vim-bad-whitespace'
 Plug 'tommcdo/vim-exchange'
 Plug 'coderifous/textobj-word-column.vim'
 "Plug 'nelstrom/vim-visual-star-search'
@@ -140,14 +114,7 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
-call plug#end()"}}}
-
-" netrw config
-let g:netrw_banner = 0
-let g:netrw_browse_split = 1
-let g:netrw_winsize = 25
-
-colorscheme tomorrow
+call plug#end()
 
 " fzf configuration
 " <C-p> to search files
@@ -251,7 +218,6 @@ if !exists("g:syntax_on")
     syntax enable
 endif
 
-let mapleader = ","
 
 let no_buffers_menu=1
 
@@ -267,15 +233,7 @@ endif
 "let g:airline#extensions#tagbar#enabled = 1
 "let g:airline_skip_empty_sections = 1
 
-" Highlight redundant whitespace and tabs.
-" This has the advantage of not highlighting each space you type at
-" the end of the line, only when you open a file or leave insert
-" mode. Very neat."
-" Reference: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"au BufEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertLeave * redraw!
+
 
 "set background=light
 if has('gui_running')
@@ -414,7 +372,6 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 "nnoremap <expr> gV "`[".getregtype(v:register)[0]."`]"
 
-
 " newline, and punctuation is "skipped"):
 " Swap the word the cursor is on with the next word (which can be on a
 " https://superuser.com/a/290384/45032
@@ -515,7 +472,6 @@ function! JumpToNextPlaceholder()
 endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
-
 
 " join lines without moving the cursor (gJ prevent adding spaces between lines joined)
 nnoremap J :call Preserve("exec 'normal! J'")<cr>
@@ -697,7 +653,6 @@ onoremap <M-LeftDrag> <C-C><LeftDrag>
 vnoremap < <gv
 vnoremap > >gv
 
-
 "" The PC is fast enough, do syntax highlight syncing from start
 augroup vimrc-sync-fromstart
   autocmd!
@@ -802,7 +757,6 @@ set clipboard=unnamed,unnamedplus
 " Identação de textos e códigos com o TAB no modo visual
 " URL: http://gustavodutra.com/post/72/dicas-de-movimentacao-e-identacao-no-gvim/
 
-
 " Make the dot command work as expected in visual mode (via
 " https://www.reddit.com/r/vim/comments/3y2mgt/
 vnoremap . :norm.<CR>
@@ -811,44 +765,6 @@ vnoremap . :norm.<CR>
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
-" vim-airline
-"let g:airline#extensions#virtualenv#enabled = 1
-
-" vim-airline
-"if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
-"endif
-
-"if !exists('g:airline_powerline_fonts')
-"  let g:airline#extensions#tabline#left_sep = ' '
-"  let g:airline#extensions#tabline#left_alt_sep = '|'
-"  let g:airline_left_sep          = '▶'
-"  let g:airline_left_alt_sep      = '»'
-"  let g:airline_right_sep         = '◀'
-"  let g:airline_right_alt_sep     = '«'
-"  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
-"  let g:airline#extensions#readonly#symbol   = '⊘'
-"  let g:airline#extensions#linecolumn#prefix = '¶'
-"  let g:airline#extensions#paste#symbol      = 'ρ'
-"  let g:airline_symbols.linenr    = '␊'
-"  let g:airline_symbols.branch    = '⎇'
-"  let g:airline_symbols.paste     = 'ρ'
-"  let g:airline_symbols.paste     = 'Þ'
-"  let g:airline_symbols.paste     = '∥'
-"  let g:airline_symbols.whitespace = 'Ξ'
-"else
-"  let g:airline#extensions#tabline#left_sep = ''
-"  let g:airline#extensions#tabline#left_alt_sep = ''
-"
-"  " powerline symbols
-"  let g:airline_left_sep = ''
-"  let g:airline_left_alt_sep = ''
-"  let g:airline_right_sep = ''
-"  let g:airline_right_alt_sep = ''
-"  let g:airline_symbols.branch = ''
-"  let g:airline_symbols.readonly = ''
-"  let g:airline_symbols.linenr = ''
-"endif
 
 iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 iab ihora <c-r>=strftime("%H:%M:%S")<cr>
