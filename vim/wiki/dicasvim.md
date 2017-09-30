@@ -60,6 +60,8 @@ wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD 
     :g/^/+d .................. deletes even lines
     :d|g/^/+d ................ deletes odd lines
 
+    :g/^/+d A ................ storing deleted lines in a register
+
 Recursive mapping
 
     :map <C-o> ddj<C-o>
@@ -257,6 +259,7 @@ Solutions:
 Joining (puting) even and odd lines at the same line
 
     :%norm J
+    :g/^/J
 
     1 2
     3 4

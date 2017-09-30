@@ -1,5 +1,6 @@
-Search vimgolf chalenges to vim users
-ao instalar o vimgolf como recomenda o site digite
+Search vimgolf chalenges to vim users.
+
+after installing vimgolf, as the site recomends, type:
 
     gem list
 
@@ -12,7 +13,8 @@ followed by its unique number
 
 **VimGolf Chalenges**
 
-initial file http://www.vimgolf.com/challenges/59381bd3652ee10dec000005
+# create arrows in a list
++ http://www.vimgolf.com/challenges/59381bd3652ee10dec000005
 
     milk
     coffe
@@ -41,7 +43,7 @@ Another interesting solution is to enable virtualedit
     :set virtualedit=all
 
 # vimgolf: Simple text editing with vim
-+ vimgolf put 4d1a34ccfa85f32065000004
++ http://www.vimgolf.com/challenges/4d1a34ccfa85f32065000004
 
     Make the pairs of lines match up by making each second line same as first:
 
@@ -65,7 +67,7 @@ On every line that has a "V", copy it down and delete the next line. Write and q
 
     qa3jYjVpq3@aZZ
 
-Seeing the firts solution that uses "V" as a search pattern I ended up asking
+Seeing the firt solutions that uses "V" as a search pattern I ended up asking
 me: How to make a search in a range of lines?
 
     :580,592/Vim/
@@ -99,6 +101,10 @@ initial file
 End file
 
     [ "There", "is", "no", "vertical", "limit", "for", "vim", "Ninjas" ]
+
+Solution:
+
+    <C-V>GI", "<Esc>xr[8gJA" ]<Esc>ZZ
 
 # Interweave two blocks of text
 + http://www.vimgolf.com/challenges/4dcd7b572c8e510001000005
@@ -372,4 +378,37 @@ Best Solution:
 What I have learned in this challenge?
 
 1 - Using <C-O> to jump back my initial normal point
+2 - More about deleting previous characters with `8X`
+
+# Every other line -
++ http://vimgolf.com/challenges/57d7d06d9ce5640f6f000001
+
+Start file
+
+    aaaaaaa
+    aaaaaaa
+    aaaaaaa
+    aaaaaaa
+    aaaaaaa
+
+End file
+
+    AaAaAaA
+    aaaaaaa
+    AaAaAaA
+    aaaaaaa
+    AaAaAaA
+
+Solutions:
+
+1 -  RAaAaAaA<Esc>ww.ww.ZZ   :  17 keystrokes
+2 -  4RAa<Esc>xYjpjpjdGZZ    :  16 keystrokes
+3 -  O<Esc>4i~ <Esc>dd3@"ZZ  :  14 keystrokes
+4 -  qq<C-V>}~ @qq@qZZ       :  13 keystrokes
+
+In the third solution we create a new line above to stor a default
+register with '~ ' 4 times. Then it is used as register in nromal mode
+
+In fourth solution we make use of a recursive macro, and it will always
+give us the same result
 
