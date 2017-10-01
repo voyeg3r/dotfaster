@@ -136,17 +136,16 @@ Initial file
 
 Final file
 
-    one	    1
-    two	    2
-    three	3
-    four	4
-    five	5
-    six	    6
-    seven	7
-    eight	8
-    nine	9
-    ten	    10
-
+	one	1
+	two	2
+	three	3
+	four	4
+	five	5
+	six	6
+	seven	7
+	eight	8
+	nine	9
+	ten	10
 
 This solution takes 16 keystrokes
 
@@ -247,7 +246,6 @@ Solution:
 
     )3:wq!<CR>
 
-
 # One number per line
 + vimgolf put 56fb2e75ccffcc0009026473
 + youtube explanation: https://www.youtube.com/watch?v=GvRSiY_UFSw
@@ -285,7 +283,6 @@ In this challenge we have learned
 
 1 - how to store a list into a register (one per line)
 2 - how to join lines whitout any space between them
-
 
 # Words in parens - vimgolf put 5192f96ad8df110002000002
 
@@ -355,7 +352,6 @@ Best solution
 
 # I forgot quotes
 + http://vimgolf.com/challenges/5462e3f41198b80002512673
-
 
 Start file
 

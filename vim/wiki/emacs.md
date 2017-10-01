@@ -1,9 +1,26 @@
 # Referências:
 + http://www.emacswiki.org/emacs-pt/NovatoNoEmacs
 + https://blog.aaronbieber.com/2015/07/05/a-gentle-introduction-to-emacs-configuration.html
++ http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
 
-Para fechar ^xc
-para salvar ^xs
+	Abrir arquivo ................ C-x C-f
+	Abrir arquivo alternativo..... C-x C-v
+
+	Para fechar ............ C-x c
+	para salvar ............ C-x s
+	para salvar como ....... C-x C-w
+
+	Command line like vim :  M-x
+
+# Start Emacs
+
+   	start emacs in text terminal
+
+	emacs --no-window-system
+
+## or
+
+	emacs -nw
 
 Carregar um tema escuro
 
@@ -13,13 +30,17 @@ Carregar um tema escuro
 
     Customise-theme ......... M-x customize-th <tab>
 
-
-    next line ............. ^n
-    previous line ......... ^p
+    next line ............. C-n
+    previous line ......... C-p
 
 # Open customize options
 
     M-x customize
+
+# Selections
+
+	Select whole file ........... C-x h
+    
 
 # Setting marks to delete regions
 
@@ -38,10 +59,12 @@ Carregar um tema escuro
 
 # Incremental Search
 
-  	      C-s
-	      C-g ........... cancel and go back where you started
+  	     C-s
+	     C-g ........... cancel and go back where you started
 
           To continue searching just press c-s again
+
+	     C-r ............. search backwards
 
 # Transpose chars
 + http://pragmaticemacs.com/emacs/transpose-characters/
@@ -101,23 +124,41 @@ To close the current window press
     buffer list
 
     c-x b  ............ show mini-buffer list (needs ido-mod activated)
+    c-x right ......... right-cyrcle through buffers
+    right ............. minibuffer explorer
 
     Like in vim you can count a moviment, so if you want to
     jump down 6 lines you have to type: 6 ^n
 
-    Para iniciar o tutorial ^ht
-    para fechar o buffer    ^xk
-    para fazer uma busca    ^s
-    para ir para o começo da linha ^a
-    para ir para o final da linha ^e
+    Para iniciar o tutorial ......... C-h t
+    para fechar o buffer ............ C-x k
+    para fazer uma busca ............ C-s ou C-r
+    para ir para o começo da linha .. C-a
+    para ir para o final da linha ... C-e
+    para apagar um caractere ........ C-d
+
+    Transpor caracteres ............. C-t
+    Transpor palavras ............... M-t
+    Transpor linhas ................. C-x C-t
+
+    Capitalize word ................. M-c
+    Uppercase word .................. M-u
+    Lowercase word .................. M-l
+
+    Open a new line ................. C-o
 
     ^f  move para a direita
     ^b  move para a esquerda
 
     para inserir nova linha ^j
     para desfazer ^xu undo
+    outro desfazer C-_
     para desfazer [Ctrl](Ctrl-/)
     para apagar o restante da linha
+
+    To redo, you have to switch the “undo-direction” with C-g, after that you can use the usual undo-key of your choice.
+
+    Switch undo-direction → C-g
 
     para ir para o começo do arquivo M-S-<
 
@@ -155,6 +196,7 @@ DEL		scroll-down
 C-c C-c		Custom-set
 
 C-x C-s		Custom-save
+C-x C-w  	Save as
 
 <remap> <self-insert-command>	Custom-no-edit
 
@@ -1124,8 +1166,41 @@ C-x @ h		event-apply-hyper-modifier
 C-x @ m		event-apply-meta-modifier
 C-x @ s		event-apply-super-modifier
 
-
-
-
-
 * http://code.google.com/p/yasnippet/
+
+  M-q ........... wrapping text
+  
+If you type a lot of words into Emacs, you will notice that it does
+not automatically wrap the text. This can be very annoying both for
+moving the point around if you are typing full paragraphs, because
+Emacs will treat the paragraph as a single line, and for readability.
+
+# Macros
+
+You can do it with keyboard macros: f3 bla M-5 f4.
+
+    F3 means "start recording"
+    then you insert bla
+    M-5 means "5 times"
+    F4 means finish
+
+Alternate to M-5
+
+	  C-x ( ............... inicia macro
+	  C-x ) ............... finaliza macro
+	  C-x e ............... executa macro
+
+	  C-u 5 ............... quantificador
+	  C-u 5 C-x e ......... 5 vezes a macro
+
+	  Reload Init File
+
+To reload init file:
+
+   	  Alt+x eval-buffer
+
+or
+
+Alt+x load-file
+
+

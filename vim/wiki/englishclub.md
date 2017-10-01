@@ -1281,6 +1281,9 @@ http://www.talkenglish.com/Speaking/Idioms/Category6.aspx
 Phrases with sound
 http://www.englishspeak.com/english-phrases.cfm?newCategoryShowed=1&sortBy=28
 
+# Espressoenglish.net
++ https://www.espressoenglish.net/live-class-video-1-saturday-qa/
+
 Penguin Reader - Parallel texts
 
     Backup: http://goo.gl/doJ2bm

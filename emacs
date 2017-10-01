@@ -1,10 +1,7 @@
 ;; https://github.com/jekor/.emacs
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; font setting
-(set-default-font "Monaco 14")
+;;(tool-bar-mode -1)
+;;(menu-bar-mode -1)
+;;(scroll-bar-mode -1)
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -12,11 +9,14 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; font setting
+(set-default-font "Monaco 14")
+
 ;; Set line number mode to always be on
 (global-linum-mode t)
 
 ;; no startup message
-(setq inhibit-startup-message t)
+;;(setq inhibit-startup-message t)
 
 (setq frame-title-format
       (list (format "%s %%S: %%j " (system-name))
@@ -56,11 +56,16 @@
 (define-key input-decode-map "\e[1;5A" [C-up])
 (define-key input-decode-map "\e[1;5B" [C-down])
 
+;; let's see if it works
+(global-set-key (kbd "C-x G") 'end-of-buffer)
+(global-set-key (kbd "C-x gg") 'beginning-of-buffer)
+
+(global-set-key (kbd "M-<") 'end-of-buffer)
+(global-set-key (kbd "M->") 'beginning-of-buffer)
+
 ; ignore case when searching
 (setq-default case-fold-search 1)
 
-; set the keybinding so that you can use f4 for goto line
-(global-set-key [f4] 'goto-line)
 
 ; show the current line and column numbers in the stats bar as well
 (line-number-mode 1)
@@ -105,12 +110,34 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes (quote (deeper-blue)))
  '(ido-mode (quote both) nil (ido))
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("marmelade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (evil-visual-mark-mode solarized-theme org color-theme-solarized))))
+    (ergoemacs-mode evil-visual-mark-mode solarized-theme org color-theme-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Tirgger recorded macro
+(define-key global-map [f4] 'call-last-kbd-macro)
+
+;; turn on highlighting current line
+(global-hl-line-mode 1)
+
+;; turn on bracket match highlight
+(show-paren-mode 1)
+
+;; remember cursor position, for emacs 25.1 or later
+(save-place-mode 1)
+
+;; stop creating those #auto-save# files
+(setq auto-save-default nil)
+
+;; y/n instead of yes/no
+(defalias 'yes-or-no-p 'y-or-n-p)

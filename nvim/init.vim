@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-:" Last Change: sáb 30 set 2017 17:27:05 -03
+:" Last Change: dom 01 out 2017 07:21:27 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -8,6 +8,14 @@
 "  |   /(_)\  Linux User #423493          |
 "  |    ^ ^    voyeg3r ✉ gmail.com        |
 "  +======================================+
+
+"As you type a substitution  the results will immediately be
+"visible in the edit window. This feature is best highlighted
+"in this video: http://www.youtube.com/watch?v=sA3z6gsqOuw
+if has("nvim")
+    set inccommand=nosplit
+endif
+
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
