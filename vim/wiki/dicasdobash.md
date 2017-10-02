@@ -14,6 +14,10 @@ Github:      https://github.com/voyeg3r
 
 	http://www.bashoneliners.com/?page=1
 
+### Transpose words
+
+	Ctrl-t
+
 ### How display all possible commands avaiable
 
 source: forun ubuntu https://goo.gl/cJDkp4

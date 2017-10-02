@@ -1,8 +1,20 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 27 set 2017 14:51:57 -03
+Last Change: dom 01 out 2017 14:59:16 -03
 ```
+
+# Vim antipatterns
+
+If you get yourself doing a lot of jjjj and kkkk you have to read this.
+
+To copy the line 16 to the line bellow just type:
+
+	:16t.
+
+1 - Instead of jumping to the line
+2 - pressing yy
+3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
 # Vim tips for everyone
 
@@ -88,7 +100,7 @@ The problem happens more when you have many lines in different sizes
 
 # Inserting a-z using macro - incrementando letas com ctrl-a
 
-Using set `nrformats+=alpha:`
+Using set `nrformats+=alpha   short form nf`
 
     ia<Esc>qqylp<C-a>q24@q
 

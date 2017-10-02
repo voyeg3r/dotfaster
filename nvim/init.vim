@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-:" Last Change: dom 01 out 2017 07:21:27 -03
+:" Last Change: seg 02 out 2017 20:22:26 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -68,6 +68,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
 Plug 'bitc/vim-bad-whitespace'
+Plug 'godlygeek/tabular'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'nelstrom/vim-visual-star-search'
@@ -109,6 +110,7 @@ endif
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 "" Color
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
@@ -131,7 +133,10 @@ syntax on
 
 let no_buffers_menu=1
 
-colorscheme molokai
+"colorscheme molokai
+set t_Co=256   " This is may or may not needed.
+set background=light
+colorscheme PaperColor
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -272,6 +277,11 @@ if !exists('*s:setupWrapping')
   endfunction
 endif
 
+" to insert this result: --> :put =Randnum(1000)
+function! Randnum(max) abort
+  return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
+endfunction
+
 " This function requires you select the numbers
 " source: https://vi.stackexchange.com/a/4699/7339
 fun! SumVis()
@@ -286,6 +296,9 @@ fun! SumVis()
      endtry
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<cr>
+
+" use primary selection with mouse
+vnoremap <LeftRelease> "*ygv
 
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032
@@ -487,6 +500,18 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results
 " on clipboard to be pasted on anki
@@ -573,6 +598,7 @@ noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+nnoremap Q :normal n.<CR>
 
 " snippets settings
 "let g:UltiSnips#ListSnippets="<C-tab>"
