@@ -461,4 +461,86 @@ End file
     quam       quis       tincidunt    dui        ornare
     dapibus    porttitor  et           fusce      volutpat
 
+# Simple, Practical, and Common -
++ vimgolf put 55b18bbea9c2c30d04000001
 
+Start file
+
+	*temp var1 0
+	*temp var2 "hi"
+	*temp var3 -1
+	*temp var4 42
+	*temp var5 "asdf"
+	*temp var6 0
+
+	Simple things we do all the time should be able to be done with very few keystrokes, but sometimes I find something I need to do makes me go, "There MUST be a better way."
+
+	This challenge is just a simple movement and entering text at a certain place.
+
+End file
+
+	*temp var1 0
+	*temp var2 "hi"
+	*temp var3 -1
+	*temp var4 42
+	*temp var5 "asdf"
+	*temp var6 0
+	*temp var7 11
+
+	Simple things we do all the time should be able to be done with very few keystrokes, but sometimes I find something I need to do makes me go, "There MUST be a better way."
+
+	New text.
+
+	This challenge is just a simple movement and entering text at a certain place.
+
+Solution:
+
+	#Yp<C-A>w11<C-A><Esc>GONew te<TAB>.<ESC>ZZ
+
+# Separate lines
++ vimgolf put 595a5dd1b9304b000c000011
++ https://www.youtube.com/watch?v=S9o5bHUAbP0
+
+Every other line is mixed up. Separate them into their original texts.
+
+Start file
+
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+	Whose woods these are I think I know.
+	sed do eiusmod tempor incididunt ut labore et dolore magna
+	His house is in the village though;
+	aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+	He will not see me stopping here
+	ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	To watch his woods fill up with snow.
+	Duis aute irure dolor in reprehenderit in voluptate velit
+	My little horse must think it queer
+	esse cillum dolore eu fugiat nulla pariatur. Excepteur
+	To stop without a farmhouse near
+	sint occaecat cupidatat non proident, sunt in culpa qui
+	Between the woods and frozen lake
+	officia deserunt mollit anim id est laborum.
+	The darkest evening of the year.
+
+End file
+
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+	sed do eiusmod tempor incididunt ut labore et dolore magna
+	aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+	ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	Duis aute irure dolor in reprehenderit in voluptate velit
+	esse cillum dolore eu fugiat nulla pariatur. Excepteur
+	sint occaecat cupidatat non proident, sunt in culpa qui
+	officia deserunt mollit anim id est laborum.
+	Whose woods these are I think I know.
+	His house is in the village though;
+	He will not see me stopping here
+	To watch his woods fill up with snow.
+	My little horse must think it queer
+	To stop without a farmhouse near
+	Between the woods and frozen lake
+	The darkest evening of the year.
+
+Solution:
+
+	:g/./+m$<CR>ZZ

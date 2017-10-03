@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 01 out 2017 14:59:16 -03
+Last Change: ter 03 out 2017 16:26:44 -03
 ```
 
 # Vim antipatterns
@@ -190,7 +190,7 @@ alternatively you can use sed:
 
      sed -i 18d .ssh/known_hosts
 
-# Erase / delete change history
+# Erase/delete change history
 + https://superuser.com/a/263406/45032
 
     :set undoreload=0 | edit
@@ -1042,6 +1042,10 @@ If you want to change the boundaries of the previous selection just type:
 
 Finds abc followed by any characters or newlines (as few as possible) then def.
 Finds abcdef or abc followed by any characters then def.
+
+# typing lowercase alphabet
+
+	:h<_␍jjYZZ
 
 # Changing modes on ctrl-p
 
@@ -2044,6 +2048,10 @@ background: url(stars.png) no-repeat 0 -36px;
 background: url(stars.png) no-repeat 0 -54px;
 }
 ```
+
+Faça uma seleção em bloco no vim e digite:
+
+	g Ctrl-x
 
 ** Função para decrementar a sequência acima **
 
