@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-:" Last Change: seg 02 out 2017 20:22:26 -03
+:" Last Change: qui 05 out 2017 14:54:06 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -19,6 +19,7 @@ endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
+set mouse=a             " enable mouse click
 set path+=**            " gf to open files under cursor
 set nocompatible        " use vim defaults
 set scrolloff=3         " keep 3 lines when scrolling
@@ -35,6 +36,7 @@ set ignorecase          " ignore case when searching
 set smartcase           " no ignorecase if Uppercase char present
 set visualbell t_vb=    " turn off error beep/flash
 set novisualbell        " turn off visual bell
+set tabstop=4           " Number of spaces that a <Tab> in the file counts for
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -67,6 +69,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'w0rp/ale'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'coderifous/textobj-word-column.vim'
@@ -135,7 +138,7 @@ let no_buffers_menu=1
 
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
-set background=light
+set background=dark
 colorscheme PaperColor
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
@@ -143,6 +146,13 @@ colorscheme PaperColor
 
 " format paragraph keeping cursor position
 nnoremap <F8> :call Preserve("normal gqap")<CR>
+
+" Scroll split window
+nnoremap <M-j> <c-w>w<c-e><c-w>w
+nnoremap <M-k> <c-w>w<c-y><c-w>w
+
+nnoremap <M-=> <C-w>+
+nnoremap <M--> <C-w>-
 
 syntax on               " turn syntax highlighting on by default
 filetype on             " detect type of file
@@ -221,6 +231,7 @@ noremap gV `[v`]
 
 " move vertically by visual line
 " source: https://stackoverflow.com/a/21000307/2571881
+" it makes j and k work with visual lines unless you put counter before them
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
@@ -295,7 +306,20 @@ fun! SumVis()
         let @a = l:a_save
      endtry
 endfun
-vnoremap <C-s> :<C-u>call SumVis()<cr>
+vnoremap <C-s> :<C-u>call SumVis()<CR>
+
+" search visually selected text
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
+
+fun! CountWord()
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
+		let var = expand("<cword>")
+		exec "%s/" . var . "//gn"
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
+endfun
+nnoremap ,c :call CountWord()<CR>
 
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
@@ -477,6 +501,10 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "au BufEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertLeave * redraw!
 
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
@@ -622,4 +650,12 @@ let g:snips_email='<voyeg3r ✉ gmail.com>'
 let g:snips_github='https://github.com/voyeg3r'
 let g:snips_twitter='@voyeg3r'
 let g:UltiSnipsEditSplit="horizontal"
+
+
+iab fname <c-r>=expand("%")<cr>
+iab -> →
+iab mymail <voyeg3r ✉ gmail.com>
+iab slas Sérgio Luiz Araújo Silva
+iab tuiter http://www.twitter.com/voyeg3r
+iab vivaotux http://vivaotux.blogspot.com
 

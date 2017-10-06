@@ -39,7 +39,8 @@ fonte: http://br.groups.yahoo.com/group/shell-script/message/27193
  9-10
 
 Teste essa solução
-$ seq 10 | paste -d\- - -
+
+		seq 10 | paste -d\- - -
 
 ou
 
@@ -47,10 +48,10 @@ $ paste -d\- - - arquivo > novo.arquivo
 
 ### gerando listas com três dígitos
 
-seq -w 100
+		seq -w 100
 
 
 Para gerar um arquivo contendo linhas de 1) a 45)
 
-seq -f '%.0f)' 1 45 > arquivo.txt
+		seq -f '%.0f)' 1 45 > arquivo.txt
 

@@ -3,5 +3,6 @@
 *.zwc.old
 *.zcompdump
 *.zhistory
+.netrwhist
 
 bin/login-with-age.sh

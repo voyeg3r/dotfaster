@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 03 out 2017 16:26:44 -03
+Last Change: sex 06 out 2017 13:18:25 -03
 ```
 
 # Vim antipatterns
@@ -15,6 +15,37 @@ To copy the line 16 to the line bellow just type:
 1 - Instead of jumping to the line
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+
+# Getting some Mairo's vergara flashcards
+
+After getting the flashcards selection and putting it into a new vim file.
+All you have to do is to create a macro to make the flashcards.
+
+		Before dealing with the mp3 files use:
+
+		detox * ....................................... removes symbols
+
+		g/\v^(Audio Player|00|Use Up)/d  ............. remove some lines
+		0r !ls *.mp3  | sort -n -k1 .................. read all mp3 file names
+		'<,'>s/\v^(\d+)-//g  ...................... remove dash after file number
+		g/^$/d  ...................................... delete empty lines
+
+		perl-rename -n 's/^\d+-//g' *.mp3
+		cp *.mp3 ~/.local/share/Anki2/User\ 1/collection.media/
+
+# Sorting lines numerically
+
+		:%!sort -n -k 3 ........... sort numerically by third column
+
+# Runing external commands
+
+		:0r !ls *.mp3
+
+The command above will put `ls` output at the first line
+
+# Vim registers
+
+		@.  ................ repeats what has been typed
 
 # Vim tips for everyone
 
@@ -850,7 +881,6 @@ Another solution:
     locate visual start precisely
     virtcol("'<")
 
-
 # Manipulation visual block
 
 ``` viml
@@ -1317,6 +1347,10 @@ This time Vim will delete not only the heading’s text but also the
 line of equal signs that denotes a heading. You can think of this
 movement as “around this section’s heading”.
 
+# Run the current script
+
+	:!%:p
+
 # Runing a macro over last pasted text
 + https://stackoverflow.com/a/46380937/2571881
 + https://www.linuxquestions.org/questions/programming-9/vim-how-pass-argument-to-key-mapping-933036/
@@ -1521,6 +1555,9 @@ que delimita a busca ficando assim:
 # Opening two files side by side
 
       vim -O file1.txt file2.txt
+
+Also have a look at 'scrollbind' it allows you to scroll two files
+at same time
 
 # Setting utf-8 encoding
 
@@ -2127,10 +2164,6 @@ abaixo.
     "salvando da linha 1 a 7 do arquivo atual em novo arquivo
     :1,7 w ~/tmp/teste.txt
 
-# Sobrescrevendo algo entre aspas
-
-    vi"p
-
 # Salvar um intervalo em outro arquivo
 
     :25,$w teste.txt
@@ -2148,6 +2181,10 @@ Ao invés de usar <Esc> para sair do insert use:
 ou
 
     map <leader>h :set hls!<cr>
+
+# Fixing syntax highlight
+
+		<C-l>
 
 # Como colocar a palavra sob o cursor em uma substituição
 
@@ -2390,15 +2427,13 @@ This is useful for things like [highlighting trailing whitespace except when you
 
 # Finding words no larger than 5 chars
 
-    /\v<\w>{5}
-
     \v .......... very magic
     < ........... word boundary (start)
     > ........... word boundary (end)
     \w .......... word
     {5} ......... exactly 5 chars
 
-    /\v<\w{1,5}>\ze
+    /\v<\w{1,5}>
 
     In the previous search "words 1 up to five chars" ignoring
     white spaces \ze stands for end of search
@@ -2418,7 +2453,9 @@ And you want to uppercase "Xhtml" "Xml" at once
 
 # Regex para pegar aspas simples
 
-source: http://vimcasts.org/episodes/refining-search-patterns-with-the-command-line-window/
+source:
+http://vimcasts.org/episodes/refining-search-patterns-with-the-command-line-wi
+ndow/
 
 ``` markdown
 This string contains a 'quoted' word.
@@ -2644,7 +2681,7 @@ g; ............... alteração mais antiga
 g` ............... jump to the last know position without changing jumplist
 ```
 
-### Jumping to the begining/end of the last yanked/changed text
+# Jumping to the begining/end of the last yanked/changed text
 
 ``` viml
 `[ or `] ......... jump to beginning/end of previously changed or yanked text
@@ -2691,7 +2728,6 @@ o registro @/ contém a última busca
 # Limpando um registro de forma fácil
 
       qaq .......... limpa o registro 'a'
-
       let @a=''
 
 # Corretor ortográfico do vim
@@ -2869,6 +2905,10 @@ particular word occurs in a buffer: >
 :echo cnt
 ```
 
+Another approach
+
+		:%s/<C-R><C-W>//gn
+
 # Name spaces para variáveis no vim
 
 There are several name spaces for variables.  Which one is to be used is
@@ -2898,7 +2938,7 @@ specified by what is prepended:
 
 # Contar ocorrências de uma palavra
 
-  :%s/<c-r><c-w>//gn
+		:%s/<c-r><c-w>//gn
 
 # Dicas para substituições
 
@@ -3238,6 +3278,10 @@ source: [superuser.com](http://superuser.com/q/592503/)
 
     :g/.\n\n\@!/norm o
 
+		fun! AddBlankLines()
+			:g/.\n\n\@!/norm o
+		endfun
+
 The pattern I use is `/.\n\n\@!/`. Breaking that down into its component pieces:
 
 . Matches any character in the line. (used to immediately discard any
@@ -3352,6 +3396,43 @@ the command will be:
     .,$/^[^ \t]*/### &/g
 
 ```
+
+# Regular expression - replace all spaces in beginning of line with periods
++ https://stackoverflow.com/a/46555043/2571881
+
+``` markdown
+top           f1    f2    f3
+   sub1       f1    f2    f3
+   sub2       f1    f2    f3
+      sub21   f1    f2    f3
+   sub3       f1    f2    f3
+```
+
+	:%s/^\s\+/\=repeat('.', len(submatch(0)))
+
+``` markdown
+top           f1    f2    f3
+...sub1       f1    f2    f3
+...sub2       f1    f2    f3
+......sub21   f1    f2    f3
+...sub3       f1    f2    f3
+```
+
+There are two different ways to do this in vim.
+
+    With a regex:
+
+	    :%s/^\s\+/\=repeat('.', len(submatch(0)))
+
+    This is fairly straightforward, but a little verbose. It uses the eval register (\=) to generate a string of '.'s the same length as the number of spaces at the beginning of each line.
+
+    With a norm command:
+
+    :%norm ^hviwr.
+
+    This is a much more conveniently short command, although it's a little harder to understand. It visually selects the spaces at the beginning of a line, and replaces the whole selection with dots. If there is no leading space, the command will fail on ^h because the cursor attempts to move out of bounds.
+
+    To see how this works, try typing ^hviwr. on a line that has leading spaces to see it happen.
 
 # References
 + http://vi.stackexchange.com/q/2268/

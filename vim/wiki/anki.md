@@ -1,7 +1,7 @@
 ``` markdown
 File:		 Anki.md
 Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: qua 06 set 2017 19:58:29 -03
+Last Change: qui 05 out 2017 16:20:20 -03
 ```
 
 ### O que é o Anki?
@@ -128,4 +128,5 @@ Esta é uma frase em Inglês
 
     tag:TvSeries* or tag:movies
 
+	tag:movies or tag:TVSeries or tag:RealEnglish
 

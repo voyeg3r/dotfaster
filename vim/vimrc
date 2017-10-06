@@ -37,6 +37,7 @@ if !exists("*VimReloadFunction")
 endif
 com! ReloadVim call VimReloadFunction()
 
+set mouse=a             " enable mause click
 set path+=**            " gf to open files under cursor
 set nocompatible        " use vim defaults
 set scrolloff=3         " keep 3 lines when scrolling
@@ -58,6 +59,7 @@ set visualbell t_vb=    " turn off error beep/flash
 set novisualbell        " turn off visual bell
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
+set tabstop=4           " Number of spaces that a <Tab> in the file counts for
 
 syntax on               " turn syntax highlighting on by default
 filetype on             " detect type of file
@@ -74,9 +76,14 @@ let mapleader=','
 nnoremap ç :
 nnoremap K :help <C-r><C-w><CR>
 
+" Scroll split window
+nnoremap <M-j> <c-w>w<c-e><c-w>w
+nnoremap <M-k> <c-w>w<c-y><c-w>w
+
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
+Plug 'w0rp/ale'
 Plug 'godlygeek/tabular'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'tommcdo/vim-exchange'
@@ -235,15 +242,16 @@ endif
 "let g:airline_skip_empty_sections = 1
 
 "set background=light
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
+"if has('gui_running')
+"    set background=dark
+"else
+"    set background=light
+"endif
+
+set background=dark
 "colorscheme solarized
 
 set t_Co=256   " This is may or may not needed.
-set background=light
 colorscheme PaperColor
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
@@ -254,6 +262,10 @@ nnoremap <F8> :call Preserve("normal gqap")<CR>
 highlight Problem ctermbg=red guibg=red
 " Highlight leading tabs - tab misturado com espaço
 match Problem /^\s\*\t\+\s\*/
+
+" Make the 81st column stand out
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
 " more command line Abbreviations
 cnoreabbrev W! w!
@@ -290,6 +302,15 @@ fun! SumVis()
      endtry
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<cr>
+
+" search visually selected text
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
+
+fun! CountWord()
+		let var = expand("<cword>")
+		exec "%s/" . var . "//gn"
+endfun
+nnoremap ,c :call CountWord()<CR>
 
 " This function allows me to execute a macro over
 " the last changed/yanked text fast
@@ -623,6 +644,7 @@ set undodir=~/.vimundodir
 
 " move vertically by visual line
 " source: https://stackoverflow.com/a/21000307/2571881
+" it makes j and k work with visual lines unless you put counter before them
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
