@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-:" Last Change: qui 05 out 2017 14:54:06 -03
+" Last Change: sex 06 out 2017 21:40:44 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -16,9 +16,9 @@ if has("nvim")
     set inccommand=nosplit
 endif
 
-
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
+set laststatus=2        " statusline specific
 set mouse=a             " enable mouse click
 set path+=**            " gf to open files under cursor
 set nocompatible        " use vim defaults
@@ -45,13 +45,12 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set nopaste
 set pastetoggle=<F2>
-set showmode
+set noshowmode
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
 set autoread
 set noerrorbells visualbell t_vb=
 set clipboard=unnamed,unnamedplus
-
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -120,6 +119,9 @@ Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
 "Plug 'NLKNguyen/papercolor-theme'
 Plug 'chriskempson/tomorrow-theme'
+
+" statusline
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 

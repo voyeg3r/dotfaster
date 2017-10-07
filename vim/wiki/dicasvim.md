@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 06 out 2017 13:18:25 -03
+Last Change: sex 06 out 2017 14:46:19 -03
 ```
 
 # Vim antipatterns
@@ -32,6 +32,11 @@ All you have to do is to create a macro to make the flashcards.
 
 		perl-rename -n 's/^\d+-//g' *.mp3
 		cp *.mp3 ~/.local/share/Anki2/User\ 1/collection.media/
+
+		Usando o lynx com user-agent modificado
+
+		Juntando as linhas que contém os audios
+	   	g/http:/normal gJ
 
 # Sorting lines numerically
 
@@ -1177,7 +1182,10 @@ Usando relative numbers
  |  :-5t.     |  copy the line 5 rows above to the current line                                               |
  |  :1m.      |  move line one to the current line                                                            |
  |  :-3m.     |  move the line up 3 to this position                                                          |
+ |  :-3m.     |  move the line up 3 to this position                                                          |
  +------------+-----------------------------------------------------------------------------------------------+
+
+		 :g/this/m$
  ```
 
 The offsets can also be used with the other items in a range.  Look at this

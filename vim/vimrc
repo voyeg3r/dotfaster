@@ -37,6 +37,7 @@ if !exists("*VimReloadFunction")
 endif
 com! ReloadVim call VimReloadFunction()
 
+set laststatus=2        " statusline specifi
 set mouse=a             " enable mause click
 set path+=**            " gf to open files under cursor
 set nocompatible        " use vim defaults
@@ -97,8 +98,6 @@ Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-markdown'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'eparreno/vim-l9'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'vimwiki/vimwiki'
@@ -122,6 +121,9 @@ else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
 endif
+
+" statusline
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -233,13 +235,6 @@ if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
-" vim-airline
-"let g:airline_theme = 'powerlineish'
-"let g:airline#extensions#syntastic#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tagbar#enabled = 1
-"let g:airline_skip_empty_sections = 1
 
 "set background=light
 "if has('gui_running')
@@ -635,7 +630,7 @@ set nopaste
 nnoremap <F3> :set invpaste paste?<CR>
 
 set pastetoggle=<F2>
-set showmode
+set noshowmode
 
 nnoremap <F5> :GundoToggle<CR>
 
