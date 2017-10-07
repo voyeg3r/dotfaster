@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 06 out 2017 14:46:19 -03
+Last Change: sáb 07 out 2017 07:15:05 -03
 ```
 
 # Vim antipatterns
@@ -1184,6 +1184,8 @@ Usando relative numbers
  |  :-3m.     |  move the line up 3 to this position                                                          |
  |  :-3m.     |  move the line up 3 to this position                                                          |
  +------------+-----------------------------------------------------------------------------------------------+
+
+Mover linhas que correspondem a um padrão para o fim do arquivo
 
 		 :g/this/m$
  ```
@@ -3222,6 +3224,42 @@ Or using a global command. (both are similar)
 The key to get mp3 links over multilne is to search for:
 
     /http.*\_.mp3
+
+
+
+## Multiline removing html comments
+
+
+	:1,$s/<!--\_.\{-}-->//
+
+Using the above expression on the text:
+
+``` markdown
+First line
+<!-- The second line
+     starts an html comment
+     that spans several lines
+-->
+Sixth line
+<!-- Another html comment
+     in several lines
+-->
+End of file
+```
+
+produces the result:
+
+``` markdown
+First line
+
+Sixth line
+
+End of file
+```
+
+O padrão abaixo pega o parágrafo que começa com strong até o seu final
+
+		<p><em><strong>.*\_.\{-}\n\@!.*
 
 After that you can manipulate your html in order to clean the links
 accordingly with the situation

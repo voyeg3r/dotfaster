@@ -24,6 +24,15 @@ ${0}
 `echo endsnippet`
 endsnippet
 
+#snippet 'in(line)?' "code inline" r
+#`!v nr2char(96)`${0:${VISUAL:type here ..}}`!v nr2char(96)`
+#endsnippet
+
+# emfatizar codigo html
+snippet 'in(line)?' "code inline" r
+<em>${0:${VISUAL:type here ..}}</em>
+endsnippet
+
 snippet 'clip(board)?' "past clipboard" !r
 `xclip -i -selection clipboard -o`
 endsnippet

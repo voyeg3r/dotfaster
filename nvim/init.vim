@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 06 out 2017 21:40:44 -03
+" Last Change: sáb 07 out 2017 14:12:10 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -148,6 +148,9 @@ colorscheme PaperColor
 
 " format paragraph keeping cursor position
 nnoremap <F8> :call Preserve("normal gqap")<CR>
+
+" Search word under cursor
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <M-j> <c-w>w<c-e><c-w>w
