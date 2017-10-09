@@ -16,6 +16,10 @@ To copy the line 16 to the line bellow just type:
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
+# finding more than one html tag at once
+
+		/\v\<(\/)?(em|strong|p)\>
+
 # Getting some Mairo's vergara flashcards
 
 After getting the flashcards selection and putting it into a new vim file.
