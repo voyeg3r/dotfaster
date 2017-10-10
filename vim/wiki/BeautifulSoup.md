@@ -1,7 +1,9 @@
 # how to use BeautifulSoup
-+ Documentation: https://beautiful-soup-4.readthedocs.io/en/latest/
++ Documentation:
++ https://beautiful-soup-4.readthedocs.io/en/latest/
 + https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 + https://www.dataquest.io/blog/web-scraping-tutorial-python/
++ https://programminghistorian.org/lessons/intro-to-beautiful-soup
 
 It is highly recomended to install 'requests' and 'pandas'
 

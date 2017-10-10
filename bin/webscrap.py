@@ -9,8 +9,11 @@
 # Github:       https://github.com/voyeg3r
 # twitter:      @voyeg3r
 
+# References: https://stackoverflow.com/a/25564921/2571881
+
 # Import required modules
 import requests
+import re
 from bs4 import BeautifulSoup
 
 # Create a variable with the url
@@ -31,12 +34,24 @@ soup = BeautifulSoup(html_content, 'html.parser')
 # print all links (or a range of them)
 # print(soup.find_all('a')[0:5])
 
+# for tag in soup.findAll('strong'):
+#     print(tag.text, tag.next_sibling.text)
+
 # print(soup.find_all('p'))
+#with open("output.csv", "w") as f:
+#    for tag in soup.findAll('strong'):
+#        var = str(tag) + str(tag.next_sibling)
+#        f.write(var)
 
 with open("output.csv", "w") as file:
     for tag in soup.findAll('p'):
         file.write(str(tag.text))
         file.write("\n\n")
+
+with open("audios.txt", "w") as file:
+    for a in soup.findAll('a',href=re.compile('http.*\.mp3')):
+        file.write(a['href'])
+        file.write("\n")
 
 #for tag in soup.findAll('p'):
 #    print(tag.text, "\n")
