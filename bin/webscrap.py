@@ -43,6 +43,7 @@ soup = BeautifulSoup(html_content, 'html.parser')
 #        var = str(tag) + str(tag.next_sibling)
 #        f.write(var)
 
+
 with open("output.csv", "w") as file:
     for tag in soup.findAll('p'):
         file.write(str(tag.text))
@@ -52,6 +53,9 @@ with open("audios.txt", "w") as file:
     for a in soup.findAll('a',href=re.compile('http.*\.mp3')):
         file.write(a['href'])
         file.write("\n")
+
+#for tag in soup.find_all(['p', 'audio']):
+#    print(tag.text)
 
 #for tag in soup.findAll('p'):
 #    print(tag.text, "\n")

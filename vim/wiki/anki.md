@@ -1,12 +1,25 @@
 ``` markdown
 File:		 Anki.md
 Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: qui 05 out 2017 16:20:20 -03
+Last Change: qua 11 out 2017 10:48:03 -03
 ```
 
 ### O que é o Anki?
 
 E um programa de aprendizado baseado na repetição espaçada
+
+
+### Como busar cartões com tags distintas
+
+    tag:TvSeries* or tag:movies
+
+	tag:movies or tag:TVSeries or tag:RealEnglish
+
+# Searching for specific terms
++ https://apps.ankiweb.net/docs/manual.html#find-and-replace
+
+		deck:English 'sat up'
+		deck:English 'sat up' or 'come up'
 
 
 ### Novo processo de instalação:
@@ -124,9 +137,4 @@ Um cartão do anki com audio ficaria então assim:
 This is the English phrase[sound:nome-do-audio.mp3]
 Esta é uma frase em Inglês
 
-### Como busar cartões com tags distintas
-
-    tag:TvSeries* or tag:movies
-
-	tag:movies or tag:TVSeries or tag:RealEnglish
 

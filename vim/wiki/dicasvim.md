@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sáb 07 out 2017 07:15:05 -03
+Last Change: qua 11 out 2017 14:11:01 -03
 ```
 
 # Vim antipatterns
@@ -18,7 +18,13 @@ To copy the line 16 to the line bellow just type:
 
 # finding more than one html tag at once
 
-		/\v\<(\/)?(em|strong|p)\>
+Find tags "strong, em, span, br, and p"
+
+		/\v\<(\/)?(strong|em|span|br|p)(\/)?\>
+
+find "span style and pstyle "
+
+		\v\<(p style|span)[^>]*\>
 
 # Getting some Mairo's vergara flashcards
 

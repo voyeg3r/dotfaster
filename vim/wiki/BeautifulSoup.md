@@ -94,4 +94,20 @@ soup = BeautifulSoup(html_content, 'html.parser')
 for tag in soup.findAll('p'):
     print(tag.text, "\n")
 ```
+# Python BeautifulSoup give multiple tags to findAll
++ https://stackoverflow.com/a/20649408/2571881
 
+		tags = soup.find_all(['p', 'strong'])
+
+#  Remove a tag using BeautifulSoup but keep its contents
++ https://stackoverflow.com/a/8439761/2571881
+
+``` python
+html = "<p>Good, <b>bad</b>, and <i>ug<b>l</b><u>y</u></i></p>"
+invalid_tags = ['b', 'i', 'u']
+soup = BeautifulSoup(html)
+for tag in invalid_tags:
+    for match in soup.findAll(tag):
+        match.replaceWithChildren()
+print(soup)
+```

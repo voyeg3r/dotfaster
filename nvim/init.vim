@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 07 out 2017 14:12:10 -03
+" Last Change: qua 11 out 2017 09:59:14 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -68,13 +68,13 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
-Plug 'w0rp/ale'
-Plug 'bitc/vim-bad-whitespace'
-Plug 'godlygeek/tabular'
-Plug 'coderifous/textobj-word-column.vim'
-Plug 'tommcdo/vim-exchange'
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'nelstrom/vim-markdown-folding'
+"Plug 'w0rp/ale'                           " Asyncronous lint engine
+"Plug 'bitc/vim-bad-whitespace'            " Find bad whitespace
+"Plug 'godlygeek/tabular'
+"Plug 'coderifous/textobj-word-column.vim'
+"Plug 'tommcdo/vim-exchange'
+"Plug 'nelstrom/vim-visual-star-search'
+"Plug 'nelstrom/vim-markdown-folding'
 "Plug 'haya14busa/incsearch.vim'
 "Plug 'timakro/vim-searchant'
 "Plug 'inside/vim-search-pulse'
@@ -85,7 +85,7 @@ Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
-Plug 'tpope/vim-speeddating'
+"Plug 'tpope/vim-speeddating'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'rstacruz/vim-closer'
 "Plug 'scrooloose/nerdtree'

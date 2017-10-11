@@ -84,15 +84,15 @@ nnoremap <M-k> <c-w>w<c-y><c-w>w
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'godlygeek/tabular'
-Plug 'bitc/vim-bad-whitespace'
+"Plug 'bitc/vim-bad-whitespace'
 Plug 'tommcdo/vim-exchange'
 Plug 'coderifous/textobj-word-column.vim'
 "Plug 'nelstrom/vim-visual-star-search'
-Plug 'nelstrom/vim-markdown-folding'
+"Plug 'nelstrom/vim-markdown-folding'
 "Plug 'jiangmiao/auto-pairs'
-Plug 'rstacruz/vim-closer'
+"Plug 'rstacruz/vim-closer'
 "Plug 'haya14busa/incsearch.vim'
 "Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-markdown'
@@ -322,17 +322,17 @@ nnoremap Q :normal .<CR>
 
 inoremap <leader>r <C-r>=system('echo "$(($RANDOM % 1000))"')<cr>
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
+"inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+"function! s:align()
+"  let p = '^\s*|\s.*\s|\s*$'
+"  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"    Tabularize/|/l1
+"    normal! 0
+"    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"  endif
+"endfunction
 
 " to insert this result: --> :put =Randnum(1000)
 function! Randnum(max) abort
@@ -629,7 +629,7 @@ au! BufwritePre * :call CleanExtraSpaces()
 set nopaste
 nnoremap <F3> :set invpaste paste?<CR>
 
-" Search word under cursor
+" Replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 set pastetoggle=<F2>

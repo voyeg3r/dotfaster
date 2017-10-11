@@ -157,7 +157,7 @@ set number
 "if !exists('g:not_finish_vimplug')
 "  colorscheme molokai
 "endif
-color desert256
+color desert
 
 set mousemodel=popup
 set t_Co=256
@@ -178,7 +178,7 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
+
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -186,7 +186,7 @@ else
       set term=xterm-256color
     endif
   endif
-  
+
 endif
 
 
