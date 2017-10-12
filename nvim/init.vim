@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 11 out 2017 09:59:14 -03
+" Last Change: qui 12 out 2017 09:16:42 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -68,11 +68,12 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
-"Plug 'w0rp/ale'                           " Asyncronous lint engine
+Plug 'w0rp/ale'                           " Asyncronous lint engine
+Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 "Plug 'bitc/vim-bad-whitespace'            " Find bad whitespace
-"Plug 'godlygeek/tabular'
-"Plug 'coderifous/textobj-word-column.vim'
-"Plug 'tommcdo/vim-exchange'
+Plug 'godlygeek/tabular'
+Plug 'coderifous/textobj-word-column.vim'
+Plug 'tommcdo/vim-exchange'
 "Plug 'nelstrom/vim-visual-star-search'
 "Plug 'nelstrom/vim-markdown-folding'
 "Plug 'haya14busa/incsearch.vim'
@@ -611,7 +612,6 @@ fun! DelBlankLines()
     call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
-
 " delete sucessive blank lines and trailing spces
 nnoremap <special> <leader>d :call DelBlankLines()<cr>
 
@@ -655,7 +655,6 @@ let g:snips_email='<voyeg3r ✉ gmail.com>'
 let g:snips_github='https://github.com/voyeg3r'
 let g:snips_twitter='@voyeg3r'
 let g:UltiSnipsEditSplit="horizontal"
-
 
 iab fname <c-r>=expand("%")<cr>
 iab -> →

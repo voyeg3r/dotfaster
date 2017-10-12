@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qua 11 out 2017 14:11:01 -03
+Last Change: qui 12 out 2017 10:11:48 -03
 ```
 
 # Vim antipatterns
@@ -2471,6 +2471,18 @@ And you want to uppercase "Xhtml" "Xml" at once
 
     :%s,\vX(ht)?ml,\U&,g
 
+# Regex to find multiple word options
+
+
+		\v(sai(r(am)?|ndo|u)|saem|saí(u|ram|a)?) de fininho
+
+		sair, sairam, aindo, saiu, saem, saíram, saía
+
+		\v(assus|afugen|espan(tar|tou|tam|tado)(ram)?)
+
+		\v(disper(sar|sou))|progre(dir|dindo)|avançar
+		\v(entre(gou|gue(s|i)?))|pass(ar|ou|e)
+
 # Regex para pegar aspas simples
 
 source:
@@ -3317,6 +3329,13 @@ endfun
 map <leader>d :call keepjumps DelBlank()<cr>
 ```
 
+		:g/^$/,/./-j
+
+	    globally
+		^$ ............. blank line until another blank line
+		- .............. minus one
+		j .............. join
+
 ``` vim
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
@@ -3327,6 +3346,26 @@ function! Preserve(command)
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfunction"}}}
+```
+
+# Função para limpar flashcards
+É uma função bem específica para minhas necessidades
+
+``` viml
+" Esta função limpa meus flashcards
+fun CleanFlashCards()
+		let @a = 'v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+		let @b = 'v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
+		":g/^1 –/normal dgg<CR>
+		":g/^\d\+ –/d<CR>
+		:g/^(/d<CR>
+		:g/CLIQUE/normal {{jdG<CR>
+		:g/^\n\{2,}/d<CR>
+		":0r !ls *.mp3 | sort -n -k1<CR>
+		"vip
+		":'<,'>s/^\d\+-//g<CR>
+endfun
+command! CF call CleanFlashCards()<CR>
 ```
 
 # Adding blank lines  - adding empty lines between lines

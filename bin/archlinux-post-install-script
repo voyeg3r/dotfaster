@@ -40,6 +40,11 @@
 # fast and powerful spreesheet
 sudo pacman -S gnumeric
 
+# remove mp3 tags and show them
+# remove tags: eyeD3 --remove-all *.mp3
+# show information: eyeD3 file.mp3
+yaourt eyed3
+
 # network performance
 sudo cp /etc/sysct.conf{,-backup}
 sudo wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf -O /etc/sysctl.d/99-sysctl.conf
@@ -53,7 +58,6 @@ sudo pip install nfasd
 # https://aur.archlinux.org/packages/par/
 # sudo pacman -U par-1.52-2-i686.pkg.tar.xz
 wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
-
 
 # setando o muse para ser destacado com o ctrl ou não
 gsettings set org.gnome.settings-daemon.peripherals.mouse locate-pointer false
@@ -121,7 +125,6 @@ sudo pip install unidecode
 # system=false
 # users=
 sudo pacman -S redshift
-
 
 # to be able to import turtle in python
 sudo pacman -S community/python-pmw
