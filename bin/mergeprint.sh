@@ -1,6 +1,6 @@
 #!/bin/bash
 # Criado em:Mon 30/May/2011 hs 12:24
-# Last Change: Sat Jan 17, 2015  07:30AM
+# Last Change: sex 13 out 2017 11:58:27 -03
 # vim:ft=sh:fdm=syntax:nu:
 # Instituicao: none
 # Proposito do script: Inkscape print merge
@@ -8,7 +8,7 @@
 # site: http://vivaotux.blogspot.com
 # twitter: http://www.twitter.com/voyeg3r
 
-# REFERENCES:
+# References:
 # http://zkwarl.blogspot.com/2006/08/inkscape-tip-use-inkscape-on-command.html
 # http://www.unixnotes.org/2007/06/14/incrementar-variavel-numerica-em-bash2/
 # http://www.debianadmin.com/combine-multiple-pdfs-into-one-file-in-ubuntu-linux.html
@@ -24,7 +24,7 @@ for needed_command in $NEEDED_COMMANDS; do
 	fi
 done
 if ((missing_counter > 0)); then
-	echo "instale os programas: $NEEDED_COMMANDS"
+	echo "Please install: $NEEDED_COMMANDS"
 	exit 1
 fi
 
@@ -36,6 +36,8 @@ cd mergeprint
 
 count=1
 
+# my template has "label1 to label6" on each page, 167 times 6 labels equals 1002 cards
+# please adpat to your needs. For example; to generate 300 cards (6 per page) you ned 50 loops
 for i in `echo {0001..0167}`; do
 	echo "Creating file${i}.svg"
     cat  ../cartoes.svg > file${i}.svg
