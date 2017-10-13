@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 12 out 2017 09:16:42 -03
+" Last Change: sex 13 out 2017 09:03:27 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -299,6 +299,16 @@ function! Randnum(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
 endfunction
 
+" source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
+function! ToggleHomeEnd()
+  let pos = getpos('.')
+  execute "normal! 0"
+  if pos == getpos('.')
+    execute "normal! $"
+  endif
+endfunction
+nnoremap 0 :call ToggleHomeEnd()<CR>
+
 " This function requires you select the numbers
 " source: https://vi.stackexchange.com/a/4699/7339
 fun! SumVis()
@@ -473,7 +483,7 @@ fun! MruFile()
     endif
 endfun
 nnoremap ,l :call MruFile()<cr>
-command! -nargs=0 Mru call MruFile()
+command! -nargs=0 Mrf call MruFile()
 
 nnoremap ç :
 

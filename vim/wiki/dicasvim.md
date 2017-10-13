@@ -1,7 +1,8 @@
+# Intro
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: qui 12 out 2017 10:11:48 -03
+Last Change: sex 13 out 2017 09:25:31 -03
 ```
 
 # Vim antipatterns
@@ -15,6 +16,37 @@ To copy the line 16 to the line bellow just type:
 1 - Instead of jumping to the line
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+
+# Vim markdown tips
++ https://vi.stackexchange.com/a/9544/7339
+
+making vimwiki folds working properly
+
+	:set foldcolumn=2
+	:let g:markdown_folding=1
+
+# Syntax highlighting on Disqus
++ https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting
+
+Disqus supports automatic syntax highlighting in a number of languages. To use
+this feature, place your code inside <pre><code> tags. For example:
+
+``` markdown
+<pre><code>
+var foo = 'bar';
+alert('foo');
+</code></pre>
+```
+
+By default, Disqus will try to automatically detect the language. It's pretty
+good at this, but you can give it a hand by doing the following:
+
+``` markdown
+<pre><code class="javascript">
+var foo = 'bar';
+alert('foo');
+</code></pre>
+```
 
 # finding more than one html tag at once
 
@@ -61,6 +93,7 @@ The command above will put `ls` output at the first line
 # Vim registers
 
 		@.  ................ repeats what has been typed
+		:@+  ............... executes the content of clipboard
 
 # Vim tips for everyone
 
@@ -84,6 +117,7 @@ Just type
     X
 
 # jumping to the first non-blank character
++ http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 
     _ ................ jump to the first non-blank character
     ^ ................ jump to the First non-blank character
@@ -102,14 +136,14 @@ Just type
     :b 2 ........ go to buffer 2
     :b substring  opens any file with substring
 
-[#](#) Nice paragraph formating
+## Nice paragraph formating
 + http://vimcasts.org/episodes/formatting-text-with-par/
 + http://www.nicemice.net/par/
 
 ``` markdown
-# paragraph formater (useful for vim)
-# https://aur.archlinux.org/packages/par/
-# sudo pacman -U par-1.52-2-i686.pkg.tar.xz
+paragraph formater (useful for vim)
+https://aur.archlinux.org/packages/par/
+sudo pacman -U par-1.52-2-i686.pkg.tar.xz
 wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
 ```
 
@@ -211,22 +245,24 @@ For more information, view the documentation with `:h i_ctrl-r`
 
 The selections starts with
 
-    na macro a eu busco linhas não vazias pois
-	eu tinha funções de uma liha
+``` markdown
+na macro a eu busco linhas não vazias pois
+eu tinha funções de uma liha
 
-	macro a --> /^[^ ]Vynpvt("by:sav! b:bd!j
+macro a --> /^[^ ]Vynpvt("by:sav! b:bd!j
 
-	Já na macro b eu tinha que casar funções completas
+Já na macro b eu tinha que casar funções completas
 
-        busca mais complexa --> /^[^ ][^{]*.*\_[^ ][^}]*
+busca mais complexa --> /^[^ ][^{]*.*\_[^ ][^}]*
 
-	Descobri um jeito mais fácio no vim pra gravar a macro
-	que pega os blocos de código
+Descobri um jeito mais fácio no vim pra gravar a macro
+que pega os blocos de código
 
-	/()\s\+{
+/()\s\+{
 
-	isso corresponde ao começo da função, daí é só
-	dar um vip em modo normal
+isso corresponde ao começo da função, daí é só
+dar um vip em modo normal
+```
 
 # Remove offending key from known_hosts file with one swift move
 
@@ -1922,14 +1958,13 @@ See :help registers for the full reference.
 
 	gvim scp://manager@192.168.1.11/./bashrc
 
-# Alias para abrir arquivos recem editados
+# Alias para abrir arquivos recem editados - Mru buffers
 
 ``` vim
 " coloque no ~/.bashrc
 alias lvim='vim -c "normal '\''0"'
 alias lnvim="nvim -c':e#<1'"
 ```
-
 Opening the last nvim file:
 
 ``` viml
@@ -1945,6 +1980,17 @@ nmap ,l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
 ```
+
+Manually you can do:
+
+		:e #>1
+
+Or in normal mode "vim" pressing →  '0
+
+You can also type:
+
+		:browse oldfiles
+		:bro old
 
 # Mostrando os ultimos arquivos editados baseado em um padrão
 + https://vi.stackexchange.com/a/11829/7339
@@ -1981,6 +2027,10 @@ You can enter a higher number (3 in your example) to perform no replacement.
 If you need this often, it would make sense to define a custom Query() function
 for that. In there, you could also add a :redraw, so that you see the
 replacements that have already happened.
+
+You can also use Tim Pope's plugin Abolish
+
+		Plug 'tpope/vim-abolish'
 
 # Vim delete HTML tag, but not content
 
@@ -2473,15 +2523,18 @@ And you want to uppercase "Xhtml" "Xml" at once
 
 # Regex to find multiple word options
 
-
-		\v(sai(r(am)?|ndo|u)|saem|saí(u|ram|a)?) de fininho
+		/\v(sai(r(am)?|ndo|u)|saem|saí(u|ram|a)?) de fininho
 
 		sair, sairam, aindo, saiu, saem, saíram, saía
 
-		\v(assus|afugen|espan(tar|tou|tam|tado)(ram)?)
+		/\v(assus|afugen|espan(tar|tou|tam|tado)(ram)?)
 
-		\v(disper(sar|sou))|progre(dir|dindo)|avançar
-		\v(entre(gou|gue(s|i)?))|pass(ar|ou|e)
+		/\v(disper(sar|sou))|progre(dir|dindo)|avançar
+		/\v(entre(gou|gue(s|i)?))|pass(ar|ou|e)
+	    /\v(se )?((reduz|resume?)(m|ir|i)?)( esse problema| (à|a uma) questão)?
+		/\v(<lig(ue|ar)(á)?)(.*de volta| mais
+		/tarde|chamaram)?|cham(e|aram|ado|ou)(.*de volta)?|recall
+		/\v(pens(e|ar|ando|arei|aria|ei)|refletiram) (sobre|a respeito)|refletir
 
 # Regex para pegar aspas simples
 

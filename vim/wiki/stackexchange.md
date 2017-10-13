@@ -4,11 +4,6 @@
 File:		 StackExchange.md
 Created:	 dom 08 jan 2017 09:29:38 BRT
 Last Change: ter 10 jan 2017 14:23:48 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
 ```
 
 O Stack Exchange tem vários canais de discussão
@@ -50,3 +45,13 @@ Podem ter títulos apagados e ainda assim vão apontar pro mesmo endereço
 ### Inserting ttyrecordings at stackexchange
 
     [![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14) https://asciinema.org/docs/embedding
+
+### Text formating
+if you type `Ctrl-k` it will format as source code
+
+To insert
+
+		> text here: Places all text within the paragraph enclosed in a yellow box
+		>! text here: Places all within the paragraph enclosed in a yellow box that
+
+

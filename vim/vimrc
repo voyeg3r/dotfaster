@@ -785,6 +785,16 @@ function! ExpandPossibleShorterSnippet()
 endfunction
 inoremap <silent> <C-L> <C-R>=(ExpandPossibleShorterSnippet() == 0? '': UltiSnips#ExpandSnippet())<CR>
 
+" source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
+function! ToggleHomeEnd()
+  let pos = getpos('.')
+  execute "normal! 0"
+  if pos == getpos('.')
+    execute "normal! $"
+  endif
+endfunction
+nnoremap 0 :call ToggleHomeEnd()<CR>
+
 " open quickfix window with word under cursor as search pattern
 nnoremap <F4> :execute "vimgrep /" . expand("<cword>") . "/gji **" <Bar> cw<CR>
 
