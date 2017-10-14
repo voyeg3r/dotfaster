@@ -2,7 +2,7 @@
 ``` markdown
 File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: dom 17 set 2017 16:40:56 -03
+Last Change: sex 13 out 2017 17:27:13 -03
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -374,6 +374,10 @@ No ubuntu o nome da máquina tem que estar na linha 1 tambem
 # Apagando tags html
 
     sed 's/<[^>]*>//g' index.html
+
+In this situation I needed to remove all but '<u>' tags
+
+	sed -r 's/<(\/)?(strong|em|br|((p|span|a)[^>]*)))(\/)?>//g'
 
 # inserindo links html
 fonte: http://aurelio.net/sed/sed-dicas.txt

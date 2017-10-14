@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 13 out 2017 09:25:31 -03
+Last Change: sex 13 out 2017 17:14:44 -03
 ```
 
 # Vim antipatterns
@@ -52,7 +52,8 @@ alert('foo');
 
 Find tags "strong, em, span, br, and p"
 
-		/\v\<(\/)?(strong|em|span|br|p)(\/)?\>
+	    \v\<(\/)?(strong|em|br|(span[^>]*))(\/)?\>
+		/\v\<(\/)?(strong|em|br|a href[^>]*|((span|p)[^>]*))(\/)?\>|(\([^)]*\))
 
 find "span style and pstyle "
 
