@@ -2,7 +2,7 @@
 ``` markdown
 File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: ter 17 out 2017 09:50:49 -02
+Last Change: ter 17 out 2017 10:28:48 -02
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -523,6 +523,21 @@ Append an empty line after a line with exactly 42 characters
 # Insert a blank line after each second line
 
     seq 10 | sed '0~2G'
+
+# Squeeze consecutive blank lines
+
+		cat <<-EOF | sed '/./,/^$/!d'
+		one line
+
+
+
+
+		Another line
+
+
+
+		One more
+		EOF
 
 # Modificando a profundidade de cores do xorg.conf
 

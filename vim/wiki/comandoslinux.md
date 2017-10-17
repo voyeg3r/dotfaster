@@ -104,6 +104,7 @@
 [hack](hack.md)
 [halt](halt.md)
 [head](head.md)
+[hdparm](hdparm.md)
 [history](history.md)
 [hostname](hostname.md)
 [html2latex](html2latex.md)
@@ -279,3 +280,4 @@
 [youtubedl](youtubedl.md)
 [zsync](zsync.md)
 [zshell](zshell.md)
+

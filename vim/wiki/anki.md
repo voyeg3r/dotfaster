@@ -1,7 +1,7 @@
 ``` markdown
 File:		 Anki.md
 Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: qua 11 out 2017 17:09:31 -03
+Last Change: ter 17 out 2017 13:14:38 -02
 ```
 
 ### O que é o Anki?
@@ -14,6 +14,12 @@ E um programa de aprendizado baseado na repetição espaçada
     tag:TvSeries* or tag:movies
 
 	tag:movies or tag:TVSeries or tag:RealEnglish
+
+# Defining css style:
+
+Obs: outside .card definition, ok?
+
+		b, strong { color: purple;  }
 
 # Counting how mani cards do I have selected
 

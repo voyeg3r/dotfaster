@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: dom 17 set 2017 19:46:00 -03
+Last Change: ter 17 out 2017 10:34:46 -02
 ```
 
 # Introdução
@@ -153,10 +153,16 @@ The solution is:
     awk 'BEGIN {RS="\n\n"; FS="\n"} !/Câmara dos Deputados/ && /TEL/' unix.vcf
 
 # deleting blank lines - apagando linhas em branco
++ https://stackoverflow.com/a/38219157/2571881
 
     awk 'NF' filename
 
     awk 'NF > 0' filename
+
+# Apagando linhas em branco consecutivas
++ https://unix.stackexchange.com/a/261535/3157
+
+		awk -i inplace 1 RS= ORS='\n\n' file
 
 # delete hidden files and folders
 
