@@ -2,7 +2,7 @@
 ``` markdown
 File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: sex 13 out 2017 17:27:13 -03
+Last Change: ter 17 out 2017 09:50:49 -02
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -88,11 +88,17 @@ Adding a new line after each second line
 
     sed '=;G' annoying.txt
 
-# remover espaços não separáveis
+# remover espaços não separáveis - remove non-separable space char
 
 source: http://askubuntu.com/questions/357248/how-to-remove-special-m-bm-character-with-sed
 
     sed -i 's/\xc2\xa0/ /g' file
+
+The M-BM- characters are an ASCII representation of byte sequence 0xc2 0xa0,
+which is the UTF8 encoding of unicode character A0 - a non-breaking space
+character. This character can be inserted in both LibreOffice and Microsoft
+Word documents using the key sequence Ctrl+Shift+SPACE.
+
 
 # Imprimir somente as linhas impares
 

@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 13 out 2017 17:14:44 -03
+Last Change: ter 17 out 2017 08:56:06 -02
 ```
 
 # Vim antipatterns
@@ -3252,6 +3252,15 @@ You can use a global negator like this:
 for those which don't match the following regular expression (v) /(regular
 expression of lines ending in colon)/ go to the previous line (-1) and join
 that line to the next one (j)).
+
+# Combining global command with substitution
++ https://stackoverflow.com/a/46783084/2571881
+
+You can mix :help global and :help substitute:
+
+		:g/text/s/.*\n//c
+
+This will ask for confirmation before deleting every line containing text:
 
 # Destacando as linhas duplicadas
 
