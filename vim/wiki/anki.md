@@ -1,7 +1,7 @@
 ``` markdown
 File:		 Anki.md
 Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: ter 17 out 2017 13:14:38 -02
+Last Change: qua 18 out 2017 11:31:24 -02
 ```
 
 ### O que é o Anki?
@@ -147,4 +147,167 @@ Um cartão do anki com audio ficaria então assim:
 This is the English phrase[sound:nome-do-audio.mp3]
 Esta é uma frase em Inglês
 
+# Estilo css para o anki
 
+### Backup old style
+
+ ``` css
+ .card {font-familiy: arial; font-size: 40px; text-align: center; color:black; background-color: white;  }
+ ```
+
+### New style
+``` css
+
+@font-face {
+  font-family: junicode;
+  src: url('_junicode.ttf');
+}
+
+// this code #FF1493 is pink color
+b, strong { color: #FF1493;  }
+
+ruby rt {
+ visibility: hidden;
+}
+
+ruby:hover rt {
+ visibility: visible;
+}
+
+.card {
+ font-family: Noto Sans CJK JP Regular;
+ font-size: 50px;
+ text-align: center;
+ color: black;
+ background: url("bg.jpg");
+}
+
+.android .card {
+ font-family: Noto Sans CJK JP Regular;
+ font-size: 30px;
+ text-align: center;
+ color: black;
+ background: url("bg.jpg");
+}
+
+.frontbg {
+ background-color: #18adab;
+ border-radius: 7px;
+ color: #fff;
+ position: relative;
+ left: 0;
+}
+
+.engdefbg {
+ font-family: Raleway;
+ font-style: italic;
+ padding: 15px;
+ margin-left: -5px;
+ margin-top: -15px;
+ color: #18adab;
+ font-size: 15px;
+}
+
+.android .engdefbg {
+ font-family: Raleway;
+ font-style: italic;
+ padding: 15px;
+ margin-left: -15px;
+ margin-top: -20px;
+ color: #18adab;
+ font-size: 10px;
+}
+
+.others {
+ position: relative;
+ top: 15px;
+ border: 1px dotted #72c8e1;
+ color: #18adab;
+ font-size: 20px;
+ width: auto;
+ padding-top: 15px;
+ padding-left: 20px;
+ padding-bottom: 15px;
+ padding-right: 20px;
+ margin-bottom: 35px;
+}
+
+.android .others {
+ position: relative;
+ top: 10px;
+ border: 1px dotted #72c8e1;
+ color: #18adab;
+ font-size: 17px;
+ width: auto;
+ padding-top: 8px;
+ padding-left: 15px;
+ padding-bottom: 8px;
+ padding-right: 15px;
+ margin-bottom: 20px;
+}
+
+.sentence {
+ font-size: 25px;
+ margin-top: -20px;
+ margin-bottom: 5px;
+}
+
+.android .sentence {
+ font-size: 17px;
+ margin-top: -15px;
+}
+
+.backbg {
+ position: relative;
+ top: -3px;
+ background-color: #fff;
+ padding: 15px;
+ padding-bottom: 15px;
+ padding-left: 30px;
+ padding-right: 30px;
+ border-radius: 0px 0px 10px 10px;
+ color: #016ea6;
+ font-size: 28px;
+ text-align: left;
+}
+
+.android .backbg {
+ position: relative;
+ top: -5px;
+ background-color: #fff;
+ padding: 15px;
+ padding-bottom: 15px;
+ padding-left: 15px;
+ padding-right: 15px;
+ border-radius: 0px 0px 10px 10px;
+ color: #016ea6;
+ font-size: 20px;
+ text-align: left;
+}
+
+.hira {
+ font-size: 25px;
+ line-height: 5px;
+ padding-bottom: 40px;
+}
+
+.android .hira {
+ font-size: 18px;
+ line-height: 5px;
+ padding-bottom: 25px;
+}
+
+hr {
+ height: 2px;
+ font-size: 30px;
+ border: 0;
+ background: #72c8e1;
+}
+
+u {
+ text-decoration: none;
+ border-bottom: 1px dotted;
+}
+
+/* This line is Added by Cloze Furigana Tools to make its various features work. CFT.260.00*/.hidden {visibility: hidden; font-size: 0;} .hidden .cloze, .cloze .hidden {visibility: visible; background-color: white;font-size: 0.8rem;} @-moz-document url-prefix() {ruby {position: relative;display: inline-block;} ruby rt {position: absolute;display: block;font-size: 0.5em;left: -50%;bottom: 115%;width: 210%;padding: 0;text-align: center;line-height:1em}} .hidden .basemaru {position:relative;} .hidden .basemaru:after {content: "◯"; visibility: visible; position:absolute; left:0;} .hidden .cloze .basemaru:after, .cloze .hidden .basemaru:after {visibility: hidden;} div{line-height: 2em;} .cloze_container .hidden {visibility: visible; background-color: white;}
+```
