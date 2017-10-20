@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: ter 17 out 2017 10:34:46 -02
+Last Change: qua 18 out 2017 14:02:04 -02
 ```
 
 # Introdução
@@ -857,6 +857,24 @@ Você tem um arquivo assim:
     ``` sh
     awk 'BEGIN {RS="\n\n"} {gsub("!!","",$NF);print $1": "$NF}' teste.txt
     ```
+
+## Separador de registros são linhas vazias
+
+		awk 'BEGIN{RS="\n\n";} !/user foo/ {print $0}'
+
+		Match user bar
+				ChrootDirectory /NAS/bar.co.uk/
+				ForceCommand internal-sftp
+				AllowTcpForwarding no
+				GatewayPorts no
+				X11Forwarding no
+
+		Match user baz
+				ChrootDirectory /NAS/baz.com/
+				ForceCommand internal-sftp
+				AllowTcpForwarding no
+				GatewayPorts no
+				X11Forwarding no
 
 ### um jeito bem mais simples
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 13 out 2017 09:03:27 -03
+" Last Change: sex 20 out 2017 17:48:40 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -16,27 +16,38 @@ if has("nvim")
     set inccommand=nosplit
 endif
 
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-set laststatus=2        " statusline specific
-set mouse=a             " enable mouse click
-set path+=**            " gf to open files under cursor
-set nocompatible        " use vim defaults
-set scrolloff=3         " keep 3 lines when scrolling
-set ai                  " set auto-indenting on for programming
-set hidden              " Switch buffers without saving them
-set showcmd             " display incomplete commands
-set nobackup            " do not keep a backup file
-set number              " show line numbers
-set ruler               " show the current row and column
-set hlsearch            " highlight searches
-set incsearch           " do incremental searching
-set showmatch           " jump to matches when entering regexp
-set ignorecase          " ignore case when searching
-set smartcase           " no ignorecase if Uppercase char present
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell        " turn off visual bell
-set tabstop=4           " Number of spaces that a <Tab> in the file counts for
+set guicursor=n:blinkon1  " cursor blinking
+set laststatus=2          " statusline specific
+set mouse=a               " enable mouse click
+set path+=**              " gf to open files under cursor
+set nocompatible          " use vim defaults
+set scrolloff=3           " keep 3 lines when scrolling
+set ai                    " set auto-indenting on for programming
+set hidden                " Switch buffers without saving them
+set showcmd               " display incomplete commands
+set nobackup              " do not keep a backup file
+set number                " show line numbers
+set ruler                 " show the current row and column
+set hlsearch              " highlight searches
+set incsearch             " do incremental searching
+set showmatch             " jump to matches when entering regexp
+set ignorecase            " ignore case when searching
+set smartcase             " no ignorecase if Uppercase char present
+set visualbell t_vb=      " turn off error beep/flash
+set novisualbell          " turn off visual bell
+set tabstop=2             " Number of spaces that a <Tab> in the file counts for
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -298,6 +309,23 @@ endif
 function! Randnum(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
 endfunction
+
+fun! CleanFlaschards()
+		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+		normal gg
+		g/\v^\d+\W?(–|-)/d
+		normal gg
+		silent! normal /<u>/{kdgg
+		normal /CLIQUE/kkdG
+		0r audios.txt
+		g/.*mp3/s/http.*\/\d\+-//g
+    g/.*mp3/%s,%E2%80%99,_,g
+		silent! normal /<\/u>$/kJ
+		%s/\v(!|.|\?)  /\1 /ge
+		DelBlank
+		normal gg
+endfun
+command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
 " source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 function! ToggleHomeEnd()

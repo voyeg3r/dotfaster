@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 17 out 2017 08:56:06 -02
+Last Change: sex 20 out 2017 18:04:38 -03
 ```
 
 # Vim antipatterns
@@ -907,6 +907,15 @@ Function to sum visual selection
 Another solution:
 
     command! -range=% -nargs=* SumColumn <line1>,<line2>!bash -c 'awk -F ${2:-|} "{print; sum+=\$(${1:-NF - 2} + 1)} END {print \"Total: \"sum}"' sumcolumn <args>
+
+# Vimscript: programatically get the size of selection
+
+			 :let selectionsize = 	let selecsize = line("'>") - line("'<") + 1
+
+By the way to get the content of command line, putting it into system
+clipboard I did:
+
+				:let @+ = @:
 
 # Vimscript: programatically get visual selection point
 

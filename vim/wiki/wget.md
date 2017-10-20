@@ -36,9 +36,7 @@ its external dependencies, so that you can disconnect your computer from the
 Internet, open that target webpage, and see it (mostly) function in its own
 non-Internet-aware environment.
 
-
     --page-requisites, -p
-
 
 This option causes Wget to download all the files that are necessary to
 properly display a given HTML page. This includes such things as inlined
@@ -85,13 +83,11 @@ do archlinux)
 
 translate(){ wget -qO- "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=$2|${3:-en}" | sed 's/.*"translatedText":"\([^"]*\)".*}/\1\n/'; }
 
-
 translate <phrase> <source-language> <output-language>
 
 # ignorando robots
 
     wget -m -nd -A.avi -erobots=off -i urls.txt
-
 
 # baixar uma página inteira
 
@@ -107,8 +103,6 @@ translate <phrase> <source-language> <output-language>
 
 wget -qO - http://example.com/path/to/blah.tar.gz | tar xzf -
 
-
-
 Algumas opções do Wget:
 
     * Fazer mirror de site:
@@ -118,15 +112,11 @@ Algumas opções do Wget:
 
      wget -r -erobots=off -A “.gif” http://www.umsitequalquer.com.etc
 
-wget –header=”User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; WindowsNT; DigExt)” http://so.url.msie/aqui
+		wget –header=”User-Agent: Mozilla/4.0 (compatible; MSIE 5.0; WindowsNT; DigExt)” http://so.url.msie/aqui
 
-wget -P Slides -r -nd -t5 -H --domains=.blogger.com,kaspere.blogpost.com http://kaspere.blogspot.com/ -A.jpg,.jpeg,.jpg.1,.jpeg.1 -erobots=off
-
-
-
+		wget -P Slides -r -nd -t5 -H --domains=.blogger.com,kaspere.blogpost.com http://kaspere.blogspot.com/ -A.jpg,.jpeg,.jpg.1,.jpeg.1 -erobots=off
 
 wget -P /tmp/pastaespecifica -r -p http://www.unicamp.br –accept=JPG,jpg,GIF,gif,png,PNG
-
 
 # baixando arquivos por extensão
 
@@ -141,6 +131,12 @@ wget -r -l1 -A *.jpg www.urldosite.com.br
 curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/Tip%20[1-7].zip -o tip_#1.zip
 curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/tips/Tip_[1-7].pdf -o tip_#1.pdf
 
+# Deling with special characters
++ https://stackoverflow.com/a/26941707/2571881
++ http://www.win.tue.nl/~aeb/linux/misc/wget.html
+
+		--restrict-file-names=nocontrol
+		--remote-encoding=utf-8
 
 # Man page traduzida
 fonte: http://www.dicas-l.com.br/dicas-l/19991119.php
@@ -241,7 +237,6 @@ Data de Publicação: 19 de Novembro de 1999
   DNS-Lookup -         procura de DNS
   Parent directories - diretórios pai
   Append -             acrescentar
-
 
   Tradução: Felipe Machado Cardoso <felipemc@faesa.br>
 

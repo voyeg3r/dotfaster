@@ -59,6 +59,9 @@ alias zdot='cd $ZDOTDIR'
 
 # pipe a download file to standard output on shell
 alias wgetn='wget -O - -o /dev/null'
+# to fix utf-8 filenames, see more here: https://stackoverflow.com/a/26941707/2571881
+alias wget='wget --restrict-file-names=nocontrol'
+#alias wget='wget --remote-encoding=UTF-8'
 alias getsinglepage='wget -E -H -k -K -nd -N -p -P pagedir'
 alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
 
