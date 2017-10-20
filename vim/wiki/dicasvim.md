@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 20 out 2017 18:04:38 -03
+Last Change: sex 20 out 2017 19:25:45 -03
 ```
 
 # Vim antipatterns
@@ -909,6 +909,7 @@ Another solution:
     command! -range=% -nargs=* SumColumn <line1>,<line2>!bash -c 'awk -F ${2:-|} "{print; sum+=\$(${1:-NF - 2} + 1)} END {print \"Total: \"sum}"' sumcolumn <args>
 
 # Vimscript: programatically get the size of selection
++ Vim - count lines in selected range →  https://stackoverflow.com/a/7263557/2571881
 
 			 :let selectionsize = 	let selecsize = line("'>") - line("'<") + 1
 

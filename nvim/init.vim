@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 20 out 2017 17:48:40 -03
+" Last Change: sex 20 out 2017 19:19:42 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -312,18 +312,24 @@ endfunction
 
 fun! CleanFlaschards()
 		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+		%s,\v\<(\/)?\zsu\ze\>,b,g
+		normal gg
+		silent normal /exemplos abaixo/dip
 		normal gg
 		g/\v^\d+\W?(–|-)/d
 		normal gg
 		silent! normal /<u>/{kdgg
-		normal /CLIQUE/kkdG
+		normal /CLIQUE/{kdG
 		0r audios.txt
 		g/.*mp3/s/http.*\/\d\+-//g
     g/.*mp3/%s,%E2%80%99,_,g
-		silent! normal /<\/u>$/kJ
+		"silent! normal /<\/u>$/kJ
 		%s/\v(!|.|\?)  /\1 /ge
 		DelBlank
 		normal gg
+		normal vipo
+		let selectionsize = line("'>") - line("'<") + 1
+		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
