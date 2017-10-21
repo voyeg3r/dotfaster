@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 21 out 2017 09:42:16 -03
+" Last Change: sáb 21 out 2017 10:44:07 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -312,11 +312,16 @@ endfunction
 
 fun! CleanFlaschards()
     let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-		let @b = 'gg0v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
+		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+		%s,\W\+$,,g
 		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
 		%s,\v\<(\/)?\zsu\ze\>,b,g
 		%s,;,:,ge
 		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+		g/^\W\+$/d
 		normal gg
 		silent normal! /\v((vamos aos |(ver|veja) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
 		normal gg
@@ -329,7 +334,8 @@ fun! CleanFlaschards()
 		normal /CLIQUE/{kdG
 		0r audios.txt
 		g/.*mp3/s/http.*\/\d\+-//g
-		g/.*mp3/%s,%E2%80%99,_,g
+		g/.*mp3/s,%E2%80%99,_,g
+    g/.*mp3/s,%E2%80%93,_,g
 		g/.*\.mp3/s,%E2%80%98,_,g
 		normal gg
 		silent normal! /^<\/b>$/kJD
