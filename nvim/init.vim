@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 21 out 2017 09:10:14 -03
+" Last Change: sáb 21 out 2017 09:42:16 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -311,6 +311,8 @@ function! Randnum(max) abort
 endfunction
 
 fun! CleanFlaschards()
+    let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+		let @b = 'gg0v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
 		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
 		%s,\v\<(\/)?\zsu\ze\>,b,g
 		%s,;,:,ge
@@ -327,7 +329,7 @@ fun! CleanFlaschards()
 		normal /CLIQUE/{kdG
 		0r audios.txt
 		g/.*mp3/s/http.*\/\d\+-//g
-    g/.*mp3/%s,%E2%80%99,_,g
+		g/.*mp3/%s,%E2%80%99,_,g
 		g/.*\.mp3/s,%E2%80%98,_,g
 		normal gg
 		silent normal! /^<\/b>$/kJD
@@ -340,18 +342,19 @@ fun! CleanFlaschards()
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
-" source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
-function! ToggleHomeEnd()
-  let pos = getpos('.')
-  execute "normal! 0"
-  if pos == getpos('.')
-    execute "normal! $"
-  endif
-endfunction
-nnoremap 0 :call ToggleHomeEnd()<CR>
+" " source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
+" function! ToggleHomeEnd()
+"   let pos = getpos('.')
+"   execute "normal! 0"
+"   if pos == getpos('.')
+"     execute "normal! $"
+"   endif
+" endfunction
+" nnoremap 0 :call ToggleHomeEnd()<CR>
 
 " This function requires you select the numbers
 " source: https://vi.stackexchange.com/a/4699/7339
+
 fun! SumVis()
     try
         let l:a_save = @a
