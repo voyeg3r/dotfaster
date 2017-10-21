@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 20 out 2017 19:19:42 -03
+" Last Change: sáb 21 out 2017 07:36:02 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -313,8 +313,9 @@ endfunction
 fun! CleanFlaschards()
 		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
 		%s,\v\<(\/)?\zsu\ze\>,b,g
+		%s,;,:,ge
 		normal gg
-		silent normal /exemplos abaixo/dip
+		silent normal /\v(exemplos abaixo|post de hoje)/dip
 		normal gg
 		g/\v^\d+\W?(–|-)/d
 		normal gg
@@ -323,7 +324,7 @@ fun! CleanFlaschards()
 		0r audios.txt
 		g/.*mp3/s/http.*\/\d\+-//g
     g/.*mp3/%s,%E2%80%99,_,g
-		"silent! normal /<\/u>$/kJ
+		silent! normal /<\/b>$/kJ
 		%s/\v(!|.|\?)  /\1 /ge
 		DelBlank
 		normal gg
