@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: qua 18 out 2017 14:02:04 -02
+Last Change: dom 22 out 2017 07:24:24 -03
 ```
 
 # Introdução
@@ -155,9 +155,11 @@ The solution is:
 # deleting blank lines - apagando linhas em branco
 + https://stackoverflow.com/a/38219157/2571881
 
-    awk 'NF' filename
+``` bash
+awk 'NF' filename
 
-    awk 'NF > 0' filename
+awk 'NF > 0' filename
+```
 
 # Apagando linhas em branco consecutivas
 + https://unix.stackexchange.com/a/261535/3157
