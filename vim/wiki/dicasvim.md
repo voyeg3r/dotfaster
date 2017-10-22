@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 22 out 2017 07:45:08 -03
+Last Change: dom 22 out 2017 08:16:59 -03
 ```
 
 # Vim antipatterns
@@ -52,34 +52,71 @@ alert('foo');
 
 Find tags "strong, em, span, br, and p"
 
-	    \v\<(\/)?(strong|em|br|(span[^>]*))(\/)?\>
-		/\v\<(\/)?(strong|em|br|a href[^>]*|((span|p)[^>]*))(\/)?\>|(\([^)]*\))
+``` viml
+\v\<(\/)?(strong|em|br|(span[^>]*))(\/)?\>
+/\v\<(\/)?(strong|em|br|a href[^>]*|((span|p)[^>]*))(\/)?\>|(\([^)]*\))
+```
 
 find "span style and pstyle "
 
-		\v\<(p style|span)[^>]*\>
+``` viml
+\v\<(p style|span)[^>]*\>
+```
 
 # Getting some Mairo's vergara flashcards
 
 After getting the flashcards selection and putting it into a new vim file.
 All you have to do is to create a macro to make the flashcards.
 
-		Before dealing with the mp3 files use:
+I have a python script to get two files; the first one has the mp3 files links
+and the second one gives me some html content over wich I run this vimscript
+function:
 
-		detox * ....................................... removes symbols
 
-		g/\v^(Audio Player|00|Use Up)/d  ............. remove some lines
-		0r !ls *.mp3  | sort -n -k1 .................. read all mp3 file names
-		'<,'>s/\v^(\d+)-//g  ...................... remove dash after file number
-		g/^$/d  ...................................... delete empty lines
+``` markdown
+fun! CleanFlaschards()
+    let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+		%s,\v\<(\/)?\zsu\ze\>,b,g
+		%s,\v\s+$,,g
+		%s,;,:,ge
+		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+		g/^\W\+$/d
+		normal gg
+		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+		normal gg
+		g/\v^\d+\W?(–|-)/d
+		normal gg
+		silent normal! /<u>\|<b>/{kdgg
+		normal gg
+		silent normal! /:$/dip
+		normal /CLIQUE/{kdG
+		0r audios.txt
+		g/.*mp3/s/http.*\/\d\+-//g
+		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+		normal gg
+		silent normal! /^<\/b>$/kJD
+		%s/\v(!|.|\?)  /\1 /ge
+		DelBlank
+		normal gg
+		normal vipo
+		let selectionsize = line("'>") - line("'<") + 1
+		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+endfun
+command! -nargs=0 CFlashcards :silent call CleanFlaschards()
+```
 
-		perl-rename -n 's/^\d+-//g' *.mp3
-		cp *.mp3 ~/.local/share/Anki2/User\ 1/collection.media/
+I started the function like in the book "How to think like a computer
+scientist" step by step, improving the result gradually, cleaning the code to
+obtain the final result.
 
-		Usando o lynx com user-agent modificado
-
-		Juntando as linhas que contém os audios
-	   	g/http:/normal gJ
+After running this function I only have to run the macro 'a' 9 times and macro
+'b' one time.
 
 # Sorting lines numerically
 
@@ -95,6 +132,7 @@ The command above will put `ls` output at the first line
 
 		@.  ................ repeats what has been typed
 		:@+  ............... executes the content of clipboard
+		:let @+ = @/ ....... puts last searh into clipboard
 
 # Vim tips for everyone
 
@@ -120,8 +158,10 @@ Just type
 # jumping to the first non-blank character
 + http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 
-    _ ................ jump to the first non-blank character
-    ^ ................ jump to the First non-blank character
+``` viml
+_ ................ jump to the first non-blank character
+^ ................ jump to the First non-blank character
+```
 
 # Using vim with no plugins
 
@@ -203,7 +243,8 @@ Step by step:
 For those who do not know what "primary selection is", putting it simple.
 
 	"The text selected and is just captured automatically to its
-	special clipboard space (Linux only)"
+	special clipboard space (Linux only)" - On vim the "*" registers stores the
+	primary selection
 
 On vim just press: `Shift-insert` "primary selection"
 

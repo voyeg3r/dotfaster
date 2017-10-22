@@ -2,14 +2,14 @@
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: qui 07 set 2017 08:31:40 -03
+Last Change: dom 22 out 2017 09:09:00 -03
 ```
 
-### Getting gnome-shell version
+# Getting gnome-shell version
 
     gnome-shell --version
 
-### Taking a screenshot
+# Taking a screenshot
 
     Take a screenshot                                      | PrintScr
     Take a screenshot of a window                          | Alt+Print
@@ -18,11 +18,20 @@ Last Change: qui 07 set 2017 08:31:40 -03
     Take a screenshot of a window and paste in a clipboard | Ctrl+Alt+Print
     Take a screenshot of a region and paste in a clipboard | Ctrl+Shift+Print
 
-### Am I using wayland or X11?
+# Am I using wayland or X11?
 
     echo $XDG_SESSION_TYPE
 
-### primary selection and wayland
+# Log off shortcut
+You can define a new shortcut with
+
+				gnome-session-quit --logout --no-prompt
+
+# gnome-shell-extension-updater
+
+				https://github.com/eonpatapon/gnome-shell-extension-updater
+
+# primary selection and wayland
 
 ```sh
 [[ ! -d ~/.config/gtk-3.0 ]] || mkdir ~/.config/gtk-3.0/
@@ -33,7 +42,7 @@ cat <<-EOF > ~/.config/gtk-3.0/settings.ini
 EOF
 ```
 
-### Fixing dir names
+# Fixing dir names
 + https://askubuntu.com/a/737236/3798
 
     xdg-user-dirs-update --set DESKTOP "$HOME/Desktop"
@@ -43,7 +52,7 @@ EOF
     xdg-user-dirs-update --set PICTURES "$HOME/img"
     xdg-user-dirs-update --set VIDEOS "$HOME/videos"
 
-### set system sound above 100%
+# set system sound above 100%
 + https://superuser.com/a/1017972/45032
 install pulseaudio
 
@@ -51,14 +60,14 @@ on debian like for example
 
     pactl -- set-sink-volume 0 150%
 
-### shortcuts
+# shortcuts
 
     minimize .................. super + h
     show ...................... super + s
     super (windows) + a ....... show applications
     Super+Shift+Page Up ....... move current windows to ...
 
-### Cleaning up Linux journal
+# Cleaning up Linux journal
 + https://cubethethird.wordpress.com/2016/05/10/cleaning-up-linux-journal/
 
 
@@ -75,12 +84,12 @@ limit to the journals, by editing the /etc/systemd/journald.conf:
 
     SystemMaxUse=100M
 
-### How do I know if I am using wayland or x11
+# How do I know if I am using wayland or x11
 
 The `XDG_SESSION_TYPE` environmental variable takes precedence. One of "
 unspecified ", " tty ", " x11 ", " wayland " or " mir "
 
-### disable lockdown screen
+# disable lockdown screen
 + https://askubuntu.com/q/675256/3798
 
 This option only prevents alowing user to lock screen manually
@@ -91,18 +100,18 @@ avoid lock on suspending desktop
 
     gsettings set org.gnome.desktop.screensaver ubuntu-lock-on-suspend false
 
-### delay until screen goes black
+# delay until screen goes black
 
     gsettings get org.gnome.desktop.session idle-delay
     gsettings set org.gnome.desktop.session idle-delay 600
 
-### Startap applications
+# Startap applications
 
 rode o comando (Alt+F2) dialog run:
 
     gnome-session-properties
 
-### How can I delay a specific program on startup?
+# How can I delay a specific program on startup?
 + https://askubuntu.com/a/195036/3798
 
     gedit ~/.config/autostart/application.desktop
@@ -126,22 +135,22 @@ where foo is the time in seconds you want to delay the application launch by, e.
     StartupNotify=true
     X-GNOME-Autostart-Delay=60
 
-### ocs-url
+# ocs-url
 + https://www.linux-apps.com/p/1175480/
 
 It is a protocol similar to apt-url that allows us to
 install new gnome-shell themes easily
 
-### theme list
+# theme list
 
 + united theme: https://www.gnome-look.org/p/1174889/
 + zuki: https://github.com/lassekongo83/zuki-themes
 
-### Backing up gnome-shell extensions
+# Backing up gnome-shell extensions
 
     rsync -av --update --delete ~/.local/share/gnome-shell/extensions/ ~/docs/conf/gnome-shell/extensions
 
-### Enabling extensions through command line
+# Enabling extensions through command line
 
 Enable user-theme
 
@@ -155,7 +164,7 @@ Oh, and you can get the names of all your locally installed extensions by doing
 
 org.gnome.shell enabled-extensions ['workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'gravatar@jr.rlabs.io', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'activities-config@nls1729', 'CoverflowAltTab@palatis.blogspot.com', 'applications-overview-tooltip@RaphaelRochet', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'remove-contacts-search@busaster.gmail.com', 'impatience@gfxmonk.net', 'quicklists@damianbasic.gmail.com', 'backslide@codeisland.org', 'mediaplayer@patapon.info']
 
-### save alsamixer settings
+# save alsamixer settings
 source: http://askubuntu.com/a/465641/3798
 
     alsactl --file ~/.config/asound.state store
@@ -205,7 +214,7 @@ source: http://askubuntu.com/a/465641/3798
     "alsactl store" to save alsa settings. Then close both terminals and
     restart your computer. This will do the job.
 
-### how to set languages shortcuts from config files or command line
+# how to set languages shortcuts from config files or command line
 http://askubuntu.com/questions/604462/
 
     gsettings set org.gnome.desktop.interface clock-show-date true
@@ -216,11 +225,11 @@ http://askubuntu.com/questions/604462/
 
    gsettings set org.gnome.desktop.datetime automatic-timezone true
 
-### cleaning cached thumbnails
+# cleaning cached thumbnails
 
     find .cache/thumbnails -type f | xargs rm -f
 
-### Increasing the sound through command line
+# Increasing the sound through command line
 
     pactl set-sink-volume 0 +10%
 
@@ -228,24 +237,24 @@ http://askubuntu.com/questions/604462/
 
     pactl set-sink-volume 0 -- -10%
 
-### touche to click on touchpad
+# touche to click on touchpad
 
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
-### Set keyboard language
+# Set keyboard language
 
     gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'br'), ('xkb', 'us')]"
 
-### Disable update checking for gnome extensions
+# Disable update checking for gnome extensions
 
     gsettings set org.gnome.shell disable-extension-version-validation "true"
 
-### change wallpaper every so many minutes
+# change wallpaper every so many minutes
 + https://extensions.gnome.org/extension/543/backslide/
 
 http://thornton2.com/How_To_Shuffle_Your_Desktop_Background_Every_So_Many_Minutes_in_GNOME_and_MATE
 
-### Amazing site to get wallpapers
+# Amazing site to get wallpapers
 + http://sf.co.ua/
 
 #!/bin/sh
@@ -295,13 +304,13 @@ ou rode o comando (Alt+F2) dialog run:
     Super+Alt+'+' : Zoom in (increases zoom factor by 1.0)
     Super+Alt+'-' : Zoom out (decreases zoom factor by 1.0, until it is 1.0)
 
-### Set wallpaper mode
+# Set wallpaper mode
 + https://bbs.archlinux.org/viewtopic.php?id=152571
 Possible values are "none", "wallpaper", "centered", "scaled", "stretched", "zoom", "spanned".
 
     gsettings set org.gnome.desktop.background picture-options 'zoom'
 
-### Show current wallpaper path
+# Show current wallpaper path
 
     gsettings get org.gnome.desktop.background picture-uri
 
@@ -315,15 +324,15 @@ Using notify-send to warn the user when a job is finished
 
     notify-send "Task Completed"
 
-### Screenshot directory
+# Screenshot directory
 
     gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/$USER/img/Screenshots"
 
-### setting nautilus auto mount
+# setting nautilus auto mount
 
     gsettings set org.gnome.desktop.media-handling automount true
 
-### fixing audacious open folders error
+# fixing audacious open folders error
 
 I don't know how it happened but
 when, eg, I plug in a USB drive or try to open a folder in a firefox
@@ -343,15 +352,15 @@ to get rid of the association with Audacious.
     [Default Applications]
     inode/directory=nautilus.desktop;
 
-### setting gnome screenshot dir
+# setting gnome screenshot dir
 
   gsettings set org.gnome.gnome-screenshot auto-save-directory "file:///home/$USER/pictures/"
 
-### setando o muse para ser destacado com o ctrl ou não
+# setando o muse para ser destacado com o ctrl ou não
 
   gsettings set org.gnome.settings-daemon.peripherals.mouse locate-pointer false
 
-### habilitando o click to tap no mouse
+# habilitando o click to tap no mouse
 
 gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 
@@ -364,11 +373,11 @@ habilitar a rolagem pela borda to touchpad
 
     gsettings set org.gnome.desktop.peripherals.touchpad scroll-method "edge-scrolling"
 
-### accessing ssh throug nautilus
+# accessing ssh throug nautilus
 
     sftp://user@address/folder/
 
-### Alterando o tempo de gravação no gnome shell
+# Alterando o tempo de gravação no gnome shell
 
     fonte:
 http://www.talesam.org/blog/dica-ampliando-o-tempo-de-gravacao-do-desktop-no-gnome-shell/
@@ -376,34 +385,34 @@ http://www.talesam.org/blog/dica-ampliando-o-tempo-de-gravacao-do-desktop-no-gno
     gsettings set org.gnome.settings-daemon.plugins.media-keys
 max-screencast-length 1800
 
-### Extensão que permite gravar com audio
+# Extensão que permite gravar com audio
 + https://extensions.gnome.org/extension/690/easyscreencast/
 
-### Extensão pra liberar espaço na tela
+# Extensão pra liberar espaço na tela
 + https://extensions.gnome.org/extension/723/pixel-saver/
 
-### Extensão que reproduz sons como chuva, água etc
+# Extensão que reproduz sons como chuva, água etc
 + https://extensions.gnome.org/extension/1224/focusli/
 
 mprove focus and increase your productive by listening to different sounds
 
-### Extension to set blur effect
+# Extension to set blur effect
 + https://github.com/yozoon/gnome-shell-extension-blyr
 
     git clone git@github.com:yozoon/gnome-shell-extension-blyr.git
     cd gnome-shell-extension-blyr/
     cp -r blyr@yozoon.dev.gmail.com ~/.local/share/gnome-shell/extensions
 
-### Media Player indicator extension
+# Media Player indicator extension
 + https://extensions.gnome.org/extension/55/media-player-indicator/
 
 This extension is ideal to combine with Anoise program
 + http://anoise.tuxfamily.org/
 
-### how install gnome shell in any distro with jhbuild
+# how install gnome shell in any distro with jhbuild
 http://worldofgnome.org/how-to-easily-install-the-very-latest-gnome-in-any-distro-with-jhbuild/
 
-### performance tweaks  * https://wiki.archlinux.org/index.php/Sysctl *
+# performance tweaks  * https://wiki.archlinux.org/index.php/Sysctl *
 http://penguininside.blogspot.com.br/2009/08/top-10-gnome-performance-tweaks.html
 https://alexcabal.com/disabling-gnomes-recently-used-file-list-the-better-way/
 
@@ -427,7 +436,7 @@ Disabling tracer system
 
     tracker-control
 
-### other stuff
+# other stuff
 
 Put this in your /etc/environment
 
@@ -444,7 +453,7 @@ If you had customized /etc/sysctl.conf, you need to rename it as
 need to rename is to /etc/sysctl.d/foo.conf
 
 
-### solving the problem of hidden files by default
+# solving the problem of hidden files by default
 
  * source: http://ubuntuforums.org/archive/index.php/t-2133298.html
 
@@ -456,14 +465,14 @@ need to rename is to /etc/sysctl.d/foo.conf
 
 	Have a nice day!
 
-### how make a screencast on gnome-shell
+# how make a screencast on gnome-shell
 
   Ctrl+Shift+Alt+r
 
 # to reset default value to video record resource
 gsettings reset org.gnome.shell.recorder pipeline
 
-### text expander for linux
+# text expander for linux
 
 https://bbs.archlinux.org/viewtopic.php?id=71938
 https://github.com/Dieterbe/snip/
@@ -472,49 +481,49 @@ https://github.com/Dieterbe/snip/tree/master
 # best addons to gnome-shell
 + https://linuxious.com/2016/01/10/my-recommended-gnome-extensions/
 
-### Dinamic Panel Transparency addon
+# Dinamic Panel Transparency addon
 + https://extensions.gnome.org/extension/1011/dynamic-panel-transparency/
 
-### gmail notifications extension
+# gmail notifications extension
 + https://extensions.gnome.org/extension/1230/gmail-message-tray/
 
-### Replacement of Alt-Tab, iterates through windows in a cover-flow manner.
+# Replacement of Alt-Tab, iterates through windows in a cover-flow manner.
 + https://extensions.gnome.org/extension/97/coverflow-alt-tab/
 
-### Extensão para trocar papel de parede automaticamente
+# Extensão para trocar papel de parede automaticamente
 + https://extensions.gnome.org/extension/543/backslide/
 
-### Readme sobre a extensão acima
+# Readme sobre a extensão acima
 + https://bitbucket.org/LukasKnuth/backslide
 
-### Set your gravatar icon
+# Set your gravatar icon
 + https://extensions.gnome.org/extension/1015/gravatar/
 
-### Extensão para rolar workspaces automaticamente (scroll)
+# Extensão para rolar workspaces automaticamente (scroll)
 + https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/
 
-### Extensão para adicionar transparência a barra do topo
+# Extensão para adicionar transparência a barra do topo
 + https://extensions.gnome.org/extension/857/transparent-top-bar/
 + https://extensions.gnome.org/extension/885/dynamic-top-bar/
 
-### Extensão que adiciona um menu tipo windows 10
+# Extensão que adiciona um menu tipo windows 10
 + https://extensions.gnome.org/extension/1228/arc-menu/
 
-### Extensão para mostrar um tooltip sobre a aplicação
+# Extensão para mostrar um tooltip sobre a aplicação
 + https://extensions.gnome.org/extension/1071/applications-overview-tooltip/
 
-### como instalar o gnome-shell no ubuntu 11.04
+# como instalar o gnome-shell no ubuntu 11.04
 
     sudo add-apt-repository ppa:gnome3-team/gnome3
     sudo apt-get update
     sudo apt-get dist-upgrade
     sudo apt-get install gnome-shell
 
-### Como abrir o menu Ativities?
+# Como abrir o menu Ativities?
 
   Basta pressionar a tecla windows
 
-### best gnome shell addons
+# best gnome shell addons
 https://extensions.gnome.org/extension/549/web-search-dialog/
 https://extensions.gnome.org/extension/277/impatience/
 

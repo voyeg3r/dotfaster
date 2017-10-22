@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 21 out 2017 14:53:57 -03
+" Last Change: dom 22 out 2017 08:43:02 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -28,7 +28,12 @@ endif
 
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
-set guicursor=n:blinkon1  " cursor blinking
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+set guicursor+=n:blinkon0 " not blinking cursor in normal mode
+"set guicursor+=i:blinkon1 " cursor blinkin in insert mode
 set laststatus=2          " statusline specific
 set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
@@ -311,6 +316,7 @@ function! Randnum(max) abort
 endfunction
 
 fun! CleanFlaschards()
+    %w! output.csv-backup
     let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
 		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
     let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
@@ -436,6 +442,10 @@ augroup END
 augroup markdown
     autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
 augroup END
+
+" set cursor line in normal mode
+autocmd InsertEnter * set nocul
+autocmd InsertLeave * set cul
 
 "" Git
 noremap <Leader>ga :Gwrite<CR>
