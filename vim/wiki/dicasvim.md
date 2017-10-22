@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: sex 20 out 2017 19:25:45 -03
+Last Change: dom 22 out 2017 07:45:08 -03
 ```
 
 # Vim antipatterns
@@ -29,7 +29,7 @@ making vimwiki folds working properly
 + https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting
 
 Disqus supports automatic syntax highlighting in a number of languages. To use
-this feature, place your code inside <pre><code> tags. For example:
+this feature, place your code inside `<pre><code>` tags. For example:
 
 ``` markdown
 <pre><code>

@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: dom 22 out 2017 07:24:24 -03
+Last Change: dom 22 out 2017 07:26:01 -03
 ```
 
 # Introdução
@@ -204,6 +204,11 @@ cat ip.txt
 Output
 
 Betty Metty
+
+If you have a variable number of fields you can address the last field this way:
+
+				awk '$NF=="A" {print $1, $2}' test.txt
+				OBS: $NF always gets the last field
 
 Edit, filter engineering :
 
