@@ -1,7 +1,7 @@
 # [Wiki](wiki.md) do Sérgio para fins diversos
 
     Criado: Dom 17/Out/2010 hs 14:23
-    Last Change: dom 22 out 2017 12:27:26 -03
+    Last Change: dom 22 out 2017 15:08:02 -03
     autor: Sérgio Luiz Araújo Silva
     site: http://vivaotux.blogspot.com
 
@@ -14,7 +14,7 @@
 * [Certidoesnegativasedocumentos](certidoesnegativasedocumentos.md)
 * [Codecsmaverick](codecsmaverick.md)
 * [Comandoslinux](comandoslinux.md)
-* [Carpentry](carpentry.md)
+* [Carpentry](carpentry.md) woodorker
 * [Concurso](concurso.md)
 * [Contatos](contatos.md)
 * [Crunchbang](crunchbang.md)

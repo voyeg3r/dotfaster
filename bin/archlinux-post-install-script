@@ -40,6 +40,9 @@
 # fast and powerful spreesheet
 sudo pacman -S gnumeric
 
+# this package provides pdftotext
+sudo pacman -S poppler
+
 # remove mp3 tags and show them
 # remove tags: eyeD3 --remove-all *.mp3
 # show information: eyeD3 file.mp3

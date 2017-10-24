@@ -2,15 +2,32 @@
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: dom 22 out 2017 09:09:00 -03
+Last Change: ter 24 out 2017 06:18:23 -03
 ```
 
 # Getting gnome-shell version
 
     gnome-shell --version
 
-# Taking a screenshot
 
+# shortcuts
++ https://wiki.gnome.org/Gnome3CheatSheet
+
+    minimize .................. super + h
+    show ...................... super + s
+    super (windows) + a ....... show applications
+    Super+Shift+Page Up ....... move current windows to ...
+
+		Maximize................... Super + Up
+		Unmaximize ................ Super + Down
+	  Fit half the screen ....... Super + Left/Right
+
+		Show messages ............. Super + M
+		JavaScript console ........ type 'lg' in the Alt+F2 prompt (Esc) to exit
+		Screen Recorder ........... Shift+Ctrl+Alt+r
+
+		Taking a screenshot
+		---------------------------------------------------------------------------
     Take a screenshot                                      | PrintScr
     Take a screenshot of a window                          | Alt+Print
     Take a screenshot of a region                          | Shift+Print
@@ -60,16 +77,9 @@ on debian like for example
 
     pactl -- set-sink-volume 0 150%
 
-# shortcuts
-
-    minimize .................. super + h
-    show ...................... super + s
-    super (windows) + a ....... show applications
-    Super+Shift+Page Up ....... move current windows to ...
 
 # Cleaning up Linux journal
 + https://cubethethird.wordpress.com/2016/05/10/cleaning-up-linux-journal/
-
 
 While reading up on a few random things, I stumbled across info on the Arch
 Wiki about how the system journal archives can get quite large, and may cause
@@ -123,7 +133,6 @@ Append the following line to the file:
 where foo is the time in seconds you want to delay the application launch by, e.g.:
 
     X-GNOME-Autostart-Delay=60
-
 
     [Desktop Entry]
     Encoding=UTF-8
@@ -279,7 +288,6 @@ chmod a+x ~/bin/login-script.sh
     Type=Application
     X-GNOME-Autostart-enabled=true
 
-
     [Desktop Entry]
     Name=Conky
     GenericName=background monitor
@@ -366,7 +374,6 @@ gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 
 gsettings set org.gnome.desktop.peripherals-touchpad disable-while-typing true
 
-
 gconftool-2 --toggle /desktop/gnome/peripherals/touchpad/touchpad-enabled
 
 habilitar a rolagem pela borda to touchpad
@@ -416,7 +423,6 @@ http://worldofgnome.org/how-to-easily-install-the-very-latest-gnome-in-any-distr
 http://penguininside.blogspot.com.br/2009/08/top-10-gnome-performance-tweaks.html
 https://alexcabal.com/disabling-gnomes-recently-used-file-list-the-better-way/
 
-
 -------------------------------
  disable most recent files view --> recently-used-xbel
 -------------------------------
@@ -451,7 +457,6 @@ https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf
 If you had customized /etc/sysctl.conf, you need to rename it as
 /etc/sysctl.d/99-sysctl.conf. If you had e.g. /etc/sysctl.d/foo, you
 need to rename is to /etc/sysctl.d/foo.conf
-
 
 # solving the problem of hidden files by default
 

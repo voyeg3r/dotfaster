@@ -180,6 +180,7 @@
 [[pactl](pactl.md)]
 [passwd](passwd.md)
 [paste](paste.md)
+[pdftotext](pdftotext.md)
 [perlrename](perlrename.md)
 [pidof](pidof.md)
 [ping](ping.md)
