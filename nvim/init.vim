@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 24 out 2017 09:45:08 -03
+" Last Change: ter 24 out 2017 13:30:01 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -338,8 +338,10 @@ fun! CleanFlaschards()
 		normal gg
 		silent normal! /:$/dipgg
 		normal /CLIQUE/{kdG
-		0r audios.txt
-		g/.*mp3/s/http.*\/\d\+-//g
+		"0r audios.txt
+		0r !ls *.mp3 | sort -n -k1
+		g/\.mp3/s/^\d\+-//g
+		"g/.*mp3/s/http.*\/\d\+-//g
 		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
 		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
 		%s,\(\.\)\(<\/b>\)$,\2\1,g

@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: dom 22 out 2017 08:16:59 -03
+Last Change: ter 24 out 2017 09:56:53 -03
 ```
 
 # Vim antipatterns
@@ -73,42 +73,42 @@ and the second one gives me some html content over wich I run this vimscript
 function:
 
 
-``` markdown
-fun! CleanFlaschards()
-    let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
-    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
-		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-		%s,\v\<(\/)?\zsu\ze\>,b,g
-		%s,\v\s+$,,g
-		%s,;,:,ge
-		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
-		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-		g/^\W\+$/d
-		normal gg
-		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
-		normal gg
-		g/\v^\d+\W?(–|-)/d
-		normal gg
-		silent normal! /<u>\|<b>/{kdgg
-		normal gg
-		silent normal! /:$/dip
-		normal /CLIQUE/{kdG
-		0r audios.txt
-		g/.*mp3/s/http.*\/\d\+-//g
-		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-		normal gg
-		silent normal! /^<\/b>$/kJD
-		%s/\v(!|.|\?)  /\1 /ge
-		DelBlank
-		normal gg
-		normal vipo
-		let selectionsize = line("'>") - line("'<") + 1
-		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
-endfun
-command! -nargs=0 CFlashcards :silent call CleanFlaschards()
+``` viml
+				fun! CleanFlaschards()
+						let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+						"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+						let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+						%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+						%s,\v\<(\/)?\zsu\ze\>,b,g
+						%s,\v\s+$,,g
+						%s,;,:,ge
+						%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+						%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+						%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+						g/^\W\+$/d
+						normal gg
+						silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+						normal gg
+						g/\v^\d+\W?(–|-)/d
+						normal gg
+						silent normal! /<u>\|<b>/{kdgg
+						normal gg
+						silent normal! /:$/dip
+						normal /CLIQUE/{kdG
+						0r audios.txt
+						g/.*mp3/s/http.*\/\d\+-//g
+						g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+						g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+						normal gg
+						silent normal! /^<\/b>$/kJD
+						%s/\v(!|.|\?)  /\1 /ge
+						DelBlank
+						normal gg
+						normal vipo
+						let selectionsize = line("'>") - line("'<") + 1
+						echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+				endfun
+				command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 ```
 
 I started the function like in the book "How to think like a computer
@@ -177,7 +177,7 @@ _ ................ jump to the first non-blank character
     :b 2 ........ go to buffer 2
     :b substring  opens any file with substring
 
-## Nice paragraph formating
+# Nice paragraph formating
 + http://vimcasts.org/episodes/formatting-text-with-par/
 + http://www.nicemice.net/par/
 
