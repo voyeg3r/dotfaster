@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 22 out 2017 16:52:14 -03
+" Last Change: ter 24 out 2017 09:45:08 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -603,6 +603,9 @@ function! JumpToNextPlaceholder()
 endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+
+" map Ctrl-k in inserto mode to delete til the end of line
+inoremap <C-k> <C-o>d$
 
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()

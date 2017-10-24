@@ -511,6 +511,9 @@ endfunction
 nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
+" map Ctrl-k on insert mode to delete til the end of line
+inoremap <C-k> <C-o>d$
+
 " join lines without moving the cursor (gJ prevent adding spaces between lines joined)
 nnoremap J :call Preserve("exec 'normal! J'")<cr>
 nnoremap gJ :call Preserve("exec 'normal! gJ'")<cr>

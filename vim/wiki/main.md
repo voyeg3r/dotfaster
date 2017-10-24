@@ -1,7 +1,7 @@
 # [Wiki](wiki.md) do Sérgio para fins diversos
 
     Criado: Dom 17/Out/2010 hs 14:23
-    Last Change: dom 22 out 2017 15:08:02 -03
+    Last Change: ter 24 out 2017 09:34:24 -03
     autor: Sérgio Luiz Araújo Silva
     site: http://vivaotux.blogspot.com
 
@@ -28,6 +28,7 @@
 * [Dicasubuntu](dicasubuntu.md)
 * [Dicasvim](dicasvim.md)
 * [Dicaswindows](dicaswindows.md)
+* [DIY](diy.md)
 * [Englishclub](englishclub.md)
 * [Englishlyrics](englishlyrics.md)
 * [Englishneurolinguistics](englishneurolinguistics.md)
