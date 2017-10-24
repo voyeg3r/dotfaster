@@ -37,6 +37,9 @@
 # chenge workspace easyly on gnome shell
 # https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/
 
+# set abnt2 keyboard
+set-x11-keymap br abnt2
+
 # fast and powerful spreesheet
 sudo pacman -S gnumeric
 
