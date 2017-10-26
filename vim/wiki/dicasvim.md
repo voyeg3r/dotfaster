@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: dicasvim.md
 Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 24 out 2017 09:56:53 -03
+Last Change: ter 24 out 2017 18:43:35 -03
 ```
 
 # Vim antipatterns

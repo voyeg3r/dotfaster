@@ -39,7 +39,7 @@ default_color efefef
 default_shade_color 333333
 default_outline_color green
 
-alignment br
+alignment top_right
 #alignment tl
 # alignment mm
 
