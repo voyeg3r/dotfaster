@@ -1,11 +1,11 @@
 # Arquivo: archlinux.wiki
 ``` markdown
 Criado: Sat 17/Jan/2015 hs 06:52
-Last Change: sáb 14 out 2017 12:48:16 -03
+Last Change: sex 27 out 2017 06:44:54 -03
 autor: Sérgio Luiz Araújo Silva
 ```
 
-### archanywhere our archrevenge
+# archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
 
 https://www.ostechnix.com/installing-arch-linux-using-revenge-graphical-installer/
@@ -38,10 +38,10 @@ yaourt -S libappindicator-gtk3
 yaourt -S font-manager
 ```
 
-### pdnsd easy dns cache
+# pdnsd easy dns cache
 https://wiki.archlinux.org/index.php/Pdnsd
 
-### acessando ssh
+# acessando ssh
 https://wiki.archlinux.org/index.php/Secure_Shell#Installing_OpenSSH
 
 Configuring SSHD
@@ -63,14 +63,14 @@ systemctl start sshd.service
 systemctl enable sshd.service
 ```
 
-### configurando o touchpad para colar com toque de dois dedos
+# configurando o touchpad para colar com toque de dois dedos
 [ source: wiki archlinux ](https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Buttonless_TouchPads_.28aka_ClickPads.29)
 
     /etc/X11/xorg.conf.d/50-synaptics.conf
 
     sudo cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d/
 
-### usando seu pendrive como memória swap
+# usando seu pendrive como memória swap
 
 Formate ele usando o gparted depois descubra onde está a partição com o comando
 
@@ -82,14 +82,14 @@ Por fim ative a partição assim
 
 a opção -p 1000 aumenta a prioridade de seu uso e opção -v mostra a saída do comando mais detalhada
 
-### delete pacman lock file
+# delete pacman lock file
 
     If pacman is not running and has a lock package avoiding
     other instalations, run this:
 
     rm /var/lib/pacman/db.lck
 
-### updating the system without confirmation
+# updating the system without confirmation
 
 You can create a file ~/.yaourtrc and put this in it:
 
@@ -103,7 +103,7 @@ Another option would be to use the "--noconfirm".
 
     yaourt -Syua --noconfirm
 
-### enable gdm as default display manager
+# enable gdm as default display manager
 
 source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
@@ -113,12 +113,12 @@ source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
     sudo systemctl -f enable gdm
 
-### setting default shell
+# setting default shell
 * reference: http://va.mu/hbcr  (superuser)
 
     sudo chsh -s $(which zsh) john
 
-### Restasting network
+# Restasting network
 
     systemctl restart network
 
@@ -126,7 +126,7 @@ source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
     systemctl is-enabled unit
 
-### improving network speed
+# improving network speed
 
 ``` sh
 wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf -O /etc/sysctl.d/99-sysctrl.conf
@@ -140,14 +140,14 @@ if [ ! -L /etc/sysctl.d/99-sysctl.conf -a -e /etc/sysctl.conf ]; then
 fi
 ```
 
-### stopping services
+# stopping services
 * https://wiki.archlinux.org/index.php/Systemd#Basic_systemctl_usage
 
      systemctl disable bluetooth
 
      systemctl start sshd
 
-### Backlight
+# Backlight
 
 When system starts, screen backlight is set to maximum by default. This can be fixed by specifying backlight level in the following udev rule:
 
@@ -157,19 +157,19 @@ When system starts, screen backlight is set to maximum by default. This can be f
 
         SUBSYSTEM=="backlight", ACTION=="add", KERNEL=="acpi_video0", ATTR{brightness}="1"
 
-### update firefox-nightly
+# update firefox-nightly
 
 		yaourt -Syua firefox-nightly
 
-### how restore your usb stick
+# how restore your usb stick
 
      dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
 
-### how create bootable antergos
+# how create bootable antergos
 
     dd bs=4M if=/path/to/archlinux.iso of=/dev/sdx && sync
 
-### yaourt without confirmation
+# yaourt without confirmation
 ``` sh
 config-yaourt(){
 [ -f ~/.yaourtrc ] || touch ~/.yaourtrc
@@ -191,7 +191,7 @@ EOF
 } && config-yaourt
 
 ```
-### pacman
+# pacman
 
  ``` markdown
 optimize
@@ -240,7 +240,7 @@ makepkg -sri PKGBUILD
 -c  limpar arquivos desnecessários após o fim do processo
 ```
 
-### load keymap (pt-br)
+# load keymap (pt-br)
 
 	loadkeys br-abnt2
 
@@ -253,25 +253,25 @@ você tenha algun pacote órfão, para se certificar disto use este comando
 
 		sudo pacman -Qdt
 
-### Para remover todos os pacotes orfãos use o comando
+# Para remover todos os pacotes orfãos use o comando
 
 		sudo pacman -Rns $(pacman -Qdtq)
 
-### you can use archbang
+# you can use archbang
 
 Archbang linux brings to you the beste of ArchLinux without pain or boring process of installation
 
-### bash completion=
+# bash completion=
 
     pacman -Syu bash-completion
 
-### conky colors -easyer way to config conky
+# conky colors -easyer way to config conky
 https://aur.archlinux.org/packages/conky-colors/?setlang=pt_BR
 
-### fontes micro$oft
+# fontes micro$oft
 + https://aur.archlinux.org/packages/ttf-ms-fonts/
 
-### how use aur packages
+# how use aur packages
 
 Installing packages from the AUR is a relatively simple process. Essentially:
 
@@ -295,14 +295,14 @@ the resulting package with pacman:
 
      pacman -U /path/to/pkg.tar.xz
 
-### Arch Linux Deprecates /etc/sysctl.conf, User Intervention Required
+# Arch Linux Deprecates /etc/sysctl.conf, User Intervention Required
 
 	pacman -Syu
 	mv /etc/sysctl.conf.pacsave /etc/sysctl.d/99-sysctl.conf
 
     wget -c https://gist.github.com/voyeg3r/368407/raw/ -O /etc/sysctl.d/99-sysctl.conf
 
-### systemd and network interface names
+# systemd and network interface names
 * source: https://wiki.archlinux.org/index.php/Network_Configuration
 
 To keep fixed names to your network card do this file to change:

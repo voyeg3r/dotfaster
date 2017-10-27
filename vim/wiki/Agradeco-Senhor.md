@@ -1,6 +1,7 @@
 Agradeço, Senhor
 
 Maria Dolores
+
 Agradeço, Senhor,
 Quando me dizes “não”
 Às súplicas indébitas que faço,

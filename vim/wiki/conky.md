@@ -1,5 +1,10 @@
+# Instro
++ https://wiki.archlinux.org/index.php/Conky
 
-### Enable conky at startup
+				sudo pacman -S lm_sensors hddtemp
+				yaourt conky-lua
+
+# Enable conky at startup
 
 	 # to enable auto startup
 	 # save the above conde at

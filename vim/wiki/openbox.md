@@ -4,11 +4,16 @@
 + https://www.youtube.com/watch?v=iI5lRieG5Ko
 + http://openbox.org/wiki/Help:Using_Openbox_in_GNOME
 + https://urukrama.wordpress.com/openbox-guide/
++ https://wiki.archlinux.org/index.php/Conky
+
+# Read aboyt conky-manager here:
++ https://www.youtube.com/watch?v=vyTJ_KD3Ans
 
 ``` sh
 sudo pacman -S openbox obconf obmenu tint2 openbox-themes conky cairo-dock
 cairo-dock-plug-ins feh hddtemp conky
-yaourt --noconfirm obmenu-generator conkyforecast xdotool
+yaourt --noconfirm obmenu-generator conkyforecast yaourt conky-manager
+conky-all lm_sensors hddtemp  xdotool conky-lua
 
 sudo chmod +s `which hddtemp`
 

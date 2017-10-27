@@ -2,7 +2,7 @@
 ``` markdown
 File:		 AnDroid.md
 Created:	 ter 10 jan 2017 13:12:38 BRT
-Last Change: ter 10 jan 2017 13:12:56 BRT
+Last Change: sex 27 out 2017 06:38:55 -03
 ```
 
 ### Como instalar o cynogenmod no moto g

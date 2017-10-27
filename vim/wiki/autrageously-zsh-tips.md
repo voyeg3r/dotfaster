@@ -1,4 +1,4 @@
-### Master Your Z Shell with These Outrageously Useful Tips
+# Master Your Z Shell with These Outrageously Useful Tips
 11 January 2014 [original](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
 
 If you had previously installed Zsh but never got around to exploring all of
@@ -37,7 +37,7 @@ really grok what it’s all about, you need to run the commands yourself. I’m
 giving you everything you need to create the file structure that we’ll be using
 for the entire post. Simply copy and paste this into your Zsh window:
 
-### run me to get the party started
+# run me to get the party started
 
 ``` sh
 # create the folder structure
@@ -150,7 +150,7 @@ print -l zsh_demo/data/*/*
 ```
 
 
-### Glob operators
+# Glob operators
 
 So, what else can you stick inside a glob besides asterisks? Glance at section
 14.8.1 of the manual if you want to know all the options. Here are the ones
@@ -170,7 +170,7 @@ ls -l zsh_demo/**/(ab|bc)*.txt
 ls -l zsh_demo/**/[^cC]*.txt
 ```
 
-### Glob qualifiers
+# Glob qualifiers
 
 Now that we got the basic stuff out of the way, let’s dive a little deeper. We
 previously mentioned this glob: `zsh_demo/**/*`, which lists every file anywhere
@@ -241,7 +241,7 @@ often, and they become easier to remember.
 Head over to section 14.8.7 of the manual if you’d like to be showered in
 details.
 
-### Pro Tip
+# Pro Tip
 
 Here’s a cool tip for all you advanced devils (feel free to skip to section
 2 if you’ve had enough file pickin’ for a day). How can we select folders that
@@ -267,7 +267,7 @@ Let’s parse this magic:
 
 2. Variable transformations
 
-#### Modifiers
+## Modifiers
 
 To complicate things even further (or to make them more awesome, depending on
 your perspective), you can stick one more thing inside the parentheses at the
@@ -382,7 +382,7 @@ echo ${my_variable:s/a/A/} # Aaa
 echo ${my_variable:gs/a/A/} # AAA
 ```
 
-### Expansion flags
+# Expansion flags
 
 Now that you’ve learned all about glob operators, glob qualifiers, and
 modifiers, let’s add one more spice to the pot: expansion flags.

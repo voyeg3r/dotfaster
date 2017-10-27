@@ -1,15 +1,14 @@
 ``` markdown
 File:		 Anki.md
 Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: qua 18 out 2017 11:31:24 -02
+Last Change: sex 27 out 2017 06:39:01 -03
 ```
 
-### O que é o Anki?
+# O que é o Anki?
 
 E um programa de aprendizado baseado na repetição espaçada
 
-
-### Como busar cartões com tags distintas
+# Como busar cartões com tags distintas
 
     tag:TvSeries* or tag:movies
 
@@ -31,10 +30,8 @@ just look at the top of the browser window
 		deck:English 'sat up'
 		deck:English 'sat up' or 'come up'
 
-
-### Novo processo de instalação:
+# Novo processo de instalação:
 + https://apps.ankiweb.net/#linux
-
 
 Anki not picking up GTK theme on Gnome/Linux
 
@@ -44,12 +41,10 @@ theme=$(gsettings get org.gnome.desktop.interface gtk-theme)
 echo "gtk-theme-name=$theme" >> ~/.gtkrc-2.0
 echo "export GTK2_RC_FILES=$HOME/.gtkrc-2.0" >> ~/.profile
 
-
-### How delete tag on anki
-
+# How delete tag on anki
 + https://www.youtube.com/watch?v=D46FR00UR_M
 
-### Decks que podem ser importados do site do anki
+# Decks que podem ser importados do site do anki
 
 as 1000 primeiras frases em ingles
 https://ankiweb.net/shared/info/2009669666
@@ -60,8 +55,7 @@ https://ankiweb.net/shared/info/2009669666
     Flip cards with shortcut key "0". 844452602
     zoom 1956318463
 
-
-### Como mudar a pasta padrão do anki
+# Como mudar a pasta padrão do anki
 a referência para esta dica veio daqui:
 http://danielhnyk.cz/change-default-folder-anki-space-repetition/
 
@@ -81,7 +75,7 @@ Mas se pode fazer de outra forma também:
 /usr/bin/anki -b $HOME/docs/anki
 ```
 
-#### Depois atribua SETUID para o arquivo com o comando
+## Depois atribua SETUID para o arquivo com o comando
 
        chmod a+sx anki
 
@@ -108,7 +102,7 @@ def _defaultBase(self):
         return os.path.expanduser("~/Anki")
 ```
 
-####  e.g I edited last line to this:
+##  e.g I edited last line to this:
 
     return os.path.expanduser("~/edu/Anki")
 
@@ -120,12 +114,12 @@ científico que repetições em intervalos de tempo específicos
 aumentam o nível de retenção do conhecimento. Nos foruns em Inglês
 eles usam a Sigla SRS, ou spaced repetition system.
 
-### Como instalar o Anki
+# Como instalar o Anki
 No site do mairo vergara você encontrará um manual que
 lhe mostra como instalar o Anki.
 http://www.mairovergara.com/como-instalar-e-usar-o-anki/
 
-### como anexar arquivos de audio aos flashcards
+# como anexar arquivos de audio aos flashcards
 
 Esta parte é super importante pois o manual de instalação do Mairo
 vergara não mostra, é com este simples passo que você se permitir
@@ -149,13 +143,13 @@ Esta é uma frase em Inglês
 
 # Estilo css para o anki
 
-### Backup old style
+# Backup old style
 
  ``` css
  .card {font-familiy: arial; font-size: 40px; text-align: center; color:black; background-color: white;  }
  ```
 
-### New style
+# New style
 ``` css
 
 @font-face {

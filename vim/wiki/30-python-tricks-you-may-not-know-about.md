@@ -1,14 +1,15 @@
+# file: 30-python-tricks-you-may-not-know-about.md
 ``` markdown
 Arquivo: 30-python-tricks-you-may-not-know-about.md
 Created: dom 06/ago/2017 hs 21:06
-Last Change: dom 06 ago 2017 21:07:17 -03
+Last Change: sex 27 out 2017 06:27:04 -03
 ```
-### link: http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html
+# link: http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html
 
 30 Python Language Features and Tricks You May Not Know About
 Posted on Mar 05, 2014 , last modified on May 19, 2014 - Permanent link
 
-1 - Introduction
+# 1 - Introduction
 
 Since I started learning Python, I decided to maintain an often visited list of
 "tricks". Any time I saw a piece of code (in an example, on Stack Overflow, in
@@ -33,16 +34,39 @@ commonly known language features and tricks appearing first.
 A table of contents is given at the end.
 
 Update - April 9th, 2014
-    As you can see the article has been growing with currently 38 items in it, mostly thanks to comments from readers. As such the number 30 in the title is no longer accurate. However, I chose to leave it as is since that's the original title the article was shared as, making it more recognizable and easier to find.
-Update - March 14th, 2014
-    Roy Keyes made a great suggestion of turning this article into a GitHub repository to allow readers to make improvements or additions through pull requests. The repository is now at https://github.com/sahands/python-by-example. Feel free to fork, add improvements or additions and submit pull requests. I will update this page periodically with the new additions.
-Update - March 8th, 2014
 
-    This article generated a lot of good discussion on Reddit (http://redd.it/1zv3q3), Hacker News (https://news.ycombinator.com/item?id=7365410), and in the comments below, with many readers suggesting great alternatives and improvements. I have updated the list below to include many of the improvements suggested, and added a few new items based on suggestions that made me have one of those "Cool! I didn't know you could do that!" moments. In particular, I did not know about itertools.chain.from_iterable, and dictionary comprehensions.
+    As you can see the article has been growing with currently 38 items in it,
+mostly thanks to comments from readers. As such the number 30 in the title
+is no longer accurate. However, I chose to leave it as is since that's the
+original title the article was shared as, making it more recognizable and
+easier to find. Update - March 14th, 2014 Roy Keyes made a great suggestion
+of turning this article into a GitHub repository to allow readers to make
+improvements or additions through pull requests. The repository is now
+at https://github.com/sahands/python-by-example. Feel free to fork, add
+improvements or additions and submit pull requests. I will update this page
+periodically with the new additions. Update - March 8th, 2014
 
-    There was also a very interesting discussion about the possibility of some of the techniques below leading to harder to debug code. My say on it is that as far as I can see, none of the items below are inherently harder to debug. But I can definitely see how they can be taken too far, resulting in hard to debug, maintain and understand code. Use your best judgment and if it feels like how short and smart your code is is outweighing how readable and maintainable it is, then break it down and simplify it. For example, I think list comprehensions can be very readable and rather easy to debug and maintain. But a list comprehension inside another list comprehension that is then passed to map and then to itertools.chain? Probably not the best idea!
+    This article generated a lot of good discussion
+on Reddit (http://redd.it/1zv3q3), Hacker News
+(https://news.ycombinator.com/item?id=7365410), and in the comments below,
+with many readers suggesting great alternatives and improvements. I have
+updated the list below to include many of the improvements suggested, and
+added a few new items based on suggestions that made me have one of those
+"Cool! I didn't know you could do that!" moments. In particular, I did not
+know about itertools.chain.from_iterable, and dictionary comprehensions.
 
-### 1.1 Unpacking
+    There was also a very interesting discussion about the possibility of
+some of the techniques below leading to harder to debug code. My say on it is
+that as far as I can see, none of the items below are inherently harder to
+debug. But I can definitely see how they can be taken too far, resulting in
+hard to debug, maintain and understand code. Use your best judgment and if
+it feels like how short and smart your code is is outweighing how readable
+and maintainable it is, then break it down and simplify it. For example, I
+think list comprehensions can be very readable and rather easy to debug and
+maintain. But a list comprehension inside another list comprehension that is
+then passed to map and then to itertools.chain? Probably not the best idea!
+
+# 1.1 Unpacking
 
 ``` python
 a, b, c = 1, 2, 3
@@ -65,7 +89,7 @@ d
 4
 ```
 
-### 1.2 Unpacking for swapping variables
+# 1.2 Unpacking for swapping variables
 
 ``` python
 a, b = 1, 2
@@ -74,7 +98,7 @@ a, b
 (2, 1)
 ```
 
-### 1.3 Extended unpacking (Python 3 only)
+# 1.3 Extended unpacking (Python 3 only)
 
 ``` ppython
 a, *b, c = [1, 2, 3, 4, 5]
@@ -86,7 +110,7 @@ c
 5
 ```
 
-### 1.4 Negative indexing
+# 1.4 Negative indexing
 
 ``` python
 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -96,7 +120,7 @@ a[-3]
 8
 ```
 
-### 1.5 List slices (a[start:end])
+# 1.5 List slices (a[start:end])
 
 ``` python
 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -104,7 +128,7 @@ a[2:8]
 [2, 3, 4, 5, 6, 7]
 ```
 
-### 1.6 List slices with negative indexing
+# 1.6 List slices with negative indexing
 
 ``` python
 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -112,7 +136,7 @@ a[-4:-2]
 [7, 8]
 ```
 
-### 1.7 List slices with step (a[start:end:step])
+# 1.7 List slices with step (a[start:end:step])
 
 ``` python
 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -124,7 +148,7 @@ a[2:8:2]
 [2, 4, 6]
 ```
 
-### 1.8 List slices with negative step
+# 1.8 List slices with negative step
 
 ``` python
 a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -134,7 +158,7 @@ a[::-2]
 [10, 8, 6, 4, 2, 0]
 ```
 
-### 1.9 List slice assignment
+# 1.9 List slice assignment
 
 ``` python
 a = [1, 2, 3, 4, 5]
@@ -149,7 +173,7 @@ a
 [1, 5]
 ```
 
-### 1.10 Naming slices (slice(start, end, step))
+# 1.10 Naming slices (slice(start, end, step))
 
 ``` python
 a = [0, 1, 2, 3, 4, 5]
@@ -160,7 +184,7 @@ a[LASTTHREE]
 [3, 4, 5]
 ```
 
-### 1.11 Iterating over list index and value pairs (enumerate)
+# 1.11 Iterating over list index and value pairs (enumerate)
 
 ``` python
 a = ['Hello', 'world', '!']
@@ -172,7 +196,7 @@ for i, x in enumerate(a):
 2: !
 ```
 
-### 1.12 Iterating over dictionary key and value pairs (dict.iteritems)
+# 1.12 Iterating over dictionary key and value pairs (dict.iteritems)
 
 ``` python
 m = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
@@ -186,7 +210,7 @@ d: 4
 ```
 
 Note: use dict.items in Python 3.
-### 1.13 Zipping and unzipping lists and iterables
+# 1.13 Zipping and unzipping lists and iterables
 
 ``` python
 a = [1, 2, 3]
@@ -198,7 +222,7 @@ zip(*z)
 [(1, 2, 3), ('a', 'b', 'c')]
 ```
 
-### 1.14 Grouping adjacent list items using zip
+# 1.14 Grouping adjacent list items using zip
 
     >>> a = [1, 2, 3, 4, 5, 6]
 
@@ -226,7 +250,7 @@ group_adjacent(a, 1)
 [(1,), (2,), (3,), (4,), (5,), (6,)]
 ```
 
-### 1.15 Sliding windows (n-grams) using zip and iterators
+# 1.15 Sliding windows (n-grams) using zip and iterators
 
 ``` python
 from itertools import islice
@@ -243,7 +267,7 @@ n_grams(a, 4)
 [(1, 2, 3, 4), (2, 3, 4, 5), (3, 4, 5, 6)]
 ```
 
-### 1.16 Inverting a dictionary using zip
+# 1.16 Inverting a dictionary using zip
 
 ``` python
 m = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
@@ -256,7 +280,7 @@ mi
 {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 ```
 
-### 1.17 Flattening lists:
+# 1.17 Flattening lists:
 
 ``` python
 a = [[1, 2], [3, 4], [5, 6]]
@@ -281,7 +305,7 @@ flatten(a)
 
 Note: according to Python's documentation on sum, itertools.chain.from_iterable is the preferred method for this.
 
-### 1.18 Generator expressions
+# 1.18 Generator expressions
 
 ``` python
 g = (x ** 2 for x in xrange(10))
@@ -299,7 +323,7 @@ sum(x ** 3 for x in xrange(10) if x % 3 == 1)
 408
 ```
 
-### 1.19 Dictionary comprehensions
+# 1.19 Dictionary comprehensions
 
 ``` python
 m = {x: x ** 2 for x in range(5)}
@@ -311,7 +335,7 @@ m
 {0: 'A0', 1: 'A1', 2: 'A2', 3: 'A3', 4: 'A4', 5: 'A5', 6: 'A6', 7: 'A7', 8: 'A8', 9: 'A9'}
 ```
 
-### 1.20 Inverting a dictionary using a dictionary comprehension
+# 1.20 Inverting a dictionary using a dictionary comprehension
 
 ``` python
 m = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
@@ -321,7 +345,7 @@ m
 {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 ```
 
-### 1.21 Named tuples (collections.namedtuple)
+# 1.21 Named tuples (collections.namedtuple)
 
 ``` python
 Point = collections.namedtuple('Point', ['x', 'y'])
@@ -334,7 +358,7 @@ p.y
 2.0
 ```
 
-### 1.22 Inheriting from named tuples:
+# 1.22 Inheriting from named tuples:
 
 ``` python
 class Point(collections.namedtuple('PointBase', ['x', 'y'])):
@@ -348,7 +372,7 @@ p + q
 Point(x=3.0, y=5.0)
 ```
 
-### 1.23 Sets and set operations
+# 1.23 Sets and set operations
 
 ``` python
 A = {1, 2, 3, 3}
@@ -371,7 +395,7 @@ set([1, 2, 4, 5, 6, 7])
 True
 ```
 
-### 1.24 Multisets and multiset operations (collections.Counter)
+# 1.24 Multisets and multiset operations (collections.Counter)
 
 ``` python
 A = collections.Counter([1, 2, 2])
@@ -392,7 +416,7 @@ B - A
 Counter({3: 1})
 ```
 
-### 1.25 Most common elements in an iterable (collections.Counter)
+# 1.25 Most common elements in an iterable (collections.Counter)
 
 ``` python
 A = collections.Counter([1, 1, 2, 2, 3, 3, 3, 3, 4, 5, 6, 7])
@@ -404,7 +428,7 @@ A.most_common(3)
 [(3, 4), (1, 2), (2, 2)]
 ```
 
-### 1.26 Double-ended queue (collections.deque)
+# 1.26 Double-ended queue (collections.deque)
 
 ``` python
 Q = collections.deque()
@@ -428,7 +452,7 @@ Q
 deque([5, 2, 1, 3])
 ```
 
-### 1.27 Double-ended queue with maximum length (collections.deque)
+# 1.27 Double-ended queue with maximum length (collections.deque)
 
 ``` python
 last_three = collections.deque(maxlen=3)
@@ -448,7 +472,7 @@ for i in xrange(10):
 7, 8, 9
 ```
 
-### 1.28 Ordered dictionaries (collections.OrderedDict)
+# 1.28 Ordered dictionaries (collections.OrderedDict)
 
 ``` python
 m = dict((str(x), x) for x in range(10))
@@ -462,7 +486,7 @@ print ', '.join(m.keys())
 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
 ```
 
-### 1.29 Default dictionaries (collections.defaultdict)
+# 1.29 Default dictionaries (collections.defaultdict)
 
 ``` python
 m = dict()
@@ -489,7 +513,7 @@ m['b']
 '[default value]'
 ```
 
-### 1.30 Using default dictionaries to represent simple trees
+# 1.30 Using default dictionaries to represent simple trees
 
 ``` python
 import json
@@ -527,7 +551,7 @@ print json.dumps(root, sort_keys=True, indent=4, separators=(',', ': '))
 ```
 
 (See https://gist.github.com/hrldcpr/2012250 for more on this.)
-### 1.31 Mapping objects to unique counting numbers (collections.defaultdict)
+# 1.31 Mapping objects to unique counting numbers (collections.defaultdict)
 
 ``` python
 import itertools, collections
@@ -544,7 +568,7 @@ value_to_numeric_map['b']
 1
 ```
 
-### 1.32 Largest and smallest elements (heapq.nlargest and heapq.nsmallest)
+# 1.32 Largest and smallest elements (heapq.nlargest and heapq.nsmallest)
 
 ``` python
 a = [random.randint(0, 100) for __ in xrange(100)]
@@ -554,7 +578,7 @@ heapq.nlargest(5, a)
 [100, 100, 99, 98, 98]
 ```
 
-### 1.33 Cartesian products (itertools.product)
+# 1.33 Cartesian products (itertools.product)
 
 ``` python
 for p in itertools.product([1, 2, 3], [4, 5]):
@@ -585,7 +609,7 @@ for p in itertools.product([0, 1], repeat=4):
 1111
 ```
 
-### 1.34 Combinations and combinations with replacement (itertools.combinations and itertools.combinations_with_replacement)
+# 1.34 Combinations and combinations with replacement (itertools.combinations and itertools.combinations_with_replacement)
 
 ``` python
 for c in itertools.combinations([1, 2, 3, 4, 5], 3):
@@ -612,7 +636,7 @@ for c in itertools.combinations_with_replacement([1, 2, 3], 2):
 33
 ```
 
-### 1.35 Permutations (itertools.permutations)
+# 1.35 Permutations (itertools.permutations)
 
 ``` python
 for p in itertools.permutations([1, 2, 3, 4]):
@@ -644,7 +668,7 @@ for p in itertools.permutations([1, 2, 3, 4]):
 4321
 ```
 
-### 1.36 Chaining iterables (itertools.chain)
+# 1.36 Chaining iterables (itertools.chain)
 
 ```python
 a = [1, 2, 3, 4]
@@ -682,7 +706,7 @@ for subset in itertools.chain.from_iterable(itertools.combinations(a, n) for n i
 (1, 2, 3, 4)
 ```
 
-### 1.37 Grouping rows by a given key (itertools.groupby)
+# 1.37 Grouping rows by a given key (itertools.groupby)
 
 ```python
 from operator import itemgetter
@@ -763,14 +787,14 @@ pre-presbyopic      hypermetrope            no                      normal      
 presbyopic          hypermetrope            no                      normal                  soft
 ```
 
-### 1.38 Start a static HTTP server in any directory
+# 1.38 Start a static HTTP server in any directory
 
 ```python
 [10:26] $ python -m SimpleHTTPServer 5000
 Serving HTTP on 0.0.0.0 port 5000 ...
 ```
 
-### 1.39 Learn the Zen of Python
+# 1.39 Learn the Zen of Python
 
 ```python
 import this
@@ -799,18 +823,18 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
 
-### 1.40 Use C-Style Braces Instead of Indentation to Denote Scopes
+# 1.40 Use C-Style Braces Instead of Indentation to Denote Scopes
 
 ```python
 from __future__ import braces
 ```
 
-### 2   Table of contents
+# 2   Table of contents
 
 List of language features and tricks in this article:
 
 
-### Introduction
+# Introduction
 ```markdown
 1.1 Unpacking
 1.2 Unpacking for swapping variables

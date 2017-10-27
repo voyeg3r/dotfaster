@@ -1,7 +1,7 @@
 # [Wiki](wiki.md) do Sérgio para fins diversos
 
     Criado: Dom 17/Out/2010 hs 14:23
-    Last Change: ter 24 out 2017 16:15:26 -03
+    Last Change: qui 26 out 2017 07:09:29 -03
     autor: Sérgio Luiz Araújo Silva
     site: http://vivaotux.blogspot.com
 
@@ -18,6 +18,7 @@
 * [Concurso](concurso.md)
 * [Contatos](contatos.md)
 * [Crunchbang](crunchbang.md)
+* [conky](conky.md)
 * [Desktoplinux](desktoplinux.md)
 * [Dicasdobash](dicasdobash.md)
 * [Dicasfirefox](dicasfirefox.md)

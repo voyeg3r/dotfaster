@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: ter 24 out 2017 13:30:01 -03
+" Last Change: sex 27 out 2017 06:43:07 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -591,6 +591,7 @@ hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 fun! ChangeHeader()
     if line('$')>=5
         call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+				normal <C-o>
     endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()

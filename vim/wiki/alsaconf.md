@@ -1,5 +1,4 @@
-
-### Configurar som no Linux através do ALSA
+# Configurar som no Linux através do ALSA
 fonte: http://www.dicas-l.com.br/print/20090406.html
 
 **//Colaboração: Sérgio Abrantes//**
@@ -13,7 +12,7 @@ pacotes na seção download. O meu intuito não é de mostrar passo a passo o
 download e compilação de cada pacote, até porque muitos sabores de Linux já vem
 com ele. Assumirei que ele já está instalado.
 
-### 1. Identificar sua placa de som
+# 1. Identificar sua placa de som
 
 No prompt digite o seguinte comando:
 
@@ -29,7 +28,7 @@ clique em ok.  ### Ajustes de volume.  No prompt de comando digite:
 Aparecerá uma tela com várias opções de volume. Use as setas para navegar e
 ajustar o volume conforme sua necessidade e pressione ESC para sair.
 
-###. Salvando os ajustes
+#. Salvando os ajustes
 Para salvar e não precisar fazer os ajustes novamente, digite no prompt de comando:
 
 Read more here: http://askubuntu.com/a/465641/3798

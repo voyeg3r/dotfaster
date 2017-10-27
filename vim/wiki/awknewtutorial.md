@@ -1,14 +1,17 @@
+# More awk tips
 ``` markdown
 File:		 AwkNewieTutorial.md
 Created:	 ter 10 jan 2017 13:16:16 BRT
-Last Change: qua 06 set 2017 20:08:44 -03
+Last Change: sex 27 out 2017 06:46:54 -03
 ```
-
 # A newbie tutorial on UNIX AWK utility
 
 source: http://unstableme.blogspot.com/2010/11/newbie-tutorial-on-unix-awk-utility.html
 
-Sharing a few Awk one liners (very basic and random) which will help the Awk newbies to gain a quick confidence on one of the beautiful UNIX tools - Awk. Some of my recommendations for learning UNIX Awk are mentioned at the bottom of this post. Have a great time with Awk.
+Sharing a few Awk one liners (very basic and random) which will help the Awk
+newbies to gain a quick confidence on one of the beautiful UNIX tools - Awk.
+Some of my recommendations for learning UNIX Awk are mentioned at the bottom
+of this post. Have a great time with Awk.
 
 Meaning of some of the Awk Built-in Variables used below:
 

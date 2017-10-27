@@ -1,8 +1,11 @@
+# The SilverSearcher
 ``` markdown
 Arquivo: ag.md (the silver search)
 Created: dom 06/ago/2017 hs 21:08
-Last Change: qua 06 set 2017 19:56:24 -03
+Last Change: sex 27 out 2017 06:31:26 -03
 ```
+
+A code-searching tool similar to ack, but faster. http://geoff.greer.fm/ag/
 
 # Recursively search for PATTERN in PATH. Like grep or ack, but faster.
 

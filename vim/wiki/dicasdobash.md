@@ -2,7 +2,7 @@
 
 ```
 File:		 DicasDoBash.md
-Last Change: qua 11 jan 2017 18:02:07 BRT
+Last Change: qui 26 out 2017 19:46:06 -03
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -10,15 +10,33 @@ Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
 
-### bash onliners
+# bash onliners
 
 	http://www.bashoneliners.com/?page=1
 
-### Transpose words
+# Transpose words
 
 	Ctrl-t
 
-### How display all possible commands avaiable
+# Substituição de processos - process substitution
++ https://giovannireisnunes.wordpress.com/2017/10/20/substituicao-de-processos-no-bash/
+
+				vim <( lspci )
+
+Utilizando a substituição de processos para baixar um arquivo via wget e ao
+mesmo tempo compactá-lo com o gzip.
+
+				wget http://ftp.ubuntu.com/ubuntu/dists/yakkety/Release --output-document=>( gzip -c -9 > Release.gz )
+
+				export host='http://ftp.ubuntu.com/ubuntu/dists';\
+					vimdiff <( curl ${host}/yakkety/Release ) \
+          <( curl ${host}/zesty/Release )
+
+O interessante deste exemplo, além de dispensar a criação de arquivos
+temporários, está no fato de que os arquivos são baixados simultaneamente
+já que cada curl roda em uma subshell.
+
+# How display all possible commands avaiable
 
 source: forun ubuntu https://goo.gl/cJDkp4
 
@@ -39,7 +57,7 @@ source (stack overflow): https://goo.gl/PYqI2n
     compgen -A function will list all the functions you could run.
     compgen -A function -abck will list all the above in one go.
 
-### how to Renaming files in a folder to sequential numbers
+# how to Renaming files in a folder to sequential numbers
 
 source: http://stackoverflow.com/questions/3211595/
 
@@ -56,7 +74,7 @@ another option in one line:
 
     count='1'; for i in *.jpg; do mv $i $(printf '%04d'.jpg $count); (( count++ )); done
 
-### how get pipestatus
+# how get pipestatus
 
 How to get exit status of process that's piped to another
 
@@ -70,43 +88,43 @@ The syntax is:
     command1 | command2
     echo "${PIPESTATUS[0]} ${PIPESTATUS[1]}"
 
-### catching file name and file extensions
+# catching file name and file extensions
 
     filename=$(basename "$fullfile")
     extension="${filename##*.}"
     filename="${filename%.*}"
 
 
-### Inserting DOS carriage return
+# Inserting DOS carriage return
 
     simple press Ctrl-v Ctrl-m
 
-### Bash: Read a file into a variable
+# Bash: Read a file into a variable
 
     value=$(<config.txt)
 
-### pegando os links mp3 de um html
+# pegando os links mp3 de um html
 
 	grep -o 'http://[^"]*'  < test.html  | grep mp3
 
-### como criar um array no bash
+# como criar um array no bash
 
 ``` sh
 var=($(uname -a))
 echo ${var[0]}
 ```
 
-###  imprimindo os últimos três elementos de um array
+#  imprimindo os últimos três elementos de um array
 
      echo "${SERVERS[@]:(-3)}"
 
-### Atalhos e dicas do terminal de comandos
+# Atalhos e dicas do terminal de comandos
 
-### Abrindo a pasta atual no gerenciador de arquivos
+# Abrindo a pasta atual no gerenciador de arquivos
 
     xdg-open .
 
-### Dicas do Júlio César Neves
+# Dicas do Júlio César Neves
 
 ``` sh
 read -p "Deseja continuar (s/n)? "
@@ -138,15 +156,15 @@ o comando, basta então pressionar enter.
 
     ^176^160 ........ troca 176 por 160 no comando anterior
 
-### Para fechar o terminal direto, mesmo que exista texto digitado
+# Para fechar o terminal direto, mesmo que exista texto digitado
 
     Ctrl-Shift-q
 
-### Abrir o terminal via teclado
+# Abrir o terminal via teclado
 
     Ctrl-alt-t
 
-### função para testar se o valor passado é inteiro
+# função para testar se o valor passado é inteiro
 
 ``` sh
 #!/bin/sh

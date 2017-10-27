@@ -1,6 +1,8 @@
+# vim abolish plugin
+
 ``` markdown
 Arquivo: abolish.md
-Last Change: qua 06 set 2017 19:55:26 -03
+Last Change: sex 27 out 2017 06:29:08 -03
 ```
 
 # O plugin abolish permite abreviações mais complexas como:
