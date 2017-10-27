@@ -18,3 +18,11 @@
 # Flowless dovetail with Rob Cosman!
 
 + https://www.youtube.com/watch?v=hIkwZFBbPHo
+
+
+# Building a finger joint box
++ https://www.youtube.com/watch?v=7Rt_t2Gx_FU
++ https://www.youtube.com/watch?v=AiPzFNsuN2k  * (this one is amazing)
+
+# Five amazing wood working tools
++ https://www.youtube.com/watch?v=pi38vcAZ6tk
