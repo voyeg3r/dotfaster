@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: ag.md (the silver search)
 Created: dom 06/ago/2017 hs 21:08
-Last Change: sex 27 out 2017 06:31:26 -03
+Last Change: sex 27 out 2017 09:32:21 -03
 ```
 
 A code-searching tool similar to ack, but faster. http://geoff.greer.fm/ag/
@@ -21,7 +21,7 @@ In my case I've tried to use 'ag' as search tool for ctrlp
 plugin in vim and always it seems to find mp3 files and I am
 trying to use .agignore file
 
-### localizar links markdown sem extensão ".md"
+# localizar links markdown sem extensão ".md"
 
 O uso da opção `-l` do ag faz ele exibier somente os nomes
 

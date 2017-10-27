@@ -1,12 +1,13 @@
 # [Wiki](wiki.md) do Sérgio para fins diversos
 
     Criado: Dom 17/Out/2010 hs 14:23
-    Last Change: qui 26 out 2017 07:09:29 -03
+    Last Change: sex 27 out 2017 12:01:16 -03
     autor: Sérgio Luiz Araújo Silva
     site: http://vivaotux.blogspot.com
 
 * [Android](android.md)
 * [Anki](anki.md)
+* [apicultura](apicultura.md)
 * [Artigos](artigos.md)
 * [Archlinux](archlinux.md)
 * [Awesomesites](Awesomesites.md)
@@ -19,6 +20,7 @@
 * [Contatos](contatos.md)
 * [Crunchbang](crunchbang.md)
 * [conky](conky.md)
+* [cmp](cmp.md)
 * [Desktoplinux](desktoplinux.md)
 * [Dicasdobash](dicasdobash.md)
 * [Dicasfirefox](dicasfirefox.md)

@@ -227,6 +227,7 @@
 [main](main.md)
 [makepasswd](makepasswd.md)
 [man](man.md)
+[mapfile](mapfile.md)
 [markdown](markdown.md)
 [mc](mc.md)
 [mcedit](mcedit.md)

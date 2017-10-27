@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 27 out 2017 06:43:07 -03
+" Last Change: sex 27 out 2017 09:47:18 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -588,9 +588,34 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
+
+" Esta função insere um change log
+" se nelas não houver "Last Change" ele passa batido
+" ou seja não insere o cabeçalho
+" usr_41.txt
+fun! InsertChangeLog()
+  let l:flag=0
+  for i in range(1,5)
+    if getline(i) !~ '.*Last Change.*'
+      let l:flag = l:flag + 1
+    endif
+  endfor
+  if l:flag >= 5
+    normal(1G)
+    call append(0, "Arquivo: <+Description+>")
+    call append(1, "Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
+    call append(2, "Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
+    call append(3, "autor: <+digite seu nome+>")
+    call append(4, "site: <+digite o endereço de seu site+>")
+    call append(5, "twitter: <+your twitter here+>")
+    call append(6, "email: <+seu email+>")
+    normal gg
+  endif
+endfun
+
 fun! ChangeHeader()
     if line('$')>=5
-        call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%c")/e')
 				normal <C-o>
     endif
 endfun

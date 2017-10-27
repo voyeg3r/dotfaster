@@ -16,6 +16,9 @@ export LC_ALL="pt_BR.UTF-8"
 
 export MOZ_DISABLE_PANGO=1
 
+CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
+
+
 
 #path=( $path /home/sergio/.gem/ruby/2.4.0/bin )
 path=( ~/.dotfiles/bin /home/sergio/.gem/ruby/2.4.0/bin $path )
