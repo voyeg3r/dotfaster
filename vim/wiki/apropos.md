@@ -1,4 +1,4 @@
-### from dicas-l
+# apropos.md - from dicas-l - Last Change: sáb 28 out 2017 16:01:07 -03
 
 Uma facilidade bastante interessante existente em sistemas Unix é o comando
 apropos. Este comando consulta um banco de dados consistindo da descrição do
@@ -35,6 +35,6 @@ Para construir este banco de dados emitir o comando
 Uma vez criado o banco de dados o comando apropos (ou man -k) poderá então ser
 utilizado.
 
-### comandos de rede no linux
+# comandos de rede no linux
 
 apropos network | less

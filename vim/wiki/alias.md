@@ -1,4 +1,4 @@
-# Introdução
+#  alias.md - Introdução - Last Change: sáb 28 out 2017 16:00:14 -03
 Um aliás é um apelido, geralmente uma abreviação para um comando
 mais longo, por exemplo:
 

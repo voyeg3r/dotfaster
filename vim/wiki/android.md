@@ -1,26 +1,4 @@
-# dicas android
-``` markdown
-File:		 AnDroid.md
-Created:	 ter 10 jan 2017 13:12:38 BRT
-Last Change: sex 27 out 2017 06:38:55 -03
-```
-
-### Como instalar o cynogenmod no moto g
-https://www.youtube.com/watch?v=m-AkLX_HfFA
-
-https://fralef.me/reroot-android-using-gnulinux-sdk-tools-and-twrp.html
-
-Rom CM13 moto G2 2014 http://adf.ly/1TKTrC
-
-Rom CM13 moto G1 http://adf.ly/1TKTua
-
-Rom CM13 moto G 4G http://adf.ly/1TKU0q
-
-Rom cm13 moto E2 http://adf.ly/1TKU4o
-
-Rom CM 13 unoficial moto E1 http://adf.ly/1Tm64n
-
-Rom CM13 moto X2 2014 http://adf.ly/1TKUF6
+# dicas android - Last Change: sáb 28 out 2017 16:00:42 -03
 
 baixar Gapps para moto G1/G2/G 4G/E1/E2/X2 http://adf.ly/1TKUMX baixar a versao pico ou aqui http://adf.ly/1UnrYn
 
@@ -28,8 +6,7 @@ Como Desbloquear bootloader aqui https://www.youtube.com/watch?v=THU4Y...
 
 como instalar recovery twrp aqui https://www.youtube.com/watch?v=ijHei...
 
-
-### como saber a versão do android
+# como saber a versão do android
 
 We recommended to use firmware version from your own region.
 To check phone version you can follow two way :
@@ -37,22 +14,23 @@ To check phone version you can follow two way :
     Tap or Type *#1234#
     Go to Setting - About Phone - see Baseband version
 
-### onde obter os rooms modificados
+# onde obter os rooms modificados
 
 	http://www.cyanogenmod.org/
 
-### android tools
+# android tools
+
       yaourt -S android-tools
 
 Listar os dispositivos conectados via usb
 
         adb devices
 
-### Reiniciar com o fastboot (veja no script de instalação)
+# Reiniciar com o fastboot (veja no script de instalação)
 
       sudo adb reboot bootloader
 
-### reiniciar o aparelho
+# reiniciar o aparelho
 
       sudo fastboot reboot
 
@@ -76,7 +54,7 @@ e o comando final ficar mais ou menos assim:
 
 No comando acima colei o meu código
 
-### Flash 'TWRP' as the custom recovery image
+# Flash 'TWRP' as the custom recovery image
 
     sudo fastboot flash recovery ~/Downloads/openrecovery-twrp-2.8.2.0-hammerhead.img
     sudo fastboot flash recovery twrp-2.8.6.0-titan.img
@@ -84,7 +62,7 @@ No comando acima colei o meu código
     boot in recover mode
 
 
-### How block fastbook again
+# How block fastbook again
 
 source: http://forum.cyanogenmod.org/topic/64232-security-benefit-to-fastboot-oem-lock-after-rom-installation/
 

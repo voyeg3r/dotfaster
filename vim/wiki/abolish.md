@@ -2,7 +2,7 @@
 
 ``` markdown
 Arquivo: abolish.md
-Last Change: sex 27 out 2017 09:31:08 -03
+Last Change: sáb 28 out 2017 15:58:52 -03
 ```
 
 # O plugin abolish permite abreviações mais complexas como:

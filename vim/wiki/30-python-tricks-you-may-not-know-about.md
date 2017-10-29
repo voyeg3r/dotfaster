@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: 30-python-tricks-you-may-not-know-about.md
 Created: dom 06/ago/2017 hs 21:06
-Last Change: sex 27 out 2017 06:27:04 -03
+Last Change: sáb 28 out 2017 15:58:29 -03
 ```
 # link: http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html
 

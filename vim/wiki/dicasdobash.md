@@ -2,7 +2,7 @@
 
 ```
 File:		 DicasDoBash.md
-Last Change: qui 26 out 2017 19:46:06 -03
+Last Change: sáb 28 out 2017 16:42:08 -03
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -35,6 +35,12 @@ mesmo tempo compactá-lo com o gzip.
 O interessante deste exemplo, além de dispensar a criação de arquivos
 temporários, está no fato de que os arquivos são baixados simultaneamente
 já que cada curl roda em uma subshell.
+
+Outra situação comum é quado precisamos consultar certa manpage em busca de um
+padrão, por exemplo; se queremos saber como impor um limite de download ao
+wget podemos consultar a manpage assim:
+
+				grep limit <(man wget)
 
 # How display all possible commands avaiable
 

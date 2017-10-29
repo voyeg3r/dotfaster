@@ -1,9 +1,4 @@
-# Intro
-``` markdown
-Arquivo: dicasvim.md
-Created:     Sáb 06/Nov/2010 hs 18:10
-Last Change: ter 24 out 2017 18:43:35 -03
-```
+# dicasvim.md Intro - Last Change: sáb 28 out 2017 16:06:57 -03
 
 # Vim antipatterns
 
@@ -2044,6 +2039,9 @@ You can also type:
 		:browse oldfiles
 		:bro old
 
+We can also install FZF plugin and map something like <leader>m to
+open Most Recent Edited Files
+
 # Mostrando os ultimos arquivos editados baseado em um padrão
 + https://vi.stackexchange.com/a/11829/7339
 
@@ -2858,9 +2856,23 @@ Para fechar a janela do histórico
       Ctrl-w-q
 
 ``` markdown
-O registro @: contém o último comando e
+o registro @: contém o último comando e
 o registro @/ contém a última busca
+o registro @% contém o nome do arquivo
 ```
+
+Lembrando que cada um dos registros pode ser inserido no modo inserto
+precedendu-o com `<C-r>`, por exemplo, pra inserir o nome do arquivo faça:
+
+				<C-r>%
+
+Outro modo de inserir o nome do arquivo é usar:
+
+				:put %
+
+The result should be
+
+				dicasvim.md
 
 # Limpando um registro de forma fácil
 

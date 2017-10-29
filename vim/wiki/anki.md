@@ -1,18 +1,13 @@
-``` markdown
-File:		 Anki.md
-Created:	 ter 10 jan 2017 13:13:26 BRT
-Last Change: sex 27 out 2017 06:39:01 -03
-```
-
-# O que é o Anki?
+# O que é o Anki?  - Last Change: sáb 28 out 2017 16:00:46 -03
 
 E um programa de aprendizado baseado na repetição espaçada
 
 # Como busar cartões com tags distintas
 
-    tag:TvSeries* or tag:movies
-
-	tag:movies or tag:TVSeries or tag:RealEnglish
+``` markdown
+tag:TvSeries* or tag:movies
+tag:movies or tag:TVSeries or tag:RealEnglish
+```
 
 # Defining css style:
 

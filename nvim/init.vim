@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 27 out 2017 09:47:18 -03
+" Last Change: dom 29 out 2017 07:31:16 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -128,7 +128,7 @@ endif
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-"" Color
+" Color
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tomasr/molokai'
 Plug 'endel/vim-github-colorscheme'
@@ -330,6 +330,7 @@ fun! CleanFlaschards()
 		g/^\W\+$/d
 		normal gg
 		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dipgg
+		silent normal! /\v(no post de hoje)/dipgg
 		normal gg
 		g/\v^\d+\W?(–|-)/d
 		normal gg
@@ -757,7 +758,7 @@ let g:snips_github='https://github.com/voyeg3r'
 let g:snips_twitter='@voyeg3r'
 let g:UltiSnipsEditSplit="horizontal"
 
-iab fname <c-r>=expand("%")<cr>
+iab fname <c-r>=expand("%:t")<cr>
 iab -> →
 iab mymail <voyeg3r ✉ gmail.com>
 iab slas Sérgio Luiz Araújo Silva

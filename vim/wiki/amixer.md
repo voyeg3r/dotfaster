@@ -1,4 +1,5 @@
 # amixer is a command-line mixer for ALSA soundcard driver.
+Last Change: sáb 28 out 2017 16:00:37 -03
 
 Increase volume by 10%
 

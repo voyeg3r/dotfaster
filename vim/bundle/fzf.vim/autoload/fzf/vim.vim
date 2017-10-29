@@ -41,22 +41,35 @@ if s:is_win
   else
     let s:bin.preview = fnamemodify(s:bin.preview, ':8')
   endif
-  let s:bin.preview = escape(s:bin.preview, '\')
+  let s:bin.preview = (executable('ruby') ? 'ruby' : 'bash').' '.escape(s:bin.preview, '\')
 endif
 
-function! s:merge_opts(dict, eopts)
+function! s:extend_opts(dict, eopts, prepend)
   if empty(a:eopts)
     return
   endif
   if has_key(a:dict, 'options')
     if type(a:dict.options) == s:TYPE.list && type(a:eopts) == s:TYPE.list
-      call extend(a:dict.options, a:eopts)
+      if a:prepend
+        let a:dict.options = extend(copy(a:eopts), a:dict.options)
+      else
+        call extend(a:dict.options, a:eopts)
+      endif
     else
-      let a:dict.options = join(map([a:dict.options, a:eopts], 'type(v:val) == s:TYPE.list ? join(map(copy(v:val), "fzf#shellescape(v:val)")) : v:val'))
+      let all_opts = a:prepend ? [a:eopts, a:dict.options] : [a:dict.options, a:eopts]
+      let a:dict.options = join(map(all_opts, 'type(v:val) == s:TYPE.list ? join(map(copy(v:val), "fzf#shellescape(v:val)")) : v:val'))
     endif
   else
     let a:dict.options = a:eopts
   endif
+endfunction
+
+function! s:merge_opts(dict, eopts)
+  return s:extend_opts(a:dict, a:eopts, 0)
+endfunction
+
+function! s:prepend_opts(dict, eopts)
+  return s:extend_opts(a:dict, a:eopts, 1)
 endfunction
 
 " [[options to wrap], preview window expression, [toggle-preview keys...]]
@@ -108,9 +121,9 @@ endfunction
 function! s:wrap(name, opts, bang)
   " fzf#wrap does not append --expect if sink or sink* is found
   let opts = copy(a:opts)
-  let options = get(opts, 'options', '')
-  if type(options) == s:TYPE.list
-    let options = join(options)
+  let options = ''
+  if has_key(opts, 'options')
+    let options = type(opts.options) == s:TYPE.list ? join(opts.options) : opts.options
   endif
   if options !~ '--expect' && has_key(opts, 'sink*')
     let Sink = remove(opts, 'sink*')
@@ -204,10 +217,6 @@ function! s:fzf(name, opts, extra)
   let eopts  = has_key(extra, 'options') ? remove(extra, 'options') : ''
   let merged = extend(copy(a:opts), extra)
   call s:merge_opts(merged, eopts)
-  let mopts = get(merged, 'options', '')
-  if s:is_win && empty(get(merged, 'source', '')) && empty($FZF_DEFAULT_COMMAND) && (type(mopts) == s:TYPE.list ? join(mopts) : mopts) =~# s:bin.preview
-    return s:warn('preview script is incompatible with the default command in Windows')
-  endif
   return fzf#run(s:wrap(a:name, merged, bang))
 endfunction
 
@@ -267,7 +276,10 @@ endfunction
 " Files
 " ------------------------------------------------------------------
 function! s:shortpath()
-  let short = pathshorten(fnamemodify(getcwd(), ':~:.'))
+  let short = fnamemodify(getcwd(), ':~:.')
+  if !has('win32unix')
+    let short = pathshorten(short)
+  endif
   let slash = (s:is_win && !&shellslash) ? '\' : '/'
   return empty(short) ? '~'.slash : short . (short =~ escape(slash, '\').'$' ? '' : slash)
 endfunction
@@ -285,7 +297,7 @@ function! fzf#vim#files(dir, ...)
     let dir = s:shortpath()
   endif
 
-  let args.options = ['-m', '--prompt', dir]
+  let args.options = ['-m', '--prompt', strwidth(dir) < &columns / 2 - 20 ? dir : '> ']
   call s:merge_opts(args, get(g:, 'fzf_files_options', []))
   return s:fzf('files', args, a:000)
 endfunction
@@ -649,6 +661,9 @@ endfunction
 
 " ag command suffix, [options]
 function! fzf#vim#ag_raw(command_suffix, ...)
+  if !executable('ag')
+    return s:warn('ag is not found')
+  endif
   return call('fzf#vim#grep', extend(['ag --nogroup --column --color '.a:command_suffix, 1], a:000))
 endfunction
 
@@ -1055,7 +1070,7 @@ function! s:commits(buffer_local, args)
     return s:warn('Not in git repository')
   endif
 
-  let source = 'git log '.get(g:, 'fzf_commits_log_options', '--graph --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'))
+  let source = 'git log '.get(g:, 'fzf_commits_log_options', '--color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'))
   let current = expand('%')
   let managed = 0
   if !empty(current)
@@ -1068,6 +1083,8 @@ function! s:commits(buffer_local, args)
       return s:warn('The current buffer is not in the working tree')
     endif
     let source .= ' --follow '.fzf#shellescape(current)
+  else
+    let source .= ' --graph'
   endif
 
   let command = a:buffer_local ? 'BCommits' : 'Commits'
@@ -1084,6 +1101,11 @@ function! s:commits(buffer_local, args)
   if a:buffer_local
     let options.options[-2] .= ', '.s:magenta('CTRL-D', 'Special').' to diff'
     let options.options[-1] .= ',ctrl-d'
+  endif
+
+  if !s:is_win
+    call extend(options.options,
+    \ ['--preview', 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --format=format: --color=always | head -200'])
   endif
 
   return s:fzf(a:buffer_local ? 'bcommits' : 'commits', options, a:args)
@@ -1171,7 +1193,7 @@ endfunction
 
 function! s:complete_trigger()
   let opts = copy(s:opts)
-  call s:merge_opts(opts, ['+m', '-q', s:query])
+  call s:prepend_opts(opts, ['+m', '-q', s:query])
   let opts['sink*'] = s:function('s:complete_insert')
   let s:reducer = s:pluck(opts, 'reducer', s:function('s:first_line'))
   call fzf#run(opts)

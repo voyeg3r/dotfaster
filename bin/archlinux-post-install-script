@@ -395,7 +395,6 @@ sudo pacman -S openssh rsync nmap lshw
 
 # silver searcher ag
 sudo pacman -S the_silver_searcher
-
 sudo pacman -S ripgrep
 
 # download manager

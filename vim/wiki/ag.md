@@ -2,7 +2,7 @@
 ``` markdown
 Arquivo: ag.md (the silver search)
 Created: dom 06/ago/2017 hs 21:08
-Last Change: sex 27 out 2017 09:32:21 -03
+Last Change: sáb 28 out 2017 15:59:22 -03
 ```
 
 A code-searching tool similar to ack, but faster. http://geoff.greer.fm/ag/
