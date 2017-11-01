@@ -91,6 +91,7 @@ alias scifioldtime='mplayer http://198.178.123.2:8652/;stream/1'
 alias amazingtale='mplayer http://rosetta.shoutca.st:8462/;stream1'
 alias roswellufotalks='mplayer http://streaming.shoutcast.com/TheUFOChannel'
 alias cryptoradio='mplayer http://station.kryptonradio.com:8000/stream'
+alias ustoday='mplayer http://tunein.streamguys1.com/usatoday'
 
 alias gst='git status'
 

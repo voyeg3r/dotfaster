@@ -1,13 +1,26 @@
-# How to use markdown syntaxe
+# How to use markdown syntaxe - Last Change: qua 01 nov 2017 06:36:09 -03
 [reference](https://daringfireball.net/projects/markdown/syntax)
 
-### Online rendering markdown to html
+# Online rendering markdown to html
 * http://dillinger.io/
 * https://stackedit.io/
 
+# Inserting table of contents
+
+```txt
+# Table of Contents
+1. [Example](#example)
+2. [Example2](#example2)
+3. [Third Example](#third-example)
+
+## Example
+## Example2
+## Third Example
+```
+
 #### <i class="icon-file"></i> Create a document
 
-### text bold, italic and links
+# text bold, italic and links
 
 It's very easy to make some words **bold** and other words *italic* with
 Markdown. You can even [link to Google!](http://google.com)
@@ -41,7 +54,6 @@ Links
 http://github.com - automatic!
 [GitHub](http://github.com)
 
-
 Blockquotes
 
 As Kanye West said:
@@ -49,12 +61,10 @@ As Kanye West said:
 > We're living the future so
 > the present is our past.
 
-
 Inline code
 
 I think you should use an
 `<addr>` element here instead.
-
 
 # Syntax highlighting
 
@@ -75,8 +85,5 @@ You can also simply indent your code by four spaces:
             $.facebox({div:'#foo'})
         }
     }
-
-
-
 
 

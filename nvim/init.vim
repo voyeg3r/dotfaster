@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 01 nov 2017 06:07:05 -03
+" Last Change: qua 01 nov 2017 08:53:19 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -59,7 +59,8 @@ set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_de
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lcs+=space:·
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildmenu
 set nopaste
 set pastetoggle=<F2>
 set noshowmode

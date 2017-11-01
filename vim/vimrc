@@ -277,7 +277,8 @@ cnoreabbrev W w
 "cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildignore+=*.pdf,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+set wildmenu
 
 " When double click a word vim will hightlight all other ocurences
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
