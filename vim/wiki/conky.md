@@ -1,8 +1,10 @@
-# Instro
+# conky.md - Last Change: qua 01 nov 2017 18:40:18 -03
 + https://wiki.archlinux.org/index.php/Conky
 
-				sudo pacman -S lm_sensors hddtemp
-				yaourt conky-lua
+		sudo pacman -S lm_sensors hddtemp
+		yaourt conky-lua
+
+		yaourt acpi
 
 # Enable conky at startup
 
