@@ -27,3 +27,6 @@
 
 # Five amazing wood working tools
 + https://www.youtube.com/watch?v=pi38vcAZ6tk
+
+# dovetail jig - gabarito rabo de andorinha
++ https://www.youtube.com/watch?v=1OjginnV7l8

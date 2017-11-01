@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: dom 29 out 2017 07:31:16 -03
+" Last Change: qua 01 nov 2017 06:07:05 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -32,6 +32,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
+set cursorline
 set guicursor+=n:blinkon0 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
 set laststatus=2          " statusline specific
@@ -52,7 +53,7 @@ set ignorecase            " ignore case when searching
 set smartcase             " no ignorecase if Uppercase char present
 set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
-set tabstop=2             " Number of spaces that a <Tab> in the file counts for
+set tabstop=4             " Number of spaces that a <Tab> in the file counts for
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -165,6 +166,10 @@ colorscheme PaperColor
 
 " format paragraph keeping cursor position
 nnoremap <F8> :call Preserve("normal gqap")<CR>
+
+"move lines in normal mode
+nnoremap <C-j> :m+<CR>
+nnoremap <C-k> :m-2<CR>
 
 " Search word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
@@ -329,7 +334,7 @@ fun! CleanFlaschards()
 		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
 		g/^\W\+$/d
 		normal gg
-		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dipgg
+		silent normal! /v((vamos (então )?aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dipgg
 		silent normal! /\v(no post de hoje)/dipgg
 		normal gg
 		g/\v^\d+\W?(–|-)/d

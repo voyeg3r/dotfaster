@@ -1,9 +1,4 @@
-# Arquivo: archlinux.wiki
-``` markdown
-Criado: Sat 17/Jan/2015 hs 06:52
-Last Change: sex 27 out 2017 06:44:54 -03
-autor: Sérgio Luiz Araújo Silva
-```
+# Arquivo: archlinux.wiki - Last Change: ter 31 out 2017 06:21:23 -03
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
@@ -17,6 +12,17 @@ http://arch-anywhere.org/download.html
 
 http://danpla.github.io/fontlink/
 https://askubuntu.com/questions/531479/install-fonts-temporarily/623236#623236
+
+# Archmerge - https://archmerge.com/
+
+ArchMerge is a merger of 3 desktop environments. ... The complexity of
+the desktops increases gradually but your settings of your applications,
+icons, themes and your files move with you from desktop to desktop. Quite an
+advantage. ArchMerge will have the number 6.0 or the name Kirk. ArchMerge is a
+fork from ArchLabs.
+
+# Archlinux withou systemd
++ https://artixlinux.org/
 
 # instaling yaourt
 + https://revryl.com/2013/07/11/yaourt-installation-arch-linux/

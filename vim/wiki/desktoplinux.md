@@ -2,18 +2,18 @@
 
 ```
 Criado: Sáb 11/Ago/2012 hs 11:14
-Last Change: ter 10 jan 2017 13:20:30 BRT
+Last Change: ter 31 out 2017 06:15:24 -03
 autor: Sérgio Luiz Araújo Silva
 site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r
 email: <voyeg3r ✉ gmail.com>
 ```
 
-### altere o modo de escalonamento dos discos para desempenho
+# altere o modo de escalonamento dos discos para desempenho
 
 fonte ibm develop networks: http://www.readability.com/articles/q2jiwjfe
 
-#### Escalonadores de disco
+## Escalonadores de disco
 
 O kernel Linux oferece diversos algoritmos de escalonamento de disco. Um
 escalonador de disco é necessário para o sistema decidir quais dados buscar
@@ -65,11 +65,13 @@ Feito isso, confira se a alteração foi feita:
       noop [deadline] cfq
 
 
-### alterando o dpi (resolução)
+# alterando o dpi (resolução)
+``` markdown
 # fonte: http://www.vivaolinux.com.br/dica/Ubuntu-1204-com-Gnome-3-Tunando-a-Aparencia-com-Temas-e-Ferramentas/
 gsettings set org.gnome.desktop.interface text-scaling-factor 0.9
+```
 
-### local das extensoes
+# local das extensoes
 visiting this site just click on button to install extensions
 on gnome-shell
 https://extensions.gnome.org/
@@ -78,19 +80,19 @@ http://www.fpmurphy.com/gnome-shell-extensions/
 
     ~/.local/share/gnome-shell/extensions/
 
-### links
+# links
 http://www.techdrivein.com/2011/11/8-things-i-did-after-installing-gnome.html
 
-### in my computer the best workspaces is gnome shell
+# in my computer the best workspaces is gnome shell
 
    sudo apt-fast install gnome-shell
 
-### set number of workspaces on gnome-shell
+# set number of workspaces on gnome-shell
 
     gsettings set org.gnome.desktop.wm.preferences num-workspaces 4
     gsettings set org.gnome.shell.overrides dynamic-workspaces false
 
-### install gnome-sushi
+# install gnome-sushi
 
 GNOME Sushi is a simple file preview application for GNOME. GNOME Sushi lets
 you take a peek into files and folders quickly and easily. After installing

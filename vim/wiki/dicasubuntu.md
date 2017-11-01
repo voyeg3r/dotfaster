@@ -1,18 +1,17 @@
-# Arquivo: dicas do ubuntu
+# Arquivo: dicas do ubuntu - Last Change: ter 31 out 2017 10:41:16 -03
 
-```
-Criado: Seg 10/Jan/2011 hs 16:41
-Last Change: ter 10 jan 2017 13:32:19 BRT
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
-```
-### Changing hostiname without resarting the system
-+ https://askubuntu.com/questions/87665/how-do-i-change-the-hostname-without-a-restart
+# Ubuntu minimal install with gnome vanilla
++ https://help.ubuntu.com/community/Installation/MinimalCD
+
+Após a instalação do sistema, instale o ambiente gnome com o comando:
+
+		sudo apt install gnome-session gdm3 nautilus gnome-terminal gnome-software gedit firefox
+
+# new hostname
 
     sudo hostname newname
 
-### Setting a persistent DNS
+# Setting a persistent DNS
 + https://www.xpertnotes.net/blog/2015/12/29/make-dns-stick-in-ubuntu/
 + https://itsfoss.com/easiest-watch-netflix-hulu-usa/
 
@@ -34,7 +33,7 @@ Check the file /etc/resolv.conf to make sure the changes took place.
 
     cat /etc/resolv.conf
 
-### stopping system errors report
+# stopping system errors report
 
     sudo systemctl disable apport.service
 
@@ -44,15 +43,15 @@ Check the file /etc/resolv.conf to make sure the changes took place.
 
     sudo service apport stop ; sudo sed -ibak -e '/^enabled/ s/1/0/g' /etc/default/apport
 
-### setting abnt2 keyboard
+# setting abnt2 keyboard
 
     setxkbmap -model abnt2 -layout br
 
-### comando para definir o brilho de forma emergencial
+# comando para definir o brilho de forma emergencial
 
 	xrandr --output LVDS1 --brightness 0.7
 
-### instalando kernel 3.6
+# instalando kernel 3.6
 
 Linux Kernel 3.6.2 Installation
 
@@ -83,7 +82,7 @@ or having instability issues.
 
 	[1] - http://www.upubuntu.com/2012/09/how-to-repair-broken-system-after.html
 
-### impressoras brother DCP-7065DN
+# impressoras brother DCP-7065DN
 Site da brother http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
 
 Versão deb para debian e ubuntu
@@ -124,13 +123,13 @@ Open a web browser and go to "http://localhost:631/printers".
 
     Check if the Device URI of your printer is "usb://Brother/(your printer's model name)"
 
-### kernel otimizado
+# kernel otimizado
 
 Porque rápido ainda não é o bastante
 
 http://www.megatek.net.br/customkernels/
 
-### instalando o libreoffice
+# instalando o libreoffice
 
 Fonte: http://andregondim.eti.br/2011/01/libreoffice-para-ubuntu-ja-pode-ser-usado-via-ppa/
 
@@ -150,7 +149,7 @@ Dependendo do gerenciador de janela, faça para GNOME:
 
      sudo apt-get install libreoffice-gnome
 
-### cliente p2p para iptv
+# cliente p2p para iptv
 
 # cliente p2p para iptv
 # http://ubuntued.info/como-instalar-o-veetle-no-ubuntu

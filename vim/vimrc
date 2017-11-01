@@ -77,6 +77,10 @@ let mapleader=','
 nnoremap ç :
 nnoremap K :help <C-r><C-w><CR>
 
+"move lines in normal mode
+nnoremap <C-j> :m+<CR>
+nnoremap <C-k> :m-2<CR>
+
 " Scroll split window
 nnoremap <M-j> <c-w>w<c-e><c-w>w
 nnoremap <M-k> <c-w>w<c-y><c-w>w
@@ -234,7 +238,6 @@ let no_buffers_menu=1
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
-
 
 "set background=light
 "if has('gui_running')

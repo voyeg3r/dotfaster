@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: sáb 28 out 2017 16:06:57 -03
+# dicasvim.md Intro - Last Change: ter 31 out 2017 19:43:26 -03
 
 # Vim antipatterns
 
@@ -11,6 +11,11 @@ To copy the line 16 to the line bellow just type:
 1 - Instead of jumping to the line
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+
+# Two commands at once
++ https://stackoverflow.com/a/47002025/2571881
+
+		:1,10s/abc/def/g|50,60&&
 
 # Vim markdown tips
 + https://vi.stackexchange.com/a/9544/7339
@@ -48,7 +53,7 @@ alert('foo');
 Find tags "strong, em, span, br, and p"
 
 ``` viml
-\v\<(\/)?(strong|em|br|(span[^>]*))(\/)?\>
+/\v\<(\/)?(strong|em|br|(span[^>]*))(\/)?\>
 /\v\<(\/)?(strong|em|br|a href[^>]*|((span|p)[^>]*))(\/)?\>|(\([^)]*\))
 ```
 
@@ -128,6 +133,8 @@ The command above will put `ls` output at the first line
 		@.  ................ repeats what has been typed
 		:@+  ............... executes the content of clipboard
 		:let @+ = @/ ....... puts last searh into clipboard
+
+		On insert mode <C-r>* inserts "Primary Selection"
 
 # Vim tips for everyone
 
@@ -277,6 +284,27 @@ For more information, view the documentation with `:h i_ctrl-r`
 
 	:verbose map <c-a>
 	:verbose imap x
+
+# Increasing numbers visually
+
+``` viml
+{Visual}g CTRL-A	Add [count] to the number or alphabetic character in
+			the highlighted text. If several lines are
+		    highlighted, each one will be incremented by an
+			additional [count] (so effectively creating a
+			[count] incrementing sequence).  {not in Vi}
+			For Example, if you have this list of numbers:
+				1. ~
+				1. ~
+				1. ~
+				1. ~
+			Move to the second "1." and Visually select three
+			lines, pressing g CTRL-A results in:
+				1. ~
+				2. ~
+				3. ~
+				4. ~
+```
 
 # spliting funtions into separated files
 

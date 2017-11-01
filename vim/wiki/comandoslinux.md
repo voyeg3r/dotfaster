@@ -345,6 +345,7 @@
 [ssh](ssh.md)
 [stackexchange](stackexchange.md)
 [stapler](stapler.md)
+[stat](stat.md)
 [startx](startx.md)
 [su](su.md)
 [subversion](subversion.md)
