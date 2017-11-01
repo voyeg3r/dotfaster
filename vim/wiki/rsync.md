@@ -1,14 +1,12 @@
-### Introdução
+# rsync.md Introdução - Last Change: qua 01 nov 2017 10:32:14 -03
 O rsync sincroniza dados via rede
 
 Script de backup http://va.mu/XteF
-
 
 ``` sh
 rsync -avz /origem /backup
 
 rsync -avz /home/aluno sergio@172.30.10.234:/home/sergio/backup
-
 
 scp -P 2222 -r user@remote-host:/home/user/.dotfiles ./
 
@@ -18,7 +16,7 @@ rsync -av -e 'ssh -l user -p 2222' --exclude='.git/' --update --delete user@serv
 
 ```
 
-### se quizer aumentar um pouco a segurança faça:
+# se quizer aumentar um pouco a segurança faça:
 
 ``` sh
 rsync -avz -e ssh /home/aluno sergio@172.30.10.234:/home/sergio/backup
@@ -26,39 +24,37 @@ rsync -avz -e ssh /home/aluno sergio@172.30.10.234:/home/sergio/backup
 rsync -a --update --delete origem/ destino/
 ```
 
-### Para copiar a arvore de diretorio para um host remoto use o seguinte comando:
+# Para copiar a arvore de diretorio para um host remoto use o seguinte comando:
 
     rsync -avz -e ssh - -delete   /dir maquinaremota:/bak/dir
 
       a opcao - -delete ira remover em /bak/dir arquivos não existentes em /dir
 
-
-### move instead of copying
+# move instead of copying
 
     rsync --remove-source-files /source/dir /dest/name
 
-### rsync + find
+# rsync + find
 
     find . -name "whatever.*" -print0 | rsync -av --files-from=- --from0 ./ ./destination/
 
-### backups incrementais com --link-dest
+# backups incrementais com --link-dest
 A opção "--link-dest" do rsync cria hard links para arquivos de outro
 backup, os arquivos antigos não modificados são apenas linkados, em geral
 se aponta para o último backup.
 
     --link-dest=${BACKUP-ULTIMO}
 
-### apenas exibindo o conteúdo da origem
+# apenas exibindo o conteúdo da origem
 fonte: http://www.vivaolinux.com.br/artigos/impressora.php?codigo=338
 
 Se você deseja listar o diretório /etc do servidor, pode usar o comando:
 
-    $ rsync -Cravzp fabio@10.0.0.5:/etc/
-
+    rsync -Cravzp fabio@10.0.0.5:/etc/
 
 O "pulo do gato" dessa situação é a omissão do diretório de destino.
 
-### sincronizando e consertando a codificação
+# sincronizando e consertando a codificação
 À partir da versão 3.0.0 do rsync há um recurso muito útil para sysadmins,
 a capacidade de fazer a codificação de caracteres, ou seja, se no windows tenho
 iso8859-1 e no ubuntu utf8 posso usar um parâmetro como abaixo:
@@ -67,19 +63,16 @@ iso8859-1 e no ubuntu utf8 posso usar um parâmetro como abaixo:
 
     rsync -va --iconv=utf8,iso88591 /source/latin1/ /destination/utf8
 
-### Copie pastas mantendo sua extrutura
-
+# Copie pastas mantendo sua extrutura
 
     rsync -vd --files-from=<(find .  -name entries -print ) .   ../target_directory
 
-
-### Sincronizar mediante uma condição
+# Sincronizar mediante uma condição
 Sincronizar apenas arquivos modificados em um determinado período
 
     rsync -avz -e ssh --files-from=<(find -mtime +30 -mtime -60) origem destino
 
-
-### Opções do rsync
+# Opções do rsync
 
 ``` markdown
 -u ou --update ............. ignora os arquivos que forem mais novos no destino
@@ -93,7 +86,6 @@ Sincronizar apenas arquivos modificados em um determinado período
 -a ......................... o mesmo que -rlptgoD
 ```
 
-
 Caso use
 
       /pasta
@@ -103,13 +95,15 @@ ele pega a pasta e seu conteúdo, já se usar:
       /pasta/
 
 ele copia apenas o conteúdo da pasta
-### Restaurando as configurações do home
+# Restaurando as configurações do home
 * fonte: http://www.ubuntu-ac.org/archives/445
 
 **Passo 1**
-Depois que configurar tudo do usuário, copie toda a home do usuário (no meu caso é cyber) para um diretório que deseja (no meu caso /opt):
 
-    $ sudo cp -Rv /home/cyber /opt
+Depois que configurar tudo do usuário, copie toda a home do usuário (no meu
+caso é cyber) para um diretório que deseja (no meu caso /opt):
+
+    sudo cp -Rv /home/cyber /opt
 
 **Passo 2**
 Adicionar o script na inicialização do sistema:
@@ -190,7 +184,6 @@ feita (ele é criado automaticamente na primeira execução do
 script), respectivamente.  O conteúdo completo do script é o
 seguinte :
 
-
 ``` sh
 #!/bin/bash
 # Name : versioned-backup.sh
@@ -243,7 +236,6 @@ done
 # place so we can use it on further runs
 echo $pit &gt; $lastrunfile
 ```
-
 
 Simplesmente execute o script de tempos em tempos, provavelmente agendado no
 crontab de um usuário que tenha permissões de ler os arquivos que sofrerão o

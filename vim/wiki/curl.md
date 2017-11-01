@@ -1,7 +1,10 @@
-### Referências
-* [[@http://bemvindoaolinux.blogspot.com/2009/01/downloads-por-linha-de-comando-curl.html|Download por linha de comando com o curl]]
-* IBM [[http://www.ibm.com/developerworks/br/opensource/library/os-curl/index.html]]
-* https://curl.haxx.se/docs/manpage.html
+# curl.md intro - Last Change: qua 01 nov 2017 14:06:51 -03
+Transfer a url like wget
+
+**sources**
++ [[@http://bemvindoaolinux.blogspot.com/2009/01/downloads-por-linha-de-comando-curl.html|Download por linha de comando com o curl]]
++ IBM [[http://www.ibm.com/developerworks/br/opensource/library/os-curl/index.html]]
++ https://curl.haxx.se/docs/manpage.html
 
     curl -O url
 
@@ -31,6 +34,7 @@ instalação por meio do gerenciador de pacotes de sua distribuição, cURL est�
 presente na maioria das distribuições Linux. Se você usar o gerenciador de
 pacotes não será necessário fazer este download.
 
+# Downloanding a range of files
 You can specify multiple URLs or parts of URLs by writing part
 sets within braces as in:
 
@@ -65,88 +69,94 @@ You can specify a step counter for the ranges to get every Nth number or letter:
     If the -o file name uses no dir or if the dirs it mentions
     already exist, no dir will be created.
 
-### measuring a iso size before downloading it
+# measuring a iso size before downloading it
 
-curl -sI https://static.apricityos.com/iso/apricity_os-09.2016-dev-gnome-i686.iso | grep Content-Length | awk '{print $2}'
+		curl -sI https://static.apricityos.com/iso/apricity_os-09.2016-dev-gnome-i686.iso | grep Content-Length | awk '{print $2}'
 
-### using curl with proxy
+# using curl with proxy
 
 # add this line in your ~/.bashrc
-alias curl='curl --proxy 192.168.1.11:8080'
 
-### followig redirections
+		alias curl='curl --proxy 192.168.1.11:8080'
+
+# followig redirections
 
    just use the "-L" option
 
    curl -L url
 
-### salvando os comandos mais populares do site command-line-fu
+# salvando os comandos mais populares do site command-line-fu
 
-curl http://www.commandlinefu.com/commands/browse/sort-by-votes/plaintext/[0-2500:25] | grep -v _curl_ > comfu.txt
+		curl http://www.commandlinefu.com/commands/browse/sort-by-votes/plaintext/[0-2500:25] | grep -v _curl_ > comfu.txt
 
-### get external ip
+# get external ip
 
     curl ifconfig.me
 
-### Save mp3 from stream
+# Save mp3 from stream
 
     curl -sS -o $outfile -m $showlengthinseconds $streamurl
 
-### encurtador de urls do google
+# encurtador de urls do google
 * http://vivaotux.blogspot.com/2010/03/encurtador-de-urls-do-google.html
 
-curl -s 'http://ggl-shortener.appspot.com/?url='"$1" | sed -e 's/{"short_url":"//' -e 's/"}/\n/g'
+		curl -s 'http://ggl-shortener.appspot.com/?url='"$1" | sed -e 's/{"short_url":"//' -e 's/"}/\n/g'
 
-### Exibir IP externo
+# Exibir IP externo
 
-echo `curl -s sputnick-area.net/ip`
-
-# ou
-curl icanhazip.com
-curl -s ip.appspot.com
-
-### Dá pra twittar com o curl
-
-curl -u NOMEDEUSUARIO:SENHA -d status=”SUA MENSAGEM AQUI ENTRE AS ASPAS” http://www.twitter.com/statuses/update.xml
-curl -u user:pass -d status="Tweeting from the shell" http://twitter.com/statuses/update.xml
+		echo `curl -s sputnick-area.net/ip`
 
 # ou
-curl -u twitter-username -d status="Hello World, Twitter!" -d source="cURL" http://twitter.com/statuses/update.xml
 
+		curl icanhazip.com
+		curl -s ip.appspot.com
+
+# Dá pra twittar com o curl
+
+		curl -u NOMEDEUSUARIO:SENHA -d status=”SUA MENSAGEM AQUI ENTRE AS ASPAS” http://www.twitter.com/statuses/update.xml
+		curl -u user:pass -d status="Tweeting from the shell" http://twitter.com/statuses/update.xml
+
+# ou
+
+		curl -u twitter-username -d status="Hello World, Twitter!" -d source="cURL" http://twitter.com/statuses/update.xml
+
+``` bash
 # ou
 #!/bin/bash
 curl -u USER:PASS -d status="$*" http://twitter.com/statuses/update.xml > /dev/null
 echo "Message sent!"
+```
 
-### upload via ftp
+# upload via ftp
 
-curl -u user:passwd -T /home/dir/local_file_to_upload ftp://your_host.com/subdir/
+		curl -u user:passwd -T /home/dir/local_file_to_upload ftp://your_host.com/subdir/
 
-### baixar todos os pacotes tar.gz
+# baixar todos os pacotes tar.gz
 
-curl http://www.phrack.org/archives/tgz/phrack[1-67].tar.gz -o phrack#1.tar.gz
+		curl http://www.phrack.org/archives/tgz/phrack[1-67].tar.gz -o phrack#1.tar.gz
 
-curl "http://forklift-photos.com.s3.amazonaws.com/[12-48].jpg" -o "#1.jpg"
+		curl "http://forklift-photos.com.s3.amazonaws.com/[12-48].jpg" -o "#1.jpg"
 
-curl "http://www.ssb.no/english/subjects/06/05/nos_lonn_en/nos_d362_en/tab/tab-[001-131].html" -o "#1.html"
+				curl "http://www.ssb.no/english/subjects/06/05/nos_lonn_en/nos_d362_en/tab/tab-[001-131].html" -o "#1.html"
 
 # baixar a transcrição de uma temporada inteira do Two and A Half Men
-curl http://www.springfieldspringfield.co.uk/view_episode_scripts.php\?tv-show\=two-and-a-half-men\&episode\=s01e\[01-24\] -o "two-and-a-half-men_#01.txt"
 
-### baixando lições de inglês audio e texto
+		curl http://www.springfieldspringfield.co.uk/view_episode_scripts.php\?tv-show\=two-and-a-half-men\&episode\=s01e\[01-24\] -o "two-and-a-half-men_#01.txt"
 
-curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/Tip%20[1-7].zip -o tip_#1.zip
-curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/tips/Tip_[1-7].pdf -o tip_#1.pdf
+# baixando lições de inglês audio e texto
 
-### download all delicious bookmarks
+		curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/Tip%20[1-7].zip -o tip_#1.zip
+		curl --limit-rate 15k http://learnrealenglish.com/AudioVideo/tips/Tip_[1-7].pdf -o tip_#1.pdf
 
-curl -u username -o bookmarks.xml https://api.del.icio.us/v1/posts/all
+# download all delicious bookmarks
 
-### extrair tarball remoto sem salvar localmente
+		curl -u username -o bookmarks.xml https://api.del.icio.us/v1/posts/all
 
-curl http://example.com/foo.tar.gz | tar zxvf -
+# extrair tarball remoto sem salvar localmente
 
-### changing user-agent
+		curl http://example.com/foo.tar.gz | tar zxvf -
+
+# changing user-agent
 
     curl -silent -A "iMacAppStore/1.0.1 (Macintosh; U; Intel Mac OS X 10.6.7; en) AppleWebKit/533.20.25" http://ax.search.itunes.apple.com/
 

@@ -1,18 +1,12 @@
-# zshell.md
-``` markdown
-File:		 ZsHell.md
-Created:	 sex 06 jan 2017 10:18:17 BRT
-Last Change: dom 29 out 2017 10:36:24 -03
-```
-
-# Arquivo: zshell tips and tricks
+# zshell.md - Last Change: qua 01 nov 2017 12:17:19 -03
+Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
 
 see also [zshtips](zshtips.md)
 
-## References:
+# References:
 + http://zshwiki.org/home/builtin/functions/zmv
 + http://blog.patshead.com/2013/04/more-powerful-zsh-history-search-using-zaw.html
 + http://chneukirchen.org/dotfiles/.zshrc
@@ -80,8 +74,13 @@ or:
 	ls -l *~*.owp
 
 	for i in **/*.mp3; mpg123 $i
-
 	```
+
+Somtimes we can just do:
+
+``` zsh
+mpg123 **/*.mp3
+```
 
 Yet another way to achieve it is
 
@@ -101,15 +100,22 @@ or
 
 to take care about spaces (-l), escape sequences (-r/-E) and leading hyphens (--/-) inside filenames.
 
-Yet even more correct version is print -rN which additionally takes care of linebreaks inside filenames (linux allows them, windows doesn't) by separating the results with nulls, for example:
+Yet even more correct version is print -rN which additionally takes care of
+linebreaks inside filenames (linux allows them, windows doesn't) by separating
+the results with nulls, for example:
 
-	print -rN -- **/*(/) |xargs -0 -n10 chmod g+s
+``` zsh
+print -rN -- **/*(/) | xargs -0 -n10 chmod g+s
+```
 
-which recursively sets setguid bit - selectively addressing directories, as opposed to chmod -R g+s.
+which recursively sets setguid bit - selectively addressing directories, as
+opposed to chmod -R g+s.
 
-For huge trees this only processes a part of files (due to the limit on command line length) and silently leave the rest as is. The following commands can handle this situation:
+For huge trees this only processes a part of files (due to the limit on
+command line length) and silently leave the rest as is. The following commands
+can handle this situation:
 
-	find . -type d -print0 |xargs -0 -n10 chmod g+s
+	find . -type d -print0 | xargs -0 -n10 chmod g+s
 
 (i.e. match anything that matches the pattern * but does not match *.owp)
 
@@ -140,8 +146,8 @@ This tip only works on zsh
 
 ```markdown
 	ssume starting here with the default $fpath
-
 ```
+
 ```zsh
     	zsh_default_functions=~/.zsh-default-functions.zwc
     	if ! zcompile -t $zsh_default_functions >&/dev/null
@@ -315,7 +321,7 @@ In order, your machine will load/execute the following files when ZSH starts:
 
     curl -sL zplug.sh/installer | zsh
 
-## config zplug
+# config zplug
 
     source ~/.zplug/init.zsh
     source ~/.dotfiles/rcfiles/zsh/zplug/init.zsh
@@ -348,7 +354,7 @@ setopt extended_glob
 ls functions/^*(-mp3|.zsh)
 ```
 
-## Create an array of lines from a file
+# Create an array of lines from a file
 
 ``` sh
 buffer=("${(f)$(< /etc/hosts)}")
@@ -365,13 +371,13 @@ echo $buffer[1]
 
     sudo pacman -S {,gst-{libav,plugins-{bad,base,good,ugly}}}
 
-## zim zsh framework
+# zim zsh framework
 
     /usr/bin/env zsh
      zim framework
      https://github.com/Eriner/zim
 
-## define here where are your dotfiles
+# define here where are your dotfiles
 
 ``` sh
 ZDOTDIR=~/.dotfiles/rcfiles/zsh
@@ -402,30 +408,30 @@ source ${ZDOTDIR:-${HOME}}/.zlogin
     cd ~/projects/sample/src/main/java/com/arun/examples/
     cd java scala
 
-## defining ZDOTDIR
+# defining ZDOTDIR
 This var is used in many zsh frameworks during git clone
 
     ZDOTDIR=~/.dotfiles/rcfiles/zsh
 
-## removing only certain dirs
+# removing only certain dirs
 
 removing all directories except some:
 
     rm -rf ^(vim-colors-solarized|vim-airline)
 
-## Check the Existence of a Command in Bash and Zsh
+# Check the Existence of a Command in Bash and Zsh
 [source](https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/)
 
     the fastest way is this (bolean resuld):
 
     (( $+commands[foobar] ))
 
-## avoiding globbing error while compying files
+# avoiding globbing error while compying files
 
     setopt extendedglob
     cp some_dir/(^0*).jpg dest_dir/
 
-## list all possible commands using zsh
+# list all possible commands using zsh
 
 In zsh, you can list the currently available commands of a given type with echo
 ${(k)aliases}, echo ${(k)functions}, echo ${(k)builtins} and echo
@@ -433,7 +439,7 @@ ${(k)commands} (that last one lists external commands only).
 
      echo ${(k)commands} | sed 's, ,\n,g' | wc -l
 
-## loading zsh clean
+# loading zsh clean
 
     zsh -f
 
@@ -451,7 +457,7 @@ to a directory of your choice in your .zshenv file under $HOME:
     zsh -x 2>&1 | tee zsh.log
     zsh -xv 2>&1 | tee zsh.log
 
-## aliases are cumulative
+# aliases are cumulative
 
     alias ls='ls --color=auto'
     alias la='ls -a'
@@ -459,7 +465,7 @@ to a directory of your choice in your .zshenv file under $HOME:
 The la alias will behave just as if you typed ls --color=auto –a,
 there's no need to type --color=auto again on your definition.
 
-## how delete a history entry
+# how delete a history entry
 
 source: stackoverflow
 
@@ -468,7 +474,7 @@ source: stackoverflow
 With setopt HIST_IGNORE_SPACE, you can prepend the above command with a space
 character to prevent it from being writting to $HISTFILE.
 
-## create one folder for each file and move it into it
+# create one folder for each file and move it into it
 
 first you have to know something about filename
 and file's extensions when it comes to shell script
@@ -493,7 +499,7 @@ for i in `ls *`; do
 done
 ```
 
-## how get pipestatus
+# how get pipestatus
 How to get exit status of process that's piped to another
 
 The syntax is:
@@ -506,21 +512,21 @@ OR
     command1 | command2
     echo "${PIPESTATUS[0]} ${PIPESTATUS[1]}"
 
-## how to run a secret series of commands
+# how to run a secret series of commands
 [[source]](http://unix.stackexchange.com/questions/6094/)
 
     % fc -p
     % secret-command
     % fc -P
 
-## how to show a function definition
+# how to show a function definition
 reference: http://va.mu/BLEHZ
 
 functions func_name
 
 you can use =command instead $(which command)
 
-## Just found this little gem
+# Just found this little gem
 
     cd old new
 
@@ -534,7 +540,7 @@ you can use =command instead $(which command)
 
     cd larry sergei
 
-## zsh buffer stack
+# zsh buffer stack
 
     If you type
 
@@ -547,7 +553,7 @@ you can use =command instead $(which command)
     you are in the middle of a typed command, zsh will show you
     the required manual
 
-## how upgrade oh-my-zsh
+# how upgrade oh-my-zsh
 
     Open up Terminal
 
@@ -568,7 +574,7 @@ you can use =command instead $(which command)
 
     git stash pop
 
-## fasd tool shortcuts
+# fasd tool shortcuts
 
     fasd is a tools installed in zsh environment
 
@@ -580,7 +586,7 @@ you can use =command instead $(which command)
     z foo           # cd into the most frecent directory matching foo
     open `sf pdf`   # interactively select a file matching pdf and launch `open`
 
-## aliases para fasd
+# aliases para fasd
 
     alias a='fasd -a'        # any
     alias s='fasd -si'       # show / search / select
@@ -593,13 +599,13 @@ you can use =command instead $(which command)
     alias v='f -e vim'       # open file with vim
     alias o='a -e xdg-open'  # quick opening files with xdg-open#
 
-## changing the shell
+# changing the shell
 
     sudo chsh -s $(which zsh) $(whoami)
 
-## one-liners
+# one-liners
 
-## lowcase filenames
+# lowcase filenames
 make file and directory names lowercase
 + http://onethingwell.org/post/24608988305/zmv
 
@@ -617,7 +623,7 @@ make file and directory names lowercase
     % wget ftp://ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p330.tar.gz
     % tar xzvf !:t
 
-## this command
+# this command
 
     ``` sh
     ls -1 */**/*.sh
@@ -646,11 +652,11 @@ make file and directory names lowercase
 
     ls -1 -- *(.m-1)
 
-## is equivalent to:
+# is equivalent to:
 
     find -iname "*.sh" -printf "\n%f"
 
-## to show files created less than one day
+# to show files created less than one day
 
     ls -1 *(.m-1)
 
@@ -658,7 +664,7 @@ the option -1 sets one result per line
 and the dot '.' alows only regular files
 the 'm-1' asks modifications at less than one day
 
-## show files modified in the last hour
+# show files modified in the last hour
 
     ``` zsh
     ls *(.mh-1) | wc -l
@@ -666,27 +672,27 @@ the 'm-1' asks modifications at less than one day
     ls *.*(^mh3)   # all files not 3 hours  old
     ```
 
-##  find all files with size larger than 10 megabytes
+#  find all files with size larger than 10 megabytes
 
     ``` zsh
     ls **/*(.Lm+10)
     ```
 
-## find all files you accessed within the last month:
+# find all files you accessed within the last month:
 
     ``` zsh
     ls **/*(.aM-1)
     ```
 
-## list files not ending with 'o'
+# list files not ending with 'o'
 
     echo *.[^o]
 
-## avoinding files that start with uppercase
+# avoinding files that start with uppercase
 
     echo [^[:upper:]]*
 
-## files changed in the last hour
+# files changed in the last hour
 
     echo *(mh-1)
 
@@ -771,14 +777,14 @@ Nevertheless, you could also check for either
 Note that the default unit for this qualifier is days, so (m-1) will mean a day
 ago or, more precisely, up to 24 hours before the current system time.
 
-## zsh completions for yaourt
+# zsh completions for yaourt
 
 http://youtu.be/mCHwb_TD4ng
 
 1) First install aur-git and run sudo aur to build local database.
 2) Grab this function I sloppily put together:
 
-## http://pastebin.com/EJrzSh5A
+# http://pastebin.com/EJrzSh5A
 
 ``` sh
 -----8<------------------------
@@ -805,7 +811,7 @@ Now tab away and enjoy.
 
 That's it. Thanks for watching.
 
-## use r to repeat the last command - with substituition
+# use r to repeat the last command - with substituition
 
 ``` sh
 echo one two
@@ -813,18 +819,18 @@ r two=three
 one three
 ```
 
-## print var in lowcase
+# print var in lowcase
 
     echo $var:l
 
-## print file name without extension
+# print file name without extension
 
     echo $filename:r
     echo $filename:t  (basename)
     echo $filename:h  (dirname)
     echo $filename:r  (extension removed)
 
-## Remove the suffix from each file (*.sh in this example)
+# Remove the suffix from each file (*.sh in this example)
 
     $f:e is $f file extension
     :h --> head (dirname)
@@ -832,11 +838,11 @@ one three
     :r --> rest (extension removed)
     $ for f (*.sh) mv $f $f:r
 
-## how set up 'command not found'
+# how set up 'command not found'
 
     [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
 
-## some funtions
+# some funtions
 
 ``` sh
 shell () {
@@ -844,85 +850,85 @@ shell () {
 }
 ```
 
-## show only directories
+# show only directories
 
     print -l foldero/**/*(/)
 
-## show only regular files
+# show only regular files
 
     print -l foldero/**/*(.)
 
     changed in last three days
     ls -l */**(.m3)
 
-## show empty files
+# show empty files
 
     ls -l foldero/**/*(L0)
 
-## show files greater than 3 KB
+# show files greater than 3 KB
 
     ls -l foldero/**/*(Lk+3)
 
-## show files modified in the last hour
+# show files modified in the last hour
 
     print -l foldero/**/*(mh-1)
 
-## shortcut to show or manipulate most recent file
+# shortcut to show or manipulate most recent file
 for example
 
     ls Ctrl-x Ctrl-m
 
 The above shortuc will put the most recent file name in command line
 
-## sort files from most to least recently modified and show the last 3
+# sort files from most to least recently modified and show the last 3
     ls -l foldero/**/*(om[1,3])
 
     list the most recent file
     ls -l */**(.om[1])
 
-## vi newest file
+# vi newest file
 
     vi *(.om[1])
 
-## show all files with extension .pdf in current directory and all subdirectory
+# show all files with extension .pdf in current directory and all subdirectory
 
     ls **/*.pdf
 
-## make all files executable (recursively)
+# make all files executable (recursively)
 
     chmod -x **/*(.)
 
-## show all regular files with the word “test” in their name in current directory and all subdirectory
+# show all regular files with the word “test” in their name in current directory and all subdirectory
 
     ls **/*test*(.)
 
-## find all executable files in current directory and all subdirectory
+# find all executable files in current directory and all subdirectory
 
     ls -l **/*(.x)
 
-## find all files of user tomcat
+# find all files of user tomcat
 
     ls -l **/*(u:tomcat:)
 
-## find all files you accessed within the last month:
+# find all files you accessed within the last month:
 
     ls **/*(.aM-1)
 
-## find all files with size larger than 10 megabytes
+# find all files with size larger than 10 megabytes
 
     ls **/*(.Lm+10)
 
-## show only executable files
+# show only executable files
 
        ls -l **/*(*)
 
-## tornar executáveis todos os arquivos de um diretório
+# tornar executáveis todos os arquivos de um diretório
 
     o ponto "." é um qualificador que indica arquio
 
 		chmod -x **/*(.)
 
-## You can access zmv's advanced documentation by typing man zshcontrib.
+# You can access zmv's advanced documentation by typing man zshcontrib.
 + http://onethingwell.org/post/24608988305/zmv
 
     zmv "programmable rename"
@@ -978,7 +984,7 @@ the numbered variables for you in the replacement pattern.
 zmv -W '*.html' '*'
 ```
 
-## rename all files to lowercase
+# rename all files to lowercase
 
 ``` sh
 zmv -o-i '(**/)(*)' '$1${2:l}'
@@ -990,11 +996,11 @@ zmv '(*.md)' '${(L)1:r}.${(L)1:e}'
 zmv '(**/)(*.mkv)' '$1${(U)2:r}.${(L)2:e}' # recursive traversal
 ```
 
-## rename txt to rb
+# rename txt to rb
 
     zmv -Wv '*.txt' '*.rb'
 
-## removendo extensão mp4a
+# removendo extensão mp4a
 
     zmv '(*)mp4a' '$f:gs/\.mp4a//'
 
@@ -1003,14 +1009,14 @@ zmv '(**/)(*.mkv)' '$1${(U)2:r}.${(L)2:e}' # recursive traversal
 
     zmv -n (*) ${(U)1}
 
-## in this example we are going to change all to lowercase
+# in this example we are going to change all to lowercase
 
     zmv '(*)' '${(L)1}'
 
     Adding leading zeros to a filename (1.jpg -> 001.jpg)
     zmv '(<1->).jpg' '${(l:3::0:)1}.jpg'
 
-## Replace spaces in filenames with underline
+# Replace spaces in filenames with underline
 
     ``` zsh
     zmv '(*)_(*)' '$1-$2'
@@ -1027,16 +1033,16 @@ Other stuff
 
     ```
 
-## Change the suffix from *.sh to *.pl
+# Change the suffix from *.sh to *.pl
 
     zmv -W '*.sh' '*.pl'
 
-## lowercase/uppercase all files/directories
+# lowercase/uppercase all files/directories
 
     $ zmv '(*)' '${(L)1}' # lowercase
     $ zmv '(*)' '${(U)1}' # uppercase
 
-## Remove numbers on the filenames begin
+# Remove numbers on the filenames begin
 
     autoload -U zmv
     zmv '[0-9]## #(*.mp3)' '$1'

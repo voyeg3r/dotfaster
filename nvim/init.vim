@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 01 nov 2017 08:53:19 -03
+" Last Change: qua 01 nov 2017 15:19:23 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -622,8 +622,8 @@ endfun
 
 fun! ChangeHeader()
     if line('$')>=5
-        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%c")/e')
-				normal <C-o>
+        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%c")/ei')
+		normal <C-o>
     endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()
@@ -765,6 +765,7 @@ let g:snips_twitter='@voyeg3r'
 let g:UltiSnipsEditSplit="horizontal"
 
 iab fname <c-r>=expand("%:t")<cr>
+iab idate <c-r>=strftime("%c")<cr>
 iab -> →
 iab mymail <voyeg3r ✉ gmail.com>
 iab slas Sérgio Luiz Araújo Silva

@@ -1,9 +1,5 @@
-# [Wiki](wiki.md) do Sérgio para fins diversos
-
-    Criado: Dom 17/Out/2010 hs 14:23
-    Last Change: sáb 28 out 2017 16:01:28 -03
-    autor: Sérgio Luiz Araújo Silva
-    site: http://vivaotux.blogspot.com
+# [Wiki](wiki.md) do Sérgio - Last Change: qua 01 nov 2017 15:12:34 -03
+Created: Dom 17/Out/2010 hs 14:23
 
 * [Android](android.md)
 * [Anki](anki.md)
@@ -22,6 +18,7 @@
 * [conky](conky.md)
 * [cmp](cmp.md)
 * [Desktoplinux](desktoplinux.md)
+* [distroslinux](distroslinux.md)
 * [Dicasdobash](dicasdobash.md)
 * [Dicasfirefox](dicasfirefox.md)
 * [Dicasgnome](dicasgnome.md)

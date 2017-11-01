@@ -173,6 +173,7 @@ alias vbros='mplayer http://adultswim-vodlive.cdn.turner.com/the-venture-bros/st
 
 # alias myexternalip='curl http://myexternalip.com/raw'
 # alias myexternalip='curl https://api.ipify.org'
+alias curl='curl -A "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/58.0.3029.110 Chrome/58.0.3029.110 Safari/537.36"'
 alias myexternalip='curl ifconfig.me'
 alias ipaddress='hostname -i'
 alias iso2utf='iconv -f iso-8859-1 -t utf-8'

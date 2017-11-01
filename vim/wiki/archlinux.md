@@ -1,9 +1,10 @@
-# Arquivo: archlinux.wiki - Last Change: ter 31 out 2017 06:21:23 -03
+# Arquivo: archlinux.wiki - Last Change: qua 01 nov 2017 15:03:59 -03
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
 
-https://www.ostechnix.com/installing-arch-linux-using-revenge-graphical-installer/
++ https://sourceforge.net/projects/obrevenge/files/
++ https://www.ostechnix.com/installing-arch-linux-using-revenge-graphical-installer/
 
 Archrevenge installer: https://sourceforge.net/projects/revenge-installer/
 Etcher to make your bootable usb stick: https://etcher.io/
