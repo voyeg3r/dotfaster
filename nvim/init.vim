@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qua 01 nov 2017 15:19:23 -03
+" Last Change: qui 02 nov 2017 08:20:39 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -86,6 +86,7 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 "Plug 'mhinz/vim-startify'
+Plug 'rking/ag.vim'
 Plug 'w0rp/ale'                           " Asyncronous lint engine
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 "Plug 'bitc/vim-bad-whitespace'            " Find bad whitespace
@@ -764,11 +765,14 @@ let g:snips_github='https://github.com/voyeg3r'
 let g:snips_twitter='@voyeg3r'
 let g:UltiSnipsEditSplit="horizontal"
 
-iab fname <c-r>=expand("%:t")<cr>
-iab idate <c-r>=strftime("%c")<cr>
+iab fname <C-R>=expand("%:t")<CR>
+iab idate <C-R>=strftime("%c")<CR>
+iab hdate <C-R>=strftime("%Y %B %d")<CR>
 iab -> →
 iab mymail <voyeg3r ✉ gmail.com>
 iab slas Sérgio Luiz Araújo Silva
 iab tuiter http://www.twitter.com/voyeg3r
 iab vivaotux http://vivaotux.blogspot.com
+
+cab ag Ag
 

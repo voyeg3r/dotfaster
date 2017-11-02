@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: ter 31 out 2017 19:43:26 -03
+# dicasvim.md Intro - Last Change: qui 02 nov 2017 08:27:49 -03
 
 # Vim antipatterns
 
@@ -6,7 +6,8 @@ If you get yourself doing a lot of jjjj and kkkk you have to read this.
 
 To copy the line 16 to the line bellow just type:
 
-	:16t.
+	:16t.  ................... copy line16 1 line below
+	:t10   ................... copy current line to the line below line 10
 
 1 - Instead of jumping to the line
 2 - pressing yy
@@ -16,6 +17,8 @@ To copy the line 16 to the line bellow just type:
 + https://stackoverflow.com/a/47002025/2571881
 
 		:1,10s/abc/def/g|50,60&&
+
+		OBS: && repeats last command
 
 # Vim markdown tips
 + https://vi.stackexchange.com/a/9544/7339
@@ -27,6 +30,10 @@ making vimwiki folds working properly
 
 # Syntax highlighting on Disqus
 + https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting
+
+Why this is important when it comes to vim use?
+Well, is very common people sharing vimi tips in sites, blogs and so on
+and is nice to have a decent code to show.
 
 Disqus supports automatic syntax highlighting in a number of languages. To use
 this feature, place your code inside `<pre><code>` tags. For example:
@@ -71,7 +78,6 @@ All you have to do is to create a macro to make the flashcards.
 I have a python script to get two files; the first one has the mp3 files links
 and the second one gives me some html content over wich I run this vimscript
 function:
-
 
 ``` viml
 				fun! CleanFlaschards()
@@ -399,6 +405,35 @@ Solutions:
 + https://stackoverflow.com/a/11976158/2571881
 
     :bufdo vimgrepadd pattern % | copen+
+
+# Tips about vimgrep
+
+We can refer to each file on the arglist simple by doing
+
+		:vimgrep /pattern/g ##
+
+    :cdo : perform a command on all entries of quickfix list. For example
+    :vim /foo/ *.cpp *.h *.hpp can be followed by
+    :cdo s/pattern/replacement/g
+    :cfdo: perform a command an all files in quickfix list. For example,
+    :vim /foo/ *.cpp *.h *.hpp can be followed by
+    :cfdo %s/2ndpattern/2ndreplacement/g
+
+## O plugin ag.vim →  rking/ag.vim: https://github.com/rking/ag.vim
+Permite muitas ações na janela quickfix (aquela que abre quando usamos o grep)
+
+		e    to open file and close the quickfix window
+		o    to open (same as enter)
+		go   to preview file (open but maintain focus on ag.vim results)
+		t    to open in new tab
+		T    to open in new tab silently
+		h    to open in horizontal split
+		H    to open in horizontal split silently
+		v    to open in vertical split
+		gv   to open in vertical split silently
+		q    to close the quickfix window
+
+Após fechar a janela quickfix podemos reabri-la com o comando `:copen`
 
 # Inserting a range of numbers
 
@@ -3401,10 +3436,7 @@ The key to get mp3 links over multilne is to search for:
 
     /http.*\_.mp3
 
-
-
 ## Multiline removing html comments
-
 
 	:1,$s/<!--\_.\{-}-->//
 

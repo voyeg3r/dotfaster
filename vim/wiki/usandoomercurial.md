@@ -1,15 +1,11 @@
-[[=Manual]] do Mercurial=
+# Manual do Mercurial - Last Change: qui 02 nov 2017 08:30:15 -03
 
 Arquivo: Como usar o mercurial ( controle de versões )
 Criado: Qua 03/Nov/2010 hs 21:54
-Last Change: dom 08 jan 2017 12:03:35 BRT
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
 
 Meu usuário no bitbucket é 'sergio'
 
-### Referência:
+# Referência:
 http://mercurial.selenic.com/wiki/QuickStartPtBr
 http://hgbook.red-bean.com/read/mercurial-in-daily-use.html
 
@@ -19,11 +15,11 @@ https://bitbucket.org/sergio/vimfiles
 Um manual sobre como colocar sobre controle de versões a pasta home
 http://pyverted.com/version-control/using-mercurial-on-your-home-directory/2009/08/
 
-### Instalando
+# Instalando
 
     sudo apt-get -y mercurial
 
-### Configurando
+# Configurando
 
 Arquivos de Configuração
 
@@ -74,7 +70,7 @@ Arquivos de Configuração
     [paths]
     default = ssh://hg@bitbucket.org/sergio/vimfiles
 
-### Iniciando o repositório
+# Iniciando o repositório
 
     cd repositorio
 
@@ -84,7 +80,7 @@ Arquivos de Configuração
 
     faça as alterações
 
-### fazendo o primeiro commit
+# fazendo o primeiro commit
 
     hg ci -m "mensagem do primeiro commit"
 
@@ -118,7 +114,7 @@ Arquivos de Configuração
 
 
 
-### Mais sobre o commit
+# Mais sobre o commit
 
     $ hg commit
 
@@ -150,11 +146,11 @@ changeset é usando o tip:
 
     $ hg tip
 
-### Para acompanhar todos os commits
+# Para acompanhar todos os commits
 
   hg log
 
-### revertendo mudanças
+# revertendo mudanças
 
    hg revert -a
 
@@ -184,7 +180,7 @@ changeset é usando o tip:
    hg up -r 578
 
 
-### ver as diferenças entre cada commit
+# ver as diferenças entre cada commit
 
  Como saber em que revisão estamos no projeto?
 
@@ -196,7 +192,7 @@ changeset é usando o tip:
 
   O comando acima mostra as diferenças entre duas versões
 
-===limpando o repositório após um revert===
+# limpando o repositório após um revert
 
 Caso usemos o comando 'revert' podemos e esqueçamos de usar
 --no-backup podemos limpar os arquivos.orig com
@@ -207,7 +203,7 @@ Ao usar o comando revert podemos mandar ignorar o backup
 
     hg revert --no-backup filename.java
 
-### quando você pede um status ao mercurial
+# quando você pede um status ao mercurial
 
 hg status  ...... ele retorna algo assim:
 
@@ -217,7 +213,7 @@ hg status  ...... ele retorna algo assim:
  R NEWS : o arquivo NEWS será removido do mercurial
 
 
-### Para atualizar o repositório local
+# Para atualizar o repositório local
 
       hg pull
       hg update -c

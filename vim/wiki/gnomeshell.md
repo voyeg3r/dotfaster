@@ -2,7 +2,7 @@
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: ter 24 out 2017 06:18:23 -03
+Last Change: qua 01 nov 2017 19:23:07 -03
 ```
 
 # Getting gnome-shell version
@@ -404,6 +404,7 @@ max-screencast-length 1800
 mprove focus and increase your productive by listening to different sounds
 
 # Extension to set blur effect
++ https://extensions.gnome.org/extension/1251/blyr/
 + https://github.com/yozoon/gnome-shell-extension-blyr
 
     git clone git@github.com:yozoon/gnome-shell-extension-blyr.git

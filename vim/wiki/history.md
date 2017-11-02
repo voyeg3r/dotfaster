@@ -1,44 +1,47 @@
-### exibir os últimos 10 comandos
+# history.md - Last Change: qui 02 nov 2017 08:16:50 -03
 
-history 10
+# exibir os últimos 10 comandos
 
-### exibir todas as ocorrências do find no histórico
+		history 10
 
-history | grep find
+# exibir todas as ocorrências do find no histórico
 
-### limpar o histórico de comandos
+		history | grep find
 
-history -c
+# limpar o histórico de comandos
 
-### para executar a saida de um comando
+		history -c
 
-  apt-cache search openoffice.org | grep -i pt-br | awk '{print $1}'
-  apt-get install -y $(!!)
+# para executar a saida de um comando
 
-### buscando um padrão no histórico
+``` bash
+apt-cache search openoffice.org | grep -i pt-br | awk '{print $1}'
+apt-get install -y $(!!)
+```
 
-history | awk '$2 ~ /find/ {print $0}'
+# buscando um padrão no histórico
+
+		history | awk '$2 ~ /find/ {print $0}'
 
 No aqk $2 indica o segundo campo, lembre-se que o primeiro campo
 é o númeor do comando dentro do histórico, o til ativa a busca
 por expressões regulares pela palavra 'find' e finalmente instruimos ao
 awk que imprima na tala todo o campo correspondente.
-### subsituição de padrões no histórico
+# subsituição de padrões no histórico
 Digamos que você deu um ping assim:
 
-ping -c 2 www.google.com
+		ping -c 2 www.google.com
 
 Se desejar dar um ping para o yahoo basta fazer:
 
-^google^yahoo
+		^google^yahoo
 
-### Os 10 comandos mais usados
+# Os 10 comandos mais usados
 
-history | awk '{print $2}' | sort | uniq -c | sort -rn | head
+		history | awk '{print $2}' | sort | uniq -c | sort -rn | head
 
 # mais completo
-history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 
-
+		history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 
 
