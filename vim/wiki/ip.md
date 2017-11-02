@@ -1,4 +1,4 @@
-# ip.md - Last Change: qui 02 nov 2017 12:53:58 -03
+# ip.md - Last Change: qui 02 nov 2017 13:13:26 -03
 
 O ip é utilizado para atribuir endereços IP para as interfaces de rede,
 mostrar configuração do TCP/IP, entre outras coisas.
@@ -21,4 +21,9 @@ O comando abaixo mostra as rotas ativas
     ip address | awk '/global/ {print $2}'
     192.168.0.122/24
 
+# if you don't have network configurated try
 
+		ip link
+
+		ip link set "interface" up
+		dhcpd "interface"

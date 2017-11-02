@@ -1,4 +1,4 @@
-# Distros linux leves - Last Change: qui 02 nov 2017 12:46:11 -03
+# Distros linux leves - Last Change: qui 02 nov 2017 13:27:44 -03
 
 + Proteus Linux: http://www.porteus.org/
 + Revenge OS: https://sourceforge.net/projects/obrevenge/files/
@@ -6,7 +6,7 @@
 + GNU gNewSense: http://www.gnewsense.org/Main/Download
 + Archlinux GNU: https://www.parabola.nu/
 + GNU Distros list: https://www.gnu.org/distros/free-distros.en.html
-+ gentoo: https://www.gentoo.org/downloads/
++ gentoo: https://www.gentoo.org/downloads/ [gentoo](gentoo.md)
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD

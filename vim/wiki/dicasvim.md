@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: qui 02 nov 2017 09:33:28 -03
+# dicasvim.md Intro - Last Change: qui 02 nov 2017 14:06:15 -03
 
 # Vim antipatterns
 
@@ -324,6 +324,34 @@ que pega os blocos de código
 isso corresponde ao começo da função, daí é só
 dar um vip em modo normal
 ```
+
+# Vim regex - negate following pattern
++ https://stackoverflow.com/a/34548989/2571881
++ https://www.inputoutput.io/lookbehind-lookahead-regex-in-vim/
+
+		%s,\v# @!\zs.*, &,g
+
+The option `@!` negates the space before
+
+Suppose I have a file with lines that contain the following strings:
+
+		...cat dog lorem ipsum...
+		...cat lizard ...
+		...cat bird ...
+		...cat dog ...
+
+I want to write a regex that matches the lines in which cat is not followed by dog:
+
+		...cat lizard ...
+		...cat bird ...
+
+How can I do this? (solution)
+
+		\vcat (dog)@!
+
+find "other" just preceded by some
+
+		\v(some)@<=other
 
 # Remove offending key from known_hosts file with one swift move
 

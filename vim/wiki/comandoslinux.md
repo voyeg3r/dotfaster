@@ -4,6 +4,7 @@
 [html2pdf](html2pdf.md)
 [mpv](mpv.md)
 [pactl](pactl.md)
+[parted](parted.md)
 [a2ps](a2ps.md)
 [abolish](abolish.md)
 [ack](ack.md)
