@@ -16,7 +16,7 @@ Github:      https://github.com/voyeg3r
   do perl de lidar com expressões regulares, inclusive
   tendo algumas expressões que lhe são perticulares.
 
-### installing real perl-rename
+# installing real perl-rename
 
 A lot of manuals cite rename as perl-renam but are differences
 to get real rename follow this instructions:
@@ -26,7 +26,7 @@ to get real rename follow this instructions:
 
     sudo ln -s /usr/local/bin/rename /usr/bin/rename.pl
 
-### Adding leading zeros
+# Adding leading zeros
 [from stackoverflow](http://stackoverflow.com/a/13250820/2571881)
 
     OBS: use `-n` to see the result before performing this action
@@ -64,16 +64,16 @@ $ ls
 00004.jpg  00008.jpg  00012.jpg  00016.jpg
 ```
 
-### interesting options
+# interesting options
 
 If you want to do a dry run to make sure you don't clobber any files, add the -n switch to the command
 
-### adding left zeros
+# adding left zeros
 [link: stackoverflow](http://stackoverflow.com/questions/14327613/)
 
     perl-rename 's/(\d+)/sprintf("%03d", $1)/e' *.txt
 
-### To rename all files matching *.bak to strip the extension, you might say
+# To rename all files matching *.bak to strip the extension, you might say
 
     rename 's/\e.bak$//' *.bak
 
@@ -87,13 +87,13 @@ in my case I have an alias called prename
 
     prename 's/.txt$/.md/' *
 
-### To translate uppercase names to lower, you'd use
+# To translate uppercase names to lower, you'd use
 OBS: prename is an alias to perl-rename
 
     rename 'y/A-Z/a-z/' *
 
     prename 'tr/A-Z/a-z/' *
 
-### Restabelecendo espaços
+# Restabelecendo espaços
 
     prename 'tr/_/ /' *

@@ -1,4 +1,4 @@
-### Convert html pages to pdf
+# Convert html pages to pdf
 + https://www.cyberciti.biz/open-source/html-to-pdf-freeware-linux-osx-windows-software/
 
 On my system i have found wkhtmltopdf so then I aliased it
@@ -6,10 +6,10 @@ On my system i have found wkhtmltopdf so then I aliased it
     html2pdf https://www.cyberciti.biz/open-source/html-to-pdf-freeware-linux-osx-windows-software/ html2pdf.pdf
 
 
-### Converting html to pdf online
+# Converting html to pdf online
 + https://www.sejda.com/html-to-pdf
 
-### Grayscale pdf
+# Grayscale pdf
 
 The following PDF will be generated in grayscale:
 
@@ -25,7 +25,7 @@ Where,
 
     -O Landscape|Portrait. The default is Portrait.
 
-### How do I set page size?
+# How do I set page size?
 
 Use the following syntax:
 

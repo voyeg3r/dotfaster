@@ -9,7 +9,7 @@ Turma no duolingo: https://www.duolingo.com/o/cbmeqw
 + http://www.talkenglish.com/lessondetails.aspx?ALID=520
 + Introductions and Presentations
 
-### Mind map about the learning process
+# Mind map about the learning process
 + How to learn faster
 + Spaced Repetition
 
@@ -28,7 +28,7 @@ Turma no duolingo: https://www.duolingo.com/o/cbmeqw
 
 Checking-in at the hotel - Dialog about hotel
 
-### Homework - Asking simple questions in English (we will make reviews of those)
+# Homework - Asking simple questions in English (we will make reviews of those)
 
 (Modulo 1 - pg 25)
 

@@ -1,4 +1,4 @@
-### Recording your screen cam
+# Recording your screen cam
 https://trac.ffmpeg.org/wiki/Capture/Webcam
 
 ### substituir o audio de um video

@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 Comando usado para exibir as linhas finais de um arquivo qualquer
 
     tail -n 100 /etc/passwd
@@ -13,16 +13,16 @@ um arquivo:
 
     tail -f /var/log/squid/access.log | awk '{print $3,$7}'
 
-### Remove first two lines
+# Remove first two lines
 
     tail -n +3 file
 
-### monitorar log via rede
+# monitorar log via rede
 
     tail -f error_log | nc -l 1234
 
 
-### Imprimir da segunda linha em diante
+# Imprimir da segunda linha em diante
 
     cat /etc/passwd | tail -n +2
 

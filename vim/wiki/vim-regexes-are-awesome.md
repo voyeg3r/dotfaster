@@ -11,7 +11,7 @@ Vim's regexes are very good. They have all of the good features of Perl/Ruby
 regexes, plus some extra features that don't make sense outside of a text
 editor, but are nonetheless very helpful in Vim.
 
-#### Here are a few of the neat things you can do.
+## Here are a few of the neat things you can do.
 
 Vim regexes are inconsistent when it comes to what needs to be
 backslash-escaped and what doesn't, which is the one bad thing. But Vim lets

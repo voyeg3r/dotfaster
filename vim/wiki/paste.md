@@ -3,7 +3,7 @@ this is only a test^[]
 
     paste pares.txt impares.txt
 
-### Transformar 3 linhas em uma
+# Transformar 3 linhas em uma
 
 2,5,1,1
 3
@@ -12,12 +12,12 @@ this is only a test^[]
 2
 8
 
-#### resulta em
+## resulta em
 paste -d"," - - - < file
 2,5,1,1,3,5
 3,7,1,1,2,8
 
-### Colar dois trechos do mesmo arquivo lado a lado
+# Colar dois trechos do mesmo arquivo lado a lado
 
     joao
     jose
@@ -27,15 +27,15 @@ paste -d"," - - - < file
     dois
     tres
 
-#### Solução
+## Solução
 
     paste -d' ' <(sed '/^$/,$d' lixo) <(sed '1,/^$/d' lixo)
 
 Na solução acima pegamos de uma linha vazia '^$' até o final $
 e da linha '1' até uma linha vazia '^$'
-### juntar linhas de 5 em 5
+# juntar linhas de 5 em 5
 
-### Pessoal,
+# Pessoal,
 
 tenho uma comando que gera a seguinte saida, onde a unica padronagem é uma
 sequencia de 5 linhas:
@@ -66,7 +66,7 @@ sequencia de 5 linhas:
     2242230016
     388346880
 
-### Eu precisava gerar a saida neste formato, em 5 colunas:
+# Eu precisava gerar a saida neste formato, em 5 colunas:
 
     0 r5 751625160 601300096 391584768
     1 r5 1401393800 1121115008 621056
@@ -77,7 +77,7 @@ sequencia de 5 linhas:
     Obrigado,
     Alessandro Almeida.
 
-### solução
+# solução
 
     paste -d" " - - - - - < teste.txt
 

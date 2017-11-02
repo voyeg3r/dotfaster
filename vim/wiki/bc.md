@@ -3,7 +3,7 @@ Arquivo: bc.md
 Created: qua 06/set/2017 hs 20:27
 Last Change: sex 08 set 2017 19:37:03 -03
 ```
-### Introdução
+# Introdução
 
     seq 1 100 | paste -sd+ | bc
 
@@ -11,24 +11,24 @@ Same result using awk
 
     seq 1 100 | awk '{sum+=$1} END {print sum}'
 
-### somando os numeros de 1 a 100
+# somando os numeros de 1 a 100
 
     seq -s+ 100 | bc
 
-### Calculos com números quebrados
+# Calculos com números quebrados
 
     echo 'scale=2; 5/2' | bc
 
-### Usando Here strings
+# Usando Here strings
 Neste caso não temos que usar echo
 
     bc <<< 'scale=2; 2 / 5'
 
-### Decimal para hexadecimal
+# Decimal para hexadecimal
 
     echo "obase=16; ibase=10; 56" | bc
 
-### Somando valores com o 'paste' e o 'bc'
+# Somando valores com o 'paste' e o 'bc'
 Fonte: http://br.groups.yahoo.com/group/shell-script - Mensagem 19183
 arquivo valores.txt contem
 
@@ -54,11 +54,11 @@ O mesmo resultado pode ser obtido usando-se o awk:
 
     awk '{var+=$1} END {print var}' valores.txt
 
-### Função para converter de decimal para binário
+# Função para converter de decimal para binário
 
     function decToBin { echo "ibase=10; obase=2; $1" | bc; }
 
-### Comparando valores
+# Comparando valores
 Fonte: [[@http://br.groups.yahoo.com/group/shell-script/message/30666|lista brasileira de shell script]]
 
     if (( ! $(echo 2.0 == 1.006 | bc -l) )); then

@@ -1,3 +1,4 @@
+# yaourt.md intro - Last Change: qui 02 nov 2017 08:38:44 -03
 
 13 comandos básicos yaourt para você gerenciar melhor os pacotes do AUR | Linux Descomplicado
 
@@ -31,7 +32,8 @@ http://www.linuxdescomplicado.com.br/2015/10/13-comandos-basicos-yaourt-para-voc
 
     yaourt -Rs pacote
 
-ATENÇÃO: Esta operação é recursiva, e deve ser usado com muito cuidado, pois poderia eliminar um pacote principal e corromper o sistema
+ATENÇÃO: Esta operação é recursiva, e deve ser usado com muito cuidado,
+pois poderia eliminar um pacote principal e corromper o sistema
 
 8 – Remover um pacote e suas dependências e todos os pacotes que dependem dele
 
@@ -57,13 +59,18 @@ ATENÇÃO: Esta operação é recursiva, e deve ser usado com muito cuidado, poi
 
     yaourt -Syua
 
-### Fixing yaourt after pacman update
+# Fixing yaourt after pacman update
 
 New version of Pacman released: Updating yaourt and package-query
 
-Pacman 5.0.0 has been released, and for those of us who use it along with yaourt, that means a pacman -Syu willl temporarily be unable to satisfy its dependencies. The reason is that your system’s version of package-query will prevent you from updating to the latest pacman.
+Pacman 5.0.0 has been released, and for those of us who use it along with
+yaourt, that means a pacman -Syu willl temporarily be unable to satisfy its
+dependencies. The reason is that your system’s version of package-query will
+prevent you from updating to the latest pacman.
 
-Most among you will probably find it easy to upgrade, but if you’re feeling fuzzy or made a little error on the way (causing you to fail to load the shared library libalpm.so.9..), here’s how to do it asap:
+Most among you will probably find it easy to upgrade, but if you’re feeling
+fuzzy or made a little error on the way (causing you to fail to load the
+shared library libalpm.so.9..), here’s how to do it asap:
 
     # remove problematic packages:
     sudo pacman -Rdd package-query yaourt

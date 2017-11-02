@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 O comando chroot permite usar uma raiz diferente para o seu
 sistema, esta funcionalidade nos possibilita coisas como:
 

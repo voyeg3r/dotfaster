@@ -12,14 +12,14 @@ Github:      https://github.com/voyeg3r
 ```
 
 
-#### Diretorio dos snippets (dá uma olhada em help Ulti...)
+## Diretorio dos snippets (dá uma olhada em help Ulti...)
 
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 [[Tex.Snippets]]
 
 
-### como apagar tags do tipo </font*> no vim
+# como apagar tags do tipo </font*> no vim
 
     <\/\?font[^<]*>
 

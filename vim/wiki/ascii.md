@@ -2,7 +2,7 @@
 É uma tabela que relaciona números binários/inteiros com
 caracteres
 
-### ascii art
+# ascii art
 são desenhos feitos com caracteres
 
     $ cowsay "Hi, How are you"

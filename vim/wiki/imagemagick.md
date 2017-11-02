@@ -1,4 +1,4 @@
-### Imagemagick
+# Imagemagick
 a sua versão do linux já tem o imagemagick instalado.
 
 ``` markdown
@@ -13,7 +13,7 @@ Github:      https://github.com/voyeg3r
 ```
 
 
-### recortando uma imagem grande para impressão
+# recortando uma imagem grande para impressão
 
 Primeiro exiba as características da imagem
 
@@ -24,7 +24,7 @@ Se exportou com 300 divida ambos largura e altura por 3
         convert -colorspace CMYK -crop 2415x3425 gameboard.jpg gameboard-tile%03d.tif
 
 
-### resolvendo o problema das fontes
+# resolvendo o problema das fontes
 * http://russia.shaps.hawaii.edu/software/add-to-im.html
 * http://www.dicas-l.com.br/dicas-l/20050720.php
 
@@ -41,7 +41,7 @@ convert -font helvetica -fill white -stroke black            \
   imagem.jpg imagemlegendada.jpg
 ```
 
-### adicionando sombra e bordas
+# adicionando sombra e bordas
 * http://www.dicas-l.com.br/arquivo/acrescentar_sombras_e_bordas_a_imagens_com_imagemagick.php
 
 ``` sh
@@ -58,15 +58,15 @@ image-shadow () {
  }
 ```
 
-### Para adicionar sombra
+# Para adicionar sombra
 
      image-shadow prettywoman.jpg
 
-### Para adicionar também bordas
+# Para adicionar também bordas
 
      image-shadow prettywoman.jpg
 
-### coloando texto em imagens
+# coloando texto em imagens
 * http://www.imagemagick.org/Usage/annotating/
 
 ``` sh
@@ -96,13 +96,13 @@ convert dragon.jpg \
 
 [[image:http://www.imagemagick.org/Usage/annotating/anno_dim_draw.jpg caption="http://www.imagemagick.org/Usage/annotating/anno_dim_draw.jpg"]]
 
-### Modificação Seletiva
+# Modificação Seletiva
 
 Num dos artigos citados abaixo peguei uma dica para modificar apenas arquivos com um determinado tamanho.
 
     identify -format '%f %wx%h n' *.jpg
 
-### convertendo para escala de cinza
+# convertendo para escala de cinza
 
     convert test.jpg -modulate 100,0 grey_test.jpg
 
@@ -113,11 +113,11 @@ for i in *; do
 done
 ```
 
-### Convertendo muitas imagens
+# Convertendo muitas imagens
 
     mogrify -format jpg *.gif
 
-### Criando uma miniatura (trumbnail)
+# Criando uma miniatura (trumbnail)
     convert -sample 25%x25% input.jpg output.jpg
 
 Para fazer isto em um grupo de imagens faça:
@@ -129,7 +129,7 @@ convert -sample 25%x25% $img thumb-$img
 done
 ```
 
-### resolvendo o problema das fontes
+# resolvendo o problema das fontes
 * http://russia.shaps.hawaii.edu/software/add-to-im.html
 * http://www.dicas-l.com.br/dicas-l/20050720.php
 
@@ -146,7 +146,7 @@ convert -font helvetica -fill white -stroke black            \
   imagem.jpg imagemlegendada.jpg
 ```
 
-### coloando texto em imagens
+# coloando texto em imagens
 * http://www.imagemagick.org/Usage/annotating/
 
 ``` sh
@@ -156,7 +156,7 @@ convert -caption "Faerie Dragon" dragon.jpg -gravity center \
 
 [[image:http://www.imagemagick.org/Usage/annotating/anno_polaroid.png caption="http://www.imagemagick.org/Usage/annotating/anno_polaroid.png"]]
 
-### outro exemplo
+# outro exemplo
 
 ``` sh
 convert dragon.jpg \
@@ -176,32 +176,32 @@ convert dragon.jpg \
 
 [[image:http://www.imagemagick.org/Usage/annotating/anno_dim_draw.jpg caption="http://www.imagemagick.org/Usage/annotating/anno_dim_draw.jpg"]]
 
-### Modificação Seletiva
+# Modificação Seletiva
 
 Num dos artigos citados abaixo peguei uma dica para modificar apenas arquivos com um determinado tamanho.
 
     identify -format '%f %wx%h n' *.jpg
 
-### convertendo para escala de cinza
+# convertendo para escala de cinza
 
     convert test.jpg -modulate 100,0 grey_test.jpg
 
-### Para colocar muitas imagens em escala de cinza faça:
+# Para colocar muitas imagens em escala de cinza faça:
 ``` sh
 for i in *; do
 convert $i -modulate 100,0 grey_$i
 done
 ```
 
-### Convertendo muitas imagens
+# Convertendo muitas imagens
 
     mogrify -format jpg *.gif
 
-###Criando uma miniatura (trumbnail)
+#Criando uma miniatura (trumbnail)
 
     convert -sample 25%x25% input.jpg output.jpg
 
-###Para fazer isto em um grupo de imagens faça:
+#Para fazer isto em um grupo de imagens faça:
 
 ``` sh
 for img in `ls *.jpg`
@@ -210,7 +210,7 @@ for img in `ls *.jpg`
 done
 ```
 
-### Redimensionando fotos e modificando a resolução rapidinho
+# Redimensionando fotos e modificando a resolução rapidinho
 
 ``` sh
     #!/bin/bash
@@ -229,34 +229,34 @@ done
     done
 ```
 
-### Para fazer isto em uma única linha:
+# Para fazer isto em uma única linha:
 
       convert -quality 70 -resize 10% *.jpg images.jpg
 
-### Para fazer uma montagem
+# Para fazer uma montagem
 
        montage *.jpg -shadow -geometry +10+10 montagem.jpg
 
-### redimensionamento simples
+# redimensionamento simples
 
     mogrify -geometry 800x600 *.jpg
     # -geometry (preserves values of height and width given, and aspect ratio)
 
     mogrify -resize 640x480! *.jpg
 
-### Redimensionando apenas
+# Redimensionando apenas
 
     mogrify -resize 1024x768! *.jpg
 
-### Rotacionando uma imagem
+# Rotacionando uma imagem
 
     convert -rotate 90 input.jpg output.jpg
 
-### Criando uma montagem
+# Criando uma montagem
 
     montage *.jpg -shadow -geometry +10+10 montagem.jpg
 
-### Criando bordas em imagens com o comando convert
+# Criando bordas em imagens com o comando convert
 
     convert -border 2x2 old.jpg new.jpg
 
@@ -264,7 +264,7 @@ outra opção
 
     convert -border 2x2 -bordercolor "#FF0000" old.jpg new.jpg
 
-### Para colocar bordas em muitas imagens faça
+# Para colocar bordas em muitas imagens faça
 ``` sh
 for i in *; do
     convert -border 10x10 -bordercolor "#000000" $i border_$i
@@ -275,13 +275,13 @@ Ou ainda
 
     convert -border 50x50 -bordercolor "#ffffff" *.jpg images.jpg
 
-### Exibindo um grupo de imagens
+# Exibindo um grupo de imagens
 
     display *.jpg
 
 para visualizar a próxima imagem pressione a barra de espaços
 
-### Capturando um screenshot (imagem de tela)
+# Capturando um screenshot (imagem de tela)
 
     sleep 5; import -window root tela.png
     sleep 5; import -window root tela.png; gimp tela.png
@@ -290,11 +290,11 @@ O 'sleep' faz o sistema esperar 5 segundos, o suficiente para abrir-mos o menu
 ou programa, edite de acordo com sua necessidade, ao final chamamos o gimp já
 editando a imagem capturada.
 
-### Artigo sobre imagemagick
+# Artigo sobre imagemagick
 
 mogrify pode ser usado para colocar bordas em um arquivo e muitas outras operações
 
-### colocando texto na imagem
+# colocando texto na imagem
 
 ``` sh
 convert -font helvetica -fill white -pointsize 36
@@ -302,11 +302,11 @@ convert -font helvetica -fill white -pointsize 36
 floriade.jpg comment.jpg
 ```
 
-### Flip: inverte a posição da foto na vertical:
+# Flip: inverte a posição da foto na vertical:
 
       convert -flip foto_source.jpg foto_dest.flip.jpg
 
-### Flop: inverte a direção da foto na horizontal (espelhamento):
+# Flop: inverte a direção da foto na horizontal (espelhamento):
 
       convert -flop foto_source.jpg foto_dest.flop.jpg
 
@@ -333,25 +333,25 @@ Para fazer uma montagem
 
    montage *.jpg -shadow -geometry +10+10 montagem.jpg
 
-### redimensionamento simples
+# redimensionamento simples
 
 mogrify -geometry 800x600 *.jpg
 # -geometry (preserves values of height and width given, and aspect ratio)
 
 mogrify -resize 640x480! *.jpg
 
-### Redimensionando apenas
+# Redimensionando apenas
 
 mogrify -resize 1024x768! *.jpg
 
-### Rotacionando uma imagem
+# Rotacionando uma imagem
 convert -rotate 90 input.jpg output.jpg
 
-### Criando uma montagem
+# Criando uma montagem
 
 montage *.jpg -shadow -geometry +10+10 montagem.jpg
 
-### Criando bordas em imagens com o comando convert
+# Criando bordas em imagens com o comando convert
 convert -border 2x2 old.jpg new.jpg
 outra opção
 convert -border 2x2 -bordercolor "#FF0000" old.jpg new.jpg
@@ -364,11 +364,11 @@ done
 Ou ainda
 convert -border 50x50 -bordercolor "#ffffff" *.jpg images.jpg
 
-### Exibindo um grupo de imagens
+# Exibindo um grupo de imagens
 display *.jpg
 para visualizar a próxima imagem pressione a barra de espaços
 
-### Capturando um screenshot (imagem de tela)
+# Capturando um screenshot (imagem de tela)
 sleep 5; import -window root tela.png
 sleep 5; import -window root tela.png; gimp tela.png
 
@@ -376,10 +376,10 @@ O 'sleep' faz o sistema esperar 5 segundos, o suficiente para abrir-mos o menu
 ou programa, edite de acordo com sua necessidade, ao final chamamos o gimp já
 editando a imagem capturada.
 
-### Artigo sobre imagemagick
+# Artigo sobre imagemagick
 mogrify pode ser usado para colocar bordas em um arquivo e muitas outras operações
 
-### colocando texto na imagem
+# colocando texto na imagem
 
 convert -font helvetica -fill white -pointsize 36
 -draw 'text 10,50 "Floriade 2002, Canberra, Australia"'

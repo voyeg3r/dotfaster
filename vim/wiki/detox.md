@@ -1,4 +1,4 @@
-### renaming old files iso8859 from windows
+# renaming old files iso8859 from windows
 
 This command is a powerful "detoxifier" that eliminates special chars,
 spaces and all those little chars we don't like. It support several
@@ -8,7 +8,7 @@ it... and maybe define your own
 		detox -r -s utf_8 /path/to/old/win/files/dir
 
 
-### Chaging detox configuration
+# Chaging detox configuration
 + https://unix.stackexchange.com/a/361578/3157
 + http://www.gsp.com/cgi-bin/man.cgi?section=5&topic=detoxrc
 

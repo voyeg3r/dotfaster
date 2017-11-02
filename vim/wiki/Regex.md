@@ -3,5 +3,5 @@
 * [vim regexes are awesome](vim-regexes-are-awesome.md)
 * [another vim regexes article](http://andrewradev.com/2011/05/08/vim-regexes/)  [vim regexes](vim-regexes.md)
 
-### See also [dicasvim](dicasvim.md) to learn about regex on vim
+# See also [dicasvim](dicasvim.md) to learn about regex on vim
 

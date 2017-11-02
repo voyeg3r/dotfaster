@@ -7,7 +7,7 @@ edite the file /etc/sudoers
   user ALL=(ALL) ALL
 
 
-### Runing multiple commands with sudo
+# Runing multiple commands with sudo
 + https://www.cyberciti.biz/faq/how-to-run-multiple-commands-in-sudo-under-linux-or-unix/
 
 

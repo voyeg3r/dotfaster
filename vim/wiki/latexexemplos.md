@@ -1,4 +1,4 @@
-### macro para imagens
+# macro para imagens
 
 ``` latex
 \newcommand{\myfig}[3] %label, caption, filename

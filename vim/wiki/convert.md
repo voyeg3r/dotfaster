@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 
 convert velha_imagem.png nova_imagem.jpg
 

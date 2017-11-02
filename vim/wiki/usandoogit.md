@@ -12,11 +12,11 @@ Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
 
-#### Atualizar um repositório local puxando do servidor
+## Atualizar um repositório local puxando do servidor
 
      git pull origin master
 
-#### Clonar um repositório num momento específico
+## Clonar um repositório num momento específico
 http://stackoverflow.com/questions/3489173/
 
    git clone $URL
@@ -30,11 +30,11 @@ http://stackoverflow.com/questions/3489173/
 
     :Git checkout %
 
-#### add current file to git
+## add current file to git
 
      :Git add %
 
-#### Para clonar este repositorio faça
+## Para clonar este repositorio faça
 
 	git clone git@github.com:voyeg3r/dotfiles.git ~/.vim
 
@@ -43,21 +43,21 @@ http://stackoverflow.com/questions/3489173/
 
       git config --global merge.tool vimdiff
 
-#### Manuais do git
+## Manuais do git
 
 	http://mariomoraesneto.blogspot.com.br/2012/11/git-dicas-basicas-e-praticas.html
 	http://githowto.com/
 
-#### Configurando o usuário
+## Configurando o usuário
 
 	git config --global user.name "seu nome"
 	git config --global user.email "seu@email.com"
 
-#### listar configurações
+## listar configurações
 
 	git config --list
 
-#### É possível configurar alias para os comandos, exemplos
+## É possível configurar alias para os comandos, exemplos
 
 dentro do seu repositório um arquivo .git/config
 dentro dele cole estas linas.
@@ -71,11 +71,11 @@ dentro dele cole estas linas.
 	type = cat-file -t
 	dump = cat-file -p
 
-#### Como adicionar sua chave ssh ao github
+## Como adicionar sua chave ssh ao github
 
 	https://help.github.com/articles/generating-ssh-keys
 
-#### começando um novo projeto
+## começando um novo projeto
 
 	touch README.md
 	git init
@@ -84,11 +84,11 @@ dentro dele cole estas linas.
 	git remote add origin git@github.com:voyeg3r/dotfiles.git
 	git push -u origin master
 
-#### Git - easy way pull latest of all submodules
+## Git - easy way pull latest of all submodules
 
     git submodule foreach git pull
 
-#### how checkout from a particular revison point
+## how checkout from a particular revison point
 
 		Git clone particular version of remote repository
 
@@ -97,11 +97,11 @@ dentro dele cole estas linas.
 		git reset --hard [ENTER HERE THE COMMIT HASH YOU WANT]
 
 
-#### Atualizando um repositório clonado
+## Atualizando um repositório clonado
 
     git remote update
 
-#### Como checar as alterações de um único arquivo
+## Como checar as alterações de um único arquivo
 
     git log --follow filename
 

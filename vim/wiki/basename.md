@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 Se utilizar o comando abaixo em um script ele retorna o
 caminho completo com o nome
 
@@ -28,7 +28,7 @@ isso exibirá somente o nome dos arquivos, para ver mais dicas
 acesse [zshell md](zshell.md)
 
 ``` sh
-### script de exemplo
+# script de exemplo
 
     # Criado em:Dom 26/Out/2008 hs 12:11
     # Last Change: Dom 26/Out/2008 hs 12:11

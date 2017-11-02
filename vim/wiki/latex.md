@@ -9,11 +9,11 @@ twitter: voyeg3r
 email: voyeg3r at gmail
 ```
 
-###  Veja também [[LatexExemplos]]
+#  Veja também [[LatexExemplos]]
 
     pdflatex documment.tex
 
-### como instalar o latex
+# como instalar o latex
 
 A COMMUNITY WIKI ANSWER, BASED ON THE OP DAVID'S COMMENTS.
 
@@ -29,7 +29,7 @@ Source for download and installation: http://www.tug.org/texlive/
 	wget -c http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	```
 
-### tlmgr - TeX LIVE PACKAGE MANAGER
+# tlmgr - TeX LIVE PACKAGE MANAGER
 
 tlmgr is the name of the package and configuration manager included in TeX
 Live. It operates completely separately from any package manager the operating
@@ -90,7 +90,7 @@ Another form of testing is the pretest which we do for a time before each offici
 
 Please email bug reports or other comments to the tex-live mailing list.
 
-### After install wellcome
+# After install wellcome
 
 
 See

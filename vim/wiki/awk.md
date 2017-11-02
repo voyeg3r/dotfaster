@@ -883,7 +883,7 @@ Você tem um arquivo assim:
 				GatewayPorts no
 				X11Forwarding no
 
-### um jeito bem mais simples
+# um jeito bem mais simples
 
     ``` sh
     awk '{print $1": "$4}' RS="\n\n" results.txt

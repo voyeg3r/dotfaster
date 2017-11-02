@@ -2,7 +2,7 @@
 
 (Receita caseira)
 
-### Basta uma gotinha nos braços e outra nas pernas.
+# Basta uma gotinha nos braços e outra nas pernas.
 
 ATENÇÃO: Fala-se que no rio de janeiroestão esperando a maior incidência da
 história, de dengue este anode 2013. vamos fazer nossa parte.  Estou
@@ -33,7 +33,7 @@ Não acham que qualquer ação que venha a somar nesta luta deveria ser bem vind
 
 DENGUE I (Aedes Aegypti):
 
-### Componentes:
+# Componentes:
 - 1/2 litro de álcool;
 - 1 pacote de cravo da Índia (10 gr);
 - 1 vidro de óleo de bebê (100 ml).
@@ -51,7 +51,7 @@ Não forneça sangue para o aedes aegypti!
 
 Ioshiko Nobukuni (Sobrevivente da dengue hemorrágica)
 
-### Observação:
+# Observação:
 
 Aqui em casa sempre temos este preparado. Minha filha usava quando fazia
 trabalho de campo para o mestrado em Biologia e tinha que passar a noite no

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 02 nov 2017 08:20:39 -03
+" Last Change: qui 02 nov 2017 12:57:02 -03
 "
 "                 ( O O )
 "  +===========oOO==(_)==OOo==============+
@@ -611,8 +611,8 @@ fun! InsertChangeLog()
   if l:flag >= 5
     normal(1G)
     call append(0, "Arquivo: <+Description+>")
-    call append(1, "Created: " . strftime("%a %d/%b/%Y hs %H:%M"))
-    call append(2, "Last Change: " . strftime("%a %d/%b/%Y hs %H:%M"))
+    call append(1, "Created: " . strftime("%Y %B %d hs %H:%M"))
+    call append(2, "Last Change: " . strftime("%Y %B %d hs %H:%M"))
     call append(3, "autor: <+digite seu nome+>")
     call append(4, "site: <+digite o endereço de seu site+>")
     call append(5, "twitter: <+your twitter here+>")

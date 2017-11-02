@@ -6,7 +6,7 @@ site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r
 email: <voyeg3r  gmail.com>
 
-### Reprodução
+# Reprodução
 
     Shift-left ............. atrazo muito pequeno
     Alt-left ............... pequeno atrazo
@@ -25,7 +25,7 @@ email: <voyeg3r  gmail.com>
     Ctrl-j ................. informações sobre o codificador (download url)
     Ctrl-n ................. abrir fluxo de rede
 
-### Volume
+# Volume
 
     Ctrl-up ................ increase volume
     Ctrl-down .............. decrease volume
@@ -33,7 +33,7 @@ email: <voyeg3r  gmail.com>
     f ...................... full screen
     show playlist .......... <ctrl>l
 
-### Consertando o download de legendas no Vlc
+# Consertando o download de legendas no Vlc
 
 On windows edit:
 
@@ -43,11 +43,11 @@ and add this line:
 
     92.240.234.122 api.opensubtitles.org
 
-### ajustando o brilho
+# ajustando o brilho
 
     Ctrl-e ............. agre janela de ajustes
 
-### Advanced subtitle syncronization
+# Advanced subtitle syncronization
 
 When subtitles are late compared to the audio, and only in this case, you can use the advance synchronisation functionality of VLC :
 

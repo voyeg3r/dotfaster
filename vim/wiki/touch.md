@@ -1,4 +1,4 @@
-### The touch command
+# The touch command
 
 is used to create files and change file timestamps
 

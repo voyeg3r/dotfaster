@@ -1,9 +1,9 @@
-### Intro
+# Intro
 
 Network file system utility
 
 
-### Display all exported file systems from an NFS server
+# Display all exported file systems from an NFS server
 + https://www.cyberciti.biz/faq/howto-see-shares-on-nfs-server-exported-filesystems/
 
 Type following the command to list shared directories from an nfs server called

@@ -8,13 +8,13 @@ site: vivaotux
 twitter: voyeg3r
 email: voyeg3r at gmail.com
 ```
-### A good terminal emulator
+# A good terminal emulator
 + https://github.com/cmderdev/cmder
 
 You also should use babun "oh-my-zsh" framework on windows:
 + http://babun.github.io/
 
-### Exibe os programas que estão abertos (possibilitando mata-los)
+# Exibe os programas que estão abertos (possibilitando mata-los)
 
     Ctrl + shift + Esc
 
@@ -31,7 +31,7 @@ You also should use babun "oh-my-zsh" framework on windows:
     Matar programa pelo nome:
     taskkill /IM utorrent.exe /F
 
-### Desfragmentar no linux
+# Desfragmentar no linux
 + https://www.howtoforge.com/tutorial/linux-filesystem-defrag/
 
     sudo apt-get install e2fsprogs
@@ -40,13 +40,13 @@ To do this I use the following command:
 
     sudo e4defrag
 
-### Recording a desktop session
+# Recording a desktop session
 
     http://goo.gl/lbwM9G
     On execute menu open:  psr.exe
     In English "Step recorder" em portugues Gravador de passos
 
-### adding a new dir to windows path
+# adding a new dir to windows path
 
 first to see the path
 
@@ -54,7 +54,7 @@ first to see the path
 
     setx /M PATH "%PATH%;C:\Program Files\MySQL\MySQL Server 5.5\bin"
 
-### todos os atalhos de configuração em uma única pasta
+# todos os atalhos de configuração em uma única pasta
 
 1. Crie uma pasta em qualquer lugar;
 2. De a essa pasta o seguinte nome (sem aspas):
@@ -63,7 +63,7 @@ first to see the path
 
 3. O ícone da pasta deve mudar, indicante que o processo foi realizado com sucesso.
 
-### Limpando o spool de de impressão
+# Limpando o spool de de impressão
 
     net stop spooler
     cd %systemroot%\system32\spool\PRINTERS
@@ -72,11 +72,11 @@ first to see the path
     net start spooler
     exit
 
-### colar na linha de comando do windows
+# colar na linha de comando do windows
 
 alt + espaço + e + l
 
-### consertando pastas ocultas no pendrive
+# consertando pastas ocultas no pendrive
 
 (considere neste caso o pendrive como sendo letra 'g')
 
@@ -116,7 +116,7 @@ alt + espaço + e + l
     start explorer %letter%:
     taskkill /im cmd.exe /f
 
-### comandos do windows
+# comandos do windows
 
     control userpasswords2
     Abre filtro AC3 (se instalado) = ac3filter.cpl

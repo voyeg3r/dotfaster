@@ -1,4 +1,4 @@
-### Using jupiter notebook
+# Using jupiter notebook
 + https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/
 + https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/
 

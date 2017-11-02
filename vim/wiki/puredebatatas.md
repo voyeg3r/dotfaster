@@ -8,7 +8,7 @@
     1 copo de Leite pequeno (copo de geléia)
     2 colheres de creme de leite
 
-### Modo de preparo
+# Modo de preparo
 Cozinha a bata muito bem cozida  (tira do fogo)
 descasca a bata e machuca até ficar bem machucada
 

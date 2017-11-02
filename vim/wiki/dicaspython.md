@@ -11,7 +11,7 @@ email: voyeg3r -- gmail
 
 Curso do professor Ronaldo Ramos no Youtube: http://goo.gl/n4NxP
 
-### python keylogger
+# python keylogger
 + https://sourceforge.net/p/pyhook/wiki/PyHook_Tutorial/
 + http://www.thesnoopybub.com/blog/basic-keylogger-in-ubuntu/
 + https://lifestohack.com/how-to-make-very-simple-keylogger/
@@ -24,7 +24,7 @@ Curso do professor Ronaldo Ramos no Youtube: http://goo.gl/n4NxP
 + http://www.securitybydefault.com/2013/09/listado-de-keyloggers-windows-linux.html
 + http://jeffhoogland.blogspot.com.br/2014/10/pyhook-for-linux-with-pyxhook.html
 
-### Invertendo uma lista no python3
+# Invertendo uma lista no python3
 + https://dbader.org/blog/python-reverse-list
 Se tentar-mos usar "reversed" diretamente o python criará um objeto
 como se vê no código a seguir...
@@ -38,7 +38,7 @@ obteremos o resultado desejado.
     >>> list(reversed(mylist))
     [5, 4, 3, 2, 1]
 
-### Consertando legengas srt com python
+# Consertando legengas srt com python
 
 source: http://tuxbalaji.wordpress.com/2013/10/05/how-to-fix-subtitles-delay-or-ealier-with-your-movies-by-python-code/
 
@@ -60,7 +60,7 @@ subs.shift(minutes=-2) # Move all subs 2 minutes earlier
 subs.save('/home/bala/new.srt', encoding='utf-8')#saves file with new.srt in your home directory
 ```
 
-### baixando legendas com o subliminal
+# baixando legendas com o subliminal
 
 # no caso do ubuntu ou debian use...
 

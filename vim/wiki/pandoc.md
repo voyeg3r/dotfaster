@@ -5,7 +5,7 @@ Last Change: qua 06 set 2017 09:48:15 -03
 ```
 # How use pandoc
 
-### Synopsis
+# Synopsis
 
 ``` markdown
 pandoc [*options*] [*input-file*]...
@@ -28,13 +28,13 @@ pandoc will fetch the content using HTTP:
 pandoc -f html -t markdown http://www.fsf.org
 ```
 
-### Paragraphs
+# Paragraphs
 
 A paragraph is one or more lines of text followed by one or more blank line.
 Newlines are treated as spaces, so you can reflow your paragraphs as you like.
 If you need a hard line break, put two or more spaces at the end of a line.
 
-### Footnotes
+# Footnotes
 
 **Extension: `footnotes`**
 
@@ -46,7 +46,7 @@ Pandoc's markdown allows footnotes, using the following syntax:
 
     [^longnote]: Here's one with multiple blocks.
 
-### Code syntax highlight
+# Code syntax highlight
 
 ```python
 import os
@@ -57,7 +57,7 @@ def application(env, start_response):
     return "Hello WSGI!!"
 ```
 
-### Definition lists
+# Definition lists
 
 ``` markdown
 Term 1
@@ -69,7 +69,7 @@ Term 2 with *inline markup*
 :   Definition 2
 ```
 
-### Simple lists
+# Simple lists
 + you can use plus `+`
 + also you can use `-`
 + and you can use `*`

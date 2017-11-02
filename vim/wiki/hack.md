@@ -13,7 +13,7 @@ Github:      https://github.com/voyeg3r
 
 See more at [dicasgoogle](dicasgoogle.md)
 
-### Senha do roteador Vivo ou GVT
+# Senha do roteador Vivo ou GVT
 
       admin
       vivo12345
@@ -21,14 +21,14 @@ See more at [dicasgoogle](dicasgoogle.md)
 	  admin
 	  gvt12345
 
-### 3* new 3eg* account key
+# 3* new 3eg* account key
 
     i*hh00.com.br
 
     my alternative e-mail .com.br
     '畢異畣畓畤畔疜疙疞疥疨'
 
-### como cancelar mensagens das operadoras de celular
+# como cancelar mensagens das operadoras de celular
 
 Passo 1. Abra o aplicativo de mensagens do seu celular e envie a palavra “sair”
 para sua operadora:
@@ -63,7 +63,7 @@ passwd: sameofmylinuxmachine
     user = ubnt
     password =ubnt
 
-### conection to education network Madalena
+# conection to education network Madalena
 
     192.168.0.25
     netmask 255.255.255.0
@@ -71,7 +71,7 @@ passwd: sameofmylinuxmachine
     dns 8.8.8.8, 4.4.4.4
 
 
-### android
+# android
 
     códico para resetar a instalação do android
     *2767*3855#
@@ -100,7 +100,7 @@ passwd: sameofmylinuxmachine
     encryption: AES
     connection type: ESS
 
-### some google secrets
+# some google secrets
 
 Manipulate the google engine by using it to locate mp3 files online as well as
 some free software, and more! Using Google, and some finely crafted searches we
@@ -148,7 +148,7 @@ And these:
 Notice that I am only changing the word after the parent directory, change it
 to what you want and you will get a lot of stuff.
 
-### method 2
+# method 2
 
 put this string in google search:
 
@@ -156,7 +156,7 @@ put this string in google search:
 
 You only need add the name of the song/artist/singer. Example: intitle:index.of mp3 jackson
 
-### method 3
+# method 3
 
 put this string in google search:
 
@@ -212,7 +212,7 @@ or .net
      HacknMod is not responsible for your actions and does not promote illegal or
      malicious actvities.
 
-### some cartoon sounds
+# some cartoon sounds
 
 + http://tinyurl.com/HBmega  .nz/#!gxJz2SZa!YqtK7EudLoNx5oIjisyr8in1c9xSmdQ6QkqPGcOTHy8
 + http://tinyurl.com/HB1mega

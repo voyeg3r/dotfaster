@@ -2,7 +2,7 @@
 zzapper 16 Years of Vi + 9+ years of Vim and still learning
 31May16 : Last Update (Now in VIM Help Format :h helptags)
 
-### These Tips are now being maintained at zzapper.co.uk/vimtips.html
+# These Tips are now being maintained at zzapper.co.uk/vimtips.html
 
 [Tips Home](http://www.zzapper.co.uk/)
 

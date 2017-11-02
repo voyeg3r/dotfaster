@@ -8,17 +8,17 @@ site: vivaotux
 twitter: voyeg3r
 ```
 
-### References
+# References
 + https://www.maketecheasier.com/speed-up-firefox/
 
 
-### Enabling firefox multiprocessing
+# Enabling firefox multiprocessing
 Disable ubuntu-modifications addon and ...
 
     browser.tabs.remote.autostart
     true
 
-### Download firefox pt-br
+# Download firefox pt-br
 + https://superuser.com/a/322381
 
     br.mozdev.org
@@ -53,13 +53,13 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 ```
 
-### Hide firefox titlebar
+# Hide firefox titlebar
 + https://addons.mozilla.org/en-US/firefox/addon/hide-caption-titlebar-plus-sma/
 + https://github.com/chpii/Headerbar
 + https://addons.mozilla.org/en-Us/firefox/addon/gnome-3-updated/
 + https://addons.mozilla.org/en-US/firefox/addon/hide-tab-bar-with-one-tab/
 
-### Change firefox user-agent
+# Change firefox user-agent
 
     about:config
 
@@ -79,25 +79,25 @@ Identify as chrome
 
     Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/58.0.3029.110 Chrome/58.0.3029.110 Safari/537.36
 
-### Suspend firefox inactive tabs
+# Suspend firefox inactive tabs
 + https://addons.mozilla.org/en-US/firefox/addon/tab-suspender-tab-unloader/
 
-### Make firefox speak English
+# Make firefox speak English
 [us language pack](https://addons.mozilla.org/en-US/firefox/addon/english-us-language-pack/)
 
-### clear firefox memory usage
+# clear firefox memory usage
 
 source: http://www.online-tech-tips.com/computer-tips/speed-up-mozilla-firefox/
 
     about:memory
     about:support
 
-### using Google Data Saver Proxy on firefox
+# using Google Data Saver Proxy on firefox
 + https://addons.mozilla.org/en-US/firefox/addon/google_datasaver_for_firefox/
 
-### user.js [[FirefoxUserProfile]]
+# user.js [[FirefoxUserProfile]]
 
-### fix youtube comments if you have third part cookies bocked
+# fix youtube comments if you have third part cookies bocked
 
 add exceptions for this url's
 
@@ -107,21 +107,21 @@ add exceptions for this url's
     apis.google.com
     books.googleusercontent.com
 
-### ativar plugins sob demanda
+# ativar plugins sob demanda
 dentro do about:config
 
       plugins.click_to_play
 
-### Addon pra usar em conjunção com Downthemall (flashgot)
+# Addon pra usar em conjunção com Downthemall (flashgot)
 + https://addons.mozilla.org/en-US/firefox/addon/flashgot/developers
 
-### extensão para assistir sites como hulu
+# extensão para assistir sites como hulu
 https://addons.mozilla.org/en-US/firefox/addon/proxmate/
 
 Extensão para melhor visualizar páginas da wikipédia
 https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/
 
-### Extensão similar a "momentum" chamada tabtracker
+# Extensão similar a "momentum" chamada tabtracker
 + https://addons.mozilla.org/en-US/firefox/addon/tabtrekker/
 
 To refresh tabtracker making it show new wallpapers do this:
@@ -140,12 +140,12 @@ There is another better than momentum extension that works on chromium
 
 '疘疤疤疠番畟畟疓疔疞畞疜疕疟疘畞疙疟畟疙疝疑疗疕疣畟疒疑疓疛疥疠疣畟疒疑疣疕疏疪疕疢疟畕畢畠疓疟疠疩畟疙疝疑疗疕疏疌疋畡畝畣畠畩疌疍畞疚疠疗'
 
-### Developer toolbar
+# Developer toolbar
 + http://www.hongkiat.com/blog/firefox-graphical-command-line/
 
     shift + f2
 
-### desabilitar a checagem de virus
+# desabilitar a checagem de virus
 http://en.kioskea.net/faq/1686-optimize-firefox-completely
 
   Launch Firefox
@@ -167,7 +167,7 @@ http://en.kioskea.net/faq/1686-optimize-firefox-completely
 
   browser.download.manager.scanWhenDone
 
-### Carregar abas sob demanda apenas
+# Carregar abas sob demanda apenas
 
 coloque a chave
 
@@ -175,10 +175,10 @@ coloque a chave
 
 com valor true
 
-### channels firefox
+# channels firefox
 http://www.mozilla.org/en-US/firefox/channel/#beta
 
-### Reduce the amount of RAM Firefox uses for it’s cache feature
+# Reduce the amount of RAM Firefox uses for it’s cache feature
 source: http://gnoted.com/3-hacks-for-firefox-double-internet-browsing-speed/
 
 Here’s how to do it:
@@ -186,7 +186,7 @@ Here’s how to do it:
 2. Find “browser.sessionhistory.max_total_viewer”
 3. Set it’s value to “0“;(Zero)
 
-### Como instalar o plugin flash via rede local
+# Como instalar o plugin flash via rede local
 
     scp root@192.168.1.74:/usr/lib/mozilla/plugins/libflashplayer.so /usr/lib/mozilla/plugins
 
@@ -195,12 +195,12 @@ libflashplayer.so na pasta:
 
       /usr/lib/share/mozilla/plugins/
 
-### como impedir o plugin flash de capturar cookies
+# como impedir o plugin flash de capturar cookies
 
     for i in ~/.adobe ~/.macromedia ; do ( rm $i/ -rf ; ln -s /dev/null $i ) ; done
 
 
-### Plugins que uso no firefox
+# Plugins que uso no firefox
 
   Feedly ...... plugin que gera um novo layout para as notícias do google reader
   e twitter: https://addons.mozilla.org/pt-BR/firefox/addon/feedly/
@@ -214,7 +214,7 @@ libflashplayer.so na pasta:
   Turn on your pdf reader ......... pdfjs.disabled
 
 
-### firefox cache in RAM
+# firefox cache in RAM
 
 criar a seguinte chave (string) através do about:config
 
@@ -222,7 +222,7 @@ criar a seguinte chave (string) através do about:config
 
 coloque o valor para /var/shm/firefox-cache
 
-### http cache resource
+# http cache resource
 
 The Mozilla team is working on a number of performance tweaks for upcoming
 versions of Firefox, one of which is the use of a new HTTP cache that should
@@ -239,10 +239,10 @@ also enable this:
 https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf
 
 
-### New tab opening home page
+# New tab opening home page
 + [New tab homepage addon](https://addons.mozilla.org/en-US/firefox/addon/777)
 
-### open searches in new tab
+# open searches in new tab
 
 By default, Firefox has a search box in the upper-right hand corner from which
 you can Google things with ease. When you type in a search term, it opens the
@@ -253,7 +253,7 @@ To change this behavior, open about:config and search for:
 
   browser.search.openintab
 
-### Preview Tabs in the Ctrl+Tab Switcher
+# Preview Tabs in the Ctrl+Tab Switcher
 
       browser.ctrlTab.previews
 

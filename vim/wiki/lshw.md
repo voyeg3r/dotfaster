@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 Este comando é muito útil, pois exibe informações detalhadas sobre o hardware,
 como a lista pode ser muito longa use em combinação com o comando [[less]]
 

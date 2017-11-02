@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 Usando o wc direto em um arquivo temos (linhas, palavras e caracteres)
 
 wc wc.tex

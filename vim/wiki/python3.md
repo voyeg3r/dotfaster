@@ -11,7 +11,7 @@ Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
 
-### References
+# References
 + http://excript.com/curso-de-python.html
 + [curso-completo](https://youtu.be/j94IGZmwtYI?list=PLesCEcYj003QxPQ4vTXkt22-E11aQvoVj)
 + [lista de aulas](http://excript.com/curso-de-python.html)
@@ -49,7 +49,7 @@ keyword.iskeyword('else')
 True
 ```
 
-### Dealing with decimal numbers
+# Dealing with decimal numbers
 For more complex decimal operations
 use decimal module
 
@@ -62,7 +62,7 @@ round(5.6 + 87.3, 1)
 92.89999999999999
 ```
 
-### Using jupiter notebook
+# Using jupiter notebook
 + https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/
 
 Jupyter notebook, formerly known as the IPython notebook, is a flexible tool
@@ -86,14 +86,14 @@ comments, formulae and plots together.
     jupyter notebook
 ```
 
-### Visualizing bytecode
+# Visualizing bytecode
 
 ``` python
 >>> func.__code__.co_code
 'd\x01\x00}\x00\x00d\x00\x00S'
 ```
 
-### Generators
+# Generators
 Let's say you have a big file with cities and their population
 to iterate over it you can do:
 
@@ -111,7 +111,7 @@ print(next(result))
 ```
 This code avoids memory errors
 
-### Print or set basename
+# Print or set basename
 For those who don't know what basename is let's give an example:
 
     ~/user/tmp/file.py .......... full path
@@ -122,7 +122,7 @@ import os
 script_name = os.path.basename(__file__)
 ```
 
-### Decorators
+# Decorators
 + https://www.thumbtack.com/engineering/a-primer-on-python-decorators/
 + https://realpython.com/blog/python/primer-on-python-decorators/
 
@@ -178,7 +178,7 @@ def my_function():
 print(my_function())
 ```
 
-### Variable positional arguments
+# Variable positional arguments
 
 ``` python
 def log(message, values):
@@ -192,7 +192,7 @@ log('My numbers are', 1, 2)
 log('Hi there')
 ```
 
-### Named tuples
+# Named tuples
 + [From Dan Bader website](https://dbader.org/blog/writing-clean-python-with-namedtuples)
 ``` python
 >>> from collections import namedtuple
@@ -235,7 +235,7 @@ row.address
 '5423 N CLARK ST'
 ```
 
-### Using regex in python
+# Using regex in python
 
 ``` python
 import re
@@ -248,22 +248,22 @@ else:
     print('NOT match')
 ```
 
-### Ternary operator
+# Ternary operator
 
     x = 10 if (y == 9) else 20
 
-### http server
+# http server
 
 ```python
 # Python 3
 python3 -m http.server
 ```
 
-### Algorithms list and list tips
+# Algorithms list and list tips
 
 + Return a maximum value of a given list: ~/bin/maxlistvalue.py
 
-#### Enumerate items from a give list
+## Enumerate items from a give list
 ```python
 for i, item in enumerate(["casa", "apartamento", "fazenda"], 1):
      print(f'{i} - {item}')
@@ -273,7 +273,7 @@ for i, item in enumerate(["casa", "apartamento", "fazenda"], 1):
 3 - fazenda
 ```
 
-#### Printing a decreasing amount of something
+## Printing a decreasing amount of something
 The list.pop() method gives us the last value of a list
 and removes it from the list
 
@@ -282,7 +282,7 @@ li = list(range(1, 5))
 while li:
     print('Spam!' * li.pop())
 
-### What does ** (double star) and * (star) do for parameters?
+# What does ** (double star) and * (star) do for parameters?
 + http://stackoverflow.com/a/3394898/2571881
 
 ``` python
@@ -324,7 +324,7 @@ cabbage = vegetable
 ```
 
 
-### Useful builtin methods
+# Useful builtin methods
 + [complete list of them](https://docs.python.org/3/library/functions.html)
 
 You can easily reverse one list to prioritize the most recent ones
@@ -375,7 +375,7 @@ A faster and elegant solution is:
 [ x for x in range(1, 11)[::-1] ]
 ```
 
-### Mesuring execution time
+# Mesuring execution time
 
 ``` python
 import time
@@ -386,7 +386,7 @@ end = time.time()
 print(end - start)
 ```
 
-### Return maximum value from a list
+# Return maximum value from a list
 There are two ways to do that, the first one makes use of
 a builtin function called `max`. (first let's create a list
 to show you how to use this function)
@@ -416,7 +416,7 @@ If you want to print the first three big elements:
 '21 34 67'
 ```
 
-### How to merge lists into a list of tuples in Python?
+# How to merge lists into a list of tuples in Python?
 
 ``` python
 >>> estados
@@ -454,12 +454,12 @@ Bob Sleigh 63
 John Doe 33
 ```
 
-### Easily create a list
+# Easily create a list
 
     lista = list(set('12345'))
 
 
-### f-strings examples
+# f-strings examples
 To read more, learn more about f-strings search for pep 498
 + [article about it](https://py.checkio.org/blog/pep-498-f-strings-python-36/)
 + https://cito.github.io/blog/f-strings/
@@ -514,7 +514,7 @@ You can use more complex expressions
 '22 Alex 2'
 ```
 
-### print two lists side by side with equal space
+# print two lists side by side with equal space
 This example makes use of f-strings (python 3.6)
 
 ``` python
@@ -554,7 +554,7 @@ d - s
 my_list = list(set('12345'))
 ```
 
-### Lambda functions
+# Lambda functions
 
 ``` python
 add = lambda x, y: x + y
@@ -565,7 +565,7 @@ add(6,8)
 8
 ```
 
-### Dictionary comprehension
+# Dictionary comprehension
 + [about dictionaries](https://www.tutorialspoint.com/python3/python_dictionary.htm)
 
 ``` python
@@ -593,7 +593,7 @@ But in python 3.5+ we can do a much more easy thing:
 combined_dict = {**route, **query, **post}
 ```
 
-### Inverting a dictionary
+# Inverting a dictionary
 
 
 ``` python
@@ -606,7 +606,7 @@ dict(zip(m.values(), m.keys()))
 {1: 'a', 2: 'b', 3: 'c', 4: 'd'}
 ```
 
-### Creating a dictionary form two lists
+# Creating a dictionary form two lists
 
 ``` markdown
 >>> values = ['Hammad', 'Builder', 'Engine']
@@ -617,7 +617,7 @@ dict(zip(m.values(), m.keys()))
 ```
 
 
-### dictionaries useful builtin methods
+# dictionaries useful builtin methods
 
 
 ``` python
@@ -649,7 +649,7 @@ max(a, key=len)
 'gregorious'
 ```
 
-### Ordering dictionaries
+# Ordering dictionaries
 
 ``` python
 # https://gist.github.com/voyeg3r/e44d50c29525a450a38f77e5f656b5f4
@@ -660,12 +660,12 @@ students = [
     {'name':'Bob Lewis', 'class':'Science','grade':'D'},
     {'name':'Bob Lewis', 'class':'Math','grade':'b'},
 
-### Use _ for “throwaway” variables e.g.:
+# Use _ for “throwaway” variables e.g.:
 
     for k, _ in [('a', 1), ('b', 2), ('c', 3)]:
         print(k)
 
-### Ordering dictionaries
+# Ordering dictionaries
 
 ``` python
 # https://gist.github.com/voyeg3r/e44d50c29525a450a38f77e5f656b5f4
@@ -690,7 +690,7 @@ for x in sorted(students, key=itemgetter('name', 'class')):
 {'name': 'Paul Allen', 'class': 'Science', 'grade': 'A'}
 ```
 
-### List comprehension
+# List comprehension
 
     [x**2 if x > 10 else x**4 for x in range(40)]
 
@@ -706,7 +706,7 @@ recent_presidents = ['George Bush', 'Bill Clinton', 'George W. Bush']
 print(f'The three most recent presidents are {", ".join(recent_presidents)}')
 ```
 
-### Acessing docstrings (documentation)
+# Acessing docstrings (documentation)
 
 
 ``` python
@@ -715,7 +715,7 @@ print(random.choice.__doc__)
 Choose a random element from a non-empty sequence.
 ```
 
-### A function that adds all arguments
+# A function that adds all arguments
 
 ``` python
 def addnums(*args):
@@ -723,7 +723,7 @@ def addnums(*args):
 ```
 
 
-### Counting words in a file
+# Counting words in a file
 
 ``` python
 with open('alice.txt', 'r') as f:
@@ -734,7 +734,7 @@ result = {i:f.count(i) for i in f if i == 'alice'}
 print(f'Alice aparece {result["alice"]} vezes no texto')
 ```
 
-### Reading unix system users
+# Reading unix system users
 
 ``` python
 with open('/etc/passwd') as f:
@@ -742,7 +742,7 @@ with open('/etc/passwd') as f:
     " ".join(list(users))
 ```
 
-### tools
+# tools
 Script para converter scripts da versão 2 do python
 para versão 3 --> its name: 2to3
 
@@ -750,14 +750,14 @@ para versão 3 --> its name: 2to3
 
 without `-w` it just shows your what need be changed
 
-### print help functions and builtins
+# print help functions and builtins
 
 ``` python
 import random
 print(help(random.random))
 ```
 
-### simulando o arremesso de um dado
+# simulando o arremesso de um dado
 
 ``` python
 import random
@@ -766,7 +766,7 @@ for i in range(10):
     print(random.randint(1, 6))
 ```
 
-### Emulating switch case in python
+# Emulating switch case in python
 + [source: stackoverflow](http://stackoverflow.com/a/103081/2571881)
 
 ``` python
@@ -777,7 +777,7 @@ def f(x):
     }.get(x, 9)    # 9 is default if x not found
 ```
 
-### Manipulating strings
+# Manipulating strings
 + [Read more here](https://docs.python.org/3/reference/lexical_analysis.html#f-strings)
 + [pep-498-string-interpolation](https://www.python.org/dev/peps/pep-0498/)
 + [pep 498 local help](pep-498-local-help.md)
@@ -923,7 +923,7 @@ name = 'Jose'
 "'Jose' is a name"
 ```
 
-### It is easyer to ask forgiveness than permission (EAFP)
+# It is easyer to ask forgiveness than permission (EAFP)
 
 ``` python
 my_list = [1, 2, 3, 4, 5, 6]
@@ -934,7 +934,7 @@ except IndexError:
     print('That index does not exist')
 ```
 
-### truncar string em N bytes sem truncar nenhuma palavra
+# truncar string em N bytes sem truncar nenhuma palavra
 + http://stackoverflow.com/a/250373/2571881
 
 ``` python
@@ -963,7 +963,7 @@ then joins it back together (while tacking on the '...').
 ``` python
 '{:.5}'.format('xylophone')
 ```
-### Format numbers printing
+# Format numbers printing
 
  ``` python
 '{:d}'.format(42)
@@ -1077,7 +1077,7 @@ print(sentence)
 
     python3 -c 'import sys; print( sys.stdin.read().lower() )'
 
-### Removing accents
+# Removing accents
 
 ``` python
 import sys
@@ -1087,7 +1087,7 @@ s = u"Klüft skräms inför på fédéral électoral große"
 print(unicodedata.normalize('NFKD', s).encode('ascii','ignore'))
 ```
 
-### counting words in python
+# counting words in python
 + https://gist.github.com/voyeg3r/25247763865f0cd7b5a12691fe94c222
 
 ``` python
@@ -1114,7 +1114,7 @@ print(f'Alice aparece {dic["alice"]} vezes no texto')
 
 ```
 
-### Better completion at console
+# Better completion at console
 + https://github.com/jonathanslenders/ptpython/
 + http://brandon.invergo.net/news/2014-03-21-Enhancing-the-Python-interpreter-with-a-start-up-script.html
 
@@ -1128,7 +1128,7 @@ Embedding the REPL in any Python application is easy:
     from ptpython.repl import embed
     embed(globals(), locals())
 
-### Python libs and modules
+# Python libs and modules
 + [manipulatin strings](https://docs.python.org/2/library/string.html)
 + [natural sorting](https://pypi.python.org/pypi/natsort)
 + [clipboard manipulation](https://pypi.python.org/pypi/pyperclip)
@@ -1147,7 +1147,7 @@ Embedding the REPL in any Python application is easy:
 
 3y g00 *pi 畱畹疪疑疃疩畲畽略畤疉疏疠疨疪疒疣畨疩疡畲疖畨疢疤疥疟畱畽疣疂疚畦疙畦疇疦畣疧
 
-#### Lib to remove text accents
+## Lib to remove text accents
 
     sudo pip install unidecode
 
@@ -1156,7 +1156,7 @@ from unidecode import unidecode
 print(unidecode(u"áéíóú äëïöü ñÑ û"))
 ```
 
-### Easily remove text accents
+# Easily remove text accents
 ``` python
 import unicodedata
 
@@ -1173,7 +1173,7 @@ def strip_accents(s):
                   if unicodedata.category(c) != 'Mn')
 ```
 
-### lib for statistics
+# lib for statistics
 
 ``` python
 >>> import heapq
@@ -1222,7 +1222,7 @@ punctuation
 whitespace
 ```
 
-### Collections lib
+# Collections lib
 
 ``` python
 >>> from collections import Counter
@@ -1242,7 +1242,7 @@ Counter({'y': 2, 'z': 2, 'x': 1})
 ```
 
 
-### leap year
+# leap year
 
 ``` python
 def is_leap_year(year):
@@ -1253,7 +1253,7 @@ import calendar
 print calendar.isleap(1900)
 ```
 
-### fixing code layout
+# fixing code layout
 
     flake8 file.py
 
@@ -1271,7 +1271,7 @@ import os
 print(os.getcwd())
 ```
 
-### Context managers can deal with iterabes easily
+# Context managers can deal with iterabes easily
 
 ``` python
 with open('blah.dat') as f:
@@ -1358,7 +1358,7 @@ a = ['a2', 'a9', 'a1', 'a4', 'a10']
 natsorted(a)
 ['a1', 'a2', 'a4', 'a9', 'a10']
 ```
-### Reading files
+# Reading files
 
 Using this approach the file is automatically closed
 ``` python
@@ -1385,7 +1385,7 @@ with open('test.txt', 'r') as rf:
 ```
 In case of binary files like images we have to use binary mode
 
-### Natural sorting filenames
+# Natural sorting filenames
 [stackoverflow](http://stackoverflow.com/q/4836710/)
 
 DOES PYTHON HAVE A BUILT IN FUNCTION FOR STRING NATURAL SORT?
@@ -1439,7 +1439,7 @@ for elm in data:
 000elm13
 ```
 
-### Renaming files
+# Renaming files
 [from stackoverflow](http://stackoverflow.com/q/2759067/)
 
 Say I have a file called CHEESE_CHEESE_TYPE.*** and want to remove CHEESE_ so
@@ -1485,7 +1485,7 @@ for f in os.listdir('.'):
     os.rename(oldname, newname)
 ```
 
-### Regex in python
+# Regex in python
 
 ``` python
 def strip_html(text):
@@ -1500,7 +1500,7 @@ s = 'This    is my  string'
 re.sub('\s+', ' ', s)
 ```
 
-### Getting rid of string punctuation
+# Getting rid of string punctuation
 
 ``` python
 s = "Uma string com set's ação e à erros!"
@@ -1526,7 +1526,7 @@ cleanString = re.sub('\W+','', string )
 
 
 
-#### curso completo no youtube
+## curso completo no youtube
 
 * [canal ignorancia zero](https://www.youtube.com/channel/UCmjj41YfcaCpZIkU-oqVIIw)
 * [python course in English](https://www.youtube.com/watch?v=R6wQmWMDiB4)
@@ -1538,25 +1538,25 @@ cleanString = re.sub('\W+','', string )
 * [livro think python](https://upload.wikimedia.org/wikipedia/commons/1/1b/Think_Python.pdf)
 * [byte of python](http://files.swaroopch.com/python/byte_of_python.pdf)
 
-### um desafio interessante baseado em python2
+# um desafio interessante baseado em python2
 **Learn Python Through Public Data Hacking**
 
 * [PyCon 2013 Video](http://pyvideo.org/pycon-us-2013/learn-python-through-public-data-hacking.html)
 * http://www.dabeaz.com/pydata/
 * https://www.youtube.com/watch?v=RrPZza_vZ3w
 
-#### to be able to import turtle in python
+## to be able to import turtle in python
 [read on this link](https://opentechschool.github.io/python-beginners/en/simple_drawing.html)
 
     sudo pacman -S community/python-pmw
 
-#### assigning a range or printing
+## assigning a range or printing
 
     To print a list [1, 3, 5, 7, 9, 11]
 
     print(list(range(1,12,2)))
 
-#### Converting python2 to python3
+## Converting python2 to python3
 
    2to3 python2script.py
 
@@ -1564,11 +1564,11 @@ cleanString = re.sub('\W+','', string )
 
    2to3 -w python2script.py
 
-#### Access to the clipboard
+## Access to the clipboard
 
     import pyperclip
 
-#### print clipboard contente
+## print clipboard contente
 
 ``` python
 pyperclip.paste()
@@ -1576,7 +1576,7 @@ var = pyperclip.paste()
 print(var)
 ```
 
-#### random numbers
+## random numbers
 
 ``` python
 iport random
@@ -1604,7 +1604,7 @@ for in range(10):
     print(random.choice(outcomes))
 ```
 
-#### addnumbers function
+## addnumbers function
 
 ``` python
 def addNumber(fNum, lNum):
@@ -1614,7 +1614,7 @@ def addNumber(fNum, lNum):
 print(addNumber(1,4))
 ```
 
-#### Getting user input
+## Getting user input
 
 ``` python
 import sys
@@ -1623,7 +1623,7 @@ name = sys.stadin.readline()
 print('Hello', name)
 ```
 
-### Manipulation the clipboard
+# Manipulation the clipboard
 + https://github.com/asweigart/pyperclip
 
 On Linux, this module makes use of the `xclip` or `xsel` commands, which should
@@ -1637,7 +1637,7 @@ pyperclip.paste()
 'The text to be copied to the clipboard.'
 ```
 
-### Para verificar duplicados e interceções use set
+# Para verificar duplicados e interceções use set
 
 ``` python
 names = ['Dave', 'Thomas', 'Paula', 'Lewis', 'Dave']
@@ -1648,7 +1648,7 @@ names
 {'Thomas', 'Lewis', 'Dave', 'Paula'}
 ```
 
-### Métodos comuns a str and list
+# Métodos comuns a str and list
 
 
 ``` python
@@ -1659,7 +1659,7 @@ sorted(set(dir('abc')) & set(dir([])) )
 ```
 
 
-### Sorted Dictionary
+# Sorted Dictionary
 + [stackoverflow](http://stackoverflow.com/a/35610062/2571881)
 
 ``` python
@@ -1705,7 +1705,7 @@ b - 2
 c - 3
 d - 4
 ```
-### Example of python classes
+# Example of python classes
 
 ``` python
 class Worker:

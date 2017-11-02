@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 Para aquelas situações em que você deseja saber
 a versão do sistema use este comando:
 
@@ -17,10 +17,10 @@ a versão do sistema use este comando:
    lsb_release -r  .............. no caso do ubuntu 10.10 exibe --> "Release:	10.10"
 
 
-### Exibir somente o codinome da versão
+# Exibir somente o codinome da versão
 
 lsb_release -cs
 
-### Para exibir somente o número da versão
+# Para exibir somente o número da versão
 
 lsb_relase -rs

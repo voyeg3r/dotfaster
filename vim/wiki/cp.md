@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 copia arquivos e/ou diretórios
 
      cp -r /pasta /destino/
@@ -10,11 +10,11 @@ A opção -u faz update
     Update, verbose, force, a=dpR
 
 
-### Copiando o mesmo arquivo para três pastas diferentes
+# Copiando o mesmo arquivo para três pastas diferentes
 
     echo dir1 dir2 dir3 | xargs -n 1 cp -v arquivo.txt
 
-### copiando estrutura de pastas (somente a extrutura)
+# copiando estrutura de pastas (somente a extrutura)
 
     ``` bash
     (cd /home/user/source/; find -type d -print0) | xargs -0 mkdir -p
@@ -22,14 +22,14 @@ A opção -u faz update
     rsync -a --include='*/' --exclude='*' ${source} ${destination}
     ```
 
-### copiando e entrando na pasta
+# copiando e entrando na pasta
 
     cp file ~/tmp
     cd Alt .
 ou
     cp file ~/tmp && cd $_
 
-### Opções interessantes
+# Opções interessantes
 
      cp -a /origem /destino
 
@@ -39,7 +39,7 @@ leia o manual do cp
 
     man cp
 
-### Criando backup de arquivos de configuração
+# Criando backup de arquivos de configuração
 
     cp /etc/resolv.conf{,.bak}
 
@@ -51,11 +51,11 @@ the backed up file to its original location, you can just use:
 
     sudo mv /etc/rc.conf{-old,}
 
-### varias copias
+# varias copias
 
     for i in {1..5}; do cp test{,$i};done
 
-### conbinando com o find
+# conbinando com o find
 Use -t when using find and cp
 -t, --target-directory=DIRECTORY (copy all SOURCE arguments into DIRECTORY).
 
@@ -65,11 +65,11 @@ Caso não usassemos a opção -t (que indica destino) o comando seria algo assim
 
 find /originalPath/ -iname \*.mp3 -print0 | xargs -0 -i cp ./{} /destinationPath/
 
-### combinando com o ls
+# combinando com o ls
 
     ls *.jpg | xargs -n1 -i cp {} /external-hard-drive/directory
 
-### copy files without extension
+# copy files without extension
 
     ``` zsh
     cp -- !(*.txt|*.c|*.py) /path/to/directory

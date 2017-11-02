@@ -10,12 +10,12 @@ e-mail:      <voyeg3r ✉ gmail.com>
 Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
-### Consertando o /etc/hosts
+# Consertando o /etc/hosts
 
     [ "`awk 'NR==1 {print $NF}' /etc/hosts`" = "`hostname`" ] && echo '/etc/hosts já está ok!' || \
     sed -i.backup -r "1s/(.*)/\1 `hostname`/g" /etc/hosts
 
-### Colocando a iso do crunchbang em um pendrive
+# Colocando a iso do crunchbang em um pendrive
 
 source: http://crunchbang.org/forums/viewtopic.php?id=23267
 

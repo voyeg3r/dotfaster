@@ -1,13 +1,13 @@
 # intro
   a media player
 
-### watch youtube videos throught mpv
+# watch youtube videos throught mpv
 
     mpv --ytdl url
 
     by default mpv cli user this option
 
-### função ouvir o audio de um video do youtube
+# função ouvir o audio de um video do youtube
 
     function mm() {
         mpv --no-video --ytdl-format=bestaudio ytdl://ytsearch10:"$@"
@@ -20,15 +20,15 @@ que faz referência ao youtube-dl
    ``` sh
    mpv --no-video --ytdl https://www.youtube.com/watch\?v\=IpQk8qByP_4
    ```
-### help system
+# help system
 
     mpv --help
 
-### In order to be able to play DVD with mpv
+# In order to be able to play DVD with mpv
 
     mpv dvd://
 
-### Extract audio
+# Extract audio
 
     mpv videofile.avi -o audiofile.mp3 --no-video
 
@@ -36,7 +36,7 @@ que faz referência ao youtube-dl
     mpv videofile.avi -o audiofileAtSpecificTime.mp3 --no-video --start=00:01:00 --end=00:03:35
 
 
-### How to watch a live stream from the beginning in mpv
+# How to watch a live stream from the beginning in mpv
 + https://haasn.xyz/posts/2016-11-04-how-to-watch-a-live-stream-from-the-beginning-in-mpv.html
 
 by Niklas Haas on November 4, 2016

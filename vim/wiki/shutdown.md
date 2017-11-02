@@ -1,17 +1,17 @@
-### Introdução
+# Introdução
 
-### reiniciar agora
+# reiniciar agora
      shutdown -r 0
 
-####  desligar as 17:00
+##  desligar as 17:00
 
      shutdown -h 17:00
 
-### desligar em 30 segundos
+# desligar em 30 segundos
 
      shutdown -h +30
 
-### Desligar máquina windows remotamente
+# Desligar máquina windows remotamente
 
 ``` sh
 net rpc shutdown -I ipAddressOfWindowsPC -U username%password

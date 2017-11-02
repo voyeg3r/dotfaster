@@ -48,7 +48,7 @@ background-color:  white;
 border:            1px solid #999999;
 
 
-### como alinhar isto 
+# como alinhar isto 
 
     john,betty,wally,beth
     walter,george,thomas,john

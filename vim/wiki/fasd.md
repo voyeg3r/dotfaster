@@ -1,6 +1,6 @@
 Site oficial -->  https://github.com/clvv/fasd
 
-### O que é o comando fasd?
+# O que é o comando fasd?
 
 Fasd (pronounced similar to "fast") is a command-line productivity booster.
 Fasd offers quick access to files and directories for POSIX shells. It is
@@ -15,7 +15,7 @@ Fasd ranks files and directories by "frecency," that is, by both "frequency"
 and "recency." The term "frecency" was first coined by Mozilla and used in
 Firefox (link). https://goo.gl/Ps1d2B
 
-### Como instalar o fasd
+# Como instalar o fasd
 
 Para instalar basta clonar o repositório
 
@@ -69,7 +69,7 @@ Alguns comandos úteis do fasd_cd
     d collec   .......... mostra minha pasta collection.midia do anki
     o `sf pdf` .......... abrir arquivos pdf interativamente xdg-open
 
-### Localizando um alias
+# Localizando um alias
 
 o comando "$(f aliases)" executa o chamada ao comando fasd que localiza o arquivo aliases
 que tenho guardado em ~/.dotfiles/rcfiles/zsh/aliaes, passando então o valor como

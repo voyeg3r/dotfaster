@@ -4,42 +4,42 @@ File:		 find.md
 Created:	 qua 11 jan 2017 14:42:46 BRT
 Last Change: qui 07 set 2017 07:53:27 -03
 ```
-### Introdução
+# Introdução
 
 O comando find é extremamente poderoso veja algumas construções do mesmo
 
-### procurando arquivos ocultos
+# procurando arquivos ocultos
 
 ``` sh
 find -iname \.\*
 ```
 
-### limpando a pasta /tmp
+# limpando a pasta /tmp
 
 ``` sh
 find /tmp -type f -atime +1 -delete
 ```
 
-### busca arquivos no path
+# busca arquivos no path
 
 ``` sh
 find ${PATH//:/ } -iname "*admin*" -executable -type f
 find ${PATH//:/ } -executable -type f -printf "%f\n" #exibe só o nome
 ```
 
-### Editar o arquivo mais recentemente criado
+# Editar o arquivo mais recentemente criado
 
 ``` sh
 vim `find -type f -cmin -10 | head -n1`
 ```
 
-### doc ou odt?
+# doc ou odt?
 
 ``` sh
 find ~/ -iregex ".*\(doc\|odt\)"
 ```
 
-### localizando arquivos de hoje
+# localizando arquivos de hoje
 
 ``` sh
 find . -type f -ctime -1
@@ -51,25 +51,25 @@ Uma variação possível - Mostrando de forma detalhada
 find . -type f -ctime -1 -ls
 ```
 
-### localizando arquivos modificados em um intervalo de tempo
+# localizando arquivos modificados em um intervalo de tempo
 
 ``` sh
 find ./ -mtime +6 -mtime -8 -print
 ```
 
-### combinando o find com o xargs
+# combinando o find com o xargs
 
 ``` sh
 find . -type f -maxdepth 1 -name '*.ext' -print0 |  xargs -0 comando
 ```
 
-### copiando estrutura de pastas (somente pastas)
+# copiando estrutura de pastas (somente pastas)
 
 ``` sh
 (cd /home/user/source/; find -type d -print0) | xargs -0 mkdir -p
 ```
 
-### Atribuindo propriedade
+# Atribuindo propriedade
 isto tem que ser feito como root
 
 ``` sh
@@ -82,13 +82,13 @@ Outra opção seria
 chown -R fulano.fulano
 ```
 
-### melhorar desempenho do firefox
+# melhorar desempenho do firefox
 
 ``` sh
 find ~ -name '*.sqlite' -exec sqlite3 '{}' 'VACUUM;' \;
 ```
 
-### deletar diretórios vazios
+# deletar diretórios vazios
 
 ``` sh
 find . -type d -empty -delete
@@ -98,7 +98,7 @@ find . -type d -empty -delete
 find <top_level_dir> -depth -type d -empty -exec rmdir -v {} \;
 ```
 
-### adicionando extensão a arquivos
+# adicionando extensão a arquivos
 Eu tinha um monte de arquivos sem extensão e queria colocar
 no final txt, segue a solução.
 
@@ -106,13 +106,13 @@ no final txt, segue a solução.
 find ./ -maxdepth 1 -type f -print0 | xargs -0 -i mv ./{} ./{}.txt
 ```
 
-### Procurando por um padrão no $PATH
+# Procurando por um padrão no $PATH
 
 ``` sh
 find ${PATH//:/ } -iname "*pattern*"
 ```
 
-### Apagando somente arquivos de um tipo
+# Apagando somente arquivos de um tipo
 
 ``` sh
 find ./clipart -type f -iregex '.*\.[^svg]$' | xargs -rm f
@@ -124,7 +124,7 @@ Se a intenção é apagar apenas
 find . -name '*' -print0 | xargs -0 rm
 ```
 
-### localizando arquivos duplicados usando [[md5sum]]
+# localizando arquivos duplicados usando [[md5sum]]
 
 ``` sh
 find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-
@@ -142,33 +142,33 @@ find "$@" -type f -print0 | xargs -0 -n1 md5sum | sort --key=1,32 | uniq -w 32 -
 4) Which will sort the output based on the first 32 characters (the checksum) and pipe the output to uniq.
 5) Which will find the unique checksums by only looking at the first 32 characters. The options to the uniq command cause it to print each duplicate (and only duplicates) on a separate line.
 
-### usando alternativas
+# usando alternativas
 
 ``` sh
 find -iname *.doc -o -iname *.odt
 find -atime +5 \( -name "*.o" -o -name "*.tmp" \)
 ```
 
-### find + tar
+# find + tar
 
 ``` sh
 find /home/zago/guiaz -mtime -1 -type f -print | tar jcvf meusarq.tar.bz2 -T -
 ```
 
-### Localizando arquivos maiores que 3G
+# Localizando arquivos maiores que 3G
 
 ``` sh
 find . -type f -size +3G | xargs -I% du -sh %
 ```
 
-### find + rsync
+# find + rsync
 
 ``` sh
 rsync -avz -e ssh --files-from=<(find -mtime +30 -mtime -60) origem destino
 find . -name "whatever.*" -print0 | rsync -av --files-from=- --from0 ./ .
 ```
 
-### copiar arquivos
+# copiar arquivos
 
 ``` sh
 find /originalPath/ -iname \*.mp3 -print0 | xargs -0 -i cp ./{} /destinationPath/
@@ -206,38 +206,38 @@ find ~/ -size +500M
 find ~ -size +10000 -a -iname *.pdf
 ```
 
-### arquivos com exatamente 1000 caracteres
+# arquivos com exatamente 1000 caracteres
 
 ``` sh
 find . -size 1000c
 ```
 
-### Arquivos entre 599 e 701 caracteres
+# Arquivos entre 599 e 701 caracteres
 
 ``` sh
 find . -size +599c -and -size -701c
 ```
 
-### Buscando em dois diretórios htdocs e cfi-bin
+# Buscando em dois diretórios htdocs e cfi-bin
 
 ``` sh
 find htdocs cgi-bin -name "*.cgi" -type f -exec chmod 755 {} ;
 ```
 
-### Contar quantos txt há em minha pasta pessoal "~/" (combinando com o comando wc)
+# Contar quantos txt há em minha pasta pessoal "~/" (combinando com o comando wc)
 
 ``` sh
 find ~/ -iname *.txt | wc -l
 ```
 
-### Mostra todos os arquivos pdf que não sejam maiores que 2000 bytes
+# Mostra todos os arquivos pdf que não sejam maiores que 2000 bytes
 tudo que estiver após a exclamação será negado.
 
 ``` sh
 find ~/ -iname *.pdf ! -size +2000
 ```
 
-### Invertendo a lógica do comando acima no primeiro caso tirando a exclamação, no segundo invertendo o sinal de + para menos, veja:
+# Invertendo a lógica do comando acima no primeiro caso tirando a exclamação, no segundo invertendo o sinal de + para menos, veja:
 
 ``` sh
 find ~/ -iname *.pdf -size +2000
@@ -249,27 +249,27 @@ ou
 find ~/ -iname *.pdf ! -size -2000
 ```
 
-### Procura pdf's de tamanho maiores que 2000 bytes e mostra somente o nome sem o caminho "basename"
+# Procura pdf's de tamanho maiores que 2000 bytes e mostra somente o nome sem o caminho "basename"
 
 ``` sh
 find ~/ -iname *.pdf -a -size +2000 -exec basename {} ;
 ```
 
-### Procurar por arquivos de um usuário especifico
+# Procurar por arquivos de um usuário especifico
 
 ``` sh
 find / -user sergio
 find . -user root
 ```
 
-### Busca com opções. No caso arquivos html ou htm
+# Busca com opções. No caso arquivos html ou htm
 
 ``` sh
 find ~/ ( -name *.htm -o -name *.html ) -atime +5
 find ~/ -iregex '.*html?' -atime +5
 ```
 
-### **Observações importantes** mudar permissão somente em diretórios "-d"
+# **Observações importantes** mudar permissão somente em diretórios "-d"
 
 ``` sh
 find . -type d -exec chmod 755 {} ;
@@ -277,7 +277,7 @@ find . -type d -exec chmod 755 {} ;
 
     Note: `chmod -R 755 ./*`   também aplica a modificação mas também pega arquivos
 
-### Usando o find com o xargs
+# Usando o find com o xargs
 Usando o parâmetro -exec ele executa cada vez que acha o arquivo, repassando via pipe "|" para o comando xargs o find faz primeiro as buscas tornando-se mais rápido.
 
 ``` sh
@@ -288,20 +288,20 @@ find   ~/ -type f  -print  |  xargs  rm -rf
 find /originalPath/ -iname *.mp3 -print0 | xargs -0 -i cp ./{} /destinationPath/
 ```
 
-### Procure no diretório atual "." arquivos "f"
+# Procure no diretório atual "." arquivos "f"
 imprima a lista "-print" filtre com o egrep ignorando maiúsculas e minúsculas "i" a "expressao".
 
 ``` sh
 find . -type f -print | xargs egrep -i "expressao"
 ```
 
-### Procurando todos os mp3 e exibindo o espaço ocupado por eles
+# Procurando todos os mp3 e exibindo o espaço ocupado por eles
 
 ``` sh
 find . -name \*.mp3 -print0|xargs -0 du -ch
 ```
 
-### Encontrando arquivos que não contenham extensão .c ou .o
+# Encontrando arquivos que não contenham extensão .c ou .o
 
 ``` sh
 find ~/docs -type f | egrep -v '.[oc]'
@@ -343,13 +343,13 @@ find /tmp -atime +7 -type f -a -user $USER | xargs rm -rf
 find /tmp -atime +7 -type f | xargs rm -f
 ```
 
-### Procura todos os arquivos suid e setgid executables:
+# Procura todos os arquivos suid e setgid executables:
 
 ``` sh
 find / ( -perm -4000 -o -perm -2000 ) -type f -exec ls -ldb {} ;
 ```
 
-### Redirecionando o erro padrão  "2>/dev/null"
+# Redirecionando o erro padrão  "2>/dev/null"
 para desviar as mensagens
 de erro por acesso não root
 
@@ -357,7 +357,7 @@ de erro por acesso não root
 find / -type f -name dummy 2>/dev/null
 ```
 
-#### Parâmetros
+## Parâmetros
  ``` sh
  -ctime
  -mtime
@@ -377,7 +377,7 @@ find / -type f -name dummy 2>/dev/null
  -iname
  ```
 
-### Usando ''printf''
+# Usando ''printf''
 O argumento -printf pode receber vários parâmetros
 
 ``` sh
@@ -420,7 +420,7 @@ serii.txt   04-01-2007   12:42:07
 %T(caractere)  "mtime"
 ```
 
-### Um último exemplo
+# Um último exemplo
 
 ``` sh
 find . -iname *.txt -printf "%p %m %AA %Ad de %AB de %AY %AX\n"
@@ -432,25 +432,25 @@ isto retorna algo como:
 /caminho/leia-me.txt 644 sexta 23 de junho de 2006 10:30:53
 ```
 
-### Para imprimir o nome do arquivo com o modo de permissão octal use
+# Para imprimir o nome do arquivo com o modo de permissão octal use
 
 ``` sh
 find ~ -iname *.txt -printf "%p %m\n"
 ```
 
-### acrescentando o parâmetro %a retorna o ultimo acesso de acordo com "-ctime"
+# acrescentando o parâmetro %a retorna o ultimo acesso de acordo com "-ctime"
 
 ``` sh
 find ~ -iname *.txt -printf "%p %a %m\n"
 ```
 
-### printf com os parâmetros "%p %m %Ax\n"  retorna algo como
+# printf com os parâmetros "%p %m %Ax\n"  retorna algo como
 
 ``` sh
 /caminho/leia-me.txt 644 23/06/06
 ```
 
-### printf com os parâmetros "%p %m %g %u %Ax\n"  retorna algo como
+# printf com os parâmetros "%p %m %g %u %Ax\n"  retorna algo como
 
 ``` sh
 /caminho/leia-me.txt usuario grupo 644 23/06/06
@@ -467,7 +467,7 @@ find ~ -iname *.txt -printf "%p %a %m\n"
 \n quebra de linha
 ```
 
-### Usando Expressões regulares
+# Usando Expressões regulares
 
 ``` sh
 $ find . -regex './ch0[1-2]_0[1-3].*'
@@ -478,7 +478,7 @@ $ find . -regex './ch0[1-2]_0[1-3].*'
 ./ch02_03.html
 ```
 
-### How do I search for files, then do something with the result?
+# How do I search for files, then do something with the result?
 
 * Find all .conf files, then search through them to see if they contain any IP
   addresses, then print the filename, line number and the line containing the
@@ -488,13 +488,13 @@ $ find . -regex './ch0[1-2]_0[1-3].*'
 find /etc -name *.conf -exec grep -Hn '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' {} ;
 ```
 
-### Fazendo um backup
+# Fazendo um backup
 
 ``` sh
 tar -zcvf ultimamod.tar.gz `find . -mtime -1 -type f -print`
 ```
 
-### Outros exemplos
+# Outros exemplos
 
 Localizar todos os arquivos do tipo txt gerados nos últimos 20 minutos, menos
 os cookies do navegador, que são cosntantemente gerados e não devem ser
@@ -515,7 +515,7 @@ Usando expressões regulares
  ./ch02_03.html
  ```
 
-### Limpando miniaturas de imagens no nautilus
+# Limpando miniaturas de imagens no nautilus
 
 ``` sh
 find ~/.thumbnails -type f -atime +7 -exec rm {} ;
@@ -527,7 +527,7 @@ manual do find "man find"
 find ~/ -iname "*.odt" -ctime -3
 ```
 
-### procura arquivos odt criados nos últimos 3 dias
+# procura arquivos odt criados nos últimos 3 dias
 
 ``` sh
 find ~/ -iname "*.odt" -o -iname "*.pdf"
@@ -585,7 +585,7 @@ $ \ls -1 | egrep .{32}
 Nesse caso ele vai pegar qualquer nome listado pelo comando "ls" e o grep
 vai filtrar apenas os que tem 32 caracteres ou mais.
 
-### Referências
+# Referências
 * http://ubuntuforums.org/showthread.php?t=330093
 * http://www.dicas-l.com.br/dicas-l/20050226.php → Artigo do Júlio César Neves
 + http://www.zago.eti.br/find.html

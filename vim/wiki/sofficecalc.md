@@ -6,7 +6,7 @@ site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r
 email: <voyeg3r  gmail.com>
 
-### Contar palavras em planilhas do google
+# Contar palavras em planilhas do google
 
 google spredsheet word count:
 
@@ -18,18 +18,18 @@ google spredsheet word count:
 In order to eliminate rows with less than two words simply sorte
 byt the line containing the numbers
 
-### Formatação condicional
+# Formatação condicional
 
 Crie um estilo e formate com o fundo cinza
 
   Se a fórmula é igual a    =MOD(LINHA();2)=0
 
-### Contar alunos abaixo da média
+# Contar alunos abaixo da média
 
 	=CONT.SE(C3:C15;"<6")
 
 
-### Contar valores caso existam
+# Contar valores caso existam
 
 Esta situação é muito comum em boletins escolares, numa coluna
 em que nada foi digitado o calc irá mostrar apenas um traço "-"

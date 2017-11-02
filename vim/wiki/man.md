@@ -1,4 +1,4 @@
-### criando um txt de um manual
+# criando um txt de um manual
 
     man cp | col -b > man-cp.txt
 

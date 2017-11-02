@@ -13,7 +13,7 @@ Github:      https://github.com/voyeg3r
 
 referências: http://stackoverflow.com/questions/23821235/
 
-### Para especificar um range de linhas no github coloque
+# Para especificar um range de linhas no github coloque
 
     #L18-L20
 
@@ -24,7 +24,7 @@ referências: http://stackoverflow.com/questions/23821235/
 
       y
 
-### Para pegar mais facilmente ainda um range de linhas
+# Para pegar mais facilmente ainda um range de linhas
 
 faça o seguinte:
 
@@ -38,7 +38,7 @@ pra oferecer o endereço do commit em particular, evitando que
 novo código adicionado em commits subsequentes alterem a
 visualização do conteúdo
 
-### Adding your ssh key to github
+# Adding your ssh key to github
 
     ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
@@ -75,7 +75,7 @@ replace id_rsa in the command with the name of your private key file.
     Add the SSH key to your GitHub account.
 
 
-### Adding ssh key to your github account
+# Adding ssh key to your github account
 
     $ sudo pacman -S xclip
     # Downloads and installs xclip. If you don't have `pacman`, you might need to use another installer (like `yum`)
@@ -83,7 +83,7 @@ replace id_rsa in the command with the name of your private key file.
     $ xclip -sel clip < ~/.ssh/id_rsa.pub
     # Copies the contents of the id_rsa.pub file to your clipbo
 
-### Mirroing a github repo on gitlab
+# Mirroing a github repo on gitlab
 
     ``` markdown
     https://gitlab.com/voyeg3r/dotfaster/settings/repository

@@ -1,5 +1,5 @@
 
-### PEP: 498
+# PEP: 498
 Title: Literal String Interpolation
 Version: $Revision$
 Last-Modified: $Date$

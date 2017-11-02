@@ -91,7 +91,7 @@ as que tendem a fazer o serviço melhor.
 2 - http://www.paulgraham.com/
 3 - http://www.sounerd.com.br/
 
-### Versão em ingles
+# Versão em ingles
 [source ](http://paulgraham.com/pypar.html)
 
 The Python Paradox

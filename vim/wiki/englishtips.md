@@ -8,7 +8,7 @@ site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r
 ```
 
-### [[collocations]]
+# [[collocations]]
 
 
 ```
@@ -34,7 +34,7 @@ Favor me expliquem qual o uso dessas duas abreviaturas e com exemplos. Obrigado!
 Pra ficar no sentido imperativo você teria que colocar o TO depois do HAVE
 You've to come to Brazil (Você tem que vir ao Brasil)
 
-### Lexical approach
+# Lexical approach
 
 Neurociency tips about learn english
 feel calm to activate your brain language center
@@ -54,7 +54,7 @@ other word, wich is "line"
      I got another line from another movie
      this yis an old movie ...
 
-### What means ...
+# What means ...
 
 ```
 -STARE --------------------------------------------------------
@@ -106,7 +106,7 @@ Temos de o fazer para impulsionar o processo e mantê-lo em andamento.
       full  fully
 
 
-### Rules to lean faster
+# Rules to lean faster
 
 In english learning, never says wrong sppeling, never show to
 your students or even yourself the wrong sound. Taking care
@@ -115,7 +115,7 @@ listening, talking and general compreension. Don't spend time
 with wrong things, your time is to mutch valious to be wasted
 with bulshet.
 
-###	Learn rules by infering your meaning:
+#	Learn rules by infering your meaning:
 
 			He told me that it was cold?
 			He said to me that was cold?
@@ -129,7 +129,7 @@ Listen real english, if it's possible native speakers, because your
 pronunciation is naturally correct, the reduction (combining words)
 become part you learn process in natural way.
 
-### Internet Slangs
+# Internet Slangs
 
     +------------------------------------+
     |      INTERNET SLANGS               |
@@ -151,7 +151,7 @@ become part you learn process in natural way.
     | R.U.D.Z       = Are you dizzy?    |
     +------------------------------------+
 
-### combining words in english
+# combining words in english
 
  This is also noumed as reduction or slurring of words
 
@@ -225,7 +225,7 @@ become part you learn process in natural way.
      shewants t 'takeavo'cation
 
 
-### Programa para pronunciar textos no linux
+# Programa para pronunciar textos no linux
 
 * http://opensourcecoders.blogspot.com/2011/05/jws-just-wanna-say.html
 
@@ -234,16 +234,16 @@ become part you learn process in natural way.
     Atualmente o melhor site para estudar pronúncia é o youglish
     ele pega vídeos do youtube e destaca a palavra que você deseja estudar
 
-### link do english rocks podcast
+# link do english rocks podcast
 
 http://www.englishrox.com/especiais/episode-27-especial-u2/
 
-### letras traduzidas
+# letras traduzidas
 
     Europe - The Final Cound Down - http://goo.gl/eqF6U
     Queen - Radio Gaga - http://goo.gl/Sa1p8
 
-### frases traduzidas
+# frases traduzidas
 
     They had a special art to tame wild beasts; they rode[past of ride] on white
     elephants, with large body and short trunk that they painted [...]

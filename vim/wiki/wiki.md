@@ -47,7 +47,7 @@ Github:      https://github.com/voyeg3r
 
     :%s/^==\([^=].*\)==/##\1/g
 
-### mapeamento para mudar os links para a notação markdown
+# mapeamento para mudar os links para a notação markdown
 
      Os links do vimwiki são assim [[Wiki.md|Wiki]]
      mas esse formato não é bem interpretado pelo github

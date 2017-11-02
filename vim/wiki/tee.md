@@ -12,7 +12,7 @@ No teu caso, tudo que for digitado sera salvo NOS DOIS ARQUIVOS e a saida padrã
     serão gravados (além de serem também exibidos na saída padrão).
 
 
-### Descrição
+# Descrição
 
 Este utilitário ler dados na entrada padrão e os grava na saída padrão e em arquivos.
 Algumas opções do comando
@@ -22,7 +22,7 @@ Algumas opções do comando
     --help : exibe as opções do utilitário.
     --version : mostra informações sobre o utilitário.
 
-### Exemplos
+# Exemplos
 
     O comando
 
@@ -44,12 +44,12 @@ Algumas opções do comando
     arquivo teste2.txt (para saber mais sobre o PIPE, veja redirecionadores de
     E/S).
 
-### Observações
+# Observações
 
     Caso o nome de um arquivo não seja definido junto com o comando tee, o
     sistema exibirá os dados apenas na saída padrão.
 
-### Tópicos relacionados
+# Tópicos relacionados
 
     cat - concatena e/ou exibe um ou mais arquivos.
     redirecionadores de E/S - >, >>, < e |.

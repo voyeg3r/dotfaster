@@ -1,4 +1,4 @@
-### Introdução
+# Introdução
 
 O comando iconv converte a codificação de caracteres de arquivos,
 por exemplo: a codificação ISO-8859-15 exibe acentos corretamente no windows

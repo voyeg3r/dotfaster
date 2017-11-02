@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: qui 02 nov 2017 08:27:49 -03
+# dicasvim.md Intro - Last Change: qui 02 nov 2017 09:33:28 -03
 
 # Vim antipatterns
 
@@ -80,41 +80,41 @@ and the second one gives me some html content over wich I run this vimscript
 function:
 
 ``` viml
-				fun! CleanFlaschards()
-						let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-						"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
-						let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
-						%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-						%s,\v\<(\/)?\zsu\ze\>,b,g
-						%s,\v\s+$,,g
-						%s,;,:,ge
-						%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-						%s,\v(^)?((\<b\>)?\<br\>?)$,,g
-						%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-						g/^\W\+$/d
-						normal gg
-						silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
-						normal gg
-						g/\v^\d+\W?(–|-)/d
-						normal gg
-						silent normal! /<u>\|<b>/{kdgg
-						normal gg
-						silent normal! /:$/dip
-						normal /CLIQUE/{kdG
-						0r audios.txt
-						g/.*mp3/s/http.*\/\d\+-//g
-						g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-						g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-						normal gg
-						silent normal! /^<\/b>$/kJD
-						%s/\v(!|.|\?)  /\1 /ge
-						DelBlank
-						normal gg
-						normal vipo
-						let selectionsize = line("'>") - line("'<") + 1
-						echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
-				endfun
-				command! -nargs=0 CFlashcards :silent call CleanFlaschards()
+fun! CleanFlaschards()
+		let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+		let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+		%s,\v\<(\/)?\zsu\ze\>,b,g
+		%s,\v\s+$,,g
+		%s,;,:,ge
+		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+		g/^\W\+$/d
+		normal gg
+		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+		normal gg
+		g/\v^\d+\W?(–|-)/d
+		normal gg
+		silent normal! /<u>\|<b>/{kdgg
+		normal gg
+		silent normal! /:$/dip
+		normal /CLIQUE/{kdG
+		0r audios.txt
+		g/.*mp3/s/http.*\/\d\+-//g
+		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+		normal gg
+		silent normal! /^<\/b>$/kJD
+		%s/\v(!|.|\?)  /\1 /ge
+		DelBlank
+		normal gg
+		normal vipo
+		let selectionsize = line("'>") - line("'<") + 1
+		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+endfun
+command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 ```
 
 I started the function like in the book "How to think like a computer
@@ -141,6 +141,7 @@ The command above will put `ls` output at the first line
 		:let @+ = @/ ....... puts last searh into clipboard
 
 		On insert mode <C-r>* inserts "Primary Selection"
+		you can also use Shift-insert
 
 # Vim tips for everyone
 
@@ -165,11 +166,17 @@ Just type
 
 # jumping to the first non-blank character
 + http://ddrscott.github.io/blog/2016/vim-toggle-movement/
++ https://stackoverflow.com/a/11919069/2571881
 
 ``` viml
 _ ................ jump to the first non-blank character
 ^ ................ jump to the First non-blank character
+g_ ............... go to the next non-blank at the end of line
 ```
+
+`g_` is AWESOME when you're yanking text to paste somewhere you don't want the
+line break included -- like the command line where it will then automatically
+run the command.
 
 # Using vim with no plugins
 
@@ -208,25 +215,6 @@ Recursive mapping
     :map <C-o> ddj<C-o>
     <C-o>
 
-# Virtualedit
-+ https://stackoverflow.com/a/30323328/2571881
-
-This allows you to put characters virtually everywhere on your text
-
-    :let x=&ve
-    :set ve=all|2,5norm! 19|r#
-    :let &ve=x
-
-    :set virtualedit=all
-
-``` markdown
-+--------------------------------------------------------------------------------+
-|  The above setting allows you to put your mouse even where does not exist text |
-|  and create a vertical selection to put something linke this box               |
-+--------------------------------------------------------------------------------+
-```
-The problem happens more when you have many lines in different sizes
-
 # Inserting a-z using macro - incrementando letas com ctrl-a
 
 Using set `nrformats+=alpha   short form nf`
@@ -254,7 +242,7 @@ For those who do not know what "primary selection is", putting it simple.
 	special clipboard space (Linux only)" - On vim the "*" registers stores the
 	primary selection
 
-On vim just press: `Shift-insert` "primary selection"
+On vim just press: `Shift-insert` "primary selection" or in insert mode type `<C-r>*`
 
 While in insert mode, you can use `Ctrl-R` {register}, where register can be:
 
@@ -278,8 +266,10 @@ For more information, view the documentation with `:h i_ctrl-r`
 
 # Moving around
 
-    g; ....... goes to older position on changelist
+    g; ....... goes to older position on changelist (last change)
     g, ....... goes to newer positoin on changelist
+
+	you can also jump using <C-o>
 
 # Exit ex mode
 
@@ -1401,7 +1391,7 @@ The range of printable chars spams from 32 to 93
     :%s,.*,\=nrm2char(submatch(0))
     :%j
 
-### More submatch operations
+# More submatch operations
 + https://stackoverflow.com/a/46295517/2571881
 
 This transforms

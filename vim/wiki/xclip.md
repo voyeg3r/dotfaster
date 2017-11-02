@@ -18,14 +18,14 @@ Agora pode fazer algo do tipo
     alias pbcopy='xclip -selection clipboard'
     alias pbpaste='xclip -selection clipboard -o'
 
-### Tip on using above aliases
+# Tip on using above aliases
  If you want to paste on your terminal a long string you can do something like this:
 
     vlc $(pbpaste)
 
 instead of worrying about using middle mouse button or even keyboard shortcuts
 
-### Adding ssh key to your github account
+# Adding ssh key to your github account
 
     $ sudo pacman -S xclip
     # Downloads and installs xclip. If you don't have `pacman`, you might need to use another installer (like `yum`)

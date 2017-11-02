@@ -6,7 +6,7 @@ site: http://vivaotux.blogspot.com
 twitter: http://www.twitter.com/voyeg3r
 email: <voyeg3r  gmail.com>
 
-### como enviar um echo para a impressora via linha de comandos
+# como enviar um echo para a impressora via linha de comandos
 
 	echo "um teste" | lp -d Brother_DCP-7065DN
 
@@ -14,13 +14,13 @@ If you normally use a particular printer, you can tell CUPS to use it by default
 
 	lpoptions -d printer
 
-### como limpar o spool de impressao
+# como limpar o spool de impressao
 
 	sudo service cups stop
 	sudo rm -rf /var/spool/cups/*
 	sudo service cups start
 
-### instalando a impressora brother
+# instalando a impressora brother
 
 sudo apt-fast install brother*
 
@@ -38,7 +38,7 @@ brsaneconfig4 -a name=DCP-7065DN model=DCP-7065DN nodename=`hostname`.local
 # If you want if you want to specify your printer rather using its IP, run this instead:
 # brsaneconfig4 -a name=DCP-7065DN model=DCP-7065DN ip=192.168.2.30
 
-### PRINTING
+# PRINTING
 
 sudo apt-get install cups csh lib32stdc++6
 sudo mkdir /var/spool/lpd
