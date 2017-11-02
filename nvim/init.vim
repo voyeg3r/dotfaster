@@ -1,13 +1,13 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: qui 02 nov 2017 12:57:02 -03
+" Last Change: qui 02 nov 2017 18:04:45 -03
 "
 "                 ( O O )
-"  +===========oOO==(_)==OOo==============+
+"  +-----------oOO--(_)--OOo--------------+
 "  |                                      |
 "  |    °v°    Sergio Luiz Araujo Silva   |
 "  |   /(_)\  Linux User #423493          |
 "  |    ^ ^    voyeg3r ✉ gmail.com        |
-"  +======================================+
+"  +--------------------------------------+
 
 "As you type a substitution  the results will immediately be
 "visible in the edit window. This feature is best highlighted
@@ -15,6 +15,8 @@
 if has("nvim")
     set inccommand=nosplit
 endif
+
+set shada=!,'1000,<50,s10,h,%,'2000
 
 if has("multi_byte")
   if &termencoding == ""
@@ -191,7 +193,9 @@ let mapleader=','
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
+    "set guifont=Menlo:h12
+	"set guifont=Fira\ Code:h12
+	set guifont=Monoid:h12
     set transparency=7
   endif
 else

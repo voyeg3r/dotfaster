@@ -1,8 +1,10 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: qui 02 nov 2017 16:31:13 -03
+# [Wiki](wiki.md) do Sérgio - Last Change: qui 02 nov 2017 17:06:36 -03
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
 + [Anki](anki.md)
++ [aindustriapornografica](aindustriapornografica.md)
++ [apropagandaideologicadopig](apropagandaideologicadopig.md)
 + [apicultura](apicultura.md)
 + [Artigos](artigos.md)
 + [Archlinux](archlinux.md)

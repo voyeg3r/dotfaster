@@ -1,10 +1,15 @@
-# ZSH Tips by ZZapper
+# ZSH Tips by ZZapper - Last Change: qui 02 nov 2017 19:23:02 -03
 [zzappers Tips Home](http://www.zzapper.co.uk/)
 
+``` markdown
 Updated : 17Jan17 *N* Marks New *C* Corrected/Changed
 
 > zsh -f   # start a "clean" version of zsh (without your startup files)
+
 print $ZSH_VERSION
+```
+
+``` markdown
 Tips Home
 Daily ZSH Tip on Twitter  *N*
 ZSH TIPS on Twitter Archive
@@ -19,7 +24,9 @@ oh my zsh Framework
 zsh IRC Channel: Instant help
 man zsh
 man zshall
+```
 
+``` markdown
 man zsh          Zsh overview
 man zshmisc      Anything not fitting into the other sections
 man zshexpn      Zsh command and parameter expansion
@@ -37,7 +44,9 @@ info --index-search=age zsh         # get man info for zsh function age *N*
 zinfo(){info --index-search=$1 zsh} *N*
 
 /usr/share/zsh/htmldoc/zsh_toc.html
+```
 
+``` markdown
 Install on Linux
 > yum install zsh *N*
 > yum update zsh *N*
@@ -47,7 +56,6 @@ tar zxvf zsh-5.3.1.tar.gz
 cd zsh-5.3.1 && ./configure && make && sudo make install
 (yum install gcc) # if required
 (yum install ncurses-devel) # if required
-
 
 Global aliases
 Searching and filtering my mysql database with my own utility searchdb
@@ -167,7 +175,6 @@ history -m 'yum*' 0
 fc -l  -m 'yum*' 0
 !42                   # Re-execute history command 42
 
-
 # substitute previous command
 r oldstr=newstr
 !!:s/fred/joe/        # edit previous command replace first fred by joe
@@ -189,7 +196,6 @@ cd !?ls?:*<TAB>   #get (just) parameters of a previous ls command
 function scd(){setopt nonomatch;e=/dev/null;cd $1 &> $e||cd ${1}* &> $e||cd *$1 &> $e||cd *${1}* &> $e||echo sorry} *N*
 function ddump(){diff -w ~dump/"$1" "$1"}   # *N* diff local file with new one in dump
 function cdump(){cp -p ~dump/"$1" "$1"}   # *N* replace local file with new one in dump
-
 
 Generating a command from an earlier one
 How to recall the parameters of a previous command, on line 7 below
@@ -237,7 +243,6 @@ cp {,backup_}longfilename.php   # same thing
 cp longfilename.php !#^:r.bak
 cp longfilename.{php,bak}   # expands to cp longfilename.php longfilename.bak
 
-
 #For Previous Command (for comparison)
 !-1     repeat whole command
 !!      repeat (shortcut)
@@ -264,7 +269,6 @@ For last but one command
 etc
 For history command 42
 !42
-
 
 !:0 is the previous command name
 !^, !:2, !:3, !$ are the arguments
@@ -522,7 +526,6 @@ url='www.some.com/some_strIng-HERe'
 anchortext=${${(C)url//[_-]/ }:t}  # titlecase *N*
 echo "<a href='$url'>$anchortext</a>"
 
-
 # creating a family of functions
 # generate hrefs from url
 function href{,s}
@@ -550,8 +553,6 @@ scratchfile=${0/#v/}
 gvim.exe c:/aax/$scratchfile &
 }
 
-
-
 # regular expressions in zsh  examples *N*
 #pcre perl regular expressions   *N*
 
@@ -562,8 +563,6 @@ var=ddddd; [[ "$var" =~ ^d+$ ]] && echo matched || echo did not match
 [[ 'cell=456' =~ '(cell)=(\d+)' ]] && echo  $match[1,2] $MATCH *N*
 
 var=dddee; regexp="^e+$"; [[ "$var" =~ $regexp ]] && echo $regexp matched $var || echo $regexp did not match $var
-
-
 
 # decisions
 # cd to different drive depending on Windows login name
@@ -585,7 +584,6 @@ cp -a file1 file   # -a transfer  permissions etc of file1 to file2preserve
 [[ -e $L/config.php ]] && cp -p -update $T/config.php $L *N*
 # variable with variable name
 eval "$1=$PWD"
-
 
 # brilliant will change your life
 setopt autopushd                # *C*
@@ -647,7 +645,6 @@ myscript >&1 >output.txt                  # log a script output
 #Redirection to file as well as send on to pipe:
 make install > /tmp/logfile | grep -i error
 
-
 # permissions & ownership *N*
 ls *(.f644)                            # files with permissions 644
 ls *(.g:root:)                            # files belonging to group root
@@ -668,7 +665,6 @@ zmv -W '*.sh' '*.pl'
 $ zmv -i '(*)' '${(L)1}' # lowercase
 $ zmv -i '(*)' '${(U)1}' # uppercase
 $ zmv '([a-z])(*).txt' '${(C)1}$2.txt' ; rename fred.txt to Fred.txt
-
 
 # initialize zsh/config *N*
 autoload -U compinit
@@ -752,7 +748,6 @@ sed '
 # editing a variable (You must try this)
 vared PATH
 
-
 bindkey -v # vi mode line editting
 bindkey -M viins '^O' copy-prev-shell-word
 bindkey '^L' push-line # push current command into a buffer, allows you to do another command then returns to previous command
@@ -773,7 +768,6 @@ bindkey "^N"      most-recent-file
 
 zstyle ':completion:expand-args-of::::' completer expand-args-of
 bindkey '^x^a' expand-args-of
-
 
 # Prompt at end of command line
 RPROMPT="[%t]" (display the time)
@@ -933,10 +927,9 @@ bindkey "^[[B" down-line-or-beginning-search
 # chmod -R 755 /usr/share/zsh/
 # chown -R myusername /usr/share/zsh (on Vista (as admin)
 
-
 Sources newsgroup gmane.comp.shells.zsh.user newsserver news.gmane.org
-
 
 Upload this page (use yy@" on following line, to invoke upload zftp script)!!
 :!zshtipsftp
 
+```

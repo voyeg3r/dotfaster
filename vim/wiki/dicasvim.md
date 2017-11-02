@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: qui 02 nov 2017 14:06:15 -03
+# dicasvim.md Intro - Last Change: qui 02 nov 2017 19:40:43 -03
 
 # Vim antipatterns
 
@@ -352,6 +352,28 @@ How can I do this? (solution)
 find "other" just preceded by some
 
 		\v(some)@<=other
+
+## Another vim regex example
+Supose you have
+
+		otherthingsbaz
+		otherthingsbaz
+		otherthingsbaz
+		foobarbaz
+		foobarbaz
+		foobarbaz
+		foobarbaz
+		foobarbaz
+
+and you want remove baz onlin on those lines
+who it is preceded by 'foobar'. The last solution
+is more readable and unique to vim.
+
+		:%s,\v^(foobar)(baz),\1,g
+		:%s,\v(foobar)@<=baz,,g
+		:%s,^foobar\zsbaz,,g
+
+See :h /\zs. (And :h /\@<= if you're so inclined.)
 
 # Remove offending key from known_hosts file with one swift move
 

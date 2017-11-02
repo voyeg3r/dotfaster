@@ -80,6 +80,7 @@ alias nprnews='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/3649
 alias chicago='mpv http://relay.broadcastify.com:80/il_chicago_police2\?xan\=7C80215A2A84B01D154525F05BD80095'
 # Listen to Air Traffic Control, used to be scripts.
 alias miami='mplayer http://relay.broadcastify.com:80/540894049\?xan\=7C80215A2A84B01D154525F05BD80095'
+alias atlanticosul='mplayer http://stm42.srvstm.com:31720/stream/1/'
 
 alias flagradio='mplayer http://ice9.securenetsystems.net/WZFG'
 alias thepoint='mplayer http://icy3.abacast.com/capitalcity-wqxlam-64'
@@ -207,7 +208,6 @@ alias v='f -t -e vim -b viminfo'
 alias o='a -e xdg-open' # quick opening files with xdg-open
 alias _!='fc -e "sed -i -e \"s/^/sudo /\""' # sudo last command
 # para abrir um arquivo recem editado com o vim faça: v nome
-
 
 alias pbpaste='xclip -i -selection clipboard -o'
 alias pbcopy='xclip -selection clipboard'

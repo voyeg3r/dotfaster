@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: dom 29 out 2017 09:07:15 -03
+#      Last Change: qui 02 nov 2017 18:10:09 -03
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -62,6 +62,7 @@ sudo wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysct
 sudo pip install neovim
 pip3 install --user --upgrade neovim
 sudo pip install nfasd
+ sudo pip install nfasd
 
 # paragraph formater (useful for vim)
 # https://aur.archlinux.org/packages/par/
@@ -297,6 +298,9 @@ yaourt -S xbmc
 # clonar as fontes powerline
 # para instalar rode o script install contido na pasta
 git clone git@github.com:powerline/fonts.git
+
+# ttf-iosevka
+yaourt ttf-iosevka
 
 # https://fonts.google.com/specimen/Open+Sans
 yaourt ttf-opensans
