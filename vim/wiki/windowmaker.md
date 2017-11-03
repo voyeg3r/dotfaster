@@ -1,5 +1,12 @@
-# windowmaker.md - Last Change: asdf
+# windowmaker.md - Last Change: sex 03 nov 2017 08:41:33 -03
 É um gerenciador de janelas bem leve
+
+You can put in your autostart file:
+
+		/usr/bin/gnome-settings-daemon &
+
+to get a better gtk look in WM and also use the volume, mute, next keyboard
+buttons.
 
 # Menu
 ```text

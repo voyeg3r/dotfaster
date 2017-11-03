@@ -1,3 +1,9 @@
+# ps.md - Last Change: 2017 nov 03 13:46
+
+# Search for a precess by its name
+
+		ps -fC firefox
+
 # Mostrar processos que consomem mais memória
 
     ps aux | sort -nk +4 | tail
@@ -8,7 +14,9 @@
     ps aux | sort -nrk 4 | head
 
 A explicação do comando acima é simples:
-O comando "ps aux" exibe todos os processos de todos os usuários, o comando sort está ordenando numericamente "n" mostrando a coluna 4 "k 4" e entrega a saida para o comando tail, que exibe os 10 primeiros.
+O comando "ps aux" exibe todos os processos de todos os usuários, o comando
+sort está ordenando numericamente "n" mostrando a coluna 4 "k 4" e entrega a
+saida para o comando tail, que exibe os 10 primeiros.
 
 # listar usuario memória e cpu
 

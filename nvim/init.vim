@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 03 nov 2017 06:59:49 -03
+" Last Change: sex 03 nov 2017 09:22:01 -03
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -463,6 +463,52 @@ augroup END
 autocmd InsertEnter * set nocul
 autocmd InsertLeave * set cul
 
+augroup sh
+    au BufNewFile *.sh 0r ~/.vim/skel/template.sh
+    au BufNewFile *.sh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/e
+    "au BufWritePost *.sh :silent !chmod a+x <afile>
+augroup end
+
+augroup zsh
+    au BufNewFile *.zsh 0r ~/.vim/skel/template.zsh
+    au BufNewFile *.zsh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/e
+    au BufWritePost *.zsh :silent !chmod a+x <afile>
+augroup end
+
+augroup html
+    " au! <--> Remove all html autocommands
+    au!
+    au BufNewFile,BufRead *.html,*.shtml,*.htm set ft=html
+    "au BufNewFile,BufRead,BufEnter  *.html,*.shtml,*.htm so ~/.vim/skel/skel.html
+    au BufNewFile *.html 0r ~/.vim/skel/skel.html | let IndentStyle = "html"
+    "au BufNewFile *.html,*.shtml,*.htm /body/+
+    au BufNewFile,BufRead *.html,*.shtml,*.htm set noautoindent
+    au BufNewFile,BufRead *.html,*.shtml,*.htm set nolist
+    au BufNewFile,BufRead *.html,*.shtml,*.htm call LastModified()
+    " needed one line with 'Created:' in firsts 5 lines
+    "au Bufnewfile,BufRead *.html,*.shtml,*.htm 1,5s/\s*Created:\s*\zs.*/\="" . strftime("%Y %b %d %X")/ge
+    au BufNewFile,BufRead *.html,*.shtml,*.htm exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
+augroup end
+
+augroup css
+    au Bufnewfile,BufRead *.css set ft=css
+    au BufNewFile *.css 0r ~/.vim/skel/template.css
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    "au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
+    au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+augroup end
+
+augroup tex
+    au Bufnewfile,BufRead *.tex set ft=tex
+    au BufNewFile *.tex 0r ~/.vim/skel/template.tex
+    au BufNewFile *.tex exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+    vnoremap e <tab>em<tab>
+    vnoremap ' <tab>'<tab>
+    iab latex \LaTeX\
+    iab tex \Tex\
+    normal gg
+augroup end
+
 "" Git
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -627,7 +673,7 @@ endfun
 
 fun! ChangeHeader()
     if line('$')>=5
-        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%c")/ei')
+        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%Y %b %d %H:%M")/ei')
 		normal <C-o>
     endif
 endfun

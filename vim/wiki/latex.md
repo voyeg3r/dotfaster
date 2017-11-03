@@ -1,17 +1,29 @@
-# Arquivo: dicas de LaTex
+# Arquivo: dicas de LaTex - Last Change: 2017 nov 03 09:43
 
 ``` markdown
-Criado: Ter 18/Dez/2012 hs 19:48
-Last Change: ter 10 jan 2017 14:05:26 BRT
-autor: Sérgio Luiz Araújo Silva
-site: vivaotux
-twitter: voyeg3r
-email: voyeg3r at gmail
+Created: Ter 18/Dez/2012 hs 19:48
 ```
 
-#  Veja também [[LatexExemplos]]
+# Veja também [[LatexExemplos]]
 
     pdflatex documment.tex
+
+# Have you heard about synclatex
++ https://tex.stackexchange.com/a/118491/3528
+
+SyncTeX is a utility written by Jérôme Laurens which enables synchronization
+between your source document and the PDF output. If your editor/viewer
+supports it, then you can click in your source and jump to the equivalent
+place in the PDF or click in the PDF and it will jump to the appropriate place
+in your source document.
+
+In order to make synctex work on gnome-shell install:
+
+    texlive-extra-utils gedit-plugins
+
+## vim plugin to deal with synctex
+
+		https://github.com/coot/atp_vim
 
 # como instalar o latex
 
@@ -114,7 +126,7 @@ See
  Summary of warning messages during installation:
    Partial download of http://linorg.usp.br/CTAN/systems/texlive/tlnet/archive/minitoc.doc.tar.xz found, removing it.
 
-Logfile: /usr/local/texlive/2012/install-tl.log
+		Logfile: /usr/local/texlive/2012/install-tl.log
 
 
 

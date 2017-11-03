@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: qui 02 nov 2017 19:40:43 -03
+# dicasvim.md Intro - Last Change: 2017 nov 03 13:32
 
 # Vim antipatterns
 
@@ -8,6 +8,8 @@ To copy the line 16 to the line bellow just type:
 
 	:16t.  ................... copy line16 1 line below
 	:t10   ................... copy current line to the line below line 10
+	:t$    ................... copy current line to the end of file
+	:m$    ................... move current line to the end of file
 
 1 - Instead of jumping to the line
 2 - pressing yy
@@ -79,40 +81,40 @@ I have a python script to get two files; the first one has the mp3 files links
 and the second one gives me some html content over wich I run this vimscript
 function:
 
-``` viml
+``` text
 fun! CleanFlaschards()
-		let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
-		let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
-		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-		%s,\v\<(\/)?\zsu\ze\>,b,g
-		%s,\v\s+$,,g
-		%s,;,:,ge
-		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
-		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-		g/^\W\+$/d
-		normal gg
-		silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
-		normal gg
-		g/\v^\d+\W?(–|-)/d
-		normal gg
-		silent normal! /<u>\|<b>/{kdgg
-		normal gg
-		silent normal! /:$/dip
-		normal /CLIQUE/{kdG
-		0r audios.txt
-		g/.*mp3/s/http.*\/\d\+-//g
-		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-		normal gg
-		silent normal! /^<\/b>$/kJD
-		%s/\v(!|.|\?)  /\1 /ge
-		DelBlank
-		normal gg
-		normal vipo
-		let selectionsize = line("'>") - line("'<") + 1
-		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+	let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+	"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+	let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+	%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+	%s,\v\<(\/)?\zsu\ze\>,b,g
+	%s,\v\s+$,,g
+	%s,;,:,ge
+	%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+	%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+	%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+	g/^\W\+$/d
+	normal gg
+	silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+	normal gg
+	g/\v^\d+\W?(–|-)/d
+	normal gg
+	silent normal! /<u>\|<b>/{kdgg
+	normal gg
+	silent normal! /:$/dip
+	normal /CLIQUE/{kdG
+	0r audios.txt
+	g/.*mp3/s/http.*\/\d\+-//g
+	g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+	g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+	normal gg
+	silent normal! /^<\/b>$/kJD
+	%s/\v(!|.|\?)  /\1 /ge
+	DelBlank
+	normal gg
+	normal vipo
+	let selectionsize = line("'>") - line("'<") + 1
+	echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 ```

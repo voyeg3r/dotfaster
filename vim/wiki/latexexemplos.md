@@ -1,3 +1,7 @@
+# latexexemplos.md - Last Change: 2017 nov 03 09:17
+
+See also [latex](latex.md)
+
 # macro para imagens
 
 ``` latex

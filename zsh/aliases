@@ -25,6 +25,7 @@ alias router='awk "/UG/ {print \$2}" <<(route -n)'
 alias calc='python3 -ic "from math import *; import cmath"'
 
 alias xterm='xterm -rv'
+alias xterm='xterm -bg black -fg green'
 # alias calc='noglob calc'
 alias shell='echo ${SHELL:t}'
 
@@ -104,7 +105,8 @@ alias southLosAngelis='mplayer http://relay.broadcastify.com:80/q1zxhgrdwt0p\?xa
 alias classic='mplayer http://80.237.154.83:8120'
 # watch aljazeera
 #
-alias alj='mplayer https://english.streaming.aljazeera.net/aljazeera/english2/index101.m3u8'
+# alias alj='mplayer https://english.streaming.aljazeera.net/aljazeera/english2/index101.m3u8'
+alias alj='mplayer https://english.streaming.aljazeera.net/aljazeera/english2/index4147.m3u8'
 
 alias cbs='mplayer https://cbsnhls-i.akamaihd.net/hls/live/264710-b/CBSN_mdialog/prodstream/master_360.m3u8'
 alias cbsnews='mplayer http://cbsnewshd-lh.akamaihd.net/i/CBSNHD_7@199302/index_2200_av-p.m3u8'
