@@ -2,10 +2,22 @@
 Permite baixar arquivos sem riscos, ou seja,
 mantém um resumo do que foi baixado
 
-# referências
-* http://codesnippets.joyent.com/tag/wget
+# Referências
++ http://www.tt-solutions.com/en/portfolio/yahoo2mbox
++ https://forums.opensuse.org/showthread.php/446179-Software-or-method-to-copy-Yahoo-group-message-history
 
     wget -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
+
+# Download all yahoo messages from yahoo groups
+
+``` sh
+wget --recursive --page-requisites --no-parent --page-requisites
+--html-extension --convert-links group_name
+
+for file in $(ls *.html); do
+		w3m -dump ${file} -O UTF-8 > ${file:r}.txt
+done
+```
 
 # Download file to standard input shell
 
@@ -59,7 +71,7 @@ How is it possible to pipe out wget's downloaded file? If not what alternatives 
 
 # baixar licença gplv3
 
- wget -O LICENSE.txt http://www.gnu.org/licenses/gpl-3.0.txt
+		 wget -O LICENSE.txt http://www.gnu.org/licenses/gpl-3.0.txt
 
 Se desejar baixar um arquivo com o wget direto para um local faça:
 
