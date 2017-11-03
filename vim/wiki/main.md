@@ -1,4 +1,4 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: qui 02 nov 2017 17:06:36 -03
+# [Wiki](wiki.md) do Sérgio - Last Change: sex 03 nov 2017 08:01:20 -03
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -80,6 +80,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Vimsnippets](vimsnippets.md)
 + [Ultisnips](ultisnips.md)
 + [Webdoispontozero](webdoispontozero.md)
++ [windowmaker](windowmaker.md)
 + [Wingchun](wingchun.md)
 + [Xbmc](xbmc.md)
 + [Zshell](zshell.md)

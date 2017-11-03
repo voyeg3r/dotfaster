@@ -1,22 +1,32 @@
-# Arquivo: dicas sobre o google
+# Arquivo: dicas google - Last Change: sex 03 nov 2017 07:20:02 -03
 
  ```
  File:		   DicasGoogle.md
  Criado:       Sex 05/Out/2012 hs 07:45
- Last Change:  ter 10 jan 2017 13:31:07 BRT
- Author:	   Sergio Araujo
- Site:		   http://vivaotux.blogspot.com
- e-mail:       <voyeg3r ✉ gmail.com>
- Twitter:	   @voyeg3r
- Github:       https://github.com/voyeg3r
  ```
+
+# Lista de todos os recursos do google
++ http://www.google.com/help/features.html
++ http://lmgtfy.com/
+
+# google em inglês
++ http://www.google.com/webhp?hl=options
+
+# Google's useful links
++ https://www.labnol.org/internet/important-google-urls/28428/
 
 # Como encontrar fontes no google
 
 	intitle "index of" (ttf | otf) meridean -html -htm -php -asp -cf -jsp
 
-# Lista de todos os recursos do google
-* http://www.google.com/help/features.html
+# Busca por proximidade - AROUND(n)
+
+A search query like “CNN Obama” will mostly show CNN pages that are
+related to Obama. However, if we modify the query to look like “CNN
+AROUND(2) Obama,” you get results where the two terms are written on the
+page in close proximity
+
+OBS: Make sure to put AROUND in caps else it wont work
 
 # # Link direto pra baixar filmes
 
@@ -35,9 +45,6 @@
 # Achar câmeras online
 
     inurl:"view/index.shtml"
-
-# google em inglês
-* http://www.google.com/webhp?hl=options
 
 # tempo em fortaleza
 
