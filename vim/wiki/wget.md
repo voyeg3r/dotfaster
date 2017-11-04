@@ -19,6 +19,13 @@ for file in $(ls *.html); do
 done
 ```
 
+Cada mensagem dos grupos yahoo tem um número e portanto podemos buscar depois
+na web com algo similar a isso:
+
+``` sh
+https://br.groups.yahoo.com/neo/groups/shell-script/conversations/messages/27550
+```
+
 # Download file to standard input shell
 
 		wget -O - -o /dev/null

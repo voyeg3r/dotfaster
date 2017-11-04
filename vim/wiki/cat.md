@@ -1,4 +1,4 @@
-# Introdução
+# cat.md
 O comando cat serve para visualizar conteudos de textos e também para
 concatenar arquivos divididos como comando [[split]]
 
@@ -129,3 +129,33 @@ Solução
 
     cat teste.txt | xargs -n5
 
+# Executar cat em cada arquivo de uma lista
+
+Estou com uma duvida besta, porem nao arranjo solução para a mesma,
+ja pesquisei e nao achei nada relacionado, alguem sabe como posso
+passar uma valor de um txt ou de um pipe direto para uma linha de
+comando? Vou dar um exemplo do que estou querendo fazer. Supondo
+que eu tenha um arquivo lista.txt com o conteudo:
+
+        juliosoares.txt
+        robertosoares.txt
+        carlosdesouza.txt
+        alvaro.txt
+        augustosoares.txt
+
+digamos que eu queira fazer um cat nos arquivos nessa ordem..  Como eu
+posso "passar" o valor para a linha de comando sem digitar linha por
+linha? Por exemplo:
+
+        cat juliosoares.txt robertosoares.txt augustosoares.txt
+
+Ao inves de digitar 1 por 1, faria um grep e passaria o valor da
+saida padrao para a linha de comando, sem opções de cada
+programa, de forma generalizada, entenderam? Quem puder ajudar...
+
+        Allan
+
+
+        A mesma solução, mas com uma pequena variação ;)
+
+        cat $(<lista.txt)
