@@ -6,6 +6,10 @@ mantém um resumo do que foi baixado
 + http://www.tt-solutions.com/en/portfolio/yahoo2mbox
 + https://forums.opensuse.org/showthread.php/446179-Software-or-method-to-copy-Yahoo-group-message-history
 
+OBS: I think it is useful to change the user-agent for wget before using it:
+
+		alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
+
     wget -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
 
 # Download all yahoo messages from yahoo groups
