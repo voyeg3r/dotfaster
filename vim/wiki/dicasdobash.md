@@ -1,14 +1,13 @@
-# dicas do bash
+# dicas do bash - Last Change: 2017 nov 04 19:09
 
-```
-File:		 DicasDoBash.md
-Last Change: sáb 28 out 2017 16:42:08 -03
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
+# Being more concise
+Avoid cat when possible
+
+		wc -l /etc/passwd
+
+tr and many other commands accept files
+
+		tr X Y < FILE
 
 # bash onliners
 

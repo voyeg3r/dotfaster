@@ -321,8 +321,8 @@ com -nargs=1 Rover :call RunMacroOver(<f-args>)
 nnoremap Q :normal .<CR>
 
 " alternate between relative number, number and no number
-"nmap ,r :set rnu!<cr>
-"nnoremap ,r :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+nmap <F2> :set rnu!<cr>
+nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 inoremap <leader>r <C-r>=system('echo "$(($RANDOM % 1000))"')<cr>
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sex 03 nov 2017 09:22:01 -03
+" Last Change: sáb 04 nov 2017 19:28:56 -03
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -784,6 +784,10 @@ cnoremap <c-e> <end>
 nnoremap <F23> <ESC>:set hls!<cr>
 inoremap <F23> <C-o>:set hls!<cr>
 vnoremap <F23> <ESC>:set hls!<cr> <bar> gv
+
+" alternate between relative number, number and no number
+nmap <F2> :set rnu!<cr>
+nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 

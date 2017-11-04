@@ -1,8 +1,6 @@
-
+# find.md - Last Change: 2017 nov 04 19:31
 ``` markdown
-File:		 find.md
 Created:	 qua 11 jan 2017 14:42:46 BRT
-Last Change: qui 07 set 2017 07:53:27 -03
 ```
 # Introdução
 
@@ -33,11 +31,30 @@ find ${PATH//:/ } -executable -type f -printf "%f\n" #exibe só o nome
 vim `find -type f -cmin -10 | head -n1`
 ```
 
-# doc ou odt?
+# Find regex tips
+## doc ou odt?
 
 ``` sh
 find ~/ -iregex ".*\(doc\|odt\)"
 ```
+All image types
+
+
+``` sh
+find . -type f -iregex '.*\(jpg\|jpeg\|png\|gif\)'
+```
+
+O find tem uma opção regextype, que vc pode especificar
+qual set de regex vc está usando.
+
+Regextype: tipos válidos são "findutils-default", "awk",
+"egrep", "ed", "emacs", "gnu-awk", "grep", "posix-awk", "posix-basic",
+"posix-egrep", "posix-extended", "posix-minimal-basic", "sed".
+
+Desse modo podemos fazer buscas por vários tipos de imagens sem usar um monte
+de escapes `\`:
+
+		find img -regextype egrep -regex '.*\.(jpg|svg|png)'
 
 # localizando arquivos de hoje
 
