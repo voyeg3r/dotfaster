@@ -368,6 +368,7 @@
 + [tobeadopted](tobeadopted.md)
 + [top](top.md)
 + [touch](touch.md)
++ [tmux](tmux.md)
 + [towraparaundmyfinger](towraparaundmyfinger.md)
 + [tr](tr.md)
 + [trap](trap.md)

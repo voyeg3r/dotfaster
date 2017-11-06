@@ -25,6 +25,10 @@
 + https://www.youtube.com/watch?v=AiPzFNsuN2k  * (this one is amazing)
 + https://www.youtube.com/watch?v=DLUdBVYYzKM
 
+# Vise - torno
++ https://www.youtube.com/watch?v=8Hehwy1MWzk
++ https://www.youtube.com/watch?v=-oA-eARBYkA
+
 # Five amazing wood working tools
 + https://www.youtube.com/watch?v=pi38vcAZ6tk
 

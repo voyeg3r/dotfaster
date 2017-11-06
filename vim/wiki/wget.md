@@ -15,8 +15,7 @@ OBS: I think it is useful to change the user-agent for wget before using it:
 # Download all yahoo messages from yahoo groups
 
 ``` sh
-wget --recursive --page-requisites --no-parent --page-requisites
---html-extension --convert-links group_name
+wget --recursive --page-requisites --no-parent --page-requisites --html-extension --convert-links group_name
 
 for file in $(ls *.html); do
 		w3m -dump ${file} -O UTF-8 > ${file:r}.txt
