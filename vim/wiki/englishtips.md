@@ -1,15 +1,10 @@
-# Arquivo: dicas de ingles
+# Arquivo: dicas de ingles - Last Change: 2017 nov 07 16:56
 
 ```
-Criado: Qua 12/Jan/2011 hs 12:52
-Last Change: ter 10 jan 2017 13:34:11 BRT
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
+Created: Qua 12/Jan/2011 hs 12:52
 ```
 
 # [[collocations]]
-
 
 ```
 https://github.com/Anoncheg1/Command-line-translator
@@ -17,8 +12,7 @@ apt-get install curl spidermonkey-bin html2text mpg123
 https://raw.github.com/Anoncheg1/Command-line-translator/master/translate
 ```
 
-
-    You'd come to Brazil... Você deveria vir ao Brasil. (Acredito que está certo)
+    You'd come to Brazil... Você deveria vir ao Brasil.
     You'd  --> you would
     You've --> You have
 
@@ -78,7 +72,6 @@ was 87 years old.
          behalf == em favor de
 ```
 
-
     crank = manivela
     crank up .... impulsionar, aumentar
 
@@ -86,7 +79,6 @@ was 87 years old.
     europarl.europa.eu
 
 Temos de o fazer para impulsionar o processo e mantê-lo em andamento.
-
 
       grasp = compreension
       puzzle = quebra cabeças
@@ -104,7 +96,6 @@ Temos de o fazer para impulsionar o processo e mantê-lo em andamento.
       slow  slowlly
       easy  easylly
       full  fully
-
 
 # Rules to lean faster
 
@@ -223,7 +214,6 @@ become part you learn process in natural way.
      hedidit'all'feriu - he did it all for you?
 
      shewants t 'takeavo'cation
-
 
 # Programa para pronunciar textos no linux
 
@@ -1312,7 +1302,6 @@ Ex: The goal really livened up the game.(O gol realmente animou o jogo.)
 
     yes, go right ahead
     sim, vá em frente
-
 
     * Whats your ETA?
     * Qual é a hora prevista para sua chegada?

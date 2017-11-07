@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: sáb 04 nov 2017 19:28:56 -03
+" Last Change: 2017 nov 07 19:59
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -35,7 +35,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 set cursorline
-set guicursor+=n:blinkon0 " not blinking cursor in normal mode
+set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
 set laststatus=2          " statusline specific
 set mouse=a               " enable mouse click

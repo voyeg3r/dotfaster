@@ -1,5 +1,5 @@
-# Configurar som no Linux através do ALSA
-fonte: http://www.dicas-l.com.br/print/20090406.html
+# Configurar som no Linux através do ALSA - Last Change: 2017 nov 07 17:04
++ fonte: http://www.dicas-l.com.br/print/20090406.html
 
 **//Colaboração: Sérgio Abrantes//**
 **//Data de Publicação: 06 de April de 2009//**
@@ -47,3 +47,5 @@ Acho que é isso.
     Terminal=false
     Name=alsarestore
     Exec=alsactl --file ~/.config/asound.state restore
+
+

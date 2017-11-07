@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 03 13:32
+# dicasvim.md Intro - Last Change: 2017 nov 07 19:57
 
 # Vim antipatterns
 
@@ -14,6 +14,15 @@ To copy the line 16 to the line bellow just type:
 1 - Instead of jumping to the line
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+
+# Editing multiple files, the vim way
++ http://www.vimninjas.com/2012/09/19/replace-multiple/
+
+		:args app/controllers/*.rb
+		:argdo :%s/_params/params/ge | update
+
+		:args **/*.rb
+		will handle the recursive search natively. :-)
 
 # Two commands at once
 + https://stackoverflow.com/a/47002025/2571881
@@ -781,6 +790,7 @@ endsnippet
     :s,(\|),,g
 
 # Quickfix list manipulations and :cdo command
++ https://chrisarcand.com/vims-new-cdo-command/
 
 ``` vim
 copen
@@ -871,8 +881,10 @@ You can also type part of the buffer name or even use a mapping like this:
 
     nnoremap <Leader>b :ls<CR>:b<Space>
 
+	:bd 4  ................. delete buffer 4
+
 # Copy from one buffer to another
-[stackoverflow](http://stackoverflow.com/q/41259890/)
++ [stackoverflow](http://stackoverflow.com/q/41259890/)
 
 I try to copy the lines 7,11 from buffer 2 to my buffer 3 without leaving
 buffer 3. Is it possible to do that with a simple command?
@@ -1052,7 +1064,7 @@ Another solution:
 # Vimscript: programatically get the size of selection
 + Vim - count lines in selected range →  https://stackoverflow.com/a/7263557/2571881
 
-			 :let selectionsize = 	let selecsize = line("'>") - line("'<") + 1
+			 :let selectionsize = let selecsize = line("'>") - line("'<") + 1
 
 By the way to get the content of command line, putting it into system
 clipboard I did:

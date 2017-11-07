@@ -1,14 +1,13 @@
-#Arquivo: Dicas do Gnome-Shell
+# gnomeshell.md - Last Change: 2017 nov 07 16:57
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: qua 01 nov 2017 19:23:07 -03
+Last Change: 2017 nov 07 16:57
 ```
 
 # Getting gnome-shell version
 
     gnome-shell --version
-
 
 # shortcuts
 + https://wiki.gnome.org/Gnome3CheatSheet
@@ -18,16 +17,16 @@ Last Change: qua 01 nov 2017 19:23:07 -03
     super (windows) + a ....... show applications
     Super+Shift+Page Up ....... move current windows to ...
 
-		Maximize................... Super + Up
-		Unmaximize ................ Super + Down
-	  Fit half the screen ....... Super + Left/Right
+	Maximize................... Super + Up
+	Unmaximize ................ Super + Down
+	Fit half the screen ....... Super + Left/Right
 
-		Show messages ............. Super + M
-		JavaScript console ........ type 'lg' in the Alt+F2 prompt (Esc) to exit
-		Screen Recorder ........... Shift+Ctrl+Alt+r
+	Show messages ............. Super + M
+	JavaScript console ........ type 'lg' in the Alt+F2 prompt (Esc) to exit
+	Screen Recorder ........... Shift+Ctrl+Alt+r
 
-		Taking a screenshot
-		---------------------------------------------------------------------------
+	Taking a screenshot
+	---------------------------------------------------------------------------
     Take a screenshot                                      | PrintScr
     Take a screenshot of a window                          | Alt+Print
     Take a screenshot of a region                          | Shift+Print
@@ -42,11 +41,10 @@ Last Change: qua 01 nov 2017 19:23:07 -03
 # Log off shortcut
 You can define a new shortcut with
 
-				gnome-session-quit --logout --no-prompt
+		gnome-session-quit --logout --no-prompt
 
 # gnome-shell-extension-updater
-
-				https://github.com/eonpatapon/gnome-shell-extension-updater
++ https://github.com/eonpatapon/gnome-shell-extension-updater
 
 # primary selection and wayland
 
@@ -76,7 +74,6 @@ install pulseaudio
 on debian like for example
 
     pactl -- set-sink-volume 0 150%
-
 
 # Cleaning up Linux journal
 + https://cubethethird.wordpress.com/2016/05/10/cleaning-up-linux-journal/
