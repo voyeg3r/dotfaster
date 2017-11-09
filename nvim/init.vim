@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 07 19:59
+" Last Change: 2017 nov 07 20:24
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -322,7 +322,7 @@ if !exists('*s:setupWrapping')
 endif
 
 " to insert this result: --> :put =Randnum(1000)
-function! Randnum(max) abort
+function! Randnumber(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
 endfunction
 

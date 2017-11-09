@@ -1,14 +1,8 @@
-# Arquivo: dicas linux
+# dicaslinux.md  - Last Change: 2017 nov 08 09:48
 
 ```
-File:		 DicasLinux.md
 Created:	 Qui 09/Mai/2013 hs 09:38
 Last Change: ter 10 jan 2017 07:52:45 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
 ```
 # Consertando o /etc/hosts
 

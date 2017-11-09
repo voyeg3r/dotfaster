@@ -1,4 +1,4 @@
-# Introdução
+# dd.md - Last Change: 2017 nov 08 09:02
 O comando dd pode ser usado para gerar imagens de cd:
 
 	dd if=/dev/cdrom of=imagem.iso
@@ -9,7 +9,7 @@ Como root rode o comando //**fdisk -l**// para saber em que partição está o p
 
 	dd if=ubuntu.iso of=/dev/sdb bs=1M && sync
 
-  dd bs=4M if=./antergos-2015.09.13-i686.iso of=/dev/sdb && sync
+  dd bs=4M if=./antergos-2015.09.13-i686.iso of=/dev/sdb status=progress && sync
 
 	or
 
@@ -43,12 +43,10 @@ wodim -v -eject /path/to/image.iso
 
 	readom dev=/dev/scd0 f=/path/to/image.iso
 
-
 Serve também para zerar a senha da bios
 
 	# printf "x2E" | dd bs=1 seek=112 of=/dev/port
 	# printf "xFF" | dd bs=1 seek=113 of=/dev/port
-
 
 Serve também para clonar hds em combinação com o comando [[netcat]]
 netcat
@@ -60,25 +58,19 @@ This line removes the 300k header from a Nero image file converting it to ISO fo
 
 	dd bs=1k if=image.nrg of=image.iso skip=300
 
-
 # convertendo para minúsculos
 
 	echo "Ação" | dd conv=lcase
 
-
 # Clonando sistemas via rede
-
 
 	slave% nc -l -p 9000 | dd of=/dev/hda
 	master% dd if=/dev/hda | nc 192.168.0.254 9000
-
-
 
 clonando com alguns parâmetros a mais (compressão etc)
 
 	dd if=/dev/hda conv=sync,noerror bs=64k | gzip -c | nc -l -q 0 -p 5000
 	nc 192.168.1.1 5000 | gzip -cd | dd of=/dev/hda bs=64k
-
 
 # Como limpara a MBR
 font: http://www.debianfordummies.org/wiki/index.php/Limpando_a_mbr
@@ -90,10 +82,8 @@ Obs: Se precisar restaurar a MBR
 
 Obs2: na máquina cliente, ou seja a que vai receber a imagem você deve usar um live-cd ou coisa do tipo para que o hd fique livre para receber os dados. Você deve estar logado como root para executar estes comandos.
 
-
 	dd if=/dev/hda of=/dev/fd0/imagem-mbr bs=446 count=1
 	dd if=/dev/fd0/imagem-mbr of=/dev/hda
-
 
 # Veja também
 * http://www.cgsecurity.org/wiki/TestDisk

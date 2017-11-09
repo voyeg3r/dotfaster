@@ -1,4 +1,7 @@
-# dicasvim.md Intro - Last Change: 2017 nov 07 19:57
+# dicasvim.md Intro - Last Change: 2017 nov 08 09:22
+
+Learn vim progressively
++ http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
 
 # Vim antipatterns
 

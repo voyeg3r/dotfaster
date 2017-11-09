@@ -1,6 +1,7 @@
-# yaourt.md intro - Last Change: qui 02 nov 2017 08:38:44 -03
+# yaourt.md intro - Last Change: 2017 nov 09 09:50
 
-13 comandos básicos yaourt para você gerenciar melhor os pacotes do AUR | Linux Descomplicado
+13 comandos básicos yaourt para você gerenciar melhor os pacotes do AUR |
+Linux Descomplicado
 
 http://www.linuxdescomplicado.com.br/2015/10/13-comandos-basicos-yaourt-para-voce-gerenciar-melhor-os-pacotes-do-aur.html
 
@@ -58,6 +59,10 @@ pois poderia eliminar um pacote principal e corromper o sistema
 13 – A atualização do sistema, incluindo pacotes do AUR instalados
 
     yaourt -Syua
+
+Atualizar sem confirmação
+
+		yaourt --noconfirm -Syua
 
 # Fixing yaourt after pacman update
 

@@ -1,4 +1,4 @@
-# Introdução
+# mount.md - Last Change: 2017 nov 08 09:04
 
 # Como montar a pasta /tmp com as opções nodev, nosuid, e noexec
 
@@ -33,8 +33,6 @@ Set nodev, nosuid, and noexec options without rebooting the Linux server
    # mount | less
    # mount | egrep --color -w '^(tmpfs|/tmp)|/tmp'
 
-
-
 # Recuperar senha de root sem live-cd
 * http://www.dicas-l.com.br/dicas-l/20100604.php
 * http://www.vivaolinux.com.br/dica/Recuperando-a-senha-de-root-no-Debian
@@ -49,7 +47,6 @@ A partir daqui você poderá editar os arquivos. Como no meu caso as senhas esta
 
   # vi /etc/shadow
 
-
 Se esse recurso não tiver habilitado altere o /etc/passwd. Apague o conteúdo que estiver no segundo campo depois de root root:$1$fmdlkdjslj¨5$rdgd:14693:0:99999:7::: e deixe assim: root::14693:0:99999:7:::. Salve o arquivo e continue.
 
   # sync #Escrever o que tiver no buffer em disco
@@ -58,7 +55,6 @@ Se esse recurso não tiver habilitado altere o /etc/passwd. Apague o conteúdo q
   < Ctrl>< Alt>< Del> #Para reiniciar
   login: root # Digite root sem senha
   # passwd #Depois altere a senha do root
-
 
 # remontar unidade com permissões de leitura e escrita
 
@@ -78,63 +74,49 @@ que eu recomendo.
 
 # descobrindo qual processo impede a desmontagem de um dispositivo
 
-$ fuser -v /media/cdrom
+		$ fuser -v /media/cdrom
 
 Com o comando acima teríamos uma saída assim:
 USER PID ACCESS COMMAND
 /media/cdrom: fulano 3838 ..C.. bash
 Como **root** você poder usar o parâmetro **k** que serve para matar o processo.
 
-
-# fuser -k /media/cdrom
-
+		# fuser -k /media/cdrom
 
 Agora sim podemos desmontar o dispositivo:
 
-
-# eject
-
+		# eject
 
 # remontando com permissão de leitura e escrita
 
-sudo mount -o remount,rw /
-
+		sudo mount -o remount,rw /
 
 # Montando uma imagem iso para leitura de seu conteúdo
 
-  mount -t iso9660 /caminho/da/imagem/gutsy-7.10-alternate-i386.iso \
-/media/cdrom -o loop
-
+		  mount -t iso9660 /caminho/da/imagem.iso /media/cdrom -o loop
 
 # Montando partições windows
 
-sudo mount /dev/hda1 /media/windows/ -t ntfs -o nls=utf8,umask=0222
+		sudo mount /dev/hda1 /media/windows/ -t ntfs -o nls=utf8,umask=0222
 
-/dev/hda1       /media/windows  ntfs    nls=utf8,umask=0222  0       0
-
-
-
+		/dev/hda1       /media/windows  ntfs    nls=utf8,umask=0222  0       0
 
 # Usando o ntfs-3g
 
-/dev/<a sua partição> /media/<local de montagem> ntfs-3g silent,umask=0,locale=utf8 0 0
-
+		/dev/<a sua partição> /media/<local de montagem> ntfs-3g silent,umask=0,locale=utf8 0 0
 
 # Recuperando sessoes de cd
 fonte: http://ubuntuforum-br.org/index.php/topic,16765.0.html
 # Montando compartilhamento samba
 You want to use cifs instead of smbfs. smbfs breaks on newer implementations of SMB on win32, and has been deprecated for a while.
 
-mount -t cifs //$server/share /local/mount -o rw,username=$USER
+		mount -t cifs //$server/share /local/mount -o rw,username=$USER
 
-sudo mount -t cifs -o credentials=/path/to/credenials //hostname/sharename /mount/point
-
+		sudo mount -t cifs -o credentials=/path/to/credenials //hostname/sharename /mount/point
 
 # exibe os sistemas montados atualmente em um layout agradável
 
-mount | column -t
-
-
+		mount | column -t
 
 « em: 01 de Março de 2007, 01:19 »
 Responder com citaçãoCitar
@@ -142,13 +124,11 @@ Se vc por algum motivo de engano na hora de gravar uma sessão no cd-r, esqueceu
 
 Código:
 
-sudo mkdir /media/iso
-mount -t iso9660 -o ro,session=0 /dev/XXX /mnt/iso
-
+		sudo mkdir /media/iso
+		mount -t iso9660 -o ro,session=0 /dev/XXX /mnt/iso
 
 *onde XXX é o seu drive de cd ok,
 *0 representa a primeira sessão, 1 a segunda e assim vai..
-
 
 # Remontando um dispositivo como somente-leitura
 fonte: [[http://www.dicas-l.com.br/dicas-l/20080310.php]]
@@ -157,11 +137,9 @@ Esta é muito útil quando se desejar ter um //backup// de um sistema de arquivo
 
   # mount -o remount,ro /dev/hda5 /mnt/C/
 
-
 Uma vez terminado o //backup//, pode-se remontá-la novamente como leitura-e-escrita:
 
   # mount -o remount,rw /dev/hda5 /mnt/C/
 
-
 # Referências
-* http://www.guiaubuntupt.org/wiki/index.php?title=Ntfs_suporte_com_leitura_e_escrita_ntfs-3g
++ http://www.guiaubuntupt.org/wiki/index.php?title=Ntfs_suporte_com_leitura_e_escrita_ntfs-3g
