@@ -1,4 +1,4 @@
-# Distros linux leves - Last Change: 2017 nov 03 09:32
+# Distros linux leves - Last Change: 2017 nov 10 09:53
 
 + Proteus Linux: http://www.porteus.org/
 + Revenge OS: https://sourceforge.net/projects/obrevenge/files/
@@ -8,6 +8,7 @@
 + GNU Distros list: https://www.gnu.org/distros/free-distros.en.html
 + gentoo: https://www.gentoo.org/downloads/ [gentoo](gentoo.md)
 + sabayon linux: https://www.sabayon.org/
++ [deepin](deepin): https://www.deepin.org/en/
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
