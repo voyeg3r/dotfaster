@@ -1,8 +1,5 @@
-``` markdown
-Arquivo: pacman.md
+# Arquivo: pacman.md - Last Change: 2017 nov 10 13:37
 Created: sex 08/set/2017 hs 12:58
-Last Change: sex 27 out 2017 06:19:04 -03
-```
 
 If pacman is not running and has a lock package preventing
 other instalations, run this:
@@ -43,3 +40,8 @@ force remove
 	sudo pacman -Qqe > package_list.txt
 
 	for x in $(cat package_list.txt); do pacman -S $x; done
+
+# Clean pacman cache
+
+		sudo pacman -Sc
+

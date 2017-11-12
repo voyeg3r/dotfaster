@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: qua 01 nov 2017 15:03:59 -03
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 11 16:34
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
@@ -21,6 +21,10 @@ the desktops increases gradually but your settings of your applications,
 icons, themes and your files move with you from desktop to desktop. Quite an
 advantage. ArchMerge will have the number 6.0 or the name Kirk. ArchMerge is a
 fork from ArchLabs.
+
+# 32bit
++ https://archlinux32.org/
+
 
 # Archlinux withou systemd
 + https://artixlinux.org/
