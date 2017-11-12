@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 nov 09 11:12
+#      Last Change: 2017 nov 12 19:54
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -12,6 +12,7 @@
 # References:
 + https://gist.github.com/Xifax/1517721
 + https://hawkradius.wordpress.com/arch-linux-tips/
++ https://novelist.xyz/tech/things-to-do-after-installing-arch-linux/
 
 # testa se está logado como root
 #if [ "$(id -u)" != "0" ]; then
@@ -36,6 +37,10 @@
 
 # chenge workspace easyly on gnome shell
 # https://extensions.gnome.org/extension/701/top-panel-workspace-scroll/
+
+# update manager and pacman database extraction utility
+sudo pacman -S expac
+yaourt -S pamac-aur
 
 # mesa digitalizadora no archlinux - tablet
 yaourt xournal
@@ -301,6 +306,7 @@ yaourt -S xbmc
 # clonar as fontes powerline
 # para instalar rode o script install contido na pasta
 git clone git@github.com:powerline/fonts.git
+sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
 
 # ttf-iosevka
 yaourt ttf-iosevka

@@ -1,4 +1,4 @@
-# cat.md
+# cat.md - dom 12 nov 2017 20:33:25 -03
 O comando cat serve para visualizar conteudos de textos e também para
 concatenar arquivos divididos como comando [[split]]
 
@@ -10,6 +10,15 @@ Podemos criar um arquivo com o cat assim:
   digite algumas
   linhas no arquivo e control-c
   para finalizar a edição
+
+# Getting information about processor
++ https://www.linux.com/blog/how-check-processor-and-cpu-details-linux
+
+		cat /proc/cpuinfo | grep vendor | uniq
+
+		cat /proc/cpuinfo | grep 'model name' | uniq
+
+		lscpu
 
 # Removing blank lines at the begining of file
 

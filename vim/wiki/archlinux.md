@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 11 16:34
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 12 19:57
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
@@ -281,6 +281,15 @@ https://aur.archlinux.org/packages/conky-colors/?setlang=pt_BR
 
 # fontes micro$oft
 + https://aur.archlinux.org/packages/ttf-ms-fonts/
+
+# Enable FreeType subpixel hinting mode by editing:
++ https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/
+
+		sudo nvim /etc/profile.d/freetype2.sh
+
+Uncomment the desired mode at the end:
+
+		export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 # how use aur packages
 

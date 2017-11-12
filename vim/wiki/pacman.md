@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 nov 10 13:37
+# Arquivo: pacman.md - Last Change: 2017 nov 12 19:50
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing
@@ -45,3 +45,13 @@ force remove
 
 		sudo pacman -Sc
 
+
+# To list the 20 last installed packages with expac, run:
+
+		expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20
+
+
+# Removing unused packages (orphans)
+For recursively removing orphans and their configuration files:
+
+		# pacman -Rns $(pacman -Qtdq)
