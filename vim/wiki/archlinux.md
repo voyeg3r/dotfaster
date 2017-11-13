@@ -1,4 +1,12 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 12 19:57
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 13 07:41
+
+# Net tools
+
+		sudo pacman -S net-tools
+
+# compress or expand executable files
+
+		sudo pacman -S upx
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux

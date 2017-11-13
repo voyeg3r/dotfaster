@@ -1,18 +1,32 @@
-# Arquivo: dicas firefox
+# dicasfirefox.md - Last Change: 2017 nov 13 07:50
 
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
-Last Change: ter 10 jan 2017 13:30:29 BRT
-autor: slas
-site: vivaotux
-twitter: voyeg3r
 ```
 
 # References
 + https://www.maketecheasier.com/speed-up-firefox/
 
+# How to access foruns with no login
++ http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
 
-# Enabling firefox multiprocessing
+In the adderss bar type in
+
+		about:config
+
+Then scroll down till you find (you can also use the filter feature)
+
+		general.useragent.extra.firefox
+
+Double click on it and type in `Googlebot 2.1`. Now this will change your user
+agent to the google bot. To change the user agent back to the original one
+just right click and click Reset.
+
+# Suavização de fontes
+
+		gfx.use_text_smoothing_setting
+
+# Enabling firefox multiprocessing on ubuntu
 Disable ubuntu-modifications addon and ...
 
     browser.tabs.remote.autostart
@@ -84,6 +98,10 @@ Identify as chrome
 
 # Make firefox speak English
 [us language pack](https://addons.mozilla.org/en-US/firefox/addon/english-us-language-pack/)
+# Select All Text When You Click on the URL Bar
++ https://www.maketecheasier.com/28-coolest-firefox-aboutconfig-tricks/
+
+		browser.urlbar.clickSelectsAll
 
 # clear firefox memory usage
 

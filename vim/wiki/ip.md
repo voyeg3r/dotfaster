@@ -1,4 +1,4 @@
-# ip.md - Last Change: qui 02 nov 2017 13:13:26 -03
+# ip.md - Last Change: 2017 nov 13 08:05
 
 O ip é utilizado para atribuir endereços IP para as interfaces de rede,
 mostrar configuração do TCP/IP, entre outras coisas.
@@ -15,6 +15,10 @@ O comando abaixo mostra as rotas ativas
 # Mostrar o gateway padrão
 
     ip route list | awk '/default/ {print $3}'
+
+# identificar placas de rede
+
+		ip link show
 
 # Show ip address
 

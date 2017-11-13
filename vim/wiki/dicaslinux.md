@@ -1,9 +1,15 @@
-# dicaslinux.md  - Last Change: 2017 nov 08 09:48
+# dicaslinux.md  - Last Change: 2017 nov 13 07:38
 
 ```
 Created:	 Qui 09/Mai/2013 hs 09:38
-Last Change: ter 10 jan 2017 07:52:45 BRT
+Last Change: 2017 nov 13 07:38
 ```
+# Enabling full-duplex on your Netcard
++ https://www.cyberciti.biz/faq/howto-setup-linux-lan-card-find-out-full-duplex-half-speed-or-mode/
+
+		sudo pacman -S net-tools
+
+
 # Consertando o /etc/hosts
 
     [ "`awk 'NR==1 {print $NF}' /etc/hosts`" = "`hostname`" ] && echo '/etc/hosts já está ok!' || \
