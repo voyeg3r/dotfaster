@@ -1,14 +1,7 @@
-# dicas hacker
+# hack.md - Last Change: seg 13 nov 2017 10:50:42 -03
 
 ``` markdown
-File:		 HaCk.md
 Created:	 ter 10 jan 2017 13:47:48 BRT
-Last Change: ter 10 jan 2017 13:47:48 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
 ```
 
 See more at [dicasgoogle](dicasgoogle.md)
@@ -211,6 +204,11 @@ or .net
      information for illegal uses. Again, this is for demonstrational purposes.
      HacknMod is not responsible for your actions and does not promote illegal or
      malicious actvities.
+
+# How to deal with e-mail scammers
++ https://www.theverge.com/2017/11/10/16632724/scam-chatbot-ai-email-rescam-netsafe
+
+		me@rescam.org
 
 # some cartoon sounds
 

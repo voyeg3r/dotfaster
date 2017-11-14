@@ -1,9 +1,13 @@
-# dicaslinux.md  - Last Change: 2017 nov 13 07:38
+# dicaslinux.md  - Last Change: 2017 nov 13 16:38
 
 ```
 Created:	 Qui 09/Mai/2013 hs 09:38
-Last Change: 2017 nov 13 07:38
+Last Change: 2017 nov 13 16:38
 ```
+# Quick access to the ascii table
+
+		man ascii
+
 # Enabling full-duplex on your Netcard
 + https://www.cyberciti.biz/faq/howto-setup-linux-lan-card-find-out-full-duplex-half-speed-or-mode/
 

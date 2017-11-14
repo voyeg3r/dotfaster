@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 13 07:41
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 13 12:58
 
 # Net tools
 
@@ -120,7 +120,7 @@ EDITFILES=0
 
 Another option would be to use the "--noconfirm".
 
-    yaourt -Syua --noconfirm
+    yaourt --noconfirm -Syua
 
 # enable gdm as default display manager
 
@@ -147,6 +147,8 @@ source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
 # improving network speed
 
+		/etc/sysctl.d/99-sysctl.conf
+
 ``` sh
 wget -c https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf -O /etc/sysctl.d/99-sysctrl.conf
 ```
@@ -168,7 +170,8 @@ fi
 
 # Backlight
 
-When system starts, screen backlight is set to maximum by default. This can be fixed by specifying backlight level in the following udev rule:
+When system starts, screen backlight is set to maximum by default. This can be
+fixed by specifying backlight level in the following udev rule:
 
     /etc/udev/rules.d/backlight.rules
 

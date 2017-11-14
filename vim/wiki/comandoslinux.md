@@ -46,6 +46,7 @@
 + [bzcat](bzcat.md)
 + [cacic](cacic.md)
 + [cadaver](cadaver.md)
++ [cal](cal.md)
 + [cancel](cancel.md)
 + [case](case.md)
 + [cat](cat.md)
