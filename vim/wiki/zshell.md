@@ -1,4 +1,4 @@
-# zshell.md - Last Change: qua 01 nov 2017 12:17:19 -03
+# zshell.md - Last Change: 2017 nov 15 09:46
 Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
@@ -599,9 +599,9 @@ you can use =command instead $(which command)
     alias v='f -e vim'       # open file with vim
     alias o='a -e xdg-open'  # quick opening files with xdg-open#
 
-# changing the shell
+# changing the shell - alterando o shell padrão
 
-    sudo chsh -s $(which zsh) $(whoami)
+    chsh -s $(which zsh) $(whoami)
 
 # one-liners
 

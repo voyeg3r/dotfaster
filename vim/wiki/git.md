@@ -1,5 +1,10 @@
+# git.md - Last Change: qua 15 nov 2017 09:45:47 -03
 
-Comandos git
+# Clonar com submódulos
++ https://stackoverflow.com/a/4438292
+
+		git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git ~/.dotfiles
+
 
 # update local repo with github updates
 
