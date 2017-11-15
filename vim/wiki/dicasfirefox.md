@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 15 05:53
+# dicasfirefox.md - Last Change: 2017 nov 15 19:26
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -18,13 +18,14 @@ In the adderss bar type in
 
 		about:config
 
-Then scroll down till you find (you can also use the filter feature)
+Then scroll down till you find or create (you can also use the filter feature)
 
 		general.useragent.extra.firefox
 
-Double click on it and type in `Googlebot 2.1`. Now this will change your user
-agent to the google bot. To change the user agent back to the original one
-just right click and click Reset.
+Double click on it and type in `Googlebot 2.1`.
+`Googlebot/2.1 (+http://www.googlebot.com/bot.html)` Now this will change your
+user-agent to the google bot. To change the user agent back to the original
+one just right click and click Reset.
 
 # Suavização de fontes
 
@@ -43,9 +44,9 @@ Disable ubuntu-modifications addon and ...
 
     sudo tar -jxvf firefox.xx.xx.tar.bz2 -C /opt
 
-    chown -R root:users /opt/firefox
+    sudo chown -R root:users /opt/firefox
 
-    chmod 750 /opt/firefox
+    sudo chmod 750 /opt/firefox
 
     usermod -a -G users sergio
 

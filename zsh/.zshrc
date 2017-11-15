@@ -312,4 +312,4 @@ source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=70'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
