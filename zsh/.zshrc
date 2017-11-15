@@ -1,4 +1,4 @@
-# .zshrc - Last Change: seg 06 nov 2017 18:50:28 -03
+# .zshrc - Last Change: qua 15 nov 2017 14:22:11 -03
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -311,3 +311,5 @@ source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=70'
