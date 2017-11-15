@@ -1,5 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 13 07:50
-
+# dicasfirefox.md - Last Change: 2017 nov 15 05:53
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -9,6 +8,11 @@ Criado: Ter 04/Jan/2011 hs 20:21
 
 # How to access foruns with no login
 + http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
+
+# Firefox quantum
+
+Alternatives to som old firefox addons:
++ https://addons.mozilla.org/en-US/firefox/addon/download-star/
 
 In the adderss bar type in
 

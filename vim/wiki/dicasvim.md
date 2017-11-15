@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 08 09:22
+# dicasvim.md Intro - Last Change: 2017 nov 15 06:06
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -388,6 +388,19 @@ is more readable and unique to vim.
 		:%s,^foobar\zsbaz,,g
 
 See :h /\zs. (And :h /\@<= if you're so inclined.)
+
+
+## Find spaces folowed by '('
+
+		hello() -> hello ()
+		world () -> world ()
+		hello(world ()) -> hello (world ())
+
+		/\v(\s+)@<!\(
+
+		Example			matches ~
+		\v(foo)@<!bar		any "bar" that's not in "foobar"
+		\(\/\/.*\)\@<!in	"in" which is not after "//"
 
 # Remove offending key from known_hosts file with one swift move
 

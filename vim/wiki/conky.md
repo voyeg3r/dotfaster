@@ -1,4 +1,4 @@
-# conky.md - Last Change: 2017 nov 14 16:35
+# conky.md - Last Change: 2017 nov 14 16:58
 + https://wiki.archlinux.org/index.php/Conky
 
 		sudo pacman -S lm_sensors hddtemp
@@ -28,6 +28,7 @@
 
 # Conky themes
 + http://www.mediafire.com/file/5yb5ambg6h4jack/Deluxe_Conky_Theme_Pack.cmtp.7z
++ http://www.mediafire.com/file/icvmpzhlk7vgejt/default-themes-extra-1.cmtp.7z
 + http://www.noobslab.com/2012/07/conky-collection-for-ubuntulinux.html
 
 # Fix window border on gnome-shell

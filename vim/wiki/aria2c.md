@@ -1,7 +1,6 @@
+# aria2c.md - Last Change: 2017 nov 15 05:44
 ``` markdown
-File:		 aria2c.md
 Created:	 qua 11 jan 2017 12:55:47 BRT
-Last Change: qua 06 set 2017 20:01:10 -03
 ```
 
 # Introdução
