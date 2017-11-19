@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 nov 15 09:48
+# Arquivo: pacman.md - Last Change: 2017 nov 19 12:41
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing
@@ -53,3 +53,30 @@ force remove
 For recursively removing orphans and their configuration files:
 
 		# pacman -Rns $(pacman -Qtdq)
+
+# Selecting the fastest arch mirror
++ https://www.garron.me/en/go2linux/how-to-find-the-fastest-archlinux-mirrors.html
+
+First install python, as is a python script that will helps us to solve this.
+
+		sudo pacman -S python
+
+Then go to where mirrorlist file is:
+
+		cd /etc/pacman.d/
+
+create a security copy of your mirrorlist file, do it as root
+
+		cp mirrorlist mirrorlist.bak
+
+and run the script as root
+
+		rankmirrors -n 6 mirrorlist.bak > mirrorlist
+
+You may want to have more than six, so -n [m], where m is the number of mirrors you want in your mirrorlist file.
+
+Now, update the pacman's database
+
+		sudo pacman -Syy
+
+This helped me a lot.

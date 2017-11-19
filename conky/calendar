@@ -1,5 +1,6 @@
 # PS.  The mouse and sticky keys indicators require xkbset to be installed, the clock requires the font LCDMono which is located here.
 # font lcd mono: https://www.dafont.com/lcd-lcd-mono.font
+# Phenomena font: http://www.fontfabric.com/phenomena-font/
 
 alignment top_right
 color1 burlywood1 #Month color
@@ -10,9 +11,11 @@ color5 darkgoldenrod1 #Weekdays yet to come color
 color6 darkorange3 #Days of month lived color
 color7 firebrick2 #Current day color
 color8 darkorange #Days yet to come color
+color9 #38575E
 double_buffer true
 use_xft yes
-xftfont Droid Sans Mono Slashed:size=20
+#xftfont Droid Sans Mono Slashed:size=30
+xftfont Phenomena-Black:pixelsize=30
 own_window yes
 own_window_type desktop
 own_window_argb_visual yes
@@ -24,7 +27,7 @@ TEXT
 ##   CALENDAR   ##
 ##################
 
-${alignc}${color1}${time %B} ${color2}${time %Y}
+${alignc}${color8}${time %B} ${color2}${time %Y}
 ${execp TODAY=`date +%_d`; cal | tail -n+2 | sed \
 -e '1 s:.*:\${color3}&\${color6}:' \
 -e '1 s:'"$(date +%a |cut -c 1-2)"':\${color4}&\${color5}:' \

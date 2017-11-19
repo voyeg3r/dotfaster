@@ -1,4 +1,4 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: sex 03 nov 2017 08:01:20 -03
+# [Wiki](wiki.md) do Sérgio - Last Change: 2017 nov 19 15:44
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -22,6 +22,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Desktoplinux](desktoplinux.md)
 + [distroslinux](distroslinux.md)
 + [Dicasdobash](dicasdobash.md)
++ [dicasdebian](dicasdebian.md)
 + [Dicasfirefox](dicasfirefox.md)
 + [Dicasgnome](dicasgnome.md)
 + [Dicasgoogle](dicasgoogle.md)

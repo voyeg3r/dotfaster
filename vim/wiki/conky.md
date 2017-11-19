@@ -1,14 +1,27 @@
-# conky.md - Last Change: 2017 nov 14 16:58
+# conky.md - Last Change: 2017 nov 16 08:51
 + https://wiki.archlinux.org/index.php/Conky
++ https://www.lifewire.com/beginners-guide-to-conky-4043352
 
 		sudo pacman -S lm_sensors hddtemp
-		yaourt conky-lua
+		yaourt conky-lua acpi
+		yaourt conkyforecast
 
-		yaourt acpi
+		sudo sensors-detect
+		usermod -aG log $(whoami)
 
 # In order to open more than one conky use -d
 
 		conky -d -c ~/config-file
+
+# Getting conky settings
+
+If you already have any conky settings you can see it by typing:
+
+		conky -C
+
+# Get rid of flickering
+
+		conky -d
 
 # Enable conky at startup
 
@@ -21,10 +34,11 @@
 	 Type=Application
 	 Name=Conky
 	 Name[en_US]=Conky
-	 Exec=/usr/bin/conky
+	 Exec=/usr/bin/conky -d
 	 Comment[en_US]=
-	 StartupNotify=true
+	 StartupNotify=false
 	 X-GNOME-Autostart-Delay=60
+	 Terminal=false
 
 # Conky themes
 + http://www.mediafire.com/file/5yb5ambg6h4jack/Deluxe_Conky_Theme_Pack.cmtp.7z
