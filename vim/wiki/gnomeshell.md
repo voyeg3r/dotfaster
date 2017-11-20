@@ -1,8 +1,8 @@
-# gnomeshell.md - Last Change: 2017 nov 07 16:57
+# gnomeshell.md - Last Change: 2017 nov 19 19:22
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 07 16:57
+Last Change: 2017 nov 19 19:22
 ```
 
 # Getting gnome-shell version
@@ -111,6 +111,10 @@ avoid lock on suspending desktop
 
     gsettings get org.gnome.desktop.session idle-delay
     gsettings set org.gnome.desktop.session idle-delay 600
+
+# Night mode settings
++ http://www.omgubuntu.co.uk/2017/07/adjust-color-temperature-gnome-night-light
+
 
 # Startap applications
 

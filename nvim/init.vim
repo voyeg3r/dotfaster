@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 07 20:24
+" Last Change: 2017 nov 20 08:09
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 15 06:06
+# dicasvim.md Intro - Last Change: 2017 nov 20 18:26
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -450,7 +450,7 @@ I have two columns:
 I want to swap the two columns:
 
     cats dog
-    cats dog
+    dog cats
 
 Solutions:
 
@@ -461,6 +461,11 @@ Solutions:
     :.normal "adt xA <Ctrl-v><Ctrl-r>a
 
     :%s,\v(\w+) (\w+),\2 \1,g
+
+Using vim-exchange plugin you can do:
+
+		cxiw ............ mark word for exchange
+		.   ............. repeat last action
 
 # How many open buffers do I have?
 + http://superuser.com/a/345593/45032
@@ -2139,6 +2144,9 @@ See :help registers for the full reference.
 	gvim scp://manager@192.168.1.11/./bashrc
 
 # Alias para abrir arquivos recem editados - Mru buffers
+
+OBS: if you type on vim `Ctrl+ o + o`  vim will open the last file
+at the last edited position
 
 ``` vim
 " coloque no ~/.bashrc
