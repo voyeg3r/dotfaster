@@ -1,4 +1,4 @@
-# Arquivo: dicas de ingles - Last Change: 2017 nov 07 16:56
+# Arquivo: dicas de ingles - Last Change: 2017 nov 21 09:20
 
 ```
 Created: Qua 12/Jan/2011 hs 12:52
@@ -1573,3 +1573,149 @@ Ex: The goal really livened up the game.(O gol realmente animou o jogo.)
     Você tem uma reputação de ser totalmente seguro e confiável.
     pena que é totalmente imerecida.
 
+# confusing words
+
+Fill the gaps with either ‘job’ or ‘work’.
+
+Exercise 1
+
+    It’s not easy to find _____ at the moment.
+    It’s not easy to find a _____ at the moment.
+    It takes Alfie over an hour to get to _____ every day.
+    I’m running late so I’ll have breakfast at _____.
+    “It’s your _____ not mine to organise your schoolbag,” Karl’s mother said.
+    One of my favourite _____s of art is Grant Wood’s “American Gothic.”
+
+Exercise 2
+
+    Many _____s will be lost if the company goes under.
+    You did a great _____ washing my car.  Thanks, kids.
+    I can’t go to lunch with you. I’ve got too much _____.
+    I have a few _____s for you to do in the garden, if you don’t mind.
+    When I left _____ it was pouring with rain.
+    There is a lot of _____ to do on the house before they move in.
+
+Answers
+
+		Exercise 1
+		1. work  2. job  3. work  4. work  5. job  6. work
+
+		Exercise 2
+		1. job  2. job  3. work  4. job  5. work  6. work
+
+# Business English: Common Writing Mistakes
+10 common mistakes in Business English writing
+
+
+Do you make these common mistakes when writing business English letters and
+e-mails? Read today’s lesson and learn how to avoid the errors that can make
+your writing look unprofessional!
+
+To learn common phrases for business English letters, e-mails, interviews,
+meetings, presentations, negotiations, and more – check out the Business
+English Course.
+
+1. I am writing in respect of our recent purchase.
+
+There are several correct ways to fix this mistake:
+
+    I am writing in reference to our recent purchase.
+    I am writing with regard to our recent purchase.
+    I am writing regarding/concerning our recent purchase.
+
+2. We would like to regret the delay in shipping.
+
+“Regret” means you feel bad about something you did wrong, so you need to
+say either:
+
+    We regret the delay in shipping.
+    We would like to apologize for the delay in shipping.
+
+3. I ensure you that our products are of the highest quality.
+
+To assure somebody means to help remove doubt from their mind. After the word
+“assure,” we usually have a person (assure you, assure him/her, assure
+them, etc.)
+
+To ensure something means to guarantee a certain fact or condition. After the
+word “ensure” we often have “that” + a fact.
+
+    I assure you that our products are of the highest quality.
+    We have a quality control process to ensure that every item is free from defects.
+
+4. Your order will be shipped until Wednesday at the latest.
+
+When you want to say that a single, specific event will happen before a
+certain date in the future, use by.
+
+Until is only used when a continuous event will continue up to a date in the
+future:
+
+    Your order will be shipped by Wednesday at the latest.
+    (shipping the order is a single event)
+    We will be performing maintenance until the 25th.
+    (the maintenance work is continuous until finishing on the 25th)
+
+5. I would like to request some informations about your services.
+
+The word information in English is an uncountable noun, meaning it cannot be
+plural.
+
+    I would like to request some information about your services.
+
+6. We except all major credit cards as well as checks and money orders.
+
+Accept means to receive willingly; except means to exclude.
+
+    We accept all major credit cards as well as checks and money orders.
+    We offer free shipping to every U.S. state except Alaska and Hawaii.
+    (Alaska and Hawaii are not included in the free shipping offer)
+
+7. We appreciate your cooperate.
+
+It’s important to pay attention to the correct form of the word. After
+articles (a, an, the) and possessives (my, your, his, her, our, their) –
+always use a noun:
+
+    We appreciate your cooperation.
+
+8. I want you to send me the files right now.
+
+In professional communications – or when writing to somebody who isn’t
+a close friend – it’s important to be polite and respectful. Sometimes
+English learners accidentally write sentences that are “too direct” and
+can come across as a little bit rude. When making a request, it is good to use
+“Could you…?” and “Please…”
+
+    Could you please send me the files as soon as possible?
+
+9. the conference begins on friday july 8 it will be held in los angeles california
+
+When writing for business or in any sort of professional context, correct
+punctuation and capitalization are essential! If you write without
+capitalizing properly or using punctuation, it makes a very bad impression.
+This is important both in regular letters and in e-mails.
+
+In English, we capitalize:
+
+    The first word of each new sentence
+    Proper names (people’s names, company names)
+    Names of cities, states, countries, and languages
+    Names of days of the week and months
+
+The correct way to write this sentence would be:
+
+    The conference begins on Friday, July 8. It will be held in Los Angeles, California.
+
+If you’re not sure that your letter or e-mail is correct, ask a native
+English speaker to check it for any mistakes.
+
+10. I am looking forward to hear from you.
+
+After the expression “look forward to,” always use a noun or the -ing form
+of the verb:
+
+    I am looking forward to hearing from you.
+    I am looking forward to our meeting.
+    I look forward to visiting your company.
+    I look forward to the visit.

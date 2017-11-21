@@ -1,4 +1,4 @@
-# Guia de comandos linux
+# Guia de comandos linux - Last Change: 2017 nov 21 12:59
 
 ``` markdown
 File:		 ComandosLinux.md
@@ -221,7 +221,7 @@ começando pelo [[VlC]]
 * [[ComandoSplit|Split]] - divide um arquivo em pedaços
 * [[ComandoSponge|Sponge]] - permite redirecionar um arquivo manipulado via pipe para dentro do mesmo
 * [[SysDig|sysdig]] Definitive system and process troubleshooting tool
-* [[SystemCtrl|systemctrl]] controla serviços no systemd
+* [[systemctrl|systemctrl]] controla serviços no systemd
 * [[ComandoStat|Stat]] - mostra informações detalhadas sobre arquivos e diretórios
 * [[ComandoStartx|Startx]] - inicia modo gráfico
 * [[ComandoSsh|Ssh]] - permite acesso remoto de forma segura

@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 13 12:58
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 21 13:04
 
 # Net tools
 
@@ -32,7 +32,34 @@ fork from ArchLabs.
 
 # 32bit
 + https://archlinux32.org/
++ https://archlinux32.org/download/
 
+Transition from the Official Repositories
+
+If you plan to move from the official repositories to [our community maintained](https://mirror.archlinux32.org/i686/)
+repositories, follow these steps:
+
+    Put any mirror from our mirrolist into
+
+	/etc/pacman.d/mirrorlist.
+
+Execute
+
+	pacman -Syy archlinux32-keyring-transition
+
+to install our keyring transition package signed by one of the x86_64 archlinux devs.
+
+Run
+
+	pacman -Syuu
+
+for a full transition.
+
+Note, that some packages are currently newer in the official repositories and.
+will be downgraded, therefore Also note, that packages found in your package .
+cache won't match the signatures from archlinux32 - either allow pacman to   .
+delete these cached packages or run pacman -Sc to clean your cache before you.
+start and after you finish upgrading                                         .
 
 # Archlinux withou systemd
 + https://artixlinux.org/
@@ -139,7 +166,7 @@ source: https://bbs.archlinux.org/viewtopic.php?id=151156
 
 # Restasting network
 
-    systemctl restart network
+    systemctl restart NetworkManager
 
     Check whether a unit is already enabled or not:
 

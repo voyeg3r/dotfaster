@@ -1,13 +1,14 @@
-# systemctrl.md intro - Last Change: 2017 nov 03 15:14
+# systemctrl.md intro - Last Change: 2017 nov 21 13:03
 
 Local onde ficam os serviços
 
 		ls /etc/init.d/
 
-iniciar um serviço
+iniciar/reiniciar um serviço
 
 		systemctrl start nignx.service
 		systemctl start org.cups.cupsd.service
+		sudo systemctl restart NetworkManager
 
 Enable service to start on boot time
 

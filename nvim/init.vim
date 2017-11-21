@@ -1,5 +1,6 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 20 08:09
+" Last Change: 2017 nov 21 08:31
+" vim: ff=unix ai et ts=4
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -17,6 +18,9 @@ if has("nvim")
 endif
 
 set shada=!,'1000,<50,s10,h,%,'2000
+
+" make my system deal with links
+let g:netrw_browsex_viewer= "xdg-open"
 
 if has("multi_byte")
   if &termencoding == ""
@@ -398,14 +402,14 @@ vnoremap <C-s> :<C-u>call SumVis()<CR>
 vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 fun! CountWord()
-        let l:win_view = winsaveview()
-        let l:old_query = getreg('/')
-		let var = expand("<cword>")
-		exec "%s/" . var . "//gn"
-        call winrestview(l:win_view)
-        call setreg('/', l:old_query)
+	let l:win_view = winsaveview()
+	let l:old_query = getreg('/')
+	let var = expand("<cword>")
+	exec "%s/" . var . "//gn"
+	call winrestview(l:win_view)
+	call setreg('/', l:old_query)
 endfun
-nnoremap ,c :call CountWord()<CR>
+command! -nargs=0 CountWord :call CountWord()<CR>
 
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
@@ -442,6 +446,27 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
+" python
+augroup python
+    au FileType python set keywordprg=pydoc
+    au! BufRead *.py setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+    au! BufRead,Bufnewfile *.py im :<CR> :<CR><TAB>
+    au! BufWritePre *.py,*.js :call <SID>CleanExtraSpacesFunction()
+    au! BufNewFile *.py 0r ~/.vim/skel/template.py
+    au BufNewFile *.py exe "1," . 10 . "s/Creation Date:.*/Creation Date:  " .strftime("%d-%m-%Y")
+    au! BufWritePost *.py :silent !chmod a+x <afile>
+    autocmd FileType python set textwidth=79
+    autocmd FileType python filetype indent on
+    let python_highlight_all=1
+    let python_highlight_builtins=0
+    let python_highlight_builtins=1
+    let python_highlight_exceptions=1
+    let python_highlight_numbers=1
+    let python_highlight_space_errors=1
+	autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
+    autocmd FileType python xnoremap <buffer> <leader>c :normal I#<CR>
+augroup end
+
 "" txt
 augroup vimrc-wrapping
   autocmd!
@@ -465,7 +490,7 @@ autocmd InsertLeave * set cul
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
-    au BufNewFile *.sh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/e
+    au BufNewFile *.sh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/
     "au BufWritePost *.sh :silent !chmod a+x <afile>
 augroup end
 

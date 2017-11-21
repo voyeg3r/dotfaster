@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 nov 19 12:41
+# Arquivo: pacman.md - Last Change: 2017 nov 21 14:02
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing
@@ -17,6 +17,18 @@ other instalations, run this:
 # upgrade all
 
     sudo pacman -Syyu
+
+# get a list of all packages that have avaiable updates
++ https://unix.stackexchange.com/a/13090/3157
+
+If you have slow internet, you can even create a download list and download
+the files from another computer, like so:
+
+		sudo pacman -Syup > package-list.txt
+
+# Upgrade a single package
+
+		sudo pacman -S packagename
 
 # Repeating strings
 

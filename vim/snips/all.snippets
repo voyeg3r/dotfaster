@@ -9,7 +9,6 @@ snippet date
 ${2:`date +%Y-%m-%d`}
 endsnippet
 
-
 snippet lorem "Lorem Ipsum - 50 Words" b
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
@@ -57,18 +56,17 @@ endsnippet
 # package ${1:main}
 # endsnippet
 
-
 # in order to use this nippet define these vars
 # in your vimrc like --> let g:snip_author="Author Name"
 snippet 'sig|head' "my signature" r
 ------------------------------------------
-File:		     ${1:`!p snip.rv = snip.fn`}
-Created:	   `!v strftime("%c")`
+File:		 ${1:`!p snip.rv = snip.fn`}
+Created:	 `!v strftime("%c")`
 Last Change: `!v strftime("%c")`
-Author:		   `!v g:snips_author`
-Site:		     `!v g:snips_site`
+Author:		 `!v g:snips_author`
+Site:		 `!v g:snips_site`
 e-mail:      `!v g:snips_email`
-Twitter:	   `!v g:snips_twitter`
+Twitter:	 `!v g:snips_twitter`
 Github:      `!v g:snips_github`
 ------------------------------------------
 ${0}

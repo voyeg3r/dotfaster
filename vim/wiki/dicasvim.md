@@ -1,7 +1,15 @@
-# dicasvim.md Intro - Last Change: 2017 nov 20 18:26
+# dicasvim.md Intro - Last Change: 2017 nov 21 08:25
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
+
+# Modelines
+It allows you to set preferences on a file-by-file basis, and allow you
+to mimic some of the preference-setting options of a few other popular editors
+(Vim, Emacs, and Kate).
+
+		# vim: set noexapndtab:
+		/* vim: set ai tw=75: */
 
 # Vim antipatterns
 
@@ -361,11 +369,11 @@ I want to write a regex that matches the lines in which cat is not followed by d
 
 How can I do this? (solution)
 
-		\vcat (dog)@!
+		/\vcat (dog)@!
 
 find "other" just preceded by some
 
-		\v(some)@<=other
+		/\v(some)@<=other
 
 ## Another vim regex example
 Supose you have
@@ -588,7 +596,7 @@ To open a link just press `Ctrl-]` and to jump back `Ctrl-t` or `Ctrl-o`
 # open the file on the line where the 3rd occurrence of the pattern appears
 + [tecmint.com](http://www.tecmint.com/how-to-use-vi-and-vim-editor-in-linux/)
 
-    vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
+		vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
 
 Let’s take a closer look at what the above command does:
 
@@ -2145,8 +2153,14 @@ See :help registers for the full reference.
 
 # Alias para abrir arquivos recem editados - Mru buffers
 
-OBS: if you type on vim `Ctrl+ o + o`  vim will open the last file
+OBS: if you type on vim `Ctrl+o+o`  vim will open the last file
 at the last edited position
+
+Ctrl+o+o. It will take you directly to your last opened file and last location
+of the cursor. How cool is that? :)
+
+The above shortcut it is very useful specially because it does not depend
+of any kind of previous configuration.
 
 ``` vim
 " coloque no ~/.bashrc
@@ -2166,7 +2180,6 @@ fun! MruFile()
 endfun
 nmap ,l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
-
 ```
 
 Manually you can do:

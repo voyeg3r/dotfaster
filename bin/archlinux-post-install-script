@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 nov 13 07:46
+#      Last Change: 2017 nov 20 18:49
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -649,6 +649,9 @@ yaourt -S ffmulticonverter
 yaourt -S numix-circle-icon-theme-git
 yaourt -S adapta-gtk-theme
 yaourt -S numix-gtk-theme
+
+# suru icon theme
+yaourt suru
 
 # https://github.com/Xaviju/inkscape-open-symbols
 yaourt -S inkscape-open-symbols-git

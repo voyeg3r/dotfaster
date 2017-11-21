@@ -1,6 +1,7 @@
-# Distros linux leves - Last Change: 2017 nov 20 18:14
+# Distros linux leves - Last Change: 2017 nov 20 19:54
 
 + Archlinux: https://www.archlinux.org/download/
++ Archlinux 32bits: https://bbs.archlinux32.org/
 + Proteus Linux: http://www.porteus.org/
 + Revenge OS: https://sourceforge.net/projects/obrevenge/files/
 + CrunchBang: https://www.bunsenlabs.org/ bunselabs
