@@ -1,8 +1,8 @@
-# gnomeshell.md - Last Change: 2017 nov 19 19:22
+# gnomeshell.md - Last Change: 2017 nov 21 14:37
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 19 19:22
+Last Change: 2017 nov 21 14:37
 ```
 
 # Getting gnome-shell version
@@ -111,6 +111,10 @@ avoid lock on suspending desktop
 
     gsettings get org.gnome.desktop.session idle-delay
     gsettings set org.gnome.desktop.session idle-delay 600
+
+# click to minimize
+
+		gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 
 # Night mode settings
 + http://www.omgubuntu.co.uk/2017/07/adjust-color-temperature-gnome-night-light
