@@ -13,6 +13,8 @@
 + [deepin](deepin): https://www.deepin.org/en/
 + blackarch: https://blackarch.org/index.html
 + point Linux: http://pointlinux.org/
++ Slax :https://www.slax.org/
++ Kali Linux: https://www.kali.org/downloads/
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
