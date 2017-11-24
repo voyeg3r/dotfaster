@@ -12,6 +12,7 @@
 + sabayon linux: https://www.sabayon.org/
 + [deepin](deepin): https://www.deepin.org/en/
 + blackarch: https://blackarch.org/index.html
++ point Linux: http://pointlinux.org/
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
