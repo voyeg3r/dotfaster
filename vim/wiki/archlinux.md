@@ -2,14 +2,18 @@
 
 # Net tools
 
-		sudo pacman -S net-tools
+    sudo pacman -S net-tools
 
 # compress or expand executable files
 
-		sudo pacman -S upx
+    sudo pacman -S upx
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux
+
+Durante a instalacao do archlinux, para indicar 32 bits faca:
+
+    sudo linux32 pacstrap /mnt base
 
 + https://sourceforge.net/projects/obrevenge/files/
 + https://www.ostechnix.com/installing-arch-linux-using-revenge-graphical-installer/
