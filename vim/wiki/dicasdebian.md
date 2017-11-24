@@ -1,33 +1,40 @@
-# dicasdebian.md - Last Change: dom 19 nov 2017 15:45:15 -03
+# Converting your debian to sid - Last Change: Nov 24
++ http://www.binarytides.com/enable-testing-repo-debian/
++ https://www.pcsuggest.com/using-debian-as-rolling-release-distribution/
++ https://www.digitalocean.com/community/tutorials/upgrading-debian-to-unstable
++ https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/i386/iso-hybrid/
 
-# apt-listbugs
+```
+sudo vi /etc/apt/preferences.d/my_preferences
+Package: *
+Pin: release a=stable
+Pin-Priority: 700
 
-		sudo aptitude install apt-listbugs
+Package: *
+Pin: release a=testing
+Pin-Priority: 650
 
-# Upgrading to debian sid
-+ http://alexander.holbreich.org/debian-to-stretch/
+Package: *
+Pin: release a=unstable
+Pin-Priority: 600
 
-Check if there are problems with packages
+sudo apt-get clean
+```
 
-First you don't use aptitude anymore, right? Second, you advised to chgeck, that there are no packages "on hold".
+# Install softwares and upgrade the system
+The system upgrade is recommended at runlevel 3, simply without any GUI program running. To do so, logout from the system, press Alt + Ctrl + F2 to open up a virtual tty, then login with your username and password. If you are using a graphical login manager then stop it,
 
-		aptitude search "~ahold"
+`sudo service sddm stop`
+`sudo service gdm stop`
+`sudo service xdm stop`
 
-The apt apt-get maintained "hold" packages:
+## Then run
+`sudo apt-get dist-upgrade`
 
-		dpkg --get-selections | grep 'hold'
+# Debian unstable repositary
+deb http://ftp.us.debian.org/debian/ sid main contrib non-free deb 
+http://ftp.us.debian.org/debian/ unstable main contrib non-free
 
-Now check dpkg problems with
-
-		dpkg --audit
-
-If it shows nothing - everything is fine for now.
-
-## Before upgrading the source list i recoment to install Gnu Keyring of Debian archive.
-
-		apt-get install debian-archive-keyring
-		apt-key update
-
-Ok, it seems that system is prepared for upgrade and we are ready to switch release code names from jessie to stretch.
-
-		sed -i 's/jessie/stretch/g' /etc/apt/sources.list
+# Cleaning apt cache
++ https://askubuntu.com/a/285692
+`sudo apt-get clean`
