@@ -10,22 +10,27 @@ Criado: Ter 04/Jan/2011 hs 20:21
 + http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
 
 # Firefox quantum
++ http://www.edivaldobrito.com.br/firefox-quantum-no-linux/
 
-Alternatives to som old firefox addons:
-+ https://addons.mozilla.org/en-US/firefox/addon/download-star/
-
-In the adderss bar type in
-
-		about:config
-
-Then scroll down till you find or create (you can also use the filter feature)
-
-		general.useragent.extra.firefox
-
-Double click on it and type in `Googlebot 2.1`.
-`Googlebot/2.1 (+http://www.googlebot.com/bot.html)` Now this will change your
-user-agent to the google bot. To change the user agent back to the original
-one just right click and click Reset.
+	wget "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux&lang=pt-BR" -O firefox.tar.bz2
+	sudo tar -jxvf  firefox.tar.bz2 -C /opt/
+	sudo mv /opt/firefox*/ /opt/firefox-quantum
+	sudo ln -sf /opt/firefox-quantum/firefox /usr/bin/firefox-quantum
+	
+	cat <<EOF> | sudo tee /usr/share/applications/firefox-quantum.desktop
+	[Desktop Entry]
+	Version=46.0.1
+	Encoding=UTF-8
+	Name=Mozilla Firefox
+	Comment=Navegador Web
+	Exec=/opt/firefox-quantum/firefox
+	Icon=/opt/firefox-quantum/browser/icons/mozicon128.png
+	Type=Application
+	Categories=Network
+	EOF
+		
+	sudo chmod +x /usr/share/applications/firefox-quantum.desktop
+	cp /usr/share/applications/firefox-quantum.desktop ~/Desktop
 
 # Suavização de fontes
 
