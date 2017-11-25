@@ -15,7 +15,7 @@ Last Change: 2017 nov 21 14:37
 
 # shortcuts
 + https://wiki.gnome.org/Gnome3CheatSheet
-
+```
     minimize .................. super + h
     show ...................... super + s
     super (windows) + a ....... show applications
@@ -37,7 +37,7 @@ Last Change: 2017 nov 21 14:37
     Take a screenshot and paste in a clipboard             | Ctrl+Print
     Take a screenshot of a window and paste in a clipboard | Ctrl+Alt+Print
     Take a screenshot of a region and paste in a clipboard | Ctrl+Shift+Print
-
+```
 # Am I using wayland or X11?
 
     echo $XDG_SESSION_TYPE
