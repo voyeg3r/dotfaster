@@ -63,8 +63,9 @@ need to retrieve them from the internet. First we need to generate
 the list of files to be downloaded.
 
 # Baixar novo firefox 
++ https://stackoverflow.com/a/4935836/2571881
 
-	sudo apt-get -qq --print-uris -y install firefox | awk -F"'" '{print $2}' > baixar-firefox.txt
+	apt-get install -d -o=dir::cache=./ firefox
 
 # fonte http://xlylith.blogspot.com/
     sudo apt-get install $(dpkg -l|grep ^ii|awk '{print $2}') --reinstall --print-uris \
