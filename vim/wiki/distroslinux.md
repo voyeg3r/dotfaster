@@ -15,6 +15,7 @@
 + point Linux: http://pointlinux.org/
 + Slax :https://www.slax.org/
 + Kali Linux: https://www.kali.org/downloads/
++ Suse Linux: https://en.opensuse.org/openSUSE:Tumbleweed_installation
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
