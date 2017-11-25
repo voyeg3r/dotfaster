@@ -69,7 +69,6 @@ Then download it using wget
 
     wget -ci downlist -P ~/mydebs
 
-
 # listar dependências
 
     sudo apt-get –print-uris –yes install PACKAGE_NAME | grep ^\’ | cut -d\’ -f2 >mydownload.txt
@@ -88,22 +87,6 @@ where you want the packages to be installed, otherwise some
 dependencies will not be displayed if they are already installed
 on that machine but not on yours.
 
-# Open **Synaptic Package Manager** from **System**-**Administration** Menu.
-> [[image:http://2.bp.blogspot.com/_a6LMj16lz7g/SfXicge8QpI/AAAAAAAAAP0/qvamVoe117M/s320/synapticpackagemanager.png width="320" height="246" link="http://2.bp.blogspot.com/_a6LMj16lz7g/SfXicge8QpI/AAAAAAAAAP0/qvamVoe117M/s1600-h/synapticpackagemanager.png"]]
-# Select the packages you want to install.
-# Go to **File** and select **Generate Package Download Script**
-> [[image:http://1.bp.blogspot.com/_a6LMj16lz7g/SfXic-lKMAI/AAAAAAAAAP8/Ba9tWi72w3Y/s320/synapticpackagemanagerfilemenu.png width="320" height="158" link="http://1.bp.blogspot.com/_a6LMj16lz7g/SfXic-lKMAI/AAAAAAAAAP8/Ba9tWi72w3Y/s1600-h/synapticpackagemanagerfilemenu.png"]]
-# Save the file and bring it to the computer that has Internet.
-# Run that file.
-# It will download all the packages and its dependencies.
-# Put them in a removable drive.
-# Bring the drive back to the old machine.
-# Open **Synaptic Package Manger** again.
-# From **File** menu choose **Add Downloaded Packages**.
-You're done. That's 10 easy steps to install software and add packages to Ubuntu box which doesn't have Internet.
-
-To update your system follow the same above procedures but instead of 'step 2' Go to Edit and Mark all Upgrades.
-
 # cache do apt
 * http://www.linuxjournal.com/content/presenting-squid-deb-proxy-speed-your-update-downloads
 
@@ -113,14 +96,16 @@ sudo apt-get install squid-deb-proxy avahi-tools
 
 # como instalar todos os estilos de ícones disponíveis para o openoffice?
 
-# primeiro faça a busca por todos os pacotes de estilo
-# apt-cache search openoffice.org-style.*
+## primeiro faça a busca por todos os pacotes de estilo
 
-# agora vamos filtrar para mostrar somente o nome, é só jogar para o awk
-# apt-cache search openoffice.org-style.* | awk '{print $1}'
+    apt-cache search openoffice.org-style.*
 
-# agora vamos fazer todo o comando anterior virar argumento do comando "apt-get install"
-# basta colocar o comando dentro de `crases`
+## agora vamos filtrar para mostrar somente o nome, é só jogar para o awk
+
+    apt-cache search openoffice.org-style.* | awk '{print $1}'
+
+## agora vamos fazer todo o comando anterior virar argumento do comando "apt-get install"
+basta colocar o comando dentro de `crases`
 
     apt-get install `apt-cache search openoffice.org-style.* | awk '{print $1}'`
 
@@ -131,6 +116,18 @@ sudo apt-get install squid-deb-proxy avahi-tools
 # Instalar um pacote consumindo pouca banda
 
     sudo apt-get -o Acquire::http::Dl-Limit=25 install <package>
+    
+For permanent throttling, create the file `/etc/apt/apt.conf.d/75lowerspeed` and save the following in it:
+```
+Acquire
+{
+   Queue-mode "access";
+   http
+   {
+      Dl-Limit "25";
+   };
+};
+```
 
 # Referências:
 * [[@http://www.gdhpress.com.br/blog/dicas-apt-get-aptitude/]]
@@ -147,41 +144,15 @@ apt-cache show Your_package
 
 # listar pacotes instalados
 
-dpkg --get-selections > pacotes.txt
+    dpkg --get-selections > pacotes.txt
 
 Para instala todos os pacotes de uma lista prévia faça:
 
-dpkg --set-selections < pacotes.txt
-
+    dpkg --set-selections < pacotes.txt
 
 # descomentando os repositórios universe e multiverse
 
-sed -i.backup -r '/^#\s?deb\s?(http|ftp|-src).*(partner|multiverse|universe)/s/^#\s?//g' /etc/apt/sources.list
-
-
-# Limitar download do apt
-* fonte: http://fredim.wordpress.com/2008/11/10/limitar-banda-do-apt/
-Primeiramente edite o arquivo /etc/apt/apt.conf ,
-acrescentando os seguintes dados:
-
-//
-//
-Acquire
-{
-http {
-Dl-Limit "x";        // x Kb/sec maximum download rate
-}
-
-}
-//
-//
-
-* Onde x é a quantidade de Kb/sec máxima de download.
-
-# via comando direto
-
-sudo apt-get -o Acquire::http::Dl-Limit=25 install <package>
-
+    sed -i.backup -r '/^#\s?deb\s?(http|ftp|-src).*(partner|multiverse|universe)/s/^#\s?//g' /etc/apt/sources.list
 
 # Resolvendo problema com o aptitude
 * fonte: http://andregondim.eti.br/?p=574
