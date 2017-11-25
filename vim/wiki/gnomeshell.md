@@ -8,6 +8,10 @@ Last Change: 2017 nov 21 14:37
 # Getting gnome-shell version
 
     gnome-shell --version
+    
+# installing with speed limit
+
+    sudo apt-get -o Acquire::http::Dl-Limit=20 install task-gnome-desktop task-brazilian-portuguese task-brazilian-portuguese-desktop
 
 # shortcuts
 + https://wiki.gnome.org/Gnome3CheatSheet
