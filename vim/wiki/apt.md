@@ -50,9 +50,10 @@ testa se o apt-fast está instalado o define como instalador padrão
     apt-get -qq --print-uris upgrade | awk -F"'" '{print "wget -c", $2}' >> baixar-pacotes.sh
 
 
-# para pegar os linkd do vim
+# para pegar os link do vim
 
     apt-get -qq --print-uris -y install vim-gnome vim-doc | egrep -o -e "http://[^\']+"
+    
 
     http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-runtime_7.2.330-1ubuntu3_all.deb
     http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-gnome_7.2.330-1ubuntu3_i386.deb
@@ -60,6 +61,10 @@ testa se o apt-fast está instalado o define como instalador padrão
 Sometimes some files you have installed is not cached. If so, you
 need to retrieve them from the internet. First we need to generate
 the list of files to be downloaded.
+
+# Baixar novo firefox 
+
+	sudo apt-get --print-uris -y install firefox | awk -F"'" '{print $2}' > baixar-firefox.txt
 
 # fonte http://xlylith.blogspot.com/
     sudo apt-get install $(dpkg -l|grep ^ii|awk '{print $2}') --reinstall --print-uris \
