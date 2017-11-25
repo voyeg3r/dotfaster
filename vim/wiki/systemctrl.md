@@ -1,27 +1,31 @@
-# systemctrl.md intro - Last Change: 2017 nov 21 13:03
+# systemctrl.md intro - Last Change: 2017 nov 25 13:03
 
 Local onde ficam os serviços
 
 		ls /etc/init.d/
+		
+# List runing services
 
-iniciar/reiniciar um serviço
+	systemctl list-unit-files | grep enabled
+
+# iniciar/reiniciar um serviço
 
 		systemctrl start nignx.service
 		systemctl start org.cups.cupsd.service
 		sudo systemctl restart NetworkManager
 
-Enable service to start on boot time
+# Enable service to start on boot time
 
 		systemctrl enable nignx.service
 		systemctrl disable nignx.service
 
 		systemctl disable httpd.service
 
-check if service is on
+# check if service is on
 
 		systemctrl is-enabled nignx.service
 
-#Check if any systemd services have entered in a failed state:
+# Check if any systemd services have entered in a failed state:
 
 		systemctl --failed
 
