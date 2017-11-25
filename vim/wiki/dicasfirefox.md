@@ -11,7 +11,7 @@ Criado: Ter 04/Jan/2011 hs 20:21
 
 # Firefox quantum
 + http://www.edivaldobrito.com.br/firefox-quantum-no-linux/
-
+```
 	wget "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux&lang=pt-BR" -O firefox.tar.bz2
 	sudo tar -jxvf  firefox.tar.bz2 -C /opt/
 	sudo mv /opt/firefox*/ /opt/firefox-quantum
@@ -31,7 +31,7 @@ Criado: Ter 04/Jan/2011 hs 20:21
 		
 	sudo chmod +x /usr/share/applications/firefox-quantum.desktop
 	cp /usr/share/applications/firefox-quantum.desktop ~/Desktop
-
+```
 # Suavização de fontes
 
 		gfx.use_text_smoothing_setting
