@@ -64,7 +64,7 @@ the list of files to be downloaded.
 
 # Baixar novo firefox 
 
-	sudo apt-get --print-uris -y install firefox | awk -F"'" '{print $2}' > baixar-firefox.txt
+	sudo apt-get -qq --print-uris -y install firefox | awk -F"'" '{print $2}' > baixar-firefox.txt
 
 # fonte http://xlylith.blogspot.com/
     sudo apt-get install $(dpkg -l|grep ^ii|awk '{print $2}') --reinstall --print-uris \
@@ -95,7 +95,7 @@ on that machine but not on yours.
 # cache do apt
 * http://www.linuxjournal.com/content/presenting-squid-deb-proxy-speed-your-update-downloads
 
-sudo apt-get install squid-deb-proxy avahi-tools
+      sudo apt-get install squid-deb-proxy avahi-tools
 
 # Como instalar pacotes contendo um padrão no nome?
 
@@ -143,9 +143,7 @@ Acquire
 
 # Mostrar meta informação de um pacote (distribuições derivadas do debian) (dependências, status etc)
 
-
-apt-cache show Your_package
-
+    apt-cache show Your_package
 
 # listar pacotes instalados
 
@@ -272,8 +270,6 @@ if [ "$resp" = "s" ] || [ ]"$resp" = "S"  ]; then
 fi
 
 rm -f /tmp/.lock
-
-
 
 # Códigos ainda não prontos para uso
 
