@@ -1,9 +1,27 @@
-# dicaslinux.md  - Last Change: 2017 nov 13 16:38
+# dicaslinux.md  - Last Change: 2017 nov 26 09:24
 
 ```
 Created:	 Qui 09/Mai/2013 hs 09:38
-Last Change: 2017 nov 13 16:38
+Last Change: 2017 nov 26 09:24
 ```
+# Speed Up Slow WiFi Connection In Ubuntu 14.04
++ https://itsfoss.com/speed-up-slow-wifi-connection-ubuntu/
+
+## Solution 1: For Slow WiFi in Atheros Wireless Network Adapters
+
+First, you need to find your wireless network adapter. You can do so by using
+lshw -C network command in terminal. If your adapter manufacturer is Atheros,
+this solution should work for you.
+
+In order to know if you are using atheros just:
+
+    lsmod | grep ath9k
+
+Open a terminal (Ctrl+Alt+T in Ubuntu) and use the following commands one by one:
+
+    sudo su
+    echo "options ath9k nohwcrypt=1" >> /etc/modprobe.d/ath9k.conf
+
 # Quick access to the ascii table
 
 		man ascii
@@ -12,7 +30,6 @@ Last Change: 2017 nov 13 16:38
 + https://www.cyberciti.biz/faq/howto-setup-linux-lan-card-find-out-full-duplex-half-speed-or-mode/
 
 		sudo pacman -S net-tools
-
 
 # Consertando o /etc/hosts
 

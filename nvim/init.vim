@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 26 08:19
+" Last Change: 2017 nov 26 09:24
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -487,9 +487,9 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-augroup markdown
-    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
-augroup END
+"augroup markdown
+"    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
+"augroup END
 
 " set cursor line in normal mode
 autocmd InsertEnter * set nocul

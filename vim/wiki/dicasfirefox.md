@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 15 19:26
+# dicasfirefox.md - Last Change: 2017 nov 26 09:05
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -17,7 +17,7 @@ Criado: Ter 04/Jan/2011 hs 20:21
 	sudo tar -jxvf  firefox.tar.bz2 -C /opt/
 	sudo mv /opt/firefox*/ /opt/firefox-quantum
 	sudo ln -sf /opt/firefox-quantum/firefox /usr/bin/firefox-quantum
-	
+
 	cat <<EOF> | sudo tee /usr/share/applications/firefox-quantum.desktop
 	[Desktop Entry]
 	Version=46.0.1
@@ -29,7 +29,7 @@ Criado: Ter 04/Jan/2011 hs 20:21
 	Type=Application
 	Categories=Network
 	EOF
-		
+
 	sudo chmod +x /usr/share/applications/firefox-quantum.desktop
 	cp /usr/share/applications/firefox-quantum.desktop ~/Desktop
 ```
