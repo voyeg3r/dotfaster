@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 26 09:05
+# dicasfirefox.md - Last Change: 2017 nov 26 12:38
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -59,7 +59,6 @@ Disable ubuntu-modifications addon and ...
     sudo ln -sfvn /opt/Firefox/firefox /usr/bin/firefox
 
     touch /usr/share/applications/firefox.desktop
-
 
     touch /usr/share/applications/firefox.desktop
 
@@ -228,7 +227,6 @@ libflashplayer.so na pasta:
 
     for i in ~/.adobe ~/.macromedia ; do ( rm $i/ -rf ; ln -s /dev/null $i ) ; done
 
-
 # Plugins que uso no firefox
 
   Feedly ...... plugin que gera um novo layout para as notícias do google reader
@@ -241,7 +239,6 @@ libflashplayer.so na pasta:
   hControl+Shift+Alt+Rttp://va.mu/Xhz0
 
   Turn on your pdf reader ......... pdfjs.disabled
-
 
 # firefox cache in RAM
 
@@ -262,11 +259,27 @@ you can enable it right now with an about:config tweak. To do so:
 
 Change its value from 0 to 1 to enable the new cache.
 
+    network.dnsCacheEntries;500
+
+Find `network.dnsCacheEntries` and change its value to from 20 to 512.
+Find `network.dnsCacheExpiration` and change its value from 60 to 3600.
+If your ISP doesnâ€™t support `IPv6`, you can disable it. To do this just find network.dns.disableIPv6 and change it default value to True.
+Find `network.http.max-connections` and increase maximum number of simultaneous connections to 48 or 96.
+Find `network.http.max-persistent-connections-per-server` and increase maximum persistent connections per server from default 6 to 12
+Find `network.http.max-connections-per-server` and increase maximum connections per server from default 15 to 24
+
+# Fix https issue
++ http://gizmodo.uol.com.br/https-ataque-homografico/
+
+Escreva `about:config` na barra de endereços e pressione Enter; Escreva
+`Punycode` na barra de pesquisa; As configurações do navegador irão exibir o
+parâmetro network.IDN_show_punycode, dê dois cliques e selecione a chave que
+muda o valor de `false` para `true`.
+
 http://pt.wikihow.com/Fazer-o-Firefox-Carregar-as-P%C3%A1ginas-de-Forma-Mais-R%C3%A1pida
 
 also enable this:
 https://raw.githubusercontent.com/voyeg3r/dotfiles/master/bin/sysctrl.conf
-
 
 # New tab opening home page
 + [New tab homepage addon](https://addons.mozilla.org/en-US/firefox/addon/777)

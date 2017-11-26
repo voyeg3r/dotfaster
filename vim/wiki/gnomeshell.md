@@ -1,17 +1,22 @@
-# gnomeshell.md - Last Change: 2017 nov 21 14:37
+# gnomeshell.md - Last Change: 2017 nov 26 12:53
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 21 14:37
+Last Change: 2017 nov 26 12:53
 ```
 
 # Getting gnome-shell version
 
     gnome-shell --version
-    
+
 # installing with speed limit
 
     sudo apt-get -o Acquire::http::Dl-Limit=20 install task-gnome-desktop task-brazilian-portuguese task-brazilian-portuguese-desktop
+
+    sudo apt-get -o Acquire::http::Dl-Limit=20 install libgl1-mesa-dri x11-xserver-utils gnome-session gnome-shell gnome-themes gnome-terminal gnome-control-center nautilus gnome-icon-theme --no-install-recommends
+
+    sudo apt-get -o Acquire::http::Dl-Limit=20 --no-install-recommends install gdm3
+    aptitude install –without-recommends gdm3
 
 # shortcuts
 + https://wiki.gnome.org/Gnome3CheatSheet
