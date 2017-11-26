@@ -1,4 +1,5 @@
-# dicasvim.md Intro - Last Change: 2017 nov 21 08:25
+# dicasvim.md Intro - Last Change: 2017 nov 26 08:21
+ vim: set ts=4 et:
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,19 +9,17 @@ It allows you to set preferences on a file-by-file basis, and allow you
 to mimic some of the preference-setting options of a few other popular editors
 (Vim, Emacs, and Kate).
 
-		# vim: set noexapndtab:
-		/* vim: set ai tw=75: */
+    # vim: set noexapndtab:
+    /* vim: set ai tw=75: */
 
 # Vim antipatterns
-
 If you get yourself doing a lot of jjjj and kkkk you have to read this.
-
 To copy the line 16 to the line bellow just type:
 
-	:16t.  ................... copy line16 1 line below
-	:t10   ................... copy current line to the line below line 10
-	:t$    ................... copy current line to the end of file
-	:m$    ................... move current line to the end of file
+    :16t.  ................... copy line16 1 line below
+    :t10   ................... copy current line to the line below line 10
+    :t$    ................... copy current line to the end of file
+    :m$    ................... move current line to the end of file
 
 1 - Instead of jumping to the line
 2 - pressing yy
@@ -29,32 +28,32 @@ To copy the line 16 to the line bellow just type:
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
 
-		:args app/controllers/*.rb
-		:argdo :%s/_params/params/ge | update
+    :args app/controllers/*.rb
+    :argdo :%s/_params/params/ge | update
 
-		:args **/*.rb
-		will handle the recursive search natively. :-)
+    :args **/*.rb
+    will handle the recursive search natively. :-)
 
 # Two commands at once
 + https://stackoverflow.com/a/47002025/2571881
 
-		:1,10s/abc/def/g|50,60&&
+    :1,10s/abc/def/g|50,60&&
 
-		OBS: && repeats last command
+    OBS: && repeats last command
 
 # Vim markdown tips
 + https://vi.stackexchange.com/a/9544/7339
 
 making vimwiki folds working properly
 
-	:set foldcolumn=2
-	:let g:markdown_folding=1
+    :set foldcolumn=2
+    :let g:markdown_folding=1
 
 # Syntax highlighting on Disqus
 + https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting
 
 Why this is important when it comes to vim use?
-Well, is very common people sharing vimi tips in sites, blogs and so on
+Well, is very common people sharing vim tips in sites, blogs and so on
 and is nice to have a decent code to show.
 
 Disqus supports automatic syntax highlighting in a number of languages. To use
@@ -101,40 +100,40 @@ I have a python script to get two files; the first one has the mp3 files links
 and the second one gives me some html content over wich I run this vimscript
 function:
 
-``` text
+```text
 fun! CleanFlaschards()
-	let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-	"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
-	let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
-	%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-	%s,\v\<(\/)?\zsu\ze\>,b,g
-	%s,\v\s+$,,g
-	%s,;,:,ge
-	%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-	%s,\v(^)?((\<b\>)?\<br\>?)$,,g
-	%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-	g/^\W\+$/d
-	normal gg
-	silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
-	normal gg
-	g/\v^\d+\W?(–|-)/d
-	normal gg
-	silent normal! /<u>\|<b>/{kdgg
-	normal gg
-	silent normal! /:$/dip
-	normal /CLIQUE/{kdG
-	0r audios.txt
-	g/.*mp3/s/http.*\/\d\+-//g
-	g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-	g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-	normal gg
-	silent normal! /^<\/b>$/kJD
-	%s/\v(!|.|\?)  /\1 /ge
-	DelBlank
-	normal gg
-	normal vipo
-	let selectionsize = line("'>") - line("'<") + 1
-	echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+    let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+    "let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+    %s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+    %s,\v\<(\/)?\zsu\ze\>,b,g
+    %s,\v\s+$,,g
+    %s,;,:,ge
+    %s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+    %s,\v(^)?((\<b\>)?\<br\>?)$,,g
+    %s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+    g/^\W\+$/d
+    normal gg
+    silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+    normal gg
+    g/\v^\d+\W?(–|-)/d
+    normal gg
+    silent normal! /<u>\|<b>/{kdgg
+    normal gg
+    silent normal! /:$/dip
+    normal /CLIQUE/{kdG
+    0r audios.txt
+    g/.*mp3/s/http.*\/\d\+-//g
+    g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+    g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+    normal gg
+    silent normal! /^<\/b>$/kJD
+    %s/\v(!|.|\?)  /\1 /ge
+    DelBlank
+    normal gg
+    normal vipo
+    let selectionsize = line("'>") - line("'<") + 1
+    echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 ```
@@ -148,22 +147,22 @@ After running this function I only have to run the macro 'a' 9 times and macro
 
 # Sorting lines numerically
 
-		:%!sort -n -k 3 ........... sort numerically by third column
+    :%!sort -n -k 3 ........... sort numerically by third column
 
 # Runing external commands
 
-		:0r !ls *.mp3
+    :0r !ls *.mp3
 
 The command above will put `ls` output at the first line
 
 # Vim registers
 
-		@.  ................ repeats what has been typed
-		:@+  ............... executes the content of clipboard
-		:let @+ = @/ ....... puts last searh into clipboard
+    @.  ................ repeats what has been typed
+    :@+  ............... executes the content of clipboard
+    :let @+ = @/ ....... puts last searh into clipboard
 
-		On insert mode <C-r>* inserts "Primary Selection"
-		you can also use Shift-insert
+    On insert mode <C-r>* inserts "Primary Selection"
+    you can also use Shift-insert
 
 # Vim tips for everyone
 
@@ -201,8 +200,11 @@ line break included -- like the command line where it will then automatically
 run the command.
 
 # Using vim with no plugins
+Setting some stuff on vim can dramatically improve your experience
+if you are using it withou any plugin.
 
 ```vim
+    "using gf onver any filename will open it
     set path+="**"
 ```
 
@@ -247,7 +249,7 @@ Step by step:
 
     ia<Esc>      " Start with 'a'
     qqylp<C-a>q  " @q will duplicate the last character and increment it
-    24@q         " Append c..z
+    24@q     " Append c..z
 
     :r !printf '\%s' {a..z}
 
@@ -260,9 +262,9 @@ Step by step:
 
 For those who do not know what "primary selection is", putting it simple.
 
-	"The text selected and is just captured automatically to its
-	special clipboard space (Linux only)" - On vim the "*" registers stores the
-	primary selection
+    "The text selected and is just captured automatically to its
+    special clipboard space (Linux only)" - On vim the "*" registers stores the
+    primary selection
 
 On vim just press: `Shift-insert` "primary selection" or in insert mode type `<C-r>*`
 
@@ -273,11 +275,11 @@ While in insert mode, you can use `Ctrl-R` {register}, where register can be:
     " for the unnamed register (last delete or yank in Vim),
     or a number of others (see :h registers).
 
-	Ctrl-R {register} inserts the text as if it were typed.
-	Ctrl-R Ctrl-O {register} inserts the text with the original indentation.
-	Ctrl-R Ctrl-P {register} inserts the text and auto-indents it.
-	Ctrl-O can be used to run any normal mode command before returning to insert mode, so
-	Ctrl-O "+p can also be used, for example.
+    Ctrl-R {register} inserts the text as if it were typed.
+    Ctrl-R Ctrl-O {register} inserts the text with the original indentation.
+    Ctrl-R Ctrl-P {register} inserts the text and auto-indents it.
+    Ctrl-O can be used to run any normal mode command before returning to insert mode, so
+    Ctrl-O "+p can also be used, for example.
 
 For more information, view the documentation with `:h i_ctrl-r`
 # gn command
@@ -286,42 +288,46 @@ For more information, view the documentation with `:h i_ctrl-r`
     n ............... go to next occurrence
     . ............... repeat last change
 
-# Moving around
+# Moving around - |antipattern|
 
     g; ....... goes to older position on changelist (last change)
     g, ....... goes to newer positoin on changelist
 
-	you can also jump using <C-o>
+    you can also jump using <C-o>
 
-# Exit ex mode
+# Exit ex mode - |antipattern|
 
     q:  ............... eters ex mode
     ^c ................ exit it
 
+    You can also use `^c` to exit history search mode:
+    q/ ................ enters search history mode
+    ^c
+
 # Auditing vim mappings
 
-	:verbose map <c-a>
-	:verbose imap x
+    :verbose map <c-a>
+    :verbose imap x
 
 # Increasing numbers visually
 
 ``` viml
-{Visual}g CTRL-A	Add [count] to the number or alphabetic character in
-			the highlighted text. If several lines are
-		    highlighted, each one will be incremented by an
-			additional [count] (so effectively creating a
-			[count] incrementing sequence).  {not in Vi}
-			For Example, if you have this list of numbers:
-				1. ~
-				1. ~
-				1. ~
-				1. ~
-			Move to the second "1." and Visually select three
-			lines, pressing g CTRL-A results in:
-				1. ~
-				2. ~
-				3. ~
-				4. ~
+{Visual}g CTRL-A    Add [count] to the number or alphabetic character in
+        the highlighted text. If several lines are
+        highlighted, each one will be incremented by an
+        additional [count] (so effectively creating a
+        [count] incrementing sequence).  {not in Vi}
+        For Example, if you have this list of numbers:
+        1. ~
+        1. ~
+        1. ~
+        1. ~
+        Move to the second "1." and Visually select three
+        lines, pressing g CTRL-A results in:
+        1. ~
+        2. ~
+        3. ~
+        4. ~
 ```
 
 # spliting funtions into separated files
@@ -351,64 +357,63 @@ dar um vip em modo normal
 + https://stackoverflow.com/a/34548989/2571881
 + https://www.inputoutput.io/lookbehind-lookahead-regex-in-vim/
 
-		%s,\v# @!\zs.*, &,g
+    %s,\v# @!\zs.*, &,g
 
 The option `@!` negates the space before
 
 Suppose I have a file with lines that contain the following strings:
 
-		...cat dog lorem ipsum...
-		...cat lizard ...
-		...cat bird ...
-		...cat dog ...
+    ...cat dog lorem ipsum...
+    ...cat lizard ...
+    ...cat bird ...
+    ...cat dog ...
 
 I want to write a regex that matches the lines in which cat is not followed by dog:
 
-		...cat lizard ...
-		...cat bird ...
+    ...cat lizard ...
+    ...cat bird ...
 
 How can I do this? (solution)
 
-		/\vcat (dog)@!
+    /\vcat (dog)@!
 
 find "other" just preceded by some
 
-		/\v(some)@<=other
+    /\v(some)@<=other
 
 ## Another vim regex example
 Supose you have
 
-		otherthingsbaz
-		otherthingsbaz
-		otherthingsbaz
-		foobarbaz
-		foobarbaz
-		foobarbaz
-		foobarbaz
-		foobarbaz
+    otherthingsbaz
+    otherthingsbaz
+    otherthingsbaz
+    foobarbaz
+    foobarbaz
+    foobarbaz
+    foobarbaz
+    foobarbaz
 
 and you want remove baz onlin on those lines
 who it is preceded by 'foobar'. The last solution
 is more readable and unique to vim.
 
-		:%s,\v^(foobar)(baz),\1,g
-		:%s,\v(foobar)@<=baz,,g
-		:%s,^foobar\zsbaz,,g
+    :%s,\v^(foobar)(baz),\1,g
+    :%s,\v(foobar)@<=baz,,g
+    :%s,^foobar\zsbaz,,g
 
 See :h /\zs. (And :h /\@<= if you're so inclined.)
 
-
 ## Find spaces folowed by '('
 
-		hello() -> hello ()
-		world () -> world ()
-		hello(world ()) -> hello (world ())
+    hello() -> hello ()
+    world () -> world ()
+    hello(world ()) -> hello (world ())
 
-		/\v(\s+)@<!\(
+    /\v(\s+)@<!\(
 
-		Example			matches ~
-		\v(foo)@<!bar		any "bar" that's not in "foobar"
-		\(\/\/.*\)\@<!in	"in" which is not after "//"
+    Example     matches ~
+    \v(foo)@<!bar       any "bar" that's not in "foobar"
+    \(\/\/.*\)\@<!in    "in" which is not after "//"
 
 # Remove offending key from known_hosts file with one swift move
 
@@ -472,8 +477,8 @@ Solutions:
 
 Using vim-exchange plugin you can do:
 
-		cxiw ............ mark word for exchange
-		.   ............. repeat last action
+    cxiw ............ mark word for exchange
+    .   ............. repeat last action
 
 # How many open buffers do I have?
 + http://superuser.com/a/345593/45032
@@ -490,7 +495,7 @@ Using vim-exchange plugin you can do:
 
 We can refer to each file on the arglist simple by doing
 
-		:vimgrep /pattern/g ##
+    :vimgrep /pattern/g ##
 
     :cdo : perform a command on all entries of quickfix list. For example
     :vim /foo/ *.cpp *.h *.hpp can be followed by
@@ -502,16 +507,16 @@ We can refer to each file on the arglist simple by doing
 ## O plugin ag.vim →  rking/ag.vim: https://github.com/rking/ag.vim
 Permite muitas ações na janela quickfix (aquela que abre quando usamos o grep)
 
-		e    to open file and close the quickfix window
-		o    to open (same as enter)
-		go   to preview file (open but maintain focus on ag.vim results)
-		t    to open in new tab
-		T    to open in new tab silently
-		h    to open in horizontal split
-		H    to open in horizontal split silently
-		v    to open in vertical split
-		gv   to open in vertical split silently
-		q    to close the quickfix window
+    e    to open file and close the quickfix window
+    o    to open (same as enter)
+    go   to preview file (open but maintain focus on ag.vim results)
+    t    to open in new tab
+    T    to open in new tab silently
+    h    to open in horizontal split
+    H    to open in horizontal split silently
+    v    to open in vertical split
+    gv   to open in vertical split silently
+    q    to close the quickfix window
 
 Após fechar a janela quickfix podemos reabri-la com o comando `:copen`
 
@@ -575,6 +580,11 @@ edit `/etc/nginx/nginx.conf` in read-only mode:
 
     sudo vim +M /etc/nginx/nginx.conf
 
+It it is useful having this mappings on your vimrc
+
+    cnoremap w!! w !sudo tee % >/dev/null
+    command! SaveAsRoot w !sudo tee %
+
 # Scrolling down both parts of a split-window at the same time in Vim
 source http://stackoverflow.com/a/2986980/2571881
 First you can open two files, each in its window, doing this:
@@ -596,7 +606,7 @@ To open a link just press `Ctrl-]` and to jump back `Ctrl-t` or `Ctrl-o`
 # open the file on the line where the 3rd occurrence of the pattern appears
 + [tecmint.com](http://www.tecmint.com/how-to-use-vi-and-vim-editor-in-linux/)
 
-		vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
+    vim filename +$(grep -in pattern filename | sed -n 3p | cut -d: -f1)
 
 Let’s take a closer look at what the above command does:
 
@@ -610,7 +620,6 @@ Finally,
     (:) is the field separator.
 
 # Delete till end of current parenthesis block in vim
-
 Say I am editing this json
 
 ``` json
@@ -657,6 +666,7 @@ to see more:
 ``` vim
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lcs+=space:·
+set list
 ```
 
 # Editing complex commands and search
@@ -669,9 +679,9 @@ modes a special window
     q/ open search command window
 
     /ctrl-p inserts my last search
+    ^c      exit these modes
 
 # Inserting filename
-
 The following commands insert lines consisting of the full path of the current
 and alternate files into the buffer:
 
@@ -835,31 +845,31 @@ ccl
 Um exemplo de fluxo de trabalho com o comando `:cdo`
 Primeiro usar o grep para popular o quickfixlist
 
-        grep arquivo
+    grep arquivo
 
 Abrir o quickfixlist pra ver se a busca casou
 
-        :copen
+    :copen
 
 Pra fechar o quickfixlist apenas :ccl
 
-        :ccl
+    :ccl
 
 No meu caso adicionei uma linha no começo de todos os arquivos
 
-        :cdo normal ggOthis is only a test^[
+    :cdo normal ggOthis is only a test^[
 
 Depois eu apaguei a linha adicionada
 
-        :cdo normal ggdd
+    :cdo normal ggdd
 
 Gravei todos os arquivos depois do teste
 
-        :cdo write
+    :cdo write
 
 Fechei  todos os arquivos
 
-        :qall
+    :qall
 
 # Links or worth clicking
 
@@ -910,7 +920,7 @@ You can also type part of the buffer name or even use a mapping like this:
 
     nnoremap <Leader>b :ls<CR>:b<Space>
 
-	:bd 4  ................. delete buffer 4
+    :bd 4  ................. delete buffer 4
 
 # Copy from one buffer to another
 + [stackoverflow](http://stackoverflow.com/q/41259890/)
@@ -1074,15 +1084,15 @@ Function to sum visual selection
     " This function requires you select the numbers
     " source: https://vi.stackexchange.com/a/4699/7339
     fun! SumVis()
-        try
-            let l:a_save = @a
-            norm! gv"ay
-            let @a = substitute(@a,'[^0-9. ]','+','g')
-            exec "norm! '>o"
-            exec "norm! iTotal \<c-r>=\<c-r>a\<cr>"
-         finally
-            let @a = l:a_save
-         endtry
+    try
+        let l:a_save = @a
+        norm! gv"ay
+        let @a = substitute(@a,'[^0-9. ]','+','g')
+        exec "norm! '>o"
+        exec "norm! iTotal \<c-r>=\<c-r>a\<cr>"
+     finally
+        let @a = l:a_save
+     endtry
     endfun
     vnoremap <c-s> :<C-u>call SumVis()<cr>
 
@@ -1093,12 +1103,12 @@ Another solution:
 # Vimscript: programatically get the size of selection
 + Vim - count lines in selected range →  https://stackoverflow.com/a/7263557/2571881
 
-			 :let selectionsize = let selecsize = line("'>") - line("'<") + 1
+         :let selectionsize = let selecsize = line("'>") - line("'<") + 1
 
 By the way to get the content of command line, putting it into system
 clipboard I did:
 
-				:let @+ = @:
+        :let @+ = @:
 
 # Vimscript: programatically get visual selection point
 
@@ -1134,7 +1144,7 @@ function! GetVisualSelection()
     let [line_end, column_end] = getpos("'>")[1:2]
     let lines = getline(line_start, line_end)
     if len(lines) == 0
-        return ''
+    return ''
     endif
     let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
     let lines[0] = lines[0][column_start - 1:]
@@ -1148,7 +1158,7 @@ endfunction
      :r! echo $RANDOM
 
      function! Random()
-         return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+     return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
      endfunction
 
 then
@@ -1237,8 +1247,8 @@ Obs: You need to have > in cpoptions for the newline to be added in between
 yanks (:set cpoptions+=>), otherwise the words will be concatenated on a single
 line.
 
-    >	When appending to a register, put a line break before
-        the appended text.
+    >   When appending to a register, put a line break before
+    the appended text.
 
 To see all cpoptions:
 
@@ -1319,7 +1329,7 @@ Finds abcdef or abc followed by any characters then def.
 
 # typing lowercase alphabet
 
-	:h<_␍jjYZZ
+    :h<_␍jjYZZ
 
 # Changing modes on ctrl-p
 
@@ -1381,15 +1391,15 @@ In some situations, for example: If you want to change
 a word, putting parenthesis around it, you have to use a literal
 default registr --> "
 
-        three
-        one two
+    three
+    one two
 
-        (one) (two)
-        (three)
+    (one) (two)
+    (three)
 
 temos que usar
 
-        <c-r><c-o>"
+    <c-r><c-o>"
 
 # Command line tricks
 
@@ -1411,28 +1421,28 @@ Usando relative numbers
 
  ``` markdown
  +------------+-----------------------------------------------------------------------------------------------+
- |  command   |  action                                                                                       |
+ |  command   |  action                                               |
  +------------+-----------------------------------------------------------------------------------------------+
- |  :9t. 	  |  copy line 9 below the current line                                                           |
- |  :t5 	  |  copy the current line placing a duplicate below the line 5 (and moving the cursor)           |
- |  :-7t. 	  |  copy the line 7 before the current cursor position placing a duplicate below the current line|
- |  :+4t. 	  |  copy the line 4 after the current cursor position placing a duplicate below the current line |
- |  :9,11t.   |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position         |
- |  :-5t.     |  copy the line 5 rows above to the current line                                               |
- |  :1m.      |  move line one to the current line                                                            |
- |  :-3m.     |  move the line up 3 to this position                                                          |
- |  :-3m.     |  move the line up 3 to this position                                                          |
+ |  :9t.      |  copy line 9 below the current line                               |
+ |  :t5       |  copy the current line placing a duplicate below the line 5 (and moving the cursor)       |
+ |  :-7t.     |  copy the line 7 before the current cursor position placing a duplicate below the current line|
+ |  :+4t.     |  copy the line 4 after the current cursor position placing a duplicate below the current line |
+ |  :9,11t.   |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position     |
+ |  :-5t.     |  copy the line 5 rows above to the current line                           |
+ |  :1m.      |  move line one to the current line                                |
+ |  :-3m.     |  move the line up 3 to this position                              |
+ |  :-3m.     |  move the line up 3 to this position                              |
  +------------+-----------------------------------------------------------------------------------------------+
 
 Mover linhas que correspondem a um padrão para o fim do arquivo
 
-		 :g/this/m$
+     :g/this/m$
  ```
 
 The offsets can also be used with the other items in a range.  Look at this
 one: >
 
-	:.+3,$-5
+    :.+3,$-5
 
 This specifies the range that starts three lines below the cursor and ends
 five lines before the last line in the file.
@@ -1466,16 +1476,16 @@ Supose you have these lines:
 
 " highlight only digits inside html tags
 
-        \v<\/?h\zs\d\ze
+    \v<\/?h\zs\d\ze
 
-        h\zs\d\ze   →   this version works and is easy to type
+    h\zs\d\ze   →   this version works and is easy to type
 
 " promote each digit matched in the above search
 
-        :%s//\=submatch(0)-1/g
+    :%s//\=submatch(0)-1/g
 
-		:s/\d\+/\=submatch(0) + 1/
-        increases digits
+    :s/\d\+/\=submatch(0) + 1/
+    increases digits
 
 # Converting numbers to chars
 The range of printable chars spams from 32 to 93
@@ -1515,10 +1525,10 @@ That is:
     \d\{4}$: match the last four digits of the line
 
     \=: interprete the following:
-        printf('|%.1f: print a | followed by a 1-precision float (the second argument)
-        str2nr(submatch(0)): transform the match 4-digit group into a decimal number
-        (removes the trailing 0 to avoid reading 0XYZ as octal values)
-        / 10.0: divide the value by 10
+    printf('|%.1f: print a | followed by a 1-precision float (the second argument)
+    str2nr(submatch(0)): transform the match 4-digit group into a decimal number
+    (removes the trailing 0 to avoid reading 0XYZ as octal values)
+    / 10.0: divide the value by 10
 
 # Jumping to edit positions and insert position
 
@@ -1598,7 +1608,7 @@ movement as “around this section’s heading”.
 
 # Run the current script
 
-	:!%:p
+    :!%:p
 
 # Runing a macro over last pasted text
 + https://stackoverflow.com/a/46380937/2571881
@@ -1614,8 +1624,8 @@ to make:
 3 - Combine the number with the macro name
 
     fun! MacroOverSelection(macroname)
-        let l:how_many = line("']") - line("'[") + 1
-        execute "normal! ". l:how_many . "@" . a:macroname
+    let l:how_many = line("']") - line("'[") + 1
+    execute "normal! ". l:how_many . "@" . a:macroname
     endfun
 
     :call MacroOverSelection("a")
@@ -1627,7 +1637,7 @@ to make:
 A better function that runs over exactly last change/yank block
 
     fun! RunMacroOver(macroname)
-        execute "'[,']normal @". a:macroname
+    execute "'[,']normal @". a:macroname
     endfun
 
     :com -nargs=1 Rover :call RunMacroOver(<f-args>)
@@ -1743,13 +1753,13 @@ Para somente exibir o full name do arquivo corrente faça:
 
  A solução começa testando este padrão de busca
 
-		\[sound:[^]]*]
+    \[sound:[^]]*]
 
-		Localizar:
+    Localizar:
 
-		\[  ............. um colchete de abertura literal
-		sound: .......... a palavra sound seguida de dois pontos
-		[^]]*] .......... uma lista negada que pega tudo dentro dos colchetes em qualquer quantidade
+    \[  ............. um colchete de abertura literal
+    sound: .......... a palavra sound seguida de dois pontos
+    [^]]*] .......... uma lista negada que pega tudo dentro dos colchetes em qualquer quantidade
 
 # Como apagar tags do tipo </font*> no vim
 
@@ -1784,7 +1794,7 @@ Explicando:
     ] .................. fechamento do grupo
     * .................. quantificador para o grupo (zero ou mais)
 
-		%s,</\?font[^>]*>,,g
+    %s,</\?font[^>]*>,,g
 
 Para evitar usar muitos escapes usamos no comando final (acima) um
 delimitador de busca diferente, para não ter que escapar todas asa
@@ -1817,7 +1827,7 @@ set fileencoding=utf-8  " The encoding written to file.
 
 # Reindenting whole file
 
-	gg=G
+    gg=G
 
     command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
@@ -1825,7 +1835,7 @@ set fileencoding=utf-8  " The encoding written to file.
 
 # Move some line to current line
 
-		:3m .
+    :3m .
 
 # Numbering operators
 
@@ -1837,17 +1847,17 @@ as you know 'u' refers to undo, then you can do this  3u or 3.
 installvim () {
 # Https://speakerdeck.com/mbrochh/vim-as-a-python-ide
 #   On Ubuntu:
-	sudo apt-get install gtk2-engines-pixbuf
+    sudo apt-get install gtk2-engines-pixbuf
 
-	hg clone https://vim.googlecode.com/hg/ vim
-	cd vim/src
-	./configure --enable-pythoninterp --with-features=huge --prefix=$HOME/opt/vim
-	make && make install
-	mkdir -p $HOME/bin
-	cd $HOME/bin
-	ln -s $HOME/opt/vim/bin/vim
-	which vim
-	vim --version
+    hg clone https://vim.googlecode.com/hg/ vim
+    cd vim/src
+    ./configure --enable-pythoninterp --with-features=huge --prefix=$HOME/opt/vim
+    make && make install
+    mkdir -p $HOME/bin
+    cd $HOME/bin
+    ln -s $HOME/opt/vim/bin/vim
+    which vim
+    vim --version
 } && installvim
 ```
 
@@ -1916,34 +1926,34 @@ clipbo ard.
 
 # Numbering lines in sequence
 
-	partridge in a pear tree
-	turtle doves
-	French hens
-	calling birds
-	golden rings
+    partridge in a pear tree
+    turtle doves
+    French hens
+    calling birds
+    golden rings
 
 Make above lines become this way
 
-	1) partridge in a pear tree
-	2) turtle doves
-	3) French hens
-	4) calling birds
-	5) golden rings
+    1) partridge in a pear tree
+    2) turtle doves
+    3) French hens
+    4) calling birds
+    5) golden rings
 
-	:let i=1
-	qa
-	I<C-r>=i<CR>)
-	<Esc>
-	:let i += 1
-	q
+    :let i=1
+    qa
+    I<C-r>=i<CR>)
+    <Esc>
+    :let i += 1
+    q
 
 # Editing a macro on vim
 
-	:put a
+    :put a
 
-	the above command will place register a on my current buffer
+    the above command will place register a on my current buffer
 
-	"ap ...... pastes the register after the cursor
+    "ap ...... pastes the register after the cursor
 
 # Executing a macro over all files
 
@@ -2093,11 +2103,11 @@ from: http://stackoverflow.com/questions/8814069/
 
 # Saindo temporariamente do vim para o shell
 
-        Ctrl-z
+    Ctrl-z
 
 Execute os comandos do shell
 
-        fg
+    fg
 
 # Apagando linhas intercaladas
 Vim: how to delete every second row?
@@ -2115,7 +2125,7 @@ reference: http://stackoverflow.com/questions/1946738/
 
 # Remapear caps lock para ESC
 
-        xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 
 # Vim - paste in insert mode?
 
@@ -2149,7 +2159,7 @@ See :help registers for the full reference.
 
     :e scp://username@someremotehost/./path/to/file
 
-	gvim scp://manager@192.168.1.11/./bashrc
+    gvim scp://manager@192.168.1.11/./bashrc
 
 # Alias para abrir arquivos recem editados - Mru buffers
 
@@ -2175,7 +2185,7 @@ Opening the last nvim file:
 fun! MruFile()
     let filename = get(v:oldfiles, 0, '')
     if filename != ''
-        exe "edit " . filename
+    exe "edit " . filename
     endif
 endfun
 nmap ,l :call MruFile()<cr>
@@ -2184,14 +2194,14 @@ command! -nargs=0 Mrf call MruFile()
 
 Manually you can do:
 
-		:e #>1
+    :e #>1
 
 Or in normal mode "vim" pressing →  '0
 
 You can also type:
 
-		:browse oldfiles
-		:bro old
+    :browse oldfiles
+    :bro old
 
 We can also install FZF plugin and map something like <leader>m to
 open Most Recent Edited Files
@@ -2234,7 +2244,7 @@ replacements that have already happened.
 
 You can also use Tim Pope's plugin Abolish
 
-		Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-abolish'
 
 # Vim delete HTML tag, but not content
 
@@ -2255,13 +2265,13 @@ http://stackoverflow.com/questions/6303882/
 
 or shorter:
 
-	let @+ .= my_expression
+    let @+ .= my_expression
 
 Reference: :help :let.=
 
 # Put the clipboard content into a register
 
-	:let @a="<C-r>*"
+    :let @a="<C-r>*"
 
 # Navegando em linhas longas no vim
 
@@ -2279,7 +2289,7 @@ gk ............ sobe
 
 # Como sair do vim direto do modo normal
 
-        ZZ .......... o mesmo que :x
+    ZZ .......... o mesmo que :x
 
 # Como colar texto posicionando o cursor depois do texto?
 
@@ -2362,7 +2372,7 @@ background: url(stars.png) no-repeat 0 -54px;
 
 Faça uma seleção em bloco no vim e digite:
 
-	g Ctrl-x
+    g Ctrl-x
 
 ** Função para decrementar a sequência acima **
 
@@ -2458,7 +2468,7 @@ ou
 
 # Fixing syntax highlight
 
-		<C-l>
+    <C-l>
 
 # Como colocar a palavra sob o cursor em uma substituição
 
@@ -2476,36 +2486,36 @@ No stackoverflow apareceu a seguinte questão
 Replace all strings except the parenthesis part in vim
 I have a text as follows.
 
-	cat
-	dog
-	elephant
-	cat (1)
-	zebra(1)
-	snow leopard
-	shark (other)
+    cat
+    dog
+    elephant
+    cat (1)
+    zebra(1)
+    snow leopard
+    shark (other)
 
 and I want to replace them as follows.
 
-	[[cat]]
-	[[dog]]
-	[[elephant]]
-	[[cat]] (1)
-	[[zebra]](1)
-	[[snow leopard]]
-	[[shark]] (other)
+    [[cat]]
+    [[dog]]
+    [[elephant]]
+    [[cat]] (1)
+    [[zebra]](1)
+    [[snow leopard]]
+    [[shark]] (other)
 
-	/\v(^\w+( \w+)?)
-	:%s,,[[\1]],g
+    /\v(^\w+( \w+)?)
+    :%s,,[[\1]],g
 
-	Utilizamos o modo very magic que nos permite
-	usar expressões regulares modernas
+    Utilizamos o modo very magic que nos permite
+    usar expressões regulares modernas
 
-	A expressão regular usada é composta de dois grupos
-	sendo que o segudo está dentro do primeiro, na substituição
-	usamos só o primeiro
+    A expressão regular usada é composta de dois grupos
+    sendo que o segudo está dentro do primeiro, na substituição
+    usamos só o primeiro
 
-	uma palavra pelo menos --> \w+
-	seguida de outro grupo opcional ( \w+)?
+    uma palavra pelo menos --> \w+
+    seguida de outro grupo opcional ( \w+)?
 
 Ví soluções mais complexas, e aí resolvi tentar, depois de mais de uma hora quebrando a cabeça, pois meu objetivo era aprender um pouco mais sobre regex no vim e de modo greal, pois é um assunto que me intriga.
 
@@ -2516,17 +2526,17 @@ Para poucas linhas de código, obviamente a solução manual é a melhor escolha
     /\v(the )@<!word    any "word" not preceded by "the"
     /\vfoo( bar)@!      any "foo" not followerd by "bar"
 
-    Capability                  in Vimspeak   in Perlspeak
+    Capability          in Vimspeak   in Perlspeak
     ----------------------------------------------------------------
-    force case insensitivity    \c            (?i)
-    force case sensitivity      \C            (?-i)
+    force case insensitivity    \c        (?i)
+    force case sensitivity      \C        (?-i)
     backref-less grouping       \%(atom\)     (?:atom)
     conservative quantifiers    \{-n,m}       *?, +?, ??, {}?
-    0-width match               atom\@=       (?=atom)
-    0-width non-match           atom\@!       (?!atom)
+    0-width match           atom\@=       (?=atom)
+    0-width non-match       atom\@!       (?!atom)
     0-width preceding match     atom\@<=      (?<=atom)
     0-width preceding non-match atom\@<!      (?<!atom)
-    match without retry         atom\@>       (?>atom)
+    match without retry     atom\@>       (?>atom)
 
 the folowing searcch will match 'word' not preceded by 'the'
 
@@ -2558,8 +2568,8 @@ Solution
 
 ```viml
 /\v(^|(text)@<=)   # means start of line, or some point preceded by “text”
-.{-}               # as few characters as possible
-($|text)@=         # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+.{-}           # as few characters as possible
+($|text)@=     # without globbing characters, checking that we reached either end of line or occurrence of “text”.
 
     type :help /\@<= and :help /\@= or more generally :help pattern
 
@@ -2569,23 +2579,23 @@ Solution
 Lets say you have
 
     <block>
-        <foo val="bar"/>
-        <foo val="bar"/>
+    <foo val="bar"/>
+    <foo val="bar"/>
     </block>
     <block>
-        <foo val="bar"/>
-        <foo val="bar"/>
+    <foo val="bar"/>
+    <foo val="bar"/>
     </block>
 
 How could I make that into
 
     <block>
-        <foo val="bar1"/>
-        <foo val="bar"/>
+    <foo val="bar1"/>
+    <foo val="bar"/>
     </block>
     <block>
-        <foo val="bar1"/>
-        <foo val="bar"/>
+    <foo val="bar1"/>
+    <foo val="bar"/>
     </block>
 
     \v%(block>\_.{-})\zsbar1
@@ -2640,8 +2650,8 @@ The solution search pattern would seems like this:
 /\v(foo)@<=bar .............. @<=bar (negates bar)
 /\vfoo(bar)@! ............... @! also negates bar
 
-\(foo\)\@<!bar		any "bar" that's not in "foobar"
-\(\/\/.*\)\@<!in	"in" which is not after "//"
+\(foo\)\@<!bar      any "bar" that's not in "foobar"
+\(\/\/.*\)\@<!in    "in" which is not after "//"
 ```
 
 You can also use the tilde character (~) as your search pattern, and when
@@ -2727,18 +2737,18 @@ And you want to uppercase "Xhtml" "Xml" at once
 
 # Regex to find multiple word options
 
-		/\v(sai(r(am)?|ndo|u)|saem|saí(u|ram|a)?) de fininho
+    /\v(sai(r(am)?|ndo|u)|saem|saí(u|ram|a)?) de fininho
 
-		sair, sairam, aindo, saiu, saem, saíram, saía
+    sair, sairam, aindo, saiu, saem, saíram, saía
 
-		/\v(assus|afugen|espan(tar|tou|tam|tado)(ram)?)
+    /\v(assus|afugen|espan(tar|tou|tam|tado)(ram)?)
 
-		/\v(disper(sar|sou))|progre(dir|dindo)|avançar
-		/\v(entre(gou|gue(s|i)?))|pass(ar|ou|e)
-	    /\v(se )?((reduz|resume?)(m|ir|i)?)( esse problema| (à|a uma) questão)?
-		/\v(<lig(ue|ar)(á)?)(.*de volta| mais
-		/tarde|chamaram)?|cham(e|aram|ado|ou)(.*de volta)?|recall
-		/\v(pens(e|ar|ando|arei|aria|ei)|refletiram) (sobre|a respeito)|refletir
+    /\v(disper(sar|sou))|progre(dir|dindo)|avançar
+    /\v(entre(gou|gue(s|i)?))|pass(ar|ou|e)
+    /\v(se )?((reduz|resume?)(m|ir|i)?)( esse problema| (à|a uma) questão)?
+    /\v(<lig(ue|ar)(á)?)(.*de volta| mais
+    /tarde|chamaram)?|cham(e|aram|ado|ou)(.*de volta)?|recall
+    /\v(pens(e|ar|ando|arei|aria|ei)|refletiram) (sobre|a respeito)|refletir
 
 # Regex para pegar aspas simples
 
@@ -2914,11 +2924,11 @@ set grepformat=%f:%l:%m
 
     Para visualizar buscas prévias use:
 
-        :colder
+    :colder
 
-        ou para buscas mais antigas:
+    ou para buscas mais antigas:
 
-        :cnewer
+    :cnewer
 
 # Como exibir as opções de formatação?
 
@@ -3018,15 +3028,15 @@ o registro @% contém o nome do arquivo
 Lembrando que cada um dos registros pode ser inserido no modo inserto
 precedendu-o com `<C-r>`, por exemplo, pra inserir o nome do arquivo faça:
 
-				<C-r>%
+        <C-r>%
 
 Outro modo de inserir o nome do arquivo é usar:
 
-				:put %
+        :put %
 
 The result should be
 
-				dicasvim.md
+        dicasvim.md
 
 # Limpando um registro de forma fácil
 
@@ -3058,11 +3068,11 @@ Após a instalação do dicionário, para habilitar o corretor ortográfico (em 
     Uma vez no vim, com o corretor ligado, basta digitas os seguintes comandos para as tarefas mais básicas:
 
 ``` markdown
-]s 	move o cursor para a próxima palavra "errada"
-[s 	move o cursor para a palavra "errada" anterior
-zg 	adiciona a palavra (no dicionario) em que o cursor está em cima.
-zug 	remove a última palavra adicionada no dicionario
-z= 	Vê as sugestões para uma palavra certa, e troca se você escolher alguma delas.
+]s  move o cursor para a próxima palavra "errada"
+[s  move o cursor para a palavra "errada" anterior
+zg  adiciona a palavra (no dicionario) em que o cursor está em cima.
+zug     remove a última palavra adicionada no dicionario
+z=  Vê as sugestões para uma palavra certa, e troca se você escolher alguma delas.
 
 No modo insert, quando o cursor estiver após uma palavra marcada com erro
 você pode usar Ctrl-x s para procurar sugestões. Use Ctrl-n ou Ctrl-p para
@@ -3150,17 +3160,17 @@ gd ........... go to definition
 # Função para inverte strings no vim
 
     function! InvertString(str)
-        " Courtesy of Preben "Peppe" Guldberg
-        " This will invert/reverse a string
-        " This will work on arbitrary length strings, too. The /.*/ should be
-        " quick, which might make it up for using a regex rather than using
-        " numerous commands in a :while loop.
-        "
-        " This can be used in a substitute command as follows:
-        " :%s/AUTHORIZATION/\=InvertString(submatch(0))
-        let inverted = substitute(a:str, '.\(.*\)\@=',
-                    \ '\=a:str[strlen(submatch(1))]', 'g')
-        return inverted
+    " Courtesy of Preben "Peppe" Guldberg
+    " This will invert/reverse a string
+    " This will work on arbitrary length strings, too. The /.*/ should be
+    " quick, which might make it up for using a regex rather than using
+    " numerous commands in a :while loop.
+    "
+    " This can be used in a substitute command as follows:
+    " :%s/AUTHORIZATION/\=InvertString(submatch(0))
+    let inverted = substitute(a:str, '.\(.*\)\@=',
+            \ '\=a:str[strlen(submatch(1))]', 'g')
+    return inverted
     endfunction
 
     " em modo normal
@@ -3210,7 +3220,7 @@ particular word occurs in a buffer: >
 
 Another approach
 
-		:%s/<C-R><C-W>//gn
+    :%s/<C-R><C-W>//gn
 
 # Name spaces para variáveis no vim
 
@@ -3218,14 +3228,14 @@ There are several name spaces for variables.  Which one is to be used is
 specified by what is prepended:
 
 (nothing) In a function: local to a function; otherwise: global
-|buffer-variable|    b:	  Local to the current buffer.
-|window-variable|    w:	  Local to the current window.
-|tabpage-variable|   t:	  Local to the current tab page.
-|global-variable|    g:	  Global.
-|local-variable|     l:	  Local to a function.
-|script-variable|    s:	  Local to a |:source|'ed Vim script.
-|function-argument|  a:	  Function argument (only inside a function).
-|vim-variable|	     v:	  Global, predefined by Vim.
+|buffer-variable|    b:   Local to the current buffer.
+|window-variable|    w:   Local to the current window.
+|tabpage-variable|   t:   Local to the current tab page.
+|global-variable|    g:   Global.
+|local-variable|     l:   Local to a function.
+|script-variable|    s:   Local to a |:source|'ed Vim script.
+|function-argument|  a:   Function argument (only inside a function).
+|vim-variable|       v:   Global, predefined by Vim.
 
 # Contar os caracteres da linha atual
 
@@ -3241,7 +3251,7 @@ specified by what is prepended:
 
 # Contar ocorrências de uma palavra
 
-		:%s/<c-r><c-w>//gn
+    :%s/<c-r><c-w>//gn
 
 # Dicas para substituições
 
@@ -3285,7 +3295,7 @@ quais arquivos serão instalados assim:
 
     veja :h keepjumps
 
-        keepjumps command
+    keepjumps command
 
    Para saltar para a posição da alteração mais recente use Ctrl-i
    Para saltar para a posição da alteração mais antiga use Ctrl-o
@@ -3374,7 +3384,7 @@ Em modo normal colamos o conteúdo da área de transferência usando o clássico
 
 The Control-R mechanism is very useful:-
 
-        :h i_CTRL-R
+    :h i_CTRL-R
 
 Usually used for inserting the contents of a register 0-9a-z
 but can also insert the following special registers etc
@@ -3475,7 +3485,7 @@ that line to the next one (j)).
 
 You can mix :help global and :help substitute:
 
-		:g/text/s/.*\n//c
+    :g/text/s/.*\n//c
 
 This will ask for confirmation before deleting every line containing text:
 
@@ -3529,7 +3539,7 @@ The key to get mp3 links over multilne is to search for:
 
 ## Multiline removing html comments
 
-	:1,$s/<!--\_.\{-}-->//
+    :1,$s/<!--\_.\{-}-->//
 
 Using the above expression on the text:
 
@@ -3558,7 +3568,7 @@ End of file
 
 O padrão abaixo pega o parágrafo que começa com strong até o seu final
 
-		<p><em><strong>.*\_.\{-}\n\@!.*
+    <p><em><strong>.*\_.\{-}\n\@!.*
 
 After that you can manipulate your html in order to clean the links
 accordingly with the situation
@@ -3606,19 +3616,19 @@ endfun
 map <leader>d :call keepjumps DelBlank()<cr>
 ```
 
-		:g/^$/,/./-j
+    :g/^$/,/./-j
 
-	    globally
-		^$ ............. blank line until another blank line
-		- .............. minus one
-		j .............. join
+    globally
+    ^$ ............. blank line until another blank line
+    - .............. minus one
+    j .............. join
 
 ``` vim
 function! Preserve(command)
     " Preparation: save last search, and cursor position.
     let save_cursor = getpos(".")
     let old_query = getreg('/')
-        execute a:command
+    execute a:command
     " Clean up: restore previous search history, and cursor position
     call setpos('.', save_cursor)
     call setreg('/', old_query)
@@ -3631,16 +3641,16 @@ endfunction"}}}
 ``` viml
 " Esta função limpa meus flashcards
 fun CleanFlashCards()
-		let @a = 'v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-		let @b = 'v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
-		":g/^1 –/normal dgg<CR>
-		":g/^\d\+ –/d<CR>
-		:g/^(/d<CR>
-		:g/CLIQUE/normal {{jdG<CR>
-		:g/^\n\{2,}/d<CR>
-		":0r !ls *.mp3 | sort -n -k1<CR>
-		"vip
-		":'<,'>s/^\d\+-//g<CR>
+    let @a = 'v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
+    let @b = 'v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
+    ":g/^1 –/normal dgg<CR>
+    ":g/^\d\+ –/d<CR>
+    :g/^(/d<CR>
+    :g/CLIQUE/normal {{jdG<CR>
+    :g/^\n\{2,}/d<CR>
+    ":0r !ls *.mp3 | sort -n -k1<CR>
+    "vip
+    ":'<,'>s/^\d\+-//g<CR>
 endfun
 command! CF call CleanFlashCards()<CR>
 ```
@@ -3650,9 +3660,9 @@ source: [superuser.com](http://superuser.com/q/592503/)
 
     :g/.\n\n\@!/norm o
 
-		fun! AddBlankLines()
-			:g/.\n\n\@!/norm o
-		endfun
+    fun! AddBlankLines()
+        :g/.\n\n\@!/norm o
+    endfun
 
 The pattern I use is `/.\n\n\@!/`. Breaking that down into its component pieces:
 
@@ -3773,17 +3783,17 @@ the command will be:
 + https://stackoverflow.com/a/46555043/2571881
 
 ``` markdown
-top           f1    f2    f3
+top       f1    f2    f3
    sub1       f1    f2    f3
    sub2       f1    f2    f3
       sub21   f1    f2    f3
    sub3       f1    f2    f3
 ```
 
-	:%s/^\s\+/\=repeat('.', len(submatch(0)))
+    :%s/^\s\+/\=repeat('.', len(submatch(0)))
 
 ``` markdown
-top           f1    f2    f3
+top       f1    f2    f3
 ...sub1       f1    f2    f3
 ...sub2       f1    f2    f3
 ......sub21   f1    f2    f3
@@ -3794,7 +3804,7 @@ There are two different ways to do this in vim.
 
     With a regex:
 
-	    :%s/^\s\+/\=repeat('.', len(submatch(0)))
+    :%s/^\s\+/\=repeat('.', len(submatch(0)))
 
     This is fairly straightforward, but a little verbose. It uses the eval register (\=) to generate a string of '.'s the same length as the number of spaces at the beginning of each line.
 

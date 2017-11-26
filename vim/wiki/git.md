@@ -1,10 +1,21 @@
-# git.md - Last Change: qua 15 nov 2017 09:45:47 -03
+# git.md - Last Change: 2017 nov 26 08:52
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
 
-		git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git ~/.dotfiles
+    git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git ~/.dotfiles
+    git fetch --recurse-submodules --jobs=8
 
+    ssh -T git@github.com
+    var=`echo 3gmail.com@ | sed 's,\(^3\)\(gmail\.com\)\(\@\),voyeg\1r\3\2,g'`
+    git config --global user.name voyeg3r
+    git config --global merge.tool vimdiff
+    git config --global user.email ${var}
+    git config --global alias.last 'log -1 HEAD'
+    git config --global credential.helper cache
+    git config --global push.default simple
+    git config --global credential.helper 'cache --timeout=3600'
+    git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
 # update local repo with github updates
 

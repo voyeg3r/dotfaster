@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 21 08:31
+" Last Change: 2017 nov 26 08:19
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -38,9 +38,14 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
+
 set cursorline
 set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
+
+" temporary solution for nvim cursor
+set guicursor=
+
 set laststatus=2          " statusline specific
 set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
@@ -60,6 +65,8 @@ set smartcase             " no ignorecase if Uppercase char present
 set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
 set tabstop=4             " Number of spaces that a <Tab> in the file counts for
+set expandtab             " Converts tab into spaces
+set shiftwidth=4
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
