@@ -85,6 +85,7 @@ nnoremap <C-k> :m-2<CR>
 nnoremap <M-j> <c-w>w<c-e><c-w>w
 nnoremap <M-k> <c-w>w<c-y><c-w>w
 
+
 call plug#begin(expand('~/.dotfiles/vim/bundle'))
 
 Plug 'tpope/vim-speeddating'

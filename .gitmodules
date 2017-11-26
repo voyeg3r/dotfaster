@@ -12,7 +12,7 @@
 	url = https://github.com/zsh-users/zsh-completions.git
 [submodule "vim/bundle/vim-plug"]
 	path = vim/bundle/vim-plug
-	url = https://github.com/junegunn/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
 [submodule "vim/bundle/quickmenu.vim"]
 	path = vim/bundle/quickmenu.vim
 	url = https://github.com/skywind3000/quickmenu.vim

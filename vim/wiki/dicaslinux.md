@@ -1,9 +1,14 @@
-# dicaslinux.md  - Last Change: 2017 nov 26 09:24
+# dicaslinux.md  - Last Change: 2017 nov 26 10:09
 
 ```
 Created:	 Qui 09/Mai/2013 hs 09:38
-Last Change: 2017 nov 26 09:24
+Last Change: 2017 nov 26 10:09
 ```
+# Set keyboard
++ https://edpsblog.wordpress.com/2017/05/16/pequenas-dicas-para-sabayon-e-outros-linux/#more-24739
+
+    setxkbmap -model abnt2 -layout br -variant abnt2
+
 # Speed Up Slow WiFi Connection In Ubuntu 14.04
 + https://itsfoss.com/speed-up-slow-wifi-connection-ubuntu/
 

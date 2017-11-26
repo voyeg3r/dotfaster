@@ -35,5 +35,9 @@ I have an article at Medium.com about this project:
 	git fetch --recurse-submodules --jobs=8
 
 	chsh -s $(which zsh) $(whoami)
+
+    in case of vim I had to do
+    git submodule foreach git pull origin master
+
 	```
 
