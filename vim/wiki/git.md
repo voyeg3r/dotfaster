@@ -1,4 +1,4 @@
-# git.md - Last Change: 2017 nov 27 13:32
+# git.md - Last Change: 2017 nov 27 14:17
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
@@ -54,7 +54,20 @@ Or, if you're a busy person:
     git clone --recursive repo
     git fetch --recurse-submodules --jobs=4
 
-# Storing git password
+# How to use git with gnome-keyring integration
+
+    sudo apt-get install libgnome-keyring-dev
+    cd /usr/share/doc/git/contrib/credential/gnome-keyring
+    sudo make
+    git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+
+Just add these two lines to your ~/.gitconfig file:
+
+    [credential]
+        helper = gnome-keyring
+
+# How to save username and password in git
++ https://stackoverflow.com/a/35942890/2571881
 
     git config credential.helper store
 

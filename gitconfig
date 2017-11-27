@@ -2,6 +2,9 @@
 	email = voyeg3r@gmail.com
 	name = voyeg3r
 
+[credential]
+    helper = gnome-keyring
+
 [color]
     diff = auto
     status = auto
