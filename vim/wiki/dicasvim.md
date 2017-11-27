@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 27 11:17
+# dicasvim.md Intro - Last Change: 2017 nov 27 13:25
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -599,18 +599,16 @@ It it is useful having this mappings on your vimrc
     command! SaveAsRoot w !sudo tee %
 
 # Scrolling down both parts of a split-window at the same time in Vim
-source http://stackoverflow.com/a/2986980/2571881
++ http://stackoverflow.com/a/2986980/2571881
++ https://stackoverflow.com/a/47513954/2571881
+
 First you can open two files, each in its window, doing this:
 
     vim -o file1.txt file2.txt
 
 In the first file:
 
-    :set scrollbind
-
-In the second file:
-
-    :set scrollbind
+    :windo set scrollbind
 
 # Browsing vim help
 
