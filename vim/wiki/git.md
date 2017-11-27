@@ -1,4 +1,4 @@
-# git.md - Last Change: 2017 nov 26 08:52
+# git.md - Last Change: 2017 nov 27 13:32
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
@@ -54,4 +54,23 @@ Or, if you're a busy person:
     git clone --recursive repo
     git fetch --recurse-submodules --jobs=4
 
+# Storing git password
 
+    git config credential.helper store
+
+then
+
+    git pull
+
+provide user-name and password and those details will be remembered later. The
+credentials are stored in the disk, with the disk permissions.
+
+if you want to change password later
+
+    git config credential.helper store
+
+then
+
+     git pull
+
+provide new password and it will work like before.
