@@ -1,4 +1,4 @@
-# Converting your debian to sid - Last Change: seg 27 nov 2017 06:17:25 -03
+# Converting your debian to sid - Last Change: 2017 nov 27 10:28
 + http://www.binarytides.com/enable-testing-repo-debian/
 + https://www.pcsuggest.com/using-debian-as-rolling-release-distribution/
 + https://www.digitalocean.com/community/tutorials/upgrading-debian-to-unstable
@@ -43,5 +43,25 @@ http://ftp.us.debian.org/debian/ unstable main contrib non-free
 Run as root
 
     tasksel
+
+# Install numix-circle
++ https://www.youtube.com/watch?v=1G4XGNHMpNM
+
+    sudo apt install git docky -y
+
+installnumix (){
+    [ -d ~/.icons ] || mkdir ~/.icons
+    [ -d ~/.themes ] || mkdir ~/.themes
+    cd ~/.themes
+    git clone https://github.com/numixproject/numix-gtk-theme.git
+    cd ~/.icons
+    git clone https://github.com/numixproject/numix-icon-theme.git
+    git clone https://github.com/numixproject/numix-icon-theme-circle.git
+    cd numix-icon-theme && cp * ..
+    cp numix-icon-theme-circle && cp * ..
+    gsettings set org.gnome.desktop.interface gtk-theme "Numix"
+    gsettings set org.gnome.desktop.wm.preferences theme "Numix"
+    gsettings set org.gnome.desktop.interface icon-theme "Numix-Circle"
+} && installnumix
 
 

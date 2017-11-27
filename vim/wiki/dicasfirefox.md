@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 26 12:38
+# dicasfirefox.md - Last Change: 2017 nov 27 08:44
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -9,15 +9,38 @@ Criado: Ter 04/Jan/2011 hs 20:21
 # How to access foruns with no login
 + http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
 
-# Firefox quantum
-+ http://www.edivaldobrito.com.br/firefox-quantum-no-linux/
-+ https://stackoverflow.com/a/2954835/2571881
-```
-	wget "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux&lang=pt-BR" -O firefox.tar.bz2
-	sudo tar -jxvf  firefox.tar.bz2 -C /opt/
-	sudo mv /opt/firefox*/ /opt/firefox-quantum
-	sudo ln -sf /opt/firefox-quantum/firefox /usr/bin/firefox-quantum
+# How to install Firefox quantum on debian
++ https://linuxconfig.org/how-to-install-firefox-quantum-on-debian-stretch-linux
 
+Edit the file
+
+    /etc/apt/preferences.d/my_preferences
+
+There are three dependencies that you'll need to pin in addition to Firefox. Set each of them up too.
+
+    Package: firefox
+    Pin: release a=unstable
+    Pin-Priority: 1001
+
+    Package: libfontconfig1
+    Pin: release a=unstable
+    Pin-Priority: 1001
+
+    Package: fontconfig-config
+    Pin: release a=unstable
+    Pin-Priority: 1001
+
+    Package: libnss3
+    Pin: release a=unstable
+    Pin-Priority: 1001
+
+## Install Firefox
+Finally, you're ready to install Firefox. You just need to update Apt, and tell Apt to install Firefox from Sid.
+
+    # apt update
+    # apt install -t sid firefox
+
+```
 	cat <<EOF> | sudo tee /usr/share/applications/firefox-quantum.desktop
 	[Desktop Entry]
 	Version=46.0.1
@@ -29,9 +52,6 @@ Criado: Ter 04/Jan/2011 hs 20:21
 	Type=Application
 	Categories=Network
 	EOF
-
-	sudo chmod +x /usr/share/applications/firefox-quantum.desktop
-	cp /usr/share/applications/firefox-quantum.desktop ~/Desktop
 ```
 # Suavização de fontes
 

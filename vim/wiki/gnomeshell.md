@@ -1,8 +1,8 @@
-# gnomeshell.md - Last Change: 2017 nov 27 08:08
+# gnomeshell.md - Last Change: 2017 nov 27 10:38
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 27 08:08
+Last Change: 2017 nov 27 10:38
 ```
 
 # Getting gnome-shell version
@@ -133,6 +133,9 @@ avoid lock on suspending desktop
 # Night mode settings
 + http://www.omgubuntu.co.uk/2017/07/adjust-color-temperature-gnome-night-light
 
+# gsettings collection
+
+    gsettings set org.gnome.nautilus.preferences sort-directories-first true
 
 # Startap applications
 
