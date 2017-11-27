@@ -1,4 +1,4 @@
-# Palavras-de-multiplo-sentido.md - Last Change: qui 02 nov 2017 08:47:20 -03
+# Palavras-de-multiplo-sentido.md - Last Change: 2017 nov 27 05:49
 
 sk.com.br Palavras de múltiplo sentido Leffa, Vilson J
 

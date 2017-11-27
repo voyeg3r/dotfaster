@@ -53,7 +53,7 @@ testa se o apt-fast está instalado o define como instalador padrão
 # para pegar os link do vim
 
     apt-get -qq --print-uris -y install vim-gnome vim-doc | egrep -o -e "http://[^\']+"
-    
+
 
     http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-runtime_7.2.330-1ubuntu3_all.deb
     http://br.archive.ubuntu.com/ubuntu/pool/main/v/vim/vim-gnome_7.2.330-1ubuntu3_i386.deb
@@ -62,7 +62,7 @@ Sometimes some files you have installed is not cached. If so, you
 need to retrieve them from the internet. First we need to generate
 the list of files to be downloaded.
 
-# Baixar novo firefox 
+# Baixar novo firefox
 + https://stackoverflow.com/a/4935836/2571881
 
 	apt-get install -d -o=dir::cache=./ firefox
@@ -122,7 +122,7 @@ basta colocar o comando dentro de `crases`
 # Instalar um pacote consumindo pouca banda
 
     sudo apt-get -o Acquire::http::Dl-Limit=25 install <package>
-    
+
 For permanent throttling, create the file `/etc/apt/apt.conf.d/75lowerspeed` and save the following in it:
 ```
 Acquire

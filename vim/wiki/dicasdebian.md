@@ -1,4 +1,4 @@
-# Converting your debian to sid - Last Change: Nov 24
+# Converting your debian to sid - Last Change: seg 27 nov 2017 06:17:25 -03
 + http://www.binarytides.com/enable-testing-repo-debian/
 + https://www.pcsuggest.com/using-debian-as-rolling-release-distribution/
 + https://www.digitalocean.com/community/tutorials/upgrading-debian-to-unstable
@@ -32,9 +32,16 @@ The system upgrade is recommended at runlevel 3, simply without any GUI program 
 `sudo apt-get dist-upgrade`
 
 # Debian unstable repositary
-deb http://ftp.us.debian.org/debian/ sid main contrib non-free deb 
+deb http://ftp.us.debian.org/debian/ sid main contrib non-free deb
 http://ftp.us.debian.org/debian/ unstable main contrib non-free
 
 # Cleaning apt cache
 + https://askubuntu.com/a/285692
 `sudo apt-get clean`
+
+# Install some metapackages
+Run as root
+
+    tasksel
+
+

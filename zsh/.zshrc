@@ -243,7 +243,7 @@ setopt noflowcontrol
 #   fi
 # }
 # zle -N prepend-sudo
-# bindkey '^Xs' prepend-sudo
+bindkey '^Xs' prepend-sudo
 
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
@@ -259,7 +259,7 @@ globalias() {
 zle -N globalias
 
 bindkey ' ' globalias                # expande aliases globais
-bindkey '^X ' magic-space            # control-space to bypass completion
+#bindkey '^X ' magic-space            # control-space to bypass completion
 #bindkey -M isearch " " magic-space  # normal space during searches
 #bindkey -s '\eu' 'cd ..^j' # alt-u up dir
 
