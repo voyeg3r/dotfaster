@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 26 08:21
+# dicasvim.md Intro - Last Change: 2017 nov 27 11:17
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -100,7 +100,7 @@ I have a python script to get two files; the first one has the mp3 files links
 and the second one gives me some html content over wich I run this vimscript
 function:
 
-```text
+```
 fun! CleanFlaschards()
     let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
     "let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
@@ -148,6 +148,19 @@ After running this function I only have to run the macro 'a' 9 times and macro
 # Sorting lines numerically
 
     :%!sort -n -k 3 ........... sort numerically by third column
+
+
+# Sort lines by text at position
++ https://stackoverflow.com/a/47497861/2571881
+
+2011-09-17  00:45 |Take That|NEVER FORGET
+2011-09-17  00:37 |Free|ALL RIGHT NOW
+2011-09-17  00:41 |Kim Wilde|CAMBODIA
+2011-09-17  00:56 |SUTHERLAND BROTHERS & QUIVER|ARMS OF MARY
+2011-09-17  00:53 |Visage|FADE TO GREY
+
+    sort /\%20v/
+    :%!sort -t'|' -k2
 
 # Runing external commands
 

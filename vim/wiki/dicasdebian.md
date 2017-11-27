@@ -1,4 +1,4 @@
-# Converting your debian to sid - Last Change: 2017 nov 27 10:28
+# Converting your debian to sid - Last Change: 2017 nov 27 10:59
 + http://www.binarytides.com/enable-testing-repo-debian/
 + https://www.pcsuggest.com/using-debian-as-rolling-release-distribution/
 + https://www.digitalocean.com/community/tutorials/upgrading-debian-to-unstable
@@ -46,6 +46,7 @@ Run as root
 
 # Install numix-circle
 + https://www.youtube.com/watch?v=1G4XGNHMpNM
++ https://gist.github.com/voyeg3r/fd8c3989d6f5c690e21e1474b950741c
 
     sudo apt install git docky -y
 
