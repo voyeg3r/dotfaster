@@ -1,13 +1,18 @@
-# gnomeshell.md - Last Change: 2017 nov 26 12:53
+# gnomeshell.md - Last Change: 2017 nov 27 08:08
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 26 12:53
+Last Change: 2017 nov 27 08:08
 ```
 
 # Getting gnome-shell version
 
     gnome-shell --version
+
+# start gnome-shell from command line
+
+   Add `/usr/bin/gnome-session`  to your `~/.xinitrc`
+   then you can `startx`
 
 # installing with speed limit
 
@@ -546,5 +551,6 @@ https://github.com/Dieterbe/snip/tree/master
 # best gnome shell addons
 https://extensions.gnome.org/extension/549/web-search-dialog/
 https://extensions.gnome.org/extension/277/impatience/
+
 
 
