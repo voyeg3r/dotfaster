@@ -1,4 +1,4 @@
-# git.md - Last Change: 2017 nov 27 14:17
+# git.md - Last Change: 2017 nov 28 14:33
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
@@ -87,3 +87,8 @@ then
      git pull
 
 provide new password and it will work like before.
+
+# List/show git configuration
+
+    git config --list
+
