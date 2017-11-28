@@ -1,4 +1,5 @@
-# gpg.md - Last Change: 2017 nov 28 13:54
+# gpg.md - Last Change: 2017 nov 28 13:59
++ https://fedoraproject.org/wiki/Creating_GPG_Keys#ExportGNOME
 + https://superuser.com/a/249516/45032
 
 Encripts and decript files and folders
