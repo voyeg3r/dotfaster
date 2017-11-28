@@ -39,9 +39,8 @@ default_color efefef
 default_shade_color 333333
 default_outline_color green
 
-alignment tl
 #alignment tl
-# alignment mm
+alignment mm
 
 gap_x 0
 gap_y 0

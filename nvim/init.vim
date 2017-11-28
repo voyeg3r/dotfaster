@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 26 09:24
+" Last Change: 2017 nov 28 08:41
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -259,13 +259,13 @@ nnoremap K :help <C-r><C-w><CR>
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 "  when searching next patter put it in the middle of screen
-nnoremap n nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+nnoremap n nzt
+nnoremap * *zt
+nnoremap # #zt
+nnoremap g* gtzt
+nnoremap g# g#zt
 
-" Same when jumping around
+" Same when jumting around
 nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz

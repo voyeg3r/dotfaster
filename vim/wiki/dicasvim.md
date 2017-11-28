@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 27 13:25
+# dicasvim.md Intro - Last Change: 2017 nov 28 08:48
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -1415,6 +1415,7 @@ temos que usar
 # Command line tricks
 
     :9 copy 13
+    :9t13
 
 copia a linha 9 para a linha 13
 
@@ -2146,7 +2147,7 @@ inserts the the last delete or yank.
 
 To find this in vim's help type :h i_ctrl-r
 
-# Vim How to paste text into Vim command line
+# Vim How to paste text into Vim command line - |registers|
 
 ``` markdown
 Ctrl-r 0

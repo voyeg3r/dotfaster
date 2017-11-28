@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 27 08:44
+# dicasfirefox.md - Last Change: 2017 nov 27 19:34
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -8,6 +8,11 @@ Criado: Ter 04/Jan/2011 hs 20:21
 
 # How to access foruns with no login
 + http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
+
+# How to Make Separate User Profiles in Firefox Quantum
++ https://www.downloadsource.net/how-to-create-multiple-user-profiles-in-firefox-quantum/n/10916/
+
+    about:profiles
 
 # How to install Firefox quantum on debian
 + https://linuxconfig.org/how-to-install-firefox-quantum-on-debian-stretch-linux

@@ -165,6 +165,7 @@
 + [grep](grep.md)
 + [grin](grin.md)
 + [grub](grub.md)
++ [gpg](gpg.md)
 + [gundoplugin](gundoplugin.md)
 + [hack](hack.md)
 + [halt](halt.md)
