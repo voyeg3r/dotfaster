@@ -1,9 +1,13 @@
-# gpg.md - Last Change: 2017 nov 28 14:00
+# gpg.md - Last Change: 2017 nov 29 18:48
 + https://fedoraproject.org/wiki/Creating_GPG_Keys#ExportGNOME
 + https://www.cyberciti.biz/tips/linux-how-to-encrypt-and-decrypt-files-with-a-password.html
 + https://superuser.com/a/249516/45032
 
 Encripts and decript files and folders
+
+# importing a public key
+
+    gpg --recv-key 1EB2638FF56C0C53
 
 # Generating keys
 Creating GPG Keys Using the Command Line
@@ -11,7 +15,6 @@ Creating GPG Keys Using the Command Line
 Use the following shell command:
 
     gpg2 --full-gen-key
-
 
 A series of prompts directs you through the process. Press the Enter key to
 assign a default value if desired. The first prompt asks you to select what
@@ -21,11 +24,9 @@ kind of key you prefer:
 
     gpg --list-keys
 
-
 To list the secret keys you type:
 
     gpg --list-secret-keys
-
 
 # Encripting files and folders
 For files(outputs filename.gpg):
@@ -57,4 +58,5 @@ Copying a Public Key Manually
 If you want to give or send a file copy of your key to someone, use this command to write it to an ASCII text file:
 
     gpg2 --export --armor jqdoe@example.com > jqdoe-pubkey.asc
+
 

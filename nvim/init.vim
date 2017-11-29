@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 29 16:43
+" Last Change: 2017 nov 29 17:01
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -663,11 +663,12 @@ let g:vimwiki_table_mappings = 0
 " This has the advantage of not highlighting each space you type at
 " the end of the line, only when you open a file or leave insert
 " mode. Very neat."
+
 " Reference: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "au BufEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertLeave * redraw!
+"autocmd InsertLeave * redraw!
 
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta

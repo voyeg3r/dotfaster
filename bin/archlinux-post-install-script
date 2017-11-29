@@ -158,6 +158,13 @@ sudo pacman -S --force ttf-dejavu
 sudo pacman -Syu
 
 # instaling yaourt
+# Befor installing yaourt
+# Reference: https://goo.gl/uMh5BM
+# git clone https://aur.archlinux.org/package-query-git.git
+# makepkg "in that folder"
+# sudo pacman -S yajl
+#  pacman -U package-query.....tar.xz
+#
 # https://revryl.com/2013/07/11/yaourt-installation-arch-linux/
 # sudo vim /etc/pacman.conf.
 # add this repo:

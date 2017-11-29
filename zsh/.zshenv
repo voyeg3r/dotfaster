@@ -21,7 +21,7 @@ CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
 
 
 #path=( $path /home/sergio/.gem/ruby/2.4.0/bin )
-path=( ~/.dotfiles/bin /home/sergio/.gem/ruby/2.4.0/bin $path )
+path=( ~/.dotfiles/bin /home/sergio/.gem/ruby/2.4.0/bin /usr/bin/core_perl $path )
 #fpath=( ~/.dotfiles/zsh/functions.d/ $fpath )
 
 

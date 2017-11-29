@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 nov 21 14:02
+# Arquivo: pacman.md - Last Change: 2017 nov 29 17:59
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing
@@ -92,3 +92,8 @@ Now, update the pacman's database
 		sudo pacman -Syy
 
 This helped me a lot.
+
+# Search for a package name
+
+    pacman -Qs name
+

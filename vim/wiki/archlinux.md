@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 21 13:04
+# Arquivo: archlinux.wiki - Last Change: 2017 nov 29 17:03
 
 # Net tools
 
@@ -7,6 +7,27 @@
 # compress or expand executable files
 
     sudo pacman -S upx
+
+# Packages to install on a fresh archlinux installation
+
+    pacman -S wireless_tools networkmanager wpa_supplicant wpa_actiond netcf dialog
+
+    pacman -S dhclient wifi-menu dialog vim nvim zsh xclip vim neovim curl
+    detox aria2 alsa-utils perl perl-rename
+
+    useradd -m -g users -G wheel,storage,power -s /usr/bin/zsh sergio
+
+    pacman -S xorg-server xf86-input-mouse xf86-input-keyboard xf86-video-vesa xorg-xinit
+
+    sudo pacman -S xorg-{iceauth,sessreg,xcmsdb,xbacklight,xgamma,xhost,xinput,xmodmap,xrandr,xrdb,xrefresh,xset,xsetroot}
+
+    sudo pacman -S gnome-shell nautilus gnome-terminal gnome-tweak-tool gnome-control-center xdg-user-dirs gdm
+
+    sudo pacman -S xf86-video-intel
+
+    systemctl enable gdm
+
+    sudo pacman -S firefox curl aria2 detox
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux

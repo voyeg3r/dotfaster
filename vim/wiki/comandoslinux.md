@@ -3,6 +3,7 @@
 + [detox](detox.md)
 + [html2pdf](html2pdf.md)
 + [mpv](mpv.md)
++ [pacaur](pacaur.md)
 + [pactl](pactl.md)
 + [parted](parted.md)
 + [a2ps](a2ps.md)
