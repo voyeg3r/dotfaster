@@ -12,26 +12,12 @@
 "  +=====================================+
 
 "" Plug bootstrap - Install Plug if it is not already installed{{{
-"if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
-"    silent !curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs
-"                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"    autocmd VimEnter * PlugInstall | source $MYVIMRC
-"endif
-"}}}
-
-
-if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  let g:not_finish_vimplug = "yes"
-
-  autocmd VimEnter * PlugInstall
+if empty(glob('~/.dotfiles/vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.dotfiles/vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
+
 
 set viminfo=%,<800,'10,/50,:100,h,f1,n~/.viminfo "{{{1
 "           | |    |   |   |    | |  + viminfo file path
