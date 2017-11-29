@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 28 08:41
+" Last Change: 2017 nov 29 16:43
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
