@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 30 06:40
+" Last Change: 2017 nov 30 11:31
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -44,7 +44,7 @@ set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
 
 " temporary solution for nvim cursor
-set guicursor=
+"set guicursor=
 
 set laststatus=2          " statusline specific
 set mouse=a               " enable mouse click
@@ -664,11 +664,13 @@ let g:vimwiki_table_mappings = 0
 " the end of the line, only when you open a file or leave insert
 " mode. Very neat."
 
-" Reference: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"au BufEnter * match ExtraWhitespace /\s\+$/
-"autocmd InsertLeave * redraw!
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta

@@ -14,8 +14,6 @@ site: https://github.com/mcrapet/plowshare
         yaourt -S plowshare && plowmod --install
         sudo pacman -S parallel curl
 
-        plowdown -m [[https://www.mediafire.com/folder/5s35ib7577f0y/wallpapers|shared-wallpapers]]
-
         $ cat file-with-list-of-urls.txt | parallel curl -L {} -o {/}
 
     which passes the original URL to the {} and then removes the
@@ -37,3 +35,5 @@ site: https://github.com/mcrapet/plowshare
     plowlist -R url > list.txt
 
     plowdow -m list.txt
+
+

@@ -1,8 +1,8 @@
-# gnomeshell.md - Last Change: 2017 nov 27 10:38
+# gnomeshell.md - Last Change: 2017 nov 30 10:24
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 27 10:38
+Last Change: 2017 nov 30 10:24
 ```
 
 # Getting gnome-shell version
@@ -49,8 +49,12 @@ Last Change: 2017 nov 27 10:38
     Take a screenshot of a region and paste in a clipboard | Ctrl+Shift+Print
 ```
 # Am I using wayland or X11?
++ https://stackoverflow.com/a/45536186/2571881
++ https://askubuntu.com/a/929678/3798
+
 
     echo $XDG_SESSION_TYPE
+    env | grep -i wayland
 
 # Log off shortcut
 You can define a new shortcut with
@@ -80,6 +84,9 @@ EOF
     xdg-user-dirs-update --set DOCUMENTS "$HOME/docs"
     xdg-user-dirs-update --set PICTURES "$HOME/img"
     xdg-user-dirs-update --set VIDEOS "$HOME/videos"
+
+    xdg-user-dirs-update
+    xdg-user-dirs-gtk-update
 
 # set system sound above 100%
 + https://superuser.com/a/1017972/45032
