@@ -648,6 +648,10 @@ set noshowmode
 
 nnoremap <F5> :GundoToggle<CR>
 
+" Run current line as a shell command
+" https://stackoverflow.com/a/19884862/2571881
+nnoremap <F6> :exec '!'.getline('.')
+
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
 

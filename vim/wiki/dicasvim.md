@@ -1,8 +1,15 @@
-# dicasvim.md Intro - Last Change: 2017 nov 28 08:48
+# dicasvim.md Intro - Last Change: 2017 nov 30 06:40
  vim: set ts=4 et:
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
+
+# Run current line as a shell command
++ https://stackoverflow.com/a/19883963/2571881
++ https://stackoverflow.com/a/19884862/2571881
+
+    :.w !bash
+    :nmap <F6> :exec '!'.getline('.')
 
 # Modelines
 It allows you to set preferences on a file-by-file basis, and allow you

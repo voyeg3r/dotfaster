@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 29 17:01
+" Last Change: 2017 nov 30 06:40
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -823,6 +823,10 @@ nmap <F2> :set rnu!<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
+
+" Run current line as a shell command
+" https://stackoverflow.com/a/19884862/2571881
+nnoremap <F6> :exec '!'.getline('.')
 
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
