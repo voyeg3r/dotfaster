@@ -226,28 +226,31 @@ fun! s:acquire_theme_data()
     let lowercase_theme_name = tolower(g:PaperColor_Theme)
 
     if lowercase_theme_name !=? 'default'
-      " TODO: Change this to invoke autoload function
-      let theme_variable =  "g:PaperColor_Theme_" . lowercase_theme_name
+      let theme_identifier = 'PaperColor_' . lowercase_theme_name
+      let autoload_function = theme_identifier . '#register'
+
+      call {autoload_function}()
+
+      let theme_variable = 'g:' . theme_identifier
 
       if exists(theme_variable)
         let s:theme_name = lowercase_theme_name
-        " Register custom theme to theme dictionary
         let s:themes[s:theme_name] = {theme_variable}
-      else
-        echom "Cannot find variable " . theme_variable
-        " s:theme_name is still 'default'
       endif
+
     endif
 
   endif
   " }}}
 
   if s:theme_name ==? 'default'
-    " defer loading default theme until now
+    " Either no other theme is specified or they failed to load
+    " Defer loading default theme until now
     call s:register_default_theme()
   endif
 
   let s:selected_theme = s:themes[s:theme_name]
+
   " Get Theme Variant: either dark or light  {{{
   let s:selected_variant = 'dark'
 
@@ -891,7 +894,7 @@ fun! s:set_color_variables()
   " often called helps speeding things up quite a bit. Think of this like macro.
   "
   " If you are familiar with the old code base (v0.9 and ealier), this way of
-  " generate variables dramatically increases the loading speed.
+  " generate variables dramatically reduces the loading speed.
   " None of previous optimization tricks gets anywhere near this.
   if s:mode == s:MODE_GUI_COLOR
     fun! s:create_color_variables(color_name, rich_color, term_color)
@@ -1245,6 +1248,9 @@ fun! s:apply_syntax_highlightings()
   exec 'hi vimOperParen' . s:fg_foreground
   exec 'hi vimSynType' . s:fg_purple
   exec 'hi vimSynReg' . s:fg_pink . s:ft_none
+  exec 'hi vimSynRegion' . s:fg_foreground
+  exec 'hi vimSynMtchGrp' . s:fg_pink
+  exec 'hi vimSynNextgroup' . s:fg_pink
   exec 'hi vimSynKeyRegion' . s:fg_green
   exec 'hi vimSynRegOpt' . s:fg_blue
   exec 'hi vimSynMtchOpt' . s:fg_blue
@@ -1921,6 +1927,21 @@ fun! s:apply_syntax_highlightings()
   exec 'hi sedFunction' . s:fg_aqua . s:ft_bold
   exec 'hi sedBranch' . s:fg_green . s:ft_bold
   exec 'hi sedLabel' . s:fg_green . s:ft_bold
+
+  " GNU awk highlighting
+  exec 'hi awkPatterns' . s:fg_pink . s:ft_bold
+  exec 'hi awkSearch' . s:fg_pink
+  exec 'hi awkRegExp' . s:fg_blue . s:ft_bold
+  exec 'hi awkCharClass' . s:fg_blue . s:ft_bold
+  exec 'hi awkFieldVars' . s:fg_green . s:ft_bold
+  exec 'hi awkStatement' . s:fg_blue . s:ft_bold
+  exec 'hi awkFunction' . s:fg_blue
+  exec 'hi awkVariables' . s:fg_green . s:ft_bold
+  exec 'hi awkArrayElement' . s:fg_orange
+  exec 'hi awkOperator' . s:fg_foreground
+  exec 'hi awkBoolLogic' . s:fg_foreground
+  exec 'hi awkExpression' . s:fg_foreground
+  exec 'hi awkSpecialPrintf' . s:fg_olive . s:ft_bold
 
   " }}}
 

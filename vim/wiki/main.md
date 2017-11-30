@@ -61,7 +61,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [openbox](openbox.md)
 + [Pandoc](pandoc.md)
 + [Plowshare](plowshare.md)
-+ [perl rename](perl-rename.md)
++ [perl-rename](perl-rename.md)
 + [Python3](python3.md)
 + [Pythonsolutions](pythonsolutions.md)
 + [Radios](radios.md)

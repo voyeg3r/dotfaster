@@ -1,4 +1,4 @@
-# yaourt.md intro - Last Change: 2017 nov 09 09:50
+# yaourt.md intro - Last Change: 2017 nov 30 13:18
 
 13 comandos básicos yaourt para você gerenciar melhor os pacotes do AUR |
 Linux Descomplicado
@@ -16,6 +16,8 @@ http://www.linuxdescomplicado.com.br/2015/10/13-comandos-basicos-yaourt-para-voc
 3 – Encontre um pacote
 
     yaourt pacote
+
+    cower -s gnome-shell-extension
 
 4 – Informação sobre um pacote instalado
 

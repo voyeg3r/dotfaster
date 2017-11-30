@@ -1,20 +1,11 @@
-# o poder do comando perl-rename
-
+# o poder do comando perl-rename - Last Change: qui 30 nov 2017 12:40:40 -03
 ``` markdown
 File:		 perlrename.md
 Created:	 qua 11 jan 2017 12:06:22 BRT
-Last Change: qua 11 jan 2017 12:06:25 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
 ```
-
-
-  O poder do perl-rename está ligado à grande capacidade
-  do perl de lidar com expressões regulares, inclusive
-  tendo algumas expressões que lhe são perticulares.
+O poder do perl-rename está ligado à grande capacidade
+do perl de lidar com expressões regulares, inclusive
+tendo algumas expressões que lhe são perticulares.
 
 # installing real perl-rename
 
@@ -76,7 +67,6 @@ If you want to do a dry run to make sure you don't clobber any files, add the -n
 # To rename all files matching *.bak to strip the extension, you might say
 
     rename 's/\e.bak$//' *.bak
-
 
 changing file extension
 + https://unix.stackexchange.com/a/68913/3157
