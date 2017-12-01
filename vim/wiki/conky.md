@@ -1,4 +1,4 @@
-# conky.md - Last Change: 2017 nov 16 08:51
+# conky.md - Last Change: 2017 dez 01 07:36
 + https://wiki.archlinux.org/index.php/Conky
 + https://www.lifewire.com/beginners-guide-to-conky-4043352
 
@@ -23,22 +23,24 @@ If you already have any conky settings you can see it by typing:
 
 		conky -d
 
-# Enable conky at startup
-
-	 # to enable auto startup
-	 # save the above conde at
-	 # ~/.config/autostart/conky.desktop
-
-	 [Desktop Entry]
-	 Encoding=UTF-8
-	 Type=Application
-	 Name=Conky
-	 Name[en_US]=Conky
-	 Exec=/usr/bin/conky -d
-	 Comment[en_US]=
-	 StartupNotify=false
-	 X-GNOME-Autostart-Delay=60
-	 Terminal=false
+# Enabling conky at startup (just run these lines)
+```zsh
+cat <<-EOF> ~/.config/autostart/conky.desktop
+# to enable auto startup
+# save the above code at
+# ~/.config/autostart/conky.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Conky
+Name[en_US]=Conky
+Exec=/usr/bin/conky -d -c ~/.dotfiles/conky/conkyrc
+Comment[en_US]=
+StartupNotify=false
+X-GNOME-Autostart-Delay=60
+Terminal=false
+EOF
+```
 
 # Conky themes
 + http://www.mediafire.com/file/5yb5ambg6h4jack/Deluxe_Conky_Theme_Pack.cmtp.7z

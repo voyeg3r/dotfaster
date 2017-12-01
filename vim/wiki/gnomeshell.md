@@ -1,8 +1,8 @@
-# gnomeshell.md - Last Change: 2017 nov 30 10:24
+# gnomeshell.md - Last Change: 2017 dez 01 07:13
 
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 nov 30 10:24
+Last Change: 2017 dez 01 07:13
 ```
 
 # Getting gnome-shell version
@@ -368,6 +368,17 @@ Using notify-send to warn the user when a job is finished
 # setting nautilus auto mount
 
     gsettings set org.gnome.desktop.media-handling automount true
+
+## Some nautilus shortcuts
+
+    Ctrl+Enter ......... open in a new tab
+    Ctrl+t ............. open a new tab
+    Ctrl+Shift+t ....... restores tab
+    Ctrl+PageUp ........ goes to previous tab
+    Ctrl+h ............. show hidden files
+    Ctrl+1 ............. List view
+    Ctrl+Shift+i ....... invert selection
+    Ctrl+s ............. selects pattern
 
 # fixing audacious open folders error
 

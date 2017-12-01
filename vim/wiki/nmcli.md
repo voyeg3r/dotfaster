@@ -1,4 +1,4 @@
-# nmcli - Last Change: 29 nov 2017
+# nmcli - Last Change: 2017 dez 01 19:30
 
 nmcli - command-line tool for controlling NetworkManager
 
@@ -10,14 +10,14 @@ tags: admin, network
 
 ```
 # nmcli radio
-WIFI-HW  WIFI     WWAN-HW  WWAN    
-enabled  enabled  enabled  enabled 
+WIFI-HW  WIFI     WWAN-HW  WWAN
+enabled  enabled  enabled  enabled
 
 # nmcli device
-DEVICE  TYPE      STATE         CONNECTION 
-wlan0   wifi      disconnected  --         
-eth0    ethernet  unavailable   --         
-lo      loopback  unmanaged     --         
+DEVICE  TYPE      STATE         CONNECTION
+wlan0   wifi      disconnected  --
+eth0    ethernet  unavailable   --
+lo      loopback  unmanaged     --
 
 Then to actually connect to a wireless AP:
 
