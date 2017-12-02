@@ -1,4 +1,4 @@
-# hack.md - Last Change: seg 13 nov 2017 10:50:42 -03
+# hack.md - Last Change: 2017 dez 02 06:29
 
 ``` markdown
 Created:	 ter 10 jan 2017 13:47:48 BRT

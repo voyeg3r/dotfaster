@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 nov 20 18:49
+#      Last Change: 2017 dez 02 07:13
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -290,6 +290,7 @@ plowdown -m links.txt
 # mediafire fuse
 # https://github.com/MediaFire/mediafire-fuse
 git clone git@github.com:MediaFire/mediafire-fuse.git
+yaourt megatools
 
 # command line fuzzy finder
 yaourt -S fzf

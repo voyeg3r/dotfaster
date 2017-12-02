@@ -12,9 +12,7 @@
 
 '''
 This module has two functions
-
 hide: input str --> str in chinese chars
-
 unhide: input str in chinese chars -> decodes it as str
 '''
 

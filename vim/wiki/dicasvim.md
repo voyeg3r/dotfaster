@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 nov 30 06:40
+# dicasvim.md Intro - Last Change: 2017 dez 02 07:44
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -1482,6 +1482,15 @@ Following the same logic you can repeat last search by pressing @/ or just //
 
     Repeating the last substituition using &
     Repeat last substituition over whole file g&
+
+# Repeating moviment on vim
+Let's say you make:
+
+    :normal 5j
+
+Now you cand repeat that moviment just pressing:
+
+    @:
 
 # Using submatch in vim search
 
