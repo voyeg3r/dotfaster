@@ -80,6 +80,7 @@ alias compilalivro='make clean; make && make show'
 alias 4shared='cadaver http://webdav.4shared.com/'
 
 alias nprnews='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/364916/v1/npr.akacast.akamaistream.net/nprdmp_live01_mp3'
+alias npr='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/364916/v1/npr.akacast.akamaistream.net/nprdmp_live01_mp3\?ck\=1512225990046'
 alias chicago='mpv http://relay.broadcastify.com:80/il_chicago_police2\?xan\=7C80215A2A84B01D154525F05BD80095'
 # Listen to Air Traffic Control, used to be scripts.
 alias miami='mplayer http://relay.broadcastify.com:80/540894049\?xan\=7C80215A2A84B01D154525F05BD80095'
@@ -153,7 +154,7 @@ alias wnyc="mplayer http://fm939.wnyc.org/wnycfm-tunein.aac"
 alias wfiu="mplayer -playlist http://hannibal.ucs.indiana.edu:8000/wfiu_hi.m3u"
 alias ufm="mplayer http://200.129.35.230:8081/;?d="
 alias news="mplayer -playlist http://minnesota.publicradio.org/tools/play/streams/news.pls" # MPR News
-alias npr='mplayer -playlist http://www.npr.org/templates/dmg/dmg.php\?getProgramStream\=true\&NPRMediaPref\=WM'
+#alias npr='mplayer -playlist http://www.npr.org/templates/dmg/dmg.php\?getProgramStream\=true\&NPRMediaPref\=WM'
 alias current="mplayer -playlist http://minnesota.publicradio.org/tools/play/streams/the_current.pls" # The Current
 alias classical="mplayer -playlist http://minnesota.publicradio.org/tools/play/streams/classical.pls" # Classical MPR
 alias jazz='mplayer http://streamerepsilon.jazz.fm:8000'

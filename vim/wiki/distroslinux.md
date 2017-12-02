@@ -1,4 +1,4 @@
-# Distros linux leves - Last Change: 2017 nov 20 19:54
+# Distros linux leves - Last Change: 2017 dez 02 09:24
 
 + Archlinux: https://www.archlinux.org/download/  https://mirror.archlinux32.org/archisos/
 + Archlinux 32bits: https://bbs.archlinux32.org/
@@ -16,6 +16,7 @@
 + Slax :https://www.slax.org/
 + Kali Linux: https://www.kali.org/downloads/
 + Suse Linux: https://en.opensuse.org/openSUSE:Tumbleweed_installation
++ EndlessOS: https://endlessos.com/pt-br/home/
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD

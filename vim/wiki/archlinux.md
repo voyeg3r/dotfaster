@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 dez 01 19:36
+# Arquivo: archlinux.wiki - Last Change: 2017 dez 02 09:16
 
 # compress or expand executable files
 
@@ -24,6 +24,9 @@
     systemctl enable gdm
 
     sudo pacman -S firefox curl aria2 detox
+
+    sudo pacman -S pulseaudio pulseaudio-equalizer pavucontrol
+    yaourt alsaequal
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux

@@ -416,6 +416,7 @@
 + [which](which.md)
 + [who](who.md)
 + [whoami](whoami.md)
++ [wireshark](wireshark.md)
 + [wiki](wiki.md)
 + [wikispaces](wikispaces.md)
 + [windowmaker](windowmaker.md)

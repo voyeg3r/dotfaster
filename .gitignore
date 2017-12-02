@@ -4,5 +4,6 @@
 *.zcompdump
 *.zhistory
 .netrwhist
+__pycache__
 
 bin/login-with-age.sh
