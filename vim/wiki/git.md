@@ -1,4 +1,4 @@
-# git.md - Last Change: 2017 nov 28 14:33
+# git.md - Last Change: 2017 dez 02 19:59
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
@@ -91,4 +91,10 @@ provide new password and it will work like before.
 # List/show git configuration
 
     git config --list
+# Git clone particular version of remote repository
++ https://stackoverflow.com/a/3555202/2571881
+
+    git clone [remote_address_here] my_repo
+    cd my_repo
+    git reset --hard [ENTER HERE THE COMMIT HASH YOU WANT]
 

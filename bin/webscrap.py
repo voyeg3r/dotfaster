@@ -1,82 +1,61 @@
-#!/usr/bin/env python3
-# # -*- coding: UTF-8 -*-"
-# ------------------------------------------------
-#   Creation Date:    05-04-2017
-#     Last Change:  ter 29 nov 2016 09:21:52 BRT
-#            File:  webscrap.py
-#          author:  sergio luiz araujo silva
-#            site:  http://vivaotux.blogspot.com
-#         twitter:  @voyeg3r
-#       Reference:  https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-# ------------------------------------------------
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4
+# File:         <+Filename Here+>
+# Author:       Sergio Araujo
+# Last Change:  seg 09 out 2017 18:22:11 -03
+# Created:      seg 09 out 2017 18:22:11 -03
+# email:        <voyeg3r ✉ gmail.com>
+# Github:       https://github.com/voyeg3r
+# twitter:      @voyeg3r
 
+# References: https://stackoverflow.com/a/25564921/2571881
 
-from bs4 import BeautifulSoup
+# Import required modules
 import requests
+import re
+from bs4 import BeautifulSoup
 
-'''
-Here are some simple ways to navigate that data structure:
+# Create a variable with the url
+url = input("Digite o link da página: ")
+# url = 'http://www.mairovergara.com/catch-on-o-que-significa-este-phrasal-verb/'
 
-soup.title
-# <title>The Dormouse's story</title>
+headers = {'User-Agent': 'Mozilla/5.0'}
 
-soup.title.name
-# u'title'
+# Use requests to get the contents
+r = requests.get(url, headers=headers)
 
-soup.title.string
-# u'The Dormouse's story'
+# Get the text of the contents
+html_content = r.text
 
-soup.title.parent.name
-# u'head'
+# Convert the html content into a beautiful soup object
+soup = BeautifulSoup(html_content, 'html.parser')
 
-soup.p
-# <p class="title"><b>The Dormouse's story</b></p>
+# print all links (or a range of them)
+# print(soup.find_all('a')[0:5])
 
-soup.p['class']
-# u'title'
+# for tag in soup.findAll('strong'):
+#     print(tag.text, tag.next_sibling.text)
 
-soup.a
-# <a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>
-
-soup.find_all('a')
-# [<a class="sister" href="http://example.com/elsie" id="link1">Elsie</a>,
-#  <a class="sister" href="http://example.com/lacie" id="link2">Lacie</a>,
-#  <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>]
-
-soup.find(id="link3")
-# <a class="sister" href="http://example.com/tillie" id="link3">Tillie</a>
-'''
+# print(soup.find_all('p'))
+#with open("output.csv", "w") as f:
+#    for tag in soup.findAll('strong'):
+#        var = str(tag) + str(tag.next_sibling)
+#        f.write(var)
 
 
-html_doc = """
-<html><head><title>The Dormouse's story</title></head>
-<body>
-<p class="title"><b>The Dormouse's story</b></p>
+with open("output.csv", "w") as file:
+    for tag in soup.findAll('p'):
+        file.write(str(tag))
+        file.write("\n\n")
 
-<p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
-<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
-<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
-and they lived at the bottom of a well.</p>
+with open("audios.txt", "w") as file:
+    for a in soup.findAll('a',href=re.compile('http.*\.mp3')):
+        file.write(a['href'])
+        file.write("\n")
 
-<p class="story">...</p>
-"""
+#for tag in soup.find_all(['p', 'audio']):
+#    print(tag.text)
 
-soup = BeautifulSoup(html_doc, 'html.parser')
-
-# print(soup.prettify())
-
-print("-" * 30)
-print('Printing all links...')
-print("-" * 30)
-print()
-for link in soup.find_all('a'):
-    print(link.get('href'))
-
-print()
-
-print("-" * 30)
-print('Another common task is extracting all the text from a page:')
-print("-" * 30)
-
-print(soup.get_text())
+#for tag in soup.findAll('p'):
+#    print(tag.text, "\n")

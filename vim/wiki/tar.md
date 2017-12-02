@@ -1,4 +1,4 @@
-# tar.md - Last Change: seg 27 nov 2017 10:56:57 -03
+# tar.md - Last Change: 2017 dez 02 14:47
 compactador e descompactador do linux
 
 # Descompactar durante um download
@@ -7,20 +7,22 @@ compactador e descompactador do linux
 
     curl http://example.com/archive.tar.bz2 | tar -xj
 
+    sudo wget -c http://www.site.com -O - | sudo tar -xz -C /place/you/want/
+
 # Descompactando tar.bz2
 
-tar jxvf pacote.tar.bz2
+    tar jxvf pacote.tar.bz2
 
 Tem uma variação legal que é inciar o local onde você quer descompactar (você
 tem que ter permissões de escrita no diretório de destino)
 
-tar jxvf pacote.tar.bz2 -C $HOME/tmp
+    tar jxvf pacote.tar.bz2 -C $HOME/tmp
 
 # Deixando o tar descobrir como descompactar
 
-  Em geral usamos "tar zxvf" para tar.bz
-  e "tar jxvf" para tar.bz2, mas se usarmos a opção "tar axvf"
-  o tar irá detectar pela extensão qual programa usar:
+Em geral usamos "tar zxvf" para tar.bz
+e "tar jxvf" para tar.bz2, mas se usarmos a opção "tar axvf"
+o tar irá detectar pela extensão qual programa usar:
 
     tar axvf somefile.tar.bz?
 
@@ -46,10 +48,10 @@ veja também: http://ur1.ca/0253w from stack overflow
 
     tar -czf - * | ssh example.com "cat > files.tar.gz"
 
-|| criar pacote tar.gz || tar czvf nomedopacote.tar.gz /pasta ||
-|| extrair pacote tar.gz || tar zxvf pacote.tar.gz [ -C /caminho/opcional/para/extracao/ ] ||
-|| criar pacote tar.bz2 || tar cjvf nomedopacote.tar.bz /pasta ||
-|| extrair pacote tar.bz2 || tar jxvf pacote.tar.bz2 -C /pasta/ ||
+    || criar pacote tar.gz || tar czvf nomedopacote.tar.gz /pasta ||
+    || extrair pacote tar.gz || tar zxvf pacote.tar.gz [ -C /caminho/opcional/para/extracao/ ] ||
+    || criar pacote tar.bz2 || tar cjvf nomedopacote.tar.bz /pasta ||
+    || extrair pacote tar.bz2 || tar jxvf pacote.tar.bz2 -C /pasta/ ||
 
 # Compactando tudo menos pastas
 

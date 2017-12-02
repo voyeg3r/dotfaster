@@ -1,8 +1,6 @@
-# manual yooutube-dl
+# yooutube-dl - Last Change: sáb 02 dez 2017 14:34:28 -03
 ``` markdown
-File:		 youtubedl.md
 Created:	 qua 11 jan 2017 14:58:28 BRT
-Last Change: dom 17 set 2017 16:34:22 -03
 ```
 # comando para atualizar o youtube-dl?
 
@@ -41,20 +39,22 @@ OBS: Por padrão o youtube-dl irá baixar o video na melhor qualiade possível
 
     youtube-dl --write-srt --sub-lang en LINK
 
-    Você pode criar um arquivo de configuração ...
+Você pode criar um arquivo de configuração ...
 
-        vim .config/youtube-dl.conf
+    vim .config/youtube-dl.conf
 
-    e nele colocar as opções que desejar, caso queira ignorar
-    o arquivo de configuração você pode colocar a seguinte opção
-    na linha de comando:
+e nele colocar as opções que desejar, caso queira ignorar
+o arquivo de configuração você pode colocar a seguinte opção
+na linha de comando:
 
-        --ignore-config
+    --ignore-config
 
 # convertendo videos do youtube para mp3
 Fonte:
 
     youtube-dl -t --extract-audio --audio-format mp3 YOUTUBE_URL_HERE
+
+Obs: The option `-t` makes youtube-dl get original title
 
 # baixar um playlist completo
 Antes de executar o comando certifique-se que a versão do youtube-dl é a mais nova

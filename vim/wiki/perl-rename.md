@@ -1,6 +1,5 @@
-# o poder do comando perl-rename - Last Change: qui 30 nov 2017 12:40:40 -03
+# perl-rename.md  - Last Change: 2017 dez 02 20:08
 ``` markdown
-File:		 perlrename.md
 Created:	 qua 11 jan 2017 12:06:22 BRT
 ```
 O poder do perl-rename está ligado à grande capacidade
