@@ -1,8 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 nov 29 17:03
-
-# Net tools
-
-    sudo pacman -S net-tools
+# Arquivo: archlinux.wiki - Last Change: 2017 dez 01 19:36
 
 # compress or expand executable files
 
@@ -10,7 +6,7 @@
 
 # Packages to install on a fresh archlinux installation
 
-    pacman -S wireless_tools networkmanager wpa_supplicant wpa_actiond netcf dialog
+    pacman -S net-tools wireless_tools networkmanager wpa_supplicant wpa_actiond netcf dialog
 
     pacman -S dhclient wifi-menu dialog vim nvim zsh xclip vim neovim curl
     detox aria2 alsa-utils perl perl-rename

@@ -1,26 +1,37 @@
 # Mostrando as diferenças entre duas árvores de diretórios
-Last Change: dom 29 out 2017 11:40:30 -03
+Last Change: 2017 dez 02 05:44
 
-				diff <(cd dir1 && find | sort) <(cd dir2 && find | sort)
+# Differences between dir1 and dir2
+
+    diff <(cd dir1 && find | sort) <(cd dir2 && find | sort)
 
 Outro modo de fazer o mesmo
 
-				diff -urp /originaldirectory /modifieddirectory
+    diff -urp /originaldirectory /modifieddirectory
 
-
-				diff -Naur dir1/ dir2/
+    diff -Naur dir1/ dir2/
 
     The -u option makes the output a little easier to read.
     The -r option recurses through all subdirectories
     The -N and -a options are really only necessary if you wanted to create a patch file.
 
+# I am trying to find the files in dir1 but not in dir2 only.
++ https://stackoverflow.com/a/16788549/2571881
++ https://stackoverflow.com/a/24695424/2571881
+
+    diff -r dir1 dir2 | grep dir1 | awk '{print $4}' > difference1.txt
+
+    comm -23 <(ls dir1 |sort) <(ls dir2|sort)
+
+This command will give you files those are in dir1 and not in dir2.
+
 # Usando substituição de processos
 
-				diff <(echo hello; echo there) <(echo hello; echo world)
-				2c2
-				< there
-				---
-				> world
+    diff <(echo hello; echo there) <(echo hello; echo world)
+    2c2
+    < there
+    ---
+    > world
 
 # comparando o conteúdo de duas variáveis
 
@@ -30,15 +41,15 @@ diff <(echo "$a") <(echo "$b")
 
 # diferenças entre dois comandos
 
-				diff <(tail -10 file1) <(tail -10 file2)
+    diff <(tail -10 file1) <(tail -10 file2)
 
 # guardando as diferenças entre dois arquivos
 
-				diff frutas1.txt frutas2.txt > diferenca.001.patch
+    diff frutas1.txt frutas2.txt > diferenca.001.patch
 
 # aplicando as diferenças "patch"
 
-				patch frutas1.txt < diferenca.001.patch
+    patch frutas1.txt < diferenca.001.patch
 
 #Using diff to create a simple patch
 + https://linuxacademy.com/blog/linux/introduction-using-diff-and-patch/
