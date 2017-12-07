@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 nov 29 17:59
+# Arquivo: pacman.md - Last Change: 2017 dez 03 17:38
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing
@@ -18,6 +18,10 @@ other instalations, run this:
 
     sudo pacman -Syyu
 
+# Limiting pacman speed
+
+    XferCommand = /usr/bin/wget --limit-rate=15k --passive-ftp -c -O %o %u
+
 # get a list of all packages that have avaiable updates
 + https://unix.stackexchange.com/a/13090/3157
 
@@ -28,7 +32,7 @@ the files from another computer, like so:
 
 # Upgrade a single package
 
-		sudo pacman -S packagename
+    sudo pacman -S packagename
 
 # Repeating strings
 
@@ -45,7 +49,7 @@ the files from another computer, like so:
 
 force remove
 
-		sudo pacman -Rdd apache
+	sudo pacman -Rdd apache
 
 # Generating a list of all packages
 
@@ -55,41 +59,41 @@ force remove
 
 # Clean pacman cache
 
-		sudo pacman -Sc
+	sudo pacman -Sc
 
 # To list the 20 last installed packages with expac, run:
 
-		expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20
+	expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20
 
 # Removing unused packages (orphans)
 For recursively removing orphans and their configuration files:
 
-		# pacman -Rns $(pacman -Qtdq)
+	# pacman -Rns $(pacman -Qtdq)
 
 # Selecting the fastest arch mirror
 + https://www.garron.me/en/go2linux/how-to-find-the-fastest-archlinux-mirrors.html
 
 First install python, as is a python script that will helps us to solve this.
 
-		sudo pacman -S python
+	sudo pacman -S python
 
 Then go to where mirrorlist file is:
 
-		cd /etc/pacman.d/
+	cd /etc/pacman.d/
 
 create a security copy of your mirrorlist file, do it as root
 
-		cp mirrorlist mirrorlist.bak
+	cp mirrorlist mirrorlist.bak
 
 and run the script as root
 
-		rankmirrors -n 6 mirrorlist.bak > mirrorlist
+	rankmirrors -n 6 mirrorlist.bak > mirrorlist
 
 You may want to have more than six, so -n [m], where m is the number of mirrors you want in your mirrorlist file.
 
 Now, update the pacman's database
 
-		sudo pacman -Syy
+	sudo pacman -Syy
 
 This helped me a lot.
 

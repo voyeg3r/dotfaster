@@ -666,9 +666,9 @@ cmap w!! w !sudo tee % >/dev/null
 command! SaveAsRoot w !sudo tee %
 
 " to reselect use gv in normal mode
-nnoremap <S-F11> <ESC>:set hls!<cr>
-inoremap <S-F11> <C-o>:set hls!<cr>
-vnoremap <S-F11> <ESC>:set hls!<cr> <bar> gv
+nnoremap <F23> <ESC>:set hls! hls?<cr>
+inoremap <F23> <C-o>:set hls! hls?<cr>
+vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " Preventing vim replace mode
 inoremap <Insert> <Nop>

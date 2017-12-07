@@ -1,16 +1,4 @@
-# English Club
-
-``` markdown
-File:		 EnglishClub.md
-Created:	 ter 10 jan 2017 13:33:01 BRT
-Last Change: ter 10 jan 2017 13:33:10 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
-
+# English Club - Last Change: qua 06 dez 2017 09:45:01 -03
 
 # Introdução
 
@@ -46,7 +34,7 @@ facilitam a interação dos membros do clube.
  Os textos são apresentados lado a lado
  uma referência inical é o site: http://paralleltext.io
 
-# O verlearning
+# Overlearning
 
 Trabalhar os materiais de modo repetido, revisitar materiais,
 pois a repetição, especialmente a repetição espaçada, gera um
@@ -125,8 +113,9 @@ tape technology became widespread in the 1970s.
 
 # English dictation channel on youtube
 
-That’s a great channel and one of the most important discoveries that I have made lately
-because in order to grow up in hability on english we have be able to listen precisely all sounds -- to get all videos do this:
+That’s a great channel and one of the most important discoveries that I have
+made lately because in order to grow up in hability on english we have be able
+to listen precisely all sounds -- to get all videos do this:
 
 	youtube-dl -citw  http://www.youtube.com/user/dailydictation/videos
 

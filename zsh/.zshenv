@@ -20,7 +20,8 @@ export MOZ_DISABLE_PANGO=1
 
 CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
 
-
+XDG_DATA_HOME="$HOME/.local/share"
+XDG_CONFIG_HOME="$HOME/.config"
 
 #path=( $path /home/sergio/.gem/ruby/2.4.0/bin )
 path=( ~/.dotfiles/bin /home/sergio/.gem/ruby/2.4.0/bin /usr/bin/core_perl $path )

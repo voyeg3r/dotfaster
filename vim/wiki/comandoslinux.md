@@ -43,6 +43,7 @@
 + [bind](bind.md)
 + [bios](bios.md)
 + [blkid](blkid.md)
++ [bleachbit](bleachbit.md)
 + [britisandamerican](britisandamerican.md)
 + [bzcat](bzcat.md)
 + [cacic](cacic.md)

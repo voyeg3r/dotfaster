@@ -1,5 +1,4 @@
-# Arquivo: dicas de ingles - Last Change: 2017 nov 21 09:20
-
+# Arquivo: dicas de ingles - Last Change: 2017 dez 06 09:47
 ```
 Created: Qua 12/Jan/2011 hs 12:52
 ```

@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 dez 02 09:16
+# Arquivo: archlinux.wiki - Last Change: 2017 dez 04 12:46
 
 # compress or expand executable files
 
@@ -27,6 +27,18 @@
 
     sudo pacman -S pulseaudio pulseaudio-equalizer pavucontrol
     yaourt alsaequal
+
+    sudo pacman -S libcups cups ghostscript gsfonts system-config-printer simple-scan
+
+    Start Deamon
+    sudo systemctl enable org.cups.cupsd.service
+    sudo systemctl enable cups-browsed.service
+    sudo systemctl start org.cups.cupsd.service
+    sudo systemctl start cups-browsed.service
+
+Software for HP DeskJet, OfficeJet, inkjet, and Photosmart Printers
+
+sudo pacman -S hplip
 
 # archanywhere our archrevenge
 Facilitador para instalaçaõ do archlinux

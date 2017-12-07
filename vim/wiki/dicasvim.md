@@ -1,8 +1,13 @@
-# dicasvim.md Intro - Last Change: 2017 dez 02 07:44
+# dicasvim.md Intro - Last Change: 2017 dez 06 09:09
  vim: set ts=4 et:
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
+
+# Incsearch tips
+
+During a search you can press `Ctrl-g` to jump to next occurrence
+and `Ctrl-t` to jump backwards
 
 # Run current line as a shell command
 + https://stackoverflow.com/a/19883963/2571881
@@ -31,6 +36,19 @@ To copy the line 16 to the line bellow just type:
 1 - Instead of jumping to the line
 2 - pressing yy
 3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+
+Another common antipattern is closing a file to reopen vim with an empty buffer,
+you can simply:
+
+    :bd!
+
+Or you can close the secconde buffer by doing:
+
+    :bd 2
+
+Formating and keeping cursor position:
+
+Instead of using `gqap` use `gwap` to format paragraphs
 
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
@@ -617,6 +635,20 @@ In the first file:
 
     :windo set scrollbind
 
+# Moving text or window
++ https://stackoverflow.com/a/11235237/2571881
+
+    Ctrl-y Moves screen up one line
+    Ctrl-e Moves screen down one line
+    Ctrl-u Moves cursor & screen up ½ page
+    Ctrl-d Moves cursor & screen down ½ page
+    Ctrl-b Moves screen up one page, cursor to last line
+    Ctrl-f Moves screen down one page, cursor to first line
+
+    zt moves current line to top of the page
+    zm moves cursor to the middle of the page
+    zb moves cursor to the bottom of the page
+
 # Browsing vim help
 
 To open a link just press `Ctrl-]` and to jump back `Ctrl-t` or `Ctrl-o`
@@ -698,6 +730,20 @@ modes a special window
 
     /ctrl-p inserts my last search
     ^c      exit these modes
+
+# How do you display the filename of the file you are working on in vim?
++ https://stackoverflow.com/a/4111748/2571881
+
+    :f (:file)
+
+will do same as
+
+    1<C-G>
+
+    :f!
+
+will give a untruncated version, if applicable.
+press 1, then `Ctrl-G` for full path
 
 # Inserting filename
 The following commands insert lines consisting of the full path of the current
@@ -1305,7 +1351,7 @@ mouse button) and `"+` is analogous to X11's CLIPBOARD selection (which is the
 clipboard proper).
 
 In order to preserve indentation during paste you could use <c-r><c-p>* or
-<cr>c-p>+ see more at `:help i_CTRL-R_CTRL-P`
+<cr><c-p>+ see more at `:help i_CTRL-R_CTRL-P`
 
 # Como criar um diário no vim usando o vimwiki
 
@@ -1325,7 +1371,7 @@ If you want to change the boundaries of the previous selection just type:
     m< .............. sets selection start
     m> .............. sets selection end
 
- in order to select previous pasted text put this in your .vimrc
+in order to select previous pasted text put this in your .vimrc
 
      " select last paste in visual mode
      nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'

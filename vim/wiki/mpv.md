@@ -1,4 +1,5 @@
-# intro
+# mpv.md - Last Change: seg 04 dez 2017 07:04:24 -03
+
   a media player
 
 # watch youtube videos throught mpv
@@ -12,7 +13,6 @@
     function mm() {
         mpv --no-video --ytdl-format=bestaudio ytdl://ytsearch10:"$@"
     }
-
 
 a opção `--no-video` é auto explicativa e a opção `--ytdl` é um acrônimo
 que faz referência ao youtube-dl
@@ -34,7 +34,6 @@ que faz referência ao youtube-dl
 
     # Extract audio from video file at a specific time.
     mpv videofile.avi -o audiofileAtSpecificTime.mp3 --no-video --start=00:01:00 --end=00:03:35
-
 
 # How to watch a live stream from the beginning in mpv
 + https://haasn.xyz/posts/2016-11-04-how-to-watch-a-live-stream-from-the-beginning-in-mpv.html

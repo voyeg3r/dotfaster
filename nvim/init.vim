@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 nov 30 13:26
+" Last Change: 2017 dez 06 09:21
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -259,6 +259,7 @@ nnoremap K :help <C-r><C-w><CR>
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 "  when searching next patter put it in the middle of screen
+nnoremap N Nzt
 nnoremap n nzt
 nnoremap * *zt
 nnoremap # #zt
@@ -816,9 +817,9 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
 " to reselect use gv in normal mode
-nnoremap <F23> <ESC>:set hls!<cr>
-inoremap <F23> <C-o>:set hls!<cr>
-vnoremap <F23> <ESC>:set hls!<cr> <bar> gv
+nnoremap <F23> <ESC>:set hls! hls?<cr>
+inoremap <F23> <C-o>:set hls! hls?<cr>
+vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 nmap <F2> :set rnu!<cr>
