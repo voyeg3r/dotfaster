@@ -1,8 +1,6 @@
-# gnomeshell.md - Last Change: 2017 dez 01 07:13
-
+# gnomeshell.md - Last Change: 2017 dez 07 14:49
 ```
 Criado: Wed 04/May/2011 hs 17:23
-Last Change: 2017 dez 01 07:13
 ```
 
 # Getting gnome-shell version

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 06 09:21
+" Last Change: 2017 dez 08 07:55
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -51,6 +51,7 @@ set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
 set nocompatible          " use vim defaults
 set scrolloff=3           " keep 3 lines when scrolling
+set sidescrolloff=3
 set ai                    " set auto-indenting on for programming
 set hidden                " Switch buffers without saving them
 set showcmd               " display incomplete commands
@@ -67,10 +68,11 @@ set novisualbell          " turn off visual bell
 set tabstop=4             " Number of spaces that a <Tab> in the file counts for
 set expandtab             " Converts tab into spaces
 set shiftwidth=4
+set softtabstop=4
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
-set lcs+=space:·
+set lcs+=space:·,nbsp:•
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set wildmenu
@@ -261,9 +263,9 @@ command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 "  when searching next patter put it in the middle of screen
 nnoremap N Nzt
 nnoremap n nzt
-nnoremap * *zt
+"nnoremap * *zt
 nnoremap # #zt
-nnoremap g* gtzt
+"nnoremap g* gtzt
 nnoremap g# g#zt
 
 " Same when jumting around
@@ -273,6 +275,9 @@ nnoremap <c-o> <c-o>zz
 
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
+
+" Last inserted text
+nnoremap g. :normal! `[v`]<cr><left>
 
 " move vertically by visual line
 " source: https://stackoverflow.com/a/21000307/2571881
@@ -822,7 +827,7 @@ inoremap <F23> <C-o>:set hls! hls?<cr>
 vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
-nmap <F2> :set rnu!<cr>
+nmap <F2> :set nu rnu<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 06 09:09
+# dicasvim.md Intro - Last Change: 2017 dez 07 18:54
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -32,6 +32,7 @@ To copy the line 16 to the line bellow just type:
     :t10   ................... copy current line to the line below line 10
     :t$    ................... copy current line to the end of file
     :m$    ................... move current line to the end of file
+    :/user-friend/m$ ......... move next "user-friend" to the final line
 
 1 - Instead of jumping to the line
 2 - pressing yy
