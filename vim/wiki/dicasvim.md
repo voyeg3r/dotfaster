@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 13 11:52
+# dicasvim.md Intro - Last Change: 2017 dez 13 14:56
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -2529,6 +2529,7 @@ começado com width contendo dois dígitos faz-se assim
 
     :g/pattern/y A
     :g/pattern/ .,+5 y Z  ........ copia a linha contendo padrão e as 5 subsequentes
+    g/whatever/d2 ................ deletes lines with pattern and next
 
 Exibir apenas as linhas que contém um padrão
 
