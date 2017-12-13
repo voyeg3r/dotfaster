@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 13 11:09
+# dicasvim.md Intro - Last Change: 2017 dez 13 11:52
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -1104,6 +1104,30 @@ Sorting by last name
 
     -t represents field separator
     -k2 relates to the second field
+
+# How to sort on column for rows containing a certain word
+
+I want to sort on a certain column only for rows containing a certain word. I don't want to see rows not containing that word. For example I have this text file:
+
+     sdf ggfds   7
+     sdf sgs     5
+     sdf dfgs    3
+     foo dffg    2
+     bar dffg    2
+     sdf sddfg   4
+
+I want to sort 3rd column for rows containing only "sdf" word (doesnt have to be in a first column)
+
+and I want to see this output:
+
+     sdf dfgs    3
+     sdf sddfg   4
+     sdf sgs     5
+     sdf ggfds   7
+
+Solution:
+
+    :%!grep sdf | sort -n -k3
 
 # Sum second column using awk
 Let's say you have this file:

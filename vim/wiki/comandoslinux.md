@@ -423,6 +423,7 @@
 + [windowmaker](windowmaker.md)
 + [windows](windows.md)
 + [wingchun](wingchun.md)
++ [wpa_supplicant](wpa_supplicant.md)
 + [wodim](wodim.md)
 + [wordcompleteplugin](wordcompleteplugin.md)
 + [xargs](xargs.md)

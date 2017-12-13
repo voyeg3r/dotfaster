@@ -1,24 +1,25 @@
-# Distros linux leves - Last Change: 2017 dez 05 12:11
+# Distros linux leves - Last Change: 2017 dez 13 11:27
 
-+ Archlinux: https://www.archlinux.org/download/  https://mirror.archlinux32.org/archisos/
 + Archlinux 32bits: https://bbs.archlinux32.org/
-+ Proteus Linux: http://www.porteus.org/
-+ Revenge OS: https://sourceforge.net/projects/obrevenge/files/
-+ CrunchBang: https://www.bunsenlabs.org/ bunselabs
-+ GNU gNewSense: http://www.gnewsense.org/Main/Download
 + Archlinux GNU: https://www.parabola.nu/
-+ GNU Distros list: https://www.gnu.org/distros/free-distros.en.html
-+ gentoo: https://www.gentoo.org/downloads/ [gentoo](gentoo.md)
-+ sabayon linux: https://www.sabayon.org/
-+ [deepin](deepin): https://www.deepin.org/en/
-+ blackarch: https://blackarch.org/index.html
-+ point Linux: http://pointlinux.org/
-+ Slax :https://www.slax.org/
-+ Kali Linux: https://www.kali.org/downloads/
-+ Suse Linux: https://en.opensuse.org/openSUSE:Tumbleweed_installation
++ Archlinux: https://www.archlinux.org/download/  https://mirror.archlinux32.org/archisos/
++ Blackarch: https://blackarch.org/index.html
++ CrunchBang: https://www.bunsenlabs.org/ bunselabs
++ Debian: (mini-iso) http://ftp.debian.org/debian/dists/sid/main/installer-i386/current/images/netboot/mini.iso
++ [Deepin](deepin): https://www.deepin.org/en/
 + EndlessOS: https://endlessos.com/pt-br/home/
 + FerenOS: https://ferenos.weebly.com/
++ Gentoo: https://www.gentoo.org/downloads/ [gentoo](gentoo.md)
++ GNU Distros list: https://www.gnu.org/distros/free-distros.en.html
++ GNU gNewSense: http://www.gnewsense.org/Main/Download
++ Kali Linux: https://www.kali.org/downloads/
++ Point Linux: http://pointlinux.org/
 + PopOS: https://system76.com/pop
++ Proteus Linux: http://www.porteus.org/
++ Revenge OS: https://sourceforge.net/projects/obrevenge/files/
++ Sabayon linux: https://www.sabayon.org/
++ Slax :https://www.slax.org/
++ Suse Linux: https://en.opensuse.org/openSUSE:Tumbleweed_installation
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
