@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 07 18:54
+# dicasvim.md Intro - Last Change: 2017 dez 13 11:09
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -32,6 +32,7 @@ To copy the line 16 to the line bellow just type:
     :t10   ................... copy current line to the line below line 10
     :t$    ................... copy current line to the end of file
     :m$    ................... move current line to the end of file
+    :,+t0  ................... move current and next line to the beginning of the file
     :/user-friend/m$ ......... move next "user-friend" to the final line
 
 1 - Instead of jumping to the line
@@ -2503,6 +2504,7 @@ começado com width contendo dois dígitos faz-se assim
 # Copiando linhas que contém um padrão para um registro
 
     :g/pattern/y A
+    :g/pattern/ .,+5 y Z  ........ copia a linha contendo padrão e as 5 subsequentes
 
 Exibir apenas as linhas que contém um padrão
 

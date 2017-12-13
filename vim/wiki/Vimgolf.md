@@ -352,6 +352,27 @@ Best solution
 
     See :help v_g_CTRL-A
 
+
+ ``` markdown
+        {Visual}g CTRL-A	Add [count] to the number or alphabetic character in
+    			the highlighted text. If several lines are
+    		        highlighted, each one will be incremented by an
+    			additional [count] (so effectively creating a
+    			[count] incrementing sequence).  {not in Vi}
+    			For Example, if you have this list of numbers:
+    				1. ~
+    				1. ~
+    				1. ~
+    				1. ~
+    			Move to the second "1." and Visually select three
+    			lines, pressing g CTRL-A results in:
+    				1. ~
+    				2. ~
+    				3. ~
+    				4. ~
+```
+
+
 # I forgot quotes
 + http://vimgolf.com/challenges/5462e3f41198b80002512673
 

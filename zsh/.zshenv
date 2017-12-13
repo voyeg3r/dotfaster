@@ -9,6 +9,7 @@ export ZSH_CACHE_DIR="$HOME/.zsh-cache.d"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir "$ZSH_CACHE_DIR"
 
 export EDITOR=vim
+export BROWSER=firefox
 
 export LANG="pt_BR.UTF-8"
 export LANGUAGE="pt_BR:pt:pt_PT"

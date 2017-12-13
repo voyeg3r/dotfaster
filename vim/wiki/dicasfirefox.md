@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 nov 27 19:34
+# dicasfirefox.md - Last Change: 2017 dez 13 11:12
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -165,29 +165,11 @@ dentro do about:config
 
       plugins.click_to_play
 
-# Addon pra usar em conjunção com Downthemall (flashgot)
-+ https://addons.mozilla.org/en-US/firefox/addon/flashgot/developers
+# Plugins para o firefox quantum
++ https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
 
-# extensão para assistir sites como hulu
-https://addons.mozilla.org/en-US/firefox/addon/proxmate/
-
-Extensão para melhor visualizar páginas da wikipédia
-https://addons.mozilla.org/en-US/firefox/addon/wikiwand-wikipedia-modernized/
-
-# Extensão similar a "momentum" chamada tabtracker
-+ https://addons.mozilla.org/en-US/firefox/addon/tabtrekker/
-
-To refresh tabtracker making it show new wallpapers do this:
-
-Open about:config and search for extensions.jid1-AahxeYITR16k5Q@jetpack.images_lastupdated
-Right click the preference and click reset.
-
-Using the console setup "Shift + f2"
-
-    pref reset extensions.jid1-AahxeYITR16k5Q@jetpack.images_lastupdated
-
-There is another better than momentum extension that works on chromium
-+ https://chrome.google.com/webstore/detail/leoh-new-tab/ijhhakihjccpanbibbcceofpjnebokcb/related
+O plugin acima permite logar em duas contas gmail, por exemplo, ao mesmo tempo
+ou seja, muiltilogin
 
     curl -O
 
