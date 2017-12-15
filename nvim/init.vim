@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 08 07:55
+" Last Change: 2017 dez 15 09:06
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -66,6 +66,7 @@ set smartcase             " no ignorecase if Uppercase char present
 set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
 set tabstop=4             " Number of spaces that a <Tab> in the file counts for
+set title                 " shows filename at the top
 set expandtab             " Converts tab into spaces
 set shiftwidth=4
 set softtabstop=4
@@ -76,8 +77,11 @@ set lcs+=space:·,nbsp:•
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set wildmenu
+set wildmode=longest:full,list:full
+set completeopt=longest,menuone
 set nopaste
 set pastetoggle=<F2>
+set linebreak                  " Keep whole words during wrapping
 set noshowmode
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
@@ -180,6 +184,9 @@ colorscheme PaperColor
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Backspace in normal mode switches to last buffer
+nnoremap <BS> :buffer #<CR>
 
 " format paragraph keeping cursor position
 nnoremap <F8> :call Preserve("normal gqap")<CR>
@@ -329,6 +336,22 @@ let g:vimshell_prompt =  '$ '
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
+
+" https://vi.stackexchange.com/a/440/7339
+" Like gJ, but always remove spaces
+fun! JoinSpaceless()
+    execute 'normal gJ'
+    " Character under cursor is whitespace?
+    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
+        " When remove it!
+        execute 'normal dw'
+    endif
+endfun
+" Map it to a key
+nnoremap <Leader>J :call JoinSpaceless()<CR>
+
+" Map it to a key
+nnoremap <Leader>J :call JoinSpaceless()<CR>
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap

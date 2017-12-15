@@ -61,6 +61,7 @@ set novisualbell        " turn off visual bell
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set tabstop=4           " Number of spaces that a <Tab> in the file counts for
+set title               " shows filename at the top
 set shiftwidth=4
 set expandtab
 

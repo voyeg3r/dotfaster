@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 13 14:56
+# dicasvim.md Intro - Last Change: 2017 dez 15 08:42
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -34,6 +34,7 @@ To copy the line 16 to the line bellow just type:
     :m$    ................... move current line to the end of file
     :,+t0  ................... move current and next line to the beginning of the file
     :/user-friend/m$ ......... move next "user-friend" to the final line
+    :g/TITLE/ m+1 ............ moves down lines with TITLE
 
 1 - Instead of jumping to the line
 2 - pressing yy
@@ -51,6 +52,38 @@ Or you can close the secconde buffer by doing:
 Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
+
+# Move down lines with "TITLE"
++ https://stackoverflow.com/questions/47798270/
+Let's say you have this file
+
+    A simple line
+    TITLE1:
+
+    Another usual line
+    TITLE2:
+
+    More usual lines here
+    TITLE3:
+
+    Last line of this sample text.
+
+And you wnat to change it to be this way
+
+    A simple line
+
+    TITLE1:
+    Another usual line
+
+    TITLE2:
+    More usual lines here
+
+    TITLE3:
+    Last line of this sample text.
+
+## Solution
+
+    :g/TITLE/ m+1
 
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
@@ -176,15 +209,14 @@ After running this function I only have to run the macro 'a' 9 times and macro
 
     :%!sort -n -k 3 ........... sort numerically by third column
 
-
 # Sort lines by text at position
 + https://stackoverflow.com/a/47497861/2571881
 
-2011-09-17  00:45 |Take That|NEVER FORGET
-2011-09-17  00:37 |Free|ALL RIGHT NOW
-2011-09-17  00:41 |Kim Wilde|CAMBODIA
-2011-09-17  00:56 |SUTHERLAND BROTHERS & QUIVER|ARMS OF MARY
-2011-09-17  00:53 |Visage|FADE TO GREY
+    2011-09-17  00:45 |Take That|NEVER FORGET
+    2011-09-17  00:37 |Free|ALL RIGHT NOW
+    2011-09-17  00:41 |Kim Wilde|CAMBODIA
+    2011-09-17  00:56 |SUTHERLAND BROTHERS & QUIVER|ARMS OF MARY
+    2011-09-17  00:53 |Visage|FADE TO GREY
 
     sort /\%20v/
     :%!sort -t'|' -k2
@@ -197,7 +229,6 @@ The command above will put `ls` output at the first line
 
 # Vim registers
 
-    @.  ................ repeats what has been typed
     :@+  ............... executes the content of clipboard
     :let @+ = @/ ....... puts last searh into clipboard
 
@@ -591,6 +622,16 @@ Merge vertical lists in Vim (doiing the oposite of above)
 This is simple, just place the cursor on the column between the lists. Insert
 visualblock-mode <C-v>, mark the whole column, hit r to replace it, and then
 <CR> and you have what you want. source: https://stackoverflow.com/a/46034410/2571881
+
+# Joining lines on vim
+
+In normal mode just press `J`. This will join the next line but adding an extra space
+between the two lines. `gJ` does the joining without spaces. Via command line you can use either:
+
+    :join ................... join with space
+    :join! .................. join withou extra space
+
+Both solutions above will keep the cursor in place
 
 # Substitution on visual selection
 
