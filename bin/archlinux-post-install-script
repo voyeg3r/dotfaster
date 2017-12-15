@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 dez 06 06:35
+#      Last Change: 2017 dez 15 10:58
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -666,6 +666,10 @@ yaourt suru
 
 # pop icon theme
 # https://github.com/pop-os/icon-theme
+
+# a better android support
+# adicionei meu usuário aos grupos uucp e usb
+yaourt aur/jmtpfs gvfs-mtp
 
 # https://github.com/Xaviju/inkscape-open-symbols
 yaourt -S inkscape-open-symbols-git

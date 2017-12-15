@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 15 09:06
+" Last Change: 2017 dez 15 18:46
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -20,7 +20,8 @@ endif
 set shada=!,'1000,<50,s10,h,%,'2000
 
 " make my system deal with links
-let g:netrw_browsex_viewer= "xdg-open"
+"let g:netrw_browsex_viewer= "xdg-open"
+"let g:netrw_browsex_viewer= "firefox"
 
 if has("multi_byte")
   if &termencoding == ""
@@ -181,6 +182,9 @@ let no_buffers_menu=1
 set t_Co=256   " This is may or may not needed.
 set background=dark
 colorscheme PaperColor
+
+  " jump to lines with <count><Space>
+nmap <expr> <Space> v:count ? "gg" : "<Space>"
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

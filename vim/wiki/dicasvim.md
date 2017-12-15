@@ -1,8 +1,21 @@
-# dicasvim.md Intro - Last Change: 2017 dez 15 08:42
+# dicasvim.md Intro - Last Change: 2017 dez 15 18:46
  vim: set ts=4 et:
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
+
+# Set firefor as defult browser
+
+    xdg-mime default firefox.desktop x-scheme-handler/http
+    xdg-mime default firefox.desktop x-scheme-handler/https
+
+The above set will create an entry on:
+
+    ~/.config/mimeapps.list
+
+or you can do:
+
+    "let g:netrw_browsex_viewer= "firefox"
 
 # Incsearch tips
 
@@ -631,7 +644,11 @@ between the two lines. `gJ` does the joining without spaces. Via command line yo
     :join ................... join with space
     :join! .................. join withou extra space
 
-Both solutions above will keep the cursor in place
+Both solutions above will keep the cursor in place. You can also
+abreviate these commands with:
+
+    :j
+    :j!
 
 # Substitution on visual selection
 

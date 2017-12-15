@@ -16,7 +16,6 @@ export LANGUAGE="pt_BR:pt:pt_PT"
 export LC_ALL="pt_BR.UTF-8"
 
 export PYTHONSTARTUP=$HOME/.pythonstartup
-
 export MOZ_DISABLE_PANGO=1
 
 CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
