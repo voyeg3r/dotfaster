@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 15 18:46
+" Last Change: 2017 dez 16 06:13
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -284,6 +284,8 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
+" select last paste in visual mode
+" With gb we easily select the pasted text and we fix the indentation with  <  or >.
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 
@@ -901,4 +903,3 @@ iab tuiter http://www.twitter.com/voyeg3r
 iab vivaotux http://vivaotux.blogspot.com
 
 cab ag Ag
-

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 dez 15 10:58
+#      Last Change: 2017 dez 16 08:18
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -324,6 +324,32 @@ yaourt -S xbmc
 # para instalar rode o script install contido na pasta
 git clone git@github.com:powerline/fonts.git
 sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+
+installibm_plex(){
+    # https://blog.programster.org/install-IBM-plex-font
+    # ibm-plex font
+    NEEDED_COMMANDS="unzip"
+    missing_counter=0
+    for needed_command in $NEEDED_COMMANDS; do
+        if ! hash "$needed_command" >/dev/null 2>&1; then
+            printf "Command not found in PATH: %s\n" "$needed_command" >&2
+            ((missing_counter++))
+        fi
+    done
+    if ((missing_counter > 0)); then
+        printf "Minimum %d commands are missing in PATH, aborting" "$missing_counter" >&2
+        exit 1
+    fi
+    wget "https://github.com/IBM/type/archive/master.zip"
+    unzip master.zip
+    rm master.zip
+    cd type-master
+    sudo mkdir -p /usr/share/fonts/truetype/ibm-plex
+    sudo mkdir -p /usr/share/fonts/opentype/ibm-plex
+    sudo cp /tmp/type-master/fonts/*/desktop/pc/*.ttf /usr/share/fonts/truetype/ibm-plex/.
+    sudo cp /tmp/type-master/fonts/*/desktop/mac/*.otf /usr/share/fonts/opentype/ibm-plex/.
+    sudo fc-cache -fv
+} && installibm_plex
 
 # ttf-iosevka
 yaourt ttf-iosevka

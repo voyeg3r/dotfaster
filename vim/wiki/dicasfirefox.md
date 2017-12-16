@@ -1,10 +1,24 @@
-# dicasfirefox.md - Last Change: 2017 dez 13 11:12
+# dicasfirefox.md - Last Change: 2017 dez 15 18:51
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
 
 # References
 + https://www.maketecheasier.com/speed-up-firefox/
+
+
+# Set firefor as defult browser
+
+    xdg-mime default firefox.desktop x-scheme-handler/http
+    xdg-mime default firefox.desktop x-scheme-handler/https
+
+The above set will create an entry on:
+
+    ~/.config/mimeapps.list
+
+## To know your default broser just type:
+
+    xdg-settings get default-web-browser
 
 # How to access foruns with no login
 + http://www.kerkeberos.net/2009/12/10/visite-qualquer-site-ou-forum-sem-autenticacao/
