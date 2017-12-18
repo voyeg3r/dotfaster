@@ -1,8 +1,12 @@
-# dicasvim.md Intro - Last Change: 2017 dez 15 18:46
+# dicasvim.md Intro - Last Change: 2017 dez 17 20:29
  vim: set ts=4 et:
 
 Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
+
+# Paste and place the cursor after pasted text
+
+    gP
 
 # Set firefor as defult browser
 
@@ -41,13 +45,16 @@ to mimic some of the preference-setting options of a few other popular editors
 If you get yourself doing a lot of jjjj and kkkk you have to read this.
 To copy the line 16 to the line bellow just type:
 
+    :3,9t20 .................. move lines 3 to 9 beyond 20
+    :3,9m20 ...................copy lines 3 to 9 beyond 20
     :16t.  ................... copy line16 1 line below
     :t10   ................... copy current line to the line below line 10
     :t$    ................... copy current line to the end of file
     :m$    ................... move current line to the end of file
-    :,+t0  ................... move current and next line to the beginning of the file
+    :,+t0  ................... move current and next line to line 0
     :/user-friend/m$ ......... move next "user-friend" to the final line
     :g/TITLE/ m+1 ............ moves down lines with TITLE
+    :m+ ...................... move current line to line below
 
 1 - Instead of jumping to the line
 2 - pressing yy
@@ -649,6 +656,15 @@ abreviate these commands with:
 
     :j
     :j!
+
+If you wonna join the next three lines without any space at the joining point just type:
+
+    3:j! Enter
+
+Vim will put something like that
+
+    :.,.+2j!
+    :j!3
 
 # Substitution on visual selection
 
@@ -1509,6 +1525,7 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 # Appending registers with global command
 
     :g/TODO/yank A
+    :[range]g/pattern/cmd
 
 if you have a function like:
 

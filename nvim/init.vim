@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 16 06:13
+" Last Change: 2017 dez 18 06:34
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -33,16 +33,16 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+let vimplug_exists=expand(glob('~/.config/nvim/autoload/plug.vim'))
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-
 set cursorline
 set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
+set matchpairs=(:),{:},[:],<:>
 
 " temporary solution for nvim cursor
 "set guicursor=
@@ -103,7 +103,7 @@ if !filereadable(vimplug_exists)
   autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin(expand('~/.config/nvim/plugged'))
+call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
@@ -192,15 +192,16 @@ nmap <expr> <Space> v:count ? "gg" : "<Space>"
 " Backspace in normal mode switches to last buffer
 nnoremap <BS> :buffer #<CR>
 
-" format paragraph keeping cursor position
-nnoremap <F8> :call Preserve("normal gqap")<CR>
+nnoremap <C-Right> :vertical resize +5<CR>
+nnoremap <C-Left> :vertical resize -5<CR>
+nnoremap <C-Up> :res +5<CR>
+nnoremap <C-Down> :res -5<CR>
 
-"move lines in normal mode
-nnoremap <C-j> :m+<CR>
-nnoremap <C-k> :m-2<CR>
+" format paragraph keeping cursor position
+nnoremap <F8> gwap
 
 " Search word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+noremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <M-j> <c-w>w<c-e><c-w>w
@@ -332,8 +333,6 @@ let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 50
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
 
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -355,6 +354,10 @@ fun! JoinSpaceless()
 endfun
 " Map it to a key
 nnoremap <Leader>J :call JoinSpaceless()<CR>
+
+" join lines keeping cursor position
+nnoremap <Leader>j :join<cr>
+nnoremap <Leader>gj :join!<cr>
 
 " Map it to a key
 nnoremap <Leader>J :call JoinSpaceless()<CR>
@@ -456,6 +459,9 @@ command! -nargs=0 CountWord :call CountWord()<CR>
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
 
+" Search selected text
+vnoremap // y/<C-R>"<CR>
+
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032
 fun! CountBuffers()
@@ -470,12 +476,21 @@ command! -nargs=0 Nbufs :call CountBuffers()
 " nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
-nnoremap <leader>o @="m`o\eg``"<cr>
-nnoremap <leader>O @="m`O\eg``"<cr>
+nnoremap <Leader>o @="m`o\eg``"<cr>
+nnoremap <Leader>O @="m`O\eg``"<cr>
 
-"*****************************************************************************
-"" Autocmd Rules
-"*****************************************************************************
+" Autocmd Rules **********************************
+
+" Reloads vimrc after saving but keep cursor position
+if !exists('*ReloadVimrc')
+    fun! ReloadVimrc()
+        let save_cursor = getcurpos()
+        source $MYVIMRC
+        call setpos('.', save_cursor)
+    endfun
+endif
+autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
+
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
@@ -646,12 +661,13 @@ endif
 vmap < <gv
 vmap > >gv
 
-"" Move visual block
+" Move lines in all modes with Ctrl-k Ctrl-j
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-"" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+nnoremap <A-j> :m+<CR>
+nnoremap <A-k> :m-2<CR>
 
 " vim-airline
 "if !exists('g:airline_symbols')
@@ -716,7 +732,6 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
-
 " Esta função insere um change log
 " se nelas não houver "Last Change" ele passa batido
 " ou seja não insere o cabeçalho
@@ -761,9 +776,9 @@ nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 " map Ctrl-k in inserto mode to delete til the end of line
-inoremap <C-k> <C-o>d$
+" inoremap <C-k> <C-o>d$
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
@@ -847,8 +862,13 @@ nnoremap <special> <leader>d :call DelBlankLines()<cr>
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 command! SaveAsRoot w !sudo tee %
+cnoreabbrev ww SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+
+" Insert current line at command line
+cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
+nnoremap <leader>c :<C-r>=getline('.')<CR>
 
 " to reselect use gv in normal mode
 nnoremap <F23> <ESC>:set hls! hls?<cr>
@@ -856,6 +876,7 @@ inoremap <F23> <C-o>:set hls! hls?<cr>
 vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
+set nu rnu
 nmap <F2> :set nu rnu<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
