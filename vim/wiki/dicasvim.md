@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 17 20:29
+# dicasvim.md Intro - Last Change: 2017 dez 19 13:17
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -581,6 +581,7 @@ Using vim-exchange plugin you can do:
 + https://stackoverflow.com/a/11976158/2571881
 
     :bufdo vimgrepadd pattern % | copen+
+    :argdo ...
 
 # Tips about vimgrep
 
@@ -597,6 +598,10 @@ We can refer to each file on the arglist simple by doing
 
 ## O plugin ag.vim →  rking/ag.vim: https://github.com/rking/ag.vim
 Permite muitas ações na janela quickfix (aquela que abre quando usamos o grep)
+
+Using Ag (Silver_Searcher) we can find things like:
+
+    :Ag pattern
 
     e    to open file and close the quickfix window
     o    to open (same as enter)
@@ -1077,7 +1082,6 @@ buffer. You can :put that into the current buffer via the expression register:
      :put =getbufline(2, 7, 11)
 
 # Setting and getting position on vim
-
 References: http://vi.stackexchange.com/questions/6208/
 http://stackoverflow.com/questions/3922384/
 
@@ -1116,6 +1120,15 @@ exec '/' . getline('.')
 Using a "register" on search
 
 :exe '%s/' . @a . '/foo/g'
+```
+
+## Easy way to get back to a position using vimscript
++ https://devhints.io/vimscript-functions
+
+``` markdown
+let save_cursor = getcurpos()
+move around ...
+call setpos('.' save_cursor)
 ```
 
 # How to know if vim has python support

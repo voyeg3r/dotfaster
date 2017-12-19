@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 18 06:34
+" Last Change: 2017 dez 19 12:48
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -121,6 +121,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'vim-scripts/AutoComplPop'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
@@ -164,6 +165,9 @@ Plug 'chriskempson/tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
+
+" Enable deoplete on startup
+let g:deoplete#enable_at_startup = 1
 
 " Required:
 filetype plugin indent on
@@ -688,6 +692,7 @@ endfun
 nnoremap ,l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
+" Hey brazilian portuguese users! what you are waiting for?
 nnoremap ç :
 
 " fzf configuration
@@ -900,7 +905,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 if exists(":python3")
    let g:_uspy=":python3"
-    let g:ultisnipsusepythonversion = 3
+   let g:ultisnipsusepythonversion = 3
 endif
 
 let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
@@ -922,5 +927,4 @@ iab mymail <voyeg3r ✉ gmail.com>
 iab slas Sérgio Luiz Araújo Silva
 iab tuiter http://www.twitter.com/voyeg3r
 iab vivaotux http://vivaotux.blogspot.com
-
 cab ag Ag

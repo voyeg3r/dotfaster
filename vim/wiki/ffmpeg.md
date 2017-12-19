@@ -59,6 +59,10 @@ Usage example
     sudo apt-get install libavcodec52  libavutil49
     ffmpeg -i myVideo.vob myvideo.avi
 
+## Convert amr audio to mp3
+
+    ffmpeg -i audio1.amr -ar 22050 audio1.mp3
+
 ## conversao simples
 
     ffmpeg -i arquivo.wmv arquivo.avi

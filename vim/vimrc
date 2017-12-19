@@ -30,12 +30,15 @@ set viminfo=%,<800,'10,/50,:100,h,f1,n~/.viminfo "{{{1
 "           + save/restore buffer list
 "}}}
 
-if !exists("*VimReloadFunction")
-    fun! VimReloadFunction()
-        call Preserve(":source ~/.vimrc")
-    endfu
+" Reloads vimrc after saving but keep cursor position
+if !exists('*ReloadVimrc')
+    fun! ReloadVimrc()
+        let save_cursor = getcurpos()
+        source $MYVIMRC
+        call setpos('.', save_cursor)
+    endfun
 endif
-com! ReloadVim call VimReloadFunction()
+autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
 
 set laststatus=2        " statusline specifi
 set mouse=a             " enable mause click
@@ -78,7 +81,14 @@ let mapleader=','
 
 " entrar no modo comando mais rápido
 nnoremap ç :
-nnoremap K :help <C-r><C-w><CR>
+
+" Move lines in all modes with Ctrl-k Ctrl-j
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+nnoremap <A-j> :m+<CR>
+nnoremap <A-k> :m-2<CR>
 
 "move lines in normal mode
 nnoremap <C-j> :m+<CR>

@@ -1,3 +1,4 @@
+# fasd.md - Last Change: ter 19 dez 2017 13:16:08 -03
 Site oficial -->  https://github.com/clvv/fasd
 
 # O que é o comando fasd?
@@ -23,11 +24,10 @@ Para instalar basta clonar o repositório
 
     depois entra na pasta
 
-      cd fasd
-      sudo make install
+    cd fasd
+    sudo make install
 
 Criando os aliases:
-
 
     ########### aliases para o fasd_cd ##########
     # aliases para fasd
@@ -44,7 +44,6 @@ Criando os aliases:
     alias v='f -t -e vim -b viminfo'
     alias o='a -e xdg-open' # quick opening files with xdg-open
     alias _!='fc -e "sed -i -e \"s/^/sudo /\""' # sudo last command
-
 
 Daí você só vai ter que digitar os comandos tipo...
 
@@ -78,5 +77,4 @@ parãmetro para o grep
 ``` sh
 grep 'lower' `f aliases`
 ```
-
 
