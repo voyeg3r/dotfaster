@@ -1,4 +1,4 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: 2017 dez 02 08:12
+# [Wiki](wiki.md) do Sérgio - Last Change: 2017 dez 19 18:41
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -57,6 +57,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Latexexemplos](latexexemplos.md)
 + [Libras2kg](libras2kg.md)
 + [Markdown](markdown.md)
++ [Medium](Medium.md)
 + [Megasena](megasena.md)
 + [Oracoes](oracoes.md)
 + [openbox](openbox.md)

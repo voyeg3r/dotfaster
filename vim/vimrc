@@ -824,6 +824,10 @@ nnoremap 0 :call ToggleHomeEnd()<CR>
 " open quickfix window with word under cursor as search pattern
 nnoremap <F4> :execute "vimgrep /" . expand("<cword>") . "/gji **" <Bar> cw<CR>
 
+" map to count word under cursor
+" https://stackoverflow.com/a/11492536/2571881
+nnoremap <f6> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
+
 " Disable visualbell
 set noerrorbells visualbell t_vb=
 if has('autocmd')

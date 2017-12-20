@@ -18,6 +18,8 @@ export LC_ALL="pt_BR.UTF-8"
 export PYTHONSTARTUP=$HOME/.pythonstartup
 export MOZ_DISABLE_PANGO=1
 
+export TERM=xterm-256color
+
 CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
 
 XDG_DATA_HOME="$HOME/.local/share"

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 19 13:17
+# dicasvim.md Intro - Last Change: 2017 dez 20 08:07
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -9,7 +9,6 @@ Learn vim progressively
     gP
 
 # Set firefor as defult browser
-
     xdg-mime default firefox.desktop x-scheme-handler/http
     xdg-mime default firefox.desktop x-scheme-handler/https
 
@@ -2365,7 +2364,7 @@ of any kind of previous configuration.
 alias lvim='vim -c "normal '\''0"'
 alias lnvim="nvim -c':e#<1'"
 ```
-Opening the last nvim file:
+## Opening the last nvim file:
 
 ``` viml
 " This function allows you to open the last edited file
@@ -2384,7 +2383,10 @@ Manually you can do:
 
     :e #>1
 
-Or in normal mode "vim" pressing →  '0
+Or in normal mode "vim" pressing →
+
+    '0
+    Ctrl-o Ctrl-o
 
 You can also type:
 
@@ -3054,6 +3056,7 @@ Para exibir o tamanho da linha atual
 function CurrentLineLength()
     let len = strlen(getline("."))
     return len
+    echom "Curent line:" . len
 endfunction
 ```
 
@@ -3411,6 +3414,7 @@ particular word occurs in a buffer: >
 Another approach
 
     :%s/<C-R><C-W>//gn
+    :nnoremap ,* *<C-O>:%s///gn<CR>
 
 # Name spaces para variáveis no vim
 
@@ -3442,6 +3446,10 @@ specified by what is prepended:
 # Contar ocorrências de uma palavra
 
     :%s/<c-r><c-w>//gn
+
+    " map to count word under cursor
+    " https://stackoverflow.com/a/11492536/2571881
+    :nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 
 # Dicas para substituições
 
@@ -3640,7 +3648,9 @@ muito louco, tranformando um xml em texto plano http://vimeo.com/15443936
 
 # Como abrir vários arquivos no gvim
 
-      :args ~/path/*.py
+```viml
+:args ~/path/*.py
+```
 
 isto evita o erro E77: muitos arquivos para editar
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 19 12:48
+" Last Change: 2017 dez 20 12:41
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -19,10 +19,6 @@ endif
 
 set shada=!,'1000,<50,s10,h,%,'2000
 
-" make my system deal with links
-"let g:netrw_browsex_viewer= "xdg-open"
-"let g:netrw_browsex_viewer= "firefox"
-
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
@@ -32,8 +28,6 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
-
-let vimplug_exists=expand(glob('~/.config/nvim/autoload/plug.vim'))
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -89,6 +83,8 @@ set undodir=~/.vimundodir
 set autoread
 set noerrorbells visualbell t_vb=
 set clipboard=unnamed,unnamedplus
+
+let vimplug_exists=expand(glob('~/.config/nvim/autoload/plug.vim'))
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -193,9 +189,6 @@ nmap <expr> <Space> v:count ? "gg" : "<Space>"
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
  nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" Backspace in normal mode switches to last buffer
-nnoremap <BS> :buffer #<CR>
-
 nnoremap <C-Right> :vertical resize +5<CR>
 nnoremap <C-Left> :vertical resize -5<CR>
 nnoremap <C-Up> :res +5<CR>
@@ -205,11 +198,11 @@ nnoremap <C-Down> :res -5<CR>
 nnoremap <F8> gwap
 
 " Search word under cursor
-noremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
-nnoremap <M-j> <c-w>w<c-e><c-w>w
-nnoremap <M-k> <c-w>w<c-y><c-w>w
+nnoremap <C-M-k> <c-w>w<c-y><c-w>w
+nnoremap <C-M-j> <c-w>w<c-e><c-w>w
 
 nnoremap <M-=> <C-w>+
 nnoremap <M--> <C-w>-
@@ -269,22 +262,17 @@ for mapmode in [ "o", "x" ]
     endfor
 endfor
 
-"" Disable the blinking cursor.
-
-nnoremap ' `
-nnoremap K :help <C-r><C-w><CR>
-
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 "  when searching next patter put it in the middle of screen
-nnoremap N Nzt
 nnoremap n nzt
+nnoremap N Nzt
 "nnoremap * *zt
 nnoremap # #zt
 "nnoremap g* gtzt
 nnoremap g# g#zt
 
-" Same when jumting around
+" Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
@@ -306,14 +294,6 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
-
-"  vim-airline
-"let g:airline_theme = 'powerlineish'
-"let g:airline#extensions#syntastic#enabled = 1
-"let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tagbar#enabled = 1
-"let g:airline_skip_empty_sections = 1
 
 "*****************************************************************************
 "" Abbreviations
@@ -348,7 +328,7 @@ let g:vimshell_prompt =  '$ '
 
 " https://vi.stackexchange.com/a/440/7339
 " Like gJ, but always remove spaces
-fun! JoinSpaceless()
+fun! JoinSpaceless() abort
     execute 'normal gJ'
     " Character under cursor is whitespace?
     if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
@@ -359,82 +339,68 @@ endfun
 " Map it to a key
 nnoremap <Leader>J :call JoinSpaceless()<CR>
 
-" join lines keeping cursor position
-nnoremap <Leader>j :join<cr>
-nnoremap <Leader>gj :join!<cr>
-
-" Map it to a key
-nnoremap <Leader>J :call JoinSpaceless()<CR>
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
     set wm=2
-    set textwidth=66
-    set formatoptions+=t
+    set textwidth=79
   endfunction
 endif
+
+" join lines keeping cursor position
+nnoremap <Leader>j :join<cr>
+nnoremap <Leader>gj :join!<cr>
 
 " to insert this result: --> :put =Randnum(1000)
 function! Randnumber(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
 endfunction
 
-fun! CleanFlaschards()
+fun! CleanFlaschards() abort
     %w! output.csv-backup
     let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-		"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
+	"let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
     let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
-		%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-		%s,\v\<(\/)?\zsu\ze\>,b,g
-		%s,\v\s+$,,g
-		%s,;,:,ge
-		%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-		%s,\v(^)?((\<b\>)?\<br\>?)$,,g
-		%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-		g/^\W\+$/d
-		normal gg
-		silent normal! /v((vamos (então )?aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dipgg
-		silent normal! /\v(no post de hoje)/dipgg
-		normal gg
-		g/\v^\d+\W?(–|-)/d
-		normal gg
-		g/<b>[^<]*$/normal $gJf>agg
-		silent normal! /<u>\|<b>/{kdgg
-		normal gg
-		silent normal! /:$/dipgg
-		normal /CLIQUE/{kdG
-		"0r audios.txt
-		0r !ls *.mp3 | sort -n -k1
-		g/\.mp3/s/^\d\+-//g
-		"g/.*mp3/s/http.*\/\d\+-//g
-		g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-		g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-		%s,\(\.\)\(<\/b>\)$,\2\1,g
-		normal gg
-		silent normal! /^<\/b>$/kJD
-		%s/\v(!|.|\?)  /\1 /ge
-		DelBlank
-		normal gg
-		normal vipo
-		let selectionsize = line("'>") - line("'<") + 1
-		echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+	%s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
+	%s,\v\<(\/)?\zsu\ze\>,b,g
+	%s,\v\s+$,,g
+	%s,;,:,ge
+	%s,\v\W?\<b\>(\W\<\/b\>)?$,,g
+	%s,\v(^)?((\<b\>)?\<br\>?)$,,g
+	%s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
+	g/^\W\+$/d
+	normal gg
+	silent normal! /v((vamos (então )?aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dipgg
+	silent normal! /\v(no post de hoje)/dipgg
+	normal gg
+	g/\v^\d+\W?(–|-)/d
+	normal gg
+	g/<b>[^<]*$/normal $gJf>agg
+	silent normal! /<u>\|<b>/{kdgg
+	normal gg
+	silent normal! /:$/dipgg
+	normal /CLIQUE/{kdG
+	"0r audios.txt
+	0r !ls *.mp3 | sort -n -k1
+	g/\.mp3/s/^\d\+-//g
+	"g/.*mp3/s/http.*\/\d\+-//g
+	g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
+	g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
+	%s,\(\.\)\(<\/b>\)$,\2\1,g
+	normal gg
+	silent normal! /^<\/b>$/kJD
+	%s/\v(!|.|\?)  /\1 /ge
+	DelBlank
+	normal gg
+	normal vipo
+	let selectionsize = line("'>") - line("'<") + 1
+	echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
-" " source: http://ddrscott.github.io/blog/2016/vim-toggle-movement/
-" function! ToggleHomeEnd()
-"   let pos = getpos('.')
-"   execute "normal! 0"
-"   if pos == getpos('.')
-"     execute "normal! $"
-"   endif
-" endfunction
-" nnoremap 0 :call ToggleHomeEnd()<CR>
-
 " This function requires you select the numbers
 " source: https://vi.stackexchange.com/a/4699/7339
-
-fun! SumVis()
+fun! SumVis() abort
     try
         let l:a_save = @a
         norm! gv"ay
@@ -450,7 +416,9 @@ vnoremap <C-s> :<C-u>call SumVis()<CR>
 " search visually selected text
 vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
-fun! CountWord()
+" Get hid of E488: https://vi.stackexchange.com/questions/4689/
+" Remove the trailing <cr> That is only needed for mappings, but not for commands.
+fun! CountWordFunction()
 	let l:win_view = winsaveview()
 	let l:old_query = getreg('/')
 	let var = expand("<cword>")
@@ -458,7 +426,7 @@ fun! CountWord()
 	call winrestview(l:win_view)
 	call setreg('/', l:old_query)
 endfun
-command! -nargs=0 CountWord :call CountWord()<CR>
+command! -nargs=0 CountWord :call CountWordFunction()
 
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
@@ -468,7 +436,7 @@ vnoremap // y/<C-R>"<CR>
 
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032
-fun! CountBuffers()
+fun! CountBuffers() abort
     "let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
     let l:total = len(getbufinfo({'buflisted':1}))
     echom "you have " . l:total . " opened buffers!"
@@ -510,7 +478,7 @@ augroup END
 " python
 augroup python
     au FileType python set keywordprg=pydoc
-    au! BufRead *.py setlocal smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+    au! BufRead *.py setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
     au! BufRead,Bufnewfile *.py im :<CR> :<CR><TAB>
     au! BufWritePre *.py,*.js :call <SID>CleanExtraSpacesFunction()
     au! BufNewFile *.py 0r ~/.vim/skel/template.py
@@ -683,7 +651,7 @@ nnoremap <A-k> :m-2<CR>
 " on nvim you have to create an alias
 " alias lnvim="nvim -c':e#<1'"
 " Reference: https://www.reddit.com/r/vim/comments/fx6l5/
-fun! MruFile()
+fun! MruFile() abort
     let filename = get(v:oldfiles, 0, '')
     if filename != ''
         exe "edit " . filename
@@ -741,7 +709,7 @@ hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 " se nelas não houver "Last Change" ele passa batido
 " ou seja não insere o cabeçalho
 " usr_41.txt
-fun! InsertChangeLog()
+fun! InsertChangeLog() abort
   let l:flag=0
   for i in range(1,5)
     if getline(i) !~ '.*Last Change.*'
@@ -761,7 +729,7 @@ fun! InsertChangeLog()
   endif
 endfun
 
-fun! ChangeHeader()
+fun! ChangeHeader() abort
     if line('$')>=5
         call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%Y %b %d %H:%M")/ei')
 		normal <C-o>
@@ -771,7 +739,7 @@ command! -nargs=0 CH :call ChangeHeader()
 au! BufReadPost * :silent call ChangeHeader()
 
 " jump to next place holder
-function! JumpToNextPlaceholder()
+function! JumpToNextPlaceholder() abort
     let old_query = getreg('/')
     echo search("<+.\\++>")
     exec "norm! c/+>/e\<CR>"
@@ -784,7 +752,7 @@ inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 " inoremap <C-k> <C-o>d$
 
 inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
+function! s:align() abort
   let p = '^\s*|\s.*\s|\s*$'
   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
@@ -798,7 +766,7 @@ endfunction
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results
 " on clipboard to be pasted on anki
-fun! CleanSubtitles()
+fun! CleanSubtitles() abort
     let old_query = getreg('/')
     :g/^\(\s\+\)\=\d\+$/d
     :g/^\(\s\+\)\=\d\+.*-->\s\d[^,]*,\d\d\d$/d
@@ -810,7 +778,7 @@ fun! CleanSubtitles()
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
-fun! CleanExtraSpaces()
+fun! CleanExtraSpaces() abort
     call Preserve('%s/\s\+$//ge')
 endfun
 com! Cls :call CleanExtraSpaces()
@@ -820,13 +788,13 @@ highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
 " ********************************************************
-fun! SearchHighlight()
+fun! SearchHighlight() abort
     silent! call matchdelete(b:ring)
     let b:ring = matchadd('ErrorMsg', '\c\%#' . @/, 101)
 endfun
 
 " dos2unix ^M
-fun! Dos2unixFunction()
+fun! Dos2unixFunction() abort
     "call Preserve('%s/$//ge')
     call Preserve("%s/\x0D$//e")
     set ff=unix
@@ -857,7 +825,7 @@ endif
 
 " remove consecutive blank lines
 " see Preserve function definition
-fun! DelBlankLines()
+fun! DelBlankLines() abort
     call Preserve('%s/^\n\{2,}/\r/ge')
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
@@ -884,6 +852,10 @@ vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 set nu rnu
 nmap <F2> :set nu rnu<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+
+" map to count word under cursor
+" https://stackoverflow.com/a/11492536/2571881
+nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 
 noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 
