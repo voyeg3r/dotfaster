@@ -1,4 +1,4 @@
-# O que é o Anki?  - Last Change: sáb 28 out 2017 16:00:46 -03
+# O que é o Anki?  - Last Change: 2017 dez 21 07:28
 
 E um programa de aprendizado baseado na repetição espaçada
 
@@ -6,7 +6,7 @@ E um programa de aprendizado baseado na repetição espaçada
 
 ``` markdown
 tag:TvSeries* or tag:movies
-tag:movies or tag:TVSeries or tag:RealEnglish
+tag:movies or tag:TvSeries or tag:RealEnglish or tag:DomineIngles.Com.Br
 ```
 
 # Defining css style:

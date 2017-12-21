@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 20 08:07
+# dicasvim.md Intro - Last Change: 2017 dez 20 13:09
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -1536,8 +1536,8 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
 # Appending registers with global command
 
-    :g/TODO/yank A
     :[range]g/pattern/cmd
+    :g/TODO/yank A
 
 if you have a function like:
 
@@ -3676,7 +3676,7 @@ You can use a global negator like this:
 
     :v/:$/-1j
 
-for those which don't match the following regular expression (v) /(regular
+For those which don't match the following regular expression (v) /(regular
 expression of lines ending in colon)/ go to the previous line (-1) and join
 that line to the next one (j)).
 
@@ -3797,7 +3797,7 @@ My solution
 
 # Pegar linha que começa com palavra e sublinhar
 
-    g/^\w/t.|s/./=/g
+    :g/^\w/t.|s/./=/g
 
 # Adicionar uma linha em branco após linhas que começam com espaço
 
@@ -3912,6 +3912,7 @@ grup 2  ---> tudo menos # E espaço
 
 ``` vim
 :g/^##[^#]/ normal I#
+:g/^##\@!/ normal I#
 ```
 
 Obs: os caracteres ^[ são obtidos digitando-se Ctrl-v + [
