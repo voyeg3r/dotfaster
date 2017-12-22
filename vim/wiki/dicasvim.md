@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 20 13:09
+# dicasvim.md Intro - Last Change: 2017 dez 22 11:25
  vim: set ts=4 et:
 
 Learn vim progressively
@@ -102,7 +102,7 @@ And you wnat to change it to be this way
 
 ## Solution
 
-    :g/TITLE/ m+1
+    :g/TITLE/ m+
 
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
@@ -1032,7 +1032,13 @@ The -u NONE flag tells Vim not to source your vimrc on startup. That way, your
 customizations won’t be applied and plugins will be disabled. When Vim starts
 up without loading a vimrc file, it reverts to vi compatible mode, which causes
 many useful features to be disabled. The -N flag prevents this by setting the
-‘nocompatible’ option.
+'nocompatible' option.
+
+## Load an alternative configuration and plugins directory
++ http://inside.github.io/vim-presentation/#/15
+
+    vim -u ~/.another.vimrc
+    set runtimepath+=~/.another.vim
 
 # Magic with expression register
 
@@ -3571,11 +3577,19 @@ Without vim-exchange plugin you can switch two words by doing
 
 # Trabalhando com janelas
 
-       Ctrl-w Ctrl-6 ..... divide a janela e edita arquivo alternativo
+    Ctrl-w Ctrl-6 ..... divide a janela e edita arquivo alternativo
+
+# Spliting current window
+
+    :sp[lit]  .......................... split current window
+    Ctrl-w s  .......................... split current window
+    Ctrl-w o  .......................... close all other windows
+    Ctrl-w q  .......................... close current window
 
 # Colando do clipboard em modo insert
 
-Em modo normal colamos o conteúdo da área de transferência usando o clássico "+p já em modo insert faça:
+Em modo normal colamos o conteúdo da área de transferência usando o clássico
+"+p já em modo insert faça:
 
        <Ctrl-r>+
        <Ctrl-r>"

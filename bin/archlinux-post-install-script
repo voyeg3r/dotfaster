@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 dez 19 13:07
+#      Last Change: 2017 dez 22 10:43
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -41,6 +41,10 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
+
+
+# npm is the default package manager for Node.js.
+sudo pacman -S npm
 
 # podcast client
 yaourt vocal

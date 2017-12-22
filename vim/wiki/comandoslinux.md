@@ -264,6 +264,7 @@
 + [nmblookup](nmblookup.md)
 + [nmcli](nmcli.md)
 + [nproc](nproc.md)
++ [npm](npm.md)
 + [nslookup](nslookup.md)
 + [ntpdate](ntpdate.md)
 + [ocs-inventory](ocs-inventory.md)

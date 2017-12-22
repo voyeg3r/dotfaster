@@ -1,9 +1,7 @@
-# Dicas sobre o StackExchange e StackOverFlow
+# stackexchange.md - Last Change: sex 22 dez 2017 07:44:36 -03
 
 ``` markdown
-File:		 StackExchange.md
 Created:	 dom 08 jan 2017 09:29:38 BRT
-Last Change: ter 10 jan 2017 14:23:48 BRT
 ```
 
 O Stack Exchange tem vários canais de discussão
@@ -23,11 +21,9 @@ podem ser referenciados da seguinte forma:
 <kbd>Ctrl+V</kbd><kbd>Tab</kbd>x
 ```
 
-
 ou seja usando a marcação <kbd> Ctrl-V </kbd>
 
-
-# Encurtando urls to StackExchange
+# Encurtando urls to StackExchange - shortening StackExchange urls
 
 Urls do tipo:
 
@@ -41,7 +37,6 @@ Podem ter títulos apagados e ainda assim vão apontar pro mesmo endereço
 
     quando se tratar de uma resposta "answer" pode-se abreviar para "a"
 
-
 # Inserting ttyrecordings at stackexchange
 
     [![asciicast](https://asciinema.org/a/14.png)](https://asciinema.org/a/14) https://asciinema.org/docs/embedding
@@ -54,4 +49,7 @@ To insert
 		> text here: Places all text within the paragraph enclosed in a yellow box
 		>! text here: Places all within the paragraph enclosed in a yellow box that
 
+# Users mention
+If you just want to mention a user in your question, you should link to their profile.
 
+To add a link: [link text](http://www.example.com)

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 20 12:41
+" Last Change: 2017 dez 22 13:17
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -550,6 +550,7 @@ augroup css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
     au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+    au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
 augroup tex

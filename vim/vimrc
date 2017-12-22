@@ -402,6 +402,7 @@ augroup css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date:    " .strftime("%d-%m-%Y")
     au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+    au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
 augroup tex
