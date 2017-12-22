@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 22 14:23
+# dicasvim.md Intro - Last Change: 2017 dez 22 14:34
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -127,6 +127,13 @@ Arglist commands
     :argdo ....... update to save all changes to your arglist
     :argdo ....... undo to undo changes to your arglist
 
+Navigation in arglist
+
+    [a => go to the previous file in arglist
+    ]a => go to the next file in arglist
+    [A => go to the first file in arglist
+    ]A => go to the last file in arglist
+
 # Two commands at once
 + https://stackoverflow.com/a/47002025/2571881
 
@@ -141,7 +148,6 @@ making vimwiki folds working properly
 
     :set foldcolumn=2
     :let g:markdown_folding=1
-
 
 ## Do you want an actionable TOC of your markdown file?
 
