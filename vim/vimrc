@@ -667,11 +667,11 @@ nnoremap <F6> :exec '!'.getline('.')
 set undofile " Maintain undo history between sessions
 set undodir=~/.vimundodir
 
-" move vertically by visual line
-" source: https://stackoverflow.com/a/21000307/2571881
-" it makes j and k work with visual lines unless you put counter before them
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+" It adds motions like 25j and 30k to the jump list, so you can cycle
+" through them with control-o and control-i.
+" source: https://www.vi-improved.org/vim-tips/
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null

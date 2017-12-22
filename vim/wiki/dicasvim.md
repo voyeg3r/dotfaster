@@ -1,8 +1,8 @@
-# dicasvim.md Intro - Last Change: 2017 dez 22 11:25
+# dicasvim.md Intro - Last Change: 2017 dez 22 14:23
  vim: set ts=4 et:
 
-Learn vim progressively
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
++ https://www.vi-improved.org/
 
 # Paste and place the cursor after pasted text
 
@@ -68,6 +68,11 @@ Or you can close the secconde buffer by doing:
 
     :bd 2
 
+Open one buffer on the list:
+
+    :b */*<tab>
+    nnoremap <leader>b :b */*<C-d>
+
 Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
@@ -113,6 +118,15 @@ And you wnat to change it to be this way
     :args **/*.rb
     will handle the recursive search natively. :-)
 
+Arglist commands
+
+    :arg ......... to show the files in your current arglist
+    :argdo ....... to run a command on your arglist
+    :argadd ...... or :arga to add files to your arglist
+    :argdelete or :argd to remove files from your arglist
+    :argdo ....... update to save all changes to your arglist
+    :argdo ....... undo to undo changes to your arglist
+
 # Two commands at once
 + https://stackoverflow.com/a/47002025/2571881
 
@@ -127,6 +141,11 @@ making vimwiki folds working properly
 
     :set foldcolumn=2
     :let g:markdown_folding=1
+
+
+## Do you want an actionable TOC of your markdown file?
+
+    :g/^#/#
 
 # Syntax highlighting on Disqus
 + https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting
@@ -253,6 +272,23 @@ The command above will put `ls` output at the first line
 
     On insert mode <C-r>* inserts "Primary Selection"
     you can also use Shift-insert
+
+If you've ever wanted to wrap some text foo with some other, arbitrary text using c{motion} (change) followed by " (paste the last deleted text), then you've probably noticed that you cannot repeat the action on a different text bar using .. For example: Starting with
+
+    foo
+    bar
+
+if you put the cursor on foo and do ciw("), and then put the cursor on bar and hit ., you'll end up with
+
+    (foo)
+    (foo)
+
+instead of
+
+    (foo)
+    (bar)
+
+The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for more info.) (Of course, for this particular example, it would be better to use a plugin, like vim-surround, but the general point is still helpful, I hope.)
 
 # Vim tips for everyone
 

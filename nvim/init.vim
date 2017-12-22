@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 22 13:17
+" Last Change: 2017 dez 22 14:05
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -33,7 +33,19 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-set cursorline
+" source: https://www.vi-improved.org/vim-tips/
+augroup highlight_follows_focus
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
+
+augroup highligh_follows_vim
+    autocmd!
+    autocmd FocusGained * set cursorline
+    autocmd FocusLost * set nocursorline
+augroup END
+
 set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
 set matchpairs=(:),{:},[:],<:>
@@ -285,11 +297,11 @@ noremap gV `[v`]
 " Last inserted text
 nnoremap g. :normal! `[v`]<cr><left>
 
-" move vertically by visual line
-" source: https://stackoverflow.com/a/21000307/2571881
-" it makes j and k work with visual lines unless you put counter before them
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+" It adds motions like 25j and 30k to the jump list, so you can cycle
+" through them with control-o and control-i.
+" source: https://www.vi-improved.org/vim-tips/
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
