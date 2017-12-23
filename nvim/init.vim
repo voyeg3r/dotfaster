@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 22 14:05
+" Last Change: 2017 dez 23 10:51
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -54,6 +54,7 @@ set matchpairs=(:),{:},[:],<:>
 "set guicursor=
 
 set laststatus=2          " statusline specific
+set lazyredraw            " speed up macros
 set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
 set nocompatible          " use vim defaults
@@ -69,6 +70,7 @@ set hlsearch              " highlight searches
 set incsearch             " do incremental searching
 set showmatch             " jump to matches when entering regexp
 set ignorecase            " ignore case when searching
+set infercase             " case inferred by default
 set smartcase             " no ignorecase if Uppercase char present
 set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
@@ -76,6 +78,7 @@ set tabstop=4             " Number of spaces that a <Tab> in the file counts for
 set title                 " shows filename at the top
 set expandtab             " Converts tab into spaces
 set shiftwidth=4
+set shiftround            "when at 3 spaces, and I hit > go to 4, not 5
 set softtabstop=4
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
@@ -117,7 +120,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 Plug 'rking/ag.vim'
 Plug 'w0rp/ale'                           " Asyncronous lint engine
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
-"Plug 'bitc/vim-bad-whitespace'            " Find bad whitespace
+Plug 'tpope/vim-characterize'
 Plug 'godlygeek/tabular'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
@@ -146,7 +149,7 @@ Plug 'tpope/vim-fugitive'
 "Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
-Plug 'bronson/vim-trailing-whitespace'
+"Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
@@ -466,14 +469,15 @@ nnoremap <Leader>O @="m`O\eg``"<cr>
 " Autocmd Rules **********************************
 
 " Reloads vimrc after saving but keep cursor position
-if !exists('*ReloadVimrc')
-    fun! ReloadVimrc()
+if !exists('*ReloadVimrcFunction')
+    fun! ReloadVimrcFunction()
         let save_cursor = getcurpos()
         source $MYVIMRC
         call setpos('.', save_cursor)
     endfun
 endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrc()
+autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction()
+command! -nargs=0 ReloadVimrc call ReloadVimrcFunction()
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
@@ -492,7 +496,7 @@ augroup python
     au FileType python set keywordprg=pydoc
     au! BufRead *.py setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
     au! BufRead,Bufnewfile *.py im :<CR> :<CR><TAB>
-    au! BufWritePre *.py,*.js :call <SID>CleanExtraSpacesFunction()
+    au! BufWritePre *.py,*.js :call <SID>StripTrailingWhitespace()
     au! BufNewFile *.py 0r ~/.vim/skel/template.py
     au BufNewFile *.py exe "1," . 10 . "s/Creation Date:.*/Creation Date:  " .strftime("%d-%m-%Y")
     au! BufWritePost *.py :silent !chmod a+x <afile>
@@ -707,7 +711,16 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+autocmd BufWinLeave * call StripTrailingWhitespace()
+
+" source: https://www.vi-improved.org/recommendations/
+function! StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    call Preserve('%s/\s\+$//e')
+  endif
+endfunction
+com! Cls :call StripTrailingWhitespace()
+au! BufwritePre * :call StripTrailingWhitespace()
 
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta
@@ -791,11 +804,6 @@ fun! CleanSubtitles() abort
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
 
-fun! CleanExtraSpaces() abort
-    call Preserve('%s/\s\+$//ge')
-endfun
-com! Cls :call CleanExtraSpaces()
-au! BufwritePre * :call CleanExtraSpaces()
 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)

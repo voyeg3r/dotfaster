@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 22 14:34
+# dicasvim.md Intro - Last Change: 2017 dez 23 11:08
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -48,6 +48,7 @@ To copy the line 16 to the line bellow just type:
     :3,9m20 ...................copy lines 3 to 9 beyond 20
     :16t.  ................... copy line16 1 line below
     :t10   ................... copy current line to the line below line 10
+    :46put=@f ................ put content of register f after line 46
     :t$    ................... copy current line to the end of file
     :m$    ................... move current line to the end of file
     :,+t0  ................... move current and next line to line 0
@@ -2053,6 +2054,10 @@ que delimita a busca ficando assim:
 Also have a look at 'scrollbind' it allows you to scroll two files
 at same time
 
+# Opening (finding) files
+
+    find **/*name
+
 # Setting utf-8 encoding
 
 ``` vim
@@ -3357,7 +3362,7 @@ ci(
 cib
 ```
 
-# Movendo-se
+# moving around
 
 ``` markdown
 fx ........... para o próximo 'x'
@@ -3367,6 +3372,16 @@ Tx ........... antes de prévio 'x'
 gf ........... go to file
 gd ........... go to definition
 ```
+
+There are a lot of g'something' on vim that come in handy
+
+    gf ............... jump to file
+    gd ............... jump to local definition of a name (function)
+    gD ............... jump to global definition of a function
+    gg ............... jump to the begining of the file
+    gx ............... opens your web-browser with url under cursor
+
+    ga ............... print the ascii value of the carachter under the cursor
 
 # Completar caminhos no modo insert
 
