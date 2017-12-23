@@ -1,8 +1,9 @@
-# dicasvim.md Intro - Last Change: 2017 dez 23 11:08
+# dicasvim.md Intro - Last Change: 2017 dez 23 11:20
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
 + https://www.vi-improved.org/
++ https://goo.gl/LmBPd9 - FreBlogg
 
 # Paste and place the cursor after pasted text
 

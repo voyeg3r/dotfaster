@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 23 10:51
+" Last Change: 2017 dez 23 14:06
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -208,6 +208,10 @@ nnoremap <C-Right> :vertical resize +5<CR>
 nnoremap <C-Left> :vertical resize -5<CR>
 nnoremap <C-Up> :res +5<CR>
 nnoremap <C-Down> :res -5<CR>
+
+" jump to next buffer
+nnoremap <M-right> :bn<cr>
+nnoremap <M-left> :bp<cr>
 
 " format paragraph keeping cursor position
 nnoremap <F8> gwap
@@ -715,9 +719,9 @@ autocmd BufWinLeave * call StripTrailingWhitespace()
 
 " source: https://www.vi-improved.org/recommendations/
 function! StripTrailingWhitespace()
-  if !&binary && &filetype != 'diff'
-    call Preserve('%s/\s\+$//e')
-  endif
+    if !&binary && &filetype != 'diff'
+        call Preserve('%s/\s\+$//e')
+    endif
 endfunction
 com! Cls :call StripTrailingWhitespace()
 au! BufwritePre * :call StripTrailingWhitespace()
@@ -736,23 +740,23 @@ hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 " ou seja não insere o cabeçalho
 " usr_41.txt
 fun! InsertChangeLog() abort
-  let l:flag=0
-  for i in range(1,5)
-    if getline(i) !~ '.*Last Change.*'
-      let l:flag = l:flag + 1
+    let l:flag=0
+    for i in range(1,5)
+        if getline(i) !~ '.*Last Change.*'
+            let l:flag = l:flag + 1
+        endif
+    endfor
+    if l:flag >= 5
+        normal(1G)
+        call append(0, "Arquivo: <+Description+>")
+        call append(1, "Created: " . strftime("%Y %B %d hs %H:%M"))
+        call append(2, "Last Change: " . strftime("%Y %B %d hs %H:%M"))
+        call append(3, "autor: <+digite seu nome+>")
+        call append(4, "site: <+digite o endereço de seu site+>")
+        call append(5, "twitter: <+your twitter here+>")
+        call append(6, "email: <+seu email+>")
+        normal gg
     endif
-  endfor
-  if l:flag >= 5
-    normal(1G)
-    call append(0, "Arquivo: <+Description+>")
-    call append(1, "Created: " . strftime("%Y %B %d hs %H:%M"))
-    call append(2, "Last Change: " . strftime("%Y %B %d hs %H:%M"))
-    call append(3, "autor: <+digite seu nome+>")
-    call append(4, "site: <+digite o endereço de seu site+>")
-    call append(5, "twitter: <+your twitter here+>")
-    call append(6, "email: <+seu email+>")
-    normal gg
-  endif
 endfun
 
 fun! ChangeHeader() abort
@@ -771,22 +775,22 @@ function! JumpToNextPlaceholder() abort
     exec "norm! c/+>/e\<CR>"
     call setreg('/', old_query)
 endfunction
-nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+nnoremap <special> <Leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 " map Ctrl-k in inserto mode to delete til the end of line
 " inoremap <C-k> <C-o>d$
 
 inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
 function! s:align() abort
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
+    let p = '^\s*|\s.*\s|\s*$'
+    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+        Tabularize/|/l1
+        normal! 0
+        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+    endif
 endfunction
 
 " The function must be used in a piece of subtitles
@@ -803,7 +807,6 @@ fun! CleanSubtitles() abort
     call setreg('/', old_query)
 endfun
 command! -nargs=0 GetSubs :call CleanSubtitles()
-
 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)

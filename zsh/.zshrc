@@ -1,4 +1,4 @@
-# .zshrc - Last Change: qua 15 nov 2017 14:22:11 -03
+# .zshrc - Last Change: sáb 23 dez 2017 14:47:22 -03
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -303,6 +303,7 @@ bindkey . rationalise-dot
 # without this, typing a . aborts incremental history search
 bindkey -M isearch . self-insert
 
+# search for a term in the history commands
 autoload -Uz history-beginning-search-menu
 zle -N history-beginning-search-menu
 bindkey '' history-beginning-search-menu
