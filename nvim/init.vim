@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 23 14:06
+" Last Change: 2017 dez 23 19:52
 " vim: ff=unix ai et ts=4
 "
 "                 ( O O )
@@ -88,6 +88,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set wildmenu
 set wildmode=longest:full,list:full
+set whichwrap +=<,>,h,l
 set completeopt=longest,menuone
 set nopaste
 set pastetoggle=<F2>

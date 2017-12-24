@@ -1,9 +1,10 @@
-# dicasvim.md Intro - Last Change: 2017 dez 23 11:20
+# dicasvim.md Intro - Last Change: 2017 dez 23 20:39
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
 + https://www.vi-improved.org/
 + https://goo.gl/LmBPd9 - FreBlogg
++ http://vimcolors.com/
 
 # Paste and place the cursor after pasted text
 
@@ -79,7 +80,7 @@ Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
 
-# Move down lines with "TITLE"
+# Move lines down with "TITLE"
 + https://stackoverflow.com/questions/47798270/
 Let's say you have this file
 
@@ -140,7 +141,6 @@ Navigation in arglist
 + https://stackoverflow.com/a/47002025/2571881
 
     :1,10s/abc/def/g|50,60&&
-
     OBS: && repeats last command
 
 # Vim markdown tips

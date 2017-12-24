@@ -31,8 +31,9 @@ I have an article at Medium.com about this project:
 	```sh
 	# http version
 	git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git .dotfiles
-
 	git fetch --recurse-submodules --jobs=8
+
+    ln -sfvn ~/.dotfiles/nvim ~/.config/nvim
 
 	chsh -s $(which zsh) $(whoami)
 

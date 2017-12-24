@@ -1,4 +1,8 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 dez 04 12:46
+# Arquivo: archlinux.wiki - Last Change: 2017 dez 24 17:05
+
+# Automatic updates
+
+[archlinux auto update](rchlinux-auto-update)
 
 # compress or expand executable files
 
