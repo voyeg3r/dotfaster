@@ -32,8 +32,21 @@ I have an article at Medium.com about this project:
 	# http version
 	git clone --recursive -j8 https://github.com/voyeg3r/dotfaster.git .dotfiles
 	git fetch --recurse-submodules --jobs=8
+    ssh -T git@github.com
+    var=`echo 3gmail.com@ | sed 's,\(^3\)\(gmail\.com\)\(\@\),voyeg\1r\3\2,g'`
+    git config --global user.name voyeg3r
+    git config --global merge.tool vimdiff
+    git config --global user.email ${var}
+    git config --global alias.last 'log -1 HEAD'
+    git config --global credential.helper cache
+    git config --global push.default simple
+    git config --global credential.helper 'cache --timeout=3600'
+    git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
     ln -sfvn ~/.dotfiles/nvim ~/.config/nvim
+    ln -sfvn ~/.dotfiles/zsh/.zlogin ~/.zlogin
+    ln -sfvn ~/.dotfiles/zsh/.zshenv ~/.zshenv
+    ln -sfvn ~/.dotfiles/zsh/.zshrc ~/.zshrc
 
 	chsh -s $(which zsh) $(whoami)
 

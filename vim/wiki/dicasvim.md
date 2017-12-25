@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 23 20:39
+# dicasvim.md Intro - Last Change: 2017 dez 25 07:37
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -49,7 +49,7 @@ To copy the line 16 to the line bellow just type:
     :3,9t20 .................. move lines 3 to 9 beyond 20
     :3,9m20 ...................copy lines 3 to 9 beyond 20
     :16t.  ................... copy line16 1 line below
-    :t10   ................... copy current line to the line below line 10
+    :t10   ................... copy current line to the line to line 10
     :46put=@f ................ put content of register f after line 46
     :t$    ................... copy current line to the end of file
     :m$    ................... move current line to the end of file
@@ -58,9 +58,11 @@ To copy the line 16 to the line bellow just type:
     :g/TITLE/ m+1 ............ moves down lines with TITLE
     :m+ ...................... move current line to line below
 
-1 - Instead of jumping to the line
-2 - pressing yy
-3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
+This is one antipattern
+
+    1 - Instead of jumping to the line
+    2 - pressing yy
+    3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
 Another common antipattern is closing a file to reopen vim with an empty buffer,
 you can simply:

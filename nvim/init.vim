@@ -1,6 +1,7 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 23 19:52
+" Last Change: 2017 dez 25 08:06
 " vim: ff=unix ai et ts=4
+" Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -52,12 +53,11 @@ set matchpairs=(:),{:},[:],<:>
 
 " temporary solution for nvim cursor
 "set guicursor=
-
+set dictionary+=~/.dotfiles/nvim/words.txt     " C-x C-k C-n
 set laststatus=2          " statusline specific
 set lazyredraw            " speed up macros
 set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
-set nocompatible          " use vim defaults
 set scrolloff=3           " keep 3 lines when scrolling
 set sidescrolloff=3
 set ai                    " set auto-indenting on for programming
@@ -132,8 +132,7 @@ Plug 'tommcdo/vim-exchange'
 "Plug 'inside/vim-search-pulse'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
@@ -177,9 +176,6 @@ Plug 'chriskempson/tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
-
-" Enable deoplete on startup
-let g:deoplete#enable_at_startup = 1
 
 " Required:
 filetype plugin indent on
