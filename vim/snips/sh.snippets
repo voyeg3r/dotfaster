@@ -1,17 +1,36 @@
-# Shebang. Executing bash via /usr/bin/env makes scripts more portable.
-snippet #!
+# skel
+snippet _skel "Inserts shelbang and other stuf" b
 #!/usr/bin/env bash
 # Created: `date +%Y-%m-%d\ %H:%M`
-# Last Change: dom 01 jan 2017 18:02:08 BRT
+# Last Change: 2017 dez 25 10:12
 # Author: ${1:`!v g:snips_author`}
 # Twitter: ${2:`!v g:snips_twitter`}
 ${0:# press Ctrl-j to jump placeholders}
 endsnippet
 
+# Shebang. Executing bash via /usr/bin/env makes scripts more portable.
+snippet #! "shebang" b
+#!/usr/bin/env bash
+# Created: `date +%Y-%m-%d\ %H:%M`
+# Last Change: `date +%Y-%m-%d\ %H:%M`
+# Author: ${1:`!v g:snips_author`}
+# Twitter: ${2:`!v g:snips_twitter`}
+${0:# press Ctrl-j to jump placeholders}
+endsnippet
+
+snippet shebang "shebang" b
+# Created: `date +%Y-%m-%d\ %H:%M`
+# Last Change: `date +%Y-%m-%d\ %H:%M`
+# Author: ${1:`!v g:snips_author`}
+# Twitter: ${2:`!v g:snips_twitter`}
+${0:# press Ctrl-j to jump placeholders}
+
+endsnippet
+
 snippet sh
 #!/usr/bin/env bash
 # Created: `date +%Y-%m-%d\ %H:%M`
-# Last Change: sex 04 nov 2016 16:02:43 BRT
+# Last Change: `date +%Y-%m-%d\ %H:%M`
 # vim:ft=sh:fdm=syntax:nu:
 # Instituicao: ${1:instituicao}
 # Proposito do script: ${2:write here the script purpose}
@@ -222,12 +241,10 @@ sed ${1:options} 's/${2:foo}/${3:bar}/g'
 ${0:press Ctrl-j to leave}
 endsnippet
 
-
 snippet	sedd
 sed ${1:options} 's/${1:what}/d'
 ${0:press Ctrl-j to leave}
 endsnippet
-
 
 snippet lic "gpl3 licence"
 This program is free software: you can redistribute it and/or modify

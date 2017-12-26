@@ -1,22 +1,12 @@
-# link oficial
-[github repo](https://github.com/SirVer/ultisnips)
-
-``` markdown
-File:		 UltiSnips.md
-Created:	 ter 10 jan 2017 13:08:25 BRT
-Last Change: ter 10 jan 2017 13:08:30 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
+# File:	ultisnips.md - Last Change: seg 25 dez 2017 09:57:09 -03
++ [github repo](https://github.com/SirVer/ultisnips)
 
 # argigos a respeito:
-* [sharpen your vim with snippets](https://brigade.engineering/sharpen-your-vim-with-snippets-767b693886db#.qq0y0kthk)
-* [generic html snippets](https://medium.com/@shxfee/generic-html-snippets-with-vim-and-ultisnips-8cc369390cb9#.rheutidju)
-* [why snippets](http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/)
-* [d-snippets](https://github.com/kiith-sa/DSnips)
++ [sharpen your vim with snippets](https://brigade.engineering/sharpen-your-vim-with-snippets-767b693886db#.qq0y0kthk)
++ [generic html snippets](https://medium.com/@shxfee/generic-html-snippets-with-vim-and-ultisnips-8cc369390cb9#.rheutidju)
++ [why snippets](http://fueledbylemons.com/blog/2011/07/27/why-ultisnips/)
++ [d-snippets](https://github.com/kiith-sa/DSnips)
++ https://noahfrederick.com/log/vim-templates-with-ultisnips-and-projectionist
 
 # Inserir texto com underline usando ultisnips
 
@@ -28,7 +18,6 @@ endsnippet
 ```
 
 #  Para mostrar uma lista das complementações possíveis
-
 pressione no modo insert
 
 		Ctrl-Tab

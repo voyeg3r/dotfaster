@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
-# Creation Date:    <+type creation's date+>
-# Last Change:      ter 29 nov 2016 12:25:15 BRT
+# Created:          <+type creation's date+>
+# Last Change: 2017 dez 26 07:48
 # this script aims: <+describe here+>
 # author:           sérgio luiz araújo silva
 # site:             http://vivaotux.blogspot.com
@@ -9,4 +9,5 @@
 # skype:            sergioaraujosilva
 # =================================================
 
+<+ Leader j +>
 

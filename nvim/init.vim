@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 25 08:06
+" Last Change: 2017 dez 26 07:46
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -536,8 +536,8 @@ autocmd InsertLeave * set cul
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
-    au BufNewFile *.sh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/
-    "au BufWritePost *.sh :silent !chmod a+x <afile>
+    au BufNewFile *.sh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufWritePost *.sh :silent !chmod a+x <afile>
 augroup end
 
 augroup zsh
@@ -623,6 +623,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsListSnippets="<C-Space>"
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
