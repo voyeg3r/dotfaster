@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # =================================================
-# Creation Date:    <+type creation's date+>
-# Last Change: ter 29 nov 2016 09:24:05 BRT
+# Created:          <+type creation's date+>
+# Last Change: 2017 dez 26 07:51
 # this script aims: <+describe your dile here+>
 # author:           sérgio luiz araújo silva
 # site:             http://vivaotux.blogspot.com
@@ -9,3 +9,4 @@
 # skype:            sergioaraujosilva
 # =================================================
 
+<+ Leader j +>

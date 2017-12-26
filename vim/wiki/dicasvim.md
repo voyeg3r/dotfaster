@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 25 07:37
+# dicasvim.md Intro - Last Change: 2017 dez 26 09:28
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3178,6 +3178,13 @@ set grepformat=%f:%l:%m
     ou para buscas mais antigas:
 
     :cnewer
+
+# Autocompile
+
+``` c++
+"auto compile on quit - silent: do not report errors
+autocmd VimLeave *.cpp !silent g++ -Wall %:p -o %:r
+```
 
 # Como exibir as opções de formatação?
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 26 07:46
+" Last Change: 2017 dez 26 07:52
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -499,7 +499,7 @@ augroup python
     au! BufRead,Bufnewfile *.py im :<CR> :<CR><TAB>
     au! BufWritePre *.py,*.js :call <SID>StripTrailingWhitespace()
     au! BufNewFile *.py 0r ~/.vim/skel/template.py
-    au BufNewFile *.py exe "1," . 10 . "s/Creation Date:.*/Creation Date:  " .strftime("%d-%m-%Y")
+    au BufNewFile *.py call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au! BufWritePost *.py :silent !chmod a+x <afile>
     autocmd FileType python set textwidth=79
     autocmd FileType python filetype indent on
@@ -542,7 +542,7 @@ augroup end
 
 augroup zsh
     au BufNewFile *.zsh 0r ~/.vim/skel/template.zsh
-    au BufNewFile *.zsh exe "1," . 10 . "s/Creation Date:.*/Creation Date: " . strftime("%d-%m-%Y")/e
+    au BufNewFile *.zsh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufWritePost *.zsh :silent !chmod a+x <afile>
 augroup end
 
@@ -566,14 +566,14 @@ augroup css
     au BufNewFile *.css 0r ~/.vim/skel/template.css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
-    au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+    au BufNewFile *.css call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
 augroup tex
     au Bufnewfile,BufRead *.tex set ft=tex
     au BufNewFile *.tex 0r ~/.vim/skel/template.tex
-    au BufNewFile *.tex exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%c")
+    au BufNewFile *.tex call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     vnoremap e <tab>em<tab>
     vnoremap ' <tab>'<tab>
     iab latex \LaTeX\
