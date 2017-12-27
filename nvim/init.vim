@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 27 08:10
+" Last Change: 2017 dez 27 13:07
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -75,11 +75,11 @@ set smartcase             " no ignorecase if Uppercase char present
 set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
 set tabstop=4             " Number of spaces that a <Tab> in the file counts for
+set softtabstop=4         " number of spaces in tab when editing
 set title                 " shows filename at the top
 set expandtab             " Converts tab into spaces
 set shiftwidth=4
 set shiftround            "when at 3 spaces, and I hit > go to 4, not 5
-set softtabstop=4
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -500,6 +500,7 @@ augroup python
     au! BufWritePre *.py,*.js :call <SID>StripTrailingWhitespace()
     au! BufNewFile *.py 0r ~/.vim/skel/template.py
     au BufNewFile *.py call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.py :%s/File:\s\+\zs.*/\=expand("%:t")
     au! BufWritePost *.py :silent !chmod a+x <afile>
     autocmd FileType python set textwidth=79
     autocmd FileType python filetype indent on
@@ -544,7 +545,7 @@ augroup end
 augroup zsh
     au BufNewFile *.zsh 0r ~/.vim/skel/template.zsh
     au BufNewFile *.zsh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
-    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
+    au BufNewFile *.zsh :%s/File:\s\+\zs.*/\=expand("%:t")
     au BufWritePost *.zsh :silent !chmod a+x <afile>
 augroup end
 
@@ -561,7 +562,7 @@ augroup html
     " needed one line with 'Created:' in firsts 5 lines
     "au Bufnewfile,BufRead *.html,*.shtml,*.htm 1,5s/\s*Created:\s*\zs.*/\="" . strftime("%Y %b %d %X")/ge
     au BufNewFile,BufRead *.html,*.shtml,*.htm call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
-    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
+    au BufNewFile *.html :%s/File:\s\+\zs.*/\=expand("%:t")
 augroup end
 
 augroup css
@@ -570,7 +571,7 @@ augroup css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css exe "1," . 10 . "s/Created:.*/Created: " .strftime("%d-%m-%Y")
     au BufNewFile *.css call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
-    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
+    au BufNewFile *.css :%s/File:\s\+\zs.*/\=expand("%:t")
     au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
@@ -578,7 +579,7 @@ augroup tex
     au Bufnewfile,BufRead *.tex set ft=tex
     au BufNewFile *.tex 0r ~/.vim/skel/template.tex
     au BufNewFile *.tex call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
-    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
+    au BufNewFile *.tex :%s/File:\s\+\zs.*/\=expand("%:t")
     vnoremap e <tab>em<tab>
     vnoremap ' <tab>'<tab>
     iab latex \LaTeX\
