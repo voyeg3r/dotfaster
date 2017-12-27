@@ -372,12 +372,14 @@ nnoremap <c-o> <c-o>zz
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
     au BufNewFile *.sh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
     "au BufWritePost *.sh :silent !chmod a+x <afile>
 augroup end
 
 augroup zsh
     au BufNewFile *.zsh 0r ~/.vim/skel/template.zsh
     au BufNewFile *.zsh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.zsh :%s/File:\s\+\zs.*/\=expand("%:t")
     au BufWritePost *.zsh :silent !chmod a+x <afile>
 augroup end
 
@@ -387,6 +389,7 @@ augroup html
     au BufNewFile,BufRead *.html,*.shtml,*.htm set ft=html
     "au BufNewFile,BufRead,BufEnter  *.html,*.shtml,*.htm so ~/.vim/skel/skel.html
     au BufNewFile *.html 0r ~/.vim/skel/skel.html | let IndentStyle = "html"
+    au BufNewFile *.html :%s/File:\s\+\zs.*/\=expand("%:t")
     "au BufNewFile *.html,*.shtml,*.htm /body/+
     au BufNewFile,BufRead *.html,*.shtml,*.htm set noautoindent
     au BufNewFile,BufRead *.html,*.shtml,*.htm set nolist
@@ -399,6 +402,7 @@ augroup end
 augroup css
     au Bufnewfile,BufRead *.css set ft=css
     au BufNewFile *.css 0r ~/.vim/skel/template.css
+    au BufNewFile *.css :%s/File:\s\+\zs.*/\=expand("%:t")
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufNewFile *.css call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
@@ -408,6 +412,7 @@ augroup end
 augroup tex
     au Bufnewfile,BufRead *.tex set ft=tex
     au BufNewFile *.tex 0r ~/.vim/skel/template.tex
+    au BufNewFile *.tex :%s/File:\s\+\zs.*/\=expand("%:t")
     au BufNewFile *.tex call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     vnoremap e <tab>em<tab>
     vnoremap ' <tab>'<tab>

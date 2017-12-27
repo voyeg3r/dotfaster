@@ -1,4 +1,4 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: 2017 dez 23 10:53
+# [Wiki](wiki.md) do Sérgio - Last Change: 2017 dez 27 14:32
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -80,9 +80,8 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Taticaeestrategi](taticaeestrategi.md)
 + [Usandoogit](usandoogit.md)
 + [Usandoomercurial](usandoomercurial.md)
-+ [Vimsnippets](vimsnippets.md)
-+ [viml](viml.md)
-+ [Ultisnips](ultisnips.md)
++ [Vimsnippets](vimsnippets.md) [viml](viml.md)
++ [Ultisnips](ultisnips.md) [vimplugins](vimplugins.md)
 + [Webdoispontozero](webdoispontozero.md)
 + [windowmaker](windowmaker.md)
 + [Wingchun](wingchun.md)

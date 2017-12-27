@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 27 13:07
+" Last Change: 2017 dez 27 14:51
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -119,6 +119,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
+Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'                           " Asyncronous lint engine
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 Plug 'tpope/vim-characterize'

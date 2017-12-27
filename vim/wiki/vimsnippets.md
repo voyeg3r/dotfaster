@@ -1,16 +1,6 @@
-# O plugin [UltiSnips md](UltiSnips.md)
+# vimsnippets.md  - Last Change: qua 27 dez 2017 14:33:29 -03
 
-``` markdown
-File:		 VimSnippets.md
-Created:	 ter 10 jan 2017 14:41:26 BRT
-Last Change: ter 10 jan 2017 14:41:26 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
-```
-
+O plugin [UltiSnips md](UltiSnips.md)
 
 ## Diretorio dos snippets (dá uma olhada em help Ulti...)
 

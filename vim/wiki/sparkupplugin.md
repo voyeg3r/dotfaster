@@ -1,4 +1,5 @@
 # video introdutório ao sparkup
+vim plugin to write fast html code
 
  * http://vimeo.com/9480601
  * http://www.youtube.com/watch?v=3RzsRlVsqnQ
@@ -144,3 +145,4 @@ div#container.grid_10 > ul > li*4 > a  expands to
 div[id=myid][style=width: 200px] { My text goes in here } + nav > ul > li*4
 
 To jump at each point into pieces created by sparkup press Ctrl-n
+
