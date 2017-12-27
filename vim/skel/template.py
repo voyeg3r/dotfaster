@@ -4,9 +4,8 @@
 #            File:  <+filename+>
 #   Creation Date:  <+type creation's date+>
 #     Last Change:  <+type change date+>
-#            File:  <+File Name+>
-#          author:  sergio luiz araujo silva
-#            site:  http://vivaotux.blogspot.com
+#          Author:  sergio luiz araujo silva
+#            Site:  http://vivaotux.blogspot.com
 #         twitter:  @voyeg3r
 # ------------------------------------------------
 
