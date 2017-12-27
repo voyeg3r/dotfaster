@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 26 09:28
+# dicasvim.md Intro - Last Change: 2017 dez 26 14:39
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2897,6 +2897,7 @@ The solution search pattern would seems like this:
 ``` markdown
 /\v(foo)@<=bar .............. @<=bar (negates bar)
 /\vfoo(bar)@! ............... @! also negates bar
+\vaugroup(\s+END)@! ......... vim augroup start
 
 \(foo\)\@<!bar      any "bar" that's not in "foobar"
 \(\/\/.*\)\@<!in    "in" which is not after "//"

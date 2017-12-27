@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 26 07:52
+" Last Change: 2017 dez 26 14:43
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -511,7 +511,7 @@ augroup python
     let python_highlight_space_errors=1
 	autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
     autocmd FileType python xnoremap <buffer> <leader>c :normal I#<CR>
-augroup end
+augroup END
 
 "" txt
 augroup vimrc-wrapping
@@ -536,7 +536,7 @@ autocmd InsertLeave * set cul
 
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
-    au BufNewFile *.sh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufWritePost *.sh :silent !chmod a+x <afile>
 augroup end
 
@@ -558,15 +558,15 @@ augroup html
     au BufNewFile,BufRead *.html,*.shtml,*.htm call LastModified()
     " needed one line with 'Created:' in firsts 5 lines
     "au Bufnewfile,BufRead *.html,*.shtml,*.htm 1,5s/\s*Created:\s*\zs.*/\="" . strftime("%Y %b %d %X")/ge
-    au BufNewFile,BufRead *.html,*.shtml,*.htm exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
+    au BufNewFile,BufRead *.html,*.shtml,*.htm call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
 augroup end
 
 augroup css
     au Bufnewfile,BufRead *.css set ft=css
     au BufNewFile *.css 0r ~/.vim/skel/template.css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-    "au BufNewFile *.css exe "1," . 10 . "s/Creation Date:.*/Creation Date: " .strftime("%d-%m-%Y")
-    au BufNewFile *.css call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    "au BufNewFile *.css exe "1," . 10 . "s/Created:.*/Created: " .strftime("%d-%m-%Y")
+    au BufNewFile *.css call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
@@ -759,7 +759,7 @@ endfun
 
 fun! ChangeHeader() abort
     if line('$')>=5
-        call Preserve('1,5s/Last \(Change\|Modified\): \zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+        call Preserve('1,5s/Last \(Change\|Modified\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
 		normal <C-o>
     endif
 endfun

@@ -535,7 +535,7 @@ map <silent> <F9> <esc>:call LastModified()<cr>
 
 fun! ChangeHeader()
     if line('$')>=5
-        call Preserve('1,5s/Last Change: \zs.*/\=strftime("%c")/e')
+        call Preserve('1,5s/Last Change:\s\+\zs.*/\=strftime("%c")/e')
         normal <C-o>
     endif
 endfun
