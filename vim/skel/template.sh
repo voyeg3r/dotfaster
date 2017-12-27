@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # =================================================
-# Created:          <+type creation's date+>
-# Last Change:      <+type change date+>
+#             File: <+filename+>
+# 	       Created: <+type creation's date+>
+#      Last Change: 2017 dez 27 08:09
 # this script aims: <+describe here+>
-# author:           sérgio luiz araújo silva
-# site:             http://vivaotux.blogspot.com
-# twitter:          @voyeg3r
-# skype:            sergioaraujosilva
+#           author: sérgio luiz araújo silva
+#             site: http://vivaotux.blogspot.com
+#          twitter: @voyeg3r
+#            skype: sergioaraujosilva
 # =================================================
 
 <+ Leader j +>

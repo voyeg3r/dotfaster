@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 26 14:43
+" Last Change: 2017 dez 27 08:10
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -537,12 +537,14 @@ autocmd InsertLeave * set cul
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
     au BufNewFile *.sh call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
     au BufWritePost *.sh :silent !chmod a+x <afile>
 augroup end
 
 augroup zsh
     au BufNewFile *.zsh 0r ~/.vim/skel/template.zsh
     au BufNewFile *.zsh call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
     au BufWritePost *.zsh :silent !chmod a+x <afile>
 augroup end
 
@@ -551,14 +553,15 @@ augroup html
     au!
     au BufNewFile,BufRead *.html,*.shtml,*.htm set ft=html
     "au BufNewFile,BufRead,BufEnter  *.html,*.shtml,*.htm so ~/.vim/skel/skel.html
-    au BufNewFile *.html 0r ~/.vim/skel/skel.html | let IndentStyle = "html"
+    au BufNewFile *.html 0r ~/.vim/skel/template.html | let IndentStyle = "html"
     "au BufNewFile *.html,*.shtml,*.htm /body/+
     au BufNewFile,BufRead *.html,*.shtml,*.htm set noautoindent
     au BufNewFile,BufRead *.html,*.shtml,*.htm set nolist
-    au BufNewFile,BufRead *.html,*.shtml,*.htm call LastModified()
+    "au BufNewFile,BufRead *.html,*.shtml,*.htm call LastModified()
     " needed one line with 'Created:' in firsts 5 lines
     "au Bufnewfile,BufRead *.html,*.shtml,*.htm 1,5s/\s*Created:\s*\zs.*/\="" . strftime("%Y %b %d %X")/ge
     au BufNewFile,BufRead *.html,*.shtml,*.htm call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
 augroup end
 
 augroup css
@@ -567,6 +570,7 @@ augroup css
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
     "au BufNewFile *.css exe "1," . 10 . "s/Created:.*/Created: " .strftime("%d-%m-%Y")
     au BufNewFile *.css call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
     au Bufnewfile *css,*scss setl iskeyword+=-
 augroup end
 
@@ -574,6 +578,7 @@ augroup tex
     au Bufnewfile,BufRead *.tex set ft=tex
     au BufNewFile *.tex 0r ~/.vim/skel/template.tex
     au BufNewFile *.tex call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+    au BufNewFile *.sh :%s/File:\s\+\zs.*/\=expand("%:t")
     vnoremap e <tab>em<tab>
     vnoremap ' <tab>'<tab>
     iab latex \LaTeX\
