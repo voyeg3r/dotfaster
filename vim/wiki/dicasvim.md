@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 26 14:39
+# dicasvim.md Intro - Last Change: 2017 dez 28 19:56
  vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -715,6 +715,37 @@ Vim will put something like that
 
     :.,.+2j!
     :j!3
+
+# Junção de linhas com vim
++ Colaboração: Rubens Queiroz de Almeida
++ original do dicas-l: http://www.dicas-l.com.br/dicas-l/20081228.php
+
+Recentemente precisei combinar, em um arquivo, duas linhas consecutivas. O
+arquivo original continha linhas como
+
+  Matrícula: 123456
+  Senha: yatVind7kned
+  Matrícula: 123456
+  Senha: invanBabnit3
+
+E assim por diante. Eu precisava converter este arquivo para algo como:
+
+  Matrícula: 123456 - Senha: yatVind7kned
+  Matrícula: 123456 - Senha: invanBabnit3
+
+Para isto, basta emitir o comando:
+
+  :g/^Matrícula/s/\n/ - /
+  :v/Mat/-1j
+
+A primeira solução sustitui quebras de linha nas linhas contendo "Matrícula"
+por "-". Já a segunda solução usa um comando global de negação, ou seja, nas
+linhas que não existir o padrão "Mat", suba uma linha e aplique o comando "j"
+que junta linhas
+
+Se houver uma área selecionada o comando será assim:
+
+    :'<,'>v/Mat/-1j
 
 # Substitution on visual selection
 
@@ -2863,6 +2894,54 @@ How could I make that into
     & ............. use searched pattern
     1 ............. add 1 after it
 
+# Atalhos do plugin surround
+
+    Text              Command    New Text
+    ---------------   -------    -----------
+    "Hello |world!"   cs"'       'Hello world!'
+    "Hello |world!"   cs"<q>     <q>Hello world!</q>
+    (123+4|56)/2      cs)]       [123+456]/2
+    (123+4|56)/2      cs)[       [ 123+456 ]/2
+    <div>foo|</div>   cst<p>     <p>foo</p>
+    fo|o!             csw'       'foo'!
+    fo|o!             csW'       'foo!'
+
+    (| is the position of cursor in these examples)
+
+    Text              Command      New Text
+    ---------------   -------      -----------
+    Hello w|orld!     ysiw)        Hello (world)!
+    Hello w|orld!     csw)         Hello (world)!
+    fo|o              ysiwt<html>  <html>foo</html>
+    foo quu|x baz     yss"         "foo quux baz"
+    foo quu|x baz     ySS"         "
+                                   foo quux baz
+                               "
+
+    (| is the position of cursor in these examples)
+
+    Normal mode
+    -----------
+    ds  - delete a surrounding
+    cs  - change a surrounding
+    ys  - add a surrounding
+    yS  - add a surrounding and place the surrounded text on a new line + indent it
+    yss - add a surrounding to the whole line
+    ySs - add a surrounding to the whole line, place it on a new line + indent it
+    ySS - same as ySs
+
+    Visual mode
+    -----------
+    s   - in visual mode, add a surrounding
+    S   - in visual mode, add a surrounding but place text on new line + indent it
+
+    Insert mode
+    -----------
+    <CTRL-s> - in insert mode, add a surrounding
+    <CTRL-s><CTRL-s> - in insert mode, add a new line + surrounding + indent
+    <CTRL-g>s - same as <CTRL-s>
+    <CTRL-g>S - same as <CTRL-s><CTRL-s>
+
 # Some regex tips
 
 ``` markdown
@@ -3411,6 +3490,12 @@ There are a lot of g'something' on vim that come in handy
     omni completion ............ Ctrl-x Ctrl-o
     sugestões de spelling ...... Ctrl-x _s
     complemento ................ Ctrl-x Ctrl-n
+
+    Activate word completion (omni completion)
+    C-x C-p
+
+    Ativar complementação de dicionário
+    C-x C-k
 
 # Manipulando buffers
 

@@ -1,4 +1,4 @@
-# vimsnippets.md  - Last Change: qua 27 dez 2017 14:33:29 -03
+# vimsnippets.md  - Last Change: 2017 dez 29 07:37
 
 O plugin [UltiSnips md](UltiSnips.md)
 
@@ -7,7 +7,6 @@ O plugin [UltiSnips md](UltiSnips.md)
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 [[Tex.Snippets]]
-
 
 # como apagar tags do tipo </font*> no vim
 
@@ -32,7 +31,6 @@ Explicando:
     < .................. no caso estamos negando a abertura de tag
     ] .................. fechamento do grupo
     * .................. quantificador para o grupo (zero ou mais)
-
 
 		%s,</\?font[^<]*>,,g
 

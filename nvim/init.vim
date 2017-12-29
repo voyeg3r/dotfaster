@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 27 14:51
+" Last Change: 2017 dez 28 06:57
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -400,6 +400,7 @@ fun! CleanFlaschards() abort
 	"0r audios.txt
 	0r !ls *.mp3 | sort -n -k1
 	g/\.mp3/s/^\d\+-//g
+    g/repetição espaçada/normal! dap
 	"g/.*mp3/s/http.*\/\d\+-//g
 	g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
 	g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
