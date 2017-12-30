@@ -1,7 +1,8 @@
-# dicasvim.md Intro - Last Change: 2017 dez 30 07:47
- vim: set ts=4 et:
+# dicasvim.md Intro - Last Change: 2017 dez 30 10:52
+    vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
++ https://www.reddit.com/r/vim/search?q=Weekly+vim+tips+and+tricks&restrict_sr=on&sort=relevance&t=all
 + https://www.vi-improved.org/
 + https://goo.gl/LmBPd9 - FreBlogg
 + http://vimcolors.com/
@@ -1213,6 +1214,8 @@ move around ...
 call setpos('.' save_cursor)
 ```
 
+Pressing '' in normal mode you will jump back
+
 # How to know if vim has python support
 
     vim --version | grep python
@@ -1621,6 +1624,9 @@ References: http://vim.wikia.com/wiki/Search_across_multiple_lines
 
     :[range]g/pattern/cmd
     :g/TODO/yank A
+
+    :.,$g/^\d/exe "norm! \<c-a>" .............. increment numbers
+    :'a,'bg/\d\+/norm! ^A        .............. increment numbers
 
 if you have a function like:
 
@@ -2344,6 +2350,19 @@ regular expressions -- there are a couple others, too!)
 
     :g/^wget/ normal O
 
+Activating and deactivating modern Regular Expressions
+
+Vim regexes are inconsistent when it comes to what needs to be
+backslash-escaped and what doesn't, which is the one bad thing. But Vim lets
+you put \v to make everything suddenly consistent: everything except letters,
+numbers and underscores becomes "special" unless backslash-escaped.
+
+More interesting yet, you can activate and deactivate in one same search
+
+    :%s,<body>\v(\_.+)\V</body>,\1,
+    \v ................................ starts magic mode
+    \V ................................ ends magic mode
+
 # How to add a line after every few lines in vim
 
 I wanted to add a line after every 3 lines in a file (having about 1000 lines)
@@ -2847,8 +2866,8 @@ Solution
 
 ```viml
 /\v(^|(text)@<=)   # means start of line, or some point preceded by “text”
-.{-}           # as few characters as possible
-($|text)@=     # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+.{-}               # as few characters as possible
+($|text)@=         # without globbing characters, checking that we reached either end of line or occurrence of “text”.
 
     type :help /\@<= and :help /\@= or more generally :help pattern
 
@@ -2974,7 +2993,10 @@ only if it is preceded by foo
 The solution search pattern would seems like this:
 
 ``` markdown
-/\v(foo)@<=bar .............. @<=bar (negates bar)
+/\v(foo)@<=bar .............. @<=bar (negates foo)
+:%s/\v(^foobar)@<=baz// ..... removes only baz
+:%s/\v^(foobar)(baz)/\1/ .... removes only baz
+:%s/^foobar\zsbaz// ......... removes only baz
 /\vfoo(bar)@! ............... @! also negates bar
 \vaugroup(\s+END)@! ......... vim augroup start
 
@@ -3415,13 +3437,21 @@ você pode usar Ctrl-x s para procurar sugestões. Use Ctrl-n ou Ctrl-p para
 voltar. i_CTRL-X_s
 ```
 
-# Seleção
-
+# Seleção com text-objects
 see [vim text objects the definitive guide](http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/)
 
     cis .............. change inner sentence
     yat .............. copy a tag
     vip .............. visual select inner paragraph
+    cib .............. []
+    ciB .............. {}
+
+In some cases you don't even need to be inside the "text-object" to change it:
+Let's say your are at "w" char in the begining of the line:
+
+    we have some "chars quoted"
+
+Just type `ci"` and n?vim will change it for you
 
 selecionar
 
@@ -3433,23 +3463,6 @@ Trecho entre aspas ............... vi"
 Seleciona um parágrafo ........... vip
 Selection uma sentença ........... vis
 Seleciona próximo ( .............. %vi(
-```
-
-  Pode usar copiar ao inves de visual
-
-``` markdown
-yi"
-yi(
-
-Ou deletar
-
-di"
-
-ou ainda
-
-ci"
-ci(
-cib
 ```
 
 # moving around
@@ -3475,28 +3488,6 @@ There are a lot of g'something' on vim that come in handy
 
 # Completar caminhos no modo insert
 
-    Ctrl-x Ctrl-f
-
-    Completar:
-    Linhas  .................... Ctrl-x Ctrl-l
-    Palavra (arquivo corrente) . Ctrl-x Ctrl-n
-    Palavra dicionário ......... Ctrl-x Ctrl-k
-    Palavra tesaurus ........... Ctrl-x Ctrl-t
-    Palavra arquivos incluidos . Ctrl-x Ctrl-i
-    tags ....................... Ctrl-x Ctrl-]
-    definições de macros ....... Ctrl-x Ctrl-d
-    linha de comando ........... Ctrl-x Ctrl-v
-    definições de usuário ...... Ctrl-x Ctrl-u
-    omni completion ............ Ctrl-x Ctrl-o
-    sugestões de spelling ...... Ctrl-x _s
-    complemento ................ Ctrl-x Ctrl-n
-
-    Activate word completion (omni completion)
-    C-x C-p
-
-    Ativar complementação de dicionário
-    C-x C-k
-
     1. Whole lines                                  |i_CTRL-X_CTRL-L|
     2. keywords in the current file                 |i_CTRL-X_CTRL-N|
     3. keywords in 'dictionary'                     |i_CTRL-X_CTRL-K|
@@ -3510,7 +3501,6 @@ There are a lot of g'something' on vim that come in handy
     11. omni completion                             |i_CTRL-X_CTRL-O|
     12. Spelling suggestions                        |i_CTRL-X_s|
     13. keywords in 'complete'                      |i_CTRL-N| |i_CTRL-P|
-
 
 *complete_CTRL-E*
 

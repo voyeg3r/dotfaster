@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 30 07:59
+" Last Change: 2017 dez 30 11:25
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -94,11 +94,15 @@ set nopaste
 set pastetoggle=<F2>
 set linebreak                  " Keep whole words during wrapping
 set noshowmode
-set undofile " Maintain undo history between sessions
-set undodir=~/.vimundodir
 set autoread
 set noerrorbells visualbell t_vb=
 set clipboard=unnamed,unnamedplus
+
+if ! isdirectory($HOME . '/.vimundodir')
+    :silent !mkdir -p ${HOME}/.vimundodir > /dev/null 2>&1
+endif
+set undodir=~/.vimundodir
+set undofile " Maintain undo history between sessions
 
 let vimplug_exists=expand(glob('~/.config/nvim/autoload/plug.vim'))
 
@@ -297,6 +301,10 @@ endfor
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 command! MakeTags !ctags -R .
+
+" create a scratch window
+command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+cab SC Scratch
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzt
