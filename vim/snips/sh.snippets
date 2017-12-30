@@ -2,7 +2,7 @@
 snippet _skel "Inserts shelbang and other stuf" b
 #!/usr/bin/env bash
 # Created: `date +%Y-%m-%d\ %H:%M`
-# Last Change: 2017 dez 25 10:12
+# Last Change: 2017 dez 30 08:11
 # Author: ${1:`!v g:snips_author`}
 # Twitter: ${2:`!v g:snips_twitter`}
 ${0:# press Ctrl-j to jump placeholders}
@@ -88,14 +88,16 @@ endsnippet
 
 snippet for
 for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
-	${0:#statements}
+	${3:#statements}
 done
+${0:#jump outside the loop}
 endsnippet
 
 snippet fori
 for ${1:needle} in ${2:haystack} ; do
-	${0:#statements}
+	${3:#statements}
 done
+${0:# jump outside the loop}
 endsnippet
 
 snippet wh

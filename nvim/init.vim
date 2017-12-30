@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 28 06:57
+" Last Change: 2017 dez 30 07:59
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -58,8 +58,8 @@ set laststatus=2          " statusline specific
 set lazyredraw            " speed up macros
 set mouse=a               " enable mouse click
 set path+=**              " gf to open files under cursor
-set scrolloff=3           " keep 3 lines when scrolling
-set sidescrolloff=3
+set scrolloff=0           " keep 3 lines when scrolling
+set sidescrolloff=0
 set ai                    " set auto-indenting on for programming
 set hidden                " Switch buffers without saving them
 set showcmd               " display incomplete commands
@@ -133,7 +133,7 @@ Plug 'tommcdo/vim-exchange'
 "Plug 'inside/vim-search-pulse'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
@@ -178,6 +178,18 @@ Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
+" SOME DEOPLETE CONFIGURATIONS
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone,preview,noinsert
+
 " Required:
 filetype plugin indent on
 
@@ -190,6 +202,9 @@ endif
 syntax on
 
 let no_buffers_menu=1
+
+" netrw config
+let g:netrw_winsize = 25
 
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
@@ -280,6 +295,8 @@ for mapmode in [ "o", "x" ]
 endfor
 
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
+
+command! MakeTags !ctags -R .
 
 "  when searching next patter put it in the middle of screen
 nnoremap n nzt

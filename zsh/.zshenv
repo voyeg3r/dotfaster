@@ -20,6 +20,9 @@ export MOZ_DISABLE_PANGO=1
 
 export TERM=xterm-256color
 
+# export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim -u NORC '+set background=dark' '+set ft=man' -"
+
 CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
 
 XDG_DATA_HOME="$HOME/.local/share"
