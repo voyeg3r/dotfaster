@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2017 dez 30 10:52
+# dicasvim.md Intro - Last Change: 2018 jan 01 08:08
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -11,7 +11,8 @@
 
     gP
 
-# Set firefor as defult browser
+# Set firefox as defult browser
+
     xdg-mime default firefox.desktop x-scheme-handler/http
     xdg-mime default firefox.desktop x-scheme-handler/https
 
@@ -35,10 +36,17 @@ and `Ctrl-t` to jump backwards
     :.w !bash
     :nmap <F6> :exec '!'.getline('.')
 
+Execute curent line as vim command:
+
+    :nmap <F6> :exec getline(".")
+
+You can also exec anny line:
+
+    yy:@0
+
 # Modelines
 It allows you to set preferences on a file-by-file basis, and allow you
-to mimic some of the preference-setting options of a few other popular editors
-(Vim, Emacs, and Kate).
+to mimic some of the preference-setting options of a few other popular editors (Vim, Emacs, and Kate).
 
     # vim: set noexapndtab:
     /* vim: set ai tw=75: */
@@ -65,8 +73,7 @@ This is one antipattern
     2 - pressing yy
     3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
-Another common antipattern is closing a file to reopen vim with an empty buffer,
-you can simply:
+Another common antipattern is closing a file to reopen vim with an empty buffer, you can simply:
 
     :bd!
 
@@ -79,6 +86,16 @@ Open one buffer on the list:
     :b */*<tab>
     nnoremap <leader>b :b */*<C-d>
 
+another option:
+
+    nnoremap gb :ls<cr>:b<space>
+
+You can also create a scratch buffer to keep little notes and then
+discartd it without worring about saving.
+
+    command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
+    cab SC Scratch
+
 Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
@@ -87,19 +104,22 @@ Instead of using `gqap` use `gwap` to format paragraphs
 + https://stackoverflow.com/questions/47798270/
 Let's say you have this file
 
-    A simple line
-    TITLE1:
+```text
+A simple line
+TITLE1:
 
-    Another usual line
-    TITLE2:
+Another usual line
+TITLE2:
 
-    More usual lines here
-    TITLE3:
+More usual lines here
+TITLE3:
 
-    Last line of this sample text.
+Last line of this sample text.
+```
 
 And you wnat to change it to be this way
 
+```text
     A simple line
 
     TITLE1:
@@ -110,6 +130,7 @@ And you wnat to change it to be this way
 
     TITLE3:
     Last line of this sample text.
+```
 
 ## Solution
 
@@ -118,11 +139,11 @@ And you wnat to change it to be this way
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
 
-    :args app/controllers/*.rb
-    :argdo :%s/_params/params/ge | update
+:args app/controllers/*.rb
+:argdo :%s/_params/params/ge | update
 
-    :args **/*.rb
-    will handle the recursive search natively. :-)
+:args **/*.rb
+will handle the recursive search natively. :-)
 
 Arglist commands
 
@@ -261,14 +282,18 @@ After running this function I only have to run the macro 'a' 9 times and macro
 # Sort lines by text at position
 + https://stackoverflow.com/a/47497861/2571881
 
-    2011-09-17  00:45 |Take That|NEVER FORGET
-    2011-09-17  00:37 |Free|ALL RIGHT NOW
-    2011-09-17  00:41 |Kim Wilde|CAMBODIA
-    2011-09-17  00:56 |SUTHERLAND BROTHERS & QUIVER|ARMS OF MARY
-    2011-09-17  00:53 |Visage|FADE TO GREY
+``` markdown
+2011-09-17  00:45 |Take That|NEVER FORGET
+2011-09-17  00:37 |Free|ALL RIGHT NOW
+2011-09-17  00:41 |Kim Wilde|CAMBODIA
+2011-09-17  00:56 |SUTHERLAND BROTHERS & QUIVER|ARMS OF MARY
+2011-09-17  00:53 |Visage|FADE TO GREY
+```
 
-    sort /\%20v/
-    :%!sort -t'|' -k2
+``` markdown
+sort /\%20v/
+:%!sort -t'|' -k2
+```
 
 # Runing external commands
 
@@ -300,6 +325,29 @@ instead of
     (bar)
 
 The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for more info.) (Of course, for this particular example, it would be better to use a plugin, like vim-surround, but the general point is still helpful, I hope.)
+
+# In Vim, how to insert a word after regex match at the begining of next line
++ https://stackoverflow.com/questions/48032758/
+
+A word needs to be injected at the beginning of each line 1. I tried the following, but obviously it does not work :g/^=/+1i/myword/
+
+``` markdown
+File structure:
+
+===============
+line 1
+line 2
+...
+===============
+line 1
+line 2
+...
+```
+
+Solutions:
+
+    :g/^=/+norm Imyword
+    :%s/=\n\zs/myword
 
 # Vim tips for everyone
 
@@ -771,6 +819,41 @@ between marks a and b.
     /\%>9l\%<21lgreen
     /\%>'a\%<'bgreen
 
+# Replacing spaces with underscores within quotes
++ https://stackoverflow.com/questions/48047467
+
+Let's say you have:
+
+``` markdown
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf 'asdfsdf asdfasd'
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV w-23-sDf wef23s-d-f' asdfasdf
+```
+
+And you want to substitute spaces for underscores just inside quotes
+
+## solution
+
+``` markdown
+:%s/\v%(('[^']*'))/\=substitute(submatch(1),' ','_', 'g')/g
+```
+
+## Result
+
+``` markdown
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf 'asdfsdf_asdfasd'
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+```
+
 # Open file read-only
 edit `/etc/nginx/nginx.conf` in read-only mode:
 
@@ -1149,6 +1232,7 @@ You can also type part of the buffer name or even use a mapping like this:
     nnoremap <Leader>b :ls<CR>:b<Space>
 
     :bd 4  ................. delete buffer 4
+    :bd dicas .............. part of the buffer name
 
 # Copy from one buffer to another
 + [stackoverflow](http://stackoverflow.com/q/41259890/)
@@ -2112,6 +2196,24 @@ set fileencoding=utf-8  " The encoding written to file.
     command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
     "OBS: you need Preserve() function
+
+In insert mode:
+
+    Ctrl-t ............. increases indentation
+    Ctrl-d ............. decreases indentation
+    Ctrl-f ............. fixes indentation
+
+# Como indentar um bloco de código vuado
+
+     ={
+
+     ou
+
+     ==
+
+" retira a indentação das próximas 99 linhas
+
+     :%< 99
 
 # Move some line to current line
 
@@ -3294,18 +3396,6 @@ autocmd VimLeave *.cpp !silent g++ -Wall %:p -o %:r
 :ec &fo
 :ec &rtp
 ```
-
-# Como indentar um bloco de código vuado
-
-     ={
-
-     ou
-
-     ==
-
-" retira a indentação das próximas 99 linhas
-
-     :%< 99
 
 # Atalhos para marcas
 

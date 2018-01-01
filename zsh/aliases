@@ -71,7 +71,7 @@ alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/2
 #alias lynx='lynx -dump -display_charset=utf-8'
 alias lynx='lynx -display_charset=utf-8 -useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.79 Safari/537.1"'
 
-#alias vi='/usr/bin/nvim'
+alias vi='/usr/bin/nvim'
 #alias vim='/usr/bin/nvim'
 alias lvim="vim -c \"normal '0\""
 alias lnvim="nvim -c':e#<1'"

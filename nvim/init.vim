@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 30 11:25
+" Last Change: 2017 dez 31 12:27
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -123,6 +123,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
+Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'                           " Asyncronous lint engine
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
@@ -326,6 +327,9 @@ noremap gV `[v`]
 
 " Last inserted text
 nnoremap g. :normal! `[v`]<cr><left>
+
+" list buffers and jump to a chosen one
+nnoremap gb :ls<cr>:b<space>
 
 " It adds motions like 25j and 30k to the jump list, so you can cycle
 " through them with control-o and control-i.
@@ -881,7 +885,10 @@ endif
 " remove consecutive blank lines
 " see Preserve function definition
 fun! DelBlankLines() abort
-    call Preserve('%s/^\n\{2,}/\r/ge')
+    if !&binary && &filetype != 'diff'
+        call Preserve('%s/\s\+$//e')
+        call Preserve('%s/^\n\{2,}/\r/ge')
+    endif
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 " delete sucessive blank lines and trailing spces
@@ -914,9 +921,9 @@ nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 
 noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
 
-" Run current line as a shell command
+" Run current line as a vim command
 " https://stackoverflow.com/a/19884862/2571881
-nnoremap <F6> :exec '!'.getline('.')
+nnoremap <F6> :exec getline('.')
 
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
