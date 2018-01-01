@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2017 dez 31 12:27
+" Last Change: 2018 jan 01 13:58
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -97,6 +97,13 @@ set noshowmode
 set autoread
 set noerrorbells visualbell t_vb=
 set clipboard=unnamed,unnamedplus
+
+"You can get case-insensitivity for the filename completion in Vim with the
+"following. I suggest wrapping it in a conditional as below, since it’s a
+"reasonably new option:
+if exists("&wildignorecase")
+    set wildignorecase
+endif
 
 if ! isdirectory($HOME . '/.vimundodir')
     :silent !mkdir -p ${HOME}/.vimundodir > /dev/null 2>&1
@@ -213,8 +220,23 @@ let g:netrw_winsize = 25
 
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
-set background=dark
+
+" set backgroun light until 17h
+" https://stackoverflow.com/a/7589970/2571881
+if strftime("%H") < 17
+  set background=light
+else
+  set background=dark
+endif
 colorscheme PaperColor
+"colorscheme hemisu
+
+hi Search ctermbg=Yellow
+hi Search ctermfg=Black
+
+" When double click a word vim will hightlight all other ocurences
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
@@ -344,16 +366,19 @@ endif
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
-"" no one is really happy until you have this shortcuts
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
-cnoreabbrev Q q
-cnoreabbrev Qall qall
+
+" https://sanctum.geek.nz/arabesque/vim-command-typos/
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+endif
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
@@ -765,10 +790,6 @@ au! BufwritePre * :call StripTrailingWhitespace()
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
-" When double click a word vim will hightlight all other ocurences
-nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
-nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
-hi Search ctermfg=Yellow ctermbg=NONE cterm=bold,underline
 
 " Esta função insere um change log
 " se nelas não houver "Last Change" ele passa batido

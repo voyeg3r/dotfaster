@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 01 08:08
+# dicasvim.md Intro - Last Change: 2018 jan 01 13:58
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -6,6 +6,8 @@
 + https://www.vi-improved.org/
 + https://goo.gl/LmBPd9 - FreBlogg
 + http://vimcolors.com/
++ https://vimgifs.com
++ https://sanctum.geek.nz/arabesque/
 
 # Paste and place the cursor after pasted text
 
@@ -852,6 +854,24 @@ asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
 asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
 asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
 asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
+```
+
+# vim submatch
+You can use an expression as the replacement string in the substitute command (:s). When the replacement string starts with \= it is evaluated as an expression. This opens whole new avenue of interesting possiblities. Here are a few examples:
+
+``` markdown
+Number all the lines in a file (insert line number followed by a tab):
+:%s/^/\=line('.')."\t"/
+
+Number a range of lines (from line 10 to line 20):
+:10,20s/^/\=line('.')."\t"/
+```
+
+This finds the first number in the line and adds one to it.
+A line break is included as a newline character.
+
+``` markdown
+:s/\d\+/\=submatch(0) + 1/
 ```
 
 # Open file read-only
