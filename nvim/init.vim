@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 02 06:15
+" Last Change: 2018 jan 02 09:16
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -893,13 +893,16 @@ command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # |
 " video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
 if !exists('*Preserve')
     function! Preserve(command)
-        " Preparation: save last search, and cursor position.
-        let l:win_view = winsaveview()
-        let l:old_query = getreg('/')
-        silent! execute 'keepjumps' . a:command
-        " Clean up: restore previous search history, and cursor position
-        call winrestview(l:win_view)
-        call setreg('/', l:old_query)
+        try
+            " Preparation: save last search, and cursor position.
+            let l:win_view = winsaveview()
+            let l:old_query = getreg('/')
+            silent! execute 'keepjumps' . a:command
+            " Clean up: restore previous search history, and cursor position
+        finally
+            call winrestview(l:win_view)
+            call setreg('/', l:old_query)
+        endtry
     endfunction
 endif
 

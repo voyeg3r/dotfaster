@@ -1,8 +1,4 @@
-# stackexchange.md - Last Change: sex 22 dez 2017 07:44:36 -03
-
-``` markdown
-Created:	 dom 08 jan 2017 09:29:38 BRT
-```
+# stackexchange.md - Last Change: 2018 jan 02 09:35
 
 O Stack Exchange tem vários canais de discussão
 sobre diversos assuntos: vim, bash, zsh, awk, sed
@@ -52,4 +48,6 @@ To insert
 # Users mention
 If you just want to mention a user in your question, you should link to their profile.
 
-To add a link: [link text](http://www.example.com)
+```markdown
+[@name](http://some-url)
+```
