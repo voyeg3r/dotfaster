@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 01 13:58
+" Last Change: 2018 jan 02 06:15
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -88,7 +88,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
 set wildmenu
 set wildmode=longest:full,list:full
-set whichwrap +=<,>,h,l
+set whichwrap +=<,>
 set completeopt=longest,menuone
 set nopaste
 set pastetoggle=<F2>
@@ -330,12 +330,12 @@ command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswap
 cab SC Scratch
 
 "  when searching next patter put it in the middle of screen
-nnoremap n nzt
-nnoremap N Nzt
-"nnoremap * *zt
-nnoremap # #zt
-"nnoremap g* gtzt
-nnoremap g# g#zt
+nnoremap n nzz
+nnoremap N Nzz
+"nnoremap * *zz
+nnoremap # #zz
+"nnoremap g* gtzz
+nnoremap g# g#zz
 
 " Same when jumping around
 nnoremap g; g;zz

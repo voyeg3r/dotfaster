@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 01 13:58
+# dicasvim.md Intro - Last Change: 2018 jan 02 06:53
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -102,7 +102,7 @@ Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
 
-# Move lines down with "TITLE"
+# Move down lines with "TITLE"
 + https://stackoverflow.com/questions/47798270/
 Let's say you have this file
 
@@ -122,16 +122,16 @@ Last line of this sample text.
 And you wnat to change it to be this way
 
 ```text
-    A simple line
+A simple line
 
-    TITLE1:
-    Another usual line
+TITLE1:
+Another usual line
 
-    TITLE2:
-    More usual lines here
+TITLE2:
+More usual lines here
 
-    TITLE3:
-    Last line of this sample text.
+TITLE3:
+Last line of this sample text.
 ```
 
 ## Solution
@@ -141,11 +141,13 @@ And you wnat to change it to be this way
 # Editing multiple files, the vim way
 + http://www.vimninjas.com/2012/09/19/replace-multiple/
 
+``` markdown
 :args app/controllers/*.rb
 :argdo :%s/_params/params/ge | update
 
+"will handle the recursive search natively. :-)
 :args **/*.rb
-will handle the recursive search natively. :-)
+```
 
 Arglist commands
 
@@ -166,8 +168,10 @@ Navigation in arglist
 # Two commands at once
 + https://stackoverflow.com/a/47002025/2571881
 
-    :1,10s/abc/def/g|50,60&&
-    OBS: && repeats last command
+``` markdown
+:1,10s/abc/def/g|50,60&&
+OBS: && repeats last command
+```
 
 # Vim markdown tips
 + https://vi.stackexchange.com/a/9544/7339
@@ -391,17 +395,19 @@ Setting some stuff on vim can dramatically improve your experience
 if you are using it withou any plugin.
 
 ```vim
-    "using gf onver any filename will open it
-    set path+="**"
+"using gf onver any filename will open it
+set path+="**"
 ```
 
-    :find filename<tab>
+``` markdown
+:find filename<tab>
 
-    gf  at any file on the cursor is over will jump to the file
+gf  at any file on the cursor is over will jump to the file
 
-    :ls ......... list buffers
-    :b 2 ........ go to buffer 2
-    :b substring  opens any file with substring
+:ls ......... list buffers
+:b 2 ........ go to buffer 2
+:b substring  opens any file with substring
+```
 
 # Nice paragraph formating
 + http://vimcasts.org/episodes/formatting-text-with-par/
@@ -500,21 +506,22 @@ For more information, view the documentation with `:h i_ctrl-r`
 
 ``` viml
 {Visual}g CTRL-A    Add [count] to the number or alphabetic character in
-        the highlighted text. If several lines are
-        highlighted, each one will be incremented by an
-        additional [count] (so effectively creating a
-        [count] incrementing sequence).  {not in Vi}
-        For Example, if you have this list of numbers:
-        1. ~
-        1. ~
-        1. ~
-        1. ~
-        Move to the second "1." and Visually select three
-        lines, pressing g CTRL-A results in:
-        1. ~
-        2. ~
-        3. ~
-        4. ~
+
+    the highlighted text. If several lines are
+    highlighted, each one will be incremented by an
+    additional [count] (so effectively creating a
+    [count] incrementing sequence).  {not in Vi}
+    For Example, if you have this list of numbers:
+    1. ~
+    1. ~
+    1. ~
+    1. ~
+    Move to the second "1." and Visually select three
+    lines, pressing g CTRL-A results in:
+    1. ~
+    2. ~
+    3. ~
+    4. ~
 ```
 
 # spliting funtions into separated files
@@ -671,13 +678,17 @@ Using vim-exchange plugin you can do:
 + http://superuser.com/a/345593/45032
 + http://stackoverflow.com/a/42024307/2571881
 
-    echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+``` markdown
+echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+```
 
 # How do I search the open buffers in Vim?
 + https://stackoverflow.com/a/11976158/2571881
 
-    :bufdo vimgrepadd pattern % | copen+
-    :argdo ...
+``` markdown
+:bufdo vimgrepadd pattern % | copen+
+:argdo ...
+```
 
 # Tips about vimgrep
 
@@ -774,20 +785,26 @@ Vim will put something like that
 Recentemente precisei combinar, em um arquivo, duas linhas consecutivas. O
 arquivo original continha linhas como
 
-  Matrícula: 123456
-  Senha: yatVind7kned
-  Matrícula: 123456
-  Senha: invanBabnit3
+``` markdown
+Matrícula: 123456
+Senha: yatVind7kned
+Matrícula: 123456
+Senha: invanBabnit3
+```
 
 E assim por diante. Eu precisava converter este arquivo para algo como:
 
-  Matrícula: 123456 - Senha: yatVind7kned
-  Matrícula: 123456 - Senha: invanBabnit3
+``` markdown
+Matrícula: 123456 - Senha: yatVind7kned
+Matrícula: 123456 - Senha: invanBabnit3
+```
 
 Para isto, basta emitir o comando:
 
-  :g/^Matrícula/s/\n/ - /
-  :v/Mat/-1j
+``` markdown
+:g/^Matrícula/s/\n/ - /
+:v/Mat/-1j
+```
 
 A primeira solução sustitui quebras de linha nas linhas contendo "Matrícula"
 por "-". Já a segunda solução usa um comando global de negação, ou seja, nas
@@ -796,21 +813,27 @@ que junta linhas
 
 Se houver uma área selecionada o comando será assim:
 
-    :'<,'>v/Mat/-1j
+``` markdown
+:'<,'>v/Mat/-1j
+```
 
 # Substitution on visual selection
 
 Before block with old and s First told abc old sold g Another is old, goldold.
 but not c Last is older, fold not b After block with fold and older and b old.
 
-    %s/\%Vold/NEW/g
+``` markdown
+%s/\%Vold/NEW/g
+```
 
 Before block with NEW and s First tNEW abc NEW sNEW g Another is NEW, gNEWNEW.
 but not c Last is NEWer, fNEW not b After block with fNEW and NEWer and b NEW.
 
 Doing a visual block selection you can do:
 
-    :'<,'>s/\%V /\r/g
+``` markdown
+:'<,'>s/\%V /\r/g
+```
 
 The `\%V` will make sure the substitution happens only in the selection area
 
@@ -818,8 +841,10 @@ Here are two further examples that do not use a visual selection. The first
 command searches only in lines 10 to 20 inclusive. The second searches only
 between marks a and b.
 
-    /\%>9l\%<21lgreen
-    /\%>'a\%<'bgreen
+``` markdown
+/\%>9l\%<21lgreen
+/\%>'a\%<'bgreen
+```
 
 # Replacing spaces with underscores within quotes
 + https://stackoverflow.com/questions/48047467
@@ -857,7 +882,10 @@ asdf asdfasdf 'yw234DV_w-23-sDf_wef23s-d-f' asdfasdf
 ```
 
 # vim submatch
-You can use an expression as the replacement string in the substitute command (:s). When the replacement string starts with \= it is evaluated as an expression. This opens whole new avenue of interesting possiblities. Here are a few examples:
+You can use an expression as the replacement string in the substitute command
+(:s). When the replacement string starts with \= it is evaluated as an
+expression. This opens whole new avenue of interesting possiblities. Here are a
+few examples:
 
 ``` markdown
 Number all the lines in a file (insert line number followed by a tab):
@@ -969,7 +997,9 @@ to see more:
 # Vimscript: adding text to the current line
 + https://vi.stackexchange.com/a/12450/7339
 
-     call setline('.', getline('.') . 'new text')
+``` markdown
+call setline('.', getline('.') . 'new text')
+```
 
 # Making vim show spaces tabs and other things
 [Source stackoverflow](http://stackoverflow.com/a/38652646/2571881)
@@ -995,13 +1025,16 @@ modes a special window
 # How do you display the filename of the file you are working on in vim?
 + https://stackoverflow.com/a/4111748/2571881
 
-    :f (:file)
+``` markdown
+:f (:file)
+```
 
 will do same as
 
-    1<C-G>
-
-    :f!
+``` markdown
+1<C-G>
+:f!
+```
 
 will give a untruncated version, if applicable.
 press 1, then `Ctrl-G` for full path
@@ -1056,7 +1089,7 @@ nnoremap <leader>O @="m`O\eg``"<cr>
 # Função para converter wiki para markdown
 [Source: stackoverflow](http://stackoverflow.com/a/3024430/2571881)
 
-``` vim
+``` VimL
 " :bufdo execute "normal @a" | write
 fun! FuncWikiToMd()
     %s/\v^\={1,3}([^\=]+)\={1,3}/### \1/ge
@@ -1218,8 +1251,10 @@ many useful features to be disabled. The -N flag prevents this by setting the
 ## Load an alternative configuration and plugins directory
 + http://inside.github.io/vim-presentation/#/15
 
-    vim -u ~/.another.vimrc
-    set runtimepath+=~/.another.vim
+``` markdown
+vim -u ~/.another.vimrc
+set runtimepath+=~/.another.vim
+```
 
 # Magic with expression register
 
@@ -1521,39 +1556,49 @@ endfunction
 # Generating random numbers in vim
 + https://stackoverflow.com/a/20430735/2571881
 
-     :r! echo $RANDOM
+``` markdown
+:r! echo $RANDOM
 
-     function! Random()
-     return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
-     endfunction
+function! Random()
+return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:])
+endfunction
+```
 
 then
 
-     9@:
+``` vim
+9@:
+```
 
 Vim doesn't offer native random generator, however if you have vim compiled
 with Python, the following method will append a random digit at the end of
 your line:
 
-     py import vim, random; vim.current.line += str(random.randint(1, 100))
+``` markdown
+py import vim, random; vim.current.line += str(random.randint(1, 100))
+```
 
 If you don't have access to shell and Python, as for workaround, you use last
 few digits from the current timestamp, in example:
 
-     :put =reltimestr(reltime())[-2:]
+``` markdown
+:put =reltimestr(reltime())[-2:]
+```
 
 # Vim duplicate line multiple times with 2 keypresses
 + http://stackoverflow.com/a/43755604/2571881
 
 This solution uses the expression register <c-r>= or @=
 
-    nnoremap , @='mqYp`q'<cr>
+``` vim
+nnoremap , @='mqYp`q'<cr>
+```
 
 # Yank text object on multiple lines
 
  Let's say you have:
 
- ``` markdown
+ ``` vim
  - 'autoindent' is set by default
  - 'autoread' is set by default
  - 'backspace' defaults to "indent,eol,start"
@@ -1568,19 +1613,25 @@ into a register 'z'
 you cand do
 
 ``` vim
-    :%norm f'"Zya'
+:%norm f'"Zya'
+```
 
 and to paste it into a file you can do:
 
-    :put Z
+``` vim
+:put Z
+```
 
 To make it available outside of Vim you can do:
 
-    :let @+ = @z
+``` vim
+:let @+ = @z
+```
 
 if your register z is not clean you can clear it by doing
 
-    qzq
+```vim
+qzq
 ```
 
 # I would like to copy the first words of multiple lines.
@@ -1598,27 +1649,35 @@ requestFields := fmt.Sprintf("&requestFields=%s", args.RequestFields)
 
 I would like to have this in my clipboard :
 
-    apiKey
-    maxCount
-    id
-    userid
-    requestFields
+``` markdown
+apiKey
+maxCount
+id
+userid
+requestFields
+```
 
 Solutions
 
-    :%norm 0"Zyt:     ................ this one for intire file
-    :'<,'>norm! "Qye  ................ this one for selection are only
+``` markdown
+:%norm 0"Zyt:     ................ this one for intire file
+:'<,'>norm! "Qye  ................ this one for selection are only
+```
 
 Obs: You need to have > in cpoptions for the newline to be added in between
 yanks (:set cpoptions+=>), otherwise the words will be concatenated on a single
 line.
 
-    >   When appending to a register, put a line break before
-    the appended text.
+``` markdown
+>   When appending to a register, put a line break before
+the appended text.
+```
 
 To see all cpoptions:
 
-    :verbose set cpoptions?
+``` markdown
+:verbose set cpoptions?
+```
 
 # Inserting ttyrecordings at stackexchange
 
@@ -1791,58 +1850,72 @@ Usando relative numbers
     :-7t.
 
  ``` markdown
- +------------+-----------------------------------------------------------------------------------------------+
- |  command   |  action                                               |
- +------------+-----------------------------------------------------------------------------------------------+
- |  :9t.      |  copy line 9 below the current line                               |
- |  :t5       |  copy the current line placing a duplicate below the line 5 (and moving the cursor)       |
- |  :-7t.     |  copy the line 7 before the current cursor position placing a duplicate below the current line|
- |  :+4t.     |  copy the line 4 after the current cursor position placing a duplicate below the current line |
- |  :9,11t.   |  copy the lines 9 to 11 placing the duplicate lines below the current cursor position     |
- |  :-5t.     |  copy the line 5 rows above to the current line                           |
- |  :1m.      |  move line one to the current line                                |
- |  :-3m.     |  move the line up 3 to this position                              |
- |  :-3m.     |  move the line up 3 to this position                              |
- +------------+-----------------------------------------------------------------------------------------------+
+ +------------+-------------------------------------------------+
+ |  command   |  action                                         |
+ +------------+-------------------------------------------------+
+ | :9t.    | copy line 9 below the current line                 |
+ | :t5     | copy the current line to line 5                    |
+ | :-7t.   | copy the line 7 before the current cursor position |
+ | :+4t.   | copy the line 4 after the current cursor position  |
+ | :9,11t. | copy the lines 9 to 11 here                        |
+ | :-5t.   | copy the line 5 rows above to the current line     |
+ | :1m.    | move line one to the current line                  |
+ | :-3m.   | move the line up 3 to this position                |
+ | :-3m.   | move the line up 3 to this position                |
+ +------------+-------------------------------------------------+
 
 Mover linhas que correspondem a um padrão para o fim do arquivo
 
-     :g/this/m$
+:g/this/m$
  ```
 
 The offsets can also be used with the other items in a range.  Look at this
 one: >
 
-    :.+3,$-5
+``` markdown
+:.+3,$-5
+```
 
 This specifies the range that starts three lines below the cursor and ends
 five lines before the last line in the file.
 
 # Formating text on vim
 
-    gwip .... formats paragraph and restores cursor position
+``` markdown
+gwip .... formats paragraph and restores cursor position
+```
 
 # How repeat last command in vim - repetir ultimo comando
 
-    @:
+```vim
+@:
+```
 
 Which means "@" register, : command
 
-    @@  --> repeat last register easily
+``` vim
+@@  --> repeat last register easily
+```
 
 Following the same logic you can repeat last search by pressing @/ or just //
 
-    Repeating the last substituition using &
-    Repeat last substituition over whole file g&
+```vim
+Repeating the last substituition using &
+Repeat last substituition over whole file g&
+```
 
 # Repeating moviment on vim
 Let's say you make:
 
-    :normal 5j
+``` vim
+:normal 5j
+```
 
 Now you cand repeat that moviment just pressing:
 
-    @:
+``` vim
+@:
+```
 
 # Using submatch in vim search
 
@@ -3640,30 +3713,60 @@ and insert that typed character.
 
 # Função para inverte strings no vim
 
-    function! InvertString(str)
-    " Courtesy of Preben "Peppe" Guldberg
-    " This will invert/reverse a string
-    " This will work on arbitrary length strings, too. The /.*/ should be
-    " quick, which might make it up for using a regex rather than using
-    " numerous commands in a :while loop.
-    "
-    " This can be used in a substitute command as follows:
-    " :%s/AUTHORIZATION/\=InvertString(submatch(0))
-    let inverted = substitute(a:str, '.\(.*\)\@=',
-            \ '\=a:str[strlen(submatch(1))]', 'g')
-    return inverted
-    endfunction
+```vim
+function! InvertString(str)
+" Courtesy of Preben "Peppe" Guldberg
+" This will invert/reverse a string
+" This will work on arbitrary length strings, too. The /.*/ should be
+" quick, which might make it up for using a regex rather than using
+" numerous commands in a :while loop.
+"
+" This can be used in a substitute command as follows:
+" :%s/AUTHORIZATION/\=InvertString(submatch(0))
+let inverted = substitute(a:str, '.\(.*\)\@=',
+        \ '\=a:str[strlen(submatch(1))]', 'g')
+return inverted
+endfunction
 
-    " em modo normal
-    map <Leader>rv Yo<C-O>:set revins<cr><C-R>"<esc>:set norevins<cr>
+" em modo normal
+map <Leader>rv Yo<C-O>:set revins<cr><C-R>"<esc>:set norevins<cr>
+```
+
+# Reverse order of string inside brackets in vim
++ https://stackoverflow.com/a/48047102/2571881
+
+Let's say you have this:
+
+``` markdown
+{1,2,3,4,5}
+```
+
+And you whant this output:
+
+``` markdown
+{5,4,3,2,1}
+```
+
+Solution:
+
+``` markdown
+:%s/{\v\zs([^}]+)\ze}/\=join(reverse(split(submatch(1),'.\zs')),'')/g
+```
+
+# Reverse all words from a text
+
+``` markdown
+:%s/\v(<.{-}>)/\=join(reverse(split(submatch(1),'.\zs')),'')/g
+```
+This works by first creating a list of characters in the word, which is reversed and joined back to form the word. The substitute command finds each word and then passes the word to the expressions and uses the result as replacement.
 
 # Comando para inverter palavras de uma linha
+inverter uma string por palavras
++ source: http://stackoverflow.com/q/5532431/
 
-    inverter uma string por palavras
-
-    source: http://stackoverflow.com/q/5532431/
-
-    command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
+``` markdown
+command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
+```
 
 # Como definir a fonte no vim
 [referencias: Ask Ubuntu](http://askubuntu.com/q/363142)
