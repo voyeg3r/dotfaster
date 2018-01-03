@@ -7,6 +7,9 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
+## Show hidden files ##
+#alias l.='ls -d .* --color=auto'
+
 alias upgrade='sudo pacman -Syyu'
 
 # https://askubuntu.com/a/590030/3798
@@ -44,6 +47,11 @@ alias vinone='vim -u NONE -N -c "set nu"'
 
 alias mkdir='mkdir -pv'
 alias hg='history | grep'
+
+## Colorize the grep command output for ease of use (good for log files)##
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # alias lowercasename="zmv '*' '${(L)f}'"
 

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 02 09:16
+" Last Change: 2018 jan 03 15:11
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -343,15 +343,21 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 " select last paste in visual mode
-" With gb we easily select the pasted text and we fix the indentation with  <  or >.
-nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+" With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
+nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 
 " Last inserted text
 nnoremap g. :normal! `[v`]<cr><left>
 
 " list buffers and jump to a chosen one
-nnoremap gb :ls<cr>:b<space>
+"nnoremap <Leader>b :ls<cr>:b<space>
+nnoremap <Leader>b :ls<cr>:b<space>
+" set wildcharm=<C-z>
+" :buffer <c-z> <shift-tab>
+nnoremap <Leader>B :buffer <C-z><S-Tab>
+nnoremap <PageUp>   :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
 
 " It adds motions like 25j and 30k to the jump list, so you can cycle
 " through them with control-o and control-i.
@@ -669,7 +675,7 @@ if executable('par')
     set formatprg=par\ -w60rj
 endif
 
-nnoremap <silent> <leader>b :Buffers<CR>
+" nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>m :History<cr>
 nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
 
@@ -738,7 +744,7 @@ fun! MruFile() abort
         exe "edit " . filename
     endif
 endfun
-nnoremap ,l :call MruFile()<cr>
+nnoremap <Leader>l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
 " Hey brazilian portuguese users! what you are waiting for?

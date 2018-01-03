@@ -1,4 +1,4 @@
-# dicasfirefox.md - Last Change: 2017 dez 15 18:51
+# File:	dicasfirefox.md - Last Change: qua 03 jan 2018 15:28:38 -03
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -9,8 +9,10 @@ Criado: Ter 04/Jan/2011 hs 20:21
 
 # Set firefor as defult browser
 
-    xdg-mime default firefox.desktop x-scheme-handler/http
-    xdg-mime default firefox.desktop x-scheme-handler/https
+``` markdown
+xdg-mime default firefox.desktop x-scheme-handler/http
+xdg-mime default firefox.desktop x-scheme-handler/https
+```
 
 The above set will create an entry on:
 

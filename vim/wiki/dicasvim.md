@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 02 06:53
+# dicasvim.md Intro - Last Change: 2018 jan 03 15:12
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -98,7 +98,9 @@ discartd it without worring about saving.
     command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
     cab SC Scratch
 
-Formating and keeping cursor position:
+    setlocal nobuflisted
+
+# Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
 
@@ -401,6 +403,7 @@ set path+="**"
 
 ``` markdown
 :find filename<tab>
+:sfind filename<tab> ............. splits the window
 
 gf  at any file on the cursor is over will jump to the file
 
@@ -3970,6 +3973,7 @@ Without vim-exchange plugin you can switch two words by doing
     Ctrl-w s  .......................... split current window
     Ctrl-w o  .......................... close all other windows
     Ctrl-w q  .......................... close current window
+    z10       .......................... sets current windows to 10 lines
 
 # Colando do clipboard em modo insert
 
