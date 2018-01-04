@@ -1,4 +1,4 @@
-# fasd.md - Last Change: ter 19 dez 2017 13:16:08 -03
+# fasd.md - Last Change: 2018 jan 03 15:53
 Site oficial -->  https://github.com/clvv/fasd
 
 # O que é o comando fasd?
@@ -51,12 +51,17 @@ Daí você só vai ter que digitar os comandos tipo...
 
 ...uma vez
 
+ou
+
+    nvim ~/.dotfiles/vim/wiki/dicasvim.md
+
 Porque o fasd_cd memoriza e é capaz de completar nomes assim:
 
    z 17   (note que 17 faz parte do caminho digitado acima)
 
 ``` sh
 cp `f .vimrc` `d 17`
+nvim `f dicasvim.md`
 ```
 
 Alguns comandos úteis do fasd_cd

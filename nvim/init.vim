@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 03 15:11
+" Last Change: 2018 jan 04 07:17
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -19,6 +19,11 @@ if has("nvim")
 endif
 
 set shada=!,'1000,<50,s10,h,%,'2000
+
+" Just in case using vim instead of neovim
+if &compatible
+    set nocompatible
+endif
 
 if has("multi_byte")
   if &termencoding == ""
@@ -129,6 +134,7 @@ endif
 call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
+Plug 'henrik/vim-indexed-search'
 Plug 'rking/ag.vim'
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim'
@@ -235,7 +241,8 @@ hi Search ctermbg=Yellow
 hi Search ctermfg=Black
 
 " When double click a word vim will hightlight all other ocurences
-nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+" see CountWordFunction()
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
   " jump to lines with <count><Space>
@@ -252,6 +259,48 @@ nnoremap <C-Down> :res -5<CR>
 " jump to next buffer
 nnoremap <M-right> :bn<cr>
 nnoremap <M-left> :bp<cr>
+
+" close the buffer
+nnoremap <leader>db :Bdelete!<cr>
+
+" list buffers and jump to a chosen one
+"nnoremap <Leader>b :ls<cr>:b<space>
+nnoremap <Leader>b :ls<cr>:b<space>
+" set wildcharm=<C-z>
+" :buffer <c-z> <shift-tab>
+nnoremap <Leader>B :buffer <C-z><S-Tab>
+nnoremap <PageUp>   :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
+
+" sometimes you need to know how many opened buffers you have
+" source: https://superuser.com/a/1221514/45032
+fun! CountBuffers() abort
+    "let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    let l:total = len(getbufinfo({'buflisted':1}))
+    echom "you have " . l:total . " opened buffers!"
+endfun
+command! -nargs=0 Nbufs :call CountBuffers()
+
+" buffer cleanup - delete every buffer except the one open
+function! Buflist()
+    redir => bufnames
+    silent ls
+    redir END
+    let list = []
+    for i in split(bufnames, "\n")
+        let buf = split(i, '"' )
+        call add(list, buf[-2])
+|   endfor
+    return list
+endfunction
+
+function! Bdeleteonly()
+    let list = filter(Buflist(), 'v:val != bufname("%")')
+    for buffer in list
+        exec "bdelete ".buffer
+    endfor
+endfunction
+command! Ball :silent call Bdeleteonly()
 
 " format paragraph keeping cursor position
 nnoremap <F8> gwap
@@ -349,15 +398,6 @@ noremap gV `[v`]
 
 " Last inserted text
 nnoremap g. :normal! `[v`]<cr><left>
-
-" list buffers and jump to a chosen one
-"nnoremap <Leader>b :ls<cr>:b<space>
-nnoremap <Leader>b :ls<cr>:b<space>
-" set wildcharm=<C-z>
-" :buffer <c-z> <shift-tab>
-nnoremap <Leader>B :buffer <C-z><S-Tab>
-nnoremap <PageUp>   :bprevious<CR>
-nnoremap <PageDown> :bnext<CR>
 
 " It adds motions like 25j and 30k to the jump list, so you can cycle
 " through them with control-o and control-i.
@@ -497,29 +537,29 @@ vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 " Get hid of E488: https://vi.stackexchange.com/questions/4689/
 " Remove the trailing <cr> That is only needed for mappings, but not for commands.
 fun! CountWordFunction()
-	let l:win_view = winsaveview()
-	let l:old_query = getreg('/')
-	let var = expand("<cword>")
-	exec "%s/" . var . "//gn"
-	call winrestview(l:win_view)
-	call setreg('/', l:old_query)
+    try
+        let l:win_view = winsaveview()
+        let l:old_query = getreg('/')
+        let var = expand("<cword>")
+        exec "%s/" . var . "//gn"
+    finally
+        call winrestview(l:win_view)
+        call setreg('/', l:old_query)
+    endtry
 endfun
 command! -nargs=0 CountWord :call CountWordFunction()
+
+" map to count word under cursor
+" https://stackoverflow.com/a/11492536/2571881
+" nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
+" see function CountWordFunction
+nnoremap <f3> :CountWord<CR>
 
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
 
 " Search selected text
 vnoremap // y/<C-R>"<CR>
-
-" sometimes you need to know how many opened buffers you have
-" source: https://superuser.com/a/1221514/45032
-fun! CountBuffers() abort
-    "let l:total = len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-    let l:total = len(getbufinfo({'buflisted':1}))
-    echom "you have " . l:total . " opened buffers!"
-endfun
-command! -nargs=0 Nbufs :call CountBuffers()
 
 " Insert lines below and above (with count)
 " nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
@@ -662,6 +702,10 @@ noremap <Leader>gr :Gremove<CR>
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
+" Change in next bracket
+nnoremap cinb cib
+nnoremap cinB ciB
+
 "" fzf.vim
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
@@ -795,7 +839,6 @@ au! BufwritePre * :call StripTrailingWhitespace()
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
-
 
 " Esta função insere um change log
 " se nelas não houver "Last Change" ele passa batido
@@ -942,14 +985,11 @@ vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 set nu rnu
-nmap <F2> :set nu rnu<cr>
+"nmap <F2> :set nu rnu<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
-" map to count word under cursor
-" https://stackoverflow.com/a/11492536/2571881
-nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
-
-noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
+" noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
+noremap <silent> <leader>v :e $MYVIMRC<cr>
 
 " Run current line as a vim command
 " https://stackoverflow.com/a/19884862/2571881

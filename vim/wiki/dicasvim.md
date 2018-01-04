@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 03 15:12
+# dicasvim.md Intro - Last Change: 2018 jan 03 15:56
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -103,6 +103,11 @@ discartd it without worring about saving.
 # Formating and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
+
+You can also join lines without moving cursor:
+
+    :join ...................... with spaces
+    :join! ..................... without spaces
 
 # Move down lines with "TITLE"
 + https://stackoverflow.com/questions/47798270/
@@ -337,7 +342,10 @@ The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for 
 # In Vim, how to insert a word after regex match at the begining of next line
 + https://stackoverflow.com/questions/48032758/
 
-A word needs to be injected at the beginning of each line 1. I tried the following, but obviously it does not work :g/^=/+1i/myword/
+A word needs to be injected at the beginning of each line 1. I tried the
+following, but obviously it does not work
+
+    :g/^=/+1i/myword/
 
 ``` markdown
 File structure:
@@ -399,6 +407,7 @@ if you are using it withou any plugin.
 ```vim
 "using gf onver any filename will open it
 set path+="**"
+set hidden
 ```
 
 ``` markdown
@@ -458,9 +467,9 @@ Step by step:
 
 For those who do not know what "primary selection is", putting it simple.
 
-    "The text selected and is just captured automatically to its
-    special clipboard space (Linux only)" - On vim the "*" registers stores the
-    primary selection
+"The text selected and is just captured automatically to its
+special clipboard space (Linux only)" - On vim the "*" registers stores the
+primary selection
 
 On vim just press: `Shift-insert` "primary selection" or in insert mode type `<C-r>*`
 
@@ -478,6 +487,7 @@ While in insert mode, you can use `Ctrl-R` {register}, where register can be:
     Ctrl-O "+p can also be used, for example.
 
 For more information, view the documentation with `:h i_ctrl-r`
+
 # gn command
 
     cgn ............. change next searched pattern
@@ -573,6 +583,10 @@ I want to write a regex that matches the lines in which cat is not followed by d
 How can I do this? (solution)
 
     /\vcat (dog)@!
+
+Another example is searching for markdown Section ignoring Subsections
+
+    /\v^##@!
 
 find "other" just preceded by some
 
