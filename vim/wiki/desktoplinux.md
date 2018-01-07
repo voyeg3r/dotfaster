@@ -1,14 +1,8 @@
-# Arquivo: Dicas sobre ambientes de trabalho no linux
+# desktoplinux.md - Last Change: dom 07 jan 2018 06:12:43 -03
 
 ```
-Criado: Sáb 11/Ago/2012 hs 11:14
-Last Change: ter 31 out 2017 06:15:24 -03
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
-email: <voyeg3r ✉ gmail.com>
+Created: Sat 11/Ago/2012 hs 11:14
 ```
-
 # altere o modo de escalonamento dos discos para desempenho
 
 fonte ibm develop networks: http://www.readability.com/articles/q2jiwjfe

@@ -1,4 +1,5 @@
-# git.md - Last Change: 2017 dez 02 19:59
+# git.md - Last Change: 2018 jan 06 15:09
++ https://www.alexkras.com/19-git-tips-for-everyday-use/
 
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
@@ -25,9 +26,18 @@
 
     git clone --depth 1 https://github.com/voyeg3r/dotfiles
 
+# git log
+
+    git log --oneline --graph
+
 # como ver o que mudou em um arquivo
 
     git log --follow -p --  bin/get-1000-phrases.sh
+
+
+# Revert a commit, softly
+
+    git revert -n
 
 # acessar uma linha específica de um arquivo do github
 

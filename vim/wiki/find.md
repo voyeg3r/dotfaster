@@ -1,16 +1,14 @@
-# find.md - Last Change: 2017 nov 04 19:31
-``` markdown
-Created:	 qua 11 jan 2017 14:42:46 BRT
-```
-# Introdução
+# find.md - Last Change: 2018 jan 06 20:02
 
 O comando find é extremamente poderoso veja algumas construções do mesmo
 
-# procurando arquivos ocultos
+# Search only hidden files:
 
-``` sh
-find -iname \.\*
-```
+    find /dir/to/search/ -type f -iname ".*" -ls
+
+# Search only hidden directories:
+
+    find /dir/to/search/ -type d -iname ".*" -ls
 
 # limpando a pasta /tmp
 

@@ -21,6 +21,7 @@ alias arch='uname -m'
 alias nfu='nvim $(find ~/.dotfiles -type f | fzy)'
 alias ff='vim $(find ~/.dotfiles -type f | fzy)'
 alias vimf='vim $(find ~ -type f | fzy)'
+alias vim='nvim'
 
 alias html2pdf='wkhtmltopdf'
 alias roteador='awk "/UG/ {print \$2}" <<(route -n)'

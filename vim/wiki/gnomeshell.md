@@ -1,4 +1,4 @@
-# gnomeshell.md - Last Change: 2017 dez 07 14:49
+# gnomeshell.md - Last Change: 2018 jan 07 06:14
 ```
 Criado: Wed 04/May/2011 hs 17:23
 ```
@@ -344,6 +344,11 @@ ou rode o comando (Alt+F2) dialog run:
 Possible values are "none", "wallpaper", "centered", "scaled", "stretched", "zoom", "spanned".
 
     gsettings set org.gnome.desktop.background picture-options 'zoom'
+
+# set scalling - How do I change the font DPI settings?
++ https://askubuntu.com/questions/60044/
+
+    gsettings set org.gnome.desktop.interface text-scaling-factor 0.9
 
 # Show current wallpaper path
 

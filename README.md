@@ -50,6 +50,9 @@ I have an article at Medium.com about this project:
 
 	chsh -s $(which zsh) $(whoami)
 
+    curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
     in case of vim I had to do
     git submodule foreach git pull origin master
 
