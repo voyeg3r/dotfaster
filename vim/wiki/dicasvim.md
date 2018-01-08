@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 03 15:56
+# dicasvim.md Intro - Last Change: 2018 jan 07 06:59
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -232,6 +232,44 @@ find "span style and pstyle "
 
 ``` viml
 \v\<(p style|span)[^>]*\>
+```
+
+# surround multiple lines in <p> tag
+
+How do I get from this:
+
+``` markdown
+hello world
+hello world
+hello world
+hello world
+```
+
+to this:
+
+``` markdown
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+```
+
+Without any plugin:
+
+``` markdown
+C<p><C-r><C-o>"</p><Esc>
+j0.
+j0.
+j0.
+```
+
+another way
+
+``` markdown
+vip ........................... visual select this paragraph
+"now ask our loved vim to show its power
+
+:'<,'>s,.*,<p>&</p>
 ```
 
 # Getting some Mairo's vergara flashcards

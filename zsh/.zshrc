@@ -1,4 +1,4 @@
-# .zshrc - Last Change: sáb 23 dez 2017 14:47:22 -03
+# .zshrc - Last Change: 2018 jan 07 09:51
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -56,7 +56,7 @@ source .dotfiles/zsh/themes/xxf/xxf.zsh-theme
 
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f
 
-eval "$(fasd --init auto)"
+eval "$(fasd --init auto zsh-hook)"
 
 bindkey '^ ' autosuggest-accept
 bindkey "\e[3~" delete-char

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2017 dez 24 17:09
+#      Last Change: 2018 jan 08 18:20
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -241,6 +241,11 @@ sudo systemctl stop bluetooth
 # prevent recovery.
 yaourt -S bleachbit
 
+firefoxdefault (){
+    xdg-mime default firefox.desktop x-scheme-handler/http
+    xdg-mime default firefox.desktop x-scheme-handler/https
+} && firefoxdefault
+
 # converter legendas sub para srt
 yaourt -S sub2srt
 
@@ -328,6 +333,11 @@ yaourt -S xbmc
 # para instalar rode o script install contido na pasta
 git clone git@github.com:powerline/fonts.git
 sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
+
+# ibm plex fonts
+# npm is a node.js package installer
+npm install @ibm/type
+yaourt ibm-fonts
 
 installibm_plex(){
     # https://blog.programster.org/install-IBM-plex-font
@@ -432,7 +442,7 @@ yaourt -Syua --devel
 
 yaourt -S aur/firefox-nightly
 
-# cml read.it client
+# cml redd.it client
 yaourt rtv
 
 yaourt -S opera-developer

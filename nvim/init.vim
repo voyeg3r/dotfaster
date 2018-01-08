@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 04 07:17
+" Last Change: 2018 jan 07 19:45
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -138,7 +138,6 @@ Plug 'henrik/vim-indexed-search'
 Plug 'rking/ag.vim'
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'                           " Asyncronous lint engine
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 Plug 'tpope/vim-characterize'
 Plug 'godlygeek/tabular'

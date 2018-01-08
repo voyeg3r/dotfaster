@@ -1,4 +1,4 @@
-# desktoplinux.md - Last Change: dom 07 jan 2018 06:12:43 -03
+# desktoplinux.md - Last Change: 2018 jan 07 06:36
 
 ```
 Created: Sat 11/Ago/2012 hs 11:14
