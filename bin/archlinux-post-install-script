@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # =================================================
-#          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 09 07:27
-# THIS SCRIPT AIMS: arch linux post install script
-#           AUTHOR: Sérgio Luiz Araújo Silva
-#             SITE: http://vivaotux.blogspot.com
-#          TWITTER: @voyeg3r
-#            SKYPE: sergioaraujosilva
+#          Created: Dom 29/Dez/2013 hs 07:08
+#      Last Change: 2018 jan 09 12:28
+# This script aims: arch linux post install script
+#           Author: Sérgio Luiz Araújo Silva
+#             Site: http://vivaotux.blogspot.com
+#          Twitter: @voyeg3r
+#            Skype: sergioaraujosilva
 # =================================================
 
 # References:
@@ -282,6 +282,7 @@ yaourt -S messengerfordesktop
 
 # awesome theme
 yaourt -S zukitwo-themes
+yaourt flatplat-blue-theme
 
 yaourt -Syu zsh-completions zsh-autosuggestions zsh-theme-powerlevel9k
 

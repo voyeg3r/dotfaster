@@ -1,14 +1,7 @@
-# dicas Sobre python3
+# dicas Sobre python3 - Last Change: ter 09 jan 2018 16:57:41 -03
 
 ``` markdown
-File:		 Python3.md
 Created:	 sáb 07 jan 2017 07:29:27 BRT
-Last Change: ter 10 jan 2017 15:50:19 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
 ```
 
 # References
@@ -353,6 +346,33 @@ li.pop()
 li.extend(li2)
 li
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+```
+
+# Reverse string in python
++ https://dbader.org/blog/python-reverse-string
+
+``` python
+# The fastest way to reverse a string
+def reverse_string1(s):
+    """Return a reversed copy of `s`"""
+    return s[::-1]
+
+>>> reverse_string1('TURBO')
+'OBRUT'
+
+>>> 'TURBO'[::-1]
+'OBRUT'
+
+# another solution
+>>> ''.join(reversed('TURBO'))
+'OBRUT'
+
+def reverse_string2(s):
+    """Return a reversed copy of `s`"""
+    return "".join(reversed(s))
+
+>>> reverse_string2('TURBO')
+'OBRUT'
 ```
 
 You can quickly reverse a list by using:

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 09 08:08
+" Last Change: 2018 jan 09 12:02
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -299,6 +299,7 @@ function! Bdeleteonly()
         exec "bdelete ".buffer
     endfor
 endfunction
+" close all buffers
 command! Ball :silent call Bdeleteonly()
 
 " format paragraph keeping cursor position

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 08 18:43
+# dicasvim.md Intro - Last Change: 2018 jan 09 12:07
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3712,6 +3712,7 @@ see [vim text objects the definitive guide](http://blog.carbonfive.com/2011/10/1
     vip .............. visual select inner paragraph
     cib .............. []
     ciB .............. {}
+    y]) .............. yank till next unclosed )
 
 In some cases you don't even need to be inside the "text-object" to change it:
 Let's say your are at "w" char in the begining of the line:
@@ -3741,6 +3742,7 @@ tx ........... antes de próximo 'x'
 Tx ........... antes de prévio 'x'
 gf ........... go to file
 gd ........... go to definition
+t]) .......... till next unclosed )
 ```
 
 There are a lot of g'something' on vim that come in handy
@@ -3752,6 +3754,34 @@ There are a lot of g'something' on vim that come in handy
     gx ............... opens your web-browser with url under cursor
 
     ga ............... print the ascii value of the carachter under the cursor
+
+# How to cut/yank half of a Vim “inner” or “block” object
++ https://stackoverflow.com/questions/48168499/
+
+I'm sure there must be some simple way to e.g. yank only the portion of an inner context that starts with the cursor, but haven't found anything. For example
+
+``` markdown
+fcn(arg1, arg2, fcn2(x, y), arg4)
+              ^-cursor here
+```
+
+How do I reduce this to
+
+``` markdown
+fcn(arg1, arg2)
+```
+
+in one command, without having to e.g. count intervening parentheses?
+
+``` markdown
+Use ]). From :h ]):
+
+                        ])
+])          go to [count] next unmatched ')'.
+            |exclusive| motion.
+
+So y]) to yank and c]) to cut.
+```
 
 # Completar caminhos no modo insert
 
