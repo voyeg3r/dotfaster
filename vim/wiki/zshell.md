@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2017 nov 15 09:46
+# zshell.md - Last Change: 2018 jan 08 18:51
 Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
@@ -655,6 +655,10 @@ make file and directory names lowercase
 # is equivalent to:
 
     find -iname "*.sh" -printf "\n%f"
+
+# list up to 10 files modified in last 24 hrs
+
+    ls -lt **/*~pdf/*(.m0om[1,10])
 
 # to show files created less than one day
 

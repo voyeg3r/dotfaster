@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 07 19:45
+" Last Change: 2018 jan 09 08:08
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -378,12 +378,12 @@ command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswap
 cab SC Scratch
 
 "  when searching next patter put it in the middle of screen
-nnoremap n nzz
-nnoremap N Nzz
+nnoremap n nzz:ShowSearchIndex<CR>
+nnoremap N Nzz:ShowSearchIndex<CR>
 "nnoremap * *zz
-nnoremap # #zz
+nnoremap # #zz:ShowSearchIndex<CR>
 "nnoremap g* gtzz
-nnoremap g# g#zz
+nnoremap g# g#zz:ShowSearchIndex<CR>
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -770,6 +770,9 @@ inoremap <A-j> <Esc>:m+<CR>==gi
 inoremap <A-k> <Esc>:m-2<CR>==gi
 nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
+
+" delete current line on insert mode
+inoremap  <Leader>k <C-o>dd
 
 " vim-airline
 "if !exists('g:airline_symbols')

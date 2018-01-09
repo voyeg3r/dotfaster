@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          CREATED: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 08 18:20
+#      Last Change: 2018 jan 09 07:27
 # THIS SCRIPT AIMS: arch linux post install script
 #           AUTHOR: Sérgio Luiz Araújo Silva
 #             SITE: http://vivaotux.blogspot.com
@@ -41,7 +41,6 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
-
 
 # npm is the default package manager for Node.js.
 sudo pacman -S npm
@@ -333,11 +332,6 @@ yaourt -S xbmc
 # para instalar rode o script install contido na pasta
 git clone git@github.com:powerline/fonts.git
 sudo pacman -S ttf-dejavu ttf-liberation noto-fonts
-
-# ibm plex fonts
-# npm is a node.js package installer
-npm install @ibm/type
-yaourt ibm-fonts
 
 installibm_plex(){
     # https://blog.programster.org/install-IBM-plex-font
@@ -745,6 +739,10 @@ yaourt mpv gnome-mpv
 
 sudo pacman -S gnome-subtitles
 sudo pacman -S gaupol
+
+# screenshot tool: Powerful yet simple to use screenshot software
+# http://www.omgubuntu.co.uk/2018/01/flameshot-linux-screenshot-tool-annotation
+yaourt flameshot
 
 sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-pluginscman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins
 rm -rf ~/.thumbnails/fail

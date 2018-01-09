@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 07 06:59
+# dicasvim.md Intro - Last Change: 2018 jan 08 18:43
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -900,6 +900,35 @@ between marks a and b.
 /\%>9l\%<21lgreen
 /\%>'a\%<'bgreen
 ```
+
+# How to replace only selected visual block not the line in Vim
+
+Let's suppose I have the text.
+
+    1 2 3 4 5 6 7 8 9
+
+Then I select a visual block from 5 to 9.
+
+            |-------| Select visual block
+    1 2 3 4 5 6 7 8 9
+
+Run replace command `:'<,'>s/ /, /g.`
+
+I expected the below.
+
+    1 2 3 4 5, 6, 7, 8, 9
+
+However, the real result was
+
+    1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Replace command seems to apply to the whole line where the visual block is selected not only the block.
+
+Is there any way for replace command to apply to only selected visual block?
+
+Solution
+
+    :'<,'>s/\%V \%V/, /g
 
 # Replacing spaces with underscores within quotes
 + https://stackoverflow.com/questions/48047467
