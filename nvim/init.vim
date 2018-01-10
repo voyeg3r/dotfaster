@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 09 12:02
+" Last Change: 2018 jan 10 18:48
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -19,11 +19,6 @@ if has("nvim")
 endif
 
 set shada=!,'1000,<50,s10,h,%,'2000
-
-" Just in case using vim instead of neovim
-if &compatible
-    set nocompatible
-endif
 
 if has("multi_byte")
   if &termencoding == ""
@@ -62,6 +57,7 @@ set dictionary+=~/.dotfiles/nvim/words.txt     " C-x C-k C-n
 set laststatus=2          " statusline specific
 set lazyredraw            " speed up macros
 set mouse=a               " enable mouse click
+set mousehide             " hide mouse while typing
 set path+=**              " gf to open files under cursor
 set scrolloff=0           " keep 3 lines when scrolling
 set sidescrolloff=0
@@ -81,6 +77,7 @@ set visualbell t_vb=      " turn off error beep/flash
 set novisualbell          " turn off visual bell
 set tabstop=4             " Number of spaces that a <Tab> in the file counts for
 set softtabstop=4         " number of spaces in tab when editing
+set formatoptions+=j      " Delete comment characters when joining lines
 set title                 " shows filename at the top
 set expandtab             " Converts tab into spaces
 set shiftwidth=4
@@ -263,11 +260,11 @@ nnoremap <M-left> :bp<cr>
 nnoremap <leader>db :Bdelete!<cr>
 
 " list buffers and jump to a chosen one
-"nnoremap <Leader>b :ls<cr>:b<space>
-nnoremap <Leader>b :ls<cr>:b<space>
+"nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>b :ls<cr>:b<space>
 " set wildcharm=<C-z>
 " :buffer <c-z> <shift-tab>
-nnoremap <Leader>B :buffer <C-z><S-Tab>
+nnoremap <leader>B :buffer <C-z><S-Tab>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 
@@ -306,7 +303,7 @@ command! Ball :silent call Bdeleteonly()
 nnoremap <F8> gwap
 
 " Search word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -392,8 +389,8 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 " select last paste in visual mode
-" With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
-nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
+" With <leader>p we easily select the pasted text and we fix the indentation with  <  or >.
+nnoremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 
 " Last inserted text
@@ -454,7 +451,7 @@ fun! JoinSpaceless() abort
     endif
 endfun
 " Map it to a key
-nnoremap <Leader>J :call JoinSpaceless()<CR>
+nnoremap <leader>J :call JoinSpaceless()<CR>
 
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
@@ -465,8 +462,8 @@ if !exists('*s:setupWrapping')
 endif
 
 " join lines keeping cursor position
-nnoremap <Leader>j :join<cr>
-nnoremap <Leader>gj :join!<cr>
+nnoremap <leader>j :join<cr>
+nnoremap <leader>gj :join!<cr>
 
 " to insert this result: --> :put =Randnum(1000)
 function! Randnumber(max) abort
@@ -566,8 +563,8 @@ vnoremap // y/<C-R>"<CR>
 " nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
-nnoremap <Leader>o @="m`o\eg``"<cr>
-nnoremap <Leader>O @="m`O\eg``"<cr>
+nnoremap <leader>o @="m`o\eg``"<cr>
+nnoremap <leader>O @="m`O\eg``"<cr>
 
 " Autocmd Rules **********************************
 
@@ -690,14 +687,14 @@ augroup tex
 augroup end
 
 "" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+noremap <leader>ga :Gwrite<CR>
+noremap <leader>gc :Gcommit<CR>
+noremap <leader>gsh :Gpush<CR>
+noremap <leader>gll :Gpull<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gb :Gblame<CR>
+noremap <leader>gd :Gvdiff<CR>
+noremap <leader>gr :Gremove<CR>
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -713,10 +710,6 @@ let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
   set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-if executable('par')
-    set formatprg=par\ -w60rj
 endif
 
 " nnoremap <silent> <leader>b :Buffers<CR>
@@ -761,8 +754,8 @@ if has('unnamedplus')
 endif
 
 "" Vmap for maintain Visual Mode after shifting > and <
-vmap < <gv
-vmap > >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " Move lines in all modes with Ctrl-k Ctrl-j
 vnoremap J :m '>+1<CR>gv=gv
@@ -773,7 +766,7 @@ nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
 
 " delete current line on insert mode
-inoremap  <Leader>k <C-o>dd
+inoremap  <leader>k <C-o>dd
 
 " vim-airline
 "if !exists('g:airline_symbols')
@@ -791,7 +784,7 @@ fun! MruFile() abort
         exe "edit " . filename
     endif
 endfun
-nnoremap <Leader>l :call MruFile()<cr>
+nnoremap <leader>l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
 " Hey brazilian portuguese users! what you are waiting for?
@@ -883,8 +876,8 @@ function! JumpToNextPlaceholder() abort
     exec "norm! c/+>/e\<CR>"
     call setreg('/', old_query)
 endfunction
-nnoremap <special> <Leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 " map Ctrl-k in inserto mode to delete til the end of line
 " inoremap <C-k> <C-o>d$
