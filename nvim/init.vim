@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 10 18:51
+" Last Change: 2018 jan 10 19:40
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -17,6 +17,8 @@
 if has("nvim")
     set inccommand=nosplit
 endif
+
+let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
 
@@ -131,7 +133,7 @@ endif
 call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
-Plug 'henrik/vim-indexed-search'
+"Plug 'henrik/vim-indexed-search'
 Plug 'rking/ag.vim'
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim'
@@ -200,6 +202,8 @@ let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
+
+
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview,noinsert
@@ -239,7 +243,7 @@ hi Search ctermfg=Black
 " When double click a word vim will hightlight all other ocurences
 " see CountWordFunction()
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
-nnoremap <leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
@@ -257,14 +261,14 @@ nnoremap <M-right> :bn<cr>
 nnoremap <M-left> :bp<cr>
 
 " close the buffer
-nnoremap <leader>db :Bdelete!<cr>
+nnoremap <Leader>db :Bdelete!<cr>
 
 " list buffers and jump to a chosen one
-"nnoremap <leader>b :ls<cr>:b<space>
-nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <Leader>b :ls<CR>:b<Space>
+"nnoremap ,b :ls<cr>:b<space>
 " set wildcharm=<C-z>
 " :buffer <c-z> <shift-tab>
-nnoremap <leader>B :buffer <C-z><S-Tab>
+"nnoremap <Leader>B :buffer <C-z><S-Tab>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 
@@ -303,7 +307,7 @@ command! Ball :silent call Bdeleteonly()
 nnoremap <F8> gwap
 
 " Search word under cursor
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -316,7 +320,6 @@ syntax on               " turn syntax highlighting on by default
 filetype on             " detect type of file
 filetype indent on      " load indent file for specific file type
 
-let mapleader=','
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -389,8 +392,8 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 " select last paste in visual mode
-" With <leader>p we easily select the pasted text and we fix the indentation with  <  or >.
-nnoremap <expr> <leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
+" With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
+nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 noremap gV `[v`]
 
 " Last inserted text
@@ -451,7 +454,7 @@ fun! JoinSpaceless() abort
     endif
 endfun
 " Map it to a key
-nnoremap <leader>J :call JoinSpaceless()<CR>
+nnoremap <Leader>J :call JoinSpaceless()<CR>
 
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
@@ -462,8 +465,8 @@ if !exists('*s:setupWrapping')
 endif
 
 " join lines keeping cursor position
-nnoremap <leader>j :join<cr>
-nnoremap <leader>gj :join!<cr>
+nnoremap <Leader>j :join<cr>
+nnoremap <Leader>gj :join!<cr>
 
 " to insert this result: --> :put =Randnum(1000)
 function! Randnumber(max) abort
@@ -559,12 +562,12 @@ vnoremap <LeftRelease> "*ygv
 vnoremap // y/<C-R>"<CR>
 
 " Insert lines below and above (with count)
-" nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
-" nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+" nnoremap <silent> <Leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+" nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
-nnoremap <leader>o @="m`o\eg``"<cr>
-nnoremap <leader>O @="m`O\eg``"<cr>
+nnoremap <Leader>o @="m`o\eg``"<cr>
+nnoremap <Leader>O @="m`O\eg``"<cr>
 
 " Autocmd Rules **********************************
 
@@ -609,8 +612,8 @@ augroup python
     let python_highlight_exceptions=1
     let python_highlight_numbers=1
     let python_highlight_space_errors=1
-	autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
-    autocmd FileType python xnoremap <buffer> <leader>c :normal I#<CR>
+	autocmd FileType python nnoremap <buffer> <Leader>c I#<esc>
+    autocmd FileType python xnoremap <buffer> <Leader>c :normal I#<CR>
 augroup END
 
 "" txt
@@ -687,17 +690,17 @@ augroup tex
 augroup end
 
 "" Git
-noremap <leader>ga :Gwrite<CR>
-noremap <leader>gc :Gcommit<CR>
-noremap <leader>gsh :Gpush<CR>
-noremap <leader>gll :Gpull<CR>
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gb :Gblame<CR>
-noremap <leader>gd :Gvdiff<CR>
-noremap <leader>gr :Gremove<CR>
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>
 
 "" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
+nnoremap <Leader>. :lcd %:p:h<CR>
 
 " Change in next bracket
 nnoremap cinb cib
@@ -712,9 +715,9 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>m :History<cr>
-nnoremap <silent> <leader>e :FZF -m ~/.dotfiles<CR>
+" nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>m :History<cr>
+nnoremap <silent> <Leader>e :FZF -m ~/.dotfiles<CR>
 
 "command! FZFMru call fzf#run({
 "\  'source':  v:oldfiles,
@@ -766,7 +769,7 @@ nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
 
 " delete current line on insert mode
-inoremap  <leader>k <C-o>dd
+inoremap  <Leader>k <C-o>dd
 
 " vim-airline
 "if !exists('g:airline_symbols')
@@ -784,7 +787,7 @@ fun! MruFile() abort
         exe "edit " . filename
     endif
 endfun
-nnoremap <leader>l :call MruFile()<cr>
+nnoremap <Leader>l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
 " Hey brazilian portuguese users! what you are waiting for?
@@ -876,8 +879,8 @@ function! JumpToNextPlaceholder() abort
     exec "norm! c/+>/e\<CR>"
     call setreg('/', old_query)
 endfunction
-nnoremap <special> <leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+nnoremap <special> <Leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 " map Ctrl-k in inserto mode to delete til the end of line
 " inoremap <C-k> <C-o>d$
@@ -961,7 +964,7 @@ fun! DelBlankLines() abort
 endfun
 command! -nargs=0 DelBlank :call DelBlankLines()
 " delete sucessive blank lines and trailing spces
-nnoremap <special> <leader>d :call DelBlankLines()<cr>
+nnoremap <special> <Leader>d :call DelBlankLines()<cr>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
@@ -972,7 +975,7 @@ cnoremap <c-e> <end>
 
 " Insert current line at command line
 cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
-nnoremap <leader>c :<C-r>=getline('.')<CR>
+nnoremap <Leader>c :<C-r>=getline('.')<CR>
 
 " to reselect use gv in normal mode
 nnoremap <F23> <ESC>:set hls! hls?<cr>
@@ -984,8 +987,8 @@ set nu rnu
 "nmap <F2> :set nu rnu<cr>
 nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
-" noremap <silent> <leader>v :e ~/.config/nvim/init.vim<cr>
-noremap <silent> <leader>v :e $MYVIMRC<cr>
+" noremap <silent> <Leader>v :e ~/.config/nvim/init.vim<cr>
+noremap <silent> <Leader>v :e $MYVIMRC<cr>
 
 " Run current line as a vim command
 " https://stackoverflow.com/a/19884862/2571881
@@ -1010,7 +1013,7 @@ endif
 
 let g:UltiSnipsSnippetsDir = expand("~/.dotfiles/vim/snips/")
 let g:UltiSnipsSnippetDirectories=["snips", "UltiSnips"]
-map <leader>u :UltiSnipsEdit<cr>
+map <Leader>u :UltiSnipsEdit<cr>
 " Snippets variables
 let g:snips_author='Sergio Araujo'
 let g:snips_site='http://vivaotux.blogspot.com'
