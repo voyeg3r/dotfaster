@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 11 14:39
+# tmux.md - Last Change: 2018 jan 11 17:06
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 
 Tmux is a Terminal multiplexer
@@ -29,8 +29,10 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     C-b <Spacebar> ... change layout
     C-d  ............. close window
     C-b , ............ rename window
-    C-[ .............. enters copy-mode (jklh) shift-v
-    C-] .............. paste-mode
+    C-b $ ............ rename current session
+    C-b [ ............ enters copy-mode (jklh) shift-v
+    C-b ] ............ paste-mode
+    C-b = ............ list all paste buffers
     C-b t ............ show clock
 
     C-b : ............ open console
@@ -45,7 +47,7 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     tmux attach -t development
     tmux ls ............................... mostra sessões do tmux
 
-    C-b d ................................. detach from a section
+    C-b d ................................. detach from a session
     tmux attach -t principal .............. anexa terminal a uma sessão
     tmux attach ........................... attach to a single section
 
