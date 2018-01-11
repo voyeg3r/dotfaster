@@ -6,6 +6,7 @@
 + [pacaur](pacaur.md)
 + [pactl](pactl.md)
 + [parted](parted.md)
++ [parallel](parallel.md)
 + [a2ps](a2ps.md)
 + [abolish](abolish.md)
 + [ack](ack.md)

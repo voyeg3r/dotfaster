@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 10 19:40
+" Last Change: 2018 jan 11 10:23
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -223,6 +223,10 @@ let no_buffers_menu=1
 
 " netrw config
 let g:netrw_winsize = 25
+" Use whole "words" when opening URLs.
+" This avoids cutting off parameters (after '?') and anchors (after '#').
+" See http://vi.stackexchange.com/q/2801/1631
+let g:netrw_gx="<cWORD>"
 
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
@@ -249,7 +253,12 @@ nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
- nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" save with <F8>
+nnoremap <F8> :w<cr>
+inoremap <F8> <C-o>:w<cr>
+vnoremap <F8> <C-c>:w<cr>:normal gv<cr>
 
 nnoremap <C-Right> :vertical resize +5<CR>
 nnoremap <C-Left> :vertical resize -5<CR>
@@ -302,9 +311,6 @@ function! Bdeleteonly()
 endfunction
 " close all buffers
 command! Ball :silent call Bdeleteonly()
-
-" format paragraph keeping cursor position
-nnoremap <F8> gwap
 
 " Search word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
@@ -760,13 +766,13 @@ endif
 vnoremap < <gv
 vnoremap > >gv
 
-" Move lines in all modes with Ctrl-k Ctrl-j
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-nnoremap <A-j> :m+<CR>
-nnoremap <A-k> :m-2<CR>
+"" Move lines in all modes with Ctrl-k Ctrl-j
+"vnoremap J :m '>+1<CR>gv=gv
+"vnoremap K :m '<-2<CR>gv=gv
+"inoremap <A-j> <Esc>:m+<CR>==gi
+"inoremap <A-k> <Esc>:m-2<CR>==gi
+"nnoremap <A-j> :m+<CR>
+"nnoremap <A-k> :m-2<CR>
 
 " delete current line on insert mode
 inoremap  <Leader>k <C-o>dd

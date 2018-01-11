@@ -1,4 +1,5 @@
-# plowshare.md - Last Change: 2017 dez 02 07:20
+# plowshare.md - Last Change: 2018 jan 11 07:57
+
 References:
 + http://blog.gypsydave5.com/2016/02/04/xargs-and-curl/
 + https://support.mfscripts.com/public/kb_view/34/

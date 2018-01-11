@@ -1,8 +1,7 @@
-# Arquivo: dicas google - Last Change: sex 03 nov 2017 07:20:02 -03
+# Arquivo: dicas google - Last Change: 2018 jan 11 12:18
 
  ```
- File:		   DicasGoogle.md
- Criado:       Sex 05/Out/2012 hs 07:45
+ Created: Sex 05/Out/2012 hs 07:45
  ```
 
 # Lista de todos os recursos do google

@@ -1,16 +1,14 @@
-# command rm.md - como remover arquivos e pastas
-``` markdown
-Last Change: sex 27 out 2017 09:41:38 -03
-```
+# rm.md - Last Change: qui 11 jan 2018 08:15:08 -03
 
-Para remover pastas deve-se usar a opção -r que indica recursividade, ou seja
-a pasta e tudo que houver nas mesma.
+Para remover pastas deve-se usar a opção -r que indica recursividade, ou seja a
+pasta e tudo que houver nas mesma.
 
     rm -rf pasta
 
 # apagar arquivos que não correspondem a determinadas extensões
 
 				rm !(*.foo|*.bar|*.baz)
+                ls | grep -v '\.txt' | xargs rm -f
 
 delete all the files except ‘html‘ file all at once, in a smart way.
 
