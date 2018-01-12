@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 11 17:06
+# tmux.md - Last Change: 2018 jan 12 18:38
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 
 Tmux is a Terminal multiplexer
@@ -12,11 +12,12 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     Ctrl-b <command>
 
     C-b ?  ........... list tmux shortcuts
-    C-b %  ........... split window vertically (new panel)
+    C-b %  ........... split window vertically (new pane)
     C-b ;  ........... toggle last active pane
     C-b q  ........... show pane numbers
     C-b o  ........... swhich to next pane
     C-b x  ........... close current pane
+    C-b z  ........... toggle current pane intto fullscreen
     C-b "  ........... split window horizontally
     C-b c  ........... create a new window
     C-b n  ........... next window
@@ -45,6 +46,7 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     tmux new[-session] -s principal ....... cria nova sessão com nome principal
     tmux new -s development -n editor ..... new session and name window editor
     tmux attach -t development
+    tmux kill-session -t 0  ............... kill session named 0
     tmux ls ............................... mostra sessões do tmux
 
     C-b d ................................. detach from a session

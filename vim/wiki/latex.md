@@ -1,8 +1,17 @@
-# Arquivo: dicas de LaTex - Last Change: 2017 nov 03 09:43
+# Arquivo: dicas de LaTex - Last Change: 2018 jan 12 19:31
 
 ``` markdown
 Created: Ter 18/Dez/2012 hs 19:48
 ```
+
+# Installation
++ https://texwiki.texjp.org/?Linux#texliveinstall
+
+    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    tar xvf install-tl-unx.tar.gz
+    cd install-tl*
+    sudo ./install-tl --repository http://mirror.ctan.org/systems/texlive/tlnet/
+
 
 # Veja também [[LatexExemplos]]
 
