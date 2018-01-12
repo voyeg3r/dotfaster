@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 09 12:07
+# dicasvim.md Intro - Last Change: 2018 jan 12 17:40
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -712,15 +712,13 @@ I have two columns:
 I want to swap the two columns:
 
     cats dog
-    dog cats
+    cats dog
 
 Solutions:
 
     :%!awk '{print $2, $1}'
 
-    :'<,'>normal "adt xA cats
-
-    :.normal "adt xA <Ctrl-v><Ctrl-r>a
+    :'<,'>normal dwA <C-v><C-r>"
 
     :%s,\v(\w+) (\w+),\2 \1,g
 

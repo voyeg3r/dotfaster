@@ -1,4 +1,4 @@
-# gnomeshell.md - Last Change: 2018 jan 09 08:05
+# gnomeshell.md - Last Change: 2018 jan 12 05:56
 ```
 Created: Wed 04/May/2011 hs 17:23
 ```
@@ -345,7 +345,7 @@ Possible values are "none", "wallpaper", "centered", "scaled", "stretched", "zoo
 
     gsettings set org.gnome.desktop.background picture-options 'zoom'
 
-# set scalling - How do I change the font DPI settings?
+# set scalling - How do I change the font DPI settings? (zoom | scale)
 + https://askubuntu.com/questions/60044/
 
     gsettings set org.gnome.desktop.interface text-scaling-factor 0.9

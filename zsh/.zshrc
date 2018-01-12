@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 jan 07 09:51
+# .zshrc - Last Change: 2018 jan 12 13:25
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -199,6 +199,13 @@ bindkey '\eg' _git-status
 # # Bind it to ESC-u // Alt-u
 # bindkey "^[u" up_directory
 
+function up_widget() {
+		BUFFER="cd .."
+		zle accept-line
+	}
+	zle -N up_widget
+bindkey "^k" up_widget
+
 # history search
 # see: http://stackoverflow.com/questions/14040351/filtering-zsh-history-by-command
 # function exists { which $1 &> /dev/null }
@@ -312,5 +319,13 @@ source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# Use Ctrl-x,Ctrl-l to get the output of the last command
+zmodload -i zsh/parameter
+insert-last-command-output() {
+LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+bindkey "^X^L" insert-last-command-output
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'

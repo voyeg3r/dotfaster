@@ -7,6 +7,11 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
+# tmux aliases
+alias tls='tmux ls'
+alias t='tmux attach || tmux new-session'
+alias tl='tmux list-sessions'
+
 ## Show hidden files ##
 #alias l.='ls -d .* --color=auto'
 
