@@ -1,4 +1,4 @@
-# Arquivo: dicas de LaTex - Last Change: 2018 jan 12 19:31
+# Arquivo: dicas de LaTex - Last Change: 2018 jan 13 05:43
 
 ``` markdown
 Created: Ter 18/Dez/2012 hs 19:48
@@ -6,11 +6,15 @@ Created: Ter 18/Dez/2012 hs 19:48
 
 # Installation
 + https://texwiki.texjp.org/?Linux#texliveinstall
++ http://www.tug.org/TUGboat/tb32-1/tb100gregorio.pdf
 
     wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     tar xvf install-tl-unx.tar.gz
     cd install-tl*
     sudo ./install-tl --repository http://mirror.ctan.org/systems/texlive/tlnet/
+
+    adding path
+    sudo /usr/local/texlive/????/bin/*/tlmgr path add
 
 
 # Veja também [[LatexExemplos]]

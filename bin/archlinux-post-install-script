@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 09 12:28
+#      Last Change: 2018 jan 13 06:02
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -319,6 +319,11 @@ yaourt -S python-pyperclip
 
 # source: https://www.youtube.com/watch?v=l1lDiCzkjlk
 sudo pacman -S community/aircrack-ng
+
+# chat client
+# WeeChat is a fast, light and extensible chat client. It runs on many platforms
+# like Linux, Unix, BSD, GNU Hurd, Mac OS X and Windows (Bash/Ubuntu and Cygwin).
+sudo pacman -S weechat
 
 # programa para legendas
 sudo pip install subliminal

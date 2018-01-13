@@ -1,3 +1,4 @@
+# gimp.md - Last Change: sáb 13 jan 2018 07:25:30 -03
 
 yaourt -S gimp-plugin-lqr gimp-plugin-gmic
 

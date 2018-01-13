@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 12 18:38
+# tmux.md - Last Change: 2018 jan 13 06:01
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 
 Tmux is a Terminal multiplexer
@@ -52,6 +52,38 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     C-b d ................................. detach from a session
     tmux attach -t principal .............. anexa terminal a uma sessão
     tmux attach ........................... attach to a single section
+    tmux new-session \; split-window -v ... starts tmux with splited window
+
+# many commands at startup
+
+``` markdown
+tmux new-session \; \
+  send-keys 'tail -f /var/log/monitor.log' C-m \; \
+  split-window -v \; \
+  split-window -h \; \
+  send-keys 'top' C-m \;
+```
+
+And the resulting session should look like that.
+
+``` markdown
+------------
+|  tail    |
+|----------|
+|    | top |
+------------
+```
+
+``` markdown
+tmux new-session \; \
+  send-keys 'tail -f /var/log/monitor.log' C-m \; \
+  split-window -v -p 75 \; \
+  split-window -h -p 30 \; \
+  send-keys 'top' C-m \; \
+  select-pane -t 1 \; \
+  split-window -v \; \
+  send-keys 'weechat' C-m \;
+```
 
 # Creating new sessions
 

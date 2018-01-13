@@ -413,6 +413,7 @@
 + [w3m](w3m.md)
 + [watch](watch.md)
 + [wc](wc.md)
++ [[weechat](weechat.md)]
 + [webdoispontozero](webdoispontozero.md)
 + [wget](wget.md)
 + [whatis](whatis.md)
