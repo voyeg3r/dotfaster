@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 13 06:02
+#      Last Change: 2018 jan 14 13:31
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -590,7 +590,7 @@ yaourt -S community/txt2tags
 admintools () {
 local programs
 programs=( gparted nmap arp-scan unetbootin polkit-gnome curl \
-rsync git gksu gksudo lsof ssh dnsmasq python-setuptools gvim terminator aria2c zsh detox )
+rsync git gksu gksudo lsof ssh dnsmasq python-setuptools gvim terminator aria2c zsh tmux detox )
 
 for program in ${programs[@]}; do
 #read -n 1 -s -p "Press any key to continue"

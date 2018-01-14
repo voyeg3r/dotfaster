@@ -1,11 +1,25 @@
-# tmux.md - Last Change: 2018 jan 13 06:01
+# tmux.md - Last Change: 2018 jan 14 14:07
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
++ https://leanpub.com/the-tao-of-tmux/read
++ https://github.com/tony/tmux-config/blob/master/.tmux.conf
 
 Tmux is a Terminal multiplexer
 
 To change the prefix key, add the following to your `~/.tmux.conf`
 
     unbind C-b set -g prefix C-a
+
+# You can specify your config via the -f command. Like this:
+
+    tmux -f path/to/config.conf
+
+Note: If a tmux server is running in the background and you want to test a fresh config, you must either shut down the rest of the tmux sessions or use a different socket name. Like this:
+
+    tmux -f path/to/config.conf -Ltesting_tmux
+
+And you can treat everything like normal; just keep passing -Ltesting_tmux (or whatever socket name you feel like testing configs with) for reuse.
+
+    tmux -Ltesting_tmux attach
 
 # Shortcuts
 
@@ -35,6 +49,7 @@ To change the prefix key, add the following to your `~/.tmux.conf`
     C-b ] ............ paste-mode
     C-b = ............ list all paste buffers
     C-b t ............ show clock
+    C-b :kill-kill session ................ kill current session
 
     C-b : ............ open console
     :new-window -n processes "top"
@@ -51,7 +66,7 @@ To change the prefix key, add the following to your `~/.tmux.conf`
 
     C-b d ................................. detach from a session
     tmux attach -t principal .............. anexa terminal a uma sessão
-    tmux attach ........................... attach to a single section
+    tmux a[ttach] ........................... attach to a single section
     tmux new-session \; split-window -v ... starts tmux with splited window
 
 # many commands at startup

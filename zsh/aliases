@@ -11,6 +11,7 @@
 alias tls='tmux ls'
 alias t='tmux attach || tmux new-session'
 alias tl='tmux list-sessions'
+alias tman='tmux attach -t tmuxmanual || tmux new -s tmuxmanual'
 
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy && echo '=> Public key copied to clipboard'"
 

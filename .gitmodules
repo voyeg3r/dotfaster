@@ -88,3 +88,6 @@
 [submodule "zsh/themes/powerlevel9k"]
 	path = zsh/themes/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "/home/sergio/.dotfiles/tmux/plugins/tpm"]
+	path = /home/sergio/.dotfiles/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 12 17:40
+# dicasvim.md Intro - Last Change: 2018 jan 13 14:49
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -151,6 +151,9 @@ Last line of this sample text.
 ``` markdown
 :args app/controllers/*.rb
 :argdo :%s/_params/params/ge | update
+
+:args **/*.[ch]
+:argdo %s/foo/bar/ge | update
 
 "will handle the recursive search natively. :-)
 :args **/*.rb
