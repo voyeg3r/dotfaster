@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 14 14:07
+# tmux.md - Last Change: 2018 jan 14 18:28
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 + https://leanpub.com/the-tao-of-tmux/read
 + https://github.com/tony/tmux-config/blob/master/.tmux.conf
@@ -98,6 +98,14 @@ tmux new-session \; \
   select-pane -t 1 \; \
   split-window -v \; \
   send-keys 'weechat' C-m \;
+```
+
+``` markdown
+tmux new-session -s conftmux \; \
+  send-keys 'v tmux.conf' C-m \; \
+  split-window -v -p 50 \; \
+  select-pane -t 2 \; \
+  send-keys 'v tmux.md' C-m \;
 ```
 
 # Creating new sessions
