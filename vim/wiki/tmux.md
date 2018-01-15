@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 14 18:28
+# tmux.md - Last Change: 2018 jan 15 09:55
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 + https://leanpub.com/the-tao-of-tmux/read
 + https://github.com/tony/tmux-config/blob/master/.tmux.conf
@@ -32,6 +32,7 @@ And you can treat everything like normal; just keep passing -Ltesting_tmux (or w
     C-b o  ........... swhich to next pane
     C-b x  ........... close current pane
     C-b z  ........... toggle current pane intto fullscreen
+    C-b !  ........... convert pane into window
     C-b "  ........... split window horizontally
     C-b c  ........... create a new window
     C-b n  ........... next window
