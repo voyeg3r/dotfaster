@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 15 06:03
+#      Last Change: 2018 jan 16 07:47
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -162,6 +162,8 @@ sudo pacman -S community/python-pmw
 # apricity update fix
 sudo pacman -S --force ttf-dejavu
 sudo pacman -Syu
+# apple programming font
+yaourt ttf-meslo
 
 # instaling yaourt
 # Befor installing yaourt

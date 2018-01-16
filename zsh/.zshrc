@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 jan 12 13:25
+# .zshrc - Last Change: 2018 jan 16 09:37
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -327,5 +327,17 @@ LBUFFER+="$(eval $history[$((HISTCMD-1))])"
 }
 zle -N insert-last-command-output
 bindkey "^X^L" insert-last-command-output
+
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'

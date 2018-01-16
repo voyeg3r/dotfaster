@@ -446,5 +446,6 @@
 + [yaourt](yaourt.md)
 + [youdontgrokvi](youdontgrokvi.md)
 + [youtubedl](youtubedl.md)
++ [[zenity](zenity.md)]
 + [zshell](zshell.md)
 + [zsync](zsync.md)

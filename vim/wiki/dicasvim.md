@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 13 14:49
+# dicasvim.md Intro - Last Change: 2018 jan 16 09:30
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -696,13 +696,8 @@ or
     one word
 
     dw .......... delete word
-    wP .......... jump to the next word and paste
-
-    after that jump the next word and do:
-    ^ra
-
-    ^r ................ Ctrl-r
-    a ................. paste register 'a'
+    A ........... start insert at the end of line
+    <Ctrl-r>" ... inserts default register
 
 # Swap two columns separated by space
 + https://stackoverflow.com/a/24424034/2571881
@@ -2577,7 +2572,9 @@ zug ......... undo add word as good one
 # How add a line after every few lines in vim
 + https://stackoverflow.com/a/10414708/2571881
 
-     :%s/^/\=(line(".")%4==0?"\n":"")/g
+``` markdown
+:%s/^/\=(line(".")%4==0?"\n":"")/g
+```
 
 This solution makes use of ternary oparator that gives us a newline "\n" or
 nothing "" depending on rest of division of line number "line('.')" by 4
