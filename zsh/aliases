@@ -7,6 +7,8 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
+alias rm=trash
+
 # tmux aliases
 alias tls='tmux ls'
 alias t='tmux attach || tmux new-session'

@@ -1,4 +1,6 @@
-# rm.md - Last Change: qui 11 jan 2018 08:15:08 -03
+# rm.md - Last Change: 2018 jan 16 18:12
+
+Há uma versão mais sergura do rm chamada [trash cli](trash-cli.md)
 
 Para remover pastas deve-se usar a opção -r que indica recursividade, ou seja a
 pasta e tudo que houver nas mesma.

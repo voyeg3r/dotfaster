@@ -1,4 +1,4 @@
-# perl-rename.md  - Last Change: 2017 dez 02 20:08
+# perl-rename.md  - Last Change: 2018 jan 16 12:27
 ``` markdown
 Created:	 qua 11 jan 2017 12:06:22 BRT
 ```
@@ -86,3 +86,7 @@ OBS: prename is an alias to perl-rename
 # Restabelecendo espaços
 
     prename 'tr/_/ /' *
+
+# Removing numbers from start of the name
+
+    perl-rename 's/^\d+-//g' *.mp3

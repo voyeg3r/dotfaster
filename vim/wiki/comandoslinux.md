@@ -383,6 +383,7 @@
 + [towraparaundmyfinger](towraparaundmyfinger.md)
 + [tr](tr.md)
 + [trap](trap.md)
++ [[trash cli](trash-cli.md)]
 + [tree](tree.md)
 + [tricke](tricke.md)
 + [trickle](trickle.md)
