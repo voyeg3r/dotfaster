@@ -1,9 +1,9 @@
 autoload -Uz zrecompile
-for f in ${ZDOTDIR:-${HOME}}/.zcomp^(*.zwc)(.); zrecompile $f
+for f in ${ZDOTDIR:-${HOME}}/.zcomp^(*.zwc)(.); zrecompile -pq $f
 
-zrecompile ${ZDOTDIR:-${HOME}}/.zshrc
-zrecompile ${ZDOTDIR:-${HOME}}/.zlogin
-zrecompile ${ZDOTDIR:-${HOME}}/.zshenv
+zrecompile -pq ${ZDOTDIR:-${HOME}}/.zshrc
+zrecompile -pq ${ZDOTDIR:-${HOME}}/.zlogin
+zrecompile -pq ${ZDOTDIR:-${HOME}}/.zshenv
 
 
-for f in $ZDOTDIR/functions.d/^(*.zwc|*.md)(.); zrecompile $f
+for f in $ZDOTDIR/functions.d/^(*.zwc|*.md)(.); zrecompile -pq $f

@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 jan 08 18:51
+# zshell.md - Last Change: 2018 jan 16 20:32
 Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
@@ -48,6 +48,13 @@ There are five startup files that zsh will read commands from:
     ``` markdown
     zinfo(){info --index-search=$1 zsh} *N*
     ```
+
+# What does autoload do in zsh?
++ https://stackoverflow.com/a/30840986/2571881
+
+    autoload -Uz vcs_info
+
+The -U means mark the function vcs_info for autoloading and suppress alias expansion. The -z means use zsh (rather than ksh) style. See also the functions command.
 
 # Conditional expressions
 
