@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 15 08:39
+" Last Change: 2018 jan 16 11:10
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -155,7 +155,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
 "Plug 'tpope/vim-speeddating'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'rstacruz/vim-closer'
 "Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
