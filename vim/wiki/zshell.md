@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 jan 16 20:32
+# zshell.md - Last Change: 2018 jan 17 07:10
 Arquivo: zshell tips and tricks
 
 + [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
@@ -240,7 +240,7 @@ To preview all available themes, use this command:
 $ prompt -p
 ```
 
-# zrecompile
+# zrecompile --> man zshcontrib
 + https://github.com/Eriner/zim/issues/86
 
 A builtin module to speed up your zsh
