@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: dom 22 out 2017 07:26:01 -03
+Last Change: 2018 jan 18 06:43
 ```
 
 # Introdução
@@ -686,6 +686,14 @@ awk 'BEGIN { FS="\n"; RS="teste"} {if (NR=="2") print }' teste.txt
           faça a veriricação assim:
 
             cat -vet target-file
+
+# Usando variável externa - using external var
+
+You need to specify one -v for each variable you want to pass in, e.g:
+
+    var1=2
+    var2=4
+    awk -v x=$var1 -v y=$var2 '$2 == x {print y " " $1}' infile
 
 # Imprimir valores negativos
 Como imprimir somente os valores negativos usando o awk?

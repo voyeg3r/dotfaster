@@ -1,6 +1,6 @@
-# git.md - Last Change: 2018 jan 06 15:09
+# git.md - Last Change: 2018 jan 17 12:18
 + https://www.alexkras.com/19-git-tips-for-everyday-use/
-
++ [primeiros passos](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Uma-Breve-Hist%C3%B3ria-do-Git)
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
 
@@ -107,4 +107,9 @@ provide new password and it will work like before.
     git clone [remote_address_here] my_repo
     cd my_repo
     git reset --hard [ENTER HERE THE COMMIT HASH YOU WANT]
+
+# Desfazendo coisas
+## Desfazer alterações em um arquivo
+
+    git checkout -- file
 

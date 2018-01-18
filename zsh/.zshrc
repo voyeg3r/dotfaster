@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 jan 17 06:40
+# .zshrc - Last Change: 2018 jan 18 13:17
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -182,9 +182,9 @@ bindkey '\eb' push-line-or-edit
 
 # getting git status
 function _git-status {
-zle kill-whole-line
-zle -U "git status"
-zle accept-line
+    zle kill-whole-line
+    zle -U "git status"
+    zle accept-line
 }
 zle -N _git-status
 bindkey '\eg' _git-status
@@ -243,13 +243,13 @@ stty start undef
 stty stop undef
 setopt noflowcontrol
 
-# function prepend-sudo {
-#   if [[ "$BUFFER" != su(do|)\ * ]]; then
-#     BUFFER="sudo $BUFFER"
-#     (( CURSOR += 5 ))
-#   fi
-# }
-# zle -N prepend-sudo
+function prepend-sudo {
+  if [[ "$BUFFER" != su(do|)\ * ]]; then
+    BUFFER="sudo $BUFFER"
+    (( CURSOR += 5 ))
+  fi
+}
+zle -N prepend-sudo
 bindkey '^Xs' prepend-sudo
 
 bindkey "^R" history-incremental-pattern-search-backward
@@ -323,7 +323,7 @@ source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 # Use Ctrl-x,Ctrl-l to get the output of the last command
 zmodload -i zsh/parameter
 insert-last-command-output() {
-LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+    LBUFFER+="$(eval $history[$((HISTCMD-1))])"
 }
 zle -N insert-last-command-output
 bindkey "^X^L" insert-last-command-output

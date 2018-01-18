@@ -1,7 +1,6 @@
-# zshell.md - Last Change: 2018 jan 17 07:10
+# zshell.md - Last Change: 2018 jan 18 06:13
 Arquivo: zshell tips and tricks
 
-+ [autrageously-zsh-tips](http://reasoniamhere.com/2014/01/11/outrageously-useful-tips-to-master-your-z-shell/)
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
 
 see also [zshtips](zshtips.md)
@@ -49,6 +48,22 @@ There are five startup files that zsh will read commands from:
     zinfo(){info --index-search=$1 zsh} *N*
     ```
 
+# Setting options
+
+    setopt extended_glob
+    setopt glob_dots
+
+In order to check any option just type
+
+    setop | grep 'what you mean'
+    if [[ $options[extended_glob] = on ]]; then …
+
+    [[ -o extended_glob ]]
+
+That also works in bash, but only for the options set by set -o, not those set by shopt. zsh has only one set of options which can be set with either setopt or set -o.
+
+Just like with bash (or any POSIX shell), you can also do set -o or set +o to see the current option settings.
+
 # What does autoload do in zsh?
 + https://stackoverflow.com/a/30840986/2571881
 
@@ -63,7 +78,7 @@ The -U means mark the function vcs_info for autoloading and suppress alias expan
 	```
 
 produces status zero if and only if there is at least one file in the current
-directory beginning with the string ‘file’. The globbing qualifier N ensures
+directory beginning with the string 'file'. The globbing qualifier N ensures
 that the expression is empty if there is no matching file.
 
 # how do I correctly negate zsh globbing expressions?
@@ -427,7 +442,7 @@ removing all directories except some:
     rm -rf ^(vim-colors-solarized|vim-airline)
 
 # Check the Existence of a Command in Bash and Zsh
-[source](https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/)
+[speed test check the existence of a command in bash and zsh](https://www.topbug.net/blog/2016/10/11/speed-test-check-the-existence-of-a-command-in-bash-and-zsh/)
 
     the fastest way is this (bolean resuld):
 
@@ -620,7 +635,6 @@ make file and directory names lowercase
 
     zmv '*' '${(U)f}'
     zmv '*' '${(L)f}'
-
     zmv '(*)' '${(L)1}'
 
     An application of modifiers is !:t, which results into the basename of
@@ -637,13 +651,9 @@ make file and directory names lowercase
     ```
 
     (.): regular files
-
     (/): directories
-
     (*): executables
-
     (@): symbolic links
-
     ®,(W),(X),(U): file permissions
 
     (LX),(L+X),(L-X),(LmX): file size, with X
@@ -654,6 +664,24 @@ make file and directory names lowercase
 
     (u{owner}): a specific file owner
     (f{permission string ala chmod}): a specific file permissions
+
+    # show only directories
+    print -l zsh_demo/**/*(/)
+
+    # show only regular files
+    print -l zsh_demo/**/*(.)
+
+    # show empty files
+    ls -l zsh_demo/**/*(L0)
+
+    # show files greater than 3 KB
+    ls -l zsh_demo/**/*(Lk+3)
+
+    # show files modified in the last hour
+    print -l zsh_demo/**/*(mh-1)
+
+    # sort files from most to least recently modified and show the last 3
+    ls -l zsh_demo/**/*(om[1,3])
 
 # Show today's files
 
@@ -680,7 +708,7 @@ the 'm-1' asks modifications at less than one day
     ``` zsh
     ls *(.mh-1) | wc -l
 
-    ls *.*(^mh3)   # all files not 3 hours  old
+    ls *.*(^mh3)   # all files not 3 hours old
     ```
 
 #  find all files with size larger than 10 megabytes

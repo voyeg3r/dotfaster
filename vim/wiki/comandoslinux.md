@@ -2,7 +2,7 @@
 + [amixer](amixer.md)
 + [detox](detox.md)
 + [html2pdf](html2pdf.md)
-+ [[hier](hier.md)]
++ [[hier]](hier.md)]
 + [mpv](mpv.md)
 + [pacaur](pacaur.md)
 + [pactl](pactl.md)

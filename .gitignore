@@ -5,5 +5,12 @@
 *.zhistory
 .netrwhist
 __pycache__
+.netrwhist
+*~
+*.swp
+*.swo
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
 
 bin/login-with-age.sh
