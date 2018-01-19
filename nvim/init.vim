@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 16 11:10
+" Last Change: 2018 jan 19 08:54
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -203,6 +203,8 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 
+" change until the end of line using Ctrl-l
+inoremap <C-l> <C-o>C
 
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
@@ -247,7 +249,7 @@ hi Search ctermfg=Black
 " When double click a word vim will hightlight all other ocurences
 " see CountWordFunction()
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
-nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
@@ -542,6 +544,7 @@ vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 " Get hid of E488: https://vi.stackexchange.com/questions/4689/
 " Remove the trailing <cr> That is only needed for mappings, but not for commands.
+" map ,* *<C-O>:%s///gn<CR>``
 fun! CountWordFunction()
     try
         let l:win_view = winsaveview()

@@ -1,5 +1,6 @@
-Search vimgolf chalenges to vim users.
+# vimgolf.md - Last Change: 2018 jan 19 07:55
 
+Search vimgolf chalenges to vim users.
 after installing vimgolf, as the site recomends, type:
 
     gem list
@@ -60,6 +61,22 @@ Another interesting solution is to enable virtualedit
     # Deleting text:
     Vim has a vi compatibility mode
     Vim has a vi compatibility mode but when not in this mode Vim has many enhancements over vi
+
+End file
+
+    Make the pairs of lines match up by making each second line same as first:
+
+    # Appending text:
+    The name "Vim" is an acronym for "Vi IMproved"
+    The name "Vim" is an acronym for "Vi IMproved"
+
+    # Editing text:
+    Vim is a text editor originally released by Bram Moolenaar in 1991 for the Amiga
+    Vim is a text editor originally released by Bram Moolenaar in 1991 for the Amiga
+
+    # Deleting text:
+    Vim has a vi compatibility mode
+    Vim has a vi compatibility mode
 
 Solutions: https://stackoverflow.com/a/6680048/2571881
 
@@ -138,16 +155,16 @@ Initial file
 
 Final file
 
-	one	1
-	two	2
+	one	    1
+	two	    2
 	three	3
 	four	4
 	five	5
-	six	6
+	six	    6
 	seven	7
 	eight	8
 	nine	9
-	ten	10
+	ten	    10
 
 This solution takes 16 keystrokes
 

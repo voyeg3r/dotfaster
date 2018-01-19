@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 16 12:22
+# dicasvim.md Intro - Last Change: 2018 jan 19 07:55
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1313,7 +1313,7 @@ Fechei  todos os arquivos
 
     http://www.mileszs.com/vimlinks.html
 
-# [Vimgolf](Vimgolf)
+# [vimgolf](vimgolf.md)
 
 # Start vim with no plugins
 source: Book practical vim
