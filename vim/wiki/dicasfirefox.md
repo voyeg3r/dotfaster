@@ -1,4 +1,4 @@
-# File:	dicasfirefox.md - Last Change: qua 03 jan 2018 15:28:38 -03
+# File:	dicasfirefox.md - Last Change: 2018 jan 19 13:41
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -146,6 +146,19 @@ Identify as chrome
 
 # Suspend firefox inactive tabs
 + https://addons.mozilla.org/en-US/firefox/addon/tab-suspender-tab-unloader/
+
+# New speeding tab feature
+Tab Warming: How Firefox Will Improve Web Browsing Experience? How To Get It Now?
+
+How to enable tab warming in Firefox?
+
+As you know, tab warming is currently under development. So, you can test the
+same in Firefox Nightly builds.
+
+Go to about:config. Accept the warning message if it appears.
+Search for a preference called:
+
+    browser.tabs.remote.warmup.enabled
 
 # Make firefox speak English
 [us language pack](https://addons.mozilla.org/en-US/firefox/addon/english-us-language-pack/)

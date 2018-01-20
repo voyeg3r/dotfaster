@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 19 08:54
+" Last Change: 2018 jan 20 13:37
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -1014,6 +1014,18 @@ let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" lazy load for ultisnips
+" https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf
+inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
+  " This function only runs when UltiSnips is not loaded
+function! LoadUltiSnips()
+    let l:curpos = getcurpos()
+    execute plug#load('ultisnips')
+    call cursor(l:curpos[1], l:curpos[2])
+    call UltiSnips#ExpandSnippet()
+    return ""
+endfunction
 
 if exists(":python3")
    let g:_uspy=":python3"

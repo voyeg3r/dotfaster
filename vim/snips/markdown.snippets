@@ -4,14 +4,14 @@ priority 2
 # in your vimrc like --> let g:snip_author="Author Name"
 snippet 'sig|head' "my signature" r
 `!v repeat(nr2char(96),3)` ${1:markdown}
-File:		 ${1:`!p snip.rv = snip.fn`}
-Created:	 `!v strftime("%c")`
+       File: ${1:`!p snip.rv = snip.fn`}
+    Created: `!v strftime("%c")`
 Last Change: `!v strftime("%c")`
-Author:		 `!v g:snips_author`
-Site:		 `!v g:snips_site`
-e-mail:      `!v g:snips_email`
-Twitter:	 `!v g:snips_twitter`
-Github:      `!v g:snips_github`
+     Author: `!v g:snips_author`
+	   Site: `!v g:snips_site`
+     e-mail: `!v g:snips_email`
+    Twitter: `!v g:snips_twitter`
+     Github: `!v g:snips_github`
 `!v repeat(nr2char(96),3)`
 ${0}
 endsnippet
@@ -37,15 +37,15 @@ ${0: ctrl-j}
 endsnippet
 
 snippet 'in(line)?' "code inline" r
-`!v nr2char(96)`${0:${VISUAL:type here ..}}`!v nr2char(96)`
+`!v nr2char(96)`${0:${VISUAL:type here}}`!v nr2char(96)`
 endsnippet
 
 snippet bold "*markdown bold*" w
-*${1:text}*
+*${1:${VISUAL:text}}*
 endsnippet
 
 snippet 'italic?' "md italic" r
-_${1:text}_
+_${1:${VISUAL:text}}_
 endsnippet
 
 snippet modeline "modeline para markdown" w
