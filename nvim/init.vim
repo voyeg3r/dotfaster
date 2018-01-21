@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 20 20:09
+" Last Change: 2018 jan 21 15:49
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -206,6 +206,7 @@ let g:deoplete#file#enable_buffer_path = 1
 
 " change until the end of line using Ctrl-l
 inoremap <C-l> <C-o>C
+nnoremap Y y$
 
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
@@ -319,6 +320,8 @@ fun! s:RedirHistoryCommands()
     :silent g/^$/d
 endfun
 command! -nargs=0 GetHistory call s:RedirHistoryCommands()
+command! -nargs=1 H execute histget("cmd", 0+<args>)
+command! -nargs=1 Hg let @h = histget("cmd", 0+<args>)
 
 function! Bdeleteonly()
     let list = filter(Buflist(), 'v:val != bufname("%")')
@@ -821,6 +824,7 @@ nnoremap ç :
 " <C-p> to search files
 nnoremap <silent> <c-p> :FZF -m ~/.dotfiles<cr>
 " end - fzf configuration
+nnoremap <silent> <Leader>f :FZF -m ~/<cr>
 
 nnoremap ,ag :Ag<SPACE>
 

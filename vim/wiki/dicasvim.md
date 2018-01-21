@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 20 20:26
+# dicasvim.md Intro - Last Change: 2018 jan 21 11:51
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -4452,8 +4452,11 @@ Comando para colar o histórico dos ultimos 22 comandos
     ec histget('c', 229)
     exe histget('c', 15)
     let @+ = histget('c', 2)
+    call histdel("search", -1)
 
-    com -nargs=1 HI exe histget('c', <args>)
+    :com -nargs=1 HI exe histget('c', <args>)
+    :command -nargs=1 H execute histget("cmd", 0+<args>)
+    :command -nargs=1 Hg let @h = histget("cmd", 0+<args>)
 
 Thereafter you can use HI {index} to execute the history entry:
 
