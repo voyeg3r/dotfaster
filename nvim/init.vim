@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 20 13:37
+" Last Change: 2018 jan 20 20:09
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -66,6 +66,7 @@ set sidescrolloff=0
 set ai                    " set auto-indenting on for programming
 set hidden                " Switch buffers without saving them
 set showcmd               " display incomplete commands
+set display+=lastline
 set nobackup              " do not keep a backup file
 set number                " show line numbers
 set ruler                 " show the current row and column
@@ -154,7 +155,7 @@ Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki'
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
-"Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rstacruz/vim-closer'
 "Plug 'scrooloose/nerdtree'
@@ -304,6 +305,20 @@ function! Buflist()
 |   endfor
     return list
 endfunction
+
+" this function gets last 20 cmds to new buffer
+fun! s:RedirHistoryCommands()
+    set paste
+    redir @r
+    history : -20,
+    redir End
+    new
+    put r
+    set nopaste
+    :silent %s/^\s\+//g
+    :silent g/^$/d
+endfun
+command! -nargs=0 GetHistory call s:RedirHistoryCommands()
 
 function! Bdeleteonly()
     let list = filter(Buflist(), 'v:val != bufname("%")')

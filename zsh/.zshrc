@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 jan 18 13:17
+# .zshrc - Last Change: 2018 jan 20 17:01
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -60,6 +60,9 @@ eval "$(fasd --init auto zsh-hook)"
 
 bindkey '^ ' autosuggest-accept
 bindkey "\e[3~" delete-char
+
+# Report CPU usage for commands running longer than 10 seconds
+REPORTTIME=10
 
 # User configuration
 # export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."

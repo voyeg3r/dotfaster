@@ -2,7 +2,7 @@
 
 ```
 Criado: Ter 11/Dez/2012 hs 15:31
-Last Change: ter 10 jan 2017 13:32:48 BRT
+Last Change: 2018 jan 20 13:43
 autor: sergio
 site: vivaotux
 twitter: voyeg3r
@@ -115,6 +115,12 @@ alt + espaço + e + l
     start explorer
     start explorer %letter%:
     taskkill /im cmd.exe /f
+
+A final tip that might change your overall experience in Windows is that
+you can improve the System Performance by playing with the options in
+`%windir%\system32\SystemPropertiesPerformance.exe`. I disabled all of them
+except for “Smooth edges of screen fonts”. Give it a try, you won’t be
+disappointed.
 
 # comandos do windows
 

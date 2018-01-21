@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 19 07:55
+# dicasvim.md Intro - Last Change: 2018 jan 20 20:26
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -687,6 +687,55 @@ alternatively you can use sed:
 After instaling Tim Pope's speeddating plugin you can do something like:
 
     :g/\v^\d{2}:\d{2}:/execute "normal t,10\<C-x>2t,10\<C-x>"
+
+One real situation for the first episode of the series Cowboy Bebop
+
+In my case I had to delete the first subtitle
+
+``` markdown
+1
+00:02:17,370 --> 00:02:22,307
+Asteroid Blues
+```
+
+and then type:
+
+    g/^\d\+$/exe "normal \<C-x>"
+
+to make the second subtitle become the first one
+
+The sound started at 51 seconds and my first subtitle was:
+
+    00:03:07,687 --> 00:03:10,178
+
+So I had to calculate 187 seconds minus "51" which was the first
+real sound
+
+    echo "187-51" | bc
+    136
+
+The final command was
+
+    :g/\v^\d{2}:\d{2}:/execute "normal t,136\<C-x>2t,136\<C-x>"
+
+## How does speeddating work?
+
+Take the following date:
+
+    1999-12-31
+
+Because Vim treats the hyphen as a negative sign, pressing <C-A> on the 31 would normally increment it to
+
+    1999-12-30
+
+Compare this with what happens when speeddating.vim is installed:
+
+    2000-01-01
+
+Pressing 5<C-X> on the 03 in the first line below transforms it into the second:
+
+    Sat, 01 Jan 2000 00:00:03 +0000
+    Fri, 31 Dec 1999 23:59:58 +0000
 
 # Swap two words fast
 + Plug tommcdo/vim-exchange
@@ -4399,6 +4448,16 @@ Outro modo de colar o regitro "a" é pressionar Ctrl-r Ctrl-r a
 Comando para colar o histórico dos ultimos 22 comandos
 
      q:22kyG Ctrl-w-q p
+
+    ec histget('c', 229)
+    exe histget('c', 15)
+    let @+ = histget('c', 2)
+
+    com -nargs=1 HI exe histget('c', <args>)
+
+Thereafter you can use HI {index} to execute the history entry:
+
+    :HI 15
 
 # Mapeamento para inserir números randomicos no vim
 
