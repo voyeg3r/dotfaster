@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 21 11:51
+# dicasvim.md Intro - Last Change: 2018 jan 23 09:35
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -774,6 +774,10 @@ Using vim-exchange plugin you can do:
     cxiw ............ mark word for exchange
     .   ............. repeat last action
 
+Take also a look at Abolish plugin that can do thinks like:
+
+    :%S/{transmit,receive}/{receive,transmit}
+
 # How many open buffers do I have?
 + http://superuser.com/a/345593/45032
 + http://stackoverflow.com/a/42024307/2571881
@@ -1264,7 +1268,7 @@ at the beginning of your file
 
     priority 1
 
-# Editing your snippets quickly
+## Editing your snippets quickly
 
     :UltiSnipsEdit
 
@@ -1275,7 +1279,7 @@ at the beginning of your file
     As interpolações tem que estar dentro de crases
     ou backtickets in English
 
-# Insere a data usando interpolação do vim
+## Insere a data usando interpolação do vim
 
     !v strftime('%Y-%m-%d')
     !p  interpolação python
@@ -1287,29 +1291,57 @@ Ou abreviações do próprio vim
 
     iab idate <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 
-# Usando snippets espelho ou não
+## Usando snippets espelho ou não
 
 ``` markdown
 snippet req "require a module" b
-let ${1:${VISUAL}} = require('${2:$1}');
-${0}
+let ${1:${VISUAL}} = require('${0:$1}');
 endsnippet
 ```
 
 O snippet acima repete na posição 2 o valor da posição 1
-e permite que o segundo possa ser alterado
+e permite que o segundo possa ser alterado. Observe que
+a variável `$0` determina o ultimo salto do snippet
 
 ** Replace spaces or non-ascii with underscores **: As it uses visual mode
 you can select the text, press tab and type 'us' `<tab>`
 
 ``` vim
-snippet us "replace specials with underscores" w
-`!p
-import re
-snip.rv = re.sub("[^0-9a-zA-Z]", "_", snip.v.text)
-`
-endsnippet
+    snippet us "replace specials with underscores" w
+    `!p
+    import re
+    snip.rv = re.sub("[^0-9a-zA-Z]", "_", snip.v.text)
+    `
+    endsnippet
 ```
+
+## More python interpolation in ultisnips
+
+``` markdown
+    global !p
+    def list_files():
+        files = []
+        for f in os.listdir('.'):
+            if f.endswith(('.cpp', '.h', '.cc')) and not f.startswith('.'):
+                files.append(f)
+        return ' '.join(files)
+    endglobal
+```
+
+Then, we could call this function when we write other snippets.
+
+``` markdown
+    snippet ls "list source files" iw
+    `!p snip.rv = list_files()`     // snip.rv means "snip return value"
+    endsnippet
+```
+
+## Creating nice boxes with ultisnips
++ https://vi.stackexchange.com/a/14929/7339
+
+Just type
+
+    box<tab>
 
 # Remove parenthesis of current line
 

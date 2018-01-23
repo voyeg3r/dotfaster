@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 21 15:49
+" Last Change: 2018 jan 23 10:13
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -557,6 +557,13 @@ fun! SumVis() abort
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<CR>
 
+" swap words without changing cursor position gw
+" swap words changing cursor position gr
+" swap with previous word gl
+nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
+"nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>:nohlsearch<CR>
+nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
+
 " search visually selected text
 vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
@@ -824,7 +831,7 @@ nnoremap ç :
 " <C-p> to search files
 nnoremap <silent> <c-p> :FZF -m ~/.dotfiles<cr>
 " end - fzf configuration
-nnoremap <silent> <Leader>f :FZF -m ~/<cr>
+nnoremap <silent> <Leader>f :Files ~/<cr>
 
 nnoremap ,ag :Ag<SPACE>
 

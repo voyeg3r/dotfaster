@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: 2018 jan 18 06:43
+Last Change: 2018 jan 22 13:46
 ```
 
 # Introdução
@@ -51,6 +51,20 @@ buscando alí uma variável que na verdade não existe.
 # How to determine the line number of the last occurrence of a string in a file
 
     awk '/Fedora/ { ln = FNR } END { print ln }'
+
+# Using awk to print all columns from the nth to the last
+
+``` markdown
+echo um dois tres quatro | awk '{$1=$2=""; print $0}'
+```
+
+# Renaming images with awk
+
+    file wp2217907.png | awk '{print substr($1, 1, length($1)-5)}'
+
+`substr($1, 1, length($1)-5)` - This gives us the file name from the beginning of the string to the end of the string, minus 5 characters ("length minus 5").
+
+`substr($8,1, length($8)-1)` - This gives us the image size, without the extra comma ("length minus 1").
 
 # Exchange fields order
 

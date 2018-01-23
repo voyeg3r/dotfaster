@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: ter 09 jan 2018 16:57:41 -03
+# dicas Sobre python3 - Last Change: 2018 jan 22 14:56
 
 ``` markdown
 Created:	 sáb 07 jan 2017 07:29:27 BRT
@@ -7,6 +7,7 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 # References
 + http://excript.com/curso-de-python.html
 + [curso-completo](https://youtu.be/j94IGZmwtYI?list=PLesCEcYj003QxPQ4vTXkt22-E11aQvoVj)
++ [outro-curso new](https://www.youtube.com/watch?v=31llNGKWDdo)
 + [lista de aulas](http://excript.com/curso-de-python.html)
 + http://www.discoversdk.com/blog/10-interesting-python-modules-to-learn-in-2016
 + https://www.youtube.com/watch?v=1F_OgqRuSdI

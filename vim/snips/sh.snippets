@@ -2,7 +2,7 @@
 snippet _skel "Inserts shelbang and other stuf" b
 #!/usr/bin/env bash
 # Created: `date +%Y-%m-%d\ %H:%M`
-# Last Change: 2017 dez 30 08:11
+# Last Change: 2018 jan 23 06:10
 # Author: ${1:`!v g:snips_author`}
 # Twitter: ${2:`!v g:snips_twitter`}
 ${0:# press Ctrl-j to jump placeholders}
@@ -267,4 +267,8 @@ endsnippet
 
 snippet todo "what we need to do"
 # TODO ${1:Things to be done} {`date +%Y-%m-%d\ %H:%M` `!v g:snips_author`}
+endsnippet
+
+snippet curl "sometimes I forget curl arguments" w
+curl -O ${1:url}
 endsnippet

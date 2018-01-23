@@ -6,14 +6,14 @@ snippet today
 endsnippet
 
 snippet date
-${2:`date +%Y-%m-%d`}
+${2:`date +%d-%m-%Y`}
 endsnippet
 
 snippet lorem "Lorem Ipsum - 50 Words" b
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
 tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-no sea takimata sanctus est Lorem ipsum dolor sit amet.
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 ${0: <+leader-j+>}
 endsnippet
 
@@ -58,17 +58,20 @@ endsnippet
 
 # in order to use this nippet define these vars
 # in your vimrc like --> let g:snip_author="Author Name"
+
 snippet 'sig|head' "my signature" r
 ------------------------------------------
-       File: ${1:`!p snip.rv = snip.fn`}
-    Created: `!v strftime("%c")`
-Last Change: `!v strftime("%c")`
-     Author: `!v g:snips_author`
-       Site: `!v g:snips_site`
-     e-mail: `!v g:snips_email`
-    Twitter: `!v g:snips_twitter`
-     Github: `!v g:snips_github`
+"        File: ${1:`!p snip.rv = snip.fn`}
+"     Created: ". strftime("%c"))
+" Last Change: ". strftime("%c"))
+"       autor: `!v g:snips_author`
+"        site: `!v g:snips_site`
+"     twitter: `!v g:snips_twitter`
+"       email: `!v g:snips_email`
 ------------------------------------------
 ${0}
 endsnippet
 
+snippet sha1 "insert sha1 hash of the current file"
+`!v strpart(system("sha1sum ".expand("%")), 0, 40)`
+endsnippet
