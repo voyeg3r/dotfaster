@@ -8,7 +8,7 @@ snippet 'sig|head' "my signature" r
     Created: `!v strftime("%c")`
 Last Change: `!v strftime("%c")`
      Author: `!v g:snips_author`
-	   Site: `!v g:snips_site`
+      Site: `!v g:snips_site`
      e-mail: `!v g:snips_email`
     Twitter: `!v g:snips_twitter`
      Github: `!v g:snips_github`
@@ -55,3 +55,11 @@ endsnippet
 snippet kbd "Keyboard shortcut" w
 <kbd>${1:keyboard}</kbd>${2:}
 endsnippet
+
+snippet '(a|link|url)' "url link" r
+[${1:${VISUAL:Text}}](${2:`xclip -i -selection clipboard -o`})${0}
+endsnippet
+
+#snippet link "Link to something"
+#[${1:${VISUAL:Text}}](${3:http://${2:www.url.com}})$0
+#endsnippet

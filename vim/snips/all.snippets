@@ -75,3 +75,9 @@ endsnippet
 snippet sha1 "insert sha1 hash of the current file"
 `!v strpart(system("sha1sum ".expand("%")), 0, 40)`
 endsnippet
+
+#something.par<tab> ->
+#(something)
+snippet "(\w+).par" "Parenthesis (postfix)" r
+(`!p snip.rv = match.group(1)`)$0
+endsnippet

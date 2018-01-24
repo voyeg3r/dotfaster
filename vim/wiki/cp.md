@@ -14,6 +14,20 @@ A opção -u faz update
 
     echo dir1 dir2 dir3 | xargs -n 1 cp -v arquivo.txt
 
+# Copia de arquivos com concorrência
++ [fonte](https://giovannireisnunes.wordpress.com/2018/01/19/copia-de-arquivos-com-concorrencia-em-bash/)
+
+Diferente da estratégia normal de copiar um arquivo por vez, cada arquivo
+criará uma subshell que será executada em segundo plano junto com as demais.
+
+    for i in $( ls /var/cache/apt/archives/*.deb ); do
+        ( cp ${i} /mnt/ubuntu & )
+    done
+
+Para acompanhar a lista desses processos faça:
+
+    ps xa
+
 # copiando estrutura de pastas (somente a extrutura)
 
     ``` bash
