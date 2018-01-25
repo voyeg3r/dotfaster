@@ -25,7 +25,7 @@ command! -nargs=${1:0} ${2:command name} :${3:execution}
 endsnippet
 
 snippet 'fun(ction)?' "define a function" r
-fun! ${1:function_name}(${2})
+fun! ${1:function_name}(${2:<args>})
 	${3:function_body}
 endfun
 "${0: placeholder ctrl-j}

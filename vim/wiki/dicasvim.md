@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 25 14:06
+# dicasvim.md Intro - Last Change: 2018 jan 25 15:45
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -4452,6 +4452,18 @@ function! Preserve(command)
     call setreg('/', old_query)
 endfunction"}}}
 ```
+
+# Using setreg() to change clipboard linewise to blockwise
+
+call `:call setreg('+',@+,'b')` to change the regtype to block-wise. then you can paste in visal-block mode. (note: first you have to activate blockwise selection)
+
+You can check what's the type of a register, using the getregtype() function:
+
+    :echo getregtype('"')
+
+If it returns a lowercase v, it means the type is characterwise.
+If it returns an uppercase V, it means the type is linewise.
+If it returns ^V{some number}, it means the type is blockwise, and the width of the block is {some number}.
 
 # Função para limpar flashcards
 É uma função bem específica para minhas necessidades
