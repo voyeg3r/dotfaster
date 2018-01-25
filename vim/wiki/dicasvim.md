@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 25 09:24
+# dicasvim.md Intro - Last Change: 2018 jan 25 14:06
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -99,6 +99,31 @@ discartd it without worring about saving.
     cab SC Scratch
 
     setlocal nobuflisted
+
+# How to pad strings inside curly braces with odd number of character with a single space?
++ https://stackoverflow.com/a/48439232/2571881
+
+```markdown
+before
+
+    foo{something}
+    foo{other}
+    foo{123}
+    foo{12345}
+    foo{123456}
+
+after
+
+    foo{something }
+    foo{other }
+    foo{123 }
+    foo{12345 }
+    foo{123456}
+
+solution
+
+:%s/\foo{\zs[^}]\+\ze}/\=substitute(submatch(0), '$', len(submatch(0))%2?' ':'','g')/
+```
 
 # Formating and keeping cursor position:
 
