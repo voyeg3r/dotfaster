@@ -7,9 +7,9 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
-# alias rm=trash
+alias rm=trash
 # use trash-cli
-alias rm='echo "This is not the command you are looking for."; false'
+# alias rm='echo "This is not the command you are looking for."; false'
 
 # tmux aliases
 alias tls='tmux ls'

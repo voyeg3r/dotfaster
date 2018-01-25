@@ -11,7 +11,7 @@ src () {
 	zrecompile -p "$ZDOTDIR/.zshenv"
 	zrecompile -p "$ZDOTDIR/.zlogout"
 	zrecompile -p "$ZDOTDIR/.zlogin"
-    zrecompile -p "$ZDOTDIR/.zcompdump"
+	zrecompile -p "$ZDOTDIR/.zcompdump"
 	rm -f "$ZDOTDIR/*.old(.N)"
 
 	for f in $ZDOTDIR/functions.d/^(*.zwc)(.); do
