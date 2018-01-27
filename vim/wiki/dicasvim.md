@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 25 15:45
+# dicasvim.md Intro - Last Change: 2018 jan 26 20:14
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation

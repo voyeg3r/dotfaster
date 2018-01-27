@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: 2018 jan 22 13:46
+Last Change: 2018 jan 26 20:21
 ```
 
 # Introdução
@@ -65,6 +65,13 @@ echo um dois tres quatro | awk '{$1=$2=""; print $0}'
 `substr($1, 1, length($1)-5)` - This gives us the file name from the beginning of the string to the end of the string, minus 5 characters ("length minus 5").
 
 `substr($8,1, length($8)-1)` - This gives us the image size, without the extra comma ("length minus 1").
+
+# Converting ass to srt with awk
++ https://forum.videohelp.com/threads/270095-Convert-ass-to-srt-help
+
+``` markdown
+cat session02.ass |\awk -F, 'BEGIN { TELLER="1"; } { printf("%s\n0%s,%s0 --> 0%s,%s0\n",TELLER,substr($2,0,7),substr($2,9,2),substr($3,0,7),substr($3,9,2)); TELLER++;} { DIALOGUE=$10; for(i=11;i<=NF;i++) { DIALOGUE=DIALOGUE","$i}; printf ("%s\n\n",DIALOGUE)}' | sed 's/\\N/\r/g' | sed 's/{[^}]*}//g' | sed 's/^M/\n/g' | less
+```
 
 # Exchange fields order
 
