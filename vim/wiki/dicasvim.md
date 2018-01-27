@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 26 20:14
+# dicasvim.md Intro - Last Change: 2018 jan 27 09:40
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2520,6 +2520,39 @@ installvim () {
     which vim
     vim --version
 } && installvim
+```
+
+#  Copy block of code with increasing index
+I have the following function declaration:
+
+```markdown
+function f1(s)
+real f1,s
+f1 = 1/s
+end
+```
+And I want to copy the function with increased numbers
+
+```markdown
+function f2(s)
+real f2,s
+f2 = 2/s
+end
+```
+
+The solution
+
+```markdown
+fun! CopyAndIncrease()
+    normal yip
+    exec "normal }O\<Esc>p"
+    exec "normal vip\<Esc>"
+    normal `[v`]
+    :'<,'>s/\d\+/\=submatch(0) +1/g
+endfun
+command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
+let mapleader = ','
+nnoremap <Leader>c :CopyIncrease<CR>
 ```
 
 # How extract urls
