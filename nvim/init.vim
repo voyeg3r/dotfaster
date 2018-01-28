@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 26 19:37
+" Last Change: 2018 jan 28 07:53
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -557,6 +557,21 @@ fun! SumVis() abort
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<CR>
 
+" this function increases each number in a copyied function
+fun! CopyAndIncrease()
+    try
+		let l:old_copy = getreg('0')
+		normal yip
+		let @0 = substitute(@0,'\d\+','\=submatch(0) + 1','g')
+		exec "normal }O\<Esc>p"
+	finally
+	    call setreg('0', l:old_copy)
+	endtry
+endfun
+command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
+let mapleader = ','
+nnoremap <Leader>c :CopyIncrease<CR>
+
 " swap words without changing cursor position gw
 " swap words changing cursor position gr
 " swap with previous word gl
@@ -1007,10 +1022,6 @@ command! SaveAsRoot w !sudo tee %
 cnoreabbrev ww SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
-
-" Insert current line at command line
-cnoremap <C-r><C-l> <C-r>=getline('.')<CR>
-nnoremap <Leader>c :<C-r>=getline('.')<CR>
 
 " to reselect use gv in normal mode
 nnoremap <F23> <ESC>:set hls! hls?<cr>

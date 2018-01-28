@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 27 09:40
+# dicasvim.md Intro - Last Change: 2018 jan 28 07:43
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2544,11 +2544,14 @@ The solution
 
 ```markdown
 fun! CopyAndIncrease()
-    normal yip
-    exec "normal }O\<Esc>p"
-    exec "normal vip\<Esc>"
-    normal `[v`]
-    :'<,'>s/\d\+/\=submatch(0) +1/g
+    try
+		let l:old_copy = getreg('0')
+		normal yip
+		let @0 = substitute(@0,'\d\+','\=submatch(0) + 1','g')
+		exec "normal }O\<Esc>p"
+	finally
+	    call setreg('0', l:old_copy)
+	endtry
 endfun
 command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
 let mapleader = ','
