@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 28 07:43
+# dicasvim.md Intro - Last Change: 2018 jan 30 08:37
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2556,6 +2556,30 @@ endfun
 command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
 let mapleader = ','
 nnoremap <Leader>c :CopyIncrease<CR>
+```
+
+# Vim insert serial number before each matched pattern using regex
++ https://stackoverflow.com/questions/48496015/
+
+ ``` markdown
+ <ExtendedAttributes />
+    </Activity>
+    <Activity Id="ded54c70-1ef4-4aeb-852e-3740882c36ff" Name="Activity 1">
+      <Performers>
+        <Performer>2212646c-2674-4329-9ddc-1f8376e952e1</Performer>
+      </Performers>
+    </Activity>
+    <Activity Id="cf70ec72-4d49-434a-abf3-aa3e8dc000b5" Name="Activity 2">
+      <Description>This is a dummy description</Description>
+      <Implementation>
+        <Task />
+ ```
+
+``` markdown
+:%s/Activity \(\d\+\)/\=submatch(1) * 10 . " " . submatch(0)
+
+submatch(1) ......... first regex group
+submatch(0) ......... the whole search pattern
 ```
 
 # How extract urls

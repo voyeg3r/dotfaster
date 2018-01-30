@@ -1,4 +1,4 @@
-# Distros linux leves - Last Change: 2017 dez 13 11:27
+# Distros linux leves - Last Change: 2018 jan 30 07:54
 
 + Archlinux 32bits: https://bbs.archlinux32.org/
 + Archlinux GNU: https://www.parabola.nu/
@@ -20,6 +20,7 @@
 + Sabayon linux: https://www.sabayon.org/
 + Slax :https://www.slax.org/
 + Suse Linux: https://en.opensuse.org/openSUSE:Tumbleweed_installation
++ Archlinux + gnome-shell direto da Índia http://www.magpieos.net/
 
 # Ubuntu minimal install with gnome vanilla
 + https://help.ubuntu.com/community/Installation/MinimalCD
