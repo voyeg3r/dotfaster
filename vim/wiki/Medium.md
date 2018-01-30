@@ -9,3 +9,7 @@ Ctrl-b     | Bold
 Ctrl-Alt-2 | Title2
 Ctrl-Alt-6 | Code blocks
 
+# How to embed github gists on medium?
+
+Select "Share" instead of embed, copy the url and paste on Medium tapping
+Enter twice.

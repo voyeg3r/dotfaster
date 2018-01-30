@@ -1,4 +1,4 @@
-# File:	dicasfirefox.md - Last Change: 2018 jan 19 13:41
+# File:	dicasfirefox.md - Last Change: 2018 jan 30 07:11
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -305,11 +305,13 @@ Find `network.http.max-persistent-connections-per-server` and increase maximum p
 Find `network.http.max-connections-per-server` and increase maximum connections per server from default 15 to 24
 
 # Fix https issue
+A brecha que simula sites e dribla o HTTPS é bem perigosa – e consegue enganar
+o Firefox
 + http://gizmodo.uol.com.br/https-ataque-homografico/
 
 Escreva `about:config` na barra de endereços e pressione Enter; Escreva
 `Punycode` na barra de pesquisa; As configurações do navegador irão exibir o
-parâmetro network.IDN_show_punycode, dê dois cliques e selecione a chave que
+`parâmetro network.IDN_show_punycode`, dê dois cliques e selecione a chave que
 muda o valor de `false` para `true`.
 
 http://pt.wikihow.com/Fazer-o-Firefox-Carregar-as-P%C3%A1ginas-de-Forma-Mais-R%C3%A1pida
