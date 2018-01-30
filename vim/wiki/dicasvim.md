@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 30 08:37
+# dicasvim.md Intro - Last Change: 2018 jan 30 15:02
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1059,6 +1059,7 @@ A line break is included as a newline character.
 ``` markdown
 :s/\d\+/\=submatch(0) + 1/
 ```
+read more at: `help sub-replace`
 
 # Open file read-only
 edit `/etc/nginx/nginx.conf` in read-only mode:
@@ -2126,6 +2127,8 @@ Supose you have these lines:
     :s/\d\+/\=submatch(0) + 1/
     increases digits
 
+read more at: `help sub-replace`
+
 # Converting numbers to chars
 The range of printable chars spams from 32 to 93
 
@@ -2576,10 +2579,17 @@ nnoremap <Leader>c :CopyIncrease<CR>
  ```
 
 ``` markdown
+In this case we are not considering any number after or befor
+Activity in order to do the task
+
+/="\zsActivity\ze
+:let @a=10 | %s//\=(@a+setreg('a', @a+10)).' Activity'/g
+
 :%s/Activity \(\d\+\)/\=submatch(1) * 10 . " " . submatch(0)
 
 submatch(1) ......... first regex group
 submatch(0) ......... the whole search pattern
+read more at: `help sub-replace`
 ```
 
 # How extract urls
