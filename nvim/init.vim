@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 28 07:53
+" Last Change: 2018 jan 30 08:50
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -628,8 +628,8 @@ if !exists('*ReloadVimrcFunction')
         call setpos('.', save_cursor)
     endfun
 endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction()
-command! -nargs=0 ReloadVimrc call ReloadVimrcFunction()
+autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction() | syntax on
+command! -nargs=0 ReloadVimrc call ReloadVimrcFunction() | syntax on
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
