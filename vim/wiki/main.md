@@ -1,4 +1,4 @@
-# [Wiki](wiki.md) do Sérgio - Last Change: 2017 dez 27 14:32
+[#](#) [Wiki](wiki.md) do Sérgio - Last Change: 2018 jan 30 20:24
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)

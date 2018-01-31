@@ -1,4 +1,4 @@
-# gnomeshell.md - Last Change: 2018 jan 12 05:56
+# gnomeshell.md - Last Change: 2018 jan 31 06:17
 ```
 Created: Wed 04/May/2011 hs 17:23
 ```
@@ -49,7 +49,6 @@ Created: Wed 04/May/2011 hs 17:23
 # Am I using wayland or X11?
 + https://stackoverflow.com/a/45536186/2571881
 + https://askubuntu.com/a/929678/3798
-
 
     echo $XDG_SESSION_TYPE
     env | grep -i wayland
@@ -575,6 +574,5 @@ https://github.com/Dieterbe/snip/tree/master
 # best gnome shell addons
 https://extensions.gnome.org/extension/549/web-search-dialog/
 https://extensions.gnome.org/extension/277/impatience/
-
 
 

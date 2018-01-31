@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 30 08:50
+" Last Change: 2018 jan 30 20:19
 " vim: ff=unix ai et ts=4
 " Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
@@ -135,9 +135,9 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 "Plug 'henrik/vim-indexed-search'
-Plug 'rking/ag.vim'
+Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 Plug 'tpope/vim-characterize'
 Plug 'godlygeek/tabular'
@@ -152,7 +152,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
 Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-speeddating'
@@ -678,9 +678,10 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-"augroup markdown
+augroup markdown
 "    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
-"augroup END
+     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal ft=markdown
+augroup END
 
 " set cursor line in normal mode
 autocmd InsertEnter * set nocul

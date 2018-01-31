@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 30 15:02
+# dicasvim.md Intro - Last Change: 2018 jan 31 07:08
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -601,6 +601,29 @@ For more information, view the documentation with `:h i_ctrl-r`
     2. ~
     3. ~
     4. ~
+```
+
+## Increment alphanumeric
++ https://digitalronin.github.io/2016/06/28/vim-increment-column.html
+
+``` markdown
+This is item A
+This is item A
+This is item A
+This is item A
+This is item A
+```
+
+    :set nrformats=alpha
+
+    "use g Ctrl-a"
+
+``` markdown
+This is item A
+This is item B
+This is item C
+This is item D
+This is item E
 ```
 
 # spliting funtions into separated files
@@ -2563,6 +2586,7 @@ nnoremap <Leader>c :CopyIncrease<CR>
 
 # Vim insert serial number before each matched pattern using regex
 + https://stackoverflow.com/questions/48496015/
++ http://vim.wikia.com/wiki/Making_a_list_of_numbers
 
  ``` markdown
  <ExtendedAttributes />
@@ -2582,14 +2606,36 @@ nnoremap <Leader>c :CopyIncrease<CR>
 In this case we are not considering any number after or befor
 Activity in order to do the task
 
-/="\zsActivity\ze
-:let @a=10 | %s//\=(@a+setreg('a', @a+10)).' Activity'/g
-
-:%s/Activity \(\d\+\)/\=submatch(1) * 10 . " " . submatch(0)
+/Name="\zs[^"]*\ze"
+:let @a=10 | %s//\=(@a+setreg('a', @a+10)) . " " . submatch(0)
 
 submatch(1) ......... first regex group
 submatch(0) ......... the whole search pattern
 read more at: `help sub-replace`
+```
+
+# Incrementing a number in VIM - and preserve regex pattern space
++ https://stackoverflow.com/questions/17948325/
+
+In this problem you have to change
+
+``` markdown
+john.doe@example.com
+jane.doe@example.com
+
+john.doe_1@example.com
+jane.doe_2@example.com
+```
+
+``` markdown
+Insert into D2PROD."FICTITIOUS_VALUES"  values (894735,'John','Doe','U',to_timestamp('07-AUG-58 06.09.58.213000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'23985','563836','563836','5f4dcc3b5aa765d61d8327deb882cf99','729','1S8I','RANCHESTER','3693','280204','190783','john.doe@example.com');
+Insert into D2PROD."FICTITIOUS_VALUES"  values (334045,'Jane','Doe','B',to_timestamp('24-    APR-66 11.07.41.367000000 AM','DD-MON-RR HH.MI.SS.FF     AM'),'14647','298783','298783','5f4dcc3b5aa765d61d8327deb882cf99','229','3904','GRAYSVILLE','5214','301107','280778','jane.doe@example.com');
+
+Insert into D2PROD."FICTITIOUS_VALUES"  values (894735,'John','Doe','U',to_timestamp('07-AUG-58 06.09.58.213000000 AM','DD-MON-RR HH.MI.SS.FF AM'),'23985','563836','563836','5f4dcc3b5aa765d61d8327deb882cf99','729','1S8I','RANCHESTER','3693','280204','190783','john.doe_1@example.com');
+Insert into D2PROD."FICTITIOUS_VALUES"  values (334045,'Jane','Doe','B',to_timestamp('24-    APR-66 11.07.41.367000000 AM','DD-MON-RR HH.MI.SS.FF     AM'),'14647','298783','298783','5f4dcc3b5aa765d61d8327deb882cf99','229','3904','GRAYSVILLE','5214','301107','280778','jane.doe_2@example.com');
+
+/\v'\zs[^'@]+\ze\@
+:let @a=1 | %s//\=submatch(0)."_".(@a+setreg('a',@a+1))/g
 ```
 
 # How extract urls

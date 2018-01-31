@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 jan 20 17:01
+# .zshrc - Last Change: 2018 jan 30 20:44
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -27,16 +27,6 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} [%{$fg[blue]%}%b%{$reset_color%}] %{$fg[yellow]%}%s%{$reset_color%}:%r"
 precmd() {  # run before each prompt
     vcs_info
-}
-
-DIRSTACKSIZE=9
-DIRSTACKFILE=~/.zdirs
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
-fi
-chpwd() {
-  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
 
 # Prompt

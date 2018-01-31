@@ -1,5 +1,6 @@
 # avoid global loading environmente settings
 unsetopt GLOBAL_RCS
+skip_global_compinit=1
 
 
 export TERM="xterm-256color"
