@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 jan 31 07:08
+# dicasvim.md Intro - Last Change: 2018 fev 01 19:00
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2507,6 +2507,8 @@ In insert mode:
     Ctrl-t ............. increases indentation
     Ctrl-d ............. decreases indentation
     Ctrl-f ............. fixes indentation
+    == ................. indent curent line
+    =% ................. indent current block of code
 
 # Como indentar um bloco de código vuado
 

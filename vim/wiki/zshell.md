@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 jan 18 06:13
+# zshell.md - Last Change: 2018 fev 03 07:01
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -80,6 +80,42 @@ The -U means mark the function vcs_info for autoloading and suppress alias expan
 produces status zero if and only if there is at least one file in the current
 directory beginning with the string 'file'. The globbing qualifier N ensures
 that the expression is empty if there is no matching file.
+
+# Lazy load function
+
+``` markdown
+# Lazy Load to speed up zsh start
+# read more here: https://github.com/xcv58/prezto/tree/master/modules/lazy-load
+#
+#   Authors: xcv58 <i@xcv58.com>
+
+function lazy_load() {
+    local load_func=${1}
+    local lazy_func="lazy_${load_func}"
+
+    shift
+    for i in ${@}; do
+        alias ${i}="${lazy_func} ${i}"
+    done
+
+    eval "
+    function ${lazy_func}() {
+        unset -f ${lazy_func}
+        lazy_load_clean $@
+        eval ${load_func}
+        unset -f ${load_func}
+        eval \$@
+    }
+    "
+}
+
+function lazy_load_clean() {
+    for i in ${@}; do
+        unalias ${i}
+    done
+}
+# End of lazy load definition
+```
 
 # how do I correctly negate zsh globbing expressions?
 + https://superuser.com/a/403617/45032

@@ -1,4 +1,4 @@
-# File:	dicasfirefox.md - Last Change: 2018 jan 30 07:11
+# File:	dicasfirefox.md - Last Change: 2018 fev 01 10:46
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
@@ -147,6 +147,9 @@ Identify as chrome
 # Suspend firefox inactive tabs
 + https://addons.mozilla.org/en-US/firefox/addon/tab-suspender-tab-unloader/
 
+# Addon to avoid site tracking
++ https://addons.mozilla.org/en-US/firefox/addon/disconnect/
+
 # New speeding tab feature
 Tab Warming: How Firefox Will Improve Web Browsing Experience? How To Get It Now?
 
@@ -173,9 +176,6 @@ source: http://www.online-tech-tips.com/computer-tips/speed-up-mozilla-firefox/
 
     about:memory
     about:support
-
-# using Google Data Saver Proxy on firefox
-+ https://addons.mozilla.org/en-US/firefox/addon/google_datasaver_for_firefox/
 
 # user.js [[FirefoxUserProfile]]
 
@@ -268,13 +268,7 @@ libflashplayer.so na pasta:
   Feedly ...... plugin que gera um novo layout para as notícias do google reader
   e twitter: https://addons.mozilla.org/pt-BR/firefox/addon/feedly/
 
-  F1 .......... Extensão que permite compartilhar notícias direto por e-mail, twitter
-  https://addons.mozilla.org/pt-br/firefox/addon/f1-by-mozilla-labs/
-
-  It's all text ... com essa estensão consigo editar o wikispaces com o vim
-  hControl+Shift+Alt+Rttp://va.mu/Xhz0
-
-  Turn on your pdf reader ......... pdfjs.disabled
+    Turn on your pdf reader ......... pdfjs.disabled
 
 # firefox cache in RAM
 

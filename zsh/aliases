@@ -7,6 +7,8 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
+alias netrestart='sudo systemctl restart NetworkManager'
+
 alias rm=trash
 # use trash-cli
 # alias rm='echo "This is not the command you are looking for."; false'

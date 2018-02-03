@@ -1,7 +1,8 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 jan 30 20:19
-" vim: ff=unix ai et ts=4
-" Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
+" Last Change: 2018 fev 03 07:06
+"         vim: ff=unix ai et ts=4
+"      Author: Sérgio Luiz Araújo Silva
+"   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
 "
 "                 ( O O )
 "  +-----------oOO--(_)--OOo--------------+
@@ -420,7 +421,7 @@ nnoremap <c-o> <c-o>zz
 " select last paste in visual mode
 " With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
 nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
-noremap gV `[v`]
+nnoremap gp `[v`]
 
 " Last inserted text
 nnoremap g. :normal! `[v`]<cr><left>
