@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 01 19:00
+# dicasvim.md Intro - Last Change: 2018 fev 03 14:22
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -551,6 +551,7 @@ While in insert mode, you can use `Ctrl-R` {register}, where register can be:
     Ctrl-R Ctrl-P {register} inserts the text and auto-indents it.
     Ctrl-O can be used to run any normal mode command before returning to insert mode, so
     Ctrl-O "+p can also be used, for example.
+    ]p Just like p, but it automatically adjusts the indent level of the pasted code
 
 For more information, view the documentation with `:h i_ctrl-r`
 
@@ -4176,6 +4177,7 @@ specified by what is prepended:
 
     " map to count word under cursor
     " https://stackoverflow.com/a/11492536/2571881
+    " [I shows lines with word under the cursor
     :nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 
 # Dicas para substituições

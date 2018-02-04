@@ -1,11 +1,10 @@
-# File:	dicasfirefox.md - Last Change: 2018 fev 01 10:46
+# File:	dicasfirefox.md - Last Change: 2018 fev 03 07:57
 ```
 Criado: Ter 04/Jan/2011 hs 20:21
 ```
 
 # References
 + https://www.maketecheasier.com/speed-up-firefox/
-
 
 # Set firefor as defult browser
 
@@ -277,6 +276,12 @@ criar a seguinte chave (string) através do about:config
     browser.cache.disk.parent_directory
 
 coloque o valor para /var/shm/firefox-cache
+
+# Disable geo location
+
+    geo.enabled = FALSE (prevents sites from pulling your GPS location)
+    network.IDN_show_punycode = TRUE (prevent phishing attacks)
+    privacy.firstparty.isolate = true
 
 # http cache resource
 

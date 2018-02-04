@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 03 07:06
+" Last Change: 2018 fev 04 18:52
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -141,6 +141,7 @@ Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
@@ -251,6 +252,7 @@ hi Search ctermfg=Black
 
 " When double click a word vim will hightlight all other ocurences
 " see CountWordFunction()
+" [I shows lines with word under the cursor
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 
@@ -265,10 +267,10 @@ nnoremap <F8> :w<cr>
 inoremap <F8> <C-o>:w<cr>
 vnoremap <F8> <C-c>:w<cr>:normal gv<cr>
 
-nnoremap <C-Right> :vertical resize +5<CR>
-nnoremap <C-Left> :vertical resize -5<CR>
-nnoremap <C-Up> :res +5<CR>
-nnoremap <C-Down> :res -5<CR>
+nnoremap <Left> :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
 
 " jump to next buffer
 nnoremap <M-right> :bn<cr>
@@ -397,6 +399,12 @@ for mapmode in [ "o", "x" ]
     endfor
 endfor
 
+" line text-objectsl
+vnoremap <silent> al :<c-u>norm!0v$h<cr>
+vnoremap <silent> il :<c-u>norm!_vg_<cr>
+onoremap <silent> al :norm val<cr>
+onoremap <silent> il :norm vil<cr>
+
 command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 command! MakeTags !ctags -R .
@@ -482,6 +490,19 @@ fun! JoinSpaceless() abort
 endfun
 " Map it to a key
 nnoremap <Leader>J :call JoinSpaceless()<CR>
+
+function! ListLeaders()
+     silent! redir @a
+     silent! nmap <LEADER>
+     silent! redir END
+     silent! new
+     silent! put! a
+     silent! g/^s*$/d
+     silent! %s/^.*,//
+     silent! normal ggVg
+     silent! sort
+     silent! let lines = getline(1,"$")
+endfunction
 
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
