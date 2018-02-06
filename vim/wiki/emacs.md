@@ -33,6 +33,15 @@ Carregar um tema escuro
     next line ............. C-n
     previous line ......... C-p
 
+# Disable welcome screen
+
+    (setq inhibit-startup-screen t)
+
+In order to evaluate this expression right away just go to
+the end of the expression and press
+
+    C-x C-e
+
 # Open customize options
 
     M-x customize
@@ -40,7 +49,7 @@ Carregar um tema escuro
 # Selections
 
 	Select whole file ........... C-x h
-    
+
 
 # Setting marks to delete regions
 
@@ -1169,7 +1178,7 @@ C-x @ s		event-apply-super-modifier
 * http://code.google.com/p/yasnippet/
 
   M-q ........... wrapping text
-  
+
 If you type a lot of words into Emacs, you will notice that it does
 not automatically wrap the text. This can be very annoying both for
 moving the point around if you are typing full paragraphs, because

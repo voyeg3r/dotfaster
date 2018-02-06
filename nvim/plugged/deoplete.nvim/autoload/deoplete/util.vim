@@ -217,14 +217,13 @@ function! deoplete#util#rpcnotify(event, context) abort
   if deoplete#init#_check_channel()
     return ''
   endif
-
-  if !exists('s:logged') && !empty(g:deoplete#_logging)
-    call s:notify('deoplete_enable_logging',
-          \ deoplete#init#_context(a:event, []))
-    let s:logged = 1
-  endif
-
   call s:notify(a:event, a:context)
+  if has('nvim') && a:event ==# 'deoplete_on_event'
+        \ && a:context['event'] ==# 'VimLeavePre'
+    while g:deoplete#_stopped_processes < g:deoplete#max_processes
+      sleep 50m
+    endwhile
+  endif
   return ''
 endfunction
 

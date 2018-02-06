@@ -10,7 +10,7 @@
 (package-initialize)
 
 ;; font setting
-(set-default-font "Monaco 14")
+;;(set-default-font "Monaco 14")
 
 ;; Set line number mode to always be on
 (global-linum-mode t)

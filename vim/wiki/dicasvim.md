@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 03 14:22
+# dicasvim.md Intro - Last Change: 2018 fev 04 19:51
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2103,6 +2103,8 @@ gwip .... formats paragraph and restores cursor position
 ```
 
 Which means "@" register, : command
+
+Just type `&` to repeat the last substitution on the current line. You can repeat it on all lines by typing `g&`.
 
 ``` vim
 @@  --> repeat last register easily

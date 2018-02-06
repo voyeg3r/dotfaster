@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 04 18:52
+" Last Change: 2018 fev 06 14:32
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -57,35 +57,37 @@ set matchpairs=(:),{:},[:],<:>
 " temporary solution for nvim cursor
 "set guicursor=
 set dictionary+=~/.dotfiles/nvim/words.txt     " C-x C-k C-n
-set laststatus=2          " statusline specific
-set lazyredraw            " speed up macros
-set mouse=a               " enable mouse click
-set mousehide             " hide mouse while typing
-set path+=**              " gf to open files under cursor
-set scrolloff=0           " keep 3 lines when scrolling
+
+set laststatus=2      " statusline specific
+set lazyredraw        " speed up macros
+set mouse=a           " enable mouse click
+set mousehide         " hide mouse while typing
+set path+=**          " gf to open files under cursor
+set scrolloff=0       " keep 3 lines when scrolling
 set sidescrolloff=0
-set ai                    " set auto-indenting on for programming
-set hidden                " Switch buffers without saving them
-set showcmd               " display incomplete commands
-set display+=lastline
-set nobackup              " do not keep a backup file
-set number                " show line numbers
-set ruler                 " show the current row and column
-set hlsearch              " highlight searches
-set incsearch             " do incremental searching
-set showmatch             " jump to matches when entering regexp
-set ignorecase            " ignore case when searching
-set infercase             " case inferred by default
-set smartcase             " no ignorecase if Uppercase char present
-set visualbell t_vb=      " turn off error beep/flash
-set novisualbell          " turn off visual bell
-set tabstop=4             " Number of spaces that a <Tab> in the file counts for
-set softtabstop=4         " number of spaces in tab when editing
-set formatoptions+=j      " Delete comment characters when joining lines
-set title                 " shows filename at the top
-set expandtab             " Converts tab into spaces
-set shiftwidth=4
-set shiftround            "when at 3 spaces, and I hit > go to 4, not 5
+set ai                " set auto-indenting on for programming
+set hidden            " Switch buffers without saving them
+set showcmd           " display incomplete commands
+set display+=lastline "
+set nobackup          " do not keep a backup file
+set number            " show line numbers
+set ruler             " show the current row and column
+set hlsearch          " highlight searches
+set incsearch         " do incremental searching
+set showmatch         " jump to matches when entering regexp
+set ignorecase        " ignore case when searching
+set infercase         " case inferred by default
+set smartcase         " no ignorecase if Uppercase char present
+set visualbell t_vb=  " turn off error beep/flash
+set novisualbell      " turn off visual bell
+set tabstop=4         " Number of spaces that a <Tab> in the file counts for
+set formatoptions+=j  " Delete comment characters when joining lines
+set title             " shows filename at the top
+set expandtab         " Converts tab into spaces
+set softtabstop=4     " number of spaces in tab when editing
+set shiftwidth=4      " indented with the reindent operations with >> and <<
+set shiftround        " when at 3 spaces, and I hit > go to 4, not 5
+
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -160,10 +162,9 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rstacruz/vim-closer'
-"Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tommcdo/vim-lion'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 "Plug 'airblade/vim-gitgutter'
@@ -171,7 +172,7 @@ Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 "Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 if isdirectory('/usr/local/opt/fzf')
@@ -196,6 +197,9 @@ Plug 'chriskempson/tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
+
+" lion it is an align plugin
+let b:lion_squeeze_spaces = 1
 
 " SOME DEOPLETE CONFIGURATIONS
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
@@ -460,15 +464,6 @@ if has("user_commands")
     command! -bang QA qa<bang>
     command! -bang Qa qa<bang>
 endif
-
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
 
 " vimshell.vim
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
@@ -815,8 +810,8 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " Tagbar
-nnoremap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
+"nnoremap <silent> <F4> :TagbarToggle<CR>
+"let g:tagbar_autofocus = 1
 
 " Disable visualbell
 if has('autocmd')
