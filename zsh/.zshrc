@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 03 07:40
+# .zshrc - Last Change: 2018 fev 06 15:18
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -46,19 +46,8 @@ source ~/.dotfiles/bin/fasd
 
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f
 
-#eval "$(fasd --init auto zsh-hook)"
+eval "$(fasd --init auto zsh-hook)"
 
-if [ $commands[fasd] ]; then # check if fasd is installed
-  fasd_cache="${ZSH_CACHE_DIR}/fasd-init-cache"
-  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init auto zsh-hook >| "$fasd_cache"
-  fi
-  source "$fasd_cache"
-  unset fasd_cache
-
-  alias v="f -e $EDITOR"
-  alias o='a -e open_command'
-fi
 
 bindkey '^ ' autosuggest-accept
 bindkey "\e[3~" delete-char

@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 06 14:32
+" Last Change: 2018 fev 09 15:01
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -828,10 +828,10 @@ vnoremap < <gv
 vnoremap > >gv
 
 "" Move lines in all modes with Ctrl-k Ctrl-j
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
-" inoremap <A-j> <Esc>:m+<CR>==gi
-" inoremap <A-k> <Esc>:m-2<CR>==gi
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
 nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
 

@@ -9,8 +9,6 @@
 
 alias netrestart='sudo systemctl restart NetworkManager'
 
-# Get github description based on user/repo
-alias gitshow="curl -s https://github.com/`xclip -i -selection clipboard -o` | grep '<title>' | sed 's/<[^>]*>//g' | sed 's/GitHub - //g'"
 
 alias rm=trash
 # use trash-cli
