@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 10 10:26
+" Last Change: 2018 fev 10 10:40
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -836,7 +836,7 @@ nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
 
 " delete current till the end of line
-inoremap <Leader>k <C-o>D
+inoremap <C-k> <C-o>C
 
 " vim-airline
 "if !exists('g:airline_symbols')
