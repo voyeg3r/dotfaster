@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 10 10:40
+" Last Change: 2018 fev 10 17:58
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -58,6 +58,7 @@ set matchpairs=(:),{:},[:],<:>
 "set guicursor=
 set dictionary+=~/.dotfiles/nvim/words.txt     " C-x C-k C-n
 
+set nrformats+=alpha  " Increases/Decreases numbers with Ctrl-a/Ctrl-x correctrly
 set laststatus=2      " statusline specific
 set lazyredraw        " speed up macros
 set mouse=a           " enable mouse click
