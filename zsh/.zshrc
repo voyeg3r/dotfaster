@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 06 15:18
+# .zshrc - Last Change: 2018 fev 10 08:46
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -154,9 +154,9 @@ zstyle ':completion:*:warnings' format 'Too bad there is nothing'
 
 # current_wallpaper=$(gsettings get org.gnome.desktop.background picture-uri | sed 's,file:///,/,g' )
 
-bindkey -e                      # emacs keybindings
-bindkey '\e[1;5C' forward-word            # C-Right
-bindkey '\e[1;5D' backward-word           # C-Left
+bindkey -e                                # emacs keybindings
+bindkey '^[f'     forward-word            # Alt-f
+bindkey '^[b'     backward-word           # Alt-b
 bindkey '\e[2~'   overwrite-mode          # Insert
 bindkey '\e[3~'   delete-char             # Del
 bindkey '\e[5~'   history-search-backward # PgUp
@@ -171,8 +171,8 @@ zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 bindkey '^xe' edit-command-line
 
-bindkey '^b' push-line-or-edit
-bindkey '\eb' push-line-or-edit
+# bindkey '^b' push-line-or-edit - conflict with bacward-word
+# bindkey '\eb' push-line-or-edit
 
 # getting git status
 function _git-status {
@@ -198,7 +198,7 @@ function up_widget() {
 		zle accept-line
 	}
 	zle -N up_widget
-bindkey "^k" up_widget
+bindkey "^[[1;5A" up_widget
 
 # history search
 # see: http://stackoverflow.com/questions/14040351/filtering-zsh-history-by-command

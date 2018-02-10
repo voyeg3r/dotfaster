@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 fev 03 07:01
+# zshell.md - Last Change: 2018 fev 10 06:39
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -221,7 +221,16 @@ This tip only works on zsh
    	 fi
 ```
 
-# Fixing delete char on zsh
+# bindkey
+In order to get control characters just type
+
+``` markdown
+cat <Enter>
+```
+
+Now you can type your key sequences in order to get your combination
+
+## Fixing delete char on zsh
 
 	bindkey "\e[3~" delete-char
 
@@ -716,8 +725,14 @@ make file and directory names lowercase
     # show files modified in the last hour
     print -l zsh_demo/**/*(mh-1)
 
+    # Show files created in the last 10 minutes
+    print -l zsh_demo/**/*(cm-10)
+
     # sort files from most to least recently modified and show the last 3
     ls -l zsh_demo/**/*(om[1,3])
+
+    print -l **/*(.Lk-1cm-20om[1])
+    "File --> ." Less than 1k, created minute -20, show in reverse order the first
 
 # Show today's files
 

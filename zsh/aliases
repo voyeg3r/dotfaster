@@ -287,7 +287,7 @@ alias -g V='| gvim -'
 #alias -g X='| xargs'
 alias -g N='*/**(.om[1])'
 alias -g ND='./**/*(/om[1])' # newest directory --> ls -d ND
-alias -g NF='./**/*(.om[1])' # newest file
+alias -g NF='./**/*(.oc[1])' # newest file
 alias -g MP3'./**/*.mp3(om[1])'
 alias -g latest='./**/*(.om[1])' # newest file | also Ctrl-x Ctrl-m
 alias -g NUL="> /dev/null 2>&1"

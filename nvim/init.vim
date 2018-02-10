@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 09 15:01
+" Last Change: 2018 fev 10 10:26
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -277,11 +277,11 @@ nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 
 " jump to next buffer
-nnoremap <M-right> :bn<cr>
-nnoremap <M-left> :bp<cr>
+nnoremap <M-right> :bn<CR>
+nnoremap <M-left> :bp<CR>
 
 " close the buffer
-nnoremap <Leader>db :Bdelete!<cr>
+nnoremap <Leader>db :bd!<CR>
 
 " list buffers and jump to a chosen one
 nnoremap <Leader>b :ls<CR>:b<Space>
@@ -835,8 +835,8 @@ inoremap <A-k> <Esc>:m-2<CR>==gi
 nnoremap <A-j> :m+<CR>
 nnoremap <A-k> :m-2<CR>
 
-" delete current line on insert mode
-inoremap  <Leader>k <C-o>dd
+" delete current till the end of line
+inoremap <Leader>k <C-o>D
 
 " vim-airline
 "if !exists('g:airline_symbols')
