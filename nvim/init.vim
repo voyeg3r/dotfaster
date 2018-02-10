@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 10 17:58
+" Last Change: 2018 fev 10 18:46
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -88,6 +88,7 @@ set expandtab         " Converts tab into spaces
 set softtabstop=4     " number of spaces in tab when editing
 set shiftwidth=4      " indented with the reindent operations with >> and <<
 set shiftround        " when at 3 spaces, and I hit > go to 4, not 5
+
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
@@ -263,6 +264,8 @@ nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
+
+nnoremap <F4> ggVGg?
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
 nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

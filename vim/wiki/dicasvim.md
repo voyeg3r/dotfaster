@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 04 19:51
+# dicasvim.md Intro - Last Change: 2018 fev 10 19:43
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1049,6 +1049,9 @@ And you want to substitute spaces for underscores just inside quotes
 
 ``` markdown
 :%s/\v%(('[^']*'))/\=substitute(submatch(1),' ','_', 'g')/g
+
+Esyer way
+:'<,'>s/\%V \%V/_/g
 ```
 
 ## Result
@@ -2156,9 +2159,9 @@ Supose you have these lines:
 read more at: `help sub-replace`
 
 # Converting numbers to chars
-The range of printable chars spams from 32 to 93
+The range of printable chars spams from 32 to 122
 
-    :put =range(32,93)
+    :0put =range(32,122)
     :%s,.*,\=nrm2char(submatch(0))
     :%j
 
