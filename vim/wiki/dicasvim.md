@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 11 13:40
+# dicasvim.md Intro - Last Change: 2018 fev 11 18:21
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -105,6 +105,45 @@ discartd it without worring about saving.
     cab SC Scratch
 
     setlocal nobuflisted
+
+# Faster way to move a block of text
++ https://vi.stackexchange.com/a/15161/7339
+
+Inverting "Example" block order
+
+``` markdown
+\begin{rSubsection}{Example 1}{}{Redacted}{}
+\item Stuff I did
+\item Also did other things
+\end{rSubsection}
+
+\begin{rSubsection}{Example 2}{}{Redacted}{}
+\item Stuff I did
+\item Also did other things
+\end{rSubsection}
+
+\begin{rSubsection}{Example 3}{}{Redacted}{}
+\item Stuff I did
+\item Also did other things
+\end{rSubsection}
+
+\begin{rSubsection}{Example 4}{}{Redacted}{}
+\item Stuff I did
+\item Also did other things
+\end{rSubsection}
+```
+
+This solution will invert the blocks order
+
+``` markdown
+:$put _ ..................... add a new line at the end
+4k .........................  move to the begining of {example 4}
+5:m-0 ......................  move next 5 lines to line zero
+}}j ........................  move to {example 3}
+5:m-11 .....................  move block to 11 lines before
+}j .........................  move to the {example 2}
+5:m-6 ......................  finishes the magic
+```
 
 # How to pad strings inside curly braces with odd number of character with a single space?
 + https://stackoverflow.com/a/48439232/2571881

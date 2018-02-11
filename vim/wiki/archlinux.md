@@ -1,4 +1,4 @@
-# Arquivo: archlinux.wiki - Last Change: 2017 dez 24 17:05
+# Arquivo: archlinux.wiki - Last Change: 2018 fev 11 14:37
 
 # Automatic updates
 
@@ -7,6 +7,17 @@
 # compress or expand executable files
 
     sudo pacman -S upx
+
+# fix pacman keys
+
+    # pacman-key --init
+    # pacman-key --refresh-keys
+
+limpar o cache
+
+    # pacman -Scc
+
+procure outro mirror, edite o arquivo, `/etc/pacman.d/mirrorlist`
 
 # Packages to install on a fresh archlinux installation
 
