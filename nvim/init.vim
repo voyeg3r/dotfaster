@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 10 18:46
+" Last Change: 2018 fev 11 09:40
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -89,7 +89,6 @@ set softtabstop=4     " number of spaces in tab when editing
 set shiftwidth=4      " indented with the reindent operations with >> and <<
 set shiftround        " when at 3 spaces, and I hit > go to 4, not 5
 
-
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
@@ -146,6 +145,7 @@ Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
@@ -287,12 +287,17 @@ nnoremap <M-left> :bp<CR>
 " close the buffer
 nnoremap <Leader>db :bd!<CR>
 
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <F10> :b <C-Z>
+
 " list buffers and jump to a chosen one
 nnoremap <Leader>b :ls<CR>:b<Space>
 "nnoremap ,b :ls<cr>:b<space>
 " set wildcharm=<C-z>
 " :buffer <c-z> <shift-tab>
 "nnoremap <Leader>B :buffer <C-z><S-Tab>
+"remap <F10> :b <C-Z>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 
@@ -356,7 +361,6 @@ nnoremap <M--> <C-w>-
 syntax on               " turn syntax highlighting on by default
 filetype on             " detect type of file
 filetype indent on      " load indent file for specific file type
-
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")

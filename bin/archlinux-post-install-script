@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 jan 18 11:55
+#      Last Change: 2018 fev 11 07:30
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -163,7 +163,7 @@ sudo pacman -S community/python-pmw
 sudo pacman -S --force ttf-dejavu
 sudo pacman -Syu
 # apple programming font
-yaourt ttf-meslo
+yaourt ttf-meslo noto-fonts
 
 # a better rm solution (allows restoring)
 # https://github.com/andreafrancia/trash-cli

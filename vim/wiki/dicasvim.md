@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 10 19:43
+# dicasvim.md Intro - Last Change: 2018 fev 11 09:42
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -184,7 +184,7 @@ Last line of this sample text.
 :args **/*.rb
 ```
 
-Arglist commands
+Arglist commands (use tpope/vim-unimpaired)
 
     :arg ......... to show the files in your current arglist
     :argdo ....... to run a command on your arglist
@@ -1050,7 +1050,7 @@ And you want to substitute spaces for underscores just inside quotes
 ``` markdown
 :%s/\v%(('[^']*'))/\=substitute(submatch(1),' ','_', 'g')/g
 
-Esyer way
+Even easier
 :'<,'>s/\%V \%V/_/g
 ```
 
@@ -4545,6 +4545,14 @@ My solution
 # Adicionar uma linha em branco após linhas que começam com espaço
 
     :g/^\s\+/normal o
+
+# Adicionar um espaço em braco após cada linha
+
+Double-space your file: :g/^/put _. This puts the contents of the black hole
+register (empty when reading, but writable, behaving like /dev/null) linewise,
+after each line (because every line has a beginning!).
+
+    g/^/put _
 
 # Função para deletar linhas em branco duplicadas
 

@@ -1,6 +1,7 @@
-# File:	vimplugins.md - Last Change: qua 27 dez 2017 14:34:54 -03
+# File:	vimplugins.md - Last Change: 2018 fev 11 10:00
 
 This file describes some useful vim plugins
 
-+ [emmet vim](emmet-vim.md)
++ [emmet vim](emmet-vim.md) working with html files
++ [vim-unimpaired](vim-unimpaired.md) pairs of handy bracket mappings
 
