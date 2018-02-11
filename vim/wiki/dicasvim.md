@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 11 09:42
+# dicasvim.md Intro - Last Change: 2018 fev 11 13:40
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -78,6 +78,12 @@ This is one antipattern
 Another common antipattern is closing a file to reopen vim with an empty buffer, you can simply:
 
     :bd!
+
+Closes all args or buffers
+
+    :argdo bd
+    :bufdo bd
+    :%bd|e#
 
 Or you can close the secconde buffer by doing:
 
@@ -1480,6 +1486,11 @@ Ctrl-r = ........ starts expression register (cursor at the bottom)
 6 * 35 <enter> .. inserts the result
 ```
 
+# How to run a function silently on vim?
+You can call the function silently by defining a silent map:
+
+    noremap <silent> H :call FirstCharOrFirstCol()<cr>
+
 # Viewing where maps are setted
 
     :verbose map
@@ -2410,6 +2421,8 @@ Caso queira que o corretor seja habilitado automaticamente sempre que acessar o 
 Para somente exibir o full name do arquivo corrente faça:
 
      1 Ctrl-g   (em modo normal)
+
+Tip: If you type `2 Ctrl-g` the buffer number it is also shown
 
 # Como limpar os cartões exportados do anki
 

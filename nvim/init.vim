@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 11 09:40
+" Last Change: 2018 fev 11 13:45
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -91,7 +91,10 @@ set shiftround        " when at 3 spaces, and I hit > go to 4, not 5
 
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set t_RV= " http://bugs.debian.org/608242, http://groups.google.com/group/vim_dev/browse_thread/thread/9770ea844cec3282
+
+nmap <leader>l :set list!<CR>
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+
 set lcs+=space:·,nbsp:•
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 set wildignore+=*.so,*.pdf,*.swp,*.zip,*.pyc,*.db,*.sqlite
@@ -216,6 +219,9 @@ let g:deoplete#file#enable_buffer_path = 1
 inoremap <C-l> <C-o>C
 nnoremap Y y$
 
+" Jump outside '"({
+inoremap <C-l> <right>
+
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview,noinsert
@@ -339,22 +345,24 @@ command! -nargs=0 GetHistory call s:RedirHistoryCommands()
 command! -nargs=1 H execute histget("cmd", 0+<args>)
 command! -nargs=1 Hg let @h = histget("cmd", 0+<args>)
 
-function! Bdeleteonly()
-    let list = filter(Buflist(), 'v:val != bufname("%")')
-    for buffer in list
-        exec "bdelete ".buffer
-    endfor
+function! CloseAllBuffersButCurrent()
+  let curr = bufnr("%")
+  let last = bufnr("$")
+  if curr > 1    | silent! execute "1,".(curr-1)."bd"     | endif
+  if curr < last | silent! execute (curr+1).",".last."bd" | endif
+  echom "All other buffers unloaded!"
 endfunction
-" close all buffers
-command! Ball :silent call Bdeleteonly()
+"nnoremap <silent> <Leader>c :call CloseAllBuffersButCurrent()<CR>
+nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 
-" Search word under cursor
+" substitute word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
 nnoremap <C-M-j> <c-w>w<c-e><c-w>w
 
+" resise windows
 nnoremap <M-=> <C-w>+
 nnoremap <M--> <C-w>-
 
@@ -583,19 +591,19 @@ endfun
 vnoremap <C-s> :<C-u>call SumVis()<CR>
 
 " this function increases each number in a copyied function
-fun! CopyAndIncrease()
-    try
-		let l:old_copy = getreg('0')
-		normal yip
-		let @0 = substitute(@0,'\d\+','\=submatch(0) + 1','g')
-		exec "normal }O\<Esc>p"
-	finally
-	    call setreg('0', l:old_copy)
-	endtry
-endfun
-command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
-let mapleader = ','
-nnoremap <Leader>c :CopyIncrease<CR>
+" fun! CopyAndIncrease()
+"     try
+" 		let l:old_copy = getreg('0')
+" 		normal yip
+" 		let @0 = substitute(@0,'\d\+','\=submatch(0) + 1','g')
+" 		exec "normal }O\<Esc>p"
+" 	finally
+" 	    call setreg('0', l:old_copy)
+" 	endtry
+" endfun
+" command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
+" let mapleader = ','
+" nnoremap <Leader>c :CopyIncrease<CR>
 
 " swap words without changing cursor position gw
 " swap words changing cursor position gr
@@ -862,7 +870,7 @@ fun! MruFile() abort
         exe "edit " . filename
     endif
 endfun
-nnoremap <Leader>l :call MruFile()<cr>
+"nnoremap <Leader>l :call MruFile()<cr>
 command! -nargs=0 Mrf call MruFile()
 
 " Hey brazilian portuguese users! what you are waiting for?

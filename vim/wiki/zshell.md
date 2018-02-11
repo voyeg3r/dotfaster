@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 fev 10 06:39
+# zshell.md - Last Change: 2018 fev 11 13:18
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
