@@ -239,7 +239,7 @@ Arglist commands (use tpope/vim-unimpaired)
     :argdo ....... update to save all changes to your arglist
     :argdo ....... undo to undo changes to your arglist
 
-Navigation in arglist
+Navigation in arglist (It needs tim pope's plugin unimpaired)
 
     [a => go to the previous file in arglist
     ]a => go to the next file in arglist
@@ -358,8 +358,12 @@ function:
 ```
 fun! CleanFlaschards()
     let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-    "let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d:w'
-    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d:w'
+    "let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d
+:w
+'
+    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d
+:w
+'
     %s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
     %s,\v\<(\/)?\zsu\ze\>,b,g
     %s,\v\s+$,,g
@@ -369,20 +373,25 @@ fun! CleanFlaschards()
     %s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
     g/^\W\+$/d
     normal gg
-    silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/dip
+    silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/
+dip
     normal gg
     g/\v^\d+\W?(–|-)/d
     normal gg
-    silent normal! /<u>\|<b>/{kdgg
+    silent normal! /<u>\|<b>/
+{kdgg
     normal gg
-    silent normal! /:$/dip
-    normal /CLIQUE/{kdG
+    silent normal! /:$/
+dip
+    normal /CLIQUE/
+{kdG
     0r audios.txt
     g/.*mp3/s/http.*\/\d\+-//g
     g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
     g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
     normal gg
-    silent normal! /^<\/b>$/kJD
+    silent normal! /^<\/b>$/
+kJD
     %s/\v(!|.|\?)  /\1 /ge
     DelBlank
     normal gg
@@ -681,7 +690,10 @@ The selections starts with
 na macro a eu busco linhas não vazias pois
 eu tinha funções de uma liha
 
-macro a --> /^[^ ]Vynpvt("by:sav! b:bd!j
+macro a --> /^[^ ]
+Vynpvt("by:sav! b
+:bd!
+j
 
 Já na macro b eu tinha que casar funções completas
 
@@ -2453,7 +2465,8 @@ Caso queira que o corretor seja habilitado automaticamente sempre que acessar o 
 
    :set ff=unix
 
-   Para inserir  use o atalho Ctrl-v Ctrl-m no modo [[insert]]
+   Para inserir 
+ use o atalho Ctrl-v Ctrl-m no modo [[insert]]
 
 # Colocando o nome do arquivo no proprio
 
@@ -4659,7 +4672,9 @@ If it returns ^V{some number}, it means the type is blockwise, and the width of 
 " Esta função limpa meus flashcards
 fun CleanFlashCards()
     let @a = 'v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-    let @b = 'v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d:w'
+    let @b = 'v$hd:}{jA[sound:"A;gJA;MairoVergarakj:g/^$/d
+:w
+'
     ":g/^1 –/normal dgg<CR>
     ":g/^\d\+ –/d<CR>
     :g/^(/d<CR>
