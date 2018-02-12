@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 12 17:39
+# dicasvim.md Intro - Last Change: 2018 fev 12 19:04
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2465,7 +2465,7 @@ Caso queira que o corretor seja habilitado automaticamente sempre que acessar o 
 
    :set ff=unix
 
-   Para inserir 
+   Para inserir
  use o atalho Ctrl-v Ctrl-m no modo [[insert]]
 
 # Colocando o nome do arquivo no proprio

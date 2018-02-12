@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 12 18:54
+" Last Change: 2018 fev 12 19:08
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1085,6 +1085,7 @@ nnoremap <F6> :exec getline('.')
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+hi Folded ctermbg=black
 nnoremap Q :normal n.<CR>
 
 " snippets settings
