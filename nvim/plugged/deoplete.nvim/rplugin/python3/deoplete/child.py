@@ -48,36 +48,51 @@ class Child(logger.LoggingMixin):
             encoding='utf-8',
             unicode_errors='surrogateescape')
 
-    def main(self):
-        for child_in in self._read():
-            self.debug('main_loop: begin')
-            name = child_in['name']
-            args = child_in['args']
-            queue_id = child_in['queue_id']
-            self.debug('main_loop: %s', name)
+    def main_loop(self, stdout):
+        while True:
+            feed = sys.stdin.buffer.raw.read(102400)
+            if feed is None:
+                continue
+            if feed == b'':
+                # EOF
+                return
 
-            if name == 'enable_logging':
-                self._enable_logging()
-            elif name == 'add_source':
-                self._add_source(args[0])
-            elif name == 'add_filter':
-                self._add_filter(args[0])
-            elif name == 'set_source_attributes':
-                self._set_source_attributes(args[0])
-            elif name == 'set_custom':
-                self._set_custom(args[0])
-            elif name == 'on_event':
-                self._on_event(args[0])
-            elif name == 'merge_results':
-                self._write(self._merge_results(args[0], queue_id))
+            self._unpacker.feed(feed)
+            self.debug('_read: %d bytes', len(feed))
 
-    def _read(self):
-        self._unpacker.feed(sys.stdin.buffer.read(1))
-        return self._unpacker
+            for child_in in self._unpacker:
+                name = child_in['name']
+                args = child_in['args']
+                queue_id = child_in['queue_id']
+                self.debug('main_loop: %s begin', name)
 
-    def _write(self, expr):
-        sys.stdout.buffer.write(self._packer.pack(expr))
-        sys.stdout.flush()
+                ret = self.main(name, args, queue_id)
+                if ret:
+                    self._write(stdout, ret)
+
+                self.debug('main_loop: end')
+
+    def main(self, name, args, queue_id):
+        ret = None
+        if name == 'enable_logging':
+            self._enable_logging()
+        elif name == 'add_source':
+            self._add_source(args[0])
+        elif name == 'add_filter':
+            self._add_filter(args[0])
+        elif name == 'set_source_attributes':
+            self._set_source_attributes(args[0])
+        elif name == 'set_custom':
+            self._set_custom(args[0])
+        elif name == 'on_event':
+            self._on_event(args[0])
+        elif name == 'merge_results':
+            ret = self._merge_results(args[0], queue_id)
+        return ret
+
+    def _write(self, stdout, expr):
+        stdout.buffer.write(self._packer.pack(expr))
+        stdout.flush()
 
     def _enable_logging(self):
         logging = self._vim.vars['deoplete#_logging']
@@ -97,7 +112,7 @@ class Child(logger.LoggingMixin):
             source.path = path
             if source.name in self._loaded_sources:
                 # Duplicated name
-                error_tb(self._vim, 'duplicated source: %s' % source.name)
+                error_tb(self._vim, 'Duplicated source: %s' % source.name)
                 error_tb(self._vim, 'path: "%s" "%s"' %
                          (path, self._loaded_sources[source.name]))
                 source = None
@@ -136,6 +151,7 @@ class Child(logger.LoggingMixin):
                 self.debug('Loaded Filter: %s (%s)', f.name, path)
 
     def _merge_results(self, context, queue_id):
+        self.debug('merged_results: begin')
         results = self._gather_results(context)
 
         merged_results = []
@@ -157,6 +173,7 @@ class Child(logger.LoggingMixin):
 
         is_async = len([x for x in results if x['context']['is_async']]) > 0
 
+        self.debug('merged_results: end')
         return {
             'queue_id': queue_id,
             'is_async': is_async,

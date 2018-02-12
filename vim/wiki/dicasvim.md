@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 12 08:09
+# dicasvim.md Intro - Last Change: 2018 fev 12 17:39
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -137,6 +137,13 @@ This solution will invert the blocks order
 
 ``` markdown
 :$pu _ | 16,20m0 | 16,20m5 | 16,20m10
+
+or
+
+:$pu _ | normal gg
+:16,$m.-1 | normal j
+@@
+@@
 ```
 
 # How to pad strings inside curly braces with odd number of character with a single space?

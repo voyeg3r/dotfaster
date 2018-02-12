@@ -5,6 +5,7 @@
 # ============================================================================
 
 import sys
+import io
 
 from neovim import attach
 
@@ -28,18 +29,29 @@ def attach_vim(serveraddr):
     return vim
 
 
+class RedirectStream(io.IOBase):
+    def __init__(self, handler):
+        self.handler = handler
+
+    def write(self, line):
+        self.handler(line)
+
+    def writelines(self, lines):
+        self.handler('\n'.join(lines))
+
+
 def main(serveraddr):
     vim = attach_vim(serveraddr)
+    from deoplete.child import Child
     from deoplete.util import error_tb
-    child = None
+    stdout = sys.stdout
+    sys.stdout = RedirectStream(lambda data: vim.out_write(data))
+    sys.stderr = RedirectStream(lambda data: vim.err_write(data))
     try:
-        from deoplete.child import Child
         child = Child(vim)
-        while 1:
-            child.main()
+        child.main_loop(stdout)
     except Exception:
         error_tb(vim, 'Error in child')
-    return
 
 
 if __name__ == '__main__':
