@@ -91,3 +91,6 @@
 [submodule "/home/sergio/.dotfiles/tmux/plugins/tpm"]
 	path = /home/sergio/.dotfiles/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "nvim/plugged/vim-plug"]
+	path = nvim/plugged/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

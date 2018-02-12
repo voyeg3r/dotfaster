@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 12 08:29
+" Last Change: 2018 fev 12 18:54
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -127,18 +127,18 @@ set undofile " Maintain undo history between sessions
 
 let vimplug_exists=expand(glob('~/.config/nvim/autoload/plug.vim'))
 
-"if !filereadable(vimplug_exists)
-"  if !executable("curl")
-"    echoerr "You have to install curl or first install vim-plug yourself!"
-"    execute "q!"
-"  endif
-"  echo "Installing Vim-Plug..."
-"  echo ""
-"  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"  let g:not_finish_vimplug = "yes"
-"
-"  autocmd VimEnter * PlugInstall
-"endif
+if !filereadable(vimplug_exists)
+  if !executable("curl")
+    echoerr "You have to install curl or first install vim-plug yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent !\curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
+endif
 
 call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
@@ -274,6 +274,8 @@ nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
 
 nnoremap <F4> ggVGg?
+
+nnoremap <F5> :GundoToggle<CR>
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
 nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
