@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 11 18:21
+# dicasvim.md Intro - Last Change: 2018 fev 12 08:09
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -136,13 +136,7 @@ Inverting "Example" block order
 This solution will invert the blocks order
 
 ``` markdown
-:$put _ ..................... add a new line at the end
-4k .........................  move to the begining of {example 4}
-5:m-0 ......................  move next 5 lines to line zero
-}}j ........................  move to {example 3}
-5:m-11 .....................  move block to 11 lines before
-}j .........................  move to the {example 2}
-5:m-6 ......................  finishes the magic
+:$pu _ | 16,20m0 | 16,20m5 | 16,20m10
 ```
 
 # How to pad strings inside curly braces with odd number of character with a single space?
@@ -1120,6 +1114,7 @@ few examples:
 ``` markdown
 Number all the lines in a file (insert line number followed by a tab):
 :%s/^/\=line('.')."\t"/
+:%s/^/\=printf('%02d ', line('.'))
 
 Number a range of lines (from line 10 to line 20):
 :10,20s/^/\=line('.')."\t"/

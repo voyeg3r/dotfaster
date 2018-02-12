@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 11 18:20
+" Last Change: 2018 fev 12 08:29
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -330,6 +330,10 @@ function! Buflist()
 |   endfor
     return list
 endfunction
+
+fun! AddLineNumber()
+    %s/^/\=printf('%02d ', line('.'))
+endfun
 
 " this function gets last 20 cmds to new buffer
 fun! s:RedirHistoryCommands()
