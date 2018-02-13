@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 12 19:04
+# dicasvim.md Intro - Last Change: 2018 fev 13 20:13
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2421,7 +2421,7 @@ Uma barra de status mais bacana para o vim
 https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
 
 # Corretor ortográfico no vim
-
++ [referência → wikilivros](https://pt.wikibooks.org/wiki/Vim/Configurando_a_verifica%C3%A7%C3%A3o_ortogr%C3%A1fica)
 Corretor ortográfico para VIM
 Standard
 
@@ -2437,9 +2437,9 @@ Baixando a base de palavras:
 
     Wget http://extensions.libreoffice.org/extension-center/vero-verificador-ortografico-e-hifenizador-em-portugues-do-brasil/pscreleasefolder.2012-01-04.1563120832/2.1.2/vero_pt_br_v212aoc.oxt
 
-# Unzip -x vero_pt_br_v212aoc.oxt
-Aplicando no vim
+    # Unzip -x vero_pt_br_v212aoc.oxt
 
+Aplicando no vim
 Acesse o vim com o comando abaixo:
 
     Vim
@@ -2447,19 +2447,32 @@ Acesse o vim com o comando abaixo:
 No vim digite:
 
     :mkspell pt pt_BR
+    :mkspell en en_US
 
 Obs: Pode demorar um pouco e dará alguns erros de arquivos duplicados, ok?
 
-# Cp pt.utf-8.spl /usr/share/vim/vim*/spell/
+    # Cp pt.utf-8.spl /usr/share/vim/vim*/spell/
+
 Usando o corretor no vim
 
 Dentro do vim execute o seguinte comando:
 
-set spell spelllang=pt,en
+    set spell spelllang=pt,en
 
 Caso queira que o corretor seja habilitado automaticamente sempre que acessar o vim:
 
      echo 'set spell spelllang=pt,en' >> ~/.vimrc
+
+## Sugestões de spellchecking no vim
+
+    z= .................... exibe opções de palavras
+    ]s ............. vai para a próxima palavra
+    zg ............. adiciona palavra ao dicionário
+    zw ............. retira palavra do dicionario
+    z= ............. sugestões
+    zug ........... contrario de zu
+    zuw ........... contrario de zw
+    set sps=10 ............ quantidade de sugestões
 
 # Conertendo o formato de arquivo de Windows para Linux
 

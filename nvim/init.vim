@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 12 19:08
+" Last Change: 2018 fev 13 20:17
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -22,6 +22,9 @@ endif
 let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
+"set spell
+"set spelllang=en,pt
+set sps=10              " Quantidade de sugestões do spell
 
 if has("multi_byte")
   if &termencoding == ""
