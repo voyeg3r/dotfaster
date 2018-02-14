@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 10 08:46
+# .zshrc - Last Change: 2018 fev 14 07:14
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -173,6 +173,15 @@ bindkey '^xe' edit-command-line
 
 # bindkey '^b' push-line-or-edit - conflict with bacward-word
 # bindkey '\eb' push-line-or-edit
+
+# Copy the most recent command to the clipboard
+function _pbcopy_last_command(){
+  history | tail -1 | sed 's/ *[0-9]* *//' | pbcopy
+  #&& \
+  #tmux display-message "Previous command coppied to clipboard"
+}
+zle -N pbcopy-last-command _pbcopy_last_command
+bindkey '^x^y' pbcopy-last-command
 
 # getting git status
 function _git-status {
