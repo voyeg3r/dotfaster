@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 14 18:37
+" Last Change: 2018 fev 14 20:03
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -22,10 +22,12 @@ endif
 let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
-"set spell
-"set spelllang=en,pt
+set spell
+set spelllang=en,pt
 set complete+=kspell
 set sps=10              " Quantidade de sugestões do spell
+inoremap <C-l> <c-g>u<Esc>[s1z=gi<c-g>u
+nnoremap <C-l> [s1z=<C-o>
 
 if has("multi_byte")
   if &termencoding == ""
@@ -220,6 +222,7 @@ let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
+
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
