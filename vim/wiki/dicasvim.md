@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 14 06:14
+# dicasvim.md Intro - Last Change: 2018 fev 14 07:49
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1138,6 +1138,11 @@ Number all the lines in a file (insert line number followed by a tab):
 Number a range of lines (from line 10 to line 20):
 :10,20s/^/\=line('.')."\t"/
 ```
+
+# Getting line number
+
+    :let line_number=line('.')
+    :let selection_size=line("'>") - line("'<") + 1
 
 This finds the first number in the line and adds one to it.
 A line break is included as a newline character.

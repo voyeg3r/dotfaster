@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 14 07:06
+" Last Change: 2018 fev 14 14:52
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -213,13 +213,19 @@ call plug#end()
 let b:lion_squeeze_spaces = 1
 
 " SOME DEOPLETE CONFIGURATIONS
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_refresh_always = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
+
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return deoplete#mappings#smart_close_popup() . "\<CR>"
+endfunction
 
 " change until the end of line using Ctrl-l
 inoremap <C-l> <C-o>C
@@ -283,19 +289,6 @@ nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
-
-" m1 move to line 1 of block m5 ...
-" https://github.com/christoomey/your-first-vim-plugin/tree/master/move-em
-function! MoveEm(position)
-  let saved_cursor = getpos(".")
-  let previous_blank_line = search('^$', 'bn')
-  let target_line = previous_blank_line + a:position - 1
-  execute 'move ' . target_line
-  call setpos('.', saved_cursor)
-endfunction
-for position in range(1, 9)
-  execute 'nnoremap m' . position . ' :call MoveEm(' . position . ')<cr>'
-endfor
 
 nnoremap <F4> ggVGg?
 
@@ -621,6 +614,24 @@ fun! SumVis() abort
      endtry
 endfun
 vnoremap <C-s> :<C-u>call SumVis()<CR>
+
+function! MoveEm(position)
+  let saved_cursor = getpos(".")
+  "let previous_blank_line = search('^$', 'bn')
+  keepjumps execute 'normal {'
+  if getline('.') !~ '^$'
+    let previous_blank_line = line('.') - 1
+  else
+    let previous_blank_line = line('.')
+  endif
+  let target_line = previous_blank_line + a:position - 1
+  call setpos('.', saved_cursor)
+  execute 'move ' . target_line
+  call setpos('.', saved_cursor)
+endfunction
+for position in range(1, 9)
+  execute 'nnoremap m' . position . ' :call MoveEm(' . position . ')<cr>'
+endfor
 
 " this function increases each number in a copyied function
 " fun! CopyAndIncrease()
