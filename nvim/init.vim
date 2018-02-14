@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 14 14:52
+" Last Change: 2018 fev 14 18:37
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -213,7 +213,7 @@ call plug#end()
 let b:lion_squeeze_spaces = 1
 
 " SOME DEOPLETE CONFIGURATIONS
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>\<cr>" : "\<TAB>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_refresh_always = 1
 let g:deoplete#enable_ignore_case = 1
