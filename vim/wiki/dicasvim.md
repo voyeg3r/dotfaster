@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 13 20:13
+# dicasvim.md Intro - Last Change: 2018 fev 14 06:14
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2871,8 +2871,8 @@ be omitted.
 :spellr
 
 ]s .......... next misspelled word
-=z .......... accept sugestions
-1=z ......... accept first sugestion
+z= .......... accept sugestions
+1z= ......... accept first spell suggestion
 zg .......... add word as good
 zw .......... add word as "wrong"
 zuw ......... undo add word as wrong

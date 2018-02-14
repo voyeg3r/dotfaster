@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 13 20:17
+" Last Change: 2018 fev 14 07:06
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -24,6 +24,7 @@ let mapleader = ','
 set shada=!,'1000,<50,s10,h,%,'2000
 "set spell
 "set spelllang=en,pt
+set complete+=kspell
 set sps=10              " Quantidade de sugestões do spell
 
 if has("multi_byte")
@@ -224,6 +225,13 @@ let g:deoplete#file#enable_buffer_path = 1
 inoremap <C-l> <C-o>C
 nnoremap Y y$
 
+" Use C-Space to Esc out of any mode
+nnoremap <C-Space> <Esc>
+vnoremap <C-Space> <Esc>gV
+onoremap <C-Space> <Esc>
+cnoremap <C-Space> <C-c>
+inoremap <C-Space> <Esc>
+
 " Jump outside '"({
 inoremap <C-l> <right>
 
@@ -275,6 +283,19 @@ nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hl
 
   " jump to lines with <count><Space>
 nmap <expr> <Space> v:count ? "gg" : "<Space>"
+
+" m1 move to line 1 of block m5 ...
+" https://github.com/christoomey/your-first-vim-plugin/tree/master/move-em
+function! MoveEm(position)
+  let saved_cursor = getpos(".")
+  let previous_blank_line = search('^$', 'bn')
+  let target_line = previous_blank_line + a:position - 1
+  execute 'move ' . target_line
+  call setpos('.', saved_cursor)
+endfunction
+for position in range(1, 9)
+  execute 'nnoremap m' . position . ' :call MoveEm(' . position . ')<cr>'
+endfor
 
 nnoremap <F4> ggVGg?
 
