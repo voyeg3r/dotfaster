@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 15 08:38
+" Last Change: 2018 fev 15 10:56
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -30,9 +30,14 @@ set sps=8              " Quantidade de sugestões do spell
 " i_Ctrl-g_u allows us to have a better undo
 inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
 nnoremap <C-s> [s1z=<C-o>
+" See more about <C-x>s
 " Below mappings allows you to toggle spelling
 nnoremap <F7> :setlocal spell!<CR>
 inoremap <F7> <C-o>:setlocal spell!<CR>
+
+" Spell mistakes color
+highlight SpellBad cterm=bold ctermfg=white ctermbg=red
+highlight SpellCap cterm=bold ctermfg=red ctermbg=white
 
 if has("multi_byte")
   if &termencoding == ""
@@ -232,7 +237,8 @@ let g:deoplete#file#enable_buffer_path = 1
 " Now each Enter creates a undo point ":h i_Ctrl-g_u"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return deoplete#mappings#smart_close_popup() . "\<C-g>u\<CR>"
+  "return deoplete#mappings#smart_close_popup() . "\<C-g>u\<CR>"
+  return deoplete#mappings#smart_close_popup() . "\<CR>"
 endfunction
 
 " change until the end of line using

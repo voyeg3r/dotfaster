@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 14 20:28
+# dicasvim.md Intro - Last Change: 2018 fev 15 11:39
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2480,13 +2480,35 @@ Caso queira que o corretor seja habilitado automaticamente sempre que acessar o 
 ## Sugestões de spellchecking no vim
 
     z= .................... exibe opções de palavras
-    ]s ............. vai para a próxima palavra
-    zg ............. adiciona palavra ao dicionário
-    zw ............. retira palavra do dicionario
-    z= ............. sugestões
-    zug ........... contrario de zu
-    zuw ........... contrario de zw
+    ]s .................... vai para a próxima palavra
+    zg .................... adiciona palavra ao dicionário
+    zw .................... retira palavra do dicionario
+    z= .................... sugestões
+    zug ................... contrario de zu
+    zuw ................... contrario de zw
     set sps=10 ............ quantidade de sugestões
+    Ctrl-x s .............. shows spell suggestions
+
+# Smart ranges
++ source: http://www.viemu.com/a-why-vi-vim.html
+
+Let's see the following typical example. It's just a function call embedded in
+a somewhat complex expression:
+
+    if ( !entry.used && equivalent(entry.key(), qk.key) && (curcontext & entry.contexts) )
+                        ^
+    cursor _____________|
+
+Knowing about the 'c' command, which deletes the extents of the next motion
+(also copying it to the clipboard) and enters insert mode, we can type just
+'c%' ("change match") from the above case and we get the following:
+
+    bool equiv = equivalent(entry.key(), qk.key);
+    if ( !entry.used && equiv && (curcontext & entry.contexts) )
+
+In order to past "boll equiv = ..." we use in insert mode
+
+    Ctrl-r ";
 
 # Conertendo o formato de arquivo de Windows para Linux
 
