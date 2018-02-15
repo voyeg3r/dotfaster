@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 15 06:14
+" Last Change: 2018 fev 15 08:38
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -22,6 +22,7 @@ endif
 let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
+
 "set spell
 set spelllang=en,pt
 set complete+=kspell
@@ -29,6 +30,9 @@ set sps=8              " Quantidade de sugestões do spell
 " i_Ctrl-g_u allows us to have a better undo
 inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
 nnoremap <C-s> [s1z=<C-o>
+" Below mappings allows you to toggle spelling
+nnoremap <F7> :setlocal spell!<CR>
+inoremap <F7> <C-o>:setlocal spell!<CR>
 
 if has("multi_byte")
   if &termencoding == ""
@@ -150,7 +154,7 @@ endif
 call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
-"Plug 'henrik/vim-indexed-search'
+Plug 'henrik/vim-indexed-search'
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
@@ -212,7 +216,7 @@ Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
-" lion it is an align plugin
+" lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
 
 " SOME DEOPLETE CONFIGURATIONS
@@ -224,7 +228,6 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 
-
 " <CR>: close popup and save indent.
 " Now each Enter creates a undo point ":h i_Ctrl-g_u"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -232,15 +235,8 @@ function! s:my_cr_function()
   return deoplete#mappings#smart_close_popup() . "\<C-g>u\<CR>"
 endfunction
 
-" change until the end of line using Ctrl-l
+" change until the end of line using
 nnoremap Y y$
-
-" Use C-Space to Esc out of any mode
-nnoremap <C-Space> <Esc>
-vnoremap <C-Space> <Esc>gV
-onoremap <C-Space> <Esc>
-cnoremap <C-Space> <C-c>
-inoremap <C-Space> <Esc>
 
 " Jump outside '"({
 if !exists('g:AutoPairsShortcutJump')
@@ -301,8 +297,8 @@ nnoremap <F4> ggVGg?
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
 
-" source: http://tilvim.com/2013/07/31/swapping-bg.html
-nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" source: http://tilvim.com/2013/07/31/swapping-bg.html <F19> = Shif-F7
+nmap <F19> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " save with <F8>
 nnoremap <F8> :w<cr>
@@ -344,19 +340,6 @@ fun! CountBuffers() abort
 endfun
 command! -nargs=0 Nbufs :call CountBuffers()
 
-" buffer cleanup - delete every buffer except the one open
-function! Buflist()
-    redir => bufnames
-    silent ls
-    redir END
-    let list = []
-    for i in split(bufnames, "\n")
-        let buf = split(i, '"' )
-        call add(list, buf[-2])
-|   endfor
-    return list
-endfunction
-
 fun! AddLineNumber()
     %s/^/\=printf('%02d ', line('.'))
 endfun
@@ -389,7 +372,7 @@ nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 command! -nargs=0 CloseBuffers :call CloseAllBuffersButCurrent()
 
 " substitute word under cursor - This map is used for spell
-" nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -462,7 +445,7 @@ command! -nargs=0 Reindent :call Preserve('exec "normal! gg=G"')
 
 command! MakeTags !ctags -R .
 
-" create a scratch window
+" create a scratch window - rascunho
 command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 cab SC Scratch
 
@@ -470,6 +453,8 @@ cab SC Scratch
 nnoremap n nzz:ShowSearchIndex<CR>
 nnoremap N Nzz:ShowSearchIndex<CR>
 "nnoremap * *zz
+nnoremap { {zz
+nnoremap } }zz
 nnoremap # #zz:ShowSearchIndex<CR>
 "nnoremap g* gtzz
 nnoremap g# g#zz:ShowSearchIndex<CR>
@@ -686,7 +671,7 @@ command! -nargs=0 CountWord :call CountWordFunction()
 " https://stackoverflow.com/a/11492536/2571881
 " nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 " see function CountWordFunction
-nnoremap <f3> :CountWord<CR>
+nnoremap <F3> :CountWord<CR>
 
 " use primary selection with mouse
 vnoremap <LeftRelease> "*ygv
@@ -699,6 +684,7 @@ vnoremap // y/<C-R>"<CR>
 " nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
+" Insert new line above and below in normal mode
 nnoremap <Leader>o @="m`o\eg``"<cr>
 nnoremap <Leader>O @="m`O\eg``"<cr>
 
@@ -1108,22 +1094,22 @@ cnoreabbrev ww SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
-" to reselect use gv in normal mode
+" to reselect use gv in normal mode - Shift-F11
 nnoremap <F23> <ESC>:set hls! hls?<cr>
 inoremap <F23> <C-o>:set hls! hls?<cr>
 vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 set nu rnu
-"nmap <F2> :set nu rnu<cr>
-nnoremap <F2> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+"nmap <F6> :set nu rnu<cr>
+nnoremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 " noremap <silent> <Leader>v :e ~/.config/nvim/init.vim<cr>
 noremap <silent> <Leader>v :e $MYVIMRC<cr>
 
 " Run current line as a vim command
 " https://stackoverflow.com/a/19884862/2571881
-nnoremap <F6> :exec getline('.')
+" :exec getline('.')
 
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
