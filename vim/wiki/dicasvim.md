@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 15 11:39
+# dicasvim.md Intro - Last Change: 2018 fev 15 14:47
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -153,6 +153,10 @@ or
 :16,$m.-1 | normal j
 @@
 @@
+
+The smartest solution:
+
+    :$put _ | g/Example [2-4]/normal! dapggP
 ```
 
 # How to pad strings inside curly braces with odd number of character with a single space?
