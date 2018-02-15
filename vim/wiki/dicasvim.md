@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 14 07:49
+# dicasvim.md Intro - Last Change: 2018 fev 14 20:28
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,15 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Manually breaking the undo sequence
++ https://vi.stackexchange.com/a/2377/7339
+
+You can manually break the undo sequence in Insert mode with `<C-G>u`. From the help:
+
+    CTRL-G u  →  break undo sequence, start new change
+
+OBS: Another great tip I've discovered is i_Ctrl-g_u.
 
 # Paste and place the cursor after pasted text
 

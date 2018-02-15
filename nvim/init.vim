@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 14 20:03
+" Last Change: 2018 fev 14 21:09
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -26,8 +26,8 @@ set spell
 set spelllang=en,pt
 set complete+=kspell
 set sps=10              " Quantidade de sugestões do spell
-inoremap <C-l> <c-g>u<Esc>[s1z=gi<c-g>u
-nnoremap <C-l> [s1z=<C-o>
+inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
+nnoremap <C-s> [s1z=<C-o>
 
 if has("multi_byte")
   if &termencoding == ""
@@ -225,9 +225,10 @@ let g:deoplete#file#enable_buffer_path = 1
 
 
 " <CR>: close popup and save indent.
+" Now each Enter creates a undo point ":h i_Ctrl-g_u"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return deoplete#mappings#smart_close_popup() . "\<CR>"
+  return deoplete#mappings#smart_close_popup() . "\<C-g>u\<CR>"
 endfunction
 
 " change until the end of line using Ctrl-l
@@ -383,8 +384,8 @@ endfunction
 "nnoremap <silent> <Leader>c :call CloseAllBuffersButCurrent()<CR>
 nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 
-" substitute word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+" substitute word under cursor - This map is used for spell
+" nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -605,18 +606,18 @@ command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
 " This function requires you select the numbers
 " source: https://vi.stackexchange.com/a/4699/7339
-fun! SumVis() abort
-    try
-        let l:a_save = @a
-        norm! gv"ay
-        let @a = substitute(@a,'[^0-9. ]','+','g')
-        exec "norm! '>o"
-        exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
-     finally
-        let @a = l:a_save
-     endtry
-endfun
-vnoremap <C-s> :<C-u>call SumVis()<CR>
+"fun! SumVis() abort
+"    try
+"        let l:a_save = @a
+"        norm! gv"ay
+"        let @a = substitute(@a,'[^0-9. ]','+','g')
+"        exec "norm! '>o"
+"        exec "norm! iTotal: \<c-r>=\<c-r>a\<cr>"
+"     finally
+"        let @a = l:a_save
+"     endtry
+"endfun
+"vnoremap <C-s> :<C-u>call SumVis()<CR>
 
 function! MoveEm(position)
   let saved_cursor = getpos(".")
