@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 15 14:47
+# dicasvim.md Intro - Last Change: 2018 fev 15 15:19
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -157,6 +157,37 @@ or
 The smartest solution:
 
     :$put _ | g/Example [2-4]/normal! dapggP
+```
+
+# vim: delete all lines but unique?
++ https://superuser.com/questions/544797/
+
+I am looking for a way in VIM to delete all lines that are duplicates and only
+leave unique lines that exist in the file. I would prefer a macro but a command
+or function would be great.
+
+Say I have a file that has duplicate lines and some uniques:
+
+I want to delete all lines so that all that is left:
+
+    3Beer
+
+The one unique line that I REALLY want.
+
+``` markdown
+1Apple
+1Apple
+2Peach
+2Peach
+2Peach
+3Beer
+4Banana
+4Banana
+4Banana
+```
+
+``` vim
+:%s/\v(.*)(\n\1)+//
 ```
 
 # How to pad strings inside curly braces with odd number of character with a single space?
