@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 14 21:09
+" Last Change: 2018 fev 15 06:14
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -22,10 +22,11 @@ endif
 let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
-set spell
+"set spell
 set spelllang=en,pt
 set complete+=kspell
-set sps=10              " Quantidade de sugestões do spell
+set sps=8              " Quantidade de sugestões do spell
+" i_Ctrl-g_u allows us to have a better undo
 inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
 nnoremap <C-s> [s1z=<C-o>
 
@@ -232,7 +233,6 @@ function! s:my_cr_function()
 endfunction
 
 " change until the end of line using Ctrl-l
-inoremap <C-l> <C-o>C
 nnoremap Y y$
 
 " Use C-Space to Esc out of any mode
@@ -243,7 +243,9 @@ cnoremap <C-Space> <C-c>
 inoremap <C-Space> <Esc>
 
 " Jump outside '"({
-inoremap <C-l> <right>
+if !exists('g:AutoPairsShortcutJump')
+  let g:AutoPairsShortcutJump = '<C-l>'
+endif
 
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
@@ -291,12 +293,13 @@ hi Search ctermfg=Black
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 
-  " jump to lines with <count><Space>
-nmap <expr> <Space> v:count ? "gg" : "<Space>"
+" jump to lines with <count><Space>
+nnoremap <expr> <Space> v:count ? "gg" : "<Space>"
 
 nnoremap <F4> ggVGg?
 
 nnoremap <F5> :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html
 nmap <F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -383,6 +386,7 @@ function! CloseAllBuffersButCurrent()
 endfunction
 "nnoremap <silent> <Leader>c :call CloseAllBuffersButCurrent()<CR>
 nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
+command! -nargs=0 CloseBuffers :call CloseAllBuffersButCurrent()
 
 " substitute word under cursor - This map is used for spell
 " nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
