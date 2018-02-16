@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 16 15:02
+" Last Change: 2018 fev 16 15:30
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -300,11 +300,7 @@ else
   set background=dark
 endif
 
-"colorscheme ayu
-"colorscheme palenight
-colorscheme PaperColor
-"colorscheme hemisu
-"
+
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -728,6 +724,11 @@ nnoremap <Leader>O @="m`O\eg``"<cr>
 
 " Autocmd Rules **********************************
 
+"colorscheme ayu
+"colorscheme palenight
+colorscheme PaperColor
+"colorscheme hemisu
+
 " Reloads vimrc after saving but keep cursor position
 if !exists('*ReloadVimrcFunction')
     fun! ReloadVimrcFunction()
@@ -736,8 +737,9 @@ if !exists('*ReloadVimrcFunction')
         call setpos('.', save_cursor)
     endfun
 endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction() | syntax on
-command! -nargs=0 ReloadVimrc call ReloadVimrcFunction() | syntax on
+autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction()
+autocmd! BufWritePost $MYVIMRC filetype plugin indent on
+command! -nargs=0 ReloadVimrc call ReloadVimrcFunction()
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
