@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 16 11:40
+# dicasvim.md Intro - Last Change: 2018 fev 16 18:55
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -988,6 +988,15 @@ Using Ag (Silver_Searcher) we can find things like:
     q    to close the quickfix window
 
 Após fechar a janela quickfix podemos reabri-la com o comando `:copen`
+
+# Search only between specific line numbers?
++ https://stackoverflow.com/q/3264120/2571881
+
+    :help /\%>l
+
+    /\%>12l\%<24lsearch
+    :12,24g/search/
+    :12,24s/search//gc
 
 # Inserting a range of numbers
 

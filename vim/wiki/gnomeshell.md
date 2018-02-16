@@ -1,4 +1,4 @@
-# gnomeshell.md - Last Change: 2018 jan 31 06:17
+# gnomeshell.md - Last Change: 2018 fev 16 17:04
 ```
 Created: Wed 04/May/2011 hs 17:23
 ```
@@ -412,15 +412,17 @@ to get rid of the association with Audacious.
 
 # habilitando o click to tap no mouse
 
-gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
-
-gsettings set org.gnome.desktop.peripherals-touchpad disable-while-typing true
-
-gconftool-2 --toggle /desktop/gnome/peripherals/touchpad/touchpad-enabled
-
-habilitar a rolagem pela borda to touchpad
+    gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
+    gsettings set org.gnome.desktop.peripherals-touchpad disable-while-typing true
+    gconftool-2 --toggle /desktop/gnome/peripherals/touchpad/touchpad-enabled
+    habilitar a rolagem pela borda to touchpad
 
     gsettings set org.gnome.desktop.peripherals.touchpad scroll-method "edge-scrolling"
+
+# Blinking mouse time
++ https://askubuntu.com/a/485489/3798
+
+    gsettings set org.gnome.desktop.interface cursor-blink-time 800
 
 # accessing ssh throug nautilus
 
@@ -428,11 +430,8 @@ habilitar a rolagem pela borda to touchpad
 
 # Alterando o tempo de gravação no gnome shell
 
-    fonte:
-http://www.talesam.org/blog/dica-ampliando-o-tempo-de-gravacao-do-desktop-no-gnome-shell/
-
-    gsettings set org.gnome.settings-daemon.plugins.media-keys
-max-screencast-length 1800
+fonte: [ampliando o tempo de gravação no gnome-shell](http://www.talesam.org/blog/dica-ampliando-o-tempo-de-gravacao-do-desktop-no-gnome-shell/)
+    gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 1800
 
 # Extensão que permite gravar com audio
 + https://extensions.gnome.org/extension/690/easyscreencast/

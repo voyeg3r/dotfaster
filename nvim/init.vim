@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 16 15:30
+" Last Change: 2018 fev 16 18:47
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -299,7 +299,6 @@ if strftime("%H") < 17
 else
   set background=dark
 endif
-
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -911,7 +910,6 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-
 "" Vmap for maintain Visual Mode after shifting > and <
 vnoremap < <gv
 vnoremap > >gv
@@ -926,11 +924,6 @@ nnoremap <A-k> :m-2<CR>
 
 " delete current till the end of line
 inoremap <C-k> <C-o>C
-
-" vim-airline
-"if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
-"endif
 
 " This function allows you to open the last edited file
 " in order to open the last file from the SHELL
@@ -1112,7 +1105,7 @@ if !exists('*Preserve')
 endif
 
 vnoremap <Leader>f :call Preserve("'<,'>!fmt -w 60")<CR>
-nnoremap <Leader>f :call Preserve("%!fmt -w 60")<CR>
+nnoremap <Leader>f :call Preserve("%!fmt -w 60")
 
 " remove consecutive blank lines
 " see Preserve function definition

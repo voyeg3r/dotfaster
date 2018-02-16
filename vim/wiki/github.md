@@ -3,12 +3,7 @@
 ``` markdown
 File:		 GitHub.md
 Created:	 ter 10 jan 2017 13:45:09 BRT
-Last Change: ter 10 jan 2017 13:45:09 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: 2018 fev 16 15:31
 ```
 
 referências: http://stackoverflow.com/questions/23821235/
