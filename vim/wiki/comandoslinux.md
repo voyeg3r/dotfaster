@@ -147,6 +147,7 @@
 + [find](find.md)
 + [firefoxuserprofile](firefoxuserprofile.md)
 + [fluxbox](fluxbox.md)
++ [fmt](fmt.md)
 + [for](for.md)
 + [fortune](fortune.md)
 + [frases](frases.md)

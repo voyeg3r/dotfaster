@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 fev 11 07:30
+#      Last Change: 2018 fev 16 13:33
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -83,6 +83,9 @@ sudo pip install neovim
 pip3 install --user --upgrade neovim
 sudo pip install nfasd
  sudo pip install nfasd
+
+# Used in [n]vim to format html code
+sudo pacman -S tidy
 
 # paragraph formater (useful for vim)
 # https://aur.archlinux.org/packages/par/

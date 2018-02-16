@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 14 07:14
+# .zshrc - Last Change: 2018 fev 16 10:43
 # todo: clean bin dir to make load faster
 
 autoload colors && colors

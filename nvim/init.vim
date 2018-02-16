@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 16 10:28
+" Last Change: 2018 fev 16 14:44
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -984,16 +984,18 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call StripTrailingWhitespace()
+"autocmd BufWinLeave * call StripTrailingWhitespace()
 
 " source: https://www.vi-improved.org/recommendations/
-function! StripTrailingWhitespace()
+function! StripTrailingWhitespace() range
     if !&binary && &filetype != 'diff'
         call Preserve('%s/\s\+$//e')
     endif
 endfunction
 com! Cls :call StripTrailingWhitespace()
-au! BufwritePre * :call StripTrailingWhitespace()
+com! StripTrailingSpace :call StripTrailingWhitespace()
+au! BufwritePre *.md,*.markdown,*.py,*.sh,*.zsh,*.txt :call StripTrailingWhitespace()
+cnoreabbrev cls StripTrailingSpace
 
 " Make the 81st column stand out
 highlight ColorColumn ctermbg=magenta
@@ -1099,24 +1101,26 @@ command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # |
 " Utility function that save last search and cursor position
 " http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
 " video from vimcasts.org: http://vimcasts.org/episodes/tidying-whitespace
+" using 'execute' command doesn't overwrite the last search pattern, so I
+" don't need to store and restore it.
 if !exists('*Preserve')
-    function! Preserve(command)
+    function! Preserve(command) range
         try
             " Preparation: save last search, and cursor position.
             let l:win_view = winsaveview()
-            let l:old_query = getreg('/')
             silent! execute 'keepjumps' . a:command
-            " Clean up: restore previous search history, and cursor position
         finally
             call winrestview(l:win_view)
-            call setreg('/', l:old_query)
         endtry
     endfunction
 endif
 
+vnoremap <Leader>f :call Preserve("'<,'>!fmt -w 60")<CR>
+nnoremap <Leader>f :call Preserve("%!fmt -w 60")<CR>
+
 " remove consecutive blank lines
 " see Preserve function definition
-fun! DelBlankLines() abort
+fun! DelBlankLines() range
     if !&binary && &filetype != 'diff'
         call Preserve('%s/\s\+$//e')
         call Preserve('%s/^\n\{2,}/\r/ge')

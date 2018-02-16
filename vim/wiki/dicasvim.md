@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 16 06:57
+# dicasvim.md Intro - Last Change: 2018 fev 16 11:40
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,10 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Criando seções pra rstaurar depois
+
+    mksession -S vousair.vim
 
 # Getting settings
 If you want to know some setting jus press tab after equal sign
