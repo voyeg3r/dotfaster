@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 15 20:21
+" Last Change: 2018 fev 16 10:28
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -35,9 +35,19 @@ nnoremap <C-s> [s1z=<C-o>
 nnoremap <F7> :setlocal spell!<CR>
 inoremap <F7> <C-o>:setlocal spell!<CR>
 
+" avoid clipboard hacking
+" http://thejh.net/misc/website-terminal-copy-paste
+inoremap <C-R>+ <C-R><C-R>+
+
+fun! CopyBufferToClipboard()
+    %y+
+endfun
+nnoremap <Leader>y :call CopyBufferToClipboard()<CR>
+command! -nargs=0 CopyFile :call CopyBufferToClipboard()
+
 " Spell mistakes color
-highlight SpellBad cterm=bold ctermfg=white ctermbg=red
-highlight SpellCap cterm=bold ctermfg=red ctermbg=white
+"highlight SpellBad cterm=bold ctermfg=white ctermbg=red
+"highlight SpellCap cterm=bold ctermfg=red ctermbg=white
 
 if has("multi_byte")
   if &termencoding == ""
@@ -126,7 +136,11 @@ set linebreak                  " Keep whole words during wrapping
 set noshowmode
 set autoread
 set noerrorbells visualbell t_vb=
-set clipboard=unnamed,unnamedplus
+
+"" Copy/Paste/Cut
+"if has('unnamedplus')
+"  set clipboard=unnamed,unnamedplus
+"endif
 
 "You can get case-insensitivity for the filename completion in Vim with the
 "following. I suggest wrapping it in a conditional as below, since it’s a
@@ -286,9 +300,9 @@ else
   set background=dark
 endif
 
-colorscheme ayu
+"colorscheme ayu
 "colorscheme palenight
-"colorscheme PaperColor
+colorscheme PaperColor
 "colorscheme hemisu
 "
 if (has("nvim"))
@@ -900,10 +914,6 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-"" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vnoremap < <gv

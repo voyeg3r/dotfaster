@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 15 15:19
+# dicasvim.md Intro - Last Change: 2018 fev 16 06:57
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,13 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Getting settings
+If you want to know some setting jus press tab after equal sign
+
+    :set iskeyword=<Tab>
+
+[n]vim will complete with its default setting, so then you can change as you like
 
 # Manually breaking the undo sequence
 + https://vi.stackexchange.com/a/2377/7339
