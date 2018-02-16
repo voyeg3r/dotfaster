@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 16 14:44
+" Last Change: 2018 fev 16 15:02
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -492,15 +492,10 @@ command! MakeTags !ctags -R .
 command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
 cab SC Scratch
 
-"  when searching next patter put it in the middle of screen
-nnoremap n nzz:ShowSearchIndex<CR>
-nnoremap N Nzz:ShowSearchIndex<CR>
-"nnoremap * *zz
+"  when searching next patter put it in the middle of screen (I use indexsearch plugin)
+let g:indexed_search_center=1
 nnoremap { {zz
 nnoremap } }zz
-nnoremap # #zz:ShowSearchIndex<CR>
-"nnoremap g* gtzz
-nnoremap g# g#zz:ShowSearchIndex<CR>
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -1106,7 +1101,6 @@ command! -nargs=1 Rename try | saveas <args> | call delete(expand('#')) | bd # |
 if !exists('*Preserve')
     function! Preserve(command) range
         try
-            " Preparation: save last search, and cursor position.
             let l:win_view = winsaveview()
             silent! execute 'keepjumps' . a:command
         finally
