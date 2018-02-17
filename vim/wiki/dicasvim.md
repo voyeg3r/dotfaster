@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 17 10:29
+# dicasvim.md Intro - Last Change: 2018 fev 17 10:48
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -4314,6 +4314,8 @@ Solution:
 + https://stackoverflow.com/a/5532507/2571881
 :s/\%V.*\%V./\=join(reverse(split(submatch(0))))/
 
+put =join(reverse(split(string(@+), '.\zs')), '')
+
 Reverse a register
 let r = join(reverse(split(getreg('a'))))
 ```
@@ -4363,7 +4365,11 @@ becomes
     line6
     line5
 
-:g/^/exe 'm .-' . substitute(line('.') % 4, '^0$', '4', '')
+    :g/^/exe 'm .-' . substitute(line('.') % 4, '^0$', '4', '')
+
+Caso o resto da divisão do número da linha por quatro for igual a zero
+mova pra cima 4 linhas, caso contrário move pra linha atual menos um
+que significa não o mesmo que não fazer nada.
 
 
 # Comando para inverter palavras de uma linha
