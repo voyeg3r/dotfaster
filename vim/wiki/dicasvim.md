@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 16 18:55
+# dicasvim.md Intro - Last Change: 2018 fev 17 10:29
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -482,6 +482,41 @@ After running this function I only have to run the macro 'a' 9 times and macro
 ``` markdown
 sort /\%20v/
 :%!sort -t'|' -k2
+```
+
+# Sort a range of lines
+
+``` vim
+OBJS = \ ~
+    version.o \ ~
+    pch.o \ ~
+    getopt.o \ ~
+    util.o \ ~
+    getopt1.o \ ~
+    inp.o \ ~
+    patch.o \ ~
+    backup.o ~
+```
+
+To sort this list, filter the text through the external sort command: >
+
+``` vim
+/^OBJS
+j
+:.,/^$/-1!sort
+```
+The result is this
+
+``` vim
+OBJS = \ ~
+    backup.o ~
+    getopt1.o \ ~
+    getopt.o \ ~
+    inp.o \ ~
+    patch.o \ ~
+    pch.o \ ~
+    util.o \ ~
+    version.o \ ~
 ```
 
 # Runing external commands
@@ -4263,15 +4298,73 @@ And you whant this output:
 Solution:
 
 ``` markdown
+:.s/\v(\d+),(\d+),(\d+),(\d+),(\d+)/\5,\4,\3,\2,\1
 :%s/{\v\zs([^}]+)\ze}/\=join(reverse(split(submatch(1),'.\zs')),'')/g
+
+" we have to fix []
+:let @a=string(reverse([1,2,3,4,5])) | put a
 ```
 
 # Reverse all words from a text
 
 ``` markdown
 :%s/\v(<.{-}>)/\=join(reverse(split(submatch(1),'.\zs')),'')/g
+
+" Reverse selection -
++ https://stackoverflow.com/a/5532507/2571881
+:s/\%V.*\%V./\=join(reverse(split(submatch(0))))/
+
+Reverse a register
+let r = join(reverse(split(getreg('a'))))
 ```
-This works by first creating a list of characters in the word, which is reversed and joined back to form the word. The substitute command finds each word and then passes the word to the expressions and uses the result as replacement.
+
+This works by first creating a list of characters in the word, which is
+reversed and joined back to form the word. The substitute command finds each
+word and then passes the word to the expressions and uses the result as
+replacement.
+
+# Reversing a range of lines
+
+First move to above the first line and mark it with "mt".  Then move the cursor
+to the last line in the range and type: >
+
+	:'t+1,.g/^/m 't
+
+Select one line befor the paragraph and execute the folowing command
+
+    the first line
+    the second line
+    the third line
+    the fourth line
+
+    :'<,'>g/^/m'<
+
+
+# Everse every 4 lines in a file, so that
++ https://vi.stackexchange.com/a/6299/7339
+
+    line1
+    line2
+    line3
+    line4
+    line5
+    line6
+    line7
+    line8
+
+becomes
+
+    line4
+    line3
+    line2
+    line1
+    line8
+    line7
+    line6
+    line5
+
+:g/^/exe 'm .-' . substitute(line('.') % 4, '^0$', '4', '')
+
 
 # Comando para inverter palavras de uma linha
 inverter uma string por palavras

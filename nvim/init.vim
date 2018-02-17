@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 16 18:47
+" Last Change: 2018 fev 17 10:13
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -44,6 +44,10 @@ fun! CopyBufferToClipboard()
 endfun
 nnoremap <Leader>y :call CopyBufferToClipboard()<CR>
 command! -nargs=0 CopyFile :call CopyBufferToClipboard()
+
+" Reverse lines - it accepts ranges Example →  :.,.+5Reverse
+command! -bar -range=% Reverse <line1>,<line2>global/^/m<line1>-1
+command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
 
 " Spell mistakes color
 "highlight SpellBad cterm=bold ctermfg=white ctermbg=red
@@ -90,7 +94,7 @@ set lazyredraw        " speed up macros
 set mouse=a           " enable mouse click
 set mousehide         " hide mouse while typing
 set path+=**          " gf to open files under cursor
-set scrolloff=0       " keep 3 lines when scrolling
+set scrolloff=2       " keep 2 lines when scrolling
 set sidescrolloff=0
 set ai                " set auto-indenting on for programming
 set hidden            " Switch buffers without saving them
