@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 18 19:13
+" Last Change: 2018 fev 18 19:47
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -289,7 +289,7 @@ let g:lightline = {
       \ }
 
 function! LightlineReadonly()
-  return &readonly && &filetype !=# 'help' ? '' : ''
+  return &readonly ? '' : ''
 endfunction
 
 function! LightlineFilename()
@@ -487,21 +487,7 @@ syntax on               " turn syntax highlighting on by default
 filetype on             " detect type of file
 filetype indent on      " load indent file for specific file type
 
-if has("gui_running")
-  if has("gui_mac") || has("gui_macvim")
-    "set guifont=Menlo:h12
-	"set guifont=Fira\ Code:h12
-	set guifont=Monoid:h12
-    set transparency=7
-  endif
-else
-  let g:CSApprox_loaded = 1
-  " IndentLine
-  let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
-  let g:indentLine_faster = 1
-endif
+" My font is fira mono regular stled on gnome-shell
 
 " pairs
 for mapmode in [ "o", "x" ]
@@ -803,7 +789,7 @@ if !exists('*ReloadVimrcFunction')
 endif
 autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction()
 autocmd! BufWritePost $MYVIMRC filetype plugin indent on
-command! -nargs=0 ReloadVimrc call ReloadVimrcFunction()
+command! -nargs=0 ReloadVimrc :silent! call ReloadVimrcFunction()
 
 "" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
