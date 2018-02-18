@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 18 17:21
+" Last Change: 2018 fev 18 19:13
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -276,7 +276,7 @@ Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " Using online reference I managed to show buffer number in lightline
-" active register v:register
+" active register v:register | readonly file shows: 
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -284,8 +284,13 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
+      \   'readonly': 'LightlineReadonly',
       \ },
       \ }
+
+function! LightlineReadonly()
+  return &readonly && &filetype !=# 'help' ? '' : ''
+endfunction
 
 function! LightlineFilename()
   let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
@@ -394,7 +399,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html <F19> = Shif-F7
-nmap <F19> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nmap <S-F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " save with <F8>
 nnoremap <F8> :w<cr>
@@ -1189,10 +1194,10 @@ cnoreabbrev ww SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
-" to reselect use gv in normal mode - Shift-F11
-nnoremap <F23> <ESC>:set hls! hls?<cr>
-inoremap <F23> <C-o>:set hls! hls?<cr>
-vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
+" to reselect use gv in normal mode
+nnoremap <S-F11> <ESC>:set hls! hls?<cr>
+inoremap <S-F11> <C-o>:set hls! hls?<cr>
+vnoremap <S-F11> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 set nu rnu
