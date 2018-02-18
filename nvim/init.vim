@@ -1,5 +1,5 @@
-" nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 18 14:17
+"   nvim file: ~/.config/nvim/init.vim
+" Last Change: 2018 fev 18 14:27
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1061,7 +1061,6 @@ endfun
 fun! ChangeHeader() abort
     if line('$')>=5
         call Preserve('1,5s/Last \(Change\|Modified\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
-		normal <C-o>
     endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()
