@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 18 14:27
+" Last Change: 2018 fev 18 17:21
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -46,6 +46,8 @@ fun! CopyBufferToClipboard()
 endfun
 nnoremap <Leader>y :call CopyBufferToClipboard()<CR>
 command! -nargs=0 CopyFile :call CopyBufferToClipboard()
+
+command! CloneBuffer new | 0put =getbufline('#',1,'$')
 
 " Reverse lines - it accepts ranges Example →  :.,.+5Reverse
 command! -bar -range=% Reverse <line1>,<line2>global/^/m<line1>-1
@@ -272,6 +274,25 @@ Plug 'chriskempson/tomorrow-theme'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
+
+" Using online reference I managed to show buffer number in lightline
+" active register v:register
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename' , 'regtype' ] ],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  let buffernumber = bufnr('%')
+  return 'buf ' . buffernumber . ' ' . filename . modified
+endfunction
 
 " lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
