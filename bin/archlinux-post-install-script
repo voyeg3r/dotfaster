@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 fev 16 13:33
+#      Last Change: 2018 fev 17 18:57
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -505,6 +505,9 @@ yaourt -S trickle
 
 # screen zooming in
 yaourt gnome-shell-mousewheel-zoom
+
+# A nice way to view information about use of system resources.
+yaourt gnome-usage
 
 # cmd line image viwever
 yaourt -S extra/feh

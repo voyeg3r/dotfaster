@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 17 10:48
+# dicasvim.md Intro - Last Change: 2018 fev 18 09:17
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -9,7 +9,7 @@
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
 
-# Criando seções pra rstaurar depois
+# Criando seções pra restaurar depois
 
     mksession -S vousair.vim
 
@@ -33,7 +33,7 @@ OBS: Another great tip I've discovered is i_Ctrl-g_u.
 
     gP
 
-# Set firefox as defult browser
+# Set firefox as default browser
 
     xdg-mime default firefox.desktop x-scheme-handler/http
     xdg-mime default firefox.desktop x-scheme-handler/https
@@ -42,7 +42,7 @@ The above set will create an entry on:
 
     ~/.config/mimeapps.list
 
-or you can do:
+Or you can do:
 
     "let g:netrw_browsex_viewer= "firefox"
 
@@ -58,11 +58,11 @@ and `Ctrl-t` to jump backwards
     :.w !bash
     :nmap <F6> :exec '!'.getline('.')
 
-Execute curent line as vim command:
+Execute current line as vim command:
 
     :nmap <F6> :exec getline(".")
 
-You can also exec anny line:
+You can also exec any line:
 
     yy:@0
 
@@ -73,7 +73,7 @@ to mimic some of the preference-setting options of a few other popular editors (
     # vim: set noexapndtab:
     /* vim: set ai tw=75: */
 
-# Vim antipatterns
+# Vim anti patterns
 If you get yourself doing a lot of jjjj and kkkk you have to read this.
 To copy the line 16 to the line bellow just type:
 
@@ -89,13 +89,13 @@ To copy the line 16 to the line bellow just type:
     :g/TITLE/ m+1 ............ moves down lines with TITLE
     :m+ ...................... move current line to line below
 
-This is one antipattern
+This is one anti pattern
 
     1 - Instead of jumping to the line
     2 - pressing yy
     3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
-Another common antipattern is closing a file to reopen vim with an empty buffer, you can simply:
+Another common anti pattern is closing a file to reopen vim with an empty buffer, you can simply:
 
     :bd!
 
@@ -105,7 +105,7 @@ Closes all args or buffers
     :bufdo bd
     :%bd|e#
 
-Or you can close the secconde buffer by doing:
+Or you can close the second buffer by doing:
 
     :bd 2
 
@@ -114,12 +114,12 @@ Open one buffer on the list:
     :b */*<tab>
     nnoremap <leader>b :b */*<C-d>
 
-another option:
+Another option:
 
     nnoremap gb :ls<cr>:b<space>
 
 You can also create a scratch buffer to keep little notes and then
-discartd it without worring about saving.
+discarted it without worrying about saving.
 
     command! Scratch new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
     cab SC Scratch
@@ -177,7 +177,7 @@ I am looking for a way in VIM to delete all lines that are duplicates and only
 leave unique lines that exist in the file. I would prefer a macro but a command
 or function would be great.
 
-Say I have a file that has duplicate lines and some uniques:
+Say I have a file that has duplicate lines and some unique:
 
 I want to delete all lines so that all that is left:
 
@@ -226,7 +226,7 @@ solution
 :%s/\foo{\zs[^}]\+\ze}/\=substitute(submatch(0), '$', len(submatch(0))%2?' ':'','g')/
 ```
 
-# Formating and keeping cursor position:
+# Formatting and keeping cursor position:
 
 Instead of using `gqap` use `gwap` to format paragraphs
 
@@ -252,7 +252,7 @@ TITLE3:
 Last line of this sample text.
 ```
 
-And you wnat to change it to be this way
+And you want to change it to be this way
 
 ```text
 A simple line
@@ -294,7 +294,7 @@ Arglist commands (use tpope/vim-unimpaired)
     :argdo ....... update to save all changes to your arglist
     :argdo ....... undo to undo changes to your arglist
 
-Navigation in arglist (It needs tim pope's plugin unimpaired)
+Navigation in arglist (It needs Tim Pope's plugin unimpaired)
 
     [a => go to the previous file in arglist
     ]a => go to the next file in arglist
@@ -312,7 +312,7 @@ OBS: && repeats last command
 # Vim markdown tips
 + https://vi.stackexchange.com/a/9544/7339
 
-making vimwiki folds working properly
+Making vimwiki folds working properly
 
     :set foldcolumn=2
     :let g:markdown_folding=1
@@ -357,7 +357,7 @@ Find tags "strong, em, span, br, and p"
 /\v\<(\/)?(strong|em|br|a href[^>]*|((span|p)[^>]*))(\/)?\>|(\([^)]*\))
 ```
 
-find "span style and pstyle "
+Find "span style and pstyle "
 
 ``` viml
 \v\<(p style|span)[^>]*\>
@@ -392,7 +392,7 @@ j0.
 j0.
 ```
 
-another way
+Another way
 
 ``` markdown
 vip ........................... visual select this paragraph
@@ -407,7 +407,7 @@ After getting the flashcards selection and putting it into a new vim file.
 All you have to do is to create a macro to make the flashcards.
 
 I have a python script to get two files; the first one has the mp3 files links
-and the second one gives me some html content over wich I run this vimscript
+and the second one gives me some html content over which I run this vimscript
 function:
 
 ```
@@ -519,7 +519,7 @@ OBJS = \ ~
     version.o \ ~
 ```
 
-# Runing external commands
+# Running external commands
 
     :0r !ls *.mp3
 
@@ -538,7 +538,7 @@ If you've ever wanted to wrap some text foo with some other, arbitrary text usin
     foo
     bar
 
-if you put the cursor on foo and do ciw("), and then put the cursor on bar and hit ., you'll end up with
+If you put the cursor on foo and do ciw("), and then put the cursor on bar and hit ., you'll end up with
 
     (foo)
     (foo)
@@ -548,9 +548,11 @@ instead of
     (foo)
     (bar)
 
-The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for more info.) (Of course, for this particular example, it would be better to use a plugin, like vim-surround, but the general point is still helpful, I hope.)
+The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for
+more info.) (Of course, for this particular example, it would be better to use
+a plugin, like vim-surround, but the general point is still helpful, I hope.)
 
-# In Vim, how to insert a word after regex match at the begining of next line
+# In Vim, how to insert a word after regex match at the beginning of next line
 + https://stackoverflow.com/questions/48032758/
 
 A word needs to be injected at the beginning of each line 1. I tried the
@@ -597,7 +599,7 @@ Just type
 
     X
 
-# jumping to the first non-blank character
+# jumping to the first non blank character
 + http://ddrscott.github.io/blog/2016/vim-toggle-movement/
 + https://stackoverflow.com/a/11919069/2571881
 
@@ -613,7 +615,7 @@ run the command.
 
 # Using vim with no plugins
 Setting some stuff on vim can dramatically improve your experience
-if you are using it withou any plugin.
+if you are using it without any plugin.
 
 ```vim
 "using gf onver any filename will open it
@@ -632,7 +634,7 @@ gf  at any file on the cursor is over will jump to the file
 :b substring  opens any file with substring
 ```
 
-# Nice paragraph formating
+# Nice paragraph formatting
 + http://vimcasts.org/episodes/formatting-text-with-par/
 + http://www.nicemice.net/par/
 
@@ -672,6 +674,7 @@ Step by step:
 # Show filetype
 
     :se ft?
+    :set filetype?
     :echo &ft
 
 # Inserting primary selection content
@@ -706,14 +709,14 @@ For more information, view the documentation with `:h i_ctrl-r`
     n ............... go to next occurrence
     . ............... repeat last change
 
-# Moving around - |antipattern|
+# Moving around - |anti pattern|
 
     g; ....... goes to older position on changelist (last change)
     g, ....... goes to newer positoin on changelist
 
     you can also jump using <C-o>
 
-# Exit ex mode - |antipattern|
+# Exit ex mode - |anti pattern|
 
     q:  ............... eters ex mode
     ^c ................ exit it
@@ -772,7 +775,7 @@ This is item D
 This is item E
 ```
 
-# spliting funtions into separated files
+# splitting functions into separated files
 
 The selections starts with
 
@@ -826,12 +829,12 @@ Another example is searching for markdown Section ignoring Subsections
 
     /\v^##@!
 
-find "other" just preceded by some
+Find "other" just preceded by some
 
     /\v(some)@<=other
 
 ## Another vim regex example
-Supose you have
+Suppose you have
 
     otherthingsbaz
     otherthingsbaz
@@ -842,7 +845,7 @@ Supose you have
     foobarbaz
     foobarbaz
 
-and you want remove baz onlin on those lines
+And you want remove baz online on those lines
 who it is preceded by 'foobar'. The last solution
 is more readable and unique to vim.
 
@@ -852,7 +855,7 @@ is more readable and unique to vim.
 
 See :h /\zs. (And :h /\@<= if you're so inclined.)
 
-## Find spaces folowed by '('
+## Find spaces followed by '('
 
     hello() -> hello ()
     world () -> world ()
@@ -868,7 +871,7 @@ See :h /\zs. (And :h /\@<= if you're so inclined.)
 
      vi +18d +wq ~/.ssh/known_hosts
 
-alternatively you can use sed:
+Alternatively you can use sed:
 
      sed -i 18d .ssh/known_hosts
 
@@ -881,7 +884,7 @@ alternatively you can use sed:
 + https://github.com/tpope/vim-speeddating
 + https://stackoverflow.com/a/24149171/2571881
 
-After instaling Tim Pope's speeddating plugin you can do something like:
+After installing Tim Pope's speeddating plugin you can do something like:
 
     :g/\v^\d{2}:\d{2}:/execute "normal t,10\<C-x>2t,10\<C-x>"
 
@@ -895,11 +898,11 @@ In my case I had to delete the first subtitle
 Asteroid Blues
 ```
 
-and then type:
+And then type:
 
     g/^\d\+$/exe "normal \<C-x>"
 
-to make the second subtitle become the first one
+To make the second subtitle become the first one
 
 The sound started at 51 seconds and my first subtitle was:
 
@@ -1004,7 +1007,7 @@ We can refer to each file on the arglist simple by doing
     :vim /foo/ *.cpp *.h *.hpp can be followed by
     :cfdo %s/2ndpattern/2ndreplacement/g
 
-## O plugin ag.vim →  rking/ag.vim: https://github.com/rking/ag.vim
+## O plugin ag.vim →  eking/ag.vim: https://github.com/rking/ag.vim
 Permite muitas ações na janela quickfix (aquela que abre quando usamos o grep)
 
 Using Ag (Silver_Searcher) we can find things like:
@@ -1251,7 +1254,7 @@ A line break is included as a newline character.
 ```
 read more at: `help sub-replace`
 
-# Open file read-only
+# Open file read only
 edit `/etc/nginx/nginx.conf` in read-only mode:
 
     sudo vim +M /etc/nginx/nginx.conf
@@ -1375,7 +1378,8 @@ modes a special window
 + https://stackoverflow.com/a/4111748/2571881
 
 ``` markdown
-:f (:file)
+:f
+:file
 ```
 
 will do same as
@@ -1417,7 +1421,7 @@ nnoremap <Enter> :call append(line('.'), '')<CR>
 nnoremap <S-Enter> :call append(line('.')-1, '')<CR>
 ```
 
-another similar solution
+Another similar solution
 
 ``` viml
 " https://vi.stackexchange.com/a/7278/7339
@@ -1472,14 +1476,14 @@ only in selected area.
 
     s/\%V\(.*\)\%V./"\1"/g
 
-OBS: the `\%V` option only selects up to the cursor, leavin
-one char out of the substituition, that's way we are using
-a dot '.' in the searh, to add a extra char.
+OBS: the `\%V` option only selects up to the cursor, leaving
+one char out of the substitution, that's way we are using
+a dot '.' in the search, to add a extra char.
 
 # Tips about ultisnips
 source: http://vimcasts.org/episodes/ultisnips-visual-placeholder/
 
-If you wnat to overwrite a snippet definition just put
+If you want to overwrite a snippet definition just put
 at the beginning of your file
 
     priority 1
@@ -1648,7 +1652,7 @@ You can call the function silently by defining a silent map:
 
     noremap <silent> H :call FirstCharOrFirstCol()<cr>
 
-# Viewing where maps are setted
+# Viewing where maps are settled
 
     :verbose map
 
@@ -3497,7 +3501,7 @@ No stackoverflow apareceu a seguinte questão
 Replace all strings except the parenthesis part in vim
 I have a text as follows.
 
-    cat
+    "cat
     dog
     elephant
     cat (1)
@@ -3511,7 +3515,7 @@ and I want to replace them as follows.
     [[dog]]
     [[elephant]]
     [[cat]] (1)
-    [[zebra]](1)
+    "[[zebra]](1)
     [[snow leopard]]
     [[shark]] (other)
 
@@ -4298,11 +4302,16 @@ And you whant this output:
 Solution:
 
 ``` markdown
+" it will work on the selected area
+vnoremap <Leader>r c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
+
 :.s/\v(\d+),(\d+),(\d+),(\d+),(\d+)/\5,\4,\3,\2,\1
 :%s/{\v\zs([^}]+)\ze}/\=join(reverse(split(submatch(1),'.\zs')),'')/g
 
 " we have to fix []
 :let @a=string(reverse([1,2,3,4,5])) | put a
+let @+=join(reverse(split(string(@+), '.\zs')), '')
+vnoremap <Leader>r c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
 ```
 
 # Reverse all words from a text
@@ -4315,6 +4324,7 @@ Solution:
 :s/\%V.*\%V./\=join(reverse(split(submatch(0))))/
 
 put =join(reverse(split(string(@+), '.\zs')), '')
+command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
 
 Reverse a register
 let r = join(reverse(split(getreg('a'))))
@@ -4340,7 +4350,6 @@ Select one line befor the paragraph and execute the folowing command
     the fourth line
 
     :'<,'>g/^/m'<
-
 
 # Everse every 4 lines in a file, so that
 + https://vi.stackexchange.com/a/6299/7339
@@ -4370,7 +4379,6 @@ becomes
 Caso o resto da divisão do número da linha por quatro for igual a zero
 mova pra cima 4 linhas, caso contrário move pra linha atual menos um
 que significa não o mesmo que não fazer nada.
-
 
 # Comando para inverter palavras de uma linha
 inverter uma string por palavras
@@ -4577,7 +4585,7 @@ Without vim-exchange plugin you can switch two words by doing
 
     Ctrl-w Ctrl-6 ..... divide a janela e edita arquivo alternativo
 
-# Spliting current window
+# Splitting current window
 
     :sp[lit]  .......................... split current window
     Ctrl-w s  .......................... split current window
@@ -4593,7 +4601,7 @@ Em modo normal colamos o conteúdo da área de transferência usando o clássico
        <Ctrl-r>+
        <Ctrl-r>"
 
-The Control-R mechanism is very useful:-
+The Ctrl-r mechanism is very useful:-
 
     :h i_CTRL-R
 
@@ -4640,7 +4648,7 @@ another application.
 
 http://coloration.sickill.net/
 
-programa para possibilitar a conversão de esquemas de cor do texmate (binario para xml1)
+programa para possibilitar a conversão de esquemas de cor do texmate (binário para xml1)
 http://vimcasts.org/episodes/creating-colorschemes-for-vim/
 usando este site: http://coloration.sickill.net/
 
@@ -4650,7 +4658,7 @@ usando este site: http://coloration.sickill.net/
 
 http://vimeo.com/user1690209/videos
 
-muito louco, tranformando um xml em texto plano http://vimeo.com/15443936
+Muito louco, transformando um xml em texto plano http://vimeo.com/15443936
 
 # Busca dentro de seleção visual
 
@@ -4665,7 +4673,7 @@ muito louco, tranformando um xml em texto plano http://vimeo.com/15443936
 :args ~/path/*.py
 ```
 
-isto evita o erro E77: muitos arquivos para editar
+Isto evita o erro E77: muitos arquivos para editar
 
 # Deletando linhas que não contém padrão
 
@@ -4717,7 +4725,7 @@ This will ask for confirmation before deleting every line containing text:
     normal ........... executa em modo normal
     ^v^A ............. incrementa o número
 
-# Delete multiline comments using global command
+# Delete multi line comments using global command
 + https://stackoverflow.com/a/45853309/2571881
 
 I am trying to delete a bunch of comments that are all in the following format:
@@ -4744,13 +4752,13 @@ Or using a global command. (both are similar)
     , ............ interval delimiter
     /\*\/$d_ ..... delete until the end to the black hole register "d_"
 
-# get multiline mp3 links
+# get multi line mp3 links
 
-The key to get mp3 links over multilne is to search for:
+The key to get mp3 links over multi line is to search for:
 
     /http.*\_.mp3
 
-## Multiline removing html comments
+## multi line removing html comments
 
     :1,$s/<!--\_.\{-}-->//
 
@@ -4769,7 +4777,7 @@ Sixth line
 End of file
 ```
 
-produces the result:
+Produces the result:
 
 ``` markdown
 First line

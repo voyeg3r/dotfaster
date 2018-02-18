@@ -1,4 +1,4 @@
-# tmux.md - Last Change: 2018 jan 15 09:55
+# tmux.md - Last Change: 2018 fev 17 19:19
 + https://www.youtube.com/watch?v=wKEGA8oEWXw
 + https://leanpub.com/the-tao-of-tmux/read
 + https://github.com/tony/tmux-config/blob/master/.tmux.conf
@@ -8,6 +8,11 @@ Tmux is a Terminal multiplexer
 To change the prefix key, add the following to your `~/.tmux.conf`
 
     unbind C-b set -g prefix C-a
+
+# move window tab in tmux
+
+    bind-key S-Left swap-window -t -1
+    bind-key S-Right swap-window -t +1
 
 # You can specify your config via the -f command. Like this:
 

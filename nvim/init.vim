@@ -1,5 +1,5 @@
 " nvim init file ~/.config/nvim/init.vim
-" Last Change: 2018 fev 17 11:36
+" Last Change: 2018 fev 18 14:17
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -30,6 +30,8 @@ set sps=8              " Quantidade de sugestões do spell
 " i_Ctrl-g_u allows us to have a better undo
 inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
 nnoremap <C-s> [s1z=<C-o>
+nnoremap <Leader>s ]s1z=<C-o>
+nnoremap <Leader>g ]szg<C-o>
 " See more about <C-x>s
 " Below mappings allows you to toggle spelling
 nnoremap <F7> :setlocal spell!<CR>
@@ -48,19 +50,21 @@ command! -nargs=0 CopyFile :call CopyBufferToClipboard()
 " Reverse lines - it accepts ranges Example →  :.,.+5Reverse
 command! -bar -range=% Reverse <line1>,<line2>global/^/m<line1>-1
 command! ReverseLine call setline('.', join(reverse(split(getline('.')))))
+command! -bar -range Mirror <line1>,<line2>call setline('.', join(reverse(split(getline('.'), '\zs')), ''))
+vnoremap <Leader>r c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
 
-fun! RevertSelectedString()
-    try
-        let l:old_plus = getreg('+')
-        normal gv"+y
-        let @+=join(reverse(split(string(@+), '.\zs')), '')
-        let @+=substitute(@+, "'", "", "g")
-        normal gv"+p
-    finally
-        call setreg('+', l:old_plus)
-    endtry
-endfun
-vnoremap <Leader>r :<C-u>call RevertSelectedString()<CR>
+"fun! RevertSelectedString()
+"    try
+"        let l:old_plus = getreg('+')
+"        normal gv"+y
+"        let @+=join(reverse(split(string(@+), '.\zs')), '')
+"        let @+=substitute(@+, "'", "", "g")
+"        normal gv"+p
+"    finally
+"        call setreg('+', l:old_plus)
+"    endtry
+"endfun
+"vnoremap <Leader>r :<C-u>call RevertSelectedString()<CR>
 
 function! ReverseSelectedWords()
     try
@@ -202,7 +206,7 @@ endif
 call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
-Plug 'henrik/vim-indexed-search'
+"Plug 'henrik/vim-indexed-search'
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
@@ -251,14 +255,17 @@ endif
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Color
+Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-two-firewatch'
+Plug 'trevordmiller/nova-vim'
+Plug 'crusoexia/vim-monokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'tomasr/molokai'
+Plug 'justinmk/molokai'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
-"Plug 'NLKNguyen/papercolor-theme'
 Plug 'chriskempson/tomorrow-theme'
 
 " statusline
@@ -317,6 +324,7 @@ let g:netrw_winsize = 25
 " This avoids cutting off parameters (after '?') and anchors (after '#').
 " See http://vi.stackexchange.com/q/2801/1631
 let g:netrw_gx="<cWORD>"
+let g:netrw_liststyle = 3
 
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
@@ -439,7 +447,7 @@ nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 command! -nargs=0 CloseBuffers :call CloseAllBuffersButCurrent()
 
 " substitute word under cursor - This map is used for spell
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+" nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -607,6 +615,9 @@ endif
 nnoremap <Leader>j :join<cr>
 nnoremap <Leader>gj :join!<cr>
 
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 " to insert this result: --> :put =Randnum(1000)
 function! Randnumber(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
@@ -700,7 +711,6 @@ endfor
 " 	endtry
 " endfun
 " command! -nargs=0 CopyIncrease silent call CopyAndIncrease() | exec "normal \<Esc>"
-" let mapleader = ','
 " nnoremap <Leader>c :CopyIncrease<CR>
 
 " swap words without changing cursor position gw
@@ -821,6 +831,14 @@ augroup markdown
      autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal ft=markdown
 augroup END
 
+augroup spellcheck_documentation
+     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,txt} setlocal spell
+    " Don't mark URL-like and acronyms things as spelling errors
+    syn match UrlNoSpell "\v(https?|ftp):[^[:space:]]*" contains=@NoSpell
+    syn match AcronymNoSpell '\v\u{2,}(\d+)?' contains=@NoSpell
+    syn match myExCapitalWords '+\<[A-Z]\w*\>+' contains=@NoSpell
+augroup END
+
 " set cursor line in normal mode
 autocmd InsertEnter * set nocul
 autocmd InsertLeave * set cul
@@ -876,16 +894,6 @@ augroup tex
     iab tex \Tex\
     normal gg
 augroup end
-
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
 
 "" Set working directory
 nnoremap <Leader>. :lcd %:p:h<CR>
@@ -954,6 +962,12 @@ nnoremap <A-k> :m-2<CR>
 " delete current till the end of line
 inoremap <C-k> <C-o>C
 
+" Make Ctrl-e jump to the end of the current line in the
+" insert mode. This is handy when you are in the middle of
+" a line and would like to go to its end without switching
+" to the normal mode.
+inoremap <C-e> <C-o>$
+
 " This function allows you to open the last edited file
 " in order to open the last file from the SHELL
 " on nvim you have to create an alias
@@ -1013,7 +1027,7 @@ function! StripTrailingWhitespace() range
 endfunction
 com! Cls :call StripTrailingWhitespace()
 com! StripTrailingSpace :call StripTrailingWhitespace()
-au! BufwritePre *.md,*.markdown,*.py,*.sh,*.zsh,*.txt :call StripTrailingWhitespace()
+au! BufwritePre *.md,*.py,*.sh,*.zsh,*.txt :call StripTrailingWhitespace()
 cnoreabbrev cls StripTrailingSpace
 
 " Make the 81st column stand out
@@ -1051,7 +1065,7 @@ fun! ChangeHeader() abort
     endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()
-au! BufReadPost * :silent call ChangeHeader()
+au! BufWritePre * :silent call ChangeHeader()
 
 " jump to next place holder
 function! JumpToNextPlaceholder() abort
