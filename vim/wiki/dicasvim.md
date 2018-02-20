@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 19 13:32
+# dicasvim.md Intro - Last Change: 2018 fev 20 02:57
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3219,6 +3219,8 @@ You can also type:
 
     :browse oldfiles
     :bro old
+
+Somtimes browsing oldfiles is much more efficient than using Ctrl-p plugin
 
 We can also install FZF plugin and map something like <leader>m to
 open Most Recent Edited Files

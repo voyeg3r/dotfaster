@@ -193,7 +193,7 @@ if has('statusline')
         let &stl.="%6*%(%{(&ro!=0?'  ':'')}%)%0*"
         let &stl.="%9*%(%{(&paste!=0?' PASTE ':'')}%)%0* "
         " file type (eg. python, ruby, etc..)
-        let &stl.="%8*%( %{&filetype} %)%0* "
+        let &stl.="%8*%(%{&filetype}%)%0* "
         " file format (eg. unix, dos, etc..)
         let &stl.="%{&fileformat}".g:NeatStatusLine_separator." "
         " file encoding (eg. utf8, latin1, etc..)
