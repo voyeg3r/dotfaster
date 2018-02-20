@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 20 03:05
+" Last Change: 2018 fev 20 07:22
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1171,6 +1171,12 @@ vnoremap <S-F11> <ESC>:set hls! hls?<cr> <bar> gv
 set nu rnu
 "nmap <F6> :set nu rnu<cr>
 nnoremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " noremap <silent> <Leader>v :e ~/.config/nvim/init.vim<cr>
 noremap <silent> <Leader>v :e $MYVIMRC<cr>

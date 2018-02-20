@@ -3,7 +3,7 @@ Neat Status Line
 
 [![endorse](https://api.coderwall.com/luke/endorsecount.png)](https://coderwall.com/luke)
 
-Yet another status line plugin. The aim of Neat Status is to provide neat, and 
+Yet another status line plugin. The aim of Neat Status is to provide neat, and
 simple UI with just basic information and no bells and whistles for those users
 who consider things like Powerline to be overkill.
 
@@ -44,20 +44,15 @@ Information provided from left to right:
 * Absolute column number (from start of line)
 * Modified / Unmodified (blue box)
 
+OBS: Some itens are disabled by default, you have to customize to fit your needs.
+
 Installation
 ---
 
-To install with Pathogen:
+To install with vim-plug:
 
-    cd ~/.vim/bundle
-    git clone git://github.com/maciakl/vim-neatstatus.git
-
-If your .vim is under source control with Git do this instead:
-
-    cd ~/.vim
-    git submodule add git://github.com/maciakl/vim-neatstatus.git bundle/vim-neatstatus
-    git submodule init
-    git submodule update
+    add to your init.vim → Plug 'voyeg3r/vim-neatstatus'
+    :PlugInstall
 
 Installing without pathogen:
 
@@ -83,7 +78,7 @@ a quick example that shows you hot to redefine the insert mode colors:
 
 Note that these only affect the small boxes created by NeatStatus. Your status line will remain
 the default color as per your color scheme. This works very well if you also happen to use the
-Obvious-Mode plugin. 
+Obvious-Mode plugin.
 
 If you want to style your status line, you can do it in your `.vimrc` normally using the `hi StatusLine`
 and `hi StatusLineNC` commands.
@@ -94,5 +89,5 @@ You can also change the separator character that divides the boxes by changing:
 
 By default the separator is set to the pipe `|` character. You can disable the separator by setting it to empty string.
 
-[ns]: http://i.imgur.com/7ySiHql.png "Neat Statusline"
+[ns]: https://imgur.com/a/h7GuQ "Neat Statusline"
 [va]: https://github.com/bling/vim-airline

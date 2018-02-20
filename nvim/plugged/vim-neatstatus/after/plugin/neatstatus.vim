@@ -19,7 +19,8 @@ let g:last_mode=""
 
 " Black on Green
 if !exists('g:NeatStatusLine_color_normal')     "black         green
-    let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#5DC700 gui=NONE ctermfg=0 ctermbg=2 cterm=NONE'
+    let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#76FF03 gui=bold ctermfg=0 ctermbg=2 cterm=NONE'
+    "let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#5DC700 gui=bold ctermfg=0 ctermbg=2 cterm=NONE'
 endif
 
 if !exists('g:NeatStatusLine_color_insert')
@@ -52,7 +53,7 @@ endif
 
 " cor da paleta #5f8787
 if !exists('g:NeatStatusLine_color_paste')
-    let g:NeatStatusLine_color_paste = 'guifg=#5f8787 guibg=#FF5722 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
+    let g:NeatStatusLine_color_paste = 'guifg=#ffffff guibg=#FF5722 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
 endif
 
 if !exists('g:NeatStatusLine_separator')
@@ -139,6 +140,7 @@ if has('statusline')
     "
     " #%n   buffer number
     " %l/%L line number, total number of lines
+    " %04l line number with zeros 0001
     " %p%   percentage of file
     " %c%V  column number, absolute column number
     " &modified         whether or not file was modified
@@ -174,11 +176,11 @@ if has('statusline')
 
         let &stl=""
         " mode (changes color)
-        let &stl.="%1*\ %{Mode()}%0*"
+        let &stl.="%1*\ %{Mode()} %0*"
         " session name
         "let &stl.="%5* %{g:neatstatus_session} %0*"
         " buffer number
-        let &stl.=" [%n] "
+        let &stl.=" [%n]"
         let &stl.="%6* %{GitInfo()}%0*"
         " file path
         let &stl.=" %<%F"
@@ -203,7 +205,7 @@ if has('statusline')
         " percentage done
         let &stl.="%p%% ".g:NeatStatusLine_separator." "
         " column number (minimum width is 4)
-        let &stl.="Total:%2L "
+        let &stl.="Total:%04L "
     endfunc
 
     "FIXME: hack to fix the repeated statusline issue in console version
