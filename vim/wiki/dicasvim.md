@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 18 16:52
+# dicasvim.md Intro - Last Change: 2018 fev 19 13:32
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,10 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Showing vim mode
+
+    :echo mode()
 
 # Criando seções pra restaurar depois
 

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 18 19:47
+" Last Change: 2018 fev 20 02:53
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -19,11 +19,14 @@ if has("nvim")
     set inccommand=nosplit
 endif
 
+" Required:
+filetype plugin indent on
+
 let mapleader = ','
 
 set shada=!,'1000,<50,s10,h,%,'2000
 
-"set spell
+set nospell
 set spelllang=en,pt
 set complete+=kspell
 set sps=8              " Quantidade de sugestões do spell
@@ -271,33 +274,15 @@ Plug 'noahfrederick/vim-hemisu'
 Plug 'chriskempson/tomorrow-theme'
 
 " statusline
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
+"Plug 'vim-scripts/Obvious-Mode'
+"Plug 'maciakl/vim-neatstatus'
+Plug 'voyeg3r/vim-neatstatus'
+
+" Color picker
+Plug 'lilydjwg/colorizer'
 
 call plug#end()
-
-" Using online reference I managed to show buffer number in lightline
-" active register v:register | readonly file shows: 
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' , 'regtype' ] ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \   'readonly': 'LightlineReadonly',
-      \ },
-      \ }
-
-function! LightlineReadonly()
-  return &readonly ? '' : ''
-endfunction
-
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  let buffernumber = bufnr('%')
-  return 'buf ' . buffernumber . ' ' . filename . modified
-endfunction
 
 " lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
@@ -331,8 +316,6 @@ call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview,noinsert
 
-" Required:
-filetype plugin indent on
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -355,24 +338,17 @@ let g:netrw_liststyle = 3
 "colorscheme molokai
 set t_Co=256   " This is may or may not needed.
 
-" set backgroun light until 17h
-" https://stackoverflow.com/a/7589970/2571881
-if strftime("%H") < 17
-  set background=light
-else
-  set background=dark
-endif
+set background=dark
+"if strftime("%H") < 7
+"  set background=dark
+"else
+"  set background=light
+"endif
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-
-set termguicolors     " enable true colors support
-let ayucolor="light"  " for light version of theme
-let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
 
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -380,6 +356,8 @@ colorscheme ayu
 if (has("termguicolors"))
   set termguicolors
 endif
+
+colorscheme PaperColor
 
 "hi Search ctermbg=Yellow
 "hi Search ctermfg=Black
@@ -776,22 +754,24 @@ nnoremap <Leader>O @="m`O\eg``"<cr>
 
 "colorscheme ayu
 "colorscheme palenight
-colorscheme PaperColor
 "colorscheme hemisu
 
 " Reloads vimrc after saving but keep cursor position
 if !exists('*ReloadVimrcFunction')
-    fun! ReloadVimrcFunction()
+    function! ReloadVimrcFunction()
         let save_cursor = getcurpos()
         source $MYVIMRC
         call setpos('.', save_cursor)
-    endfun
+    endfunction
 endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrcFunction()
-autocmd! BufWritePost $MYVIMRC filetype plugin indent on
-command! -nargs=0 ReloadVimrc :silent! call ReloadVimrcFunction()
 
-"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
+augroup Reload
+    autocmd!
+    autocmd BufWritePost $MYVIMRC call ReloadVimrcFunction()
+    autocmd BufWritePost $MYVIMRC filetype plugin indent on
+augroup end
+
+" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
 augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync maxlines=200
