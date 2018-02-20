@@ -10,6 +10,7 @@
 " Loosely based on a script by Tomas Restrepo (winterdom.com)
 " " Original available here:
 " http://winterdom.com/2007/06/vimstatusline
+" colors:
 
 set ls=2 " Always show status line
 let g:last_mode=""
@@ -65,7 +66,6 @@ endif
 
 " Set up the colors for the status bar
 function! SetNeatstatusColorscheme()
-
     " Basic color presets
     exec 'hi User1 '.g:NeatStatusLine_color_normal
     exec 'hi User2 '.g:NeatStatusLine_color_replace
@@ -76,7 +76,6 @@ function! SetNeatstatusColorscheme()
     exec 'hi User7 '.g:NeatStatusLine_color_line
     exec 'hi User8 '.g:NeatStatusLine_color_filetype
     exec 'hi User9 '.g:NeatStatusLine_color_paste
-
 endfunc
 
 " pretty mode display - converts the one letter status notifiers to words
@@ -222,7 +221,7 @@ if has('statusline')
     au ColorScheme,VimEnter * call SetStatusLineStyle()
 
     " Switch between the normal and vim-debug modes in the status line
-    nmap _ds :call SetStatusLineStyle()<CR>
+    nmap <M-d> :call SetStatusLineStyle()<CR>
     call SetStatusLineStyle()
     " Window title
     if has('title')

@@ -27,7 +27,7 @@ Screenshots
 
 Here is how this status line will look in Gvim on Windows with the Solarized color scheme:
 
-![Neat Statusline][ns]
+![Neat Statusline](https://i.imgur.com/GoAiVut.png)
 
 Information provided from left to right:
 
@@ -89,5 +89,4 @@ You can also change the separator character that divides the boxes by changing:
 
 By default the separator is set to the pipe `|` character. You can disable the separator by setting it to empty string.
 
-[ns]: https://imgur.com/a/h7GuQ "Neat Statusline"
 [va]: https://github.com/bling/vim-airline

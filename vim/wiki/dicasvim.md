@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 20 02:57
+# dicasvim.md Intro - Last Change: 2018 fev 20 12:42
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -4881,6 +4881,10 @@ You can check what's the type of a register, using the getregtype() function:
 If it returns a lowercase v, it means the type is characterwise.
 If it returns an uppercase V, it means the type is linewise.
 If it returns ^V{some number}, it means the type is blockwise, and the width of the block is {some number}.
+
+    Paste = "+gP
+    Put Before = [p
+    Put After = ]p
 
 # Função para limpar flashcards
 É uma função bem específica para minhas necessidades

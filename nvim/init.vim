@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 20 07:22
+" Last Change: 2018 fev 20 14:20
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -27,9 +27,9 @@ let mapleader = ','
 set shada=!,'1000,<50,s10,h,%,'2000
 
 set nospell
-set spelllang=en,pt
-set complete+=kspell
-set sps=8              " Quantidade de sugestões do spell
+"set spelllang=en,pt
+"set complete+=kspell
+"set sps=8              " Quantidade de sugestões do spell
 " i_Ctrl-g_u allows us to have a better undo
 inoremap <C-s> <c-g>u<Esc>[s1z=gi<c-g>u
 nnoremap <C-s> [s1z=<C-o>
@@ -113,6 +113,7 @@ augroup highligh_follows_vim
     autocmd FocusGained * set cursorline
     autocmd FocusLost * set nocursorline
 augroup END
+
 
 set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
@@ -357,7 +358,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme PaperColor
+"colorscheme PaperColor
+colorscheme palenight
 
 "hi Search ctermbg=Yellow
 "hi Search ctermfg=Black
@@ -768,7 +770,7 @@ endif
 augroup Reload
     autocmd!
     autocmd BufWritePost $MYVIMRC call ReloadVimrcFunction()
-    autocmd BufWritePost $MYVIMRC filetype plugin indent on
+    "autocmd BufWritePost $MYVIMRC filetype plugin indent on
 augroup end
 
 " The PC is fast enough, do syntax highlight syncing from start unless 200 lines
@@ -825,13 +827,13 @@ augroup markdown
      autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal ft=markdown
 augroup END
 
-augroup spellcheck_documentation
-     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,txt} setlocal spell
-    " Don't mark URL-like and acronyms things as spelling errors
-    syn match UrlNoSpell "\v(https?|ftp):[^[:space:]]*" contains=@NoSpell
-    syn match AcronymNoSpell '\v\u{2,}(\d+)?' contains=@NoSpell
-    syn match myExCapitalWords '+\<[A-Z]\w*\>+' contains=@NoSpell
-augroup END
+"augroup spellcheck_documentation
+"     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,txt} setlocal spell
+"    " Don't mark URL-like and acronyms things as spelling errors
+"    syn match UrlNoSpell "\v(https?|ftp):[^[:space:]]*" contains=@NoSpell
+"    syn match AcronymNoSpell '\v\u{2,}(\d+)?' contains=@NoSpell
+"    syn match myExCapitalWords '+\<[A-Z]\w*\>+' contains=@NoSpell
+"augroup END
 
 " set cursor line in normal mode
 autocmd InsertEnter * set nocul
@@ -1172,11 +1174,11 @@ set nu rnu
 "nmap <F6> :set nu rnu<cr>
 nnoremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+"augroup numbertoggle
+"  autocmd!
+"  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+"augroup END
 
 " noremap <silent> <Leader>v :e ~/.config/nvim/init.vim<cr>
 noremap <silent> <Leader>v :e $MYVIMRC<cr>
