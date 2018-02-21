@@ -181,7 +181,7 @@ if has('statusline')
         let &stl.=" [%n] "
         let &stl.="%6*%{GitInfo()}%0*"
         " file path
-        let &stl.=" %<%f"
+        let &stl.=" %<%F"
         " modified / unmodified (purple)
         let &stl.="%03(%6*%{&modified ? ' + ':''}%)%0*"
         " read only, modified, modifiable flags in brackets
@@ -189,21 +189,23 @@ if has('statusline')
         " right-aligh everything past this point
         let &stl.="%= "
         " TODO: show clipboard v V or b and clipboard + 0 or "
+        "let &stl.="%{v:register}"
         " readonly flag
+        " ec (&ro || !&modifiable ? 'no' : 'yes')
         let &stl.="%6*%(%{(&ro!=0?'  ':'')}%)%0*"
         let &stl.="%6*%01(%{&list?'¶':''}%)%0* "
         let &stl.="%6*%01(%{&hls?'H':''}%)%0* "
         let &stl.="%6*%01(%{(&paste?'P':'')}%)%0* "
         " file type (eg. python, ruby, etc..)
-        let &stl.="%(%{&filetype}%)%0*".g:NeatStatusLine_separator
+        let &stl.="%(%{&filetype}%)".g:NeatStatusLine_separator
         " file format (eg. unix, dos, etc..)
         let &stl.="%{&fileformat}".g:NeatStatusLine_separator
         " file encoding (eg. utf8, latin1, etc..)
         let &stl.="%(%{(&fenc!=''?&fenc:&enc)}%)".g:NeatStatusLine_separator
         "line number (pink) / total lines
-        let &stl.=" %03l/%03L".g:NeatStatusLine_separator
+        let &stl.=" %03l/%03L |"
         " percentage done
-        let &stl.="%03p%%".g:NeatStatusLine_separator
+        let &stl.="%1* %03p%%".g:NeatStatusLine_separator
         " column number (minimum width is 2)
         let &stl.="%02v "
     endfunc

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 21 09:40
+" Last Change: 2018 fev 21 17:38
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -93,7 +93,6 @@ if has("multi_byte")
   endif
   set encoding=utf-8
   setglobal fileencoding=utf-8
-  "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
@@ -216,11 +215,9 @@ Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
-Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular'
-Plug 'coderifous/textobj-word-column.vim'
 Plug 'tommcdo/vim-exchange'
 "Plug 'nelstrom/vim-visual-star-search'
 "Plug 'nelstrom/vim-markdown-folding'
@@ -245,8 +242,6 @@ Plug 'tommcdo/vim-lion'
 "Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
-"Plug 'bronson/vim-trailing-whitespace'
-Plug 'Raimondi/delimitMate'
 "Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
 "Plug 'Yggdroot/indentLine'
