@@ -3,6 +3,17 @@ Este é um comando para criação de pastas
 
   mkdir pasta
 
+## Criando uma estrutura com permissões predefinidas
+
+``` sh
+_mkdir(){
+        local d="$1"            # get dir name
+        local p=${2:-0755}      # get permission, set default to 0755
+        [ $# -eq 0 ] && { echo "$0: dirname"; return; }
+        [ ! -d "$d" ] && mkdir -m $p -p "$d"
+}
+```
+
 # copiando uma estrutura de pastas (somente pastas)
 
     (cd /home/user/source/; find -type d -print0) | xargs -0 mkdir -p

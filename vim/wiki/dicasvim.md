@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 20 12:42
+# dicasvim.md Intro - Last Change: 2018 fev 21 06:16
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2914,6 +2914,10 @@ In order to insert Unicode symbols:
     U+27BD →  ➽
     U+2600 →  ☀
     U+2620 →  ☠
+
+Digraphs → Ctrl-v + number
+
+    Ctrl-v + 182 → ¶
 
 # How insert one arrow - type  →
 

@@ -25,7 +25,7 @@ robust, feature-full Powerline replacement you should check out [Vim-Airline][va
 Screenshots
 -----------
 
-Here is how this status line will look in Gvim on Windows with the Solarized color scheme:
+Here how the status line will look like on gnome-terminal with neovim
 
 ![Neat Statusline](https://i.imgur.com/GoAiVut.png)
 

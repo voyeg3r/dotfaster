@@ -5,12 +5,15 @@
 "   |  \| |/ _ \/ _` | __\___ \| __/ _` | __| | | / __|
 "   | |\  |  __/ (_| | |_ ___) | || (_| | |_| |_| \__ \
 "   |_| \_|\___|\__,_|\__|____/ \__\__,_|\__|\__,_|___/
-"   Vim plugin by Luke Maciak (c) 2012
+"   Vim plugin by Luke Maciak (c) 2012 - voyeg3's version
 "
 " Loosely based on a script by Tomas Restrepo (winterdom.com)
 " " Original available here:
 " http://winterdom.com/2007/06/vimstatusline
 " colors:
+"
+" Some symbols to use:
+"  
 
 set ls=2 " Always show status line
 let g:last_mode=""
@@ -21,7 +24,6 @@ let g:last_mode=""
 " Black on Green
 if !exists('g:NeatStatusLine_color_normal')     "black         green
     let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#76FF03 gui=bold ctermfg=0 ctermbg=2 cterm=NONE'
-    "let g:NeatStatusLine_color_normal   = 'guifg=#000000 guibg=#5DC700 gui=bold ctermfg=0 ctermbg=2 cterm=NONE'
 endif
 
 if !exists('g:NeatStatusLine_color_insert')
@@ -49,19 +51,18 @@ if !exists('g:NeatStatusLine_color_line')
 endif
 
 if !exists('g:NeatStatusLine_color_filetype')
-    let g:NeatStatusLine_color_filetype = 'guifg=#000000 guibg=#5f8787 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
+    let g:NeatStatusLine_color_filetype = 'guifg=#ffffff guibg=#2C323C gui=bold ctermfg=0 ctermbg=7 cterm=bold'
 endif
 
 " cor da paleta #5f8787
 if !exists('g:NeatStatusLine_color_paste')
-    let g:NeatStatusLine_color_paste = 'guifg=#ffffff guibg=#FF5722 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
+    let g:NeatStatusLine_color_paste = 'guifg=#FF5722 guibg=#5f8787 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
 endif
 
 if !exists('g:NeatStatusLine_separator')
     let g:NeatStatusLine_separator = ' | '
 endif
 
-"==============================================================================
 "==============================================================================
 
 " Set up the colors for the status bar
@@ -100,7 +101,6 @@ function! GitInfo()
     return ''
 endfunction
 
-"==============================================================================
 "==============================================================================
 
 if has('statusline')
@@ -149,7 +149,6 @@ if has('statusline')
     " v:register - if we are using + 0 or " registers
     "
     function! SetStatusLineStyle()
-
         " Determine the name of the session or terminal
         if (strlen(v:servername)>0)
             if v:servername =~ 'nvim'
@@ -179,32 +178,34 @@ if has('statusline')
         " session name
         "let &stl.="%5* %{g:neatstatus_session} %0*"
         " buffer number
-        let &stl.=" [%n]"
-        let &stl.="%6* %{GitInfo()}%0*"
+        let &stl.=" [%n] "
+        let &stl.="%6*%{GitInfo()}%0*"
         " file path
-        let &stl.=" %<%F"
+        let &stl.=" %<%f"
         " modified / unmodified (purple)
-        let &stl.="%(%6*%{&modified ? '+':''}%)%0*"
+        let &stl.="%03(%6*%{&modified ? ' + ':''}%)%0*"
         " read only, modified, modifiable flags in brackets
         "let &stl.="%([%R%M]%) "
         " right-aligh everything past this point
         let &stl.="%= "
         " TODO: show clipboard v V or b and clipboard + 0 or "
         " readonly flag
-        let &stl.="%6*%(%{(&ro!=0?'  ':'')}%)%0*"
-        let &stl.="%9*%(%{(&paste!=0?' PASTE ':'')}%)%0* "
+        let &stl.="%6*%(%{(&ro!=0?'  ':'')}%)%0*"
+        let &stl.="%6*%01(%{&list?'¶':''}%)%0* "
+        let &stl.="%6*%01(%{&hls?'H':''}%)%0* "
+        let &stl.="%6*%01(%{(&paste?'P':'')}%)%0* "
         " file type (eg. python, ruby, etc..)
-        let &stl.="%8*%(%{&filetype}%)%0* "
+        let &stl.="%(%{&filetype}%)%0*".g:NeatStatusLine_separator
         " file format (eg. unix, dos, etc..)
-        let &stl.="%{&fileformat}".g:NeatStatusLine_separator." "
+        let &stl.="%{&fileformat}".g:NeatStatusLine_separator
         " file encoding (eg. utf8, latin1, etc..)
-        let &stl.="%(%{(&fenc!=''?&fenc:&enc)}".g:NeatStatusLine_separator." %)"
+        let &stl.="%(%{(&fenc!=''?&fenc:&enc)}%)".g:NeatStatusLine_separator
         "line number (pink) / total lines
-        let &stl.=" %04l/%04v "
+        let &stl.=" %03l/%03L".g:NeatStatusLine_separator
         " percentage done
-        let &stl.="%p%% ".g:NeatStatusLine_separator." "
-        " column number (minimum width is 4)
-        let &stl.="Total:%04L "
+        let &stl.="%03p%%".g:NeatStatusLine_separator
+        " column number (minimum width is 2)
+        let &stl.="%02v "
     endfunc
 
     "FIXME: hack to fix the repeated statusline issue in console version

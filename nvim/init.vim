@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 20 14:20
+" Last Change: 2018 fev 21 09:40
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -102,18 +102,17 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " source: https://www.vi-improved.org/vim-tips/
-augroup highlight_follows_focus
-    autocmd!
-    autocmd WinEnter * set cursorline
-    autocmd WinLeave * set nocursorline
-augroup END
+"augroup highlight_follows_focus
+"    autocmd!
+"    autocmd WinEnter * set cursorline
+"    autocmd WinLeave * set nocursorline
+"augroup END
 
-augroup highligh_follows_vim
-    autocmd!
-    autocmd FocusGained * set cursorline
-    autocmd FocusLost * set nocursorline
-augroup END
-
+"augroup highligh_follows_vim
+"    autocmd!
+"    autocmd FocusGained * set cursorline
+"    autocmd FocusLost * set nocursorline
+"augroup END
 
 set guicursor+=n:blinkon1 " not blinking cursor in normal mode
 "set guicursor+=i:blinkon1 " cursor blinkin in insert mode
@@ -237,8 +236,8 @@ Plug 'sjl/gundo.vim'
 Plug 'chrisbra/NrrwRgn'
 Plug 'tpope/vim-speeddating'
 Plug 'jiangmiao/auto-pairs'
-Plug 'rstacruz/vim-closer'
-Plug 'tpope/vim-commentary'
+"Plug 'rstacruz/vim-closer'
+"Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-lion'
 "Plug 'vim-airline/vim-airline'
@@ -250,7 +249,7 @@ Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 "Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -261,18 +260,13 @@ endif
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Color
-Plug 'junegunn/seoul256.vim'
-Plug 'rakr/vim-two-firewatch'
 Plug 'trevordmiller/nova-vim'
 Plug 'crusoexia/vim-monokai'
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'justinmk/molokai'
 Plug 'endel/vim-github-colorscheme'
-Plug 'tpope/vim-vividchalk'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'chriskempson/tomorrow-theme'
 
 " statusline
 "Plug 'itchyny/lightline.vim'
@@ -358,8 +352,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-"colorscheme PaperColor
-colorscheme palenight
+colorscheme PaperColor
+"colorscheme palenight
 
 "hi Search ctermbg=Yellow
 "hi Search ctermfg=Black
@@ -379,7 +373,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
 
 " source: http://tilvim.com/2013/07/31/swapping-bg.html <F19> = Shif-F7
-nmap <S-F7> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nmap <F19> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " save with <F8>
 nnoremap <F8> :w<cr>
@@ -835,10 +829,6 @@ augroup END
 "    syn match myExCapitalWords '+\<[A-Z]\w*\>+' contains=@NoSpell
 "augroup END
 
-" set cursor line in normal mode
-autocmd InsertEnter * set nocul
-autocmd InsertLeave * set cul
-
 augroup sh
     au BufNewFile *.sh 0r ~/.vim/skel/template.sh
     au BufNewFile *.sh call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
@@ -1164,10 +1154,10 @@ cnoreabbrev ww SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
-" to reselect use gv in normal mode
-nnoremap <S-F11> <ESC>:set hls! hls?<cr>
-inoremap <S-F11> <C-o>:set hls! hls?<cr>
-vnoremap <S-F11> <ESC>:set hls! hls?<cr> <bar> gv
+" to reselect use gv in normal mode - Shift-F11
+nnoremap <F23> <ESC>:set hls! hls?<cr>
+inoremap <F23> <C-o>:set hls! hls?<cr>
+vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 set nu rnu
