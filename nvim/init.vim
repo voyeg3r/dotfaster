@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 21 17:38
+" Last Change: 2018 fev 22 16:01
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -40,7 +40,7 @@ nnoremap <Leader>g ]szg<C-o>
 nnoremap <F7> :setlocal spell!<CR>
 inoremap <F7> <C-o>:setlocal spell!<CR>
 
-" avoid clipboard hacking
+" avoid clipboard hacking security issue
 " http://thejh.net/misc/website-terminal-copy-paste
 inoremap <C-R>+ <C-R><C-R>+
 
@@ -168,7 +168,7 @@ set wildmode=longest:full,list:full
 set whichwrap +=<,>
 set completeopt=longest,menuone
 set nopaste
-set pastetoggle=<F2>
+set pastetoggle=<F8>
 set linebreak                  " Keep whole words during wrapping
 set noshowmode
 set autoread
@@ -252,7 +252,22 @@ else
   Plug 'junegunn/fzf.vim'
 endif
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+augroup nerd_loader
+  autocmd!
+  autocmd VimEnter * silent! autocmd! FileExplorer
+  autocmd BufEnter,BufNew *
+        \  if isdirectory(expand('<amatch>'))
+        \|   call plug#load('nerdtree')
+        \|   execute 'autocmd! nerd_loader'
+        \| endif
+augroup END
+nnoremap <F2> :NERDTreeToggle<cr>
+
+Plug 'SirVer/ultisnips', { 'on': ['<Plug>UltiSnipsExpandSnippetOrJump'] } | Plug 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<c-j>"
+" To trigger it through lazy-loading.
+imap <c-j> <Plug>UltiSnipsExpandSnippetOrJump
 
 " Color
 Plug 'trevordmiller/nova-vim'
@@ -274,10 +289,22 @@ Plug 'lilydjwg/colorizer'
 
 call plug#end()
 
+" source: https://github.com/junegunn/vim-plug/issues/164
+"command! Gstatus call LazyLoadFugitive('Gstatus')
+"command! Gdiff call LazyLoadFugitive('Gdiff')
+"command! Glog call LazyLoadFugitive('Glog')
+"command! Gblame call LazyLoadFugitive('Gblame')
+"
+"function! LazyLoadFugitive(cmd)
+"  call plug#load('vim-fugitive')
+"  call fugitive#detect(expand('%:p'))
+"  exe a:cmd
+"endfunction
+
 " lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
 
-" SOME DEOPLETE CONFIGURATIONS
+" some deoplete configurations
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_refresh_always = 1
@@ -306,14 +333,11 @@ call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview,noinsert
 
-
 if exists('$SHELL')
     set shell=$SHELL
 else
     set shell=/bin/sh
 endif
-
-syntax on
 
 let no_buffers_menu=1
 
@@ -360,7 +384,7 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 
 " jump to lines with <count><Space>
-nnoremap <expr> <Space> v:count ? "gg" : "<Space>"
+" nnoremap <expr> <Space> v:count ? "gg" : "<Space>"
 
 nnoremap <F4> ggVGg?
 
@@ -370,19 +394,10 @@ let g:gundo_prefer_python3 = 1
 " source: http://tilvim.com/2013/07/31/swapping-bg.html <F19> = Shif-F7
 nmap <F19> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" save with <F8>
-nnoremap <F8> :w<cr>
-inoremap <F8> <C-o>:w<cr>
-vnoremap <F8> <C-c>:w<cr>:normal gv<cr>
-
 nnoremap <Left> :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
-
-" jump to next buffer
-nnoremap <M-right> :bn<CR>
-nnoremap <M-left> :bp<CR>
 
 " close the buffer
 nnoremap <Leader>db :bd!<CR>
@@ -393,13 +408,6 @@ nnoremap <F10> :b <C-Z>
 
 " list buffers and jump to a chosen one
 nnoremap <Leader>b :ls<CR>:b<Space>
-"nnoremap ,b :ls<cr>:b<space>
-" set wildcharm=<C-z>
-" :buffer <c-z> <shift-tab>
-"nnoremap <Leader>B :buffer <C-z><S-Tab>
-"remap <F10> :b <C-Z>
-nnoremap <PageUp>   :bprevious<CR>
-nnoremap <PageDown> :bnext<CR>
 
 " sometimes you need to know how many opened buffers you have
 " source: https://superuser.com/a/1221514/45032
@@ -519,9 +527,6 @@ nnoremap <c-o> <c-o>zz
 " With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
 nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap gp `[v`]
-
-" Last inserted text
-nnoremap g. :normal! `[v`]<cr><left>
 
 " It adds motions like 25j and 30k to the jump list, so you can cycle
 " through them with control-o and control-i.
@@ -1176,7 +1181,6 @@ noremap <silent> <Leader>v :e $MYVIMRC<cr>
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 hi Folded ctermbg=black
-nnoremap Q :normal n.<CR>
 
 " snippets settings
 "let g:UltiSnips#ListSnippets="<C-tab>"
@@ -1196,6 +1200,7 @@ function! LoadUltiSnips()
     call UltiSnips#ExpandSnippet()
     return ""
 endfunction
+
 
 if exists(":python3")
    let g:_uspy=":python3"

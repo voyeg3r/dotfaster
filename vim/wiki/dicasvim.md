@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 21 06:16
+# dicasvim.md Intro - Last Change: 2018 fev 22 07:03
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3025,7 +3025,11 @@ zug ......... undo add word as good one
 ```
 
 This solution makes use of ternary oparator that gives us a newline "\n" or
-nothing "" depending on rest of division of line number "line('.')" by 4
+nothing "" depending on Mod of the integer division of line number "line('.')" by 4
+
+More about ternary operator
+
+    nmap <F19> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 # Vim - Adding empty line between lines
 + https://superuser.com/a/592508/45032

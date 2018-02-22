@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 16 10:43
+# .zshrc - Last Change: 2018 fev 22 15:35
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -53,7 +53,7 @@ bindkey '^ ' autosuggest-accept
 bindkey "\e[3~" delete-char
 
 # Report CPU usage for commands running longer than 10 seconds
-REPORTTIME=10
+# REPORTTIME=10
 
 # User configuration
 # export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
