@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 22 16:01
+" Last Change: 2018 fev 22 19:13
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -215,7 +215,11 @@ Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround',
+      \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
+      \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
+      \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
+
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular'
 Plug 'tommcdo/vim-exchange'
@@ -251,23 +255,8 @@ else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
 endif
-
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-augroup nerd_loader
-  autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer
-  autocmd BufEnter,BufNew *
-        \  if isdirectory(expand('<amatch>'))
-        \|   call plug#load('nerdtree')
-        \|   execute 'autocmd! nerd_loader'
-        \| endif
-augroup END
-nnoremap <F2> :NERDTreeToggle<cr>
-
-Plug 'SirVer/ultisnips', { 'on': ['<Plug>UltiSnipsExpandSnippetOrJump'] } | Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<c-j>"
-" To trigger it through lazy-loading.
-imap <c-j> <Plug>UltiSnipsExpandSnippetOrJump
+Plug 'SirVer/ultisnips', {'on': [] } | Plug 'honza/vim-snippets'
 
 " Color
 Plug 'trevordmiller/nova-vim'
@@ -288,6 +277,42 @@ Plug 'voyeg3r/vim-neatstatus'
 Plug 'lilydjwg/colorizer'
 
 call plug#end()
+
+" lazy load for ultisnips
+" https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf
+inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
+" This function only runs when UltiSnips is not loaded
+function! LoadUltiSnips()
+    let l:curpos = getcurpos()
+    execute plug#load('ultisnips')
+    call cursor(l:curpos[1], l:curpos[2])
+    call UltiSnips#ExpandSnippet()
+    return ""
+endfunction
+
+" see surround lazy loading above
+nmap ds  <Plug>Dsurround
+nmap cs  <Plug>Csurround
+nmap cS  <Plug>CSurround
+nmap ys  <Plug>Ysurround
+nmap yS  <Plug>YSurround
+nmap yss <Plug>Yssurround
+nmap ySs <Plug>YSsurround
+nmap ySS <Plug>YSsurround
+xmap S   <Plug>VSurround
+xmap gS  <Plug>VgSurround
+
+" lazy loading nerdtree
+augroup nerd_loader
+  autocmd!
+  autocmd VimEnter * silent! autocmd! FileExplorer
+  autocmd BufEnter,BufNew *
+        \  if isdirectory(expand('<amatch>'))
+        \|   call plug#load('nerdtree')
+        \|   execute 'autocmd! nerd_loader'
+        \| endif
+augroup END
+nnoremap <F2> :NERDTreeToggle<cr>
 
 " source: https://github.com/junegunn/vim-plug/issues/164
 "command! Gstatus call LazyLoadFugitive('Gstatus')
@@ -1189,17 +1214,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-" lazy load for ultisnips
-" https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf
-inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
-  " This function only runs when UltiSnips is not loaded
-function! LoadUltiSnips()
-    let l:curpos = getcurpos()
-    execute plug#load('ultisnips')
-    call cursor(l:curpos[1], l:curpos[2])
-    call UltiSnips#ExpandSnippet()
-    return ""
-endfunction
 
 
 if exists(":python3")

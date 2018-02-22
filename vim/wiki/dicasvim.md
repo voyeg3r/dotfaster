@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 22 07:03
+# dicasvim.md Intro - Last Change: 2018 fev 22 19:18
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,10 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# mesuring startup time
+
+    nvim --startuptime nvim.log
 
 # Showing vim mode
 
