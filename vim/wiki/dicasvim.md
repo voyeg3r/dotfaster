@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 22 19:18
+# dicasvim.md Intro - Last Change: 2018 fev 23 11:32
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,22 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# vimscript: function arguments
+
+Here are the various ways in which a user-command may pass arguments:
+
+        :command arg1 arg2 arg3 arg4 arg5
+        <args> passes
+                arg1 arg2 arg3 arg4 arg5
+        <q-args> passes
+                "arg1 arg2 arg3 arg4 arg5"
+        <f-args> passes
+                "arg1","arg2","arg3","arg4","arg5"
+
+# Going back 1 hour in time
+
+    :earlier 1h
 
 # mesuring startup time
 

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 22 19:13
+" Last Change: 2018 fev 23 11:41
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -200,10 +200,9 @@ if !filereadable(vimplug_exists)
     execute "q!"
   endif
   echo "Installing Vim-Plug..."
-  echo ""
-  silent !\curl -fLo ~/.dotfiles/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !\curl -fLo ~/.dotfiles/nvim/autoload/plug.vim \
+    --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   let g:not_finish_vimplug = "yes"
-
   autocmd VimEnter * PlugInstall
 endif
 
@@ -214,7 +213,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
-Plug 'tpope/vim-abolish'                  " Advanced regex Substitution
+Plug 'tpope/vim-abolish', { 'on': ['Abolish', 'S'] } "Advanced regex Substitution
 Plug 'tpope/vim-surround',
       \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
       \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
@@ -229,23 +228,23 @@ Plug 'tommcdo/vim-exchange'
 "Plug 'timakro/vim-searchant'
 "Plug 'inside/vim-search-pulse'
 Plug 'machakann/vim-highlightedyank'
-Plug 'vim-scripts/VisIncr'
+Plug 'vim-scripts/VisIncr', { 'on': [] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
 Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
-Plug 'sjl/gundo.vim'
-Plug 'chrisbra/NrrwRgn'
-Plug 'tpope/vim-speeddating'
+Plug 'sjl/gundo.vim', { 'on': [] }
+Plug 'chrisbra/NrrwRgn', { 'on': [] }
+Plug 'tpope/vim-speeddating', { 'on': [] }
 Plug 'jiangmiao/auto-pairs'
 "Plug 'rstacruz/vim-closer'
 "Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tommcdo/vim-lion'
+Plug 'tommcdo/vim-lion', { 'on': [] }
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 "Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
+Plug 'vim-scripts/grep.vim', { 'on': [] }
+Plug 'vim-scripts/CSApprox', { 'on': [] }
 "Plug 'majutsushi/tagbar'
 "Plug 'scrooloose/syntastic'
 "Plug 'Yggdroot/indentLine'
@@ -260,7 +259,7 @@ Plug 'SirVer/ultisnips', {'on': [] } | Plug 'honza/vim-snippets'
 
 " Color
 Plug 'trevordmiller/nova-vim'
-Plug 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-monokai', { 'on': [] }
 Plug 'ayu-theme/ayu-vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'NLKNguyen/papercolor-theme'
@@ -274,9 +273,20 @@ Plug 'noahfrederick/vim-hemisu'
 Plug 'voyeg3r/vim-neatstatus'
 
 " Color picker
-Plug 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer', { 'on': [] }
 
 call plug#end()
+
+" many plugins are disabled by default and called by
+" this function for example: call LoadPluginFunction('vim-lion')
+" and the command LoadPlugin plugin-name (whithout quotes)
+fun! LoadPluginFunction(plugin_name)
+    let l:curpos = getcurpos()
+    execute plug#load(a:plugin_name)
+    call cursor(l:curpos[1], l:curpos[2])
+    return ''
+endfun
+command! -nargs=1 LoadPlugin :call LoadPluginFunction(<q-args>)
 
 " lazy load for ultisnips
 " https://medium.com/@saaguero/improving-performance-in-vim-9b33598c8eaf
