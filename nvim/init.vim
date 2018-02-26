@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 26 06:31
+" Last Change: 2018 fev 26 20:30
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -134,7 +134,7 @@ set hidden            " Switch buffers without saving them
 "set autowrite
 "set autowriteall
 set showcmd           " display incomplete commands
-set display+=lastline "
+set display+=lastline
 set nobackup          " do not keep a backup file
 set number            " show line numbers
 set ruler             " show the current row and column
@@ -215,14 +215,15 @@ Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish', { 'on': [] } "Advanced regex Substitution
-Plug 'tpope/vim-surround',
-      \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
-      \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
-      \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
+Plug 'tpope/vim-surround', { 'on': [] }
+"Plug 'tpope/vim-surround',
+"      \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
+"      \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
+"      \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
 
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular', { 'on': ['Tabularize'] }
-Plug 'tommcdo/vim-exchange' " Exchange words, lines, region
+Plug 'tommcdo/vim-exchange'
 "Plug 'nelstrom/vim-visual-star-search'
 "Plug 'nelstrom/vim-markdown-folding'
 "Plug 'haya14busa/incsearch.vim'
@@ -231,7 +232,7 @@ Plug 'tommcdo/vim-exchange' " Exchange words, lines, region
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr', { 'on': [] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kshenoy/vim-signature' " show marks
+Plug 'kshenoy/vim-signature', { 'on': [] }
 Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
 Plug 'sjl/gundo.vim', { 'on': ['GundoToggle'] }
 Plug 'chrisbra/NrrwRgn', { 'on': ['NR', 'NrrwRgn'] }
@@ -506,37 +507,37 @@ filetype indent on      " load indent file for specific file type
 " My font is fira mono regular stled on gnome-shell
 
 " pairs
-for mapmode in [ "o", "x" ]
-    for delimiter in [ "{}", "()", "[]", "<>" ]
-        let opening = delimiter[0]
-        let closing = delimiter[1]
-        for modifier in [ "i", "a" ]
-            for trigger in [ opening, closing ]
-                execute mapmode . "noremap <silent> " . modifier . "n" . trigger . " :<C-U>normal! f" . opening . "v" . modifier . closing . "<CR>"
-                execute mapmode . "noremap <silent> " . modifier . "l" . trigger . " :<C-U>normal! F" . closing . "v" . modifier . opening . "<CR>"
-            endfor
-        endfor
-    endfor
-
-    " single (text objects like da. delete one dot)
-    for delimiter in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
-        execute mapmode . "noremap <silent> i"  . delimiter . " :<C-U>normal! t" . delimiter .  "vT" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> a"  . delimiter . " :<C-U>normal! f" . delimiter .  "vT" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter . "lvf" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vT" . delimiter . "<CR>"
-    endfor
-
-    " double (text objects like dan" delete both quotes)
-    " doesn't handle one surrounding whitespace like da" does
-    for delimiter in [ "\"", "'", "`" ]
-        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>" | " same as above
-        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter .  "vf" . delimiter . "<CR>" | " same as above
-        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
-        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vF" . delimiter . "<CR>"
-    endfor
-endfor
+"for mapmode in [ "o", "x" ]
+"    for delimiter in [ "{}", "()", "[]", "<>" ]
+"        let opening = delimiter[0]
+"        let closing = delimiter[1]
+"        for modifier in [ "i", "a" ]
+"            for trigger in [ opening, closing ]
+"                execute mapmode . "noremap <silent> " . modifier . "n" . trigger . " :<C-U>normal! f" . opening . "v" . modifier . closing . "<CR>"
+"                execute mapmode . "noremap <silent> " . modifier . "l" . trigger . " :<C-U>normal! F" . closing . "v" . modifier . opening . "<CR>"
+"            endfor
+"        endfor
+"    endfor
+"
+"    " single (text objects like da. delete one dot)
+"    for delimiter in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
+"        execute mapmode . "noremap <silent> i"  . delimiter . " :<C-U>normal! t" . delimiter .  "vT" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> a"  . delimiter . " :<C-U>normal! f" . delimiter .  "vT" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter . "lvf" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vT" . delimiter . "<CR>"
+"    endfor
+"
+"    " double (text objects like dan" delete both quotes)
+"    " doesn't handle one surrounding whitespace like da" does
+"    for delimiter in [ "\"", "'", "`" ]
+"        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>" | " same as above
+"        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter .  "vf" . delimiter . "<CR>" | " same as above
+"        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
+"        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vF" . delimiter . "<CR>"
+"    endfor
+"endfor
 
 " line text-objectsl
 vnoremap <silent> al :<c-u>norm!0v$h<cr>
@@ -728,12 +729,12 @@ endfor
 " swap words without changing cursor position gw
 " swap words changing cursor position gr
 " swap with previous word gl
-nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
+"nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
 "nnoremap <silent> gr "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>:nohlsearch<CR>
-nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
+"nnoremap <silent> gl "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>:nohlsearch<CR>
 
 " search visually selected text
-vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
+"vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 " Get hid of E488: https://vi.stackexchange.com/questions/4689/
 " Remove the trailing <cr> That is only needed for mappings, but not for commands.
@@ -756,12 +757,6 @@ command! -nargs=0 CountWord :call CountWordFunction()
 " nnoremap <f3> :execute ":%s@\\<" . expand("<cword>") . "\\>\@&@gn"<CR>
 " see function CountWordFunction
 nnoremap <F3> :CountWord<CR>
-
-" use primary selection with mouse
-vnoremap <LeftRelease> "*ygv
-
-" Search selected text
-vnoremap // y/<C-R>"<CR>
 
 " Insert lines below and above (with count)
 " nnoremap <silent> <Leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
@@ -1091,18 +1086,6 @@ inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 " map Ctrl-k in inserto mode to delete til the end of line
 " inoremap <C-k> <C-o>d$
-
-inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
-function! s:align() abort
-    let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-        let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-        let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-        Tabularize/|/l1
-        normal! 0
-        call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
-endfunction
 
 " The function must be used in a piece of subtitles
 " in order to clean it, join the lines and put the results

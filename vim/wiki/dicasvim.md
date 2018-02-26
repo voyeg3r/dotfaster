@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 25 17:52
+# dicasvim.md Intro - Last Change: 2018 fev 26 20:25
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -752,6 +752,51 @@ For more information, view the documentation with `:h i_ctrl-r`
     cgn ............. change next searched pattern
     n ............... go to next occurrence
     . ............... repeat last change
+
+In order to change this:
+
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+    // this is just a test
+
+To this:
+
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+    /* this is just a test */
+
+    :let @/='//'
+
+    cgn /*
+    then typte `.` a bunch of times
+
+    vip
+    :'<,>'norm A */
+
+Another way to set `//` as the word we are changing with `cgn` is doing a reverse search:
+
+    ?//<CR>
+    cgN ................. performing changes backwards
+
+Or setting `/` as part of `iskeyword` which is not recommendable:
+
+    :setlocal iskeyword+=/
+
+OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
 
 # Moving around - |anti pattern|
 
