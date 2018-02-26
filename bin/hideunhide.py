@@ -9,7 +9,6 @@
 # Github:       https://github.com/voyeg3r
 # twitter:      @voyeg3r
 
-
 '''
 This module has two functions
 hide: input str --> str in chinese chars
@@ -22,7 +21,6 @@ def hide(msg):
     for c in msg:
         s += chr(ord(c) + 30000)
     return s
-
 
 def unhide(msg):
     '''Decodes a string encoded with hide function  '''

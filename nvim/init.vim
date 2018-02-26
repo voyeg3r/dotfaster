@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 23 11:41
+" Last Change: 2018 fev 26 06:31
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -210,18 +210,19 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 "Plug 'henrik/vim-indexed-search'
+Plug 'w0rp/ale', { 'on': ['ALEToggle'] }
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
-Plug 'tpope/vim-abolish', { 'on': ['Abolish', 'S'] } "Advanced regex Substitution
+Plug 'tpope/vim-abolish', { 'on': [] } "Advanced regex Substitution
 Plug 'tpope/vim-surround',
       \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
       \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
       \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
 
 Plug 'tpope/vim-unimpaired'
-Plug 'godlygeek/tabular'
-Plug 'tommcdo/vim-exchange'
+Plug 'godlygeek/tabular', { 'on': ['Tabularize'] }
+Plug 'tommcdo/vim-exchange' " Exchange words, lines, region
 "Plug 'nelstrom/vim-visual-star-search'
 "Plug 'nelstrom/vim-markdown-folding'
 "Plug 'haya14busa/incsearch.vim'
@@ -230,10 +231,10 @@ Plug 'tommcdo/vim-exchange'
 Plug 'machakann/vim-highlightedyank'
 Plug 'vim-scripts/VisIncr', { 'on': [] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kshenoy/vim-signature' "Plugin to toggle, display and navigate marks
+Plug 'kshenoy/vim-signature' " show marks
 Plug 'vimwiki/vimwiki', { 'for': ['markdown', 'vimwiki'] }
-Plug 'sjl/gundo.vim', { 'on': [] }
-Plug 'chrisbra/NrrwRgn', { 'on': [] }
+Plug 'sjl/gundo.vim', { 'on': ['GundoToggle'] }
+Plug 'chrisbra/NrrwRgn', { 'on': ['NR', 'NrrwRgn'] }
 Plug 'tpope/vim-speeddating', { 'on': [] }
 Plug 'jiangmiao/auto-pairs'
 "Plug 'rstacruz/vim-closer'
@@ -251,11 +252,11 @@ Plug 'vim-scripts/CSApprox', { 'on': [] }
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'on': ['FZF', 'History', 'Files' ], 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim', { 'on': ['FZF', 'History', 'Files' ] }
 endif
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'SirVer/ultisnips', {'on': [] } | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips', {'on': [] } | Plug 'honza/vim-snippets', {'on': [] }
 
 " Color
 Plug 'trevordmiller/nova-vim'
@@ -280,6 +281,8 @@ call plug#end()
 " many plugins are disabled by default and called by
 " this function for example: call LoadPluginFunction('vim-lion')
 " and the command LoadPlugin plugin-name (whithout quotes)
+" list unloaded plugins
+" \v^Plug[^/]*\/\zs([^']*)\ze',\s+\{\s+'on':\s+[]
 fun! LoadPluginFunction(plugin_name)
     let l:curpos = getcurpos()
     execute plug#load(a:plugin_name)
@@ -294,6 +297,7 @@ inoremap <silent> <C-j> <C-r>=LoadUltiSnips()<cr>
 " This function only runs when UltiSnips is not loaded
 function! LoadUltiSnips()
     let l:curpos = getcurpos()
+    execute plug#load('vim-snippets')
     execute plug#load('ultisnips')
     call cursor(l:curpos[1], l:curpos[2])
     call UltiSnips#ExpandSnippet()
@@ -313,15 +317,15 @@ xmap S   <Plug>VSurround
 xmap gS  <Plug>VgSurround
 
 " lazy loading nerdtree
-augroup nerd_loader
-  autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer
-  autocmd BufEnter,BufNew *
-        \  if isdirectory(expand('<amatch>'))
-        \|   call plug#load('nerdtree')
-        \|   execute 'autocmd! nerd_loader'
-        \| endif
-augroup END
+"augroup nerd_loader
+"  autocmd!
+"  autocmd VimEnter * silent! autocmd! FileExplorer
+"  autocmd BufEnter,BufNew *
+"        \  if isdirectory(expand('<amatch>'))
+"        \|   call plug#load('nerdtree')
+"        \|   execute 'autocmd! nerd_loader'
+"        \| endif
+"augroup END
 nnoremap <F2> :NERDTreeToggle<cr>
 
 " source: https://github.com/junegunn/vim-plug/issues/164
@@ -485,7 +489,7 @@ nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 command! -nargs=0 CloseBuffers :call CloseAllBuffersButCurrent()
 
 " substitute word under cursor - This map is used for spell
-" nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<left><left>
+" nnoremap <Leader>s :call Preserve('%s/\<<C-r><C-w>\>//g\<left><left>')
 
 " Scroll split window
 nnoremap <C-M-k> <c-w>w<c-y><c-w>w
@@ -597,19 +601,6 @@ let g:vimshell_prompt =  '$ '
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
-
-" https://vi.stackexchange.com/a/440/7339
-" Like gJ, but always remove spaces
-fun! JoinSpaceless() abort
-    execute 'normal gJ'
-    " Character under cursor is whitespace?
-    if matchstr(getline('.'), '\%' . col('.') . 'c.') =~ '\s'
-        " When remove it!
-        execute 'normal dw'
-    endif
-endfun
-" Map it to a key
-nnoremap <Leader>J :call JoinSpaceless()<CR>
 
 function! ListLeaders()
      silent! redir @a
@@ -1038,6 +1029,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave <buffer> call clearmatches()
 "autocmd BufWinLeave * call StripTrailingWhitespace()
 
 " source: https://www.vi-improved.org/recommendations/
@@ -1216,15 +1208,6 @@ noremap <silent> <Leader>v :e $MYVIMRC<cr>
 " a barra de espaços -- zR abre todos os folders
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 hi Folded ctermbg=black
-
-" snippets settings
-"let g:UltiSnips#ListSnippets="<C-tab>"
-let g:UltiSnipsListSnippets = "<c-tab>"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-
 
 if exists(":python3")
    let g:_uspy=":python3"

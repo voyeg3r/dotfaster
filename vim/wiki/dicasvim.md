@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 23 11:32
+# dicasvim.md Intro - Last Change: 2018 fev 25 17:52
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,17 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Save file only if it has changed
+
+    :update!
+    :up!
+
+    ZZ ............. save file if it has changed and exit
+
+# Show last change of the file
+
+    :echo strftime("%H:%M %d-%M-%Y", getftime(bufname("%")))
 
 # vimscript: function arguments
 
@@ -491,6 +502,15 @@ After running this function I only have to run the macro 'a' 9 times and macro
 # Sorting lines numerically
 
     :%!sort -n -k 3 ........... sort numerically by third column
+
+Sort last name
+
+    first name,last name,email
+    john,smith,john@example.com
+    drew,neil,drew@vimcasts.org
+    jane,doe,jane@example.com
+
+    :2,$!sort -t',' -k2
 
 # Sort lines by text at position
 + https://stackoverflow.com/a/47497861/2571881
@@ -2472,6 +2492,11 @@ Try it by putting your cursor in a section’s text and typing cah .
 This time Vim will delete not only the heading’s text but also the
 line of equal signs that denotes a heading. You can think of this
 movement as “around this section’s heading”.
+
+# Uppercase text-objects
+
+    gUit .............. uppercase inner tag
+    gUU ............... uppercase line
 
 # Run the current script
 

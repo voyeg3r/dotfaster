@@ -13,7 +13,7 @@
 " colors:
 "
 " Some symbols to use:
-"  
+"  
 
 set ls=2 " Always show status line
 let g:last_mode=""
@@ -31,7 +31,7 @@ if !exists('g:NeatStatusLine_color_insert')
 endif
 
 if !exists('g:NeatStatusLine_color_replace')
-    let g:NeatStatusLine_color_replace  = 'guifg=#ffff00 guibg=#5b7fbb gui=bold ctermfg=190 ctermbg=67 cterm=bold'
+    let g:NeatStatusLine_color_replace  = 'guifg=#ffff00 guibg=#5f8787 gui=bold ctermfg=190 ctermbg=67 cterm=bold'
 endif
 
 if !exists('g:NeatStatusLine_color_visual') "    white         deeppink
@@ -56,7 +56,7 @@ endif
 
 " cor da paleta #5f8787
 if !exists('g:NeatStatusLine_color_paste')
-    let g:NeatStatusLine_color_paste = 'guifg=#FF5722 guibg=#5f8787 gui=bold ctermfg=0 ctermbg=7 cterm=bold'
+    let g:NeatStatusLine_color_paste = 'guifg=#000000 guibg=#bbbbbb gui=bold ctermfg=0 ctermbg=7 cterm=bold'
 endif
 
 if !exists('g:NeatStatusLine_separator')
@@ -79,16 +79,28 @@ function! SetNeatstatusColorscheme()
     exec 'hi User9 '.g:NeatStatusLine_color_paste
 endfunc
 
+
+"  
+fun! Platform()
+    if &ff == 'unix'
+        return ""
+    elseif &ff == 'mac'
+        return ""
+    else &ff == 'dos'
+        return ''
+endfun
+" placeholder ctrl-j
+
 " pretty mode display - converts the one letter status notifiers to words
 function! Mode()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | exec 'hi User1 '.g:NeatStatusLine_color_normal  | return "NORMAL"
-    elseif mode ==# "i"  | exec 'hi User1 '.g:NeatStatusLine_color_insert  | return "INSERT"
-    elseif mode ==# "R"  | exec 'hi User1 '.g:NeatStatusLine_color_replace | return "REPLACE"
-    elseif mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "VISUAL"
-    elseif mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-LINE"
-    elseif mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-BLOCK"
+    if     mode ==# "n"  | exec 'hi User1 '.g:NeatStatusLine_color_normal  | return "NOR"
+    elseif mode ==# "i"  | exec 'hi User1 '.g:NeatStatusLine_color_insert  | return "INS"
+    elseif mode ==# "R"  | exec 'hi User1 '.g:NeatStatusLine_color_replace | return "REP"
+    elseif mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "VIS"
+    elseif mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-L"
+    elseif mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-B"
     else                 | return l:mode
     endif
 endfunc
@@ -110,6 +122,8 @@ if has('statusline')
 
     " Status line detail:
     " -------------------
+    "
+    " :echo strftime("%R %d-%M-%Y", getftime(bufname("%")))
     "
     " %f    file name
     " %F    file path
@@ -137,7 +151,7 @@ if has('statusline')
     " %{&fileformat}    displays file format (unix, dos, etc..)
     " %{&filetype}      displays file type (vim, python, etc..)
     "
-    " #%n   buffer number
+    " #%n   buffer number   ●
     " %l/%L line number, total number of lines
     " %04l line number with zeros 0001
     " %p%   percentage of file
@@ -147,6 +161,9 @@ if has('statusline')
     " %-5.x - syntax to add 5 chars of padding to some element x
     "
     " v:register - if we are using + 0 or " registers
+    "
+    " if you want to use syntastic
+    " &stl.=%{exists('g:loaded_syntastic_plugin')?SyntasticStatuslineFlag():''}
     "
     function! SetStatusLineStyle()
         " Determine the name of the session or terminal
@@ -178,7 +195,7 @@ if has('statusline')
         " session name
         "let &stl.="%5* %{g:neatstatus_session} %0*"
         " buffer number
-        let &stl.=" [%n] "
+        let &stl.=" b%n "
         let &stl.="%6*%{GitInfo()}%0*"
         " file path
         let &stl.=" %<%F"
@@ -193,19 +210,20 @@ if has('statusline')
         " readonly flag
         " ec (&ro || !&modifiable ? 'no' : 'yes')
         let &stl.="%6*%(%{(&ro!=0?'  ':'')}%)%0*"
-        let &stl.="%6*%01(%{&list?'¶':''}%)%0* "
+        let &stl.="%6*%01(%{&list?'':''}%)%0* "
         let &stl.="%6*%01(%{&hls?'H':''}%)%0* "
         let &stl.="%6*%01(%{(&paste?'P':'')}%)%0* "
         " file type (eg. python, ruby, etc..)
-        let &stl.="%(%{&filetype}%)".g:NeatStatusLine_separator
+        let &stl.="%(%{&filetype}%) "
         " file format (eg. unix, dos, etc..)
-        let &stl.="%{&fileformat}".g:NeatStatusLine_separator
+        "let &stl.=" %{&fileformat} "
+        let &stl.="%9* %{Platform()} %0*"
         " file encoding (eg. utf8, latin1, etc..)
-        let &stl.="%(%{(&fenc!=''?&fenc:&enc)}%)".g:NeatStatusLine_separator
+        let &stl.=" %(%{(&fenc!=''?&fenc:&enc)}%) "
         "line number (pink) / total lines
-        let &stl.=" %03l/%03L |"
+        let &stl.=" %03l/%03L "
         " percentage done
-        let &stl.="%1* %03p%%".g:NeatStatusLine_separator
+        let &stl.="%1* %03p%% "
         " column number (minimum width is 2)
         let &stl.="%02v "
     endfunc

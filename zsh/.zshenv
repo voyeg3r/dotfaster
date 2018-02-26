@@ -26,6 +26,8 @@ export TERM=xterm-256color
 # export MANPAGER="nvim -c 'set ft=man' -"
 export MANPAGER="nvim -u NORC '+set background=dark' '+set ft=man' -"
 
+export PYTHONSTARTUP="$HOME/.dotfiles/python/pythonstartup-new"
+
 CDPATH=.:..:~:~/docs/:~/img:~/.dotfiles/bin:~/tmp
 
 XDG_DATA_HOME="$HOME/.local/share"
