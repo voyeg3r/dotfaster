@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 26 20:30
+" Last Change: 2018 fev 27 06:53
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -215,11 +215,11 @@ Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
 Plug 'tpope/vim-abolish', { 'on': [] } "Advanced regex Substitution
-Plug 'tpope/vim-surround', { 'on': [] }
-"Plug 'tpope/vim-surround',
-"      \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
-"      \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
-"      \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
+"Plug 'tpope/vim-surround', { 'on': [] }
+Plug 'tpope/vim-surround',
+      \ { 'on': ['<Plug>Dsurround', '<Plug>Csurround', '<Plug>CSurround',
+      \ '<Plug>Ysurround',  '<Plug>YSurround', '<Plug>Yssurround',
+      \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
 
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular', { 'on': ['Tabularize'] }
@@ -506,39 +506,6 @@ filetype indent on      " load indent file for specific file type
 
 " My font is fira mono regular stled on gnome-shell
 
-" pairs
-"for mapmode in [ "o", "x" ]
-"    for delimiter in [ "{}", "()", "[]", "<>" ]
-"        let opening = delimiter[0]
-"        let closing = delimiter[1]
-"        for modifier in [ "i", "a" ]
-"            for trigger in [ opening, closing ]
-"                execute mapmode . "noremap <silent> " . modifier . "n" . trigger . " :<C-U>normal! f" . opening . "v" . modifier . closing . "<CR>"
-"                execute mapmode . "noremap <silent> " . modifier . "l" . trigger . " :<C-U>normal! F" . closing . "v" . modifier . opening . "<CR>"
-"            endfor
-"        endfor
-"    endfor
-"
-"    " single (text objects like da. delete one dot)
-"    for delimiter in [ "_", ".", ":", ",", ";", "<bar>", "/", "<bslash>", "*" ]
-"        execute mapmode . "noremap <silent> i"  . delimiter . " :<C-U>normal! t" . delimiter .  "vT" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> a"  . delimiter . " :<C-U>normal! f" . delimiter .  "vT" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter . "lvf" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vT" . delimiter . "<CR>"
-"    endfor
-"
-"    " double (text objects like dan" delete both quotes)
-"    " doesn't handle one surrounding whitespace like da" does
-"    for delimiter in [ "\"", "'", "`" ]
-"        execute mapmode . "noremap <silent> in" . delimiter . " :<C-U>normal! f" . delimiter . "lvt" . delimiter . "<CR>" | " same as above
-"        execute mapmode . "noremap <silent> an" . delimiter . " :<C-U>normal! f" . delimiter .  "vf" . delimiter . "<CR>" | " same as above
-"        execute mapmode . "noremap <silent> il" . delimiter . " :<C-U>normal! F" . delimiter . "hvT" . delimiter . "<CR>"
-"        execute mapmode . "noremap <silent> al" . delimiter . " :<C-U>normal! F" . delimiter .  "vF" . delimiter . "<CR>"
-"    endfor
-"endfor
-
 " line text-objectsl
 vnoremap <silent> al :<c-u>norm!0v$h<cr>
 vnoremap <silent> il :<c-u>norm!_vg_<cr>
@@ -739,15 +706,15 @@ endfor
 " Get hid of E488: https://vi.stackexchange.com/questions/4689/
 " Remove the trailing <cr> That is only needed for mappings, but not for commands.
 " map ,* *<C-O>:%s///gn<CR>``
+" There is no need to save search register becaue we are using "exec" which
+" does not change search register
 fun! CountWordFunction()
     try
         let l:win_view = winsaveview()
-        let l:old_query = getreg('/')
         let var = expand("<cword>")
         exec "%s/" . var . "//gn"
     finally
         call winrestview(l:win_view)
-        call setreg('/', l:old_query)
     endtry
 endfun
 command! -nargs=0 CountWord :call CountWordFunction()
