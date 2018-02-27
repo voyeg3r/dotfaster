@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 27 07:22
+# dicasvim.md Intro - Last Change: 2018 fev 27 10:22
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -582,7 +582,7 @@ If you've ever wanted to wrap some text foo with some other, arbitrary text usin
     foo
     bar
 
-If you put the cursor on foo and do ciw("), and then put the cursor on bar and hit ., you'll end up with
+If you put the cursor on foo and do ciw(Ctr-r"), and then put the cursor on bar and hit ., you'll end up with
 
     (foo)
     (foo)
@@ -595,6 +595,10 @@ instead of
 The solution is to do " instead of ". (See :h i_CTRL-R_CTRL-O, and related, for
 more info.) (Of course, for this particular example, it would be better to use
 a plugin, like vim-surround, but the general point is still helpful, I hope.)
+
+Last inserted text
+
+    @.
 
 # In Vim, how to insert a word after regex match at the beginning of next line
 + https://stackoverflow.com/questions/48032758/

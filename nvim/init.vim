@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 27 08:49
+" Last Change: 2018 fev 27 12:14
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -43,6 +43,9 @@ inoremap <F7> <C-o>:setlocal spell!<CR>
 " avoid clipboard hacking security issue
 " http://thejh.net/misc/website-terminal-copy-paste
 inoremap <C-R>+ <C-R><C-R>+
+
+" Auto reindent pasted text (from hacking vim p.138)
+nnoremap p p=`]
 
 fun! CopyBufferToClipboard()
     %y+
@@ -848,6 +851,7 @@ augroup html
     "au Bufnewfile,BufRead *.html,*.shtml,*.htm 1,5s/\s*Created:\s*\zs.*/\="" . strftime("%Y %b %d %X")/ge
     au BufNewFile,BufRead *.html,*.shtml,*.htm call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufNewFile *.html :%s/File:\s\+\zs.*/\=expand("%:t")
+    au FileType html,htm exe ":silent 1,$!tidy --indent yes -q"
 augroup end
 
 augroup css
@@ -1053,6 +1057,9 @@ function! JumpToNextPlaceholder() abort
 endfunction
 nnoremap <special> <Leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
 inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+
+noremap <F12> <Esc>:syntax sync fromstart<CR>
+inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " map Ctrl-k in inserto mode to delete til the end of line
 " inoremap <C-k> <C-o>d$
