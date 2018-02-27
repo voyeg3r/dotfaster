@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 27 10:22
+# dicasvim.md Intro - Last Change: 2018 fev 27 17:09
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1077,6 +1077,7 @@ Take also a look at Abolish plugin that can do thinks like:
 
 ``` markdown
 echo len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+ec len(getbufinfo({'buflisted':1}))
 ```
 
 # How do I search the open buffers in Vim?
