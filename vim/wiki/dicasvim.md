@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 26 20:25
+# dicasvim.md Intro - Last Change: 2018 fev 27 07:22
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -4558,9 +4558,10 @@ specified by what is prepended:
     :    return len
     :endfunction
 
-# Contar ocorrências de uma palavra
+# Contar ocorrências de uma palavra - count word
 
     :%s/<c-r><c-w>//gn
+    :%~n
 
     " map to count word under cursor
     " https://stackoverflow.com/a/11492536/2571881

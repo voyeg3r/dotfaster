@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 27 06:53
+" Last Change: 2018 fev 27 08:49
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -49,6 +49,9 @@ fun! CopyBufferToClipboard()
 endfun
 nnoremap <Leader>y :call CopyBufferToClipboard()<CR>
 command! -nargs=0 CopyFile :call CopyBufferToClipboard()
+
+" jump to alternative buffer
+nnoremap <bs> <c-^>
 
 command! CloneBuffer new | 0put =getbufline('#',1,'$')
 
@@ -535,11 +538,6 @@ nnoremap <c-o> <c-o>zz
 nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap gp `[v`]
 
-" It adds motions like 25j and 30k to the jump list, so you can cycle
-" through them with control-o and control-i.
-" source: https://www.vi-improved.org/vim-tips/
-nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
@@ -595,8 +593,14 @@ endif
 nnoremap <Leader>j :join<cr>
 nnoremap <Leader>gj :join!<cr>
 
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+"noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+"noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" It adds motions like 25j and 30k to the jump list, so you can cycle
+" through them with control-o and control-i.
+" source: https://www.vi-improved.org/vim-tips/
+nnoremap <expr> j v:count ? (v:count > 1 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 1 ? "m'" . v:count : '') . 'k' : 'gk'
 
 " to insert this result: --> :put =Randnum(1000)
 function! Randnumber(max) abort
@@ -706,13 +710,12 @@ endfor
 " Get hid of E488: https://vi.stackexchange.com/questions/4689/
 " Remove the trailing <cr> That is only needed for mappings, but not for commands.
 " map ,* *<C-O>:%s///gn<CR>``
-" There is no need to save search register becaue we are using "exec" which
+" There is no need to save search register because we are using "exec" which
 " does not change search register
 fun! CountWordFunction()
     try
         let l:win_view = winsaveview()
-        let var = expand("<cword>")
-        exec "%s/" . var . "//gn"
+        exec "%s/" . expand("<cword>") . "//gn"
     finally
         call winrestview(l:win_view)
     endtry
