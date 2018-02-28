@@ -7,7 +7,7 @@ Quero olhar hoje do mundo com os olhos cheios de amor;
 ser paciente, compreensivo, manso e prudente.
 
 Quero ver os meus irmãos além das aparencias,
-que vê-los como tu mesmo os vês,
+e vê-los como tu mesmo os vês,
 e assim não ver senão o bem em cada um.
 
 Cerra meus ouvidos a toda calúnia.

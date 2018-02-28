@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 27 12:14
+" Last Change: 2018 fev 28 07:03
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -52,9 +52,6 @@ fun! CopyBufferToClipboard()
 endfun
 nnoremap <Leader>y :call CopyBufferToClipboard()<CR>
 command! -nargs=0 CopyFile :call CopyBufferToClipboard()
-
-" jump to alternative buffer
-nnoremap <bs> <c-^>
 
 command! CloneBuffer new | 0put =getbufline('#',1,'$')
 
@@ -906,7 +903,7 @@ nnoremap <silent> <Leader>e :FZF -m ~/.dotfiles<CR>
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<C-Space>"
 

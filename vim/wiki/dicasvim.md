@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 27 17:09
+# dicasvim.md Intro - Last Change: 2018 fev 28 06:52
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -822,6 +822,20 @@ OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
 
     :verbose map <c-a>
     :verbose imap x
+
+## Making mapppings local to your buffer
++ http://learnvimscriptthehardway.stevelosh.com/chapters/11.html
+
+    :nnoremap <buffer> <leader>x dd
+
+What makes your mapping local is the option "<buffer>"
+
+In general, when you create a mapping that only applies to specific buffers you
+should use <localleader> instead of <leader>.  Using two separate leader keys
+provides a sort of "namespacing" that will help you keep all your various
+mappings straight in your head.
+
+It's even more important when you're writing a plugin for other people to use. The convention of using <localleader> for local mappings will prevent your plugin from overwriting someone else's <leader> mapping that they've painstakingly burned into their fingers over time.
 
 # Increasing numbers visually
 
