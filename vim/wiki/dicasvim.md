@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 fev 28 06:52
+# dicasvim.md Intro - Last Change: 2018 mar 01 16:00
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -692,6 +692,32 @@ https://aur.archlinux.org/packages/par/
 sudo pacman -U par-1.52-2-i686.pkg.tar.xz
 wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD && makepkg -sri PKGBUILD
 ```
+
+# Can VIM do this Sublime trick?
++ https://stackoverflow.com/a/49056795/2571881
+
+    Aenean vel sem bibendum, eleifend odio a, dictum nibh.
+    The third word in the above line is
+    Morbi eget est vitae quam ultricies porta vitae quis nunc.
+    The third word in the above line is
+    Praesent accumsan ex a laoreet cursus.
+    The third word in the above line is
+    Quisque efficitur lectus at dolor mollis, sit amet tristique libero lobortis.
+    The third word in the above line is
+
+
+    Aenean vel sem bibendum, eleifend odio a, dictum nibh.
+    The third word in the above line is sem
+    Morbi eget est vitae quam ultricies porta vitae quis nunc.
+    The third word in the above line is est
+    Praesent accumsan ex a laoreet cursus.
+    The third word in the above line is ex
+    Quisque efficitur lectus at dolor mollis, sit amet tristique libero lobortis.
+    The third word in the above line is lectus
+
+    :g/^/if line('.') % 2 | normal! wwyiwj$p | endif
+
+Para linhas em que o resto da divisão do número da mesma é diferente de zero, ou seja linhas ímpares, para fazer o teste faça `:ec 1 % 2` e perceba que o vim atuará em linhas ímpares. Para estas linhas em modo normal pule duas palavras, ou seja, vá até a terceira, copie, desça uma linha e cole no final
 
 # Deleting every other line (deleta linhas pares)
 

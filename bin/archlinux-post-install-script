@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 fev 26 06:54
+#      Last Change: 2018 fev 28 10:52
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -44,6 +44,9 @@ yaourt -S pamac-aur
 
 # preview files
 sudo pacman -S sushi
+
+# A free cross-platform English thesaurus based on WordNet
+yaourt artha
 
 # npm is the default package manager for Node.js.
 sudo pacman -S npm
