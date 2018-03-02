@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 jan 22 14:56
+# dicas Sobre python3 - Last Change: 2018 mar 02 06:32
 
 ``` markdown
 Created:	 sáb 07 jan 2017 07:29:27 BRT
@@ -30,6 +30,7 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 + https://docs.python.org/3.6/whatsnew/
 + [python-101 curso completo](https://www.youtube.com/playlist?list=PLV7VqBqvsd_3yRYYWrHkziPL6izzrUIkp)
 + http://ricardoduarte.github.io/python-para-desenvolvedores/
++ [dive in python3](http://www.diveintopython3.net/)
 + awesome-python.com [categorization for python libs] at github
 
 # python keyword list
@@ -42,6 +43,17 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 keyword.iskeyword('else')
 True
 ```
+
+# python scrapy
++ https://scrapy.org/
++ https://doc.scrapy.org/en/latest/intro/tutorial.html
+
+An open source and collaborative framework for extracting the data you need
+from websites.
+
+    pip install scrapy
+
+In a fast, simple, yet extensible way.
 
 # Dealing with decimal numbers
 For more complex decimal operations

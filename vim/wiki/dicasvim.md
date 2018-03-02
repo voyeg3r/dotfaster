@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 01 16:00
+# dicasvim.md Intro - Last Change: 2018 mar 01 16:51
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -696,6 +696,8 @@ wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD 
 # Can VIM do this Sublime trick?
 + https://stackoverflow.com/a/49056795/2571881
 
+Copy the third word of odd lines to the end of even ones
+
     Aenean vel sem bibendum, eleifend odio a, dictum nibh.
     The third word in the above line is
     Morbi eget est vitae quam ultricies porta vitae quis nunc.
@@ -717,7 +719,10 @@ wget -c https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=par -O PKGBUILD 
 
     :g/^/if line('.') % 2 | normal! wwyiwj$p | endif
 
-Para linhas em que o resto da divisão do número da mesma é diferente de zero, ou seja linhas ímpares, para fazer o teste faça `:ec 1 % 2` e perceba que o vim atuará em linhas ímpares. Para estas linhas em modo normal pule duas palavras, ou seja, vá até a terceira, copie, desça uma linha e cole no final
+Para linhas em que o resto da divisão do número da mesma é diferente de zero,
+ou seja linhas ímpares, para fazer o teste faça `:ec 1 % 2` e perceba que o vim
+atuará em linhas ímpares. Para estas linhas em modo normal pule duas palavras,
+ou seja, vá até a terceira, copie, desça uma linha e cole no final
 
 # Deleting every other line (deleta linhas pares)
 
