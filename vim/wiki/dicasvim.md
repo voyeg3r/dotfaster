@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 01 16:51
+# dicasvim.md Intro - Last Change: 2018 mar 02 16:06
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -31,6 +31,11 @@ Here are the various ways in which a user-command may pass arguments:
                 "arg1 arg2 arg3 arg4 arg5"
         <f-args> passes
                 "arg1","arg2","arg3","arg4","arg5"
+
+
+        search('^$', 'bn')
+
+        The option 'b' searches backwards and 'n' does not jupt to the match
 
 # Going back 1 hour in time
 

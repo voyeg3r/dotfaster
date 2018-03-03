@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 fev 28 07:03
+" Last Change: 2018 mar 03 15:41
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -320,16 +320,6 @@ nmap ySS <Plug>YSsurround
 xmap S   <Plug>VSurround
 xmap gS  <Plug>VgSurround
 
-" lazy loading nerdtree
-"augroup nerd_loader
-"  autocmd!
-"  autocmd VimEnter * silent! autocmd! FileExplorer
-"  autocmd BufEnter,BufNew *
-"        \  if isdirectory(expand('<amatch>'))
-"        \|   call plug#load('nerdtree')
-"        \|   execute 'autocmd! nerd_loader'
-"        \| endif
-"augroup END
 nnoremap <F2> :NERDTreeToggle<cr>
 
 " source: https://github.com/junegunn/vim-plug/issues/164
@@ -667,7 +657,6 @@ command! -nargs=0 CFlashcards :silent call CleanFlaschards()
 
 function! MoveEm(position)
   let saved_cursor = getpos(".")
-  "let previous_blank_line = search('^$', 'bn')
   keepjumps execute 'normal {'
   if getline('.') !~ '^$'
     let previous_blank_line = line('.') - 1
@@ -675,6 +664,9 @@ function! MoveEm(position)
     let previous_blank_line = line('.')
   endif
   let target_line = previous_blank_line + a:position - 1
+  if target_line > getpos('.')[1]
+      let target_line += 1
+  endif
   call setpos('.', saved_cursor)
   execute 'move ' . target_line
   call setpos('.', saved_cursor)
@@ -807,10 +799,10 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-augroup markdown
-"    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
-     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal ft=markdown
-augroup END
+"augroup markdown
+""    autocmd FileType markdown,vimwiki setlocal textwidth=78 formatprg=par\ -w78
+"     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal ft=markdown
+"augroup END
 
 "augroup spellcheck_documentation
 "     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,txt} setlocal spell
@@ -901,8 +893,8 @@ nnoremap <silent> <Leader>e :FZF -m ~/.dotfiles<CR>
 "nnoremap ,m :FZFMru<cr>
 
 " snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsListSnippets="<C-Space>"
