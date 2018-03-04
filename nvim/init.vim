@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 04 14:22
+" Last Change: 2018 mar 04 19:55
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -242,7 +242,7 @@ Plug 'chrisbra/NrrwRgn', { 'on': ['NR', 'NrrwRgn'] }
 Plug 'tpope/vim-speeddating', { 'on': [] }
 Plug 'jiangmiao/auto-pairs'
 "Plug 'rstacruz/vim-closer'
-"Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tommcdo/vim-lion', { 'on': [] }
 "Plug 'vim-airline/vim-airline'
@@ -321,6 +321,9 @@ xmap S   <Plug>VSurround
 xmap gS  <Plug>VgSurround
 
 nnoremap <F2> :NERDTreeToggle<cr>
+nnoremap <Leader>t :Commentary<cr>
+vnoremap <Leader>t :Commentary<cr>
+" comment a paragraph → gcap
 
 " source: https://github.com/junegunn/vim-plug/issues/164
 "command! Gstatus call LazyLoadFugitive('Gstatus')

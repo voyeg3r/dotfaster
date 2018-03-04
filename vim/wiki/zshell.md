@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 fev 11 13:18
+# zshell.md - Last Change: 2018 mar 04 15:10
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -681,6 +681,7 @@ make file and directory names lowercase
     zmv '*' '${(U)f}'
     zmv '*' '${(L)f}'
     zmv '(*)' '${(L)1}'
+    zmv '*' '${(C)f}'   --> (C) capitalize
 
     An application of modifiers is !:t, which results into the basename of
     the last argument. Very useful when working with URLs, for example.

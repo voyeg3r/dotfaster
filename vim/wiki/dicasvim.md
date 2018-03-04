@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 04 14:21
+# dicasvim.md Intro - Last Change: 2018 mar 04 17:15
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1579,6 +1579,23 @@ function! ToggleComment()
 endfunction
 nnoremap <Leader>t :call ToggleComment()<CR>
 vnoremap <Leader>t <C-o>:call ToggleComment()<CR>
+
+" Another version
+" Because sometimes comments are not at the beginning of line
+
+function! ToggleComment()
+    let l:win_view = winsaveview()
+    exec 'normal! _'
+    let char = getline('.')[col('.')-1]
+    if char == "#"
+        normal! _"_x
+    else
+        normal! I#
+    endif
+    call winrestview(l:win_view)
+endfunction
+nnoremap <Leader>t :call ToggleComment()<CR>
+inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 ```
 
 # Inserting blank lines below and above
