@@ -1,8 +1,6 @@
 # Vim regexes are awesome
 * [source](http://briancarper.net/blog/448.html)
 
-Last Change: qui 12 jan 2017 14:25:47 BRT
-
 Two years ago I wrote about how Vim's regexes were no fun compared to :perldo
 and :rubydo. Turns out I was wrong, it was just a matter of not being used to
 them.
@@ -106,11 +104,12 @@ You end up with:
 
 Because you can also call your own user-defined functions in the expression
 part, this can end up being pretty powerful. For example it can be used to
-insert incrementing numbers into arbitrary places in your text. See `:h sub-replace-\=`.
+insert incrementing numbers into arbitrary places in your text. See `:h
+sub-replace-\=`.
 
-Read `:h regexp` if you haven't already. Tons of other features in there that can
-make your life easy if you manage to internalize them. It is difficult to get
-used to Vim's funky syntax if you're very familiar with Perl/Ruby-style
+Read `:h regexp` if you haven't already. Tons of other features in there that
+can make your life easy if you manage to internalize them. It is difficult to
+get used to Vim's funky syntax if you're very familiar with Perl/Ruby-style
 regexes, but I think it's worth it. Only took me two years! (OK, more like a
 couple days of concerted effort after a year-and-a-half delay.)
 

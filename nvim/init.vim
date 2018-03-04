@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 03 15:41
+" Last Change: 2018 mar 04 14:22
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -45,7 +45,7 @@ inoremap <F7> <C-o>:setlocal spell!<CR>
 inoremap <C-R>+ <C-R><C-R>+
 
 " Auto reindent pasted text (from hacking vim p.138)
-nnoremap p p=`]
+" nnoremap p p=`]
 
 fun! CopyBufferToClipboard()
     %y+
@@ -517,6 +517,8 @@ cab SC Scratch
 let g:indexed_search_center=1
 nnoremap { {zz
 nnoremap } }zz
+nnoremap n nzz
+nnoremap N Nzz
 
 " Same when jumping around
 nnoremap g; g;zz

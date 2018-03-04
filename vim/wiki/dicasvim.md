@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 02 16:06
+# dicasvim.md Intro - Last Change: 2018 mar 04 14:21
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -54,7 +54,7 @@ Here are the various ways in which a user-command may pass arguments:
     mksession -S vousair.vim
 
 # Getting settings
-If you want to know some setting jus press tab after equal sign
+If you want to see any setting just press tab after equal sign
 
     :set iskeyword=<Tab>
 
@@ -63,7 +63,8 @@ If you want to know some setting jus press tab after equal sign
 # Manually breaking the undo sequence
 + https://vi.stackexchange.com/a/2377/7339
 
-You can manually break the undo sequence in Insert mode with `<C-G>u`. From the help:
+You can manually break the undo sequence in Insert mode with `<C-G>u`.
+From the help:
 
     CTRL-G u  →  break undo sequence, start new change
 
@@ -107,8 +108,9 @@ You can also exec any line:
     yy:@0
 
 # Modelines
-It allows you to set preferences on a file-by-file basis, and allow you
-to mimic some of the preference-setting options of a few other popular editors (Vim, Emacs, and Kate).
+It allows you to set preferences on a file-by-file basis, and allow you to
+mimic some of the preference-setting options of a few other popular editors
+(Vim, Emacs, and Kate).
 
     # vim: set noexapndtab:
     /* vim: set ai tw=75: */
@@ -135,7 +137,12 @@ This is one anti pattern
     2 - pressing yy
     3 - jumping back (even using Ctrl-o, which browse back in the jumplist)
 
-Another common anti pattern is closing a file to reopen vim with an empty buffer, you can simply:
+    How to fix it?
+
+    :45t.
+
+Another common anti pattern is closing a file to reopen vim with an empty
+buffer, you can simply:
 
     :bd!
 
@@ -662,7 +669,7 @@ _ ................ jump to the first non-blank character
 g_ ............... go to the next non-blank at the end of line
 ```
 
-`g_` is AWESOME when you're yanking text to paste somewhere you don't want the
+`g_` is AWESOME when you're yanking text to paste somewhere else, you don't want the
 line break included -- like the command line where it will then automatically
 run the command.
 
@@ -840,8 +847,8 @@ OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
 
 # Moving around - |anti pattern|
 
-    g; ....... goes to older position on changelist (last change)
-    g, ....... goes to newer positoin on changelist
+    g; ....... goes to older position on changelist (oldest change)
+    g, ....... goes to newer positoin on changelist (newest change)
 
     you can also jump using <C-o>
 
@@ -1555,6 +1562,23 @@ I also have this line on my `~/.vimrc`, it allows me to insert the filename easi
 
 ``` vim
 iab fname <c-r>=expand("%:p")<cr>
+```
+
+# Toggle comment function
++ https://stackoverflow.com/a/49097957/2571881
+
+```vimL
+function! ToggleComment()
+	let l:win_view = winsaveview()
+	if getline('.')[0] == "#"
+		normal! 0"_x
+	else
+		normal! I#
+	endif
+	call winrestview(l:win_view)
+endfunction
+nnoremap <Leader>t :call ToggleComment()<CR>
+vnoremap <Leader>t <C-o>:call ToggleComment()<CR>
 ```
 
 # Inserting blank lines below and above
@@ -2275,7 +2299,7 @@ in order to select previous pasted text put this in your .vimrc
      :5mark < | 10mark > | normal gvV
      :5mark < | 10mark > | normal gv
 
-# Non-greedy search on vim
+# Non-greedy multiline search on vim
 
     /abc\_.\{-}def
 
@@ -4916,11 +4940,11 @@ Or using a global command. (both are similar)
 
 The key to get mp3 links over multi line is to search for:
 
-    /http.*\_.mp3
+    /http.*\_.\{-}mp3
 
 ## multi line removing html comments
 
-    :1,$s/<!--\_.\{-}-->//
+    :%s/<!--\_.\{-}-->//
 
 Using the above expression on the text:
 
@@ -4986,7 +5010,7 @@ My solution
 
 # Adicionar um espaço em braco após cada linha
 
-Double-space your file: :g/^/put _. This puts the contents of the black hole
+Double-space your file: `:g/^/put _`. This puts the contents of the black hole
 register (empty when reading, but writable, behaving like /dev/null) linewise,
 after each line (because every line has a beginning!).
 
