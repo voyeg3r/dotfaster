@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 05 08:35
+" Last Change: 2018 mar 06 15:21
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1125,7 +1125,7 @@ nnoremap <special> <Leader>d :call DelBlankLines()<cr>
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 command! SaveAsRoot w !sudo tee %
-cnoreabbrev ww SaveAsRoot
+cnoreabbrev sudow SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
