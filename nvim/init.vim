@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 04 19:55
+" Last Change: 2018 mar 05 08:35
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -410,17 +410,11 @@ endif
 colorscheme PaperColor
 "colorscheme palenight
 
-"hi Search ctermbg=Yellow
-"hi Search ctermfg=Black
-
 " When double click a word vim will hightlight all other ocurences
 " see CountWordFunction()
 " [I shows lines with word under the cursor
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
 nnoremap <Leader>* :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>:CountWord<cr>
-
-" jump to lines with <count><Space>
-" nnoremap <expr> <Space> v:count ? "gg" : "<Space>"
 
 nnoremap <F4> ggVGg?
 
@@ -464,7 +458,7 @@ fun! s:RedirHistoryCommands()
     redir @r
     history : -20,
     redir End
-    new
+    new | setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile
     put r
     set nopaste
     :silent %s/^\s\+//g

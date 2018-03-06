@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 04 17:15
+# dicasvim.md Intro - Last Change: 2018 mar 05 10:44
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1566,6 +1566,9 @@ iab fname <c-r>=expand("%:p")<cr>
 
 # Toggle comment function
 + https://stackoverflow.com/a/49097957/2571881
++ https://stackoverflow.com/a/31817742/2571881
+
+    :h g@
 
 ```vimL
 function! ToggleComment()
@@ -1600,6 +1603,8 @@ inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 
 # Inserting blank lines below and above
 + https://superuser.com/a/607193/45032
+
+Note: Gnome-shell does not recognise Shift-Enter
 
 ``` vimscript
 nnoremap <Enter> :call append(line('.'), '')<CR>
