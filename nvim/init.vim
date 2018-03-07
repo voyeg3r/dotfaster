@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 06 15:21
+" Last Change: 2018 mar 07 12:49
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -213,6 +213,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 
 "Plug 'mhinz/vim-startify'
 "Plug 'henrik/vim-indexed-search'
+"Plug 'coderifous/textobj-word-column.vim'
 Plug 'w0rp/ale', { 'on': ['ALEToggle'] }
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'

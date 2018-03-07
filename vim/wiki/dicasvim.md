@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 05 10:44
+# dicasvim.md Intro - Last Change: 2018 mar 07 18:59
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1799,6 +1799,37 @@ Gravei todos os arquivos depois do teste
 Fechei  todos os arquivos
 
     :qall
+
+# QuickFix and Grep
++ https://medium.com/usevim/vim-101-quickfix-and-grep-c782cb65e524
++ https://stackoverflow.com/questions/49152029
+
+QuickFix is designed to display compiler errors — a list of errors is displayed
+and can be selected to jump to a specific file and line. It’s also used for
+:vimgrep -- each item in the results list is displayed and can be used to
+navigate between files.
+
+Typing `:grep Vim *.md` will find matches for the word Vim in all the Markdown
+files in the current directory. Typing :copen will open the quickfix list:
+
+The standard window navigation and movement commands can be used to enter the
+quickfix list and switch between files. Another way to move between files is to
+use the quickfix commands:
+
+    :cn -- Go to the next location in the list
+    :cp -- Go to the previous location
+    :ccl -- Close the quickfix window
+
+There are a lot more commands, many of which are specific to dealing with errors.
+
+The quickfix window can be moved just like any other window. Typing CTRL-W K
+(that's a capital K) will move the quickfix window to the top.
+
+    vim -q <(grep -rn --include="*.cpp" mystring)
+
+Go to the next occurence with :cn and to the previous occurrence with :cp.
+
+See `:help -q` and `:help quickfix`.
 
 # Links or worth clicking
 
