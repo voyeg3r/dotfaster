@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 fev 28 10:52
+#      Last Change: 2018 mar 07 09:27
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -41,6 +41,9 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
+
+# Gerenciador de janelas i3
+sudo pacman -S i3 dmenu
 
 # preview files
 sudo pacman -S sushi

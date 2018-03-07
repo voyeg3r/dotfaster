@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: 2018 jan 26 20:21
+Last Change: 2018 mar 07 07:15
 ```
 
 # Introdução
@@ -1056,10 +1056,11 @@ Using sed:
         <abc a="3"><val>0.35</val></abc>
 
 # Referências
-* http://www.zago.eti.br/script/awk.html
-* http://teknowlogic.org/soft/linux-tips/awk-oneliners/
-* http://www.rberaldo.com.br/blog/2009/05/07/tutorial-awk/
-* http://www.vivaolinux.com.br/dica/Awk-Uma-poderosa-ferramenta-de-analise/
-* http://stackoverflow.com/questions/2332252/
-* http://goo.gl/zwJ5
-* https://gist.github.com/wookietreiber/6901420
++ http://www.zago.eti.br/script/awk.html
++ http://teknowlogic.org/soft/linux-tips/awk-oneliners/
++ http://www.catonmat.net/blog/awk-one-liners-explained-part-one/
++ http://www.rberaldo.com.br/blog/2009/05/07/tutorial-awk/
++ http://www.vivaolinux.com.br/dica/Awk-Uma-poderosa-ferramenta-de-analise/
++ http://stackoverflow.com/questions/2332252/
++ http://goo.gl/zwJ5
++ https://gist.github.com/wookietreiber/6901420
