@@ -1,4 +1,4 @@
-[#](#) [Wiki](wiki.md) do Sérgio - Last Change: 2018 mar 06 15:14
+[#](#) [Wiki](wiki.md) do Sérgio - Last Change: 2018 mar 07 09:43
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -50,6 +50,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Hack](hack.md)
 + [Hh0](hh0.md)
 + [Idiomaticexpressions](idiomaticexpressions.md)
++ [i3](i3.md)
 + [Inkscape](inkscape.md)
 + [jupyter notebook](jupyter-notebook.md)
 + [kodi](kodi.md)

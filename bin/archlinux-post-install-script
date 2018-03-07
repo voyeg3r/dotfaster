@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mar 07 09:27
+#      Last Change: 2018 mar 07 09:52
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -44,6 +44,9 @@ yaourt -S pamac-aur
 
 # Gerenciador de janelas i3
 sudo pacman -S i3 dmenu
+
+# auryo - soundcloud client
+yaourt auryo
 
 # preview files
 sudo pacman -S sushi
