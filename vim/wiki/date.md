@@ -1,4 +1,4 @@
-# date.md Introdução - Last Change: qui 02 nov 2017 08:21:52 -03
+# date.md Introdução - Last Change: 2018 mar 08 13:03
 
 Dicas do comando date
 
@@ -6,12 +6,12 @@ Created: 29/04/2011
 Hora: 21:18:34
 
 # Calculos com datas
-# referencia: http://www.dotsharp.com.br/linux/como-fazer-calculos-e-formatacao-de-data-no-linux.html
++ http://www.dotsharp.com.br/linux/como-fazer-calculos-e-formatacao-de-data-no-linux.html
 
 		date --date='1 year ago'
 		Thu Apr 29 21:24:37 BRT 2010
 
-# um da antes
+# um dia antes
 
     date -d "2016-05-01 - 1 day"
 

@@ -103,6 +103,9 @@ alias compilalivro='make clean; make && make show'
 alias 4shared='cadaver http://webdav.4shared.com/'
 
 alias nprnews='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/364916/v1/npr.akacast.akamaistream.net/nprdmp_live01_mp3'
+alias novabrasil='mplayer http://playerservices.streamtheworld.com/api/livestream-redirect/NOVABRASIL_SPAAC_SC.aac'
+alias esoterica='mplayer http://192.99.247.236:8080/\;'
+alias bossabrasil='mpv http://209.126.127.123:8020/live'
 alias npr='mpv https://nprdmp-live01-mp3.akacast.akamaistream.net/7/998/364916/v1/npr.akacast.akamaistream.net/nprdmp_live01_mp3\?ck\=1512225990046'
 alias chicago='mpv http://relay.broadcastify.com:80/il_chicago_police2\?xan\=7C80215A2A84B01D154525F05BD80095'
 # Listen to Air Traffic Control, used to be scripts.

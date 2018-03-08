@@ -166,6 +166,7 @@
 + [github](github.md)
 + [gnomeshell](gnomeshell.md)
 + [googlecl](googlecl.md)
++ [gs](gs.md)
 + [gparted](gparted.md)
 + [gpasswd](gpasswd.md)
 + [grep](grep.md)

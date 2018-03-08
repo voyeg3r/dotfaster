@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 07 12:49
+" Last Change: 2018 mar 08 09:42
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1152,6 +1152,9 @@ noremap <silent> <Leader>v :e $MYVIMRC<cr>
 " Run current line as a vim command
 " https://stackoverflow.com/a/19884862/2571881
 " :exec getline('.')
+
+"read the current line into command line
+cnoremap <c-r><c-l> <c-r>=getline('.')<cr>
 
 " mapeamento para abrir e fechar folders em modo normal usando
 " a barra de espaços -- zR abre todos os folders
