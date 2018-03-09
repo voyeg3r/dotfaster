@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 08 09:42
+" Last Change: 2018 mar 09 14:34
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -580,8 +580,8 @@ if !exists('*s:setupWrapping')
 endif
 
 " join lines keeping cursor position
-nnoremap <Leader>j :join<cr>
-nnoremap <Leader>gj :join!<cr>
+nnoremap <Leader>j :call Preserve(':join')<CR>
+nnoremap <Leader>gj :call Preserve(':join!')<CR>
 
 "noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 "noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')

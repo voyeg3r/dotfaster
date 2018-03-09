@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 07 18:59
+# dicasvim.md Intro - Last Change: 2018 mar 09 09:11
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -865,6 +865,7 @@ OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
 
     :verbose map <c-a>
     :verbose imap x
+    :h map-listing
 
 ## Making mapppings local to your buffer
 + http://learnvimscriptthehardway.stevelosh.com/chapters/11.html

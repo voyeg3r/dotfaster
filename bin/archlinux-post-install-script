@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mar 07 09:52
+#      Last Change: 2018 mar 09 09:47
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -416,7 +416,9 @@ sudo pip install percol
 yaourt -S ramlog
 
 # radio player
+# https://www.xatworld.com/radio-search/
 yaourt -S great-little-radio-player
+sudo pacman -S cmus
 
 # mount folder/filesystem through SSH
 # sshfs name@server:/path/to/folder /path/to/mount/point
