@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 09 14:34
+" Last Change: 2018 mar 10 07:23
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -46,6 +46,10 @@ inoremap <C-R>+ <C-R><C-R>+
 
 " Auto reindent pasted text (from hacking vim p.138)
 " nnoremap p p=`]
+
+" cool
+nnoremap c* *<C-o>cgn
+nnoremap c# #<C-o>cgn
 
 fun! CopyBufferToClipboard()
     %y+
@@ -580,8 +584,8 @@ if !exists('*s:setupWrapping')
 endif
 
 " join lines keeping cursor position
-nnoremap <Leader>j :call Preserve(':join')<CR>
-nnoremap <Leader>gj :call Preserve(':join!')<CR>
+nnoremap J :call Preserve(':join')<CR>
+nnoremap <Leader>J :call Preserve(':join!')<CR>
 
 "noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 "noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')

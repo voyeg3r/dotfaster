@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 09 09:11
+# dicasvim.md Intro - Last Change: 2018 mar 09 15:08
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -983,6 +983,12 @@ Another example is searching for markdown Section ignoring Subsections
 Find "other" just preceded by some
 
     /\v(some)@<=other
+
+
+    :s/Ben( Rogers)@!/Ben Rogers/g
+
+Replace every occurrence of the string ‘Ben’ by ‘Ben Rogers’ except when ‘
+Rogers’ was already present
 
 ## Another vim regex example
 Suppose you have
