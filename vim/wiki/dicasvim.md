@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 09 15:08
+# dicasvim.md Intro - Last Change: 2018 mar 11 17:11
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,19 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Mastering vim tips
+
+    #1 https://ckarchive.com/b/4zuvhehpommp
+    #2 https://ckarchive.com/b/e5uph7he925q
+    #3 https://ckarchive.com/b/lmuehmh45gov
+    #4 https://ckarchive.com/b/8kuqhoh3070n
+    #5 https://ckarchive.com/b/k0umh6he36qo
+    #6 https://ckarchive.com/b/38uphkhrd037
+    #7 https://ckarchive.com/b/mvu7h5h9oxlw
+    #8 https://ckarchive.com/b/75u7h8h8ww6z
+    #9 https://ckarchive.com/b/xmuph6hz39r6
+    #10 https://ckarchive.com/b/lmuehmh4w9x5
 
 # Save file only if it has changed
 
@@ -31,7 +44,6 @@ Here are the various ways in which a user-command may pass arguments:
                 "arg1 arg2 arg3 arg4 arg5"
         <f-args> passes
                 "arg1","arg2","arg3","arg4","arg5"
-
 
         search('^$', 'bn')
 
@@ -719,7 +731,6 @@ Copy the third word of odd lines to the end of even ones
     Quisque efficitur lectus at dolor mollis, sit amet tristique libero lobortis.
     The third word in the above line is
 
-
     Aenean vel sem bibendum, eleifend odio a, dictum nibh.
     The third word in the above line is sem
     Morbi eget est vitae quam ultricies porta vitae quis nunc.
@@ -983,7 +994,6 @@ Another example is searching for markdown Section ignoring Subsections
 Find "other" just preceded by some
 
     /\v(some)@<=other
-
 
     :s/Ben( Rogers)@!/Ben Rogers/g
 
@@ -1607,6 +1617,10 @@ endfunction
 nnoremap <Leader>t :call ToggleComment()<CR>
 inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 ```
+# Print some lines to pdf
++ http://www.vimweekly.com/
+
+    :1,12ha! > fancy_pdf
 
 # Inserting blank lines below and above
 + https://superuser.com/a/607193/45032

@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 fev 22 15:35
+# .zshrc - Last Change: 2018 mar 10 11:41
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -28,6 +28,9 @@ zstyle ':vcs_info:*' formats "%{$fg[yellow]%}%c%{$fg[green]%}%u%{$reset_color%} 
 precmd() {  # run before each prompt
     vcs_info
 }
+
+# gnore files ending in pyc, swp, aux and so when doing 'vim <Tab>'
+zstyle ':completion:*:*:vim:*' file-patterns '^*.(aux|log|pdf|pyc|swp):source-files' '*:all-files'
 
 # Prompt
 setopt prompt_subst     # allow funky stuff in prompt

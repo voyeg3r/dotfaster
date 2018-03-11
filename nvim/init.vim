@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 10 07:23
+" Last Change: 2018 mar 10 19:24
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -50,6 +50,22 @@ inoremap <C-R>+ <C-R><C-R>+
 " cool
 nnoremap c* *<C-o>cgn
 nnoremap c# #<C-o>cgn
+
+" using "+p in normal mode we dont mess with indentation
+inoremap <silent> <C-r>+ <C-o>"+P
+inoremap <silent> <C-r>* <C-o>"*P
+inoremap <silent> <C-r>" <C-o>""P
+"function! SetPasteInInsertMode() abort
+"    let l:regs = ['"', '-', '*', '+', '_', '/'] + map(range(10), 'v:val . ""')
+"    " Lowercase alphabet
+"    let l:regs += map(range(char2nr('a'), char2nr('z')), 'nr2char(v:val)')
+"    " Uppercase alphabet
+"    let l:regs += map(copy(l:regs[-26:]), 'toupper(v:val)')
+"    for l:r in l:regs
+"        execute 'inoremap <silent> <C-r>' . l:r . ' <C-o>"' . l:r . "p"
+"    endfor
+"endfunction
+"call SetPasteInInsertMode()
 
 fun! CopyBufferToClipboard()
     %y+

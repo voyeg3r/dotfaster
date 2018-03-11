@@ -10,19 +10,33 @@ let s:ON = 1
 let s:OFF = 0
 
 let s:STATE = s:ON
-function! highlightedyank#autocmd_highlight() abort "{{{
+
+
+function! highlightedyank#debounce() abort
   if s:STATE is s:OFF
     return
   endif
+
   let operator = v:event.operator
   let regtype = v:event.regtype
   let regcontents = v:event.regcontents
-  if operator !=# 'y' || regtype ==# ''
+  if exists('s:timer')
+    call timer_stop(s:timer)
+  endif
+  let marks = [line("'["), line("']"), col("'["), col("']")]
+  let s:timer = timer_start(1, {-> highlightedyank#autocmd_highlight(operator, regtype, regcontents, marks)})
+endfunction
+
+function! highlightedyank#autocmd_highlight(operator, regtype, regcontents, marks) abort "{{{
+  if a:marks !=#  [line("'["), line("']"), col("'["), col("']")]
+    return
+  endif
+  if a:operator !=# 'y' || a:regtype ==# ''
     return
   endif
 
   let view = winsaveview()
-  let region = s:derive_region(regtype, regcontents)
+  let region = s:derive_region(a:regtype, a:regcontents)
   call s:modify_region(region)
   call s:highlight_yanked_region(region)
   call winrestview(view)
@@ -46,7 +60,11 @@ function! s:derive_region(regtype, regcontents) abort "{{{
   elseif a:regtype ==# 'V'
     let region = s:derive_region_line(a:regcontents)
   elseif a:regtype[0] ==# "\<C-v>"
-    let width = str2nr(a:regtype[1:])
+    " NOTE: the width from v:event.regtype is not correct if 'clipboard' is
+    "       unnamed or unnamedplus in windows
+    " let width = str2nr(a:regtype[1:])
+    let curcol = col('.') - 1
+    let width = max(map(copy(a:regcontents), 'strdisplaywidth(v:val, curcol)'))
     let region = s:derive_region_block(a:regcontents, width)
   else
     let region = deepcopy(s:NULLREGION)

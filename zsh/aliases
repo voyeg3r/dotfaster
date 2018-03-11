@@ -131,6 +131,10 @@ alias inconfidenciafm='mpv https://tunein.com/radio/Rdio-Inconfidncia-AM-880-s99
 alias bluebossanova='mpv https://tunein.com/radio/Rdio-Blue-Bossa-Nova-s234676/'
 alias culturafm='mpv https://tunein.com/radio/Rdio-Cultura-FM-1033-s2786/'
 alias radiofraternidade='mpv https://tunein.com/radio/Web-Rdio-Fraternidade-s145235/'
+alias espiritismonet='mpv https://tunein.com/radio/Web-Rdio-Espiritismo-Net-s209070/'
+alias radioespiritismo='mpv https://tunein.com/radio/Rdio-Espiritismo-s284524/'
+alias radiodimensaoespirita='mpv https://tunein.com/radio/Rdio-Dimenso-Esprita-s195796/'
+alias chorinho='mplayer http://stm27.adcast.com.br:9380/;radiosu.aac'
 
 alias gst='git status'
 
