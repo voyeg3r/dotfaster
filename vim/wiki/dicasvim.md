@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 13 09:59
+# dicasvim.md Intro - Last Change: 2018 mar 13 13:11
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -210,6 +210,10 @@ Solution:
     >item4
     Uganda
 
+# Substitute on even lines
++ https://groups.google.com/forum/#!topic/comp.editors/xk9DMoszgq4
+
+    2,$g/^/s/foo/bar/g|+t+|-d
 
 # Faster way to move a block of text
 + https://vi.stackexchange.com/a/15161/7339
@@ -1076,6 +1080,7 @@ Alternatively you can use sed:
 + https://superuser.com/a/263406/45032
 
     :set undoreload=0 | edit
+    command! -bar UndoClear exe "set ul=-1 | m-1 | let &ul=" . &ul
 
 # Edit subtitles with vim
 + https://github.com/tpope/vim-speeddating

@@ -2,7 +2,7 @@
 ``` markdown
 File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: ter 17 out 2017 10:28:48 -02
+Last Change: 2018 mar 13 12:49
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -176,6 +176,11 @@ sed -e '/address2/,+1s/address1/address2/' eri.txt
 ## se a inteção é apenas imprimir a linha subsequente a um padrão
 
     sed -n '/pattern/{n;p}' < file
+
+# Print even lines or odd lines
+
+    sed -n 'n;p'
+    sed -n 'p;n'
 
 # de-me o numero da linha
 

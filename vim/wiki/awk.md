@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: 2018 mar 12 17:10
+Last Change: 2018 mar 13 13:33
 ```
 
 # Introdução
@@ -195,6 +195,33 @@ awk 'NF > 0' filename
 
 		awk -i inplace 1 RS= ORS='\n\n' file
 
+## Juntando linhas em pares
+
+    cat <<-EOF | awk 'ORS=NR%2?FS:RS'
+        Runtime Name: vmhba2:C0:T3:L14
+        Group State: active
+        Runtime Name: vmhba3:C0:T0:L14
+        Group State: active unoptimized
+        Runtime Name: vmhba2:C0:T1:L14
+        Group State: active unoptimized
+        Runtime Name: vmhba3:C0:T3:L14
+        Group State: active
+        Runtime Name: vmhba2:C0:T2:L14
+        Group State: active
+    EOF
+
+Result
+
+    Runtime Name: vmhba2:C0:T3:L14 Group State: active
+    Runtime Name: vmhba3:C0:T0:L14 Group State: active unoptimized
+    Runtime Name: vmhba2:C0:T1:L14 Group State: active unoptimized
+    Runtime Name: vmhba3:C0:T3:L14 Group State: active
+    Runtime Name: vmhba2:C0:T2:L14 Group State: active
+
+Nas linhas em que o resto da divisão inteira do Número do Registro (linha) for
+divisível por dois (impar) atribua `=` um espaço `FS` ao separador de registro de
+saída `ORS` caso contrário atribua `\n` (quebra de linha) `RS`
+
 # delete hidden files and folders
 
 	ls -la | awk '$NF ~ /^\.[^.]+/  {print $NF}' | xargs rm -rf
@@ -210,11 +237,10 @@ it to xargs which will perform the task.
 # adding a new line after each second line
 
     ``` markdown
-    awk '{print (NR%2==0 ? $0 "\n": $0)}' file.txt
     awk 'ORS=NR % 2 ? RS:RS RS' file.txt
     ```
 
-    On the seccond solution we have ORS "Output Record Separator" which
+    ORS "Output Record Separator" which
     by default is <newline>
 
 # Using awk to filter out students in a list
@@ -1031,7 +1057,6 @@ Using sed:
 
     sed 'N;s/\n/ /' inputfile
 
-
 **You have the folowing**
 
 ``` html
@@ -1072,3 +1097,4 @@ Using sed:
 + http://stackoverflow.com/questions/2332252/
 + http://goo.gl/zwJ5
 + https://gist.github.com/wookietreiber/6901420
++ http://backreference.org/2010/02/10/idiomatic-awk/
