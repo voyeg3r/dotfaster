@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 12 17:06
+# dicasvim.md Intro - Last Change: 2018 mar 13 09:59
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -184,6 +184,32 @@ discarted it without worrying about saving.
     cab SC Scratch
 
     setlocal nobuflisted
+
+
+# Insert numbered text on every even/odd line
++ https://superuser.com/a/762817/45032
+
+    Door
+
+    Chair
+
+    Table
+
+    Uganda
+
+Solution:
+
+    :let i = 1 | g/^$/execute "normal i>item" . i | let i = i + 1
+
+    >item1
+    Door
+    >item2
+    Chair
+    >item3
+    Table
+    >item4
+    Uganda
+
 
 # Faster way to move a block of text
 + https://vi.stackexchange.com/a/15161/7339

@@ -95,12 +95,12 @@ endfun
 function! Mode()
     redraw
     let l:mode = mode()
-    if     mode ==# "n"  | exec 'hi User1 '.g:NeatStatusLine_color_normal  | return "NOR"
-    elseif mode ==# "i"  | exec 'hi User1 '.g:NeatStatusLine_color_insert  | return "INS"
-    elseif mode ==# "R"  | exec 'hi User1 '.g:NeatStatusLine_color_replace | return "REP"
-    elseif mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "VIS"
-    elseif mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-L"
-    elseif mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V-B"
+    if     mode ==# "n"  | exec 'hi User1 '.g:NeatStatusLine_color_normal  | return "N"
+    elseif mode ==# "i"  | exec 'hi User1 '.g:NeatStatusLine_color_insert  | return "I"
+    elseif mode ==# "R"  | exec 'hi User1 '.g:NeatStatusLine_color_replace | return "R"
+    elseif mode ==# "v"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V"
+    elseif mode ==# "V"  | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V"
+    elseif mode ==# "" | exec 'hi User1 '.g:NeatStatusLine_color_visual  | return "V"
     else                 | return l:mode
     endif
 endfunc
