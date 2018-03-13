@@ -1,7 +1,7 @@
 ``` markdown
 Arquivo: awk.md
 Created: qui 14/set/2017 hs 17:54
-Last Change: 2018 mar 07 07:15
+Last Change: 2018 mar 12 17:10
 ```
 
 # Introdução
@@ -51,6 +51,14 @@ buscando alí uma variável que na verdade não existe.
 # How to determine the line number of the last occurrence of a string in a file
 
     awk '/Fedora/ { ln = FNR } END { print ln }'
+
+# Filter a file into odd.txt and even.txt
++ https://unix.stackexchange.com/a/287987/3157
+
+    awk '{ print > (NR % 2 ? "odd.txt" : "even.txt") }' a.txt
+
+This reads from a.txt and appends lines to either odd.txt or even.txt depending
+on the current line number.
 
 # Using awk to print all columns from the nth to the last
 

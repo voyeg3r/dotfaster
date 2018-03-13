@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 11 17:11
+# dicasvim.md Intro - Last Change: 2018 mar 12 17:06
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -31,7 +31,7 @@
 
 # Show last change of the file
 
-    :echo strftime("%H:%M %d-%M-%Y", getftime(bufname("%")))
+    :echo strftime("%H:%M %d-%m-%Y", getftime(bufname("%")))
 
 # vimscript: function arguments
 
@@ -260,6 +260,8 @@ The one unique line that I REALLY want.
 :%s/\v(.*)(\n\1)+//
 ```
 
+In practice we are looking for anything followed by itself `\1` in a new line `\n`
+
 # How to pad strings inside curly braces with odd number of character with a single space?
 + https://stackoverflow.com/a/48439232/2571881
 
@@ -291,8 +293,9 @@ Instead of using `gqap` use `gwap` to format paragraphs
 
 You can also join lines without moving cursor:
 
-    :join ...................... with spaces
-    :join! ..................... without spaces
+    " join lines keeping cursor position
+    nnoremap J :call Preserve(':join')<CR>
+    nnoremap <Leader>J :call Preserve(':join!')<CR>
 
 # Move down lines with "TITLE"
 + https://stackoverflow.com/questions/47798270/
@@ -750,6 +753,7 @@ ou seja, vá até a terceira, copie, desça uma linha e cole no final
 # Deleting every other line (deleta linhas pares)
 
     :g/^/+d .................. deletes even lines
+    :%norm jdd ............... deletes even lines
     :d|g/^/+d ................ deletes odd lines
 
     :g/^/+d A ................ storing deleted lines in a register
@@ -1220,6 +1224,7 @@ Após fechar a janela quickfix podemos reabri-la com o comando `:copen`
     10
 
 Joining (puting) even and odd lines at the same line
++https://superuser.com/a/752045/45032
 
     :%norm J
     :g/^/J
