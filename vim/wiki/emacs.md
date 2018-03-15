@@ -40,6 +40,10 @@ Carregar um tema escuro
 
     ;; font setting
     (set-default-font "FuraMono Nerd Font 14" nil t)
+    
+## Increase font size
+
+    C-x C-+
 
 # Disable welcome screen
 
