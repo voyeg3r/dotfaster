@@ -3,6 +3,12 @@
 ;;(menu-bar-mode -1)
 ;;(scroll-bar-mode -1)
 
+;; ============ Reload ~/.emacs ===========================
+(defun reload-init-file ()
+  (interactive)
+  (load-file "~/.emacs"))
+
+(global-set-key (kbd "C-c C-l") 'reload-init-file)    ; Reload .emacs filea
 
 ;; kill region =============================================================
 (defun xah-delete-current-text-block ()
@@ -39,7 +45,7 @@ Version 2017-07-09"
 ;; =============== Highlight current line =========================
 ;; In every buffer, the line which contains the cursor will be fully
 ;; highlighted
-(global-hl-line-mode 1)
+(global-hl-line-mode 0)
 
 ;; ========== Enable Line and Column Numbering ==========
 ;; Show line-number in the mode line
@@ -55,7 +61,7 @@ Version 2017-07-09"
 (package-initialize)
 
 ;; font setting
-;;(set-default-font "Monaco 14")
+(set-default-font "FuraMono Nerd Font 14" nil t)
 
 ;; Set line number mode to always be on
 (global-linum-mode t)

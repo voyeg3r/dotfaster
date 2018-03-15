@@ -18,7 +18,7 @@
 
 	emacs --no-window-system
 
-## or
+## or to open it on the terminal emulator
 
 	emacs -nw
 
@@ -33,6 +33,10 @@ Carregar um tema escuro
     next line ............. C-n
     previous line ......... C-p
 
+# Setting font
+
+    M-x menu-set-font
+
 # Disable welcome screen
 
     (setq inhibit-startup-screen t)
@@ -41,6 +45,21 @@ In order to evaluate this expression right away just go to
 the end of the expression and press
 
     C-x C-e
+
+# copy from clipboard
++ https://stackoverflow.com/a/9986416/2571881
+
+    M-x clipboard-yank
+
+# Copy line
+
+    C-S-Backspace C-y
+
+    ‘C-a C-SPC C-e M-w’ copies the current line without the newline.
+    ‘C-a C-SPC C-n M-w’ copies the current line, including the newline.
+    ‘C-a C-k C-k C-y’ kills the line with newline and yanks it back, in effect saving it to the kill ring.
+    ‘C-a C-k C-y’ kills and yanks back the line without newline if kill-whole-line is nil, or including the newline otherwise.
+    ‘C-S-backspace C-y’ Kills an entire line at once (kill-whole-line) and yanks it back.
 
 # Install new packages
 
@@ -64,7 +83,6 @@ to list all packages which will automatically refresh the archive contents.
 
 	Select whole file ........... C-x h
     Select more lines ........... C-Spacebar (C-n or C-p)
-
 
 # Setting marks to delete regions
 
@@ -985,7 +1003,6 @@ Input decoding map translations:
 key             binding
 ---             -------
 
-
 =======================================
 
 Key translations Starting With C-x:
@@ -1219,14 +1236,27 @@ Alternate to M-5
 	  C-u 5 ............... quantificador
 	  C-u 5 C-x e ......... 5 vezes a macro
 
-	  Reload Init File
+# Reload Init File
 
 To reload init file:
 
-   	  Alt+x eval-buffer
+   	 Alt+x eval-buffer
 
 or
 
-Alt+x load-file
+    Alt+x load-file
 
+You can also just move the point to the end of any sexp and press `C-xC-e` to execute just that sexp. Usually it's not necessary to reload the whole file if you're just changing a line or two.
+
+    C-x C-e ;; current line
+    M-x eval-region ;; region
+    M-x eval-buffer ;; whole buffer
+    M-x load-file ~/.emacs.d/init.el
+
+    ;; ========== reload init file ==================================
+    (defun reload-init-file ()
+    (interactive)
+    (load-file "~/.emacs"))
+
+    (global-set-key (kbd "C-c C-l") 'reload-init-file)    ; Reload .emacs file
 
