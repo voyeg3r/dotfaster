@@ -2,6 +2,7 @@
 + http://www.emacswiki.org/emacs-pt/NovatoNoEmacs
 + https://blog.aaronbieber.com/2015/07/05/a-gentle-introduction-to-emacs-configuration.html
 + http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
++ https://www.emacswiki.org/emacs/Evil
 
 	Abrir arquivo ................ C-x C-f
 	Abrir arquivo alternativo..... C-x C-v
@@ -36,6 +37,9 @@ Carregar um tema escuro
 # Setting font
 
     M-x menu-set-font
+
+    ;; font setting
+    (set-default-font "FuraMono Nerd Font 14" nil t)
 
 # Disable welcome screen
 
@@ -74,6 +78,10 @@ So you can run
     M-x package-refresh-contents
 
 to list all packages which will automatically refresh the archive contents.
+
+    M-x package-install <RET> evil <RET>
+
+If you are in evil mode press `Ctrl-z` to toggle to Emacs mode
 
 # Open customize options
 

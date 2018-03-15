@@ -79,7 +79,7 @@ Version 2017-07-09"
 (global-linum-mode t)
 
 ;; no startup message
-;;(setq inhibit-startup-message t)
+(setq inhibit-startup-message t)
 
 (setq frame-title-format
       (list (format "%s %%S: %%j " (system-name))
@@ -179,7 +179,7 @@ Version 2017-07-09"
      ("marmelade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (expand-region ergoemacs-mode evil-visual-mark-mode solarized-theme org color-theme-solarized))))
+    (evil expand-region ergoemacs-mode evil-visual-mark-mode solarized-theme org color-theme-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -233,3 +233,6 @@ there's a region, all lines that region covers will be duplicated."
 ;; ================= melpa ==========================================
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(require 'evil)
+;;(evil-mode 1)

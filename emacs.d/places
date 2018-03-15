@@ -1,0 +1,5 @@
+;;; -*- coding: utf-8 -*-
+(("/home/sergio/.dotfiles/emacs" . 2527)
+ ("/home/sergio/.emacs.d/elpa/evil-1.0.8/evil-autoloads.el" . 691)
+ ("/home/sergio/.emacs.d/elpa/undo-tree-0.6.5/undo-tree-autoloads.el" . 1672)
+ ("/home/sergio/.emacs.d/elpa/goto-last-change-1.2/goto-last-change-autoloads.el" . 697))
