@@ -3,6 +3,18 @@
 ;;(menu-bar-mode -1)
 ;;(scroll-bar-mode -1)
 
+;; smart beginning of line ======================================
+(defun my-smart-beginning-of-line ()
+  "Move point to beginning-of-line. If repeat command it cycle
+position between `back-to-indentation' and `beginning-of-line'."
+  (interactive "^")
+  (if (and (eq last-command 'my-smart-beginning-of-line)
+           (= (line-beginning-position) (point)))
+      (back-to-indentation)
+    (beginning-of-line)))
+
+(global-set-key (kbd "C-a") 'my-smart-beginning-of-line)
+
 ;; ============ Reload ~/.emacs ===========================
 (defun reload-init-file ()
   (interactive)

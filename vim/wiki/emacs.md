@@ -154,8 +154,17 @@ To close the current window press
     M-a ........ beginning of paragraph
 
 # Jumping to the last postion
++ https://superuser.com/a/244291/45032
 
     usually bound to C-x C-@ and C-x C-SPC.
+
+    C-x C-x
+
+It will also highlight everything between your previous cursor location and the new location (if you want to get rid of the highlighting, just `C-g`)
+
+# kill current buffer
+
+    C-x k
 
 # Jumping to the last/next buffer
 
