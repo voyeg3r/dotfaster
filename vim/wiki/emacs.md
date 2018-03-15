@@ -4,6 +4,9 @@
 + http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
 + https://www.emacswiki.org/emacs/Evil
 + https://www.youtube.com/watch?v=Iagbv974GlQ
++ https://www.youtube.com/watch?v=JWD1Fpdd4Pc
+
+# start
 
 
     Abrir arquivo ................ C-x C-f
