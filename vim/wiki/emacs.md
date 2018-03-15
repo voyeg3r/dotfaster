@@ -42,6 +42,20 @@ the end of the expression and press
 
     C-x C-e
 
+# Install new packages
+
+;; ================== add melpa repo ==================================
+;; add to the end of your ~/.emacs
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+So you can run
+
+    M-x list-packages
+    M-x package-refresh-contents
+
+to list all packages which will automatically refresh the archive contents.
+
 # Open customize options
 
     M-x customize
@@ -49,6 +63,7 @@ the end of the expression and press
 # Selections
 
 	Select whole file ........... C-x h
+    Select more lines ........... C-Spacebar (C-n or C-p)
 
 
 # Setting marks to delete regions
@@ -500,54 +515,56 @@ C-M-w		append-next-kill
 ESC ESC		Prefix Command
 C-M-\		indent-region
 M-SPC		just-one-space
-M-!		shell-command
-M-$		ispell-word
-M-%		query-replace
-M-'		abbrev-prefix-mark
-M-(		insert-parentheses
-M-)		move-past-close-and-reindent
-M-*		pop-tag-mark
-M-,		tags-loop-continue
-M--		negative-argument
-M-.		find-tag
-M-/		dabbrev-expand
-M-:		eval-expression
-M-;		comment-dwim
-M-<		beginning-of-buffer
-M-=		count-lines-region
-M->		end-of-buffer
-M-@		mark-word
-M-\		delete-horizontal-space
-M-^		delete-indentation
-M-`		tmm-menubar
-M-a		backward-sentence
-M-b		backward-word
-M-c		capitalize-word
-M-d		kill-word
-M-e		forward-sentence
-M-f		forward-word
-M-g		Prefix Command
-M-h		mark-paragraph
-M-i		tab-to-tab-stop
-M-j		indent-new-comment-line
-M-k		kill-sentence
-M-l		downcase-word
-M-m		back-to-indentation
-M-o		facemenu-keymap
-M-q		fill-paragraph
-M-r		move-to-window-line
-M-s		Prefix Command
-M-t		transpose-words
-M-u		upcase-word
-M-v		scroll-down
-M-w		kill-ring-save
-M-x		execute-extended-command
-M-y		yank-pop
-M-z		zap-to-char
-M-{		backward-paragraph
-M-|		shell-command-on-region
-M-}		forward-paragraph
-M-~		not-modified
+M-!		    shell-command
+M-$		    ispell-word
+M-%		    query-replace
+M-'		    abbrev-prefix-mark
+M-(		    insert-parentheses
+M-)		    move-past-close-and-reindent
+M-*		    pop-tag-mark
+M-,		    tags-loop-continue
+M--		    negative-argument
+M-.		    find-tag
+M-/		    dabbrev-expand
+M-:		    eval-expression
+M-;		    comment-dwim
+M-<		    beginning-of-buffer
+M-=		    count-lines-region
+M->		    end-of-buffer
+M-@		    mark-word
+M-\		    delete-horizontal-space
+M-^		    delete-indentation
+M-`		    tmm-menubar
+M-a		    backward-sentence
+M-b		    backward-word
+M-c		    capitalize-word
+M-d		    kill-word
+M-e		    forward-sentence
+M-f		    forward-word
+C-3 M-f     forward three words
+C-u 3 M-f   forward three words
+M-g		    Prefix Command
+M-h		    mark-paragraph
+M-i		    tab-to-tab-stop
+M-j		    indent-new-comment-line
+M-k		    kill-sentence
+M-l		    downcase-word
+M-m		    back-to-indentation
+M-o		    facemenu-keymap
+M-q		    fill-paragraph
+M-r		    move-to-window-line
+M-s		    Prefix Command
+M-t		    transpose-words
+M-u		    upcase-word
+M-v		    scroll-down
+M-w		    kill-ring-save
+M-x		    execute-extended-command
+M-y		    yank-pop
+M-z		    zap-to-char
+M-{		    backward-paragraph
+M-|		    shell-command-on-region
+M-}		    forward-paragraph
+M-~		    not-modified
 M-DEL		backward-kill-word
 C-M-S-v		scroll-other-window-down
 C-M-SPC		mark-sexp

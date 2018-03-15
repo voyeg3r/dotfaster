@@ -2,7 +2,7 @@
 # =================================================
 #             File: <+filename+>
 #          Created: <+type creation's date+>
-#      Last Change: 2017 dez 27 13:14
+#      Last Change: <+Change date+>
 # This script aims: <+describe your dile here+>
 #           Author: sérgio luiz araújo silva
 #             Site: http://vivaotux.blogspot.com

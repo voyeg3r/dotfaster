@@ -6,3 +6,6 @@ Através do piso sólido da morada, o frio do inverno se infiltrou, encadearam-s
 
 The situation is apparently under control, but for how much longer?
 A situação está aparentemente sob controle, mas até quando?
+
+These lopsided relations have the opposite effect politically speaking.
+Estas relações "distorcidas|assimétricas" geram o efeito político contrário.

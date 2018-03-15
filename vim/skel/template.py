@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #            File:  <+filename+>
-#   Creation Date:  <+type creation's date+>
+#         Created:  <+type creation's date+>
 #     Last Change:  <+type change date+>
 #          Author:  sergio luiz araujo silva
 #            Site:  http://vivaotux.blogspot.com

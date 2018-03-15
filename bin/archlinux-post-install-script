@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mar 13 07:30
+#      Last Change: 2018 mar 14 14:50
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -45,6 +45,9 @@ yaourt -S pamac-aur
 # hd temperature
 #sudo hddtemp /dev/sda
 sudo pacman -S hddtemp
+
+# audiobooks reader
+yaourt cozy-audiobooks
 
 # Gerenciador de janelas i3
 sudo pacman -S i3 dmenu
@@ -590,6 +593,9 @@ yaourt -S rfkill
 
 # \LaTeX\
 yaourt -S texlive-core texlive-langcjk texlive-latexextra texlive-pictures haskell-pandoc xelatex
+
+# testing this version
+sudo pacman -S texlive-latexextra
 
 # record your tty
 # asciinema -rec filename -c command

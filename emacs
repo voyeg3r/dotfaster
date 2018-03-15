@@ -3,6 +3,51 @@
 ;;(menu-bar-mode -1)
 ;;(scroll-bar-mode -1)
 
+
+;; kill region =============================================================
+(defun xah-delete-current-text-block ()
+  "Delete the current text block or selection, and copy to `kill-ring'.
+A “block” is text between blank lines.
+
+URL `http://ergoemacs.org/emacs/emacs_delete_block.html'
+Version 2017-07-09"
+  (interactive)
+  (let ($p1 $p2)
+    (if (use-region-p)
+        (setq $p1 (region-beginning) $p2 (region-end))
+      (progn
+        (if (re-search-backward "\n[ \t]*\n+" nil "move")
+            (progn (re-search-forward "\n[ \t]*\n+")
+                   (setq $p1 (point)))
+          (setq $p1 (point)))
+        (re-search-forward "\n[ \t]*\n" nil "move")
+        (setq $p2 (point))))
+    (kill-region $p1 $p2)))
+(global-set-key (kbd "C-c k") 'xah-delete-current-text-block)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; kill line if no region active                                          ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; http://emacs-fu.blogspot.co.uk/2009/11/copying-lines-without-selecting-them.html
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single line instead."
+  (interactive
+   (if mark-active (list (region-beginning) (region-end))
+     (list (line-beginning-position)
+           (line-beginning-position 2)))))
+
+;; =============== Highlight current line =========================
+;; In every buffer, the line which contains the cursor will be fully
+;; highlighted
+(global-hl-line-mode 1)
+
+;; ========== Enable Line and Column Numbering ==========
+;; Show line-number in the mode line
+(line-number-mode 1)
+
+;; Show column-number in the mode line
+(column-number-mode 1)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -116,7 +161,7 @@
      ("marmelade" . "http://marmalade-repo.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ergoemacs-mode evil-visual-mark-mode solarized-theme org color-theme-solarized))))
+    (expand-region ergoemacs-mode evil-visual-mark-mode solarized-theme org color-theme-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -166,3 +211,7 @@ there's a region, all lines that region covers will be duplicated."
 ;; to copy current line 5 times just:
 ;; M-5 C-c d
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
+;; ================= melpa ==========================================
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)

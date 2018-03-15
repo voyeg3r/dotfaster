@@ -15,8 +15,124 @@ Dica do Sapia: https://www.youtube.com/watch?v=jM5hpV1d1pc
 
 # Língua Portuguesa
 
+Denotação - Sentido literal
+Conotação - Sentido figurado
+
+## Figuras de linguagem
+
+METONÍMIA
+
+Metonímia é o uso da parte pelo todo. Ocorre quando o autor substitui uma
+palavra por outra próxima. É utilizada para evitar a repetição de palavras em
+um texto. Por exemplo:
+
+    – “Os meus braços precisam dos teus”
+
+Na frase acima, Vinicius de Morais se refere à necessidade que ele tem de ter a presença de outra pessoa e não somente dos braços.
+
+
+    – “Eu adoro ler Maurício de Souza”
+
+É um processo de substituição por aproximação, substituir a obra pelo autor
+Outra metonímia - Vamos ao mercado comprar Qboa - (água sanitária)
+
+EUFEMISMO - amenização tipo: "Ele partiu para a outra vida"
+ao invés de dizer "ele morreu"
+
+METÁFORA
+
+A metáfora ocorre quando é utilizada uma substituição de termos que possuem significados diferentes, atribuindo a eles o mesmo sentido. Veja o exemplo abaixo:
+
+    “Meu pensamento é um rio subterrâneo.”
+
+SINESTESIA
+
+A sinestesia é o jogo da mistura das sensações. Quando na mesma oração o autor
+realiza o cruzamento de diferentes sentidos humanos.
+
+Sinestesia é uma figura de linguagem muito utilizada em livros e poesias em geral. É muito comum também notar sua presença em letras de música.
+
+Perceba no exemplo abaixo:
+
+    “Ela sentiu o sabor frio da derrota”
+
+CATACRESE
+
+A Catacrese é um tipo de recurso muito interessante. Tal figura de linguagem
+ocorre quando atribuímos um “nome” a algo que não possui um nome específico,
+fazendo referência a outras coisas e objetos.
+
+Ótimos exemplos seriam
+
+    o “céu da boca”
+
+    a “asa da xícara”.
+
+Perceba que nossa boca não possui um céu de fato, assim como a xícara não
+possui asas de fato, parte atribuída somente às aves.
+
+ANTÍTESE
+
+Quando, em uma mesma oração, usamos termos que possuem sentidos contrários,
+configura-se a antítese. Por exemplo:
+
+    “O Renato estava dormindo acordado na aula”
+
+Perceba que “dormindo” e “acordado” entram em contraste de significado na frase.
+
+PARADOXO
+
+Esta figura de linguagem se refere a algo “contrário ao que se pensa”, fugindo
+do senso comum e até mesmo refletindo a falta de nexo. Confira um exemplo
+simples de um paradoxo:
+
+    “Ele não passa de um pobre homem rico”
+
+HIPÉRBOLE
+
+Ao contrário de eufemismo, a hipérbole é uma figura de linguagem que dá um exagero intencional ao contexto. Por exemplo, em vez de dizermos “eu estou com muita sede“, as vezes dizemos
+
+    “estou morrendo de sede“.
+
+ Na verdade, não estamos morrendo literalmente, mas ocorre um exagero para
+ ilustrar a grandeza da sede.
+
+IRONIA
+
+Ironia é a utilização proposital de termos que manifestam o sentido oposto do
+seu significado. Por exemplo, uma pessoa que foi demitida após péssimo dia de
+trabalho, dizer:
+
+    “- Era o que faltava para encerrar o meu dia maravilhosamente bem”.
+
+APÓSTROFE
+
+Apóstrofe é muito interessante. Esta figura de linguagem ocorre quando alguma
+pessoa faz uso da “invocação” de algo ou alguém para manifestar algum sentido
+ao contexto. Por exemplo:
+
+    “Meu Deus! Que susto!”.
+
+PERSONIFICAÇÃO ou PROSOPOPEIA
+
+A personificação ou prosopopeia ocorre quando atribuímos sentidos racionais a
+elementos irracionais. Por exemplo, quando dizemos
+
+    “A natureza está em chorando…”
+
+Estamos atribuindo o “choro” (algo racional) à natureza (um elemento
+irracional). Outro exemplo seria dizer “Meu coração está em pratos…“.
+
+PLEONASMO
+
+Pleonasmo é muito utilizado no dia-a-dia. Trata-se da repetição de palavras que
+tem o mesmo significado, em uma mesma oração.
+
+Exemplos:
+
+    “Sair para fora”, “subir para cima”, “dupla de dois”…
+
 r35qis3 303r3 W02r*uq
-http://va.mu/eLCb
 http://www.youtube.com/watch?v=j5kq0zYLgrE
 
 Várias questões:
