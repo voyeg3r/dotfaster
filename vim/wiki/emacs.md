@@ -3,15 +3,17 @@
 + https://blog.aaronbieber.com/2015/07/05/a-gentle-introduction-to-emacs-configuration.html
 + http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
 + https://www.emacswiki.org/emacs/Evil
++ https://www.youtube.com/watch?v=Iagbv974GlQ
 
-	Abrir arquivo ................ C-x C-f
-	Abrir arquivo alternativo..... C-x C-v
 
-	Para fechar ............ C-x c
-	para salvar ............ C-x s
-	para salvar como ....... C-x C-w
+    Abrir arquivo ................ C-x C-f
+    Abrir arquivo alternativo..... C-x C-v
 
-	Command line like vim :  M-x
+    Para fechar ............ C-x c
+    para salvar ............ C-x s
+    para salvar como ....... C-x C-w
+
+    Command line like vim :  M-x
 
 # Start Emacs
 
