@@ -3,6 +3,7 @@
 + https://blog.aaronbieber.com/2015/07/05/a-gentle-introduction-to-emacs-configuration.html
 + http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
 + https://www.emacswiki.org/emacs/Evil
++ https://ogbe.net/emacsconfig.html
 
 	Abrir arquivo ................ C-x C-f
 	Abrir arquivo alternativo..... C-x C-v
@@ -18,6 +19,9 @@
    	start emacs in text terminal
 
 	emacs --no-window-system
+
+    ;; setting a different emacs config file
+    emacs -q -l ~/.emacs2
 
 ## or to open it on the terminal emulator
 

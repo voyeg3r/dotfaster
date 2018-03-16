@@ -9,3 +9,7 @@ A situação está aparentemente sob controle, mas até quando?
 
 These lopsided relations have the opposite effect politically speaking.
 Estas relações "distorcidas|assimétricas" geram o efeito político contrário.
+
+She never stops talking about dieting. She’s got a real bee in her bonnet about it. (Ela nunca para de falar sobre dietas. Ela tem uma obsessão nisso.)
+
+He’s got a bee in his bonnet about factory farming. (Ele é obcecado por pecuária industrial.)

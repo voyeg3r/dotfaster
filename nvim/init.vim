@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 13 14:34
+" Last Change: 2018 mar 16 11:55
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -517,10 +517,6 @@ cab SC Scratch
 
 "  when searching next patter put it in the middle of screen (I use indexsearch plugin)
 let g:indexed_search_center=1
-nnoremap { {zz
-nnoremap } }zz
-nnoremap n nzz
-nnoremap N Nzz
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -936,6 +932,7 @@ nnoremap <A-k> :m-2<CR>
 
 " delete current till the end of line
 inoremap <C-k> <C-o>C
+nnoremap <C-k> _D
 
 " Make Ctrl-e jump to the end of the current line in the
 " insert mode. This is handy when you are in the middle of

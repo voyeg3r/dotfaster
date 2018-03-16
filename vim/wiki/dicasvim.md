@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 13 13:11
+# dicasvim.md Intro - Last Change: 2018 mar 16 11:22
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -103,6 +103,7 @@ Or you can do:
 
 During a search you can press `Ctrl-g` to jump to next occurrence
 and `Ctrl-t` to jump backwards
+
 
 # Run current line as a shell command
 + https://stackoverflow.com/a/19883963/2571881
@@ -1238,6 +1239,11 @@ Após fechar a janela quickfix podemos reabri-la com o comando `:copen`
     /\%>12l\%<24lsearch
     :12,24g/search/
     :12,24s/search//gc
+
+# Search between marks
++ https://vi.stackexchange.com/a/15588/7339
+
+    /\%>'afoo\%<'b
 
 # Inserting a range of numbers
 
