@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 17 18:40
+" Last Change: 2018 mar 17 20:36
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -723,13 +723,6 @@ nnoremap <F3> :CountWord<CR>
 " nnoremap <silent> <Leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
 " nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
-" https://vi.stackexchange.com/a/7278/7339
-" https://superuser.com/a/147842/45032
-" Insert new line above and below in normal mode
-" unimpaired [<space ]<space>
-nnoremap <CR> :call append(line('.'), '')<CR>
-nnoremap <A-CR> :call append(line('.')-1, '')<CR>
-
 " Autocmd Rules **********************************
 
 "colorscheme ayu
@@ -939,12 +932,43 @@ nnoremap <C-k> _D
 " https://vi.stackexchange.com/a/8368/7339
 function! DeleteAbove()
     if getline(".") =~ "^$"
-		exec 'normal! kdd'
+		exec 'normal! kdd0'
     else
 		exec 'normal! d0dgk"-Pl'
 	endif
 endfunction
 nnoremap <Leader>k :call DeleteAbove()<CR>
+
+" https://vi.stackexchange.com/a/4171/7339
+"function! DeleteOver()
+"   let save_cursor = getpos(".")
+"   normal k
+"   normal dd
+"   call setpos(".", save_cursor)
+"   normal k
+"endfunction
+"nnoremap <Leader>k :call DeleteOver()<CR>
+
+function! DeleteUnder()
+   let save_cursor = getpos(".")
+   normal j
+   normal dd
+   call setpos(".", save_cursor)
+endfunction
+nnoremap <Backspace> :call DeleteUnder()<CR>
+
+" https://vi.stackexchange.com/a/7278/7339
+" https://superuser.com/a/147842/45032
+" Insert new line above and below in normal mode
+" unimpaired [<space ]<space>
+nnoremap <CR> :call append(line('.'), '')<CR>
+nnoremap <A-CR> :call append(line('.')-1, '')<CR>
+
+" Here we have some shortcuts (above)
+" <CR> ............... add new line below in normal mode
+" <A-CR> ............. add new line above in normal mode
+" <Leader>k .......... removes line above in normal mode
+" <Backspace> ........ removes line below in normal mode
 
 " Make Ctrl-e jump to the end of the current line in the
 " insert mode. This is handy when you are in the middle of
