@@ -119,6 +119,9 @@ Version 2017-07-09"
 (define-key input-decode-map "\e[1;5A" [C-up])
 (define-key input-decode-map "\e[1;5B" [C-down])
 
+(global-set-key (kbd "C->") 'end-of-buffer)
+(global-set-key (kbd "C-<") 'beginning-of-buffer)
+
 ;; let's see if it works
 (global-set-key (kbd "C-x G") 'end-of-buffer)
 (global-set-key (kbd "C-x gg") 'beginning-of-buffer)

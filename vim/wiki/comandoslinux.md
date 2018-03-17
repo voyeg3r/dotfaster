@@ -291,6 +291,7 @@
 + [ping](ping.md)
 + [pip](pip.md)
 + [pkill](pkill.md)
++ [pkexec](pkexec.md)
 + [plowshare](plowshare.md)
 + [plugintabular](plugintabular.md)
 + [popd](popd.md)

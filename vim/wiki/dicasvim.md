@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 16 11:22
+# dicasvim.md Intro - Last Change: 2018 mar 17 12:37
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3355,6 +3355,30 @@ The pattern I use is `/.\n\n\@!/.` Breaking that down into its component pieces:
 
 (Check `:h E59 `for more information on `\@!` and similar match specifiers in
 regular expressions -- there are a couple others, too!)
+
+## Add empty line without leaving normal mode
++ https://superuser.com/a/147842/45032
+
+    :call append(line('.')-1, '')
+    :call append(line('.'), '')
+
+
+    " Delete line above without moving the cursor
+    " https://vi.stackexchange.com/a/8368/7339
+    function! DeleteAbove()
+        exec 'normal! d0dgk"-Pl'
+    endfunction
+    nnoremap <Leader>k :call DeleteAbove()<CR>
+
+# Test if cursor is at the end of the line
++ https://superuser.com/a/723715/45032
+
+
+    echo col(".") == col("$")-1
+
+will echo1 when the cursor is at the last column and 0 otherwise see:
+
+    :help col()
 
 # How add a new line after a pattern
 

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 16 11:55
+" Last Change: 2018 mar 17 17:00
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -528,7 +528,6 @@ nnoremap <c-o> <c-o>zz
 nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap gp `[v`]
 
-
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
@@ -725,9 +724,11 @@ nnoremap <F3> :CountWord<CR>
 " nnoremap <silent> <Leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 
 " https://vi.stackexchange.com/a/7278/7339
+" https://superuser.com/a/147842/45032
 " Insert new line above and below in normal mode
-nnoremap <Leader>o @="m`o\eg``"<cr>
-nnoremap <Leader>O @="m`O\eg``"<cr>
+" unimpaired [<space ]<space>
+nnoremap <CR> :call append(line('.'), '')<CR>
+nnoremap <A-CR> :call append(line('.')-1, '')<CR>
 
 " Autocmd Rules **********************************
 
@@ -933,6 +934,13 @@ nnoremap <A-k> :m-2<CR>
 " delete current till the end of line
 inoremap <C-k> <C-o>C
 nnoremap <C-k> _D
+
+" Delete line above without moving the cursor
+" https://vi.stackexchange.com/a/8368/7339
+function! DeleteAbove()
+    exec 'normal! d0dgk"-Pl'
+endfunction
+nnoremap <Leader>k :call DeleteAbove()<CR>
 
 " Make Ctrl-e jump to the end of the current line in the
 " insert mode. This is handy when you are in the middle of

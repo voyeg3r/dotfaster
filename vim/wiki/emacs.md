@@ -4,15 +4,20 @@
 + http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/
 + https://www.emacswiki.org/emacs/Evil
 + https://ogbe.net/emacsconfig.html
++ https://www.youtube.com/watch?v=Iagbv974GlQ
++ https://www.youtube.com/watch?v=JWD1Fpdd4Pc
 
-	Abrir arquivo ................ C-x C-f
-	Abrir arquivo alternativo..... C-x C-v
+# start
 
-	Para fechar ............ C-x c
-	para salvar ............ C-x s
-	para salvar como ....... C-x C-w
 
-	Command line like vim :  M-x
+    Abrir arquivo ................ C-x C-f
+    Abrir arquivo alternativo..... C-x C-v
+
+    Para fechar ............ C-x c
+    para salvar ............ C-x s
+    para salvar como ....... C-x C-w
+
+    Command line like vim :  M-x
 
 # Start Emacs
 
@@ -44,6 +49,10 @@ Carregar um tema escuro
 
     ;; font setting
     (set-default-font "FuraMono Nerd Font 14" nil t)
+
+## Increase font size
+
+    C-x C-+
 
 # Disable welcome screen
 

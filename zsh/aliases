@@ -9,6 +9,9 @@
 
 alias netrestart='sudo systemctl restart NetworkManager'
 
+# https://linuxdicasesuporte.blogspot.com.br/2018/03/alternativa-ao-gksu-no-debian-e.html?spref=fb
+alias pkexec='pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY'
+
 alias rm=trash
 # use trash-cli
 # alias rm='echo "This is not the command you are looking for."; false'
