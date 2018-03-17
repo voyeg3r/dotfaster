@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 17 17:00
+" Last Change: 2018 mar 17 18:40
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -938,7 +938,11 @@ nnoremap <C-k> _D
 " Delete line above without moving the cursor
 " https://vi.stackexchange.com/a/8368/7339
 function! DeleteAbove()
-    exec 'normal! d0dgk"-Pl'
+    if getline(".") =~ "^$"
+		exec 'normal! kdd'
+    else
+		exec 'normal! d0dgk"-Pl'
+	endif
 endfunction
 nnoremap <Leader>k :call DeleteAbove()<CR>
 
