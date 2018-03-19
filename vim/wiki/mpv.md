@@ -1,4 +1,5 @@
-# mpv.md - Last Change: seg 04 dez 2017 07:04:24 -03
+# mpv.md - Last Change: 2018 mar 18 16:14
+# config file: ~/.config/mpv/mpv.conf
 
   a media player
 

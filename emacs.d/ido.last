@@ -9,25 +9,26 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/sergio/"
  "/home/sergio/build/"
+ "/home/sergio/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- ".emacs"
  "emacs2"
+ "test"
+ ".emacs"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/sergio/" (23212 5080 768121 304000) "videos/" "../" "img/" "Desktop/" ".ICEauthority" ".themes/" ".esd_auth" ".gimp-2.8/" ".fasd-init-cache" ".xscreensaver" "bearing-hub.mp3" ".python_history" ".pki/" ".zsh-cache.d/" ".tmux-resurrect/" ".mozilla/" ".mplayer/" ".fonts/" ".thumbnails/" "tmp/" "build/" ".Trash/" ".elementary/" "./" ".vimundodir/" ".temp/" "share/" ".weechat/" ".xsession-errors.old" ".gstreamer-0.10/" ".gitconfig" ".pythonhistory" ".vimrc" ".bashrc" ".bash_logout" ".zdirs" ".config/" ".dotfiles/" ".parallel/" ".bash_profile" ".zsh_history" ".fzf/" ".tmux.conf" "templates/" ".vim/" ".xsession-errors" ".zshrc" "#.emacs#" "music/" ".npm/" "Audiobooks/" ".ssh/" ".audacity-data/" ".gcp/" ".gtkrc-2.0" ".cache/" "docs/" ".fasd" "Downloads/" ".e/" ".tmux-session" ".dmrc" ".Xauthority" ".spacemacs" ".pythonstartup" ".profile" ".emacs~" ".bashrc.aliases" ".local/" ".gnupg/" ".wget-hsts" ".emacs" ".zshenv" ".emacs.d/" ".w3m/" ".macromedia/" ".adobe/" ".conky/")
+ ("/home/sergio/" (23215 43282 983999 953000) "videos/" "../" "img/" "Desktop/" ".ICEauthority" ".themes/" ".esd_auth" ".gimp-2.8/" ".fasd-init-cache" ".xscreensaver" "bearing-hub.mp3" ".python_history" ".pki/" ".zsh-cache.d/" ".tmux-resurrect/" ".mozilla/" ".mplayer/" ".fonts/" ".thumbnails/" "tmp/" "build/" ".Trash/" ".elementary/" "./" ".vimundodir/" ".temp/" "share/" ".weechat/" ".xsession-errors.old" ".gstreamer-0.10/" ".gitconfig" ".pythonhistory" ".vimrc" ".bashrc" ".bash_logout" ".zdirs" ".config/" ".dotfiles/" ".parallel/" ".bash_profile" ".zsh_history" ".fzf/" ".tmux.conf" "templates/" ".vim/" ".xsession-errors" ".zshrc" "music/" ".npm/" "Audiobooks/" ".ssh/" ".audacity-data/" ".gcp/" ".gtkrc-2.0" ".cache/" "docs/" ".fasd" "Downloads/" ".e/" ".tmux-session" ".dmrc" ".Xauthority" ".spacemacs" ".pythonstartup" ".profile" ".emacs~" ".bashrc.aliases" ".local/" ".gnupg/" ".wget-hsts" ".emacs" ".zshenv" ".wine/" ".emacs.d/" ".w3m/" ".macromedia/" ".adobe/" ".conky/")
+
+ ("/home/sergio/build/" (23213 33664 449086 138000) "../" "ass2srt/" "nerd-fonts/" "vimmer/" "emacs2~" "./" "your-first-vim-plugin/" "MagpieOS-Wallpapers/" "emacs/" "emacs2" "dictionary/" "vim-neatstatus/")
 
  ("/home/sergio/.dotfiles/emacs.d/" (23212 3783 409509 670000) "../" "network-security.data" "ac-comphist.dat" "elpa/" "ido.last~" "el-get/" "recentf" "./" "ido.last" "recentf~" "places" "settings/" "snippets/" "auto-save-list/")
 
  ("/home/sergio/.dotfiles/" (23211 53592 100625 474000) "../" "detox/" "bashrc" "python/" "agignore" "nvim/" "./" "inputrc" ".gitmodules" ".gitconfig" "fontconfig/" "algorithm/" "vim/" ".gitignore" "youtube-dl.config" "emacs" "yaourtrc" "conky/" ".git/" "mpv/" "tmux/" "wgetrc" "README.md" "fonts/" "zsh/" "emacs.d/" "bin/")
-
- ("/home/sergio/build/" (23212 3562 418420 54000) "../" "ass2srt/" "nerd-fonts/" "vimmer/" "emacs2~" "./" "your-first-vim-plugin/" "MagpieOS-Wallpapers/" "emacs/" "emacs2" "dictionary/" "vim-neatstatus/")
 
  ("/home/sergio/build/emacs/" (23210 45911 318573 882000) "../" "./" ".gitignore" "bootstrap.sh" ".git/" "README.md" ".emacs" ".emacs.d/")
 )

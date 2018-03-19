@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 17 12:37
+# dicasvim.md Intro - Last Change: 2018 mar 19 17:37
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -34,6 +34,7 @@
     :echo strftime("%H:%M %d-%m-%Y", getftime(bufname("%")))
 
 # vimscript: function arguments
++ https://devhints.io/vimscript
 
 Here are the various ways in which a user-command may pass arguments:
 
@@ -292,6 +293,25 @@ The one unique line that I REALLY want.
 ```
 
 In practice we are looking for anything followed by itself `\1` in a new line `\n`
+
+# Function to delete duplicated lines
++ https://stackoverflow.com/a/49371965/2571881
+
+    " function to delete duplicate lines
+    function! DelDuplicatedLines()
+        while getline(".") == getline(line(".") - 1)
+            exec 'norm! ddk'
+        endwhile
+        while getline(".") == getline(line(".") + 1)
+            exec 'norm! dd'
+        endwhile
+    endfunction
+    nnoremap <Leader>d :g/./call DelDuplicatedLines()<CR>
+
+    " this regex is more concise but less eficient
+    function! DelDuplicatedLines()
+        g/\v^(.*)$\n\1/d
+    endfun
 
 # How to pad strings inside curly braces with odd number of character with a single space?
 + https://stackoverflow.com/a/48439232/2571881
@@ -3355,6 +3375,15 @@ The pattern I use is `/.\n\n\@!/.` Breaking that down into its component pieces:
 
 (Check `:h E59 `for more information on `\@!` and similar match specifiers in
 regular expressions -- there are a couple others, too!)
+
+# insert a blank line every 5 lines
++ https://stackoverflow.com/a/10414708/2571881
+
+    :%s/\v(.*\n){5}/&\r
+
+    :%s/^/\=(line(".")%6==0?"\n":"")/g
+
+OBS: These commands above do exactly the same
 
 ## Add empty line without leaving normal mode
 + https://superuser.com/a/147842/45032
