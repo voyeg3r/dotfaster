@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 19 09:08
+" Last Change: 2018 mar 19 17:50
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -521,6 +521,8 @@ let g:indexed_search_center=1
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
+nnoremap n nzz
+nnoremap N Nzz
 nnoremap <c-o> <c-o>zz
 
 " select last paste in visual mode

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 19 17:37
+# dicasvim.md Intro - Last Change: 2018 mar 22 08:44
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -105,7 +105,6 @@ Or you can do:
 During a search you can press `Ctrl-g` to jump to next occurrence
 and `Ctrl-t` to jump backwards
 
-
 # Run current line as a shell command
 + https://stackoverflow.com/a/19883963/2571881
 + https://stackoverflow.com/a/19884862/2571881
@@ -186,7 +185,6 @@ discarted it without worrying about saving.
     cab SC Scratch
 
     setlocal nobuflisted
-
 
 # Insert numbered text on every even/odd line
 + https://superuser.com/a/762817/45032
@@ -795,6 +793,7 @@ Copy the third word of odd lines to the end of even ones
     The third word in the above line is lectus
 
     :g/^/if line('.') % 2 | normal! wwyiwj$p | endif
+    :g/./if line('.') % 2 | exec "normal! wwyiwjA \<C-r>0" | endif
 
 Para linhas em que o resto da divisão do número da mesma é diferente de zero,
 ou seja linhas ímpares, para fazer o teste faça `:ec 1 % 2` e perceba que o vim
@@ -1170,6 +1169,26 @@ or
     dw .......... delete word
     A ........... start insert at the end of line
     <Ctrl-r>" ... inserts default register
+
+# replace every line matching a pattern with a register
++ https://stackoverflow.com/a/49412758/2571881
+
+Supposed register y is filled with some text. Can I replace every line in a
+buffer matching some pattern with register y?
+
+I would think it's something like:
+
+    :g/[pattern]/"yp
+
+But that definitely doesn't work (and I knew it wouldn't but tried anyway). Is
+there a way to do this in one fail swoop?
+
+    :%s/.*pattern.*/\=@y
+    :g/pattern/normal! V"yp
+
+or the following which won't change the default register:
+
+    :g/pattern/call setline('.', @y)
 
 # Swap two columns separated by space
 + https://stackoverflow.com/a/24424034/2571881
@@ -3391,7 +3410,6 @@ OBS: These commands above do exactly the same
     :call append(line('.')-1, '')
     :call append(line('.'), '')
 
-
     " Delete line above without moving the cursor
     " https://vi.stackexchange.com/a/8368/7339
     function! DeleteAbove()
@@ -3401,7 +3419,6 @@ OBS: These commands above do exactly the same
 
 # Test if cursor is at the end of the line
 + https://superuser.com/a/723715/45032
-
 
     echo col(".") == col("$")-1
 
