@@ -78,6 +78,10 @@ the end of the expression and press
     ‘C-a C-k C-y’ kills and yanks back the line without newline if kill-whole-line is nil, or including the newline otherwise.
     ‘C-S-backspace C-y’ Kills an entire line at once (kill-whole-line) and yanks it back.
 
+# Creating new buffer
+
+    C-x b
+
 # Install new packages
 
 ;; ================== add melpa repo ==================================

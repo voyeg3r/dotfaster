@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 22 08:44
+# dicasvim.md Intro - Last Change: 2018 mar 22 08:49
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1185,6 +1185,7 @@ there a way to do this in one fail swoop?
 
     :%s/.*pattern.*/\=@y
     :g/pattern/normal! V"yp
+    :g/pattern/exe "normal! S\<c-r>y"
 
 or the following which won't change the default register:
 

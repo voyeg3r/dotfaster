@@ -13,3 +13,6 @@ Estas relações "distorcidas|assimétricas" geram o efeito político contrário
 She never stops talking about dieting. She’s got a real bee in her bonnet about it. (Ela nunca para de falar sobre dietas. Ela tem uma obsessão nisso.)
 
 He’s got a bee in his bonnet about factory farming. (Ele é obcecado por pecuária industrial.)
+
+Unlocking a wealth of answers about human beings and their potentials, he did indeed resolve the long-standing riddle of the mind.
+Desbloqueando uma riqueza de respostas sobre os seres humanos e seus potenciais, ele realmente resolveu o antigo enigma da mente.
