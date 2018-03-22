@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 22 16:49
+" Last Change: 2018 mar 22 18:47
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1171,6 +1171,8 @@ command! SaveAsRoot w !sudo tee %
 cnoreabbrev sudow SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
+inoremap <C-a> <C-o>^
+inoremap <C-e> <End>
 
 " to reselect use gv in normal mode - Shift-F11
 nnoremap <F23> <ESC>:set hls! hls?<cr>
