@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 22 08:49
+# dicasvim.md Intro - Last Change: 2018 mar 23 06:49
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3417,6 +3417,30 @@ OBS: These commands above do exactly the same
         exec 'normal! d0dgk"-Pl'
     endfunction
     nnoremap <Leader>k :call DeleteAbove()<CR>
+
+# Modify eachline charectors between two patterns
++ https://stackoverflow.com/a/49446424/2571881
+
+I need to modify the certain charactors between two patterns in each line.
+Eample:: (File content saved as myfile.txt)
+
+    abc, def, 1, {jsdfsd kfgdsf lgfgd}, 2, pqr, stu
+    abc, def, 1, {jsdfsqwe k fdfsfl}, 2, pqr, stu
+    abc, def, 1, {asdasdj kgfdgdf ldsfsdf}, 2, pqr, stu
+    abc, def, 1, {jsds kfdsf fdsl}, 2, pqr, stu
+
+Remove commas inside { block
+
+    abc, def, 1, {jsdfsd kfgdsf lgfgd} 2  pqr  stu
+    abc, def, 1, {jsdfsqwe k fdfsfl} 2  pqr  stu
+    abc, def, 1, {asdasdj kgfdgdf ldsfsdf} 2  pqr  stu
+    abc, def, 1, {jsds kfdsf fdsl} 2  pqr  stu
+
+My solution:
+
+OBS: we have to substitute <space> bellow
+
+    :%normal! 4f,xf,r f,r<space>
 
 # Test if cursor is at the end of the line
 + https://superuser.com/a/723715/45032
