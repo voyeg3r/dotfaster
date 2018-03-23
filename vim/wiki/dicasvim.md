@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 23 06:49
+# dicasvim.md Intro - Last Change: 2018 mar 23 12:45
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -143,6 +143,7 @@ To copy the line 16 to the line bellow just type:
     :/user-friend/m$ ......... move next "user-friend" to the final line
     :g/TITLE/ m+1 ............ moves down lines with TITLE
     :m+ ...................... move current line to line below
+    :g/pattern/t<line number>
 
 This is one anti pattern
 
@@ -1670,35 +1671,70 @@ iab fname <c-r>=expand("%:p")<cr>
     :h g@
 
 ```vimL
-function! ToggleComment()
-	let l:win_view = winsaveview()
-	if getline('.')[0] == "#"
-		normal! 0"_x
-	else
-		normal! I#
-	endif
-	call winrestview(l:win_view)
-endfunction
-nnoremap <Leader>t :call ToggleComment()<CR>
-vnoremap <Leader>t <C-o>:call ToggleComment()<CR>
-
-" Another version
-" Because sometimes comments are not at the beginning of line
+autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
+autocmd FileType arduino         let b:comment_leader = '\/\/'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType zsh             let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType matlab,tex      let b:comment_leader = '%'
+autocmd FileType vim             let b:comment_leader = '"'
 
 function! ToggleComment()
-    let l:win_view = winsaveview()
-    exec 'normal! _'
-    let char = getline('.')[col('.')-1]
-    if char == "#"
-        normal! _"_x
+    if exists('b:comment_leader')
+        let l:pos = col('.')
+        if getline('.') =~ '\v(\s*|\t*)' .b:comment_leader
+            "exec 'normal! _"_2x'
+            execute 'silent s/\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?//g'
+            let l:pos -= 2
+        else
+            exec 'normal! I' .b:comment_leader .' '
+            let l:pos += 2
+        endif
+        call cursor(line("."), l:pos)
     else
-        normal! I#
-    endif
-    call winrestview(l:win_view)
+        echo 'no comment leader found for filetype'
+    end
 endfunction
 nnoremap <Leader>t :call ToggleComment()<CR>
 inoremap <Leader>t <C-o>:call ToggleComment()<CR>
+xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
+
+
+" another one
+autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
+autocmd FileType arduino         let b:comment_leader = '\/\/'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType matlab,tex      let b:comment_leader = '%'
+autocmd FileType vim             let b:comment_leader = '"'
+
+function! ToggleComment()
+" help with :h \v or pattern-atoms
+  if exists('b:comment_leader')
+    if getline('.') =~ '\v^\s*' .b:comment_leader
+      " uncomment the line
+      execute 'silent s/\v^\s*\zs' .b:comment_leader.'[ ]?//g'
+    else
+      " comment the line
+      execute 'silent s/\v^\s*\zs\ze(\S|\n)/' .b:comment_leader.' /g'
+    endif
+  else
+    echo 'no comment leader found for filetype'
+  end
+endfunction
+
+nnoremap <leader>c :call ToggleComment()<cr>
 ```
+
+```viml
+nnoremap <expr> gcc getline('.') =~ '\v^(\s+)?#' ? '_"_x' : "gI#\<esc>w"
+xnoremap <expr> gc ':norm! ' . (getline("'<") =~ '^#' ? '0"_x' : "gI#") . "\<cr>"
+```
+
+# Set cursor line and column (position)
+
+    :call cursor(1682,2)
+
 # Print some lines to pdf
 + http://www.vimweekly.com/
 
@@ -2654,6 +2690,10 @@ Supose you have these lines:
 
 read more at: `help sub-replace`
 
+# get char under cursor
+
+    :echo matchstr(getline('.'), '\%'.col('.').'c.')
+
 # Converting numbers to chars
 The range of printable chars spams from 32 to 122
 
@@ -3422,12 +3462,12 @@ OBS: These commands above do exactly the same
 + https://stackoverflow.com/a/49446424/2571881
 
 I need to modify the certain charactors between two patterns in each line.
-Eample:: (File content saved as myfile.txt)
+Eample: (File content saved as myfile.txt)
 
-    abc, def, 1, {jsdfsd kfgdsf lgfgd}, 2, pqr, stu
-    abc, def, 1, {jsdfsqwe k fdfsfl}, 2, pqr, stu
-    abc, def, 1, {asdasdj kgfdgdf ldsfsdf}, 2, pqr, stu
-    abc, def, 1, {jsds kfdsf fdsl}, 2, pqr, stu
+    abc, def, 1, {,jsdfsd,kfgdsf,lgfgd}, 2, pqr, stu
+    abc, def, 1, {,jsdfsqwe,k,fdfsfl}, 2, pqr, stu
+    abc, def, 1, {,asdasdj,kgfdgdf,ldsfsdf}, 2, pqr, stu
+    abc, def, 1, {,jsds,kfdsf,fdsl}, 2, pqr, stu
 
 Remove commas inside { block
 

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 22 18:47
+" Last Change: 2018 mar 23 14:18
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -326,9 +326,37 @@ xmap S   <Plug>VSurround
 xmap gS  <Plug>VgSurround
 
 nnoremap <F2> :NERDTreeToggle<cr>
-nnoremap <Leader>t :Commentary<cr>
-vnoremap <Leader>t :Commentary<cr>
+" nnoremap <Leader>t :Commentary<cr>
+" vnoremap <Leader>t :Commentary<cr>
 " comment a paragraph → gcap
+
+" these lines are needed for ToggleComment()
+autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
+autocmd FileType arduino         let b:comment_leader = '\/\/'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType zsh             let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType matlab,tex      let b:comment_leader = '%'
+autocmd FileType vim             let b:comment_leader = '"'
+
+function! ToggleComment()
+    if exists('b:comment_leader')
+        let l:pos = col('.')
+        if getline('.') =~ '\v(\s*|\t*)' .b:comment_leader
+            execute 'silent s/\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?//g'
+            let l:pos -= 2
+        else
+            exec 'normal! 0i' .b:comment_leader .' '
+            let l:pos += 2
+        endif
+        call cursor(line("."), l:pos)
+    else
+        echo 'no comment leader found for filetype'
+    end
+endfunction
+nnoremap <Leader>t :call ToggleComment()<CR>
+inoremap <Leader>t <C-o>:call ToggleComment()<CR>
+xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
 
 " source: https://github.com/junegunn/vim-plug/issues/164
 "command! Gstatus call LazyLoadFugitive('Gstatus')
