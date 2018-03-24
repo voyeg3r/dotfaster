@@ -16,3 +16,12 @@ He’s got a bee in his bonnet about factory farming. (Ele é obcecado por pecu�
 
 Unlocking a wealth of answers about human beings and their potentials, he did indeed resolve the long-standing riddle of the mind.
 Desbloqueando uma riqueza de respostas sobre os seres humanos e seus potenciais, ele realmente resolveu o antigo enigma da mente.
+
+Dogs are barred from many public places because they pose a serious hazard to health and can be a nuisance and danger.
+Os cães são barrados em muitos lugares públicos porque representam um sério risco para a saúde e podem ser um incômodo e perigo.
+
+And let's not forget a nimble mind's required to go along with the dexterity.
+E não vamos esquecer que uma mente ágil é necessária para acompanhar a destreza.
+
+The sage acts by doing nothing
+O Sábio age não fazendo nada

@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 23 14:18
+" Last Change: 2018 mar 24 09:09
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -331,8 +331,9 @@ nnoremap <F2> :NERDTreeToggle<cr>
 " comment a paragraph → gcap
 
 " these lines are needed for ToggleComment()
-autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
-autocmd FileType arduino         let b:comment_leader = '\/\/'
+" Reference: https://stackoverflow.com/a/24652257/2571881
+autocmd FileType c,cpp,java      let b:comment_leader = '//'
+autocmd FileType arduino         let b:comment_leader = '//'
 autocmd FileType sh,ruby,python  let b:comment_leader = '#'
 autocmd FileType zsh             let b:comment_leader = '#'
 autocmd FileType conf,fstab      let b:comment_leader = '#'
@@ -342,12 +343,14 @@ autocmd FileType vim             let b:comment_leader = '"'
 function! ToggleComment()
     if exists('b:comment_leader')
         let l:pos = col('.')
+        let l:space = ( &ft =~ '\v(c|cpp|java|arduino)' ? '3' : '2' )
         if getline('.') =~ '\v(\s*|\t*)' .b:comment_leader
-            execute 'silent s/\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?//g'
-            let l:pos -= 2
+            let l:space -= ( getline('.') =~ '\v.*\zs' . b:comment_leader . '(\s+|\t+)@!' ?  1 : 0 )
+            execute 'silent s,\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?,,g'
+            let l:pos -= l:space
         else
             exec 'normal! 0i' .b:comment_leader .' '
-            let l:pos += 2
+            let l:pos += l:space
         endif
         call cursor(line("."), l:pos)
     else
@@ -357,6 +360,8 @@ endfunction
 nnoremap <Leader>t :call ToggleComment()<CR>
 inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
+" vnoremap <Leader>t :call ToggleComment()<CR>
+
 
 " source: https://github.com/junegunn/vim-plug/issues/164
 "command! Gstatus call LazyLoadFugitive('Gstatus')
@@ -369,6 +374,7 @@ xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
 "  call fugitive#detect(expand('%:p'))
 "  exe a:cmd
 "endfunction
+
 
 " lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
@@ -1088,7 +1094,7 @@ fun! InsertChangeLog() abort
     endfor
     if l:flag >= 5
         normal(1G)
-        call append(0, "Arquivo: <+Description+>")
+        call append(0, "Arquivo:")
         call append(1, "Created: " . strftime("%Y %B %d hs %H:%M"))
         call append(2, "Last Change: " . strftime("%Y %B %d hs %H:%M"))
         call append(3, "autor: <+digite seu nome+>")
@@ -1114,8 +1120,8 @@ function! JumpToNextPlaceholder() abort
     exec "norm! c/+>/e\<CR>"
     call setreg('/', old_query)
 endfunction
-nnoremap <special> <Leader>j :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <Leader>j <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+nnoremap <special> <C-j> :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <C-j> <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>

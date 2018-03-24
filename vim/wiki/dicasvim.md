@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 23 12:45
+# dicasvim.md Intro - Last Change: 2018 mar 24 08:29
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1671,24 +1671,18 @@ iab fname <c-r>=expand("%:p")<cr>
     :h g@
 
 ```vimL
-autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
-autocmd FileType arduino         let b:comment_leader = '\/\/'
-autocmd FileType sh,ruby,python  let b:comment_leader = '#'
-autocmd FileType zsh             let b:comment_leader = '#'
-autocmd FileType conf,fstab      let b:comment_leader = '#'
-autocmd FileType matlab,tex      let b:comment_leader = '%'
-autocmd FileType vim             let b:comment_leader = '"'
 
+" another one
 function! ToggleComment()
     if exists('b:comment_leader')
         let l:pos = col('.')
+        let l:space = ( &ft =~ '\v(c|cpp|java|arduino)' ? '3' : '2' )
         if getline('.') =~ '\v(\s*|\t*)' .b:comment_leader
-            "exec 'normal! _"_2x'
-            execute 'silent s/\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?//g'
-            let l:pos -= 2
+            execute 'silent s,\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?,,g'
+            let l:pos -= l:space
         else
-            exec 'normal! I' .b:comment_leader .' '
-            let l:pos += 2
+            exec 'normal! 0i' .b:comment_leader .' '
+            let l:pos += l:space
         endif
         call cursor(line("."), l:pos)
     else
@@ -1698,32 +1692,7 @@ endfunction
 nnoremap <Leader>t :call ToggleComment()<CR>
 inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
-
-
-" another one
-autocmd FileType c,cpp,java      let b:comment_leader = '\/\/'
-autocmd FileType arduino         let b:comment_leader = '\/\/'
-autocmd FileType sh,ruby,python  let b:comment_leader = '#'
-autocmd FileType conf,fstab      let b:comment_leader = '#'
-autocmd FileType matlab,tex      let b:comment_leader = '%'
-autocmd FileType vim             let b:comment_leader = '"'
-
-function! ToggleComment()
-" help with :h \v or pattern-atoms
-  if exists('b:comment_leader')
-    if getline('.') =~ '\v^\s*' .b:comment_leader
-      " uncomment the line
-      execute 'silent s/\v^\s*\zs' .b:comment_leader.'[ ]?//g'
-    else
-      " comment the line
-      execute 'silent s/\v^\s*\zs\ze(\S|\n)/' .b:comment_leader.' /g'
-    endif
-  else
-    echo 'no comment leader found for filetype'
-  end
-endfunction
-
-nnoremap <leader>c :call ToggleComment()<cr>
+" vnoremap <Leader>t :call ToggleComment()<CR>
 ```
 
 ```viml
