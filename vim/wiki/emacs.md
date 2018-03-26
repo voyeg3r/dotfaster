@@ -11,7 +11,9 @@
 
 
     Abrir arquivo ................ C-x C-f
+    Fechar arquivo ............... C-x k
     Abrir arquivo alternativo..... C-x C-v
+    Abrir a ajuda do emacs ....... C-h r
 
     Para fechar ............ C-x c
     para salvar ............ C-x s
@@ -66,7 +68,10 @@ the end of the expression and press
 # copy from clipboard
 + https://stackoverflow.com/a/9986416/2571881
 
-    M-x clipboard-yank
+    M-x clipboard-yank .... paste from clipboard
+    Shift-Del ............. cut
+    Control-Insert ........ copy
+    Shift-Insert .......... paste
 
 # Copy line
 
