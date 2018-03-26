@@ -1,6 +1,8 @@
-# git.md - Last Change: 2018 jan 17 12:18
+# git.md - Last Change: 2018 mar 26 07:48
 + https://www.alexkras.com/19-git-tips-for-everyday-use/
 + [primeiros passos](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Uma-Breve-Hist%C3%B3ria-do-Git)
+
+
 # Clonar com submódulos
 + https://stackoverflow.com/a/4438292
 
@@ -63,6 +65,23 @@ Or, if you're a busy person:
 
     git clone --recursive repo
     git fetch --recurse-submodules --jobs=4
+
+# Download a single folder or directory from a GitHub repo
++ https://stackoverflow.com/questions/7106012
+
+You can use svn for that purpose
+
+Let's say you want download FiraMono from nerd-fonts repo, you have just
+to replace `tree/master` with `trunk`
+
+    https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraMono
+
+Protip: You can use svn ls to see available tags and branches before
+downloading if you wish
+
+    svn ls https://github.com/ryanoasis/nerd-fonts/trunk/patched-fonts/FiraMono
+    svn checkout https://github.com/ryanoasis/nerd-fonts/trunk/patched-fonts/FiraMono
+
 
 # How to use git with gnome-keyring integration
 

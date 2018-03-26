@@ -1,4 +1,4 @@
-[#](#) [Wiki](wiki.md) do Sérgio - Last Change: 2018 mar 07 09:43
+[#](#) [Wiki](wiki.md) do Sérgio - Last Change: 2018 mar 26 00:38
 Created: Dom 17/Out/2010 hs 14:23
 
 + [Android](android.md)
@@ -30,6 +30,7 @@ Created: Dom 17/Out/2010 hs 14:23
 + [Dicaspython](dicaspython.md)
 + [Dicasubuntu](dicasubuntu.md)
 + [Dicasvim](dicasvim.md) [vim history](vim-history.md)
++ [Dicas Emacs](emacs.md)
 + [Dicaswindows](dicaswindows.md)
 + [DIY](diy.md)
 + [Englishclub](englishclub.md)

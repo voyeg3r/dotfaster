@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 24 09:09
+" Last Change: 2018 mar 26 00:39
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -93,7 +93,6 @@ vnoremap <Leader>w :<C-u>call ReverseSelectedWords()<CR>
 " Spell mistakes color
 "highlight SpellBad cterm=bold ctermfg=white ctermbg=red
 "highlight SpellCap cterm=bold ctermfg=red ctermbg=white
-
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding

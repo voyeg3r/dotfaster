@@ -171,7 +171,7 @@ class Child(logger.LoggingMixin):
                     'rank': rank,
                 })
 
-        is_async = len([x for x in results if x['context']['is_async']]) > 0
+        is_async = len([x for x in results if x['is_async']]) > 0
 
         self.debug('merged_results: end')
         return {
@@ -351,8 +351,6 @@ class Child(logger.LoggingMixin):
                                   {}))
 
         for source_name, source in self._sources.items():
-            if source.limit > 0 and context['bufsize'] > source.limit:
-                continue
             if source.filetypes is None or source_name in ignore_sources:
                 continue
             if context['sources'] and source_name not in context['sources']:
@@ -459,7 +457,7 @@ class Child(logger.LoggingMixin):
 
     def _on_event(self, context):
         for source_name, source in self._itersource(context):
-            if hasattr(source, 'on_event'):
+            if not source.events or context['event'] in source.events:
                 self.debug('on_event: Source: %s', source_name)
                 try:
                     source.on_event(context)

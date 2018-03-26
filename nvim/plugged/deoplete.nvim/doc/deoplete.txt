@@ -64,7 +64,7 @@ You can enable Python3 interface with pip: >
 
     pip3 install neovim
 
-Note: deoplete needs neovim-python ver.0.1.8+.
+Note: deoplete needs neovim-python ver.0.2.4+.
 You need update neovim-python module.
 >
     pip3 install --upgrade neovim
@@ -202,7 +202,7 @@ g:deoplete#num_processes
 		feature.  If it is less than equal 1, this feature is
 		disabled.
 
-		Default value: 4
+		Default value: 1 (Windows) or 4 (Others)
 
 						*g:deoplete#max_abbr_width*
 g:deoplete#max_abbr_width
@@ -502,6 +502,10 @@ deoplete#enable_logging({level}, {logfile})
 		|deoplete-source-attribute-is_debug_enabled| to debug the
 		sources.
 
+						*deoplete#send_event()*
+deoplete#send_event({event})
+		Call |deoplete-source-attribute-on_event| manually.
+		{event} is event name.
 
 ------------------------------------------------------------------------------
 KEY MAPPINGS 					*deoplete-key-mappings*
@@ -795,14 +799,6 @@ rank		(Integer)			(Optional)
 		If you omit it, it is set 100.
 		Note: It is high priority than match position.
 
-					*deoplete-source-attribute-limit*
-limit		(Integer)			(Optional)
-		If the buffer is bigger than this limit,
-		the source will disable the completion.
-		If it is 0, it is disabled.
-
-		If you omit it, it is set 0.
-
 				*deoplete-source-attribute-min_pattern_length*
 min_pattern_length
 		(Integer)			(Optional)
@@ -915,6 +911,13 @@ disabled_syntaxes
 
 		If you omit it, this feature is ignored.
 
+					*deoplete-source-attribute-events*
+events		(List[str])			(Optional)
+		Calling event names list when
+		|deoplete-source-attribute-on_event|.
+
+		If you omit it, the feature is disabled.
+
 			*deoplete-source-attribute-get_complete_position*
 get_complete_position
 		(Function)			(Optional)
@@ -953,21 +956,20 @@ on_post_filter
 
 					*deoplete-source-attribute-on_event*
 on_event	(Function)			(Optional)
-		It is called when |BufRead|, |BufNewFile|, |BufWritePost|,
-		|VimLeavePre| or deoplete is initialized.
+		It is called when |InsertEnter|, |BufWritePost|, |DirChanged|,
+		or |deoplete#send_event()| or deoplete is initialized("Init"
+		event).
 		It is useful to make cache.
 		It takes {self} and {context} as its parameter.
 
 		" Examples:
 		def on_event(self, context):
 		    if context['event'] == 'Init':
-			# BufNewFile, BufRead
 			pass
 		    elif context['event'] == 'BufWritePost':
 			# BufWritePost
 			pass
 		    else:
-			# VimLeavePre
 			pass
 
 					*deoplete-source-attribute-on_init*
@@ -1375,23 +1377,7 @@ A: Please enable logging feature like this. >
        let g:deoplete#enable_profile = 1
        call deoplete#enable_logging('DEBUG', 'deoplete.log')
        call deoplete#custom#source('jedi', 'is_debug_enabled', 1)
-<
 
-Q: Deoplete makes closing Vim/neovim slow.
-https://github.com/Shougo/deoplete.nvim/issues/656
-
-A: Have you quit Vim/neovim inside autocmd?  Please read |autocmd-nested|
-section.  deoplete uses |VimLeavePre| autocmd to quit the child processes.
->
-	function! OnTermClose()
-	  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-	    quit!
-	  else
-	    call feedkeys(' ')
-	  endif
-	endfunction
-	autocmd TermClose * nested call OnTermClose()
-<
 Q: "Channel id must be a positive integer" error.
 https://github.com/Shougo/deoplete.nvim/issues/406
 
@@ -1409,6 +1395,13 @@ https://github.com/neovim/python-client#usage-through-the-python-repl
 
 Note: You can disable parallel feature by |g:deoplete#num_processes|.  It is
 workaround.
+
+Q: "[deoplete] neovim-python 0.2.4+ is required." error
+https://github.com/Shougo/deoplete.nvim/issues/694
+
+A: You must upgrade neovim-python client. >
+
+       $ pip3 install neovim --upgrade
 
 							*deoplete-faq-config*
 2. Configuration~
@@ -1646,6 +1639,10 @@ A: https://github.com/zchee/deoplete-jedi/issues/35
 
 ==============================================================================
 COMPATIBILITY					*deoplete-compatibility*
+
+2018.03.18
+* limit attribute in source is removed.
+* neovim-python 0.2.4+ is needed for asyncio feature.
 
 2017.12.04
 * "debug_enabled" is deprecated.  Please use "is_debug_enabled" instead.

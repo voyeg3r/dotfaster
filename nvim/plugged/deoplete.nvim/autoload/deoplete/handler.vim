@@ -13,7 +13,7 @@ function! deoplete#handler#_init() abort
     autocmd InsertLeave * call s:completion_timer_stop()
   augroup END
 
-  for event in ['BufNewFile', 'BufRead', 'BufWritePost', 'VimLeavePre']
+  for event in ['InsertEnter', 'BufWritePost']
     call s:define_on_event(event)
   endfor
 
@@ -39,6 +39,12 @@ function! deoplete#handler#_init() abort
   " dummy timer call is needed before complete()
   if !has('nvim') && has('gui_running')
     let s:dummy_timer = timer_start(200, {timer -> 0}, {'repeat': -1})
+  endif
+
+  if deoplete#util#has_yarp()
+    " To fix "RuntimeError: Event loop is closed" issue
+    " Note: Workaround
+    autocmd deoplete VimLeavePre * call s:kill_yarp()
   endif
 endfunction
 
@@ -163,7 +169,8 @@ function! s:is_skip(event, context) abort
         \   'g:deoplete#disable_auto_complete')
 
   if &paste
-        \ || (a:event !=# 'Manual' && disable_auto_complete)
+        \ || (a:event !=# 'Manual' && a:event !=# 'Async'
+        \     && disable_auto_complete)
         \ || (&l:completefunc !=# '' && &l:buftype =~# 'nofile')
         \ || (a:event !=# 'InsertEnter' && mode() !=# 'i')
     return 1
@@ -202,8 +209,7 @@ endfunction
 
 function! s:define_on_event(event) abort
   execute 'autocmd deoplete' a:event
-        \ '* call deoplete#util#rpcnotify("deoplete_on_event",'
-        \.'deoplete#init#_context('.string(a:event).', []))'
+        \ '* call deoplete#send_event('.string(a:event).')'
 endfunction
 
 function! s:on_insert_leave() abort
@@ -242,4 +248,24 @@ endfunction
 
 function! s:is_exiting() abort
   return exists('v:exiting') && v:exiting != v:null
+endfunction
+
+function! s:kill_yarp() abort
+  if g:deoplete#_yarp.job_is_dead
+    return
+  endif
+
+  let job = g:deoplete#_yarp.job
+  if !has('nvim') && !exists('g:yarp_jobstart')
+    " Get job object from vim-hug-neovim-rpc
+    let job = g:_neovim_rpc_jobs[job].job
+  endif
+
+  if has('nvim')
+    call jobstop(job)
+  else
+    call job_stop(job, 'kill')
+  endif
+
+  let g:deoplete#_yarp.job_is_dead = 1
 endfunction
