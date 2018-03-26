@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 mar 10 11:41
+# .zshrc - Last Change: 2018 mar 26 08:52
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -322,7 +322,7 @@ zle -N history-beginning-search-menu
 bindkey '' history-beginning-search-menu
 
 source $ZDOTDIR/plugins/fzy/fzy.plugin.zsh
-source $ZDOTDIR/plugins/zsh-autopair/zsh-autopair.plugin.zsh
+source $ZDOTDIR/plugins/zsh-autopair/autopair.plugin.zsh
 source $ZDOTDIR/plugins/extract/extract.plugin.zsh
 source $ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 

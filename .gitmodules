@@ -70,3 +70,15 @@
 [submodule "nvim/plugged/vim-plug"]
 	path = nvim/plugged/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "/home/sergio/.dotfiles/zsh/plugins/zsh-autosuggestions"]
+	path = /home/sergio/.dotfiles/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "/home/sergio/.dotfiles/zsh/plugins/zsh-autopair"]
+	path = /home/sergio/.dotfiles/zsh/plugins/zsh-autopair
+	url = https://github.com/hlissner/zsh-autopair.git
+[submodule "/home/sergio/.dotfiles/zsh/plugins/fzy"]
+	path = /home/sergio/.dotfiles/zsh/plugins/fzy
+	url = https://github.com/aperezdc/zsh-fzy.git
+[submodule "zsh/plugins/extract"]
+	path = zsh/plugins/extract
+	url = https://github.com/TBSliver/zsh-plugin-extract.git
