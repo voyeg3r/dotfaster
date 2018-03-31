@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mar 14 14:50
+#      Last Change: 2018 mar 31 18:21
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -41,6 +41,7 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
+yaourt pacui
 
 # hd temperature
 #sudo hddtemp /dev/sda
@@ -275,6 +276,10 @@ firefoxdefault (){
 
 # converter legendas sub para srt
 yaourt -S sub2srt
+
+# soundconverte
+# https://askubuntu.com/a/231791/3798
+sudo pacman -S soundconverter
 
 # cairo-dock desktop launcher
 yaourt -S cairo-dock cairo-dock-plug-ins
@@ -716,6 +721,8 @@ sudo yaourt -S --noconfirm cairo-ubuntu fontconfig-ubuntu freetype2-ubuntu
 sudo yaourt --noconfirm -S ttf-ubuntu-font-family
 sudo yaourt -S adobe-source-code-pro-fonts
 } && graphictools
+
+sudo pacman -S conky conky-manager
 
 # piper is an alternative for sed awk and other text manipulation tools
 sudo pip install piper

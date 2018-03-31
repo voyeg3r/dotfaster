@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 24 08:29
+# dicasvim.md Intro - Last Change: 2018 mar 31 15:39
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -21,6 +21,12 @@
     #8 https://ckarchive.com/b/75u7h8h8ww6z
     #9 https://ckarchive.com/b/xmuph6hz39r6
     #10 https://ckarchive.com/b/lmuehmh4w9x5
+
+# Win height
++ https://vi.stackexchange.com/questions/5130/
+
+    let l:winheight = winheight(win_getid())
+    let l:winheight = winheight('%')
 
 # Save file only if it has changed
 
@@ -933,6 +939,9 @@ OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
     :verbose imap x
     :h map-listing
 
+Notice: Plugins are sourced after your vimrc, knowng this
+is very important when it comes to mappings.
+
 ## Making mapppings local to your buffer
 + http://learnvimscriptthehardway.stevelosh.com/chapters/11.html
 
@@ -949,25 +958,26 @@ It's even more important when you're writing a plugin for other people to use. T
 
 # Increasing numbers visually
 
-``` viml
-{Visual}g CTRL-A    Add [count] to the number or alphabetic character in
+`{Visual}g CTRL-A` Add [count] to the number or alphabetic character in
 
-    the highlighted text. If several lines are
-    highlighted, each one will be incremented by an
-    additional [count] (so effectively creating a
-    [count] incrementing sequence).  {not in Vi}
-    For Example, if you have this list of numbers:
-    1. ~
-    1. ~
-    1. ~
-    1. ~
-    Move to the second "1." and Visually select three
-    lines, pressing g CTRL-A results in:
-    1. ~
-    2. ~
-    3. ~
-    4. ~
-```
+the highlighted text. If several lines are
+highlighted, each one will be incremented by an
+additional [count] (so effectively creating a
+[count] incrementing sequence).  {not in Vi}
+For Example, if you have this list of numbers:
+
+        1. ~
+        1. ~
+        1. ~
+        1. ~
+
+Move to the second "1." and Visually select three
+lines, pressing `g CTRL-A` results in:
+
+        1. ~
+        2. ~
+        3. ~
+        4. ~
 
 ## Increment alphanumeric
 + https://digitalronin.github.io/2016/06/28/vim-increment-column.html
@@ -1088,6 +1098,10 @@ See :h /\zs. (And :h /\@<= if you're so inclined.)
     Example     matches ~
     \v(foo)@<!bar       any "bar" that's not in "foobar"
     \(\/\/.*\)\@<!in    "in" which is not after "//"
+
+# Regex - equivalent to [a-z]
+
+    \l ........ lowercase character
 
 # Remove offending key from known_hosts file with one swift move
 
@@ -1664,6 +1678,20 @@ I also have this line on my `~/.vimrc`, it allows me to insert the filename easi
 iab fname <c-r>=expand("%:p")<cr>
 ```
 
+
+# Ao digitar o caractere de fechamento o vim pula pra fora do bloco
++ https://www.quora.com/What-are-your-favorite-Vim-key-mappings
+
+    inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+    inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : ")"
+    inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : ")"
+    inoremap <expr> > strpart(getline('.'), col('.')-1, 1) == ">" ? "\<Right>" : ")"
+
+    inoremap ( ()<left>
+    inoremap { {}<left>
+    inoremap [ []<left>
+    inoremap < <><left>
+
 # Toggle comment function
 + https://stackoverflow.com/a/49097957/2571881
 + https://stackoverflow.com/a/31817742/2571881
@@ -1671,13 +1699,22 @@ iab fname <c-r>=expand("%:p")<cr>
     :h g@
 
 ```vimL
+" these lines are needed for ToggleComment()
+" Reference: https://stackoverflow.com/a/24652257/2571881
+autocmd FileType c,cpp,java      let b:comment_leader = '//'
+autocmd FileType arduino         let b:comment_leader = '//'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType zsh             let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType matlab,tex      let b:comment_leader = '%'
+autocmd FileType vim             let b:comment_leader = '"'
 
-" another one
 function! ToggleComment()
     if exists('b:comment_leader')
         let l:pos = col('.')
         let l:space = ( &ft =~ '\v(c|cpp|java|arduino)' ? '3' : '2' )
         if getline('.') =~ '\v(\s*|\t*)' .b:comment_leader
+            let l:space -= ( getline('.') =~ '\v.*\zs' . b:comment_leader . '(\s+|\t+)@!' ?  1 : 0 )
             execute 'silent s,\v^(\s*|\t*)\zs' .b:comment_leader.'[ ]?,,g'
             let l:pos -= l:space
         else

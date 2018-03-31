@@ -1,10 +1,18 @@
-# dicas android - Last Change: sáb 28 out 2017 16:00:42 -03
+# dicas android - Last Change: 2018 mar 30 19:10
 
-baixar Gapps para moto G1/G2/G 4G/E1/E2/X2 http://adf.ly/1TKUMX baixar a versao pico ou aqui http://adf.ly/1UnrYn
+# How to access my Android's files using Wi-Fi in Ubuntu?
++ https://askubuntu.com/questions/626941/
 
-Como Desbloquear bootloader aqui https://www.youtube.com/watch?v=THU4Y...
+Both my Ubuntu and Android phone are using the same Wi-Fi. How can I transfer
+files between the phone and the PC? Is there any way to mount the Android file
+system? I don't want to use the USB cable. Bluetooth doesn't work. So WiFi is
+the only other option.
 
-como instalar recovery twrp aqui https://www.youtube.com/watch?v=ijHei...
+My favourite application is SSHelper. It is free on google play store and well documented.
+
+It creates a SSH server you can access using sftp. You mount the filesystem using Nautilus.
+
+    http://arachnoid.com/android/SSHelper/
 
 # como saber a versão do android
 
@@ -60,7 +68,6 @@ No comando acima colei o meu código
     sudo fastboot flash recovery twrp-2.8.6.0-titan.img
 
     boot in recover mode
-
 
 # How block fastbook again
 

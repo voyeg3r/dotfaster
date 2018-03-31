@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 26 00:39
+" Last Change: 2018 mar 29 14:38
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -217,7 +217,7 @@ call plug#begin(expand(glob('~/.config/nvim/plugged')))
 "Plug 'mhinz/vim-startify'
 "Plug 'henrik/vim-indexed-search'
 "Plug 'coderifous/textobj-word-column.vim'
-Plug 'w0rp/ale', { 'on': ['ALEToggle'] }
+Plug 'w0rp/ale' ", { 'on': ['ALEToggle'] }
 Plug 'rking/ag.vim', { 'on':  ['Ag'] }
 Plug 'wellle/targets.vim'
 Plug 'mattn/emmet-vim' , { 'for': ['html', 'htmldjango', 'javascript.jsx', 'css'] }
@@ -379,6 +379,7 @@ xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
 let b:lion_squeeze_spaces = 1
 
 " some deoplete configurations
+" inoremap <expr> <CR> pumvisible() ? '<C-e>' : '<CR>'
 inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_refresh_always = 1
@@ -560,7 +561,7 @@ nnoremap <c-o> <c-o>zz
 
 " select last paste in visual mode
 " With <Leader>p we easily select the pasted text and we fix the indentation with  <  or >.
-nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
+" nnoremap <expr> <Leader>p '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap gp `[v`]
 
 if exists("*fugitive#statusline")
@@ -1119,8 +1120,8 @@ function! JumpToNextPlaceholder() abort
     exec "norm! c/+>/e\<CR>"
     call setreg('/', old_query)
 endfunction
-nnoremap <special> <C-j> :keepjumps call JumpToNextPlaceholder()<CR>a
-inoremap <special> <C-j> <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
+nnoremap <special> <Leader>p :keepjumps call JumpToNextPlaceholder()<CR>a
+inoremap <special> <Leader>p <ESC>:keepjumps call JumpToNextPlaceholder()<CR>a
 
 noremap <F12> <Esc>:syntax sync fromstart<CR>
 inoremap <F12> <C-o>:syntax sync fromstart<CR>
