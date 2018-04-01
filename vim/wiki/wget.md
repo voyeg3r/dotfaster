@@ -10,7 +10,16 @@ OBS: I think it is useful to change the user-agent for wget before using it:
 
 		alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
 
-    wget -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
+    wget --limit-rate=15k -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
+
+# Download Digitalk7.com albuns
++ http://digitalk7.com/mus/
+
+Use wget command to mirror the part of Digital K7 that you want. Mirroring
+Digital K7 means to download its files. For example, to download the entire
+Bach discography on Digital K7:
+
+    wget -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://DigitalK7.com/mus/Classical/Bach/"
 
 # Download all yahoo messages from yahoo groups
 

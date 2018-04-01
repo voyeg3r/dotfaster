@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mar 31 15:39
+# dicasvim.md Intro - Last Change: 2018 abr 01 07:14
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -27,6 +27,33 @@
 
     let l:winheight = winheight(win_getid())
     let l:winheight = winheight('%')
+
+    see also winline()
+
+# How to replace first n occurrences of a character for each line?
++ https://stackoverflow.com/a/49590581/2571881
+
+Suppose, I have
+
+    type,type,type,type,description,description,description.
+    type,type,type,type,description,description.
+
+I want to -
+
+    type|type|type|type|description,description,description.
+    type|type|type|type|description,description.
+
+Solution:
+
+Nothing sofisticated but it get's the job done
+
+    :%norm f,r|;.;.;.
+
+breakdown
+
+    :%norm       start a normal command on all lines
+    f,r|        f(ind) a ',' and r(eplace) with '|'
+    ;.;.;.      ';' jumps to next match and '.' repeats the change
 
 # Save file only if it has changed
 
@@ -1677,7 +1704,6 @@ I also have this line on my `~/.vimrc`, it allows me to insert the filename easi
 ``` vim
 iab fname <c-r>=expand("%:p")<cr>
 ```
-
 
 # Ao digitar o caractere de fechamento o vim pula pra fora do bloco
 + https://www.quora.com/What-are-your-favorite-Vim-key-mappings

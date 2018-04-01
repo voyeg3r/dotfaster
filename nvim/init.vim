@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 29 14:38
+" Last Change: 2018 mar 31 19:15
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -401,7 +401,7 @@ nnoremap Y y$
 
 " Jump outside '"({
 if !exists('g:AutoPairsShortcutJump')
-  let g:AutoPairsShortcutJump = '<C-l>'
+  let g:AutoPairsShortcutJump = '<A-l>'
 endif
 
 call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
@@ -1215,7 +1215,7 @@ vnoremap <F23> <ESC>:set hls! hls?<cr> <bar> gv
 
 " alternate between relative number, number and no number
 set nu rnu
-"nmap <F6> :set nu rnu<cr>
+" nmap <F6> :set nu rnu<cr>
 nnoremap <F6> :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 "augroup numbertoggle
