@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 01 16:46
+" Last Change: 2018 abr 01 19:25
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -329,16 +329,6 @@ nnoremap <F2> :NERDTreeToggle<cr>
 " vnoremap <Leader>t :Commentary<cr>
 " comment a paragraph → gcap
 
-" these lines are needed for ToggleComment()
-" Reference: https://stackoverflow.com/a/24652257/2571881
-autocmd FileType c,cpp,java      let b:comment_leader = '//'
-autocmd FileType arduino         let b:comment_leader = '//'
-autocmd FileType sh,ruby,python  let b:comment_leader = '#'
-autocmd FileType zsh             let b:comment_leader = '#'
-autocmd FileType conf,fstab      let b:comment_leader = '#'
-autocmd FileType matlab,tex      let b:comment_leader = '%'
-autocmd FileType vim             let b:comment_leader = '"'
-
 " Emacs like Ctrl-l - jumpt to Middle, Bottom and Top of the window
 " Reference: http://vim.1045645.n5.nabble.com/Vim-General-f1139531.html
 function! ToggleHML()
@@ -356,6 +346,16 @@ function! ToggleHML()
     endif
 endfunction
 nnoremap <C-l> :call ToggleHML()<CR>
+
+" these lines are needed for ToggleComment()
+" Reference: https://stackoverflow.com/a/24652257/2571881
+autocmd FileType c,cpp,java      let b:comment_leader = '//'
+autocmd FileType arduino         let b:comment_leader = '//'
+autocmd FileType sh,ruby,python  let b:comment_leader = '#'
+autocmd FileType zsh             let b:comment_leader = '#'
+autocmd FileType conf,fstab      let b:comment_leader = '#'
+autocmd FileType matlab,tex      let b:comment_leader = '%'
+autocmd FileType vim             let b:comment_leader = '"'
 
 function! ToggleComment()
     if exists('b:comment_leader')
@@ -379,7 +379,6 @@ inoremap <Leader>t <C-o>:call ToggleComment()<CR>
 xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
 " vnoremap <Leader>t :call ToggleComment()<CR>
 
-
 " source: https://github.com/junegunn/vim-plug/issues/164
 "command! Gstatus call LazyLoadFugitive('Gstatus')
 "command! Gdiff call LazyLoadFugitive('Gdiff')
@@ -391,7 +390,6 @@ xnoremap <Leader>t :'<,'>call ToggleComment()<CR>
 "  call fugitive#detect(expand('%:p'))
 "  exe a:cmd
 "endfunction
-
 
 " lion it is an align plugin glip=
 let b:lion_squeeze_spaces = 1
