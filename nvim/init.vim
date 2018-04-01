@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mar 31 19:15
+" Last Change: 2018 abr 01 08:59
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -999,8 +999,8 @@ nnoremap <Backspace> :call DeleteUnder()<CR>
 " https://superuser.com/a/147842/45032
 " Insert new line above and below in normal mode
 " unimpaired [<space ]<space>
-nnoremap <CR> :call append(line('.'), '')<CR>
-nnoremap <A-CR> :call append(line('.')-1, '')<CR>
+" nnoremap <CR> :call append(line('.'), '')<CR>
+" nnoremap <A-CR> :call append(line('.')-1, '')<CR>
 
 " Here we have some shortcuts (above)
 " <CR> ............... add new line below in normal mode

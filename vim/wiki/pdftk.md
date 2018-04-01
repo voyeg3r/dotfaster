@@ -1,7 +1,7 @@
 Arquivo: manual do comando pdftk
 
     Criado: Sex 04/Nov/2011 hs 19:25
-    Last Change: dom 08 jan 2017 12:34:46 BRT
+    Last Change: 2018 abr 01 10:58
     autor: Sérgio Luiz Araújo Silva
     site: http://vivaotux.blogspot.com
     twitter: http://www.twitter.com/voyeg3r
@@ -13,6 +13,8 @@ Arquivo: manual do comando pdftk
 Uma alternativa mais leve é o [stapler](stapler)
 
 # Concatenando dois arquivos em um
+
+veja também o comando [convert](convert.md)
 
 	pdftk Arquivo1.pdf Arquivo2.pdf cat output Concatenado1e2.pdf
 

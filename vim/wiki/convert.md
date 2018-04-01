@@ -1,4 +1,4 @@
-# Introdução
+# Introdução - dom 01 abr 2018 10:56:02 -03
 
     convert velha_imagem.png nova_imagem.jpg
 
