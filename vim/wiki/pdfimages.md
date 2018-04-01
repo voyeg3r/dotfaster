@@ -1,11 +1,7 @@
-# Arquivo: Extract images from pdf files
+# pdfimages - dom 01 abr 2018 12:12:02 -03
+Created: Ter 31/Jul/2012 hs 06:33
 
-    Criado: Ter 31/Jul/2012 hs 06:33
-    Last Change: dom 08 jan 2017 12:04:58 BRT
-    autor: Sérgio Luiz Araújo Silva
-    site: http://vivaotux.blogspot.com
-    twitter: http://www.twitter.com/voyeg3r
-    email: <voyeg3r  gmail.com>
+# Extract images from a pdf file
 
-      pdfimages -j file.pdf target-folder
+    pdfimages -j file.pdf target-folder
 

@@ -26,5 +26,4 @@ Add a dropshadow to the image.
 
     convert arquivo.pdf img.png
 
-Para importar páginas individualmente use o inkscape ele lhe permite desagrupar todos
-os objetos
+Para importar páginas individualmente use o inkscape ele lhe permite desagrupar todos os objetos

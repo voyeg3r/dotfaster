@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 01 08:59
+" Last Change: 2018 abr 01 16:46
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -338,6 +338,24 @@ autocmd FileType zsh             let b:comment_leader = '#'
 autocmd FileType conf,fstab      let b:comment_leader = '#'
 autocmd FileType matlab,tex      let b:comment_leader = '%'
 autocmd FileType vim             let b:comment_leader = '"'
+
+" Emacs like Ctrl-l - jumpt to Middle, Bottom and Top of the window
+" Reference: http://vim.1045645.n5.nabble.com/Vim-General-f1139531.html
+function! ToggleHML()
+    set scrolloff=0
+    let l:last_win_line = ( line('$') <= winheight('%') ? line('$')  : winheight('%')  )
+    if winline() >= 1 && winline() < l:last_win_line / 2
+      normal M
+      return
+    elseif winline() == l:last_win_line / 2 || winline() < l:last_win_line
+      normal L
+      return
+    else "winline() == l:last_win_line
+      normal H
+      return
+    endif
+endfunction
+nnoremap <C-l> :call ToggleHML()<CR>
 
 function! ToggleComment()
     if exists('b:comment_leader')
