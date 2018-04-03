@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 01 19:25
+" Last Change: 2018 abr 03 17:30
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -334,15 +334,12 @@ nnoremap <F2> :NERDTreeToggle<cr>
 function! ToggleHML()
     set scrolloff=0
     let l:last_win_line = ( line('$') <= winheight('%') ? line('$')  : winheight('%')  )
-    if winline() >= 1 && winline() < l:last_win_line / 2
-      normal M
-      return
-    elseif winline() == l:last_win_line / 2 || winline() < l:last_win_line
-      normal L
-      return
-    else "winline() == l:last_win_line
-      normal H
-      return
+    if winline() < l:last_win_line / 2
+        normal M
+    elseif winline() < l:last_win_line
+        normal L
+    else
+        normal H
     endif
 endfunction
 nnoremap <C-l> :call ToggleHML()<CR>

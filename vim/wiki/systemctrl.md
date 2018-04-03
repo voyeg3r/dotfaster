@@ -1,9 +1,9 @@
-# systemctrl.md intro - Last Change: 2017 nov 25 13:03
+# systemctrl.md intro - Last Change: 2018 abr 03 15:09
 
 Local onde ficam os serviços
 
 		ls /etc/init.d/
-		
+
 # List runing services
 
 	systemctl list-unit-files | grep enabled
