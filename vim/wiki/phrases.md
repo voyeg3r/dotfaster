@@ -25,3 +25,6 @@ E não vamos esquecer que uma mente ágil é necessária para acompanhar a destr
 
 The sage acts by doing nothing
 O Sábio age não fazendo nada
+
+As much as I hated to concede defeat, I opened the door and asked, ‘Anyone have any ideas?’
+Por mais que eu odiasse admitir a derrota, abri a porta e perguntei: "Alguém tem alguma ideia?"

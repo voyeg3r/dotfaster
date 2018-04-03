@@ -1,4 +1,4 @@
-# hack.md - Last Change: 2017 dez 02 06:29
+# hack.md - Last Change: 2018 abr 02 18:24
 
 ``` markdown
 Created:	 ter 10 jan 2017 13:47:48 BRT
@@ -62,6 +62,10 @@ passwd: sameofmylinuxmachine
     netmask 255.255.255.0
     gateway 192.168.0.1
     dns 8.8.8.8, 4.4.4.4
+
+Faster dns server
+
+    1.0.0.1
 
 
 # android

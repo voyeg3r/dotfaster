@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mar 31 18:21
+#      Last Change: 2018 abr 03 09:36
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -41,7 +41,15 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
+
 yaourt pacui
+# Because PacUI is contained within one file, it is easy to download and start
+# it without prior installation. Please remember to install PacUI’s
+# dependencies first for proper operation. Marking the “pacui” file as
+# executable is essential, too:
+# wget https://raw.githubusercontent.com/excalibur1234/pacui/master/pacui
+# chmod +x pacui
+# bash pacui
 
 # hd temperature
 #sudo hddtemp /dev/sda
@@ -65,8 +73,12 @@ yaourt artha
 # npm is the default package manager for Node.js.
 sudo pacman -S npm
 
-# podcast client
+# podcast client (see also hammond)
 yaourt vocal
+
+# Flatpack support
+# flatpak --user remote-add flathub --if-not-exists https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo pacman -S flatpak flatpak-builder
 
 # net tools
 sudo pacman -S ethtool net-tools
