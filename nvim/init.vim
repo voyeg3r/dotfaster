@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 03 17:30
+" Last Change: 2018 abr 05 08:42
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -1025,7 +1025,8 @@ nnoremap <Backspace> :call DeleteUnder()<CR>
 " insert mode. This is handy when you are in the middle of
 " a line and would like to go to its end without switching
 " to the normal mode.
-inoremap <C-e> <C-o>$
+" inoremap <C-e> <C-o>$
+" it makes me lose my completion of the line below
 
 " This function allows you to open the last edited file
 " in order to open the last file from the SHELL
@@ -1219,7 +1220,6 @@ cnoreabbrev sudow SaveAsRoot
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 inoremap <C-a> <C-o>^
-inoremap <C-e> <End>
 
 " to reselect use gv in normal mode - Shift-F11
 nnoremap <F23> <ESC>:set hls! hls?<cr>

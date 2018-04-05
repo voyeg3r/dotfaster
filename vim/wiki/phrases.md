@@ -28,3 +28,11 @@ O Sábio age não fazendo nada
 
 As much as I hated to concede defeat, I opened the door and asked, ‘Anyone have any ideas?’
 Por mais que eu odiasse admitir a derrota, abri a porta e perguntei: "Alguém tem alguma ideia?"
+
+He took after his father.
+Ele puxou seu pai.
+
++----------------------------------------------------+
+| colon       | semicolon       | period |  comma    |
+| dois pontos | ponto e vírgula | ponto  |   vírgula |
++----------------------------------------------------+
