@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 01 07:14
+# dicasvim.md Intro - Last Change: 2018 abr 05 15:44
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -233,7 +233,7 @@ discarted it without worrying about saving.
 
 Solution:
 
-    :let i = 1 | g/^$/execute "normal i>item" . i | let i = i + 1
+    :let i = 1 | g/^$/execute "normal i>item" . i | let i += 1
 
     >item1
     Door
@@ -247,7 +247,7 @@ Solution:
 # Substitute on even lines
 + https://groups.google.com/forum/#!topic/comp.editors/xk9DMoszgq4
 
-    2,$g/^/s/foo/bar/g|+t+|-d
+    :2,$g/^/s/foo/bar/g|+t+|-d
 
 # Faster way to move a block of text
 + https://vi.stackexchange.com/a/15161/7339

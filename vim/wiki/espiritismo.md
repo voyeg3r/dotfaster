@@ -14,4 +14,6 @@ fonte: http://www.smashwords.com/extreader/read/11419/9/terra-a-ilha-da-fantasia
 
 [previna se](previna-se.md)
 
+[Prece da Gratidão](prece-da-gratidao.md)
+
 }}}
