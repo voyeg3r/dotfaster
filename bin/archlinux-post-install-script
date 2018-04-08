@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 abr 05 08:14
+#      Last Change: 2018 abr 08 14:24
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -802,7 +802,7 @@ sudo pacman -S --noconfirm rhythmbox
 sudo yaourt -S --noconfirm codecs
 #sudo pacman -S vlc qt4 ffmpegthumbnailer gstreamer0.10-{{bad,good,ugly,base}{,-plugins},ffmpeg}
 sudo pacman -S vlc qt4 {,gst-{libav,plugins-{bad,base,good,ugly}}}
-yaourt mpv gnome-mpv
+yaourt mpv gnome-mpv qmmp
 
 sudo pacman -S gnome-subtitles
 sudo pacman -S gaupol
