@@ -1,4 +1,4 @@
-# Arquivo: pacman.md - Last Change: 2017 dez 03 17:38
+# Arquivo: pacman.md - Last Change: 2018 abr 06 09:06
 Created: sex 08/set/2017 hs 12:58
 
 If pacman is not running and has a lock package preventing

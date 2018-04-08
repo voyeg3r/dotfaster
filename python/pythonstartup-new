@@ -17,7 +17,8 @@ except ImportError:
     print("Module readline not available.")
 else:
     import rlcompleter
-    readline.parse_and_bind("\C-space: complete")
+    # readline.parse_and_bind("\C-space: complete")
+    readline.parse_and_bind("tab: complete")
 
 del sys
 # #readline.parse_and_bind("tab: complete")

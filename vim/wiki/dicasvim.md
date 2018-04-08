@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 05 15:44
+# dicasvim.md Intro - Last Change: 2018 abr 06 18:36
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -792,6 +792,12 @@ gf  at any file on the cursor is over will jump to the file
 :b substring  opens any file with substring
 ```
 
+If you are editing more than one file you can type `Ctrl-w o` to keep the
+current window open. After iditing it you can reopen all other windows
+by typing:
+
+    :ba
+
 # Nice paragraph formatting
 + http://vimcasts.org/episodes/formatting-text-with-par/
 + http://www.nicemice.net/par/
@@ -965,6 +971,10 @@ OBS: when changing case with `gUgn`set noignorecase otherwise it will not work!
     :verbose map <c-a>
     :verbose imap x
     :h map-listing
+
+## Figuring out what map calls a specific function
+
+    :redir @"> | silent map | redir END | new | put | v/StripWhitespace/d_
 
 Notice: Plugins are sourced after your vimrc, knowng this
 is very important when it comes to mappings.
@@ -1400,8 +1410,8 @@ Senha: invanBabnit3
 E assim por diante. Eu precisava converter este arquivo para algo como:
 
 ``` markdown
-Matrícula: 123456 - Senha: yatVind7kned
 Matrícula: 123456 - Senha: invanBabnit3
+Matrícula: 123456 - Senha: yatVind7kned
 ```
 
 Para isto, basta emitir o comando:
@@ -2683,6 +2693,10 @@ Following the same logic you can repeat last search by pressing @/ or just //
 Repeating the last substituition using &
 Repeat last substituition over whole file g&
 ```
+
+## Repeat last normal command on a visual block
+
+    :'<,'> normal .
 
 # Repeating moviment on vim
 Let's say you make:

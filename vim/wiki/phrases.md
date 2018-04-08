@@ -36,3 +36,19 @@ Ele puxou seu pai.
 | colon       | semicolon       | period |  comma    |
 | dois pontos | ponto e vírgula | ponto  |   vírgula |
 +----------------------------------------------------+
+
+After that I made some sound that sounded like a grumble , but not quite.
+Depois disso fiz um som que soou como um resmungo, mas não exatamente.
+
+She looked up at him sadly, acknowledging his gesture with a half wag of her tail.
+Ela olhou para ele com tristeza, reconhecendo seu gesto com uma meia sacudida de seu rabo.
+
+Some of the knit dresses showed off so much thigh that they looked like tops.
+Alguns dos vestidos de malha exibiam tanta coxa que pareciam topos.
+
+I put the laundry hamper up on the shelf, and got back into bed.
+Coloquei a roupa na prateleira e voltei para a cama.
+(hamper - dificultar / balaio)
+
+I was in my sloppy clothes that I wear at home only.
+Eu estava com minhas roupas desleixadas que só uso em casa.
