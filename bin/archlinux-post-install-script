@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 abr 08 14:24
+#      Last Change: 2018 abr 13 09:34
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -155,6 +155,7 @@ sudo pip install pdfkit
 # import pdfkit
 # pdfkit.from_url('http://google.com', 'out.pdf')
 
+sudo pip install flake8 
 # sudo pip install weasyprint
 #
 # python
@@ -244,7 +245,8 @@ yaourt -S california
 yaourt -Ss command-not-found
 
 # leitor de rss
-yaourt -S feedreader-git
+# yaourt -S feedreader-git
+yaourt -S feedreader
 
 # in order to use the plugin command-not-found you must have
 # read this also: https://wiki.archlinux.org/index.php/Pkgfile

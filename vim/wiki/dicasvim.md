@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 06 18:36
+# dicasvim.md Intro - Last Change: 2018 abr 12 15:10
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,11 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Hexa chars substitution
+Substituição de caracteres hexadecimal
+
+    :%s/\%x20/\r
 
 # Mastering vim tips
 
@@ -325,6 +330,42 @@ The one unique line that I REALLY want.
 ```
 
 In practice we are looking for anything followed by itself `\1` in a new line `\n`
+
+## Another example of removing duplicated
++ https://vi.stackexchange.com/a/5366/7339
+
+I have a file that looks like this.
+
+    Move to 230.00
+    Hold
+    Hold
+    Hold
+    Hold
+    Hold
+    Hold
+    Move to 00.00
+    Hold
+    Hold
+    Hold
+    Hold
+    Hold
+    FooBar
+    Hold
+    Spam
+    Hold
+
+I would like it to look like this:
+
+    Move to 230.00
+    Hold
+    Move to 00.00
+    Hold
+    FooBar
+    Hold
+    Spam
+    Hold
+
+    :%s/^\(.*\)\(\n\1\)\+$/\1/
 
 # Function to delete duplicated lines
 + https://stackoverflow.com/a/49371965/2571881
@@ -1153,6 +1194,27 @@ Alternatively you can use sed:
 
     :set undoreload=0 | edit
     command! -bar UndoClear exe "set ul=-1 | m-1 | let &ul=" . &ul
+
+# Running current buffer as a python file
++ https://stackoverflow.com/a/40290101/2571881
+
+    :w !python
+
+This meanse write the current buffer into the external program "python". This literally just sends the contents of your buffer directly to python.
+
+Now here's where it gets really cool. In vim, :w is an "ex command", e.g. a command that you run from the vim command line that originally came from ex, a very old line based unix text editor. The awesome thing about ex commands is that since they are all line based, you can directly state which lines you would like the command to apply to. For example:
+
+    :2w myfile.txt
+
+will write only line two to the file "myfile.txt". You can even supply a range, e.g.
+
+    :2,7w myfile.txt
+
+will write lines 2-7 to "myfile.txt". This means that using your example, we can run
+
+    :1w !python
+
+To run just the first line
 
 # Edit subtitles with vim
 + https://github.com/tpope/vim-speeddating
