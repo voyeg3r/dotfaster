@@ -1,4 +1,4 @@
-# gnomeshell.md - Last Change: 2018 fev 16 17:04
+# gnomeshell.md - Last Change: 2018 abr 16 16:46
 ```
 Created: Wed 04/May/2011 hs 17:23
 ```
@@ -32,6 +32,7 @@ Created: Wed 04/May/2011 hs 17:23
 	Maximize................... Super + Up
 	Unmaximize ................ Super + Down
 	Fit half the screen ....... Super + Left/Right
+    zoon in and out ........... Alt + Super + 8
 
 	Show messages ............. Super + M
 	JavaScript console ........ type 'lg' in the Alt+F2 prompt (Esc) to exit

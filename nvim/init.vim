@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 14 12:58
+" Last Change: 2018 abr 16 19:30
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -555,7 +555,7 @@ endfunction
 fun! CleanFlaschards() abort
     %w! output.csv-backup
     let @a = 'gg0vg_ydd}}{jA[sound:0];JdapGopgg'
-    let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg\<CR>"'
+    let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara'
     %s/<script\_.\{-}<\/script>//ge
     %s/\v\<(\/)?(p|em|strong|br)(\/)?\>//ge
     g/^(.*)/d
@@ -569,7 +569,9 @@ fun! CleanFlaschards() abort
     g/\.mp3$/s/^\d\+-//g
 	g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,ge
 	g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,ge
+    g/PDF+MP3/exec 'normal dG\<Enter>'
 	%s,\(\.\)\(<\/b>\)$,\2\1,ge
+    %s/^\n\{2,}/\r/ge
 	normal ggvip
 	let selectionsize = line("'>") - line("'<") + 1
 	echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"

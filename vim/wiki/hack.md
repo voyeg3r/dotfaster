@@ -1,8 +1,4 @@
-# hack.md - Last Change: 2018 abr 02 18:24
-
-``` markdown
-Created:	 ter 10 jan 2017 13:47:48 BRT
-```
+# hack.md - Last Change: 2018 abr 17 07:15
 
 See more at [dicasgoogle](dicasgoogle.md)
 
@@ -13,6 +9,9 @@ See more at [dicasgoogle](dicasgoogle.md)
 
 	  admin
 	  gvt12345
+
+Solutions_Anisia → 疒畣略疓畨畡疠畤略疔
+tip: hideunhide
 
 # 3* new 3eg* account key
 

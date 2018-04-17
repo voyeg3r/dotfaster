@@ -34,7 +34,14 @@ Ele puxou seu pai.
 
 +----------------------------------------------------+
 | colon       | semicolon       | period |  comma    |
++----------------------------------------------------+
 | dois pontos | ponto e vírgula | ponto  |   vírgula |
++----------------------------------------------------+
+
++----------------------------------------------------+
+| curly braces | brackets  | quotation marks
++----------------------------------------------------+
+| chaves       | colchetes | aspas
 +----------------------------------------------------+
 
 After that I made some sound that sounded like a grumble , but not quite.
