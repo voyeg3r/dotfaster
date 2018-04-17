@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 16 19:30
+" Last Change: 2018 abr 17 11:49
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -555,9 +555,10 @@ endfunction
 fun! CleanFlaschards() abort
     %w! output.csv-backup
     let @a = 'gg0vg_ydd}}{jA[sound:0];JdapGopgg'
-    let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara'
+    let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara:w'
     %s/<script\_.\{-}<\/script>//ge
     %s/\v\<(\/)?(p|em|strong|br)(\/)?\>//ge
+    %s/\v\<\/?span([^>]*)?\>//ge
     g/^(.*)/d
     g/compartilhe o post/exec 'normal! dG'
     g/p style/exec 'normal! dip'
