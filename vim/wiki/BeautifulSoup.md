@@ -94,6 +94,36 @@ soup = BeautifulSoup(html_content, 'html.parser')
 for tag in soup.findAll('p'):
     print(tag.text, "\n")
 ```
+
+A fourth example
+
+    from bs4 import BeautifulSoup
+    import requests
+    req = requests.get('http://www.mairovergara.com/like-clockwork-o-que-significa-esta-expressao/')
+    soup = BeautifulSoup(req.text, "lxml")
+
+    soup.title
+    <title>Like Clockwork | O que significa esta expressão?</title>
+
+    soup.title.string
+    'Like Clockwork | O que significa esta expressão?'
+
+
+    for i in soup.find_all('p'):
+      print(i.text)
+      print('\n')
+
+    # in this example I can get Mairo's Vergara posts
+    for strong in soup.find_all('strong'):
+      print(strong.text, strong.next_sibling)
+      print('\n')
+
+
+    for strong in soup.find_all('strong'):
+      value=(strong, strong.next_sibling)
+      print(value)
+      print('\n')
+
 # Python BeautifulSoup give multiple tags to findAll
 + https://stackoverflow.com/a/20649408/2571881
 

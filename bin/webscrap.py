@@ -44,9 +44,16 @@ soup = BeautifulSoup(html_content, 'html.parser')
 #        f.write(var)
 
 
+# with open("output.csv", "w") as file:
+#     for tag in soup.findAll('p'):
+#         file.write(str(tag))
+#         file.write("\n\n")
+
+
 with open("output.csv", "w") as file:
-    for tag in soup.findAll('p'):
-        file.write(str(tag))
+    for tag in soup.find_all('em'):
+        value=(str(tag))
+        file.write(value)
         file.write("\n\n")
 
 with open("audios.txt", "w") as file:

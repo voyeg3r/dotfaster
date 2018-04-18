@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 12 15:10
+# dicasvim.md Intro - Last Change: 2018 abr 18 12:24
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3437,6 +3437,11 @@ Make above lines become this way
 vim *.txt
 :bufdo execute "normal @a" | write
 ```
+
+# How to delete all paragraphs where a pattern is not present?
++ https://stackoverflow.com/a/18509412/2571881
+
+    let @r="" | execute('g/\v\<\/?strong\>/normal "Rdap') | %d | put r
 
 # Changing a vim macro
 
