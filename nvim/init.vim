@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 18 13:05
+" Last Change: 2018 abr 18 13:24
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -563,30 +563,9 @@ fun! CleanFlaschards() abort
     g/\.mp3$/s/“\|”//g
     g/\.mp3$/s/^\d\+-//g | normal gg
     normal ggvipgg
-    let selectionsize = line("'>") - line("'<") + 1
-    echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
-    " perl-rename 's/^[0-9]-//g' *.mp3
-    "g/<script\_.\{-}<\/script>/exec 'normal! dip'
-    "g/^(.*)/d
-    "%s/\v\<(\/)?(p|em|strong|br)(\/)?\>//ge
-    "%s/\v\<\/?span([^>]*)?\>//ge
-    "g/compartilhe o post/exec 'normal! dG'
-    "g/p style/exec 'normal! dip'
-	"g/v((vamos (então )?aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/exec 'normal! dip'
-	"g/\v(no post de hoje)/exec 'normal! dip'
-    "g/repetição espaçada/exec 'normal! dip'
-    "0r !ls *.mp3 | sort -n -k1
-    "g/\.mp3$/s/‘\|’//ge
-	"normal! ogg
-    "g/\.mp3$/s/^\d\+-//g
-	"g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,ge
-	"g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,ge
-    "g/PDF+MP3/exec 'normal dG\<Enter>'
-	"%s,\(\.\)\(<\/b>\)$,\2\1,ge
-    "%s/^\n\{2,}/\r/ge
-	"normal ggvipgg
-	"let selectionsize = line("'>") - line("'<") + 1
-	"echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
+    let selectionsize = line("'>") - line("'<")
+    for i in range(1,selectionsize) | exec 'normal @a' | endfor
+    exec 'normal @b'
     "" perl-rename 's/^[0-9]-//g' *.mp3
 endfun
 command! -nargs=0 CFlashcards :silent call CleanFlaschards()
