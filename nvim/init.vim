@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 18 13:24
+" Last Change: 2018 abr 18 19:39
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -552,16 +552,18 @@ nnoremap <Leader>J :call Preserve(':join!')<CR>
 function! Randnumber(max) abort
   return str2nr(matchstr(reltimestr(reltime()), '\v\.@<=\d+')[1:]) % a:max
 endfunction
+
 fun! CleanFlaschards() abort
     %w! output.csv-backup
     let @a = 'gg0vg_ydd}}{jA[sound:0];JdapGopgg'
     let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara:w'
     let @r="" | execute('g/\v\<\/?strong\>/normal "Rdap') | %d | put r
     %s/\v\<\/?(em|strong|br)(\/)?\>//ge
-    %s/^\n\{2,}/\r/ge
+    g/^(.*)/d
     0r !ls *.mp3 | sort -n -k1
-    g/\.mp3$/s/“\|”//g
     g/\.mp3$/s/^\d\+-//g | normal gg
+    %s/^\n\{2,}/\r/ge
+    g/\.mp3$/s/“\|”//ge
     normal ggvipgg
     let selectionsize = line("'>") - line("'<")
     for i in range(1,selectionsize) | exec 'normal @a' | endfor
