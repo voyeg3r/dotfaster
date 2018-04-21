@@ -34,7 +34,7 @@ soup = BeautifulSoup(html_content, 'html.parser')
 # print all links (or a range of them)
 # print(soup.find_all('a')[0:5])
 
-# for tag in soup.findAll('strong'):
+# for tag in soup.findAll('em'):
 #     print(tag.text, tag.next_sibling.text)
 
 # print(soup.find_all('p'))
@@ -43,18 +43,23 @@ soup = BeautifulSoup(html_content, 'html.parser')
 #        var = str(tag) + str(tag.next_sibling)
 #        f.write(var)
 
-
-# with open("output.csv", "w") as file:
-#     for tag in soup.findAll('p'):
-#         file.write(str(tag))
-#         file.write("\n\n")
-
+# import re
+# for tag in soup.find_all(re.compile("^b")):
+#     print(tag.name)
+# body
+# b
 
 with open("output.csv", "w") as file:
-    for tag in soup.find_all('em'):
-        value=(str(tag))
-        file.write(value)
+    for tag in soup.findAll('p'):
+        file.write(str(tag))
         file.write("\n\n")
+
+
+# with open("output.csv", "w") as file:
+#     for tag in soup.find_all('strong'):
+#         value=(str(tag))
+#         file.write(value)
+#         file.write("\n\n")
 
 with open("audios.txt", "w") as file:
     for a in soup.findAll('a',href=re.compile('http.*\.mp3')):

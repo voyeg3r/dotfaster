@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 18 19:39
+" Last Change: 2018 abr 21 09:51
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -134,6 +134,7 @@ set visualbell t_vb=  " turn off error beep/flash
 set novisualbell      " turn off visual bell
 set tabstop=4         " Number of spaces that a <Tab> in the file counts for
 set formatoptions+=j  " Delete comment characters when joining lines
+set formatoptions+=a  " Automatic formatting of paragraphs.  Every time text is inserted or deleted
 set title             " shows filename at the top
 set expandtab         " Converts tab into spaces
 set softtabstop=4     " number of spaces in tab when editing
@@ -535,7 +536,7 @@ if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
     set wm=2
-    set textwidth=79
+    set textwidth=66
   endfunction
 endif
 " join lines keeping cursor position
@@ -558,7 +559,7 @@ fun! CleanFlaschards() abort
     let @a = 'gg0vg_ydd}}{jA[sound:0];JdapGopgg'
     let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara:w'
     let @r="" | execute('g/\v\<\/?strong\>/normal "Rdap') | %d | put r
-    %s/\v\<\/?(em|strong|br)(\/)?\>//ge
+    %s/\v\<\/?(em|strong|br|span\s+[^>]*)(\/)?\>//ge
     g/^(.*)/d
     0r !ls *.mp3 | sort -n -k1
     g/\.mp3$/s/^\d\+-//g | normal gg
