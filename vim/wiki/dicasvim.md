@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 18 12:24
+# dicasvim.md Intro - Last Change: 2018 abr 25 19:01
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1616,6 +1616,18 @@ A line break is included as a newline character.
 ``` markdown
 :s/\d\+/\=submatch(0) + 1/
 ```
+
+If you have the file:
+
+    update am.PERMISSIONS set PRM_ORDER = 35 PRM_VISIBLE = b'1' where PRM_ID = 3;
+    update am.PERMISSIONS set PRM_ORDER = [35] PRM_VISIBLE = b'1' where PRM_ID = 7;
+    update am.PERMISSIONS set PRM_ORDER = [40] PRM_VISIBLE = b'1' where PRM_ID = 10;
+    update am.PERMISSIONS set PRM_ORDER = [45] PRM_VISIBLE = b'1' where PRM_ID = 11;
+
+Add 5 to each [number]
+
+    %s/\[\zs\d\+\ze\]/\=(submatch(0)+5)
+
 read more at: `help sub-replace`
 
 # Open file read only
@@ -2797,6 +2809,17 @@ Supose you have these lines:
     increases digits
 
 read more at: `help sub-replace`
+
+# How to trim characters of match in Vim?
++ https://stackoverflow.com/a/50017895/2571881
+
+I want to trim the last five characters of a match in Vim. The search pattern
+is not a direct word, instead it is something like `foo.*bar` Here I want to trim
+the last five characters of the above match.
+
+I tried `:g/foo.*bar/norm $5X` but this trims five characters at the end of the lines matching this pattern
+
+    :%s/foo.*bar/\=submatch(0)[:-6]/g
 
 # get char under cursor
 

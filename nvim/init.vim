@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 21 09:51
+" Last Change: 2018 abr 25 08:02
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -88,7 +88,7 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+  \,a:blinkwait300-blinkoff200-blinkon150-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 " source: https://www.vi-improved.org/vim-tips/
 "augroup highlight_follows_focus
@@ -134,7 +134,8 @@ set visualbell t_vb=  " turn off error beep/flash
 set novisualbell      " turn off visual bell
 set tabstop=4         " Number of spaces that a <Tab> in the file counts for
 set formatoptions+=j  " Delete comment characters when joining lines
-set formatoptions+=a  " Automatic formatting of paragraphs.  Every time text is inserted or deleted
+"set formatoptions+=a  " Automatic formatting of paragraphs.  Every time text
+"is inserted or deleted
 set title             " shows filename at the top
 set expandtab         " Converts tab into spaces
 set softtabstop=4     " number of spaces in tab when editing
