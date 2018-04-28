@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mar 02 06:32
+# dicas Sobre python3 - Last Change: 2018 abr 26 16:58
 
 ``` markdown
 Created:	 sáb 07 jan 2017 07:29:27 BRT
@@ -43,6 +43,22 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 keyword.iskeyword('else')
 True
 ```
+
+# Download youtube mp3
++ https://askubuntu.com/a/748797/3798
++ https://pypi.python.org/pypi/pafy
+
+    #python3
+    import pafy
+    video = pafy.new('video id or video url')
+    bestaudio = video.getbestaudio()
+    bestaudio.bitrate #get bit rate
+    bestaudio.extension #extension of audio fileurl
+    ...
+    bestaudio.url #get url
+    ...
+    #download if you want
+    bestaudio.download()
 
 # python scrapy
 + https://scrapy.org/

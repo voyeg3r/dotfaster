@@ -1,7 +1,6 @@
 ``` markdown
-Arquivo: at.md
 Created: qua 06/set/2017 hs 20:05
-Last Change: qua 06 set 2017 20:05:53 -03
+Last Change: 2018 abr 26 20:09
 ```
 
 # Introdução
@@ -36,20 +35,15 @@ outro despertador (alarme)
 
     [ "$1" ] && hora="$1"  || read -p "digte a hora: "  hora
 
-
     # local da musica que será tocada
     musica=~/music/k3b_success1.wav
 
     [ -e $musica ] || { read -p "digite o caminho completo para a musica: " musica ;}
 
-
     at $hora <<< "play $musica"
-
-
 
 # visualizar os agendamentos do comando at
 
     atq
-
 
 

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 25 19:01
+# dicasvim.md Intro - Last Change: 2018 abr 28 11:11
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -249,10 +249,18 @@ Solution:
     >item4
     Uganda
 
+    " erase even lines
+    g/^/if line('.') % 2 == 0 | norm! cc
+
+    " erase odd lines
+    g/^/if line('.') % 2 | normal! cc
+
+
 # Substitute on even lines
 + https://groups.google.com/forum/#!topic/comp.editors/xk9DMoszgq4
 
     :2,$g/^/s/foo/bar/g|+t+|-d
+    g/^/if (line('.')+1) % 2 | .s/foo/another/g | endif
 
 # Faster way to move a block of text
 + https://vi.stackexchange.com/a/15161/7339
@@ -587,69 +595,6 @@ vip ........................... visual select this paragraph
 :'<,'>s,.*,<p>&</p>
 ```
 
-# Getting some Mairo's vergara flashcards
-
-After getting the flashcards selection and putting it into a new vim file.
-All you have to do is to create a macro to make the flashcards.
-
-I have a python script to get two files; the first one has the mp3 files links
-and the second one gives me some html content over which I run this vimscript
-function:
-
-```
-fun! CleanFlaschards()
-    let @a = 'gg0v$hdJ}}{jA[sound:"];gJA;MairoVergaraVdGopgg'
-    "let @b = 'gg0v$hd)A[sound:"]A;gj:g/^$/d
-:w
-'
-    let @b = 'gg0v$hd)A[sound:"A;gJA;MairoVergara:g/^$/d
-:w
-'
-    %s,\v\<(\/)?(strong|em|br|a href[^>]*|((span|p|iframe)[^>]*))(\/)?\>|(\([^)]*\)),,g
-    %s,\v\<(\/)?\zsu\ze\>,b,g
-    %s,\v\s+$,,g
-    %s,;,:,ge
-    %s,\v\W?\<b\>(\W\<\/b\>)?$,,g
-    %s,\v(^)?((\<b\>)?\<br\>?)$,,g
-    %s,\v(^\<\/p\>?)|(\<\/p\>?)|(\<b\>\<br\>?$),,g
-    g/^\W\+$/d
-    normal gg
-    silent normal! /\v((vamos aos |(ver|veja|seguem) (os|alguns)? )?exemplos( abaixo)?)|anki/
-dip
-    normal gg
-    g/\v^\d+\W?(–|-)/d
-    normal gg
-    silent normal! /<u>\|<b>/
-{kdgg
-    normal gg
-    silent normal! /:$/
-dip
-    normal /CLIQUE/
-{kdG
-    0r audios.txt
-    g/.*mp3/s/http.*\/\d\+-//g
-    g/.*mp3/s,%E2%80%99\|%E2%80%93\|%E2%80%98\|%E2%80%9,_,g
-    g/.*\.mp3/s,%E2%80%9C\|%E2%80%9D,,g
-    normal gg
-    silent normal! /^<\/b>$/
-kJD
-    %s/\v(!|.|\?)  /\1 /ge
-    DelBlank
-    normal gg
-    normal vipo
-    let selectionsize = line("'>") - line("'<") + 1
-    echom "Execute a macro 'a' " . (selectionsize - 1) . " vezes"
-endfun
-command! -nargs=0 CFlashcards :silent call CleanFlaschards()
-```
-
-I started the function like in the book "How to think like a computer
-scientist" step by step, improving the result gradually, cleaning the code to
-obtain the final result.
-
-After running this function I only have to run the macro 'a' 9 times and macro
-'b' one time.
-
 # Sorting lines numerically
 
     :%!sort -n -k 3 ........... sort numerically by third column
@@ -728,12 +673,16 @@ The command above will put `ls` output at the first line
     On insert mode <C-r>* inserts "Primary Selection"
     you can also use Shift-insert
 
-If you've ever wanted to wrap some text foo with some other, arbitrary text using c{motion} (change) followed by " (paste the last deleted text), then you've probably noticed that you cannot repeat the action on a different text bar using .. For example: Starting with
+If you've ever wanted to wrap some text foo with some other, arbitrary text
+using c{motion} (change) followed by " (paste the last deleted text), then
+you've probably noticed that you cannot repeat the action on a different text
+bar using .. For example: Starting with
 
     foo
     bar
 
-If you put the cursor on foo and do ciw(Ctr-r"), and then put the cursor on bar and hit ., you'll end up with
+If you put the cursor on foo and do ciw(Ctr-r"), and then put the cursor on bar
+and hit ., you'll end up with
 
     (foo)
     (foo)

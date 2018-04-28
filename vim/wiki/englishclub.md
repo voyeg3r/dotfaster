@@ -1,4 +1,4 @@
-# English Club - Last Change: qua 06 dez 2017 09:45:01 -03
+# English Club - Last Change: 2018 abr 28 12:46
 
 # Introdução
 
@@ -118,8 +118,12 @@ made lately because in order to grow up in hability on english we have be able
 to listen precisely all sounds -- to get all videos do this:
 
 	youtube-dl -citw  http://www.youtube.com/user/dailydictation/videos
-
     youtube-dl -citw http://va.mu/XdYW
+
+See also this English Dictation site:
++ https://www.englishclub.com/listening/dictation.htm
++ https://www.rong-chang.com/eslread/eslread/dict/contents.htm
++ https://speechling.com/dictation/english
 
 * Picture yourself fluent english speaker
 * Conversação real através do google talk e skype, facebook twitter, etc. Para tornar o inglês parte da vida dos membros do clube.
