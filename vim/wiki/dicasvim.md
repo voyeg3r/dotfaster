@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 28 11:11
+# dicasvim.md Intro - Last Change: 2018 abr 29 09:33
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -1125,6 +1125,11 @@ See :h /\zs. (And :h /\@<= if you're so inclined.)
     Example     matches ~
     \v(foo)@<!bar       any "bar" that's not in "foobar"
     \(\/\/.*\)\@<!in    "in" which is not after "//"
+
+# squeeze spaces
++ https://stackoverflow.com/a/3860542/2571881
+
+    :s/  \+/ /g
 
 # Regex - equivalent to [a-z]
 
@@ -5399,6 +5404,52 @@ If it returns ^V{some number}, it means the type is blockwise, and the width of 
     Paste = "+gP
     Put Before = [p
     Put After = ]p
+
+
+# paste block of text side by side
++ https://stackoverflow.com/a/50080755/2571881
+
+Let's say you have
+
+    line1 Ipsum dignissimos doloribus
+    line2 Sit odio placeat
+    line3 Consectetur quia
+    line4 Elit adipisicing
+    line5 Adipisicing modi
+    line6 Adipisicing quae
+    line7 Consectetur tempore
+    line8 Adipisicing elit
+    line9 Dolor nam
+    line10 Dolor esse
+    line11 Elit amet
+    line12 Amet quos recusandae
+
+And you want
+
+    line1 Ipsum dignissimos doloribus     line7 Consectetur tempore
+    line2 Sit odio placeat                line8 Adipisicing elit
+    line3 Consectetur quia                line9 Dolor nam
+    line4 Elit adipisicing                line10 Dolor esse
+    line5 Adipisicing modi                line11 Elit amet
+    line6 Adipisicing quae                line12 Amet quos recusandae
+
+Solutions:
+
+
+    fun! GiveItaNameYouWant()
+        let @+=''
+        7
+        normal "+d}
+        call setreg('+',@+,'b')
+        normal gg
+        execute "normal! A \<esc>"
+        execute "normal! \"+p"
+        "%s/  \+/ /g
+    endfun
+
+    call GiveItaNameYouWant()
+
+    exe "norm 7gg\<c-v>05j$dgg$p" and :%s/ \+/ /g
 
 # Função para limpar flashcards
 É uma função bem específica para minhas necessidades

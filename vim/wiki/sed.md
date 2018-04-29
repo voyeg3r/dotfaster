@@ -1,13 +1,22 @@
 # Introdução
 ``` markdown
-File:		 ComandoSed.md
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: 2018 mar 13 12:49
+Last Change: 2018 abr 29 08:15
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
 de texto que podem ser pipeados fazendo deleções, inserções
 substituições, etc.
+
+# Opções interessantes do sed
+
+Usar expressões regulares do perl "Extended Regex"
+
+    -P
+
+com isso podemos usar algo tipo:
+
+    sed -oP '\w+' file
 
 # apagando toda segunda linha
 
@@ -98,7 +107,6 @@ The M-BM- characters are an ASCII representation of byte sequence 0xc2 0xa0,
 which is the UTF8 encoding of unicode character A0 - a non-breaking space
 character. This character can be inserted in both LibreOffice and Microsoft
 Word documents using the key sequence Ctrl+Shift+SPACE.
-
 
 # Imprimir somente as linhas impares
 
@@ -534,12 +542,7 @@ Append an empty line after a line with exactly 42 characters
 		cat <<-EOF | sed '/./,/^$/!d'
 		one line
 
-
-
-
 		Another line
-
-
 
 		One more
 		EOF
