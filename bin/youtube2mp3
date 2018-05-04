@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4
+#             File:  youtube2mp3
+#           Author:  Sergio Araujo
+# This script aims:  get youtube audio "mp3"
+#      Last Change:  qui 26 abr 2018 16:59:47 -03
+#          Created:  qui 26 abr 2018 16:59:47 -03
+#            email:  <voyeg3r ✉ gmail.com>
+#           Github:  https://github.com/voyeg3r
+#          twitter:  @voyeg3r
+
+# sudo pip install pafy
+
+import pafy
+
+# video = pafy.new('video id or video url')
+url = input("Type the youtube url: ")
+video = pafy.new(url)
+bestaudio = video.getbestaudio()
+# audiostreams = video.audiostreams
+
+# bestaudio.bitrate #get bit rate
+# bestaudio.extension #extension of audio fileurl
+# bestaudio.url #get url
+
+# download if you want
+bestaudio.download()
+
+
+
+

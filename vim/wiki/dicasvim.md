@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 abr 29 09:33
+# dicasvim.md Intro - Last Change: 2018 mai 02 10:41
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -254,7 +254,6 @@ Solution:
 
     " erase odd lines
     g/^/if line('.') % 2 | normal! cc
-
 
 # Substitute on even lines
 + https://groups.google.com/forum/#!topic/comp.editors/xk9DMoszgq4
@@ -5405,7 +5404,6 @@ If it returns ^V{some number}, it means the type is blockwise, and the width of 
     Put Before = [p
     Put After = ]p
 
-
 # paste block of text side by side
 + https://stackoverflow.com/a/50080755/2571881
 
@@ -5435,7 +5433,6 @@ And you want
 
 Solutions:
 
-
     fun! GiveItaNameYouWant()
         let @+=''
         7
@@ -5444,12 +5441,14 @@ Solutions:
         normal gg
         execute "normal! A \<esc>"
         execute "normal! \"+p"
-        "%s/  \+/ /g
     endfun
 
     call GiveItaNameYouWant()
 
-    exe "norm 7gg\<c-v>05j$dgg$p" and :%s/ \+/ /g
+    exe "norm! Mj\<c-v>}dggA    \<esc>p"
+
+Instead of giving manually the line we jump to the midle "M" so
+then we go down one line with "j"
 
 # Função para limpar flashcards
 É uma função bem específica para minhas necessidades

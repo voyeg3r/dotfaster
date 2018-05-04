@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 abr 28 12:46
+# English Club - Last Change: 2018 mai 03 10:10
 
 # Introdução
 
@@ -123,7 +123,10 @@ to listen precisely all sounds -- to get all videos do this:
 See also this English Dictation site:
 + https://www.englishclub.com/listening/dictation.htm
 + https://www.rong-chang.com/eslread/eslread/dict/contents.htm
++ https://www.englishld.com/post
 + https://speechling.com/dictation/english
+
+    curl -O https://speechling.com/static/audio/female/english/english_40\[10-75\].mp3
 
 * Picture yourself fluent english speaker
 * Conversação real através do google talk e skype, facebook twitter, etc. Para tornar o inglês parte da vida dos membros do clube.
