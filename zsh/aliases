@@ -61,7 +61,8 @@ alias fullsnd='pactl set-sink-volume 0 +100%'
 alias downsnd='pactl set-sink-volume 0 -10%'
 
 alias dairy='vim +VimwikiMakeDiaryNote'
-alias vinone='vim -u NONE -N -c "set nu"'
+# alias vinone='vim -u NONE -N -c "set nu"'
+alias vinone='vim -u NONE -U NONE -N -i NONE'
 
 alias mkdir='mkdir -pv'
 alias hg='history | grep'

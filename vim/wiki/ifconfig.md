@@ -1,43 +1,48 @@
-Arquivo: ifconfig.wiki
-Criado: Sun 18/Jan/2015 hs 09:41
-Last Change: sáb 16 set 2017 19:44:49 -03
-autor: Sérgio Luiz Araújo Silva
-site: http://vivaotux.blogspot.com
-twitter: http://www.twitter.com/voyeg3r
-email: <voyeg3r  gmail.com>
+Arquivo: ifconfig.wiki - Criado: Sun 18/Jan/2015 hs 09:41
+Last Change: 2018 mai 04 18:05
 
 # ifconfig
 Configura a interface de rede no caso de ip fixo - veja também [[ethtool]]
 
    ifconfig eth0 172.30.10.116 netmask 255.255.255.0 up
 
+# Keep classic 'eth0' naming
++ https://wiki.gentoo.org/wiki/Eudev#Keep_classic_.27eth0.27_naming
+
+Network device names eth0, wlan0, etc. as provided by the kernel could be changed on boot (see dmesg) by the /lib/udev/rules.d/80-net-name-slot.rules udev rule.
+
+To keep the classic naming this rule can be overwritten with an equally named empty file in the /etc/udev/rules.d directory:
+
+    sudo touch /etc/udev/rules.d/80-net-name-slot.rules
+
 # como forçar a placa de rede para full duplex
 
 # instale o programa ethtool
-iface eth0 inet static
-    #pre-up /usr/sbin/ethtool -s $IFACE speed 1000 duplex full autoneg off
-    pre-up ethtool -s eth0 autoneg off 100 duplex full
-    address 123.456.789.123
-    netmask 255.255.255.0
-    gateway 123.456.789.254
+
+    iface eth0 inet static
+        #pre-up /usr/sbin/ethtool -s $IFACE speed 1000 duplex full autoneg off
+        pre-up ethtool -s eth0 autoneg off 100 duplex full
+        address 123.456.789.123
+        netmask 255.255.255.0
+        gateway 123.456.789.254
 
 # configurando a placa de rede sem fio
 
-auto wlan0
-iface wlan0 inet static
-    address 10.3.254.236
-    netmask 255.255.255.0
-    gateway 10.3.254.1
-    wireless-essid nome-da-rede
-    wireless-key s:senha
+    auto wlan0
+    iface wlan0 inet static
+        address 10.3.254.236
+        netmask 255.255.255.0
+        gateway 10.3.254.1
+        wireless-essid nome-da-rede
+        wireless-key s:senha
 
 # como fazer com que sua placa de rede sempre seja atrelada a um mesmo ALIAS
 * http://brfedora.wordpress.com/2008/06/04/placa-de-rede-ordenacao/
 
 # listar interfaces ativas
 
-ls /sys/class/net
-ls -l /sys/class/net  | awk '/eth/ {print $8}' #eth0 ou eth1?
+    ls /sys/class/net
+    ls -l /sys/class/net  | awk '/eth/ {print $8}' #eth0 ou eth1?
 
 # como colocar dois ips na mesma interface
 
@@ -65,8 +70,7 @@ ls -l /sys/class/net  | awk '/eth/ {print $8}' #eth0 ou eth1?
 
 # Fixing NetworkManager DNS issue in Ubuntu (Hardy Heron/Gutsy)
 
-Using NetworkManager to change your <span class="caps">DNS</span> to custom servers,
-like OpenDNS, does not seem to stay between reboots.
+Using NetworkManager to change your <span class="caps">DNS</span> to custom servers, like OpenDNS, does not seem to stay between reboots.
 To fix this, edit the /etc/dhcp3/dhclient.conf file. In there, you
 will see a line similar to:
 
@@ -82,8 +86,8 @@ prepend domain-name-servers 208.67.222.222,208.67.220.220;
 **Update**: That doesn’t seem to always work. Easier way out would be to edit /etc/resolv.conf
 and add your <span class="caps">DNS</span> records like this:
 
-nameserver 208.67.222.222
-nameserver 208.67.220.220
+    nameserver 208.67.222.222
+    nameserver 208.67.220.220
 
 Then run sudo chattr +i /etc/resolv.conf to stop NetworkManager from overwriting the file.
 Your settings should now stay between restarts.
