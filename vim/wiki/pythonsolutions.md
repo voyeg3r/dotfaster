@@ -20,11 +20,35 @@ keyword.kwlist
 
 # Centralizando uma string no python 3
 
-``` python
-s = 'This is my string'
-print(s.center(50, '-'))
-----------------This is my string-----------------
-```
+    ``` python
+    s = 'This is my string'
+    print(s.center(50, '-'))
+    ----------------This is my string-----------------
+    ```
+
+# playing songs with python
++ http://guzalexander.com/2012/08/17/playing-a-sound-with-python.html
+
++ pyglet
+    sudo pip install pyglet
+
+    import pyglet
+    song = pyglet.media.load('thesong.ogg')
+    song.play()
+    pyglet.app.run()
+
+
+    import pyglet
+    music = pyglet.resource.media('filhos-de-gandhi.mp3', streaming=False)
+    music.play()
+    <pyglet.media.player.Player object at 0x7f6413c0a7b8>
+    pyglet.app.run()
+
++ pygame
++ GStreamer Python Bindings
++ pyaudio
++ pymedia
+
 
 # programando com janelas
 * http://www.gustavobarbieri.com.br/eagle/docs/eagle-pt.html
@@ -340,7 +364,10 @@ prints 'The three most recent presidents were: George Bush, Bill Clinton, George
 # fizzbuzz
 fonte: http://kodumaro.blogspot.com/2010/01/fizzbuzz.html
 
-A brincadeira consiste em imprimir uma sequência de números, tradicionalmente de 1 a 100. Porém os números múltiplos de 3 devem ser substituídos por //fizz// e os números múltiplos de 5 por //buzz//. Os números que são divisíveis por 3 e por 5 devem ser substituídos por //fizzbuzz//.
+A brincadeira consiste em imprimir uma sequência de números, tradicionalmente
+de 1 a 100. Porém os números múltiplos de 3 devem ser substituídos por //fizz//
+e os números múltiplos de 5 por //buzz//. Os números que são divisíveis por 3 e
+por 5 devem ser substituídos por //fizzbuzz//.
 
     print "\n".join('fizzbuzz' if x%15==0 else 'fizz' if x%3==0 else 'buzz' if x%5==0 else str(x) for x in xrange(1, 101))
 
@@ -477,18 +504,17 @@ Disponibiliza o conteúdo do directório actual em http://$hostname:8000/
 
 Para descobrir os atributos de um objeto podemos utilizar:
 
-objeto.__dict__
-
-vars(objeto)
+    objeto.__dict__
+    vars(objeto)
 
 Para descobrir os atributos de uma classe:
 
-vars(Classe())
+    vars(Classe())
 
 Se utilizar vars() sem argumentos, funciona como locals(), listando todas as variáveis.
 Para listar métodos e atributos de um objeto:
 
-dir(objeto)
+    dir(objeto)
 
 # algoritmo de ordençaão bubblesort
 * http://www.phpavancado.net/node/302

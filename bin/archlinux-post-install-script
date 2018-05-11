@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 abr 13 09:34
+#      Last Change: 2018 mai 11 12:38
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -743,6 +743,10 @@ sudo pacman -S conky conky-manager
 
 # piper is an alternative for sed awk and other text manipulation tools
 sudo pip install piper
+
+# play sound with python
+sudo pip install pyglet
+yaourt avbin
 
 installgimpplugins () {
 yaourt -Sy gimp-plugin-registry

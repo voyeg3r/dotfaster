@@ -93,7 +93,7 @@ alias wgetn='wget -O - -o /dev/null'
 alias wget='wget --restrict-file-names=nocontrol'
 #alias wget='wget --remote-encoding=UTF-8'
 alias getsinglepage='wget -E -H -k -K -nd -N -p -P pagedir'
-alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
+alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/59.0"'
 
 #alias lynx='lynx -dump -display_charset=utf-8'
 alias lynx='lynx -display_charset=utf-8 -useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.79 Safari/537.1"'
@@ -234,7 +234,7 @@ alias fontreload='fc-cache -fv'
 alias timezsh='for i in $(seq 1 10); do time zsh -i -c exit; done'
 
 alias operacurl='curl -A "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3053.3 Safari/537.36 OPR/46.0.2573.0 (Edition developer)"' # curl with opera user-agent
-alias ffcurl='curl -A Mozilla/5.0 (X11; Linux i686; rv:54.0) Gecko/20100101 Firefox/54.0' # curl with firefox user-agent
+alias ffcurl='curl -A Mozilla/5.0 (X11; Linux i686; rv:54.0) Gecko/20100101 Firefox/59.0' # curl with firefox user-agent
 
 alias wgetopera='wget --user-agent="Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3053.3 Safari/537.36 OPR/46.0.2573.0 (Edition developer)"'
 
