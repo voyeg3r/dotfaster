@@ -20,8 +20,9 @@ n = 0
 random.seed()
 for root, dirs, files in os.walk('/home/sergio/music/mpb'):
     for name in files:
-        n+=1
-        if random.uniform(0,n) < 1: rfile=os.path.join(root, name)
+        if name.endswith("mp3"):
+            n+=1
+            if random.uniform(0,n) < 1: rfile=os.path.join(root, name)
 
 file = rfile
 subprocess.Popen(['mpg123', '-q', file]).wait()
