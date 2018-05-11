@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 abr 25 08:02
+" Last Change: 2018 mai 11 08:30
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -682,7 +682,7 @@ augroup python
     au FileType python set keywordprg=pydoc
     au! BufRead *.py setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
     au! BufRead,Bufnewfile *.py im :<CR> :<CR><TAB>
-    au! BufWritePre *.py,*.js :call <SID>StripTrailingWhitespace()
+    "au! BufWritePre *.py,*.js :call <SID>StripTrailingWhitespace()
     au! BufNewFile *.py 0r ~/.vim/skel/template.py
     "au BufNewFile *.py call Preserve('1,5s/Created:\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufNewFile *.py call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')

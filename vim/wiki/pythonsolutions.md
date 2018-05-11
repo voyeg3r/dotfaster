@@ -710,15 +710,35 @@ def permute(items, i):
 # Módulo para aleatoriedade
 aleatório - embaralhando
 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# importando o módulo random
-import random
-# criando uma lista
-lista = ["joão", "maria", "josé", "ana"]
-# embaralhando a lista
-random.shuffle(lista)
-print(lista)
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+    # importando o módulo random
+    import random
+    # criando uma lista
+    lista = ["joão", "maria", "josé", "ana"]
+    # embaralhando a lista
+    random.shuffle(lista)
+    print(lista)
+
+
+    import os, random
+    random.choice(os.listdir("/home/sergio/music/mpb"))
+    'elba-ramalho'
+    random.choice(os.listdir("/home/sergio/music/mpb"))
+    'trio-nordestino'
+
+
+    # Best way to choose a file randomically
+    #! /usr/bin/env python
+    import os, random
+    n=0
+    random.seed();
+    for root, dirs, files in os.walk('/tmp/foo'):
+    for name in files:
+        n=n+1
+        if random.uniform(0, n) < 1: rfile=os.path.join(root, name)
+    print(rfile)
+
 
 import random
 randrange(1,10)

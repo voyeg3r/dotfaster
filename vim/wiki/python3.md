@@ -1,4 +1,5 @@
-# dicas Sobre python3 - Last Change: 2018 abr 26 16:58
+# dicas Sobre python3 - Last Change: 2018 mai 11 09:03
++ https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
 Created:	 sáb 07 jan 2017 07:29:27 BRT
@@ -43,6 +44,29 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 keyword.iskeyword('else')
 True
 ```
+
+# play song
++ https://www.daniweb.com/programming/software-development/threads/491663/how-to-open-and-play-mp3-file-in-python
+
+    import subprocess
+    # pick an external mp3 player you have
+    sound_program = "path to player"
+    # pick a sound file you have
+    sound_file = "path to mp3"
+    subprocess.call([sound_program, sound_file])
+
+# open browser with python
+
+    """
+    For documentation of the webbrowser module,
+    see http://docs.python.org/library/webbrowser.html
+    """
+    import webbrowser
+    new = 2 # open in a new tab, if possible
+
+    # open a public URL, in this case, the webbrowser docs
+    url = "http://docs.python.org/library/webbrowser.html"
+    webbrowser.open(url,new=new)
 
 # Download youtube mp3
 + https://askubuntu.com/a/748797/3798

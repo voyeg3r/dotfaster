@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 03 10:10
+# English Club - Last Change: 2018 mai 06 15:31
 
 # Introdução
 
@@ -105,6 +105,9 @@ tape technology became widespread in the 1970s.
 + https://www.youtube.com/watch?v=uKZQ382YECg  - Aula 02
 + https://www.youtube.com/watch?v=FvNy46G0eKM&t=2078s - Aula 03
 + https://www.youtube.com/watch?v=-vrr3seE71A  - Aula 04
+
+# Cyntia Sabino
++ https://www.youtube.com/channel/UCYLD2XEuOg-WfeqG78GfwZw
 
 # Lexical approach
 

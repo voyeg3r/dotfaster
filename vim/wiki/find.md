@@ -1,10 +1,46 @@
-# find.md - Last Change: 2018 jan 06 20:02
+# find.md - Last Change: 2018 mai 08 17:38
 
 O comando find é extremamente poderoso veja algumas construções do mesmo
 
 # Search only hidden files:
 
     find /dir/to/search/ -type f -iname ".*" -ls
+
+# Find files in terminal between a date range
++ https://stackoverflow.com/a/23508622/2571881
+
+    find -newerct "1 May 2018" | xargs cp -t ~/tmp/ana-photo
+    find -newerct "1 Aug 2013" ! -newerct "1 Sep 2013" -ls
+    find /var/tmp -mtime +2 -a -mtime -8 -ls
+
+
+Full details from man find:
+
+   -newerXY reference
+
+          Compares the timestamp of the current file with reference.  The
+          reference argument is normally the name of a file (and one of its
+          timestamps  is  used for  the  comparison)  but  it may also be a
+          string describing an absolute time.  X and Y are placeholders for
+          other letters, and these letters select which time belonging to how
+          reference is used for the comparison.
+
+          a   The access time of the file reference
+          B   The birth time of the file reference
+          c   The inode status change time of reference
+          m   The modification time of the file reference
+          t   reference is interpreted directly as a time
+
+          Some combinations are invalid; for example, it is invalid for X to be
+          t.  Some combinations are not implemented on all systems; for example
+          B  is  not supported on all systems.  If an invalid or unsupported
+          combination of XY is specified, a fatal error results.  Time
+          specifications are interpreted as for the argument to the -d option
+          of GNU date.  If you try to use the birth time of a reference file,
+          and the birth time cannot be determined, a fatal error  message
+          results.   If  you  specify a test which refers to the birth time of
+          files being examined, this test will fail for any files where the
+          birth time is unknown.
 
 # Search only hidden directories:
 

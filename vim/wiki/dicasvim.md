@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 02 10:41
+# dicasvim.md Intro - Last Change: 2018 mai 05 16:21
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -59,6 +59,10 @@ breakdown
     :%norm       start a normal command on all lines
     f,r|        f(ind) a ',' and r(eplace) with '|'
     ;.;.;.      ';' jumps to next match and '.' repeats the change
+
+Other similar solutions
+
+    :%norm di'
 
 # Save file only if it has changed
 
