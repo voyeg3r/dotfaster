@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mai 11 12:38
+#      Last Change: 2018 mai 12 11:39
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -118,6 +118,9 @@ sudo pip install neovim
 pip3 install --user --upgrade neovim
 sudo pip install nfasd
  sudo pip install nfasd
+
+# used to download youtube audios
+sudo pip install pafy
 
 # Used in [n]vim to format html code
 sudo pacman -S tidy

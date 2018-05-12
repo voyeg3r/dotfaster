@@ -59,3 +59,6 @@ Coloquei a roupa na prateleira e voltei para a cama.
 
 I was in my sloppy clothes that I wear at home only.
 Eu estava com minhas roupas desleixadas que só uso em casa.
+
+Even though I’ve been acting for years, I still get a thrill out of going on stage.
+apesar de atuar por anos, ainda sinto um frio na barriga por subir no palco

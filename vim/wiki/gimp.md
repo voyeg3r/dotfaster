@@ -1,8 +1,8 @@
-# gimp.md - Last Change: sáb 13 jan 2018 07:25:30 -03
+# gimp.md - Last Change: 2018 mai 12 09:52
 
-yaourt -S gimp-plugin-lqr gimp-plugin-gmic
+    yaourt -S gimp-plugin-lqr gimp-plugin-gmic
 
-Atalhos do gimp:
+# Atalhos do gimp:
 
    TAB .................. ocultar e exibir os paineis
    > .................... aumentar pincel
@@ -10,3 +10,8 @@ Atalhos do gimp:
    Ctrl-shif-j .......... ajustar imagem à janela
 
    Ctrl-i ............... inverter seleção
+
+
+# Install gimp 2.10 flatpack
+
+    flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref

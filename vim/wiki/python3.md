@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 11 09:03
+# dicas Sobre python3 - Last Change: 2018 mai 12 11:52
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -67,6 +67,14 @@ True
     # open a public URL, in this case, the webbrowser docs
     url = "http://docs.python.org/library/webbrowser.html"
     webbrowser.open(url,new=new)
+
+# Convert webm to mp3
+
+    sudo pip install pydub
+
+    from pydub import AudioSegment
+    sound = AudioSegment.from_file("/input/file")
+    sound.export("/output/file", format="mp3", bitrate="128k")
 
 # Download youtube mp3
 + https://askubuntu.com/a/748797/3798

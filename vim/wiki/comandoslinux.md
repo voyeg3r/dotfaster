@@ -140,6 +140,7 @@
 + [file](file.md)
 + [find](find.md)
 + [firefoxuserprofile](firefoxuserprofile.md)
++ [[flatpack](flatpack)]
 + [fluxbox](fluxbox.md)
 + [fmt](fmt.md)
 + [for](for.md)
