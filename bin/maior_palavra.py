@@ -25,4 +25,3 @@ print('Maior palavra')
 # print(sorted(words, key=len)[-1])
 print(max(words, key=len))
 
-

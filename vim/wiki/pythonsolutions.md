@@ -11,6 +11,9 @@ Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
 
+# Book and youtube channel - automate the boring stuff with python
++ https://www.youtube.com/playlist?list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW
+
 # python keyword list
 
 ``` python

@@ -13,9 +13,14 @@
 # sudo pip install pafy
 
 import pafy
+import sys
 
-# video = pafy.new('video id or video url')
-url = input("Type the youtube url: ")
+if sys.argv[1]:
+    url = sys.argv[1]
+else:
+    # video = pafy.new('video id or video url')
+    url = input("Type the youtube url: ")
+
 video = pafy.new(url)
 bestaudio = video.getbestaudio()
 # audiostreams = video.audiostreams
@@ -24,9 +29,7 @@ bestaudio = video.getbestaudio()
 # bestaudio.extension #extension of audio fileurl
 # bestaudio.url #get url
 
+print("Downloading audio from ...", video.title)
+
 # download if you want
 bestaudio.download()
-
-
-
-

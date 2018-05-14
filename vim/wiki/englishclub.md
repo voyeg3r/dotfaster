@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 06 15:31
+# English Club - Last Change: 2018 mai 12 14:31
 
 # Introdução
 
@@ -128,6 +128,7 @@ See also this English Dictation site:
 + https://www.rong-chang.com/eslread/eslread/dict/contents.htm
 + https://www.englishld.com/post
 + https://speechling.com/dictation/english
++ http://www.johnmh.com/ffood/ff24.htm
 
     curl -O https://speechling.com/static/audio/female/english/english_40\[10-75\].mp3
 

@@ -13,12 +13,14 @@
 from pydub import AudioSegment
 import glob, os, pydub
 
+print("Just wait a few seconds...")
+
 os.chdir("./")
 for file in glob.glob("*.webm"):
     newname = os.path.splitext(file)[0]
-    extension = "mp3"
+    extension = ".mp3"
+    print("Converting:", file, "to mp3")
     fullname = newname + extension
-    print("name without extension", newname)
     sound = AudioSegment.from_file(file)
     sound.export(fullname, format="mp3", bitrate="128k")
 
