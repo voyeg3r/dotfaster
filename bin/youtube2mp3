@@ -12,24 +12,28 @@
 
 # sudo pip install pafy
 
+from pydub import AudioSegment
 import pafy
 import sys
+import os
 
 if sys.argv[1]:
     url = sys.argv[1]
 else:
     # video = pafy.new('video id or video url')
-    url = input("Type the youtube url: ")
+    url = input("Type the youtube url or ID: ")
 
 video = pafy.new(url)
+fullname = video.title + ".webm"
+newname = video.title + ".mp3"
 bestaudio = video.getbestaudio()
-# audiostreams = video.audiostreams
-
-# bestaudio.bitrate #get bit rate
-# bestaudio.extension #extension of audio fileurl
-# bestaudio.url #get url
-
 print("Downloading audio from ...", video.title)
 
-# download if you want
 bestaudio.download()
+
+print("We are almost there...")
+print("Converting downloaded file to mp3...")
+sound = AudioSegment.from_file(fullname)
+sound.export(newname, format="mp3", bitrate="128k")
+
+os.remove(fullname)
