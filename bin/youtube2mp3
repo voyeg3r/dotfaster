@@ -10,7 +10,9 @@
 #           Github:  https://github.com/voyeg3r
 #          twitter:  @voyeg3r
 
+# DEPENDENCIES
 # sudo pip install pafy
+# sudo pip install pydub
 
 from pydub import AudioSegment
 import pafy
