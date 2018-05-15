@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 12 14:31
+# English Club - Last Change: 2018 mai 15 10:24
 
 # Introdução
 
@@ -33,6 +33,10 @@ facilitam a interação dos membros do clube.
 
  Os textos são apresentados lado a lado
  uma referência inical é o site: http://paralleltext.io
+
+ + http://paralleltext.io/read/?b=ff1ac97c-b90b-464c-b845-53571310f5ad
+ + https://www.lonweb.org/daisy/ds-portuguese-lorna.htm
+ + https://www.lonweb.org/daisy/ds-portuguese-thesurprise.htm
 
 # Overlearning
 
@@ -131,6 +135,7 @@ See also this English Dictation site:
 + http://www.johnmh.com/ffood/ff24.htm
 
     curl -O https://speechling.com/static/audio/female/english/english_40\[10-75\].mp3
+    seq 4900 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
 
 * Picture yourself fluent english speaker
 * Conversação real através do google talk e skype, facebook twitter, etc. Para tornar o inglês parte da vida dos membros do clube.

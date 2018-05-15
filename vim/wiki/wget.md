@@ -8,9 +8,13 @@ mantém um resumo do que foi baixado
 
 OBS: I think it is useful to change the user-agent for wget before using it:
 
-		alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
+    alias wgetfox='wget --user-agent="Mozilla/5.0 (X11; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0"'
 
     wget --limit-rate=15k -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
+
+# Parallel downloads
+
+    seq 4500 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
 
 # Download Digitalk7.com albuns
 + http://digitalk7.com/mus/

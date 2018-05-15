@@ -11,14 +11,16 @@
 
 # References: https://stackoverflow.com/a/25564921/2571881
 
-# Import required modules
+from bs4 import BeautifulSoup
 import requests
 import re
-from bs4 import BeautifulSoup
+import sys
 
-# Create a variable with the url
-url = input("Digite o link da página: ")
-# url = 'http://www.mairovergara.com/catch-on-o-que-significa-este-phrasal-verb/'
+if sys.argv[1]:
+    url = sys.argv[1]
+else:
+    # video = pafy.new('video id or video url')
+    url = input("Digite o link da página")
 
 headers = {'User-Agent': 'Mozilla/5.0'}
 
@@ -31,8 +33,6 @@ html_content = r.text
 # Convert the html content into a beautiful soup object
 soup = BeautifulSoup(html_content, 'html.parser')
 
-# print all links (or a range of them)
-# print(soup.find_all('a')[0:5])
 
 # for tag in soup.findAll('em'):
 #     print(tag.text, tag.next_sibling.text)
@@ -54,7 +54,6 @@ with open("output.csv", "w") as file:
         file.write(str(tag))
         file.write("\n\n")
 
-
 # with open("output.csv", "w") as file:
 #     for tag in soup.find_all('strong'):
 #         value=(str(tag))
@@ -66,8 +65,3 @@ with open("audios.txt", "w") as file:
         file.write(a['href'])
         file.write("\n")
 
-#for tag in soup.find_all(['p', 'audio']):
-#    print(tag.text)
-
-#for tag in soup.findAll('p'):
-#    print(tag.text, "\n")

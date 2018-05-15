@@ -1,4 +1,4 @@
-# plowshare.md - Last Change: 2018 abr 08 14:39
+# plowshare.md - Last Change: 2018 mai 15 08:21
 
 References:
 + http://blog.gypsydave5.com/2016/02/04/xargs-and-curl/
@@ -26,7 +26,7 @@ com o vim e depois rodar um comando do curl
 
     $ nohup cat filelist | xargs -n4 curl -L &>output &
 
-nohup protects the process from being interrupted by the
+Nohup protects the process from being interrupted by the
 session closing. So it'll keep on going even when you close
 your terminal or SSH connection. Don't worry, you can still
 kill it if you've made a mistake.

@@ -3,4 +3,6 @@
 
 build and execute shell command lines from standard input in parallel
 
+    seq 4500 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
+
 
