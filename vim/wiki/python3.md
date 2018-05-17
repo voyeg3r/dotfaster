@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 17 08:50
+# dicas Sobre python3 - Last Change: 2018 mai 17 20:19
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -6,6 +6,7 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 ```
 
 # References
++ https://www.tutorialspoint.com/python3/index.htm
 + http://excript.com/curso-de-python.html
 + [curso-completo](https://youtu.be/j94IGZmwtYI?list=PLesCEcYj003QxPQ4vTXkt22-E11aQvoVj)
 + [outro-curso new](https://www.youtube.com/watch?v=31llNGKWDdo)
