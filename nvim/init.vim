@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mai 11 08:30
+" Last Change: 2018 mai 17 17:55
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -559,7 +559,7 @@ fun! CleanFlaschards() abort
     %w! output.csv-backup
     let @a = 'gg0vg_ydd}}{jA[sound:0];JdapGopgg'
     let @b = 'vg_ydd}{jA[sound:0];J:g/^$/exec "normal! ddgg":%normal! A;MairoVergara:w'
-    let @r="" | execute('g/\v\<\/?strong\>/normal "Rdap') | %d | put r
+    "let @r="" | execute('g/\v\<\/?strong\>/normal "Rdap') | %d | put r
     %s/\v\<\/?(em|strong|br|span\s+[^>]*)(\/)?\>//ge
     g/^(.*)/d
     0r !ls *.mp3 | sort -n -k1
@@ -688,8 +688,8 @@ augroup python
     au BufNewFile *.py call Preserve('1,5s/\(Last Change\|Created\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     au BufNewFile *.py :%s/File:\s\+\zs.*/\=expand("%:t")
     au! BufWritePost *.py :silent !chmod a+x <afile>
-    autocmd FileType python set textwidth=79
-    autocmd FileType python filetype indent on
+    au FileType python filetype indent on
+    au FileType python set autoindent smartindent et sts=4 sw=4 tw=80 fo=croq
     let python_highlight_all=1
     let python_highlight_builtins=0
     let python_highlight_builtins=1
@@ -952,7 +952,7 @@ fun! InsertChangeLog() abort
 endfun
 fun! ChangeHeader() abort
     if line('$')>=5
-        call Preserve('1,5s/Last \(Change\|Modified\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
+        call Preserve('1,8s/Last \(Change\|Modified\):\s\+\zs.*/\=strftime("%Y %b %d %H:%M")/ei')
     endif
 endfun
 command! -nargs=0 CH :call ChangeHeader()

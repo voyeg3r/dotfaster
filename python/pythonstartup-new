@@ -9,7 +9,7 @@ import readline
 import rlcompleter
 import sys
 
-sys.path.insert(0, '/home/sergio/.dotfiles/bin')
+sys.path.insert(1, '/home/sergio/.dotfiles/bin')
 
 try:
     import readline

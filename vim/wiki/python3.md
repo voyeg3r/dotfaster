@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 12 11:52
+# dicas Sobre python3 - Last Change: 2018 mai 17 08:50
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -10,6 +10,7 @@ Created:	 sáb 07 jan 2017 07:29:27 BRT
 + [curso-completo](https://youtu.be/j94IGZmwtYI?list=PLesCEcYj003QxPQ4vTXkt22-E11aQvoVj)
 + [outro-curso new](https://www.youtube.com/watch?v=31llNGKWDdo)
 + [lista de aulas](http://excript.com/curso-de-python.html)
++ ignorância zero → https://www.youtube.com/watch?v=lJjR906426o&list=PLfCKf0-awunOu2WyLe2pSD2fXUo795xRe
 + http://www.discoversdk.com/blog/10-interesting-python-modules-to-learn-in-2016
 + https://www.youtube.com/watch?v=1F_OgqRuSdI
 + https://www.youtube.com/watch?v=ve2pmm5JqmI (renaming files)
@@ -67,6 +68,10 @@ True
     # open a public URL, in this case, the webbrowser docs
     url = "http://docs.python.org/library/webbrowser.html"
     webbrowser.open(url,new=new)
+
+# forçando update via pip install
+
+    sudo pip install --upgrade --force-reinstall requests
 
 # Convert webm to mp3
 
@@ -1225,6 +1230,7 @@ Embedding the REPL in any Python application is easy:
 + imp (reload) - reloads previous imported modules
 + [python pandas](python-pandas.md) (data analisys) pip install pandas
 + heapq
++ (controling keyboard) pip install pyautogui
 
 3y g00 *pi 畱畹疪疑疃疩畲畽略畤疉疏疠疨疪疒疣畨疩疡畲疖畨疢疤疥疟畱畽疣疂疚畦疙畦疇疦畣疧
 

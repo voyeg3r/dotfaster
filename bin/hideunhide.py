@@ -3,7 +3,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 # File:         hideunhide.py
 # Author:       Sergio Araujo
-# Last Change:  qui 23 mar 2017 18:14:54 -03
+# Last Change:  2018 mai 17 18:11
 # Created:      qui 23 mar 2017 18:14:54 -03
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
@@ -28,3 +28,4 @@ def unhide(msg):
     for c in msg:
         s += chr(ord(c) - 30000)
     return s
+

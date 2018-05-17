@@ -49,10 +49,16 @@ soup = BeautifulSoup(html_content, 'html.parser')
 # body
 # b
 
+# comentado para testes
+# with open("output.csv", "w") as file:
+#     for tag in soup.findAll('p'):
+#         file.write(str(tag))
+#         file.write("\n\n")
+
 with open("output.csv", "w") as file:
-    for tag in soup.findAll('p'):
+    for tag in soup.select('p em'):
         file.write(str(tag))
-        file.write("\n\n")
+        file.write("\n")
 
 # with open("output.csv", "w") as file:
 #     for tag in soup.find_all('strong'):

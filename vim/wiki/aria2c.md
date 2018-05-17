@@ -1,4 +1,4 @@
-# aria2c.md - Last Change: 2017 nov 15 05:44
+# aria2c.md - Last Change: 2018 mai 15 10:55
 ``` markdown
 Created:	 qua 11 jan 2017 12:55:47 BRT
 ```
@@ -34,6 +34,10 @@ de baixar arquivos em determinado formato com downloads mais fáceis.
 # Baixar em paralelo (padrão 5 links)
 
     aria2c -s 6 http://download.gnome.org/binaries/win32/evince/2.30/evince-2.30.0.msi
+
+    aria2c -x 6 -s 6 link
+
+To document -x, --max-connection-per-server=NUM The maximum number of connections to one server for each download. Possible Values: 1-16 Default: 1 and -s, --split=N Download a file using N connections. If more than N URIs are given
 
 # continuar donwload
 

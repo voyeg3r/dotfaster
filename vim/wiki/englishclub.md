@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 15 10:24
+# English Club - Last Change: 2018 mai 15 11:01
 
 # Introdução
 
@@ -134,8 +134,12 @@ See also this English Dictation site:
 + https://speechling.com/dictation/english
 + http://www.johnmh.com/ffood/ff24.htm
 
-    curl -O https://speechling.com/static/audio/female/english/english_40\[10-75\].mp3
+    curl -O https://speechling.com/static/audio/male/english/english_\[1-4900\].mp3
     seq 4900 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
+
+Fastest way to download!
+
+    seq 4900 | parallel -j20 aria2c -c -x 6 -s 6 https://speechling.com/static/audio/male/english/english_{}.mp3
 
 * Picture yourself fluent english speaker
 * Conversação real através do google talk e skype, facebook twitter, etc. Para tornar o inglês parte da vida dos membros do clube.
