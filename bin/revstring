@@ -3,7 +3,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 #        File:  revstring
 #     Created:  qui 17 mai 2018 15:36:28 -03
-# Last Change:  2018 mai 17 19:30
+# Last Change:  2018 mai 17 19:44
 #      Author:  Sergio Araujo
 #     Purpose:  reverse a given string
 #       email:  <voyeg3r ✉ gmail.com>
@@ -28,7 +28,6 @@
 """
 
 import sys
-import pyperclip
 
 def main():
     argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin
