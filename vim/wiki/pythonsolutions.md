@@ -3,7 +3,7 @@
 ``` markdown
 File:		 pythonsolutions.md
 Created:	 qua 11 jan 2017 14:21:22 BRT
-Last Change: 2018 mai 18 07:04
+Last Change: 2018 mai 18 08:16
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -492,7 +492,20 @@ print "eu sou {0} e eu tenho {1} anos".format(nome, idade)
 normal = open(”usuarios.txt”).read()
 lower_string = normal.lower()
 upper_string = normal.upper()
+
+# uppercase the first letter
+string = 'uma frase diferente'
+string[0].upper()+string[1:]
+'Uma frase diferente'
+
+s = 'the brown fox'
+s = ' '.join(word[0].upper() + word[1:] for word in s.split())
+
+def capitalize(line):
+    return ' '.join(s[:1].upper() + s[1:] for s in line.split(' '))
 ```
+
+Usando o método title() todas as primeiras letras são alteradas.
 
 # Servidor simples http
 
