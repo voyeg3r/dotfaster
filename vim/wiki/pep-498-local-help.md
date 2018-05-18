@@ -1,5 +1,4 @@
-
-# PEP: 498
+# PEP: 498 - f-strings
 Title: Literal String Interpolation
 Version: $Revision$
 Last-Modified: $Date$

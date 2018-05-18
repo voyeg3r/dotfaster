@@ -3,7 +3,7 @@
 ``` markdown
 File:		 pythonsolutions.md
 Created:	 qua 11 jan 2017 14:21:22 BRT
-Last Change: qua 11 jan 2017 14:21:29 BRT
+Last Change: 2018 mai 18 07:04
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -29,6 +29,9 @@ keyword.kwlist
     ----------------This is my string-----------------
     ```
 
+# Automated browser control with Selenium
++ https://www.youtube.com/watch?v=GJjMjB3rkJM
+
 # playing songs with python
 + http://guzalexander.com/2012/08/17/playing-a-sound-with-python.html
 
@@ -39,7 +42,6 @@ keyword.kwlist
     song = pyglet.media.load('thesong.ogg')
     song.play()
     pyglet.app.run()
-
 
     import pyglet
     music = pyglet.resource.media('filhos-de-gandhi.mp3', streaming=False)
@@ -52,7 +54,6 @@ keyword.kwlist
 + pyaudio
 + pymedia
 
-
 # programando com janelas
 * http://www.gustavobarbieri.com.br/eagle/docs/eagle-pt.html
 
@@ -61,7 +62,6 @@ keyword.kwlist
 * http://www.lightbird.net/py-by-example/index.html
 * http://mail.python.org/pipermail/python-list/2002-August/159344.html
 * http://svn.python.org/projects/python/branches/py3k-urllib/Lib/platform.py
-
 
 # http server on python 3
 
@@ -125,17 +125,10 @@ a
 # contar linhas de um arquivo
 * http://stackoverflow.com/questions/845058/
 
-``` python
-def file_len(fname):
-  counts = itertools.count()
-  with open(fname) as f:
-    for _ in f: counts.next()
-		return counts.next()
-```
-
-# outro exemplo
-
     pythons = sum(1 for line in open('myfile.txt'))
+
+    >>> print(sum(1 for line in open('.zshrc')))
+    349
 
 # função map
 
@@ -224,7 +217,10 @@ outra implementação bem legal
 
 # imprimir sequencia de binarios
 
-    for i in xrange(16): print '{0:04b}'.format(i)
+Using f-strings
+
+    for i in range(16): print( f'{i:#04x}')
+    for i in range(10): print( f'{i:#04b}')
 
 # enviar e-mails
 
@@ -749,13 +745,11 @@ aleatório - embaralhando
     random.shuffle(lista)
     print(lista)
 
-
     import os, random
     random.choice(os.listdir("/home/sergio/music/mpb"))
     'elba-ramalho'
     random.choice(os.listdir("/home/sergio/music/mpb"))
     'trio-nordestino'
-
 
     # Best way to choose a file randomically
     #! /usr/bin/env python
@@ -767,7 +761,6 @@ aleatório - embaralhando
         n=n+1
         if random.uniform(0, n) < 1: rfile=os.path.join(root, name)
     print(rfile)
-
 
 import random
 randrange(1,10)
