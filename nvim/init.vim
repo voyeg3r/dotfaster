@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mai 17 17:55
+" Last Change: 2018 mai 20 20:33
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -370,7 +370,7 @@ nnoremap Y y$
 if !exists('g:AutoPairsShortcutJump')
   let g:AutoPairsShortcutJump = '<A-l>'
 endif
-call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview,noinsert
 if exists('$SHELL')

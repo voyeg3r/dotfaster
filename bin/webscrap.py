@@ -3,7 +3,7 @@
 # vim: ai ts=4 sts=4 et sw=4
 # File:         <+Filename Here+>
 # Author:       Sergio Araujo
-# Last Change:  seg 09 out 2017 18:22:11 -03
+# Last Change:  2018 mai 21 08:10
 # Created:      seg 09 out 2017 18:22:11 -03
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
@@ -16,7 +16,7 @@ import requests
 import re
 import sys
 
-if sys.argv[1]:
+if len(sys.argv) > 1:
     url = sys.argv[1]
 else:
     # video = pafy.new('video id or video url')

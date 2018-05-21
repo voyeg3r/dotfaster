@@ -17,6 +17,9 @@ class Source(Base):
         self.name = 'buffer'
         self.mark = '[B]'
         self.events = ['InsertEnter', 'BufWritePost']
+        self.vars = {
+            'require_same_filetype': True,
+        }
 
         self._limit = 1000000
         self._buffers = {}
@@ -31,8 +34,7 @@ class Source(Base):
         self.on_event(context)
 
         tab_bufnrs = self.vim.call('tabpagebuflist')
-        same_filetype = context['vars'].get(
-            'deoplete#buffer#require_same_filetype', True)
+        same_filetype = self.vars['require_same_filetype']
         return {'sorted_candidates': [
             x['candidates'] for x in self._buffers.values()
             if not same_filetype or
@@ -48,6 +50,9 @@ class Source(Base):
         if size > self._limit:
             return
 
+        keyword_pattern = self.vim.call(
+            'deoplete#util#get_keyword_pattern',
+            context['filetype'], self.keyword_patterns)
         try:
             self._buffers[context['bufnr']] = {
                 'bufnr': context['bufnr'],
@@ -55,7 +60,7 @@ class Source(Base):
                 'candidates': [
                     {'word': x} for x in
                     sorted(parse_buffer_pattern(getlines(self.vim),
-                                                context['keyword_patterns']),
+                                                keyword_pattern),
                            key=str.lower)
                 ]
             }

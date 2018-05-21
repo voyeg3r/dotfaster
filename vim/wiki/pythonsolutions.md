@@ -3,13 +3,26 @@
 ``` markdown
 File:		 pythonsolutions.md
 Created:	 qua 11 jan 2017 14:21:22 BRT
-Last Change: 2018 mai 18 08:16
+Last Change: 2018 mai 20 20:19
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
 Twitter:	 @voyeg3r
 Github:      https://github.com/voyeg3r
 ```
+
+# install pythong packages
+
+    sudo pip install package
+    sudo pip uninstall package
+    sudo pip install --upgrade package
+    pip search package
+
+    # update all python packages
+    $ pip install pip-review
+    $ pip-review --local --interactive
+
+    pip list --outdated | cut -d ' ' -f1 | xargs -n1 sudo pip install -U
 
 # Book and youtube channel - automate the boring stuff with python
 + https://www.youtube.com/playlist?list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW
@@ -1044,18 +1057,18 @@ print [(x,y) for x in (1,2,3,4) for y in (10,15,3,22) if x*y > 25]
 * fonte: Eu podia estar matando
 * http://defpython.blogspot.com/2007/01/trabalhando-com-strings_15.html
 
->>> 'www.google.com'.split('.')
-['www', 'google', 'com']
->>> ‘19:16:23′.split(’:')
-['19', '16', '23']
->>> hora, minuto, segundos = ‘19:16:23′.split(’:')
->>> hora
-‘19′
->>> minuto
-‘16′
->>> segundos
-‘23′
-#
+    >>> 'www.google.com'.split('.')
+    ['www', 'google', 'com']
+    >>> ‘19:16:23′.split(’:')
+    ['19', '16', '23']
+    >>> hora, minuto, segundos = ‘19:16:23′.split(’:')
+    >>> hora
+    ‘19′
+    >>> minuto
+    ‘16′
+    >>> segundos
+    ‘23′
+
 # para juntar uma lista
 # primeiro criamos a lista
 lista = 'www.google.com'.split('.')
@@ -1067,9 +1080,18 @@ Em casos em que você receber uma data no estilo norte americano faça:
 
 # formatando datas
 
+```
 import time
 print time.localtime()
 [2008,9,23,16,24,1,267,0]
+
+
+>>> import datetime
+>>> now = datetime.datetime.now()
+>>> print(now.year)
+2018
+>>>
+```
 
 # atribuindo datas de forma rápida
 ano,mes,dia,hora,minuto,segundo=time.localtime()[:6]

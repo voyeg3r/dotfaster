@@ -19,9 +19,8 @@ import deoplete.filter  # noqa
 from deoplete import logger
 from deoplete.exceptions import SourceInitError
 from deoplete.util import (bytepos2charpos, charpos2bytepos, error, error_tb,
-                           import_plugin,
-                           get_buffer_config, get_custom,
-                           get_syn_names, convert2candidates)
+                           import_plugin, get_custom, get_syn_names,
+                           convert2candidates, uniq_list_dict)
 
 
 class Child(logger.LoggingMixin):
@@ -32,7 +31,6 @@ class Child(logger.LoggingMixin):
         self._vim = vim
         self._filters = {}
         self._sources = {}
-        self._custom = []
         self._profile_flag = None
         self._profile_start_time = 0
         self._loaded_sources = {}
@@ -82,8 +80,6 @@ class Child(logger.LoggingMixin):
             self._add_filter(args[0])
         elif name == 'set_source_attributes':
             self._set_source_attributes(args[0])
-        elif name == 'set_custom':
-            self._set_custom(args[0])
         elif name == 'on_event':
             self._on_event(args[0])
         elif name == 'merge_results':
@@ -137,7 +133,7 @@ class Child(logger.LoggingMixin):
             f.path = path
             if f.name in self._loaded_filters:
                 # Duplicated name
-                error_tb(self._vim, 'duplicated filter: %s' % f.name)
+                error_tb(self._vim, 'Duplicated filter: %s' % f.name)
                 error_tb(self._vim, 'path: "%s" "%s"' %
                          (path, self._loaded_filters[f.name]))
                 f = None
@@ -157,17 +153,15 @@ class Child(logger.LoggingMixin):
         merged_results = []
         for result in [x for x in results
                        if not self._is_skip(x['context'], x['source'])]:
-            source_result = self._source_result(result, context['input'])
-            if source_result:
-                rank = get_custom(self._custom,
+            if self._update_result(result,
+                                   context['input'], context['next_input']):
+                rank = get_custom(context['custom'],
                                   result['source'].name, 'rank',
                                   result['source'].rank)
+                candidates = result['candidates']
                 merged_results.append({
-                    'complete_position': source_result['complete_position'],
-                    'mark': result['source'].mark,
-                    'dup': bool(result['source'].filetypes),
-                    'candidates': result['candidates'],
-                    'source_name': result['source'].name,
+                    'complete_position': result['complete_position'],
+                    'candidates': candidates,
                     'rank': rank,
                 })
 
@@ -250,7 +244,7 @@ class Child(logger.LoggingMixin):
                 }
                 self._prev_results[source.name] = result
                 results.append(result)
-            except Exception:
+            except Exception as exc:
                 self._source_errors[source.name] += 1
                 if source.is_silent:
                     continue
@@ -260,7 +254,7 @@ class Child(logger.LoggingMixin):
                           'is restarted.' % source.name)
                     self._ignore_sources.append(source.name)
                     continue
-                error_tb(self._vim, 'Errors from: %s' % source.name)
+                error_tb(self._vim, 'Error from %s: %r' % (source.name, exc))
 
         return results
 
@@ -273,7 +267,7 @@ class Child(logger.LoggingMixin):
             if async_candidates is None:
                 return
             context['candidates'] += convert2candidates(async_candidates)
-        except Exception:
+        except Exception as exc:
             self._source_errors[source.name] += 1
             if source.is_silent:
                 return
@@ -283,26 +277,28 @@ class Child(logger.LoggingMixin):
                       'is restarted.' % source.name)
                 self._ignore_sources.append(source.name)
             else:
-                error_tb(self._vim, 'Errors from: %s' % source.name)
+                error_tb(self._vim, 'Error from %s: %r' % (source.name, exc))
 
-    def _process_filter(self, f, context):
+    def _process_filter(self, f, context, max_candidates):
         try:
             self._profile_start(context, f.name)
             if (isinstance(context['candidates'], dict) and
                     'sorted_candidates' in context['candidates']):
-                context_candidates = []
+                filtered = []
                 context['is_sorted'] = True
                 for candidates in context['candidates']['sorted_candidates']:
                     context['candidates'] = candidates
-                    context_candidates += f.filter(context)
-                context['candidates'] = context_candidates
+                    filtered += f.filter(context)
             else:
-                context['candidates'] = f.filter(context)
+                filtered = f.filter(context)
+            if max_candidates > 0:
+                filtered = filtered[: max_candidates]
+            context['candidates'] = filtered
             self._profile_end(f.name)
         except Exception:
             error_tb(self._vim, 'Errors from: %s' % f)
 
-    def _source_result(self, result, context_input):
+    def _update_result(self, result, context_input, next_input):
         source = result['source']
 
         # Gather async results
@@ -316,6 +312,7 @@ class Child(logger.LoggingMixin):
         ctx = copy.deepcopy(result['context'])
 
         ctx['input'] = context_input
+        ctx['next_input'] = next_input
         ctx['complete_str'] = context_input[ctx['char_position']:]
         ctx['is_sorted'] = False
 
@@ -329,13 +326,28 @@ class Child(logger.LoggingMixin):
         for f in [self._filters[x] for x
                   in source.matchers + source.sorters + source.converters
                   if x in self._filters]:
-            self._process_filter(f, ctx)
+            self._process_filter(f, ctx, source.max_candidates)
 
         ctx['ignorecase'] = ignorecase
 
         # On post filter
         if hasattr(source, 'on_post_filter'):
             ctx['candidates'] = source.on_post_filter(ctx)
+
+        mark = source.mark + ' '
+        dup = bool(source.filetypes)
+        for candidate in ctx['candidates']:
+            # Set default menu and icase
+            candidate['icase'] = 1
+            if (mark != ' ' and
+                    candidate.get('menu', '').find(mark) != 0):
+                candidate['menu'] = mark + candidate.get('menu', '')
+            if dup:
+                candidate['dup'] = 1
+        # Note: cannot use set() for dict
+        if dup:
+            # Remove duplicates
+            ctx['candidates'] = uniq_list_dict(ctx['candidates'])
 
         result['candidates'] = ctx['candidates']
         return result if result['candidates'] else None
@@ -345,10 +357,8 @@ class Child(logger.LoggingMixin):
         ignore_sources = set(self._ignore_sources)
         for ft in filetypes:
             ignore_sources.update(
-                get_buffer_config(context, ft,
-                                  'deoplete_ignore_sources',
-                                  'deoplete#ignore_sources',
-                                  {}))
+                self._vim.call('deoplete#custom#_get_filetype_option',
+                               'ignore_sources', ft, []))
 
         for source_name, source in self._sources.items():
             if source.filetypes is None or source_name in ignore_sources:
@@ -382,7 +392,8 @@ class Child(logger.LoggingMixin):
             return
 
         if not self._profile_flag:
-            self._profile_flag = context['vars']['deoplete#enable_profile']
+            self._profile_flag = self._vim.call(
+                'deoplete#custom#_get_option', 'profile')
             if self._profile_flag:
                 return self._profile_start(context, name)
         elif self._profile_flag:
@@ -425,39 +436,47 @@ class Child(logger.LoggingMixin):
         context['vars'] under a different name, use a tuple.
         """
         attrs = (
-            'filetypes',
-            'disabled_syntaxes',
-            'input_pattern',
-            ('min_pattern_length', 'deoplete#auto_complete_start_length'),
-            'max_pattern_length',
-            ('max_abbr_width', 'deoplete#max_abbr_width'),
-            ('max_kind_width', 'deoplete#max_menu_width'),
-            ('max_menu_width', 'deoplete#max_menu_width'),
-            'matchers',
-            'sorters',
             'converters',
-            'mark',
+            'disabled_syntaxes',
+            'filetypes',
+            'input_pattern',
             'is_debug_enabled',
             'is_silent',
+            'keyword_patterns',
+            'mark',
+            'matchers',
+            'max_abbr_width',
+            'max_candidates',
+            'max_kind_width',
+            'max_menu_width',
+            'max_pattern_length',
+            'min_pattern_length',
+            'sorters',
+            'vars',
         )
 
         for name, source in self._sources.items():
             for attr in attrs:
-                if isinstance(attr, tuple):
-                    default_val = context['vars'][attr[1]]
-                    attr = attr[0]
+                source_attr = getattr(source, attr, None)
+                custom = get_custom(context['custom'],
+                                    name, attr, source_attr)
+                if custom and isinstance(source_attr, dict):
+                    # Update values if it is dict
+                    source_attr.update(custom)
                 else:
-                    default_val = None
-                source_attr = getattr(source, attr, default_val)
-                setattr(source, attr, get_custom(context['custom'],
-                                                 name, attr, source_attr))
+                    setattr(source, attr, custom)
 
-    def _set_custom(self, custom):
-        self._custom = custom
+            # Default min_pattern_length
+            if source.min_pattern_length < 0:
+                source.min_pattern_length = self._vim.call(
+                    'deoplete#custom#_get_option', 'min_pattern_length')
+
+            if not source.is_volatile:
+                source.is_volatile = bool(source.filetypes)
 
     def _on_event(self, context):
         for source_name, source in self._itersource(context):
-            if not source.events or context['event'] in source.events:
+            if source.events is None or context['event'] in source.events:
                 self.debug('on_event: Source: %s', source_name)
                 try:
                     source.on_event(context)

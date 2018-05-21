@@ -1,4 +1,4 @@
-# yooutube-dl - Last Change: sáb 02 dez 2017 14:34:28 -03
+# yooutube-dl - Last Change: 2018 mai 20 18:34
 ``` markdown
 Created:	 qua 11 jan 2017 14:58:28 BRT
 ```
@@ -64,4 +64,20 @@ Antes de executar o comando certifique-se que a versão do youtube-dl é a mais 
 Agora pode executar algo como...
 
 	youtube-dl -cit http://www.youtube.com/playlist?list=PLBACC77E2173B4280&feature=mh_lolz
+
+# external downloader
+
+    --external-downloader COMMAND
+
+              Use the specified external downloader.  Currently supports
+              aria2c,av‐ conv,axel,curl,ffmpeg,httpie,wget
+
+
+      --external-downloader-args ARGS
+              Give these arguments to the external downloader
+
+# How many sites can I use with youtube-dl?
+
+    youtube-dl --extractor-descriptions
+
 

@@ -16,8 +16,18 @@ back to a filesystem.
 
 In other words, this plugin allows you to lint while you type.
 
-In addition to linting support, ALE offers some support for fixing code with
-formatting tools, and some Language Server Protocol and `tsserver` features.
+ALE offers support for fixing code with command line tools in a non-blocking
+manner with the `:ALEFix` feature, supporting tools in many languages, like
+`prettier`, `eslint`, `autopep8`, and more.
+
+ALE acts as a "language client" to support a variety of Language Server Protocol
+features, including:
+
+* Diagnostics (via Language Server Protocol linters)
+* Go To Definition (`:ALEGoToDefinition`)
+* Completion (`let g:ale_completion_enabled = 1`)
+* Finding references (`:ALEFindReferences`)
+* Hover information (`:ALEHover`)
 
 ## Table of Contents
 
@@ -27,6 +37,8 @@ formatting tools, and some Language Server Protocol and `tsserver` features.
     2. [Fixing](#usage-fixing)
     3. [Completion](#usage-completion)
     4. [Go To Definition](#usage-go-to-definition)
+    5. [Find References](#usage-find-references)
+    6. [Hovering](#usage-hover)
 3. [Installation](#installation)
     1. [Installation with Vim package management](#standard-installation)
     2. [Installation with Pathogen](#installation-with-pathogen)
@@ -90,6 +102,7 @@ formatting.
 | CoffeeScript | [coffee](http://coffeescript.org/), [coffeelint](https://www.npmjs.com/package/coffeelint) |
 | Crystal | [crystal](https://crystal-lang.org/) !! |
 | CSS | [csslint](http://csslint.net/), [prettier](https://github.com/prettier/prettier), [stylelint](https://github.com/stylelint/stylelint) |
+| Cucumber | [cucumber](https://cucumber.io/) |
 | Cython (pyrex filetype) | [cython](http://cython.org/) |
 | D | [dmd](https://dlang.org/dmd-linux.html) |
 | Dafny | [dafny](https://rise4fun.com/Dafny) !! |
@@ -112,8 +125,8 @@ formatting.
 | Haskell | [brittany](https://github.com/lspitzner/brittany), [ghc](https://www.haskell.org/ghc/), [stack-ghc](https://haskellstack.org/), [stack-build](https://haskellstack.org/) !!, [ghc-mod](https://github.com/DanielG/ghc-mod), [stack-ghc-mod](https://github.com/DanielG/ghc-mod), [hlint](https://hackage.haskell.org/package/hlint), [hdevtools](https://hackage.haskell.org/package/hdevtools), [hfmt](https://github.com/danstiner/hfmt) |
 | HTML | [alex](https://github.com/wooorm/alex) !!, [HTMLHint](http://htmlhint.com/), [proselint](http://proselint.com/), [tidy](http://www.html-tidy.org/), [write-good](https://github.com/btford/write-good) |
 | Idris | [idris](http://www.idris-lang.org/) |
-| Java | [checkstyle](http://checkstyle.sourceforge.net), [javac](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [google-java-format](https://github.com/google/google-java-format) |
-| JavaScript | [eslint](http://eslint.org/), [flow](https://flowtype.org/), [jscs](http://jscs.info/), [jshint](http://jshint.com/), [prettier](https://github.com/prettier/prettier), [prettier-eslint](https://github.com/prettier/prettier-eslint), [prettier-standard](https://github.com/sheerun/prettier-standard), [standard](http://standardjs.com/), [xo](https://github.com/sindresorhus/xo)
+| Java | [checkstyle](http://checkstyle.sourceforge.net), [javac](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [google-java-format](https://github.com/google/google-java-format), [PMD](https://pmd.github.io/) |
+| JavaScript | [eslint](http://eslint.org/), [flow](https://flowtype.org/), [jscs](http://jscs.info/), [jshint](http://jshint.com/), [prettier](https://github.com/prettier/prettier), [prettier-eslint](https://github.com/prettier/prettier-eslint-cli), [prettier-standard](https://github.com/sheerun/prettier-standard), [standard](http://standardjs.com/), [xo](https://github.com/sindresorhus/xo)
 | JSON | [fixjson](https://github.com/rhysd/fixjson), [jsonlint](http://zaa.ch/jsonlint/), [jq](https://stedolan.github.io/jq/), [prettier](https://github.com/prettier/prettier) |
 | Kotlin | [kotlinc](https://kotlinlang.org) !!, [ktlint](https://ktlint.github.io) !! see `:help ale-integration-kotlin` for configuration instructions |
 | LaTeX | [alex](https://github.com/wooorm/alex) !!, [chktex](http://www.nongnu.org/chktex/), [lacheck](https://www.ctan.org/pkg/lacheck), [proselint](http://proselint.com/), [redpen](http://redpen.cc/), [vale](https://github.com/ValeLint/vale), [write-good](https://github.com/btford/write-good) |
@@ -124,13 +137,15 @@ formatting.
 | Make | [checkmake](https://github.com/mrtazz/checkmake) |
 | Markdown | [alex](https://github.com/wooorm/alex) !!, [markdownlint](https://github.com/DavidAnson/markdownlint) !!, [mdl](https://github.com/mivok/markdownlint), [prettier](https://github.com/prettier/prettier), [proselint](http://proselint.com/), [redpen](http://redpen.cc/), [remark-lint](https://github.com/wooorm/remark-lint) !!, [textlint](https://textlint.github.io/), [vale](https://github.com/ValeLint/vale), [write-good](https://github.com/btford/write-good) |
 | MATLAB | [mlint](https://www.mathworks.com/help/matlab/ref/mlint.html) |
+| Mercury | [mmc](http://mercurylang.org) !! |
+| NASM | [nasm](https://www.nasm.us/) !! |
 | Nim | [nim check](https://nim-lang.org/docs/nimc.html) !! |
 | nix | [nix-instantiate](http://nixos.org/nix/manual/#sec-nix-instantiate) |
 | nroff | [alex](https://github.com/wooorm/alex) !!, [proselint](http://proselint.com/), [write-good](https://github.com/btford/write-good)|
 | Objective-C | [clang](http://clang.llvm.org/) |
 | Objective-C++ | [clang](http://clang.llvm.org/) |
 | OCaml | [merlin](https://github.com/the-lambda-church/merlin) see `:help ale-ocaml-merlin` for configuration instructions, [ols](https://github.com/freebroccolo/ocaml-language-server) |
-| Perl | [perl -c](https://perl.org/), [perl-critic](https://metacpan.org/pod/Perl::Critic) |
+| Perl | [perl -c](https://perl.org/), [perl-critic](https://metacpan.org/pod/Perl::Critic), [perltidy](https://metacpan.org/pod/distribution/Perl-Tidy/bin/perltidy) |
 | PHP | [hack](http://hacklang.org/), [hackfmt](https://github.com/facebook/flow/tree/master/hack/hackfmt), [langserver](https://github.com/felixfbecker/php-language-server), [phan](https://github.com/phan/phan) see `:help ale-php-phan` to instructions, [php -l](https://secure.php.net/), [phpcs](https://github.com/squizlabs/PHP_CodeSniffer), [phpmd](https://phpmd.org), [phpstan](https://github.com/phpstan/phpstan), [phpcbf](https://github.com/squizlabs/PHP_CodeSniffer), [php-cs-fixer](http://cs.sensiolabs.org/) |
 | PO | [alex](https://github.com/wooorm/alex) !!, [msgfmt](https://www.gnu.org/software/gettext/manual/html_node/msgfmt-Invocation.html), [proselint](http://proselint.com/), [write-good](https://github.com/btford/write-good) |
 | Pod | [alex](https://github.com/wooorm/alex) !!, [proselint](http://proselint.com/), [write-good](https://github.com/btford/write-good) |
@@ -138,8 +153,8 @@ formatting.
 | proto | [protoc-gen-lint](https://github.com/ckaznocha/protoc-gen-lint) |
 | Pug | [pug-lint](https://github.com/pugjs/pug-lint) |
 | Puppet | [puppet](https://puppet.com), [puppet-lint](https://puppet-lint.com) |
-| Python | [autopep8](https://github.com/hhatto/autopep8), [flake8](http://flake8.pycqa.org/en/latest/), [isort](https://github.com/timothycrosley/isort), [mypy](http://mypy-lang.org/), [prospector](http://github.com/landscapeio/prospector), [pycodestyle](https://github.com/PyCQA/pycodestyle), [pyls](https://github.com/palantir/python-language-server), [pylint](https://www.pylint.org/) !!, [yapf](https://github.com/google/yapf) |
-| QML | [qmllint](https://github.com/qt/qtdeclarative/tree/5.11/tools/qmllint) |
+| Python | [autopep8](https://github.com/hhatto/autopep8), [black](https://github.com/ambv/black), [flake8](http://flake8.pycqa.org/en/latest/), [isort](https://github.com/timothycrosley/isort), [mypy](http://mypy-lang.org/), [prospector](http://github.com/landscapeio/prospector), [pycodestyle](https://github.com/PyCQA/pycodestyle), [pyls](https://github.com/palantir/python-language-server), [pylint](https://www.pylint.org/) !!, [yapf](https://github.com/google/yapf) |
+| QML | [qmlfmt](https://github.com/jesperhh/qmlfmt), [qmllint](https://github.com/qt/qtdeclarative/tree/5.11/tools/qmllint) |
 | R | [lintr](https://github.com/jimhester/lintr) |
 | ReasonML | [merlin](https://github.com/the-lambda-church/merlin) see `:help ale-reasonml-ols` for configuration instructions, [ols](https://github.com/freebroccolo/ocaml-language-server), [refmt](https://github.com/reasonml/reason-cli) |
 | reStructuredText | [alex](https://github.com/wooorm/alex) !!, [proselint](http://proselint.com/), [redpen](http://redpen.cc/), [rstcheck](https://github.com/myint/rstcheck), [vale](https://github.com/ValeLint/vale), [write-good](https://github.com/btford/write-good) |
@@ -149,7 +164,7 @@ formatting.
 | Rust |  cargo !! (see `:help ale-integration-rust` for configuration instructions), [rls](https://github.com/rust-lang-nursery/rls), [rustc](https://www.rust-lang.org/), [rustfmt](https://github.com/rust-lang-nursery/rustfmt) |
 | SASS | [sass-lint](https://www.npmjs.com/package/sass-lint), [stylelint](https://github.com/stylelint/stylelint) |
 | SCSS | [prettier](https://github.com/prettier/prettier), [sass-lint](https://www.npmjs.com/package/sass-lint), [scss-lint](https://github.com/brigade/scss-lint), [stylelint](https://github.com/stylelint/stylelint) |
-| Scala | [scalac](http://scala-lang.org), [scalastyle](http://www.scalastyle.org) |
+| Scala | [fsc](https://www.scala-lang.org/old/sites/default/files/linuxsoft_archives/docu/files/tools/fsc.html), [scalac](http://scala-lang.org), [scalastyle](http://www.scalastyle.org) |
 | Slim | [slim-lint](https://github.com/sds/slim-lint) |
 | SML | [smlnj](http://www.smlnj.org/) |
 | Solidity | [solhint](https://github.com/protofire/solhint), [solium](https://github.com/duaraghav8/Solium) |
@@ -220,9 +235,7 @@ too. See `:help ale-fix` for detailed information.
 
 ALE offers some support for completion via hijacking of omnicompletion while you
 type. All of ALE's completion information must come from Language Server
-Protocol linters, or similar protocols. At the moment, completion is only
-supported for TypeScript code with `tsserver`, when `tsserver` is enabled. You
-can enable completion like so:
+Protocol linters, or from `tsserver` for TypeSript.
 
 ```vim
 " Enable completion where available.
@@ -236,9 +249,30 @@ See `:help ale-completion` for more information.
 ### 2.iv Go To Definition
 
 ALE supports jumping to the definition of words under your cursor with the
-`:ALEGoToDefinition` command using any enabled LSP linters and `tsserver`.
+`:ALEGoToDefinition` command using any enabled Language Server Protocol linters
+and `tsserver`.
 
 See `:help ale-go-to-definition` for more information.
+
+<a name="usage-find-references"></a>
+
+### 2.v Find References
+
+ALE supports finding references for words under your cursor with the
+`:ALEFindReferences` command using any enabled Language Server Protocol linters
+and `tsserver`.
+
+See `:help ale-find-references` for more information.
+
+<a name="usage-hover"></a>
+
+### 2.vi Hovering
+
+ALE supports "hover" information for printing brief information about symbols at
+the cursor taken from Language Server Protocol linters and `tsserver` with the
+`ALEHover` command.
+
+See `:help ale-hover` for more information.
 
 <a name="installation"></a>
 
@@ -482,6 +516,8 @@ There are 3 global options that allow customizing the echoed message.
 
 - `g:ale_echo_msg_format` where:
     * `%s` is the error message itself
+    * `%...code...%` is an optional error code, and most characters can be
+      written between the `%` characters.
     * `%linter%` is the linter name
     * `%severity` is the severity type
 - `g:ale_echo_msg_error_str` is the string used for error severity.
@@ -499,22 +535,28 @@ Will give you:
 
 ![Echoed message](img/echo.png)
 
+See `:help g:ale_echo_msg_format` for more information.
+
 <a name="faq-autocmd"></a>
 
 ### 5.viii. How can I execute some code when ALE starts or stops linting?
 
 ALE runs its own [autocmd](http://vimdoc.sourceforge.net/htmldoc/autocmd.html)
-events when a lint or fix cycle are started and stopped. These events can be
-used to call arbitrary functions before and after ALE stops linting.
+events when a lint or fix cycle are started and stopped. There is also an event
+that runs when a linter job has been successfully started. These events can be
+used to call arbitrary functions during these respective parts of the ALE's
+operation.
 
 ```vim
 augroup YourGroup
     autocmd!
-    autocmd User ALELintPre  call YourFunction()
-    autocmd User ALELintPost call YourFunction()
+    autocmd User ALELintPre    call YourFunction()
+    autocmd User ALELintPost   call YourFunction()
 
-    autocmd User ALEFixPre   call YourFunction()
-    autocmd User ALEFixPost  call YourFunction()
+    autocmd User ALEJobStarted call YourFunction()
+
+    autocmd User ALEFixPre     call YourFunction()
+    autocmd User ALEFixPost    call YourFunction()
 augroup END
 ```
 

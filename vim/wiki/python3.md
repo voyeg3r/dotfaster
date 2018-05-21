@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 17 20:19
+# dicas Sobre python3 - Last Change: 2018 mai 20 17:02
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -73,6 +73,12 @@ True
 # forçando update via pip install
 
     sudo pip install --upgrade --force-reinstall requests
+
+    # update all pip packages
+    $ pip install pip-review
+    $ pip-review --local --interactive
+
+    pip list --outdated | cut -d ' ' -f1 | xargs -n1 sudo pip install -U
 
 # Convert webm to mp3
 

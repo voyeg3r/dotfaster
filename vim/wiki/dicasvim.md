@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 05 16:21
+# dicasvim.md Intro - Last Change: 2018 mai 19 13:30
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -3550,6 +3550,39 @@ OBS: These commands above do exactly the same
         exec 'normal! d0dgk"-Pl'
     endfunction
     nnoremap <Leader>k :call DeleteAbove()<CR>
+
+# Find all submatches to reorder a sentence
++ https://stackoverflow.com/questions/50414736
+
+before:
+
+    Execution time: 0.22s Statement 1 of 8 finished (2018-05-18 06:48:35.231)
+    Execution time: 0.22s Statement 1 of 8 finished (2018-05-18 06:54:01.259)
+    Execution time: 0.22s Statement 1 of 8 finished (2018-05-18 07:05:54.480)
+    <et al>
+
+after:
+
+    Statement 1 of 8 finished (2018-05-18 06:48:35.231) Execution time: 0.22s
+    Statement 1 of 8 finished (2018-05-18 06:54:01.259) Execution time: 0.22s
+    Statement 1 of 8 finished (2018-05-18 07:05:54.480) Execution time: 0.22s
+    <et al>
+
+Solutions:
+
+    :%s/\v(.*) (Statement.*)/\2 \1/g
+
+
+    :g/^E/exec "norm! dtSA \<esc>p"
+
+    g ........... globally
+    ^E .......... at the lines that start with "E"
+    exec ........ execute
+    normal! ..... in normal mode
+    dtS ......... delete [un]till before next "S"
+    A ........... start insert mode at the end of the line
+      ........... add one space
+    p ........... paste
 
 # Modify eachline charectors between two patterns
 + https://stackoverflow.com/a/49446424/2571881

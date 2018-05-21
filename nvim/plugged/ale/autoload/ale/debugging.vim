@@ -51,6 +51,7 @@ let s:global_variable_list = [
 \    'ale_sign_warning',
 \    'ale_statusline_format',
 \    'ale_type_map',
+\    'ale_use_global_executables',
 \    'ale_warn_about_trailing_blank_lines',
 \    'ale_warn_about_trailing_whitespace',
 \]
@@ -210,4 +211,15 @@ function! ale#debugging#InfoToClipboard() abort
     redir END
 
     call s:Echo('ALEInfo copied to your clipboard')
+endfunction
+
+function! ale#debugging#InfoToFile(filename) abort
+    let l:expanded_filename = expand(a:filename)
+
+    redir => l:output
+        silent call ale#debugging#Info()
+    redir END
+
+    call writefile(split(l:output, "\n"), l:expanded_filename)
+    call s:Echo('ALEInfo written to ' . l:expanded_filename)
 endfunction

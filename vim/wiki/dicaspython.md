@@ -2,7 +2,7 @@
 
 ```
 Criado: Ter 18/Dez/2012 hs 18:57
-Last Change: dom 08 jan 2017 12:03:28 BRT
+Last Change: 2018 mai 19 07:05
 autor: Sérgio Luiz Araújo Silva
 site: vivaotux
 twitter: voyeg3r
@@ -59,6 +59,12 @@ subs=open("/home/bala/Pirates of the Caribbean -The Curse of the Black Pearl(200
 subs.shift(minutes=-2) # Move all subs 2 minutes earlier
 subs.save('/home/bala/new.srt', encoding='utf-8')#saves file with new.srt in your home directory
 ```
+
+# Instalando pacotes python
+
+    sudo pip search package
+    sudo pip install package
+    sudo pip uninstall package
 
 # baixando legendas com o subliminal
 

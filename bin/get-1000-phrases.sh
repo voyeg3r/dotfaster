@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 # =================================================
 # CREATED:          Sáb 29/Dez/2012 hs 10:25
-# LAST CHANGE:      2012 Dez 29 10:25:13
+# LAST CHANGE:      2018 mai 18 10:30
 # THIS SCRIPT AIMS: describe here
 # AUTHOR:           Sérgio Luiz Araújo Silva
 # SITE:             http://vivaotux.blogspot.com
 # TWITTER:          @voyeg3r
 # SKYPE:            sergioaraujosilva
 # =================================================
-
-
 
 # o comando abaixo pega o texto
 
@@ -25,7 +23,6 @@
 
 # endereço 1: http://www.englishspeak.com/pt/english-phrases.cfm?newCategoryShowed=1&sortBy=28
 # endereço 2: http://www.englishspeak.com/pt/english-phrases.cfm?newCategoryShowed=2&sortBy=28
-
 
 # AUDIO="http://www.englishspeak.com/instantspeak/English/phrases/mp3/"
 # URL='http://www.englishspeak.com/pt/english-phrases.cfm\?newCategoryShowed\='
@@ -52,7 +49,6 @@ for ((i=1;i<=18;i++)){
 
       wget -O - -o /dev/null $ADDRESS | sed 's/<[^>]*>//g' | sed 's,\s\+, ,g' | sed '1,/\s\+(Normal)/d' | sed '/populateDrop/,$d' | sed '/^$/d' | awk 'NF > 0' > text-${NUMBER}.txt
 
-
        #echo removendo as cinco primeiras linhas
        #sed -i '1,5d' text-${NUMBER}.txt
        #sed -i 's/^\s\+//g' text-${NUMBER}.txt
@@ -75,7 +71,6 @@ for ((i=1;i<=18;i++)){
 
       clear
  }
-
 
  # mv folder-001 Expressões-comuns
  # mv folder-002 Cumprimentos

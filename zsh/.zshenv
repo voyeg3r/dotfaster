@@ -19,7 +19,7 @@ export LANGUAGE="pt_BR:pt:pt_PT"
 export LC_ALL="pt_BR.UTF-8"
 
 # export PYTHONSTARTUP=$HOME/.pythonstartup
-export PYTHONSTARTUP=$HOME/.dotfiles/python/pythonstartup-new
+export PYTHONSTARTUP=$HOME/.dotfiles/python/pythonrc.py
 export PYTHONDONTWRITEBYTECODE=1
 export MOZ_DISABLE_PANGO=1
 

@@ -4,18 +4,17 @@
 #        File:  <+Filename Here+>
 #      Author:  Sergio Araujo
 #     Purpose:  play a random song
-# Last Change:  sex 11 mai 2018 09:53:01 -03
+# Last Change:  2018 mai 19 08:06
 #     Created:  sex 11 mai 2018 09:53:01 -03
 #       email:  <voyeg3r ✉ gmail.com>
 #      Github:  https://github.com/voyeg3r
 #     twitter:  @voyeg3r
+#   Rererence:  https://stackoverflow.com/a/41911914/2571881
 
 import os
 import random
 import subprocess
 
-# choosing the song
-# https://stackoverflow.com/a/41911914/2571881
 n = 0
 random.seed()
 for root, dirs, files in os.walk('/home/sergio/music/mpb'):

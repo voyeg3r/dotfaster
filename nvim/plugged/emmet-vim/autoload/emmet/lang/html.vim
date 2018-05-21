@@ -5,7 +5,7 @@ let s:mx = '\([+>]\|[<^]\+\)\{-}\s*'
 \       .'\('
 \         .'\%('
 \           .'\%(#{[{}a-zA-Z0-9_\-\$]\+\|#[a-zA-Z0-9_\-\$]\+\)'
-\           .'\|\%(\[\%("[^"]*"\|[^"\]]*\)\+\]\)'
+\           .'\|\%(\[\%(\[[^\]]*\]\|"[^"]*"\|[^"\[\]]*\)\+\]\)'
 \           .'\|\%(\.{[{}a-zA-Z0-9_\-\$]\+\|\.[a-zA-Z0-9_\-\$]\+\)'
 \         .'\)*'
 \       .'\)'
@@ -94,6 +94,7 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
   let abbr = rabbr
 
   let root = emmet#newNode()
+  let root['variables'] = {}
   let parent = root
   let last = root
   let pos = []
@@ -195,12 +196,28 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
 
     for k in keys(custom_expands)
       if tag_name =~# k
-        let current.snippet = '${' . (empty(custom) ? tag_name : custom) . '}'
-        let current.name = ''
+        let snippet = '${' . (empty(custom) ? tag_name : custom) . '}'
+        if current.name != ''
+          let snode = emmet#newNode()
+          let snode.snippet = snippet
+          let snode.parent = current
+          let snode.multiplier = 1
+          call add(current.child, snode)
+        else
+          let current.snippet = snippet
+        endif
         break
       elseif custom =~# k
+        let snippet = '${' . custom . '}'
         let current.snippet = '${' . custom . '}'
-        let current.name = ''
+        if current.name != ''
+          let snode = emmet#newNode()
+          let snode.snippet = snippet
+          let snode.parent = current
+          call add(current.child, snode)
+        else
+          let current.snippet = snippet
+        endif
         break
       endif
     endfor
@@ -248,7 +265,7 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
     if len(attributes)
       let attr = attributes
       while len(attr)
-        let item = matchstr(attr, '\(\%(\%(#[{}a-zA-Z0-9_\-\$]\+\)\|\%(\[\%("[^"]*"\|[^"\]]*\)\+\]\)\|\%(\.[{}a-zA-Z0-9_\-\$]\+\)*\)\)')
+        let item = matchstr(attr, '\(\%(\%(#[{}a-zA-Z0-9_\-\$]\+\)\|\%(\[\%(\[[^\]]*\]\|"[^"]*"\|[^"\[\]]*\)\+\]\)\|\%(\.[{}a-zA-Z0-9_\-\$]\+\)*\)\)')
         if g:emmet_debug > 1
           echomsg 'attr=' . item
         endif
@@ -257,9 +274,11 @@ function! emmet#lang#html#parseIntoTree(abbr, type) abort
         endif
         if item[0] ==# '#'
           let current.attr.id = item[1:]
+          let root['variables']['id'] = current.attr.id
         endif
         if item[0] ==# '.'
           let current.attr.class = substitute(item[1:], '\.', ' ', 'g')
+          let root['variables']['class'] = current.attr.class
         endif
         if item[0] ==# '['
           let atts = item[1:-2]
