@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mar 04 15:10
+# zshell.md - Last Change: 2018 mai 21 14:30
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -70,6 +70,13 @@ Just like with bash (or any POSIX shell), you can also do set -o or set +o to se
     autoload -Uz vcs_info
 
 The -U means mark the function vcs_info for autoloading and suppress alias expansion. The -z means use zsh (rather than ksh) style. See also the functions command.
+
+# playing audio files without extension
+
+    for i in `ls *`; do
+        [[ $(file $i | grep -o 'Audio') == 'Audio' ]] && mpg123 $i
+        sleep 2
+    done
 
 # Conditional expressions
 

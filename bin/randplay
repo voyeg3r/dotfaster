@@ -4,12 +4,13 @@
 #        File:  <+Filename Here+>
 #      Author:  Sergio Araujo
 #     Purpose:  play a random song
-# Last Change:  2018 mai 19 08:06
+# Last Change:  2018 mai 21 20:07
 #     Created:  sex 11 mai 2018 09:53:01 -03
 #       email:  <voyeg3r ✉ gmail.com>
 #      Github:  https://github.com/voyeg3r
 #     twitter:  @voyeg3r
-#   Rererence:  https://stackoverflow.com/a/41911914/2571881
+#  Rererences:  https://stackoverflow.com/a/41911914/2571881
+#               http://www.pythonforbeginners.com/error-handling/python-try-and-except/
 
 import os
 import random
@@ -24,5 +25,9 @@ for root, dirs, files in os.walk('/home/sergio/music/mpb'):
             if random.uniform(0,n) < 1: rfile=os.path.join(root, name)
 
 file = rfile
-subprocess.Popen(['mpg123', '-q', file]).wait()
+
+try:
+    subprocess.Popen(['mpg123', '-q', file]).wait()
+except KeyboardInterrupt:
+    print('You cancelled the operation.')
 

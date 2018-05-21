@@ -3,7 +3,7 @@
 ``` markdown
 File:		 pythonsolutions.md
 Created:	 qua 11 jan 2017 14:21:22 BRT
-Last Change: 2018 mai 20 20:19
+Last Change: 2018 mai 21 09:23
 Author:		 Sergio Araujo
 Site:		 http://vivaotux.blogspot.com
 e-mail:      <voyeg3r ✉ gmail.com>
@@ -23,6 +23,12 @@ Github:      https://github.com/voyeg3r
     $ pip-review --local --interactive
 
     pip list --outdated | cut -d ' ' -f1 | xargs -n1 sudo pip install -U
+
+# get local ip address
+
+    >>> import socket
+    >>> socket.gethostbyname(socket.gethostname())
+    '192.168.0.115'
 
 # Book and youtube channel - automate the boring stuff with python
 + https://www.youtube.com/playlist?list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW

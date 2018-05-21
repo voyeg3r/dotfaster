@@ -2,7 +2,7 @@
 
 ```
 Criado: Ter 18/Dez/2012 hs 18:57
-Last Change: 2018 mai 19 07:05
+Last Change: 2018 mai 21 20:09
 autor: Sérgio Luiz Araújo Silva
 site: vivaotux
 twitter: voyeg3r
@@ -23,6 +23,15 @@ Curso do professor Ronaldo Ramos no Youtube: http://goo.gl/n4NxP
 + https://github.com/kernc/logkeys
 + http://www.securitybydefault.com/2013/09/listado-de-keyloggers-windows-linux.html
 + http://jeffhoogland.blogspot.com.br/2014/10/pyhook-for-linux-with-pyxhook.html
+
+# Error Handling
++ http://www.pythonforbeginners.com/error-handling/python-try-and-except/
+
+    try:
+        subprocess.Popen(['mpg123', '-q', file]).wait()
+    except KeyboardInterrupt:
+        print('You cancelled the operation.')
+
 
 # Invertendo uma lista no python3
 + https://dbader.org/blog/python-reverse-list

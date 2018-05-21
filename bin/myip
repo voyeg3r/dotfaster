@@ -1,6 +1,6 @@
 #!/bin/bash
 # Criado em: qui 02 nov 2017 13:09:06 -03
-# Last Change: qui 02 nov 2017 13:08:53 -03
+# Last Change: 2018 mai 21 09:21
 # Autor: Sérgio Luiz Araújo Silva
 # Retorna o seu ip
 
@@ -16,6 +16,4 @@ echo
 
 xclip -selection clipboard <(echo $MYIP)
 echo "valor copiado para a área de transferencia"
-
-
 
