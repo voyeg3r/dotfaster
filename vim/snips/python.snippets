@@ -28,6 +28,15 @@ def __unicode__(self):
     ${0:representation}
 endsnippet
 
+snippet cls "clean scren" w
+# import os
+def cls():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        os.system('cls')
+endsnippet
+
 snippet from "import from a given module" w
 from ${1:package} import ${0:module}
 endsnippet

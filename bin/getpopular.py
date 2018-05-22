@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # # -*- coding: UTF-8 -*-
 # Criado em:Ter 02/Mar/2010 hs 11:58
-# Last Change: qui 29 dez 2016 09:41:27 BRT
+# Last Change: 2018 mai 21 20:13
 # vim:ft=python:nolist:nu:
 # Instituicao: none
 # Proposito do script: pesquisar tags populares no delicious
@@ -22,11 +22,13 @@
 import sys
 import os
 
-# limpar a tela
-if os.name == 'posix':
-    os.system('clear')
-else:
-    os.system('cls')
+def cls():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        os.system('cls')
+
+cls()
 
 # como o módulo pydelicious pode não estar instalado coloquei este try/except
 try:

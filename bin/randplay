@@ -4,7 +4,7 @@
 #        File:  <+Filename Here+>
 #      Author:  Sergio Araujo
 #     Purpose:  play a random song
-# Last Change:  2018 mai 21 20:07
+# Last Change:  2018 mai 21 20:34
 #     Created:  sex 11 mai 2018 09:53:01 -03
 #       email:  <voyeg3r ✉ gmail.com>
 #      Github:  https://github.com/voyeg3r
@@ -15,6 +15,14 @@
 import os
 import random
 import subprocess
+
+def cls():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        os.system('cls')
+
+cls()
 
 n = 0
 random.seed()
@@ -27,7 +35,12 @@ for root, dirs, files in os.walk('/home/sergio/music/mpb'):
 file = rfile
 
 try:
+    print(f'-'*80)
+    print('Playing...')
+    print(file)
+    print(f'-'*80)
     subprocess.Popen(['mpg123', '-q', file]).wait()
 except KeyboardInterrupt:
+    cls()
     print('You cancelled the operation.')
 
