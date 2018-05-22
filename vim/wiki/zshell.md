@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mai 21 14:30
+# zshell.md - Last Change: 2018 mai 22 09:25
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -732,6 +732,9 @@ make file and directory names lowercase
 
     # show files modified in the last hour
     print -l zsh_demo/**/*(mh-1)
+
+    # show files modified in the las 40 minutes
+    print -l zsh_demo/**/*(mm-40)
 
     # Show files created in the last 10 minutes
     print -l zsh_demo/**/*(cm-10)
