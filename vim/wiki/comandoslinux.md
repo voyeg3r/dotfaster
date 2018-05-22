@@ -28,7 +28,6 @@
 + [aria2c](aria2c.md)
 + [arp-scan](arp-scan.md)
 + [arp](arp.md)
-+ [arpscan](arpscan.md)
 + [artigos](artigos.md)
 + [ascii](ascii.md)
 + [at](at.md)
