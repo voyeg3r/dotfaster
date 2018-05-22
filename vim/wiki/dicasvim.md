@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 19 13:30
+# dicasvim.md Intro - Last Change: 2018 mai 22 12:44
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -665,6 +665,7 @@ OBJS = \ ~
 # Running external commands
 
     :0r !ls *.mp3
+    r!sed -n 2,8p test.txt
 
 The command above will put `ls` output at the first line
 

@@ -7,7 +7,6 @@ build and execute shell command lines from standard input in parallel
 
     man parallel_tutorial
 
-
     seq 4500 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
 
-
+    echo {001..100} | tr ' ' '\n' | parallel -j20 wget -c https://basicenglishspeaking.com/wp-content/uploads/audio/{}.mp3

@@ -10,4 +10,4 @@ expr 5 \* 10
 50
 
 fonte: http://www.vivaolinux.com.br/dica/Utilizando-o-comando-expr
- 
+

@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 15 11:01
+# English Club - Last Change: 2018 mai 22 12:22
 
 # Introdução
 
@@ -133,6 +133,7 @@ See also this English Dictation site:
 + https://www.englishld.com/post
 + https://speechling.com/dictation/english
 + http://www.johnmh.com/ffood/ff24.htm
++ https://basicenglishspeaking.com/100-common-phrases-and-sentence-patterns/
 
     curl -O https://speechling.com/static/audio/male/english/english_\[1-4900\].mp3
     seq 4900 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
