@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mai 22 09:25
+# zshell.md - Last Change: 2018 mai 23 18:16
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -744,6 +744,10 @@ make file and directory names lowercase
 
     print -l **/*(.Lk-1cm-20om[1])
     "File --> ." Less than 1k, created minute -20, show in reverse order the first
+
+# play a random song
+
+    mpg123 "${(f)$(shuf -e **/*.mp3)}"
 
 # Show today's files
 

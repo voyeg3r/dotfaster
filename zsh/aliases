@@ -314,5 +314,6 @@ alias -g LC="| sed 's/./\L&/g'" # lowercase string (piped)
 alias -g UL="| sed 's, ,_,g'"
 alias -g ULC="| sed 's/./\L&/g' | sed 's, ,_,g'"
 alias pnf='mpg123 ./**/*(.om[1])'
+alias playrandom='mpg123 "${(f)$(shuf -e **/*.mp3)}"'
 #alias install='sudo apt-fast -y install'
 alias install="yaourt -Syua"
