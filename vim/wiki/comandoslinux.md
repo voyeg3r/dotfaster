@@ -275,7 +275,7 @@
 + [pandoc](pandoc.md)
 + [passwd](passwd.md)
 + [paste](paste.md)
-+ [pathogenplugin](pathogenplugin.md)
++ [vim-plug](vim-plug.md)
 + [pdfimages](pdfimages.md)
 + [pdftk](pdftk.md)
 + [pdftotext](pdftotext.md)

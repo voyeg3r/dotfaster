@@ -1058,3 +1058,6 @@ Vimtips in Belarusian
 :w!|sav! vimtips.html|:/^__BEGIN__/,/^__END__/s#<#\<#g|:w!|:!vimtipsftp
 ```
 ----------------------------------------
+
+
+tags: vim, nvim

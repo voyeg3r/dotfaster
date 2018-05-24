@@ -146,3 +146,5 @@ div[id=myid][style=width: 200px] { My text goes in here } + nav > ul > li*4
 
 To jump at each point into pieces created by sparkup press Ctrl-n
 
+
+tags: vim, nvim

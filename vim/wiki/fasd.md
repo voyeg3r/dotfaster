@@ -1,4 +1,4 @@
-# fasd.md - Last Change: 2018 jan 03 15:53
+# fasd.md - Last Change: 2018 mai 24 08:28
 Site oficial -->  https://github.com/clvv/fasd
 
 # O que é o comando fasd?
@@ -57,7 +57,7 @@ ou
 
 Porque o fasd_cd memoriza e é capaz de completar nomes assim:
 
-   z 17   (note que 17 faz parte do caminho digitado acima)
+   z dicasv note que dicasv faz parte do caminho digitado acima)
 
 ``` sh
 cp `f .vimrc` `d 17`

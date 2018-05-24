@@ -13,3 +13,5 @@
   para exibir novamente
 
   Ctrl-x Ctrl-o
+
+tag: vim, nvim

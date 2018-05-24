@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 22 12:44
+# dicasvim.md Intro - Last Change: 2018 mai 24 08:28
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -2974,14 +2974,6 @@ http://stackoverflow.com/questions/4180590/
     cd <plugindir>
     vim -c "helptags doc/"
 
-se usa o plugin pathogen coloque no .vimrc
-
-``` vim
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-```
-
 # Configuração do airline
 Uma barra de status mais bacana para o vim
 https://powerline.readthedocs.org/en/latest/installation/linux.html#font-installation
@@ -5389,10 +5381,14 @@ My solution
 # Adicionar um espaço em braco após cada linha
 
 Double-space your file: `:g/^/put _`. This puts the contents of the black hole
-register (empty when reading, but writable, behaving like /dev/null) linewise,
+register  (empty when reading, but writable, behaving like /dev/null) linewise,
 after each line (because every line has a beginning!).
 
     g/^/put _
+
+# Remover espaços em excesso não no começo da linha
+
+    /\([^ ]\)\(\s\{2,}\)\([^ ]\)
 
 # Função para deletar linhas em branco duplicadas
 
@@ -5675,13 +5671,19 @@ There are two different ways to do this in vim.
 
     :%s/^\s\+/\=repeat('.', len(submatch(0)))
 
-    This is fairly straightforward, but a little verbose. It uses the eval register (\=) to generate a string of '.'s the same length as the number of spaces at the beginning of each line.
+    This is fairly straightforward, but a little verbose. It uses the eval
+    register (\=) to generate a string of '.'s the same length as the number of
+    spaces at the beginning of each line.
 
     With a norm command:
 
     :%norm ^hviwr.
 
-    This is a much more conveniently short command, although it's a little harder to understand. It visually selects the spaces at the beginning of a line, and replaces the whole selection with dots. If there is no leading space, the command will fail on ^h because the cursor attempts to move out of bounds.
+    This is a much more conveniently short command, although it's a little
+    harder to understand. It visually selects the spaces at the beginning of a
+    line, and replaces the whole selection with dots. If there is no leading
+    space, the command will fail on ^h because the cursor attempts to move out
+    of bounds.
 
     To see how this works, try typing ^hviwr. on a line that has leading spaces to see it happen.
 
@@ -5691,3 +5693,5 @@ There are two different ways to do this in vim.
 + https://vimvalley.com/
 
 vim:ft=markdown
+
+tags: vim , admin

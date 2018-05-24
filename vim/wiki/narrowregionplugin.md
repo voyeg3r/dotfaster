@@ -1,6 +1,6 @@
 Arquivo: Plugin narrowRegion
 Criado: Dom 12/Dez/2010 hs 07:31
-Last Change: 2010 Dez 12 07:35:15
+Last Change: 2018 mai 24 08:31
 autor: Sérgio Luiz Araújo Silva
 site: vivaotux.blogspot.com
 twitter: voyeg3r
@@ -16,4 +16,6 @@ e digitar na linha de comandos do vim:
 
 O trecho '<,'> corresponde à area selecionada e o vim faz isso
 automaticamente
+
+tag: vim, nvim
 

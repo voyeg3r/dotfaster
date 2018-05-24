@@ -20,3 +20,5 @@ keys:
     <Space>      Accept the currently selected match and insert a space.
     CTRL-E       Close the menu and not accept any match.
 
+
+tags: vim, nvim

@@ -1,4 +1,4 @@
-# latexexemplos.md - Last Change: 2017 nov 03 09:17
+# latexexemplos.md - Last Change: 2018 mai 24 08:40
 
 See also [latex](latex.md)
 
@@ -46,3 +46,5 @@ See also [latex](latex.md)
     \pdfpageheight=11in
 \fi
 ```
+
+tags: latex, tex

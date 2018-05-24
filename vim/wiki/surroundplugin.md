@@ -61,3 +61,5 @@ video: http://vimeo.com/6093081
    . ................... repete a inserção das aspas
 
    ( necessita do plugin repeat instalado )
+
+tags: vim, nvim

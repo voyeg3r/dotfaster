@@ -3,14 +3,8 @@
 ```
 File:		 Wiki.md
 Created:	 ter 10 jan 2017 12:30:04 BRT
-Last Change: ter 10 jan 2017 12:31:12 BRT
-Author:		 Sergio Araujo
-Site:		 http://vivaotux.blogspot.com
-e-mail:      <voyeg3r ✉ gmail.com>
-Twitter:	 @voyeg3r
-Github:      https://github.com/voyeg3r
+Last Change: 2018 mai 24 08:13
 ```
-
 [vimwiki website](https://github.com/vimwiki/vimwiki)
 
 * leader>ww ..................... wiki index
@@ -57,3 +51,4 @@ Github:      https://github.com/voyeg3r
      o comando abaixo faz isso na linha corrente
 
     .s/\[\[\([^]]*\)\]\]/[\1](\1.md)/g
+

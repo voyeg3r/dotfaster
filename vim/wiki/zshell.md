@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mai 23 18:16
+# zshell.md - Last Change: 2018 mai 24 05:55
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -747,7 +747,11 @@ make file and directory names lowercase
 
 # play a random song
 
+    # random play all files
     mpg123 "${(f)$(shuf -e **/*.mp3)}"
+
+    # random play a single file
+    mpg123 "$(shuf -n 1 -e **/*.mp3)"
 
 # Show today's files
 

@@ -9,3 +9,5 @@ pairs of handy bracket mappings
     [e ............. exchange with preceding line
     ]e ............. exchange with next line
     ]a ............. next arg
+
+tags: vim, nvim

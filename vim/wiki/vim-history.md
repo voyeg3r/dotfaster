@@ -21,3 +21,5 @@ I was reading about vim the other day and found out why it used hjkl keys as
 arrow keys. When Bill Joy created the vi text editor he used the ADM-3A
 terminal, which had the arrows on hjkl keys. Naturally he reused the same keys
 and the rest is history!
+
+tags: vim, nvim

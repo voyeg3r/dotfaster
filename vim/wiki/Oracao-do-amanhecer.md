@@ -22,3 +22,5 @@ Reveste-me de tua beleza, Senhor, e que no decurso
 deste dia eu te revele a todos.
 
 Amém.
+
+tags: espiritismo , oração , prece

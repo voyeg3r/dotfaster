@@ -1,4 +1,3 @@
-
 PRECE DA GRATIDÃO
 fonte: https://meditando.wordpress.com/category/preces/prece-da-gratidao/
 
@@ -119,3 +118,5 @@ Obrigada, porque creio em Ti.
 …E porque me socorres com amor,
 Hoje e sempre,
 Obrigada, Senhor!
+
+tags: espiritismo, prece, oração

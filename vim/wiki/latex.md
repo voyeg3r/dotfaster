@@ -1,4 +1,4 @@
-# Arquivo: dicas de LaTex - Last Change: 2018 jan 13 05:43
+# Arquivo: dicas de LaTex - Last Change: 2018 mai 24 08:40
 
 ``` markdown
 Created: Ter 18/Dez/2012 hs 19:48
@@ -163,3 +163,4 @@ For example, in order to install URW Garamond for all users you do
 
 Installing fonts for one user only is not recommended.
 
+tags: latex, tex

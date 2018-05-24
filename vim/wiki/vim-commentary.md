@@ -9,3 +9,5 @@ For example, to comment a paragraph use
     gcip
 
     {Visual}gc  ........... Comment or uncomment the highlighted lines.
+
+tags: vim, nvim

@@ -13,8 +13,13 @@ OBS: I think it is useful to change the user-agent for wget before using it:
     wget --limit-rate=15k -m --restrict-file-names=nocontrol --user-agent="direct download -- `uname -a`" --no-parent --referer=http://DigitalK7.com/ "http://digitalk7.com/mus/Brazil/"
 
 # Parallel downloads
++ https://stackoverflow.com/questions/24731156/
 
     seq 4500 | parallel -j20 wget -c https://speechling.com/static/audio/female/english/english_{}.mp3
+
+In this case I have a list of urls
+
+    cat x-minus-one.txt | xargs -n 1 -P 10 wget -nc
 
 # Download Digitalk7.com albuns
 + http://digitalk7.com/mus/

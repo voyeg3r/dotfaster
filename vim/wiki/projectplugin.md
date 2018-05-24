@@ -29,3 +29,4 @@ O mesmo abrirá uma janela, dentro da mesma digite \C para iniciar a criação d
   " habilitar e desabilitar o plugin
   nmap < silent> ,p < Plug>ToggleProject< cr>
 
+tags: vim, nvim

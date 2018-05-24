@@ -12,7 +12,7 @@
 
 # pingar no gateway
 
-ping -c 2 `route -n | awk '/UG/ {print $2}'`
+    ping -c 2 `route -n | awk '/UG/ {print $2}'`
 
 # como pingar em um MAC
 Primeiro descubra o MAC ADDRESS do host que deseja pingar com ifconfig na
@@ -45,7 +45,6 @@ O comando ping retorna algo como:
 # Ping em um range de máquinas
 veja também [[ComandoNmap]]
 
-
 ``` sh
 #!/bin/bash
 # testa hosts ativos
@@ -58,7 +57,6 @@ for((i=1; i <= 254; i++)); do
 done
 ```
 
-
 ``` sh
 #!/bin/sh
 NOW=$(date +"%T %m/%d/%Y")
@@ -66,7 +64,6 @@ PING=$(ping -qc 5 example.com | grep '5 packets')
 echo $NOW: $PING >> /home/matt/ping.log
 exit 0
 ```
-
 
 A opção -q do ping faz com que o comando mostre apenas
 se houve ou não perda de pacotes, ou seja, a linha que mostra
@@ -87,3 +84,4 @@ Outra forma de testar hosts ativos numa rede
 
     arp-scan -l
 
+tags: network

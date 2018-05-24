@@ -51,6 +51,4 @@ Quando veres um homem que foi pego assaltando, algemado, ore por ele, pois além
 dos sofrimentos que ele terá na prisão, muitos outros espíritos que ele fez sofrer
 o esperam nas zonas obscuras, ou seja, seu sofrimento inevitavelmente está traçado.
 
-
-
-
+tags: espiritismo , oração , prece

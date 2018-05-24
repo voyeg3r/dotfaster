@@ -1,4 +1,4 @@
-# File:	emmet-vim.md - Last Change: 2017 dez 27 14:57
+# File:	emmet-vim.md - Last Change: 2018 mai 24 08:34
 + https://github.com/mattn/emmet-vim/blob/master/TUTORIAL
 
 emmet-vim is a vim plug-in which provides support for expanding abbreviations similar to emmet. (it is similar to sparkup)
@@ -50,3 +50,5 @@ Once you get to the 'Tag:' prompt, type 'ul>li*'.
         <li>test3</li>
     </ul>
     ---------------------
+
+tags: vim, nvim

@@ -1,4 +1,4 @@
-# plowshare.md - Last Change: 2018 mai 15 08:21
+# plowshare.md - Last Change: 2018 mai 24 08:37
 
 References:
 + http://blog.gypsydave5.com/2016/02/04/xargs-and-curl/
@@ -56,3 +56,5 @@ kill it if you've made a mistake.
     megastream   Streaming download of a file (can be used to preview videos or music)
     megacopy     Upload or download a directory tree
     megafs       Mount remote filesystem locally.
+
+tags: mediafire

@@ -230,3 +230,5 @@ patterns with the command-line window”, which contains some nice tips for
 efficient experimentation.
 
 vim:set et sw=4 ts=4:
+
+tags: vim, nvim

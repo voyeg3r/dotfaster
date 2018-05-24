@@ -747,3 +747,5 @@ This document has been placed in the public domain.
    fill-column: 70
    coding: utf-8
    End:
+
+tags: python

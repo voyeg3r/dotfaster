@@ -1,15 +1,15 @@
-# Introdução
-O comando abaixo mostra a quantidade de memória livre em
-seu sistema
+# Introdução - Last change: 2018 mai 24 07:59
 
-free -m
+O comando abaixo mostra a quantidade de memória livre em seu sistema
+
+    free -m
 
 A opção –t mostra o total na parte inferior do resultado (soma da memória física com o swap):
 
-free -mt
+    free -mt
 
 # medindo o percentual de memória física livre
 
-free -m | awk '/Mem/ {print ($3 / $2)*100}'
+    free -m | awk '/Mem/ {print ($3 / $2)*100}'
 
 

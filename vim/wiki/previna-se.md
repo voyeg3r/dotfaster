@@ -13,3 +13,5 @@ Controle seus melindres, de modo que se não instalem na ca-sa sinistra do ódio
 Vele por sua franqueza, a fim de que a sua palavra não destile veneno.
 Vigie seu entusiasmo para que não constitua imponderação.
 Cultive seu zelo nobre, mas não faça dele uma cartilha escura de violência
+
+tags: espiritismo , orações, preces
