@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 # Author:       Sergio Araujo
-# Last Change:  qua 01 mar 2017 16:01:47 BRT
+# Last Change:  2018 mai 24 14:41
 # File:         Receives integers, sums them and show mean
 # Created:      qua 01 mar 2017 16:01:47 BRT
 # email:        <voyeg3r ✉ gmail.com>
@@ -29,4 +29,4 @@ while True:
         break
 
 if count:
-    print("count =", count, "total =", total, "mean =", total / count)
+    print(f'count = {count}, total = {total}, mean = {total/count}')

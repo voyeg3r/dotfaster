@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 # Author:       Sergio Araujo
-# Last Change:  qui 26 jan 2017 07:22:20 BRT
+# Last Change:  2018 mai 24 17:44
 # Created:      qui 26 jan 2017 07:22:20 BRT
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
@@ -25,3 +25,4 @@ name = next(iter(result.keys()))
 num = next(iter(result.values()))
 
 print(f'{name} aparece {num} vezes no texto')
+

@@ -4,7 +4,7 @@ priority 1
 snippet zsh "zsh header" bA
 #!/usr/bin/env zsh
 #     Created: `date +%c`
-# Last Change:  dom 08 jan 2017 12:44:01 BRT
+# Last Change:  2018 mai 26 07:41
 #      Author:  ${1:`!v g:snips_author`}
 #     Twitter:  ${2:`!v g:snips_twitter`}
 #     Licence:  GPL (see http://www.gnu.org/licenses/gpl.txt)
@@ -254,5 +254,14 @@ while true; do
 done
 $0
 endsnippet
+
+snippet ask "ask user interaction" w
+read "response?Are you sure? [Y/n] "
+response=${response:l} #tolower
+if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+    echo "You have chosen yes"
+fi
+endsnippet
+
 
 # vim: set ft=zsh ts=8 sw=4 tw=0 noet :

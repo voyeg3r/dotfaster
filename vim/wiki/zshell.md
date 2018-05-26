@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mai 24 05:55
+# zshell.md - Last Change: 2018 mai 26 07:13
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -697,7 +697,7 @@ make file and directory names lowercase
     % wget ftp://ruby-lang.org/pub/ruby/1.8/ruby-1.8.7-p330.tar.gz
     % tar xzvf !:t
 
-# this command
+# this command (special search)
 
     ``` sh
     ls -1 */**/*.sh
@@ -744,6 +744,9 @@ make file and directory names lowercase
 
     print -l **/*(.Lk-1cm-20om[1])
     "File --> ." Less than 1k, created minute -20, show in reverse order the first
+
+    # Show today's files
+    ls -1 -- *(.m-1)
 
 # play a random song
 
@@ -1158,3 +1161,4 @@ Other stuff
 
     In this case we can use [perl-rename](perlrename.md) with regex
 
+tags: shell, zsh

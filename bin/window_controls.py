@@ -10,15 +10,15 @@
 
 import gtk
 import gconf
-   
+
 def callback(button, client):
     global left, right, key, entry
     if left.get_active():
-    	s = "maximize,minimize,close:" 
+        s = "maximize,minimize,close:"
     elif right.get_active():
-    	s = ":maximize,minimize,close"
+        s = ":maximize,minimize,close"
     else:
-    	s = entry.get_text()
+        s = entry.get_text()
     client.set_string (key, s)
     entry.set_text(s)
 

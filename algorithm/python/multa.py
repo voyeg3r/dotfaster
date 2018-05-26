@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 # Author:       Sergio Araujo
-# Last Change:  sex 27 jan 2017 15:43:25 BRT
+# Last Change:  2018 mai 24 17:32
 # Created:      sex 27 jan 2017 15:43:25 BRT
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
