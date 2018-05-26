@@ -1,7 +1,9 @@
 # exiftool - edit images and images metadata - sex 11 mai 2018 15:26:43 -03
 + https://hvdwolf.github.io/pyExifToolGUI/
 
-## Substitui palavras-chave existentes por duas novas palavras chaves.
+    exiftool - Read and write meta information in files
+
+# Substitui palavras-chave existentes por duas novas palavras chaves.
 
     exiftool -keywords=palavra1 -keywords=palavra2 foto.jpg
 

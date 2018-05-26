@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 24 08:28
+# dicasvim.md Intro - Last Change: 2018 mai 26 16:00
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,10 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+# Viewing git log in vim
+
+    git log --follow -p -- bin/aleatorios.py | vim - -R -c 'set foldmethod=syntax'
 
 # Hexa chars substitution
 Substituição de caracteres hexadecimal

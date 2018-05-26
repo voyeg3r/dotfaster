@@ -3,7 +3,7 @@
 ``` markdown
 File:		 GitHub.md
 Created:	 ter 10 jan 2017 13:45:09 BRT
-Last Change: 2018 fev 16 15:31
+Last Change: 2018 mai 26 15:10
 ```
 
 referências: http://stackoverflow.com/questions/23821235/
@@ -86,3 +86,5 @@ replace id_rsa in the command with the name of your private key file.
     Pull from a remote repository
     check mirror repository
     ```
+
+tags: git, github

@@ -1,4 +1,4 @@
-# git.md - Last Change: 2018 mar 26 07:48
+# git.md - Last Change: 2018 mai 26 15:10
 + https://www.alexkras.com/19-git-tips-for-everyday-use/
 + [primeiros passos](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Uma-Breve-Hist%C3%B3ria-do-Git)
 
@@ -132,3 +132,5 @@ provide new password and it will work like before.
 
     git checkout -- file
 
+
+tags: git, github

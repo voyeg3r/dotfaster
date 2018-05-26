@@ -7,7 +7,7 @@
 # alias mkdir='/bin/mkdir'
 # alias mv='/bin/mv'
 
-alias netrestart='sudo systemctl restart NetworkManager'
+alias netrestart='sudo systemctl restart NetworkManager;echo sudo systemctl restart NetworkManager'
 alias nettest='ping -c1 www.google.com  &> /dev/null && echo "Network ok" || echo There is no connection!'
 
 # https://linuxdicasesuporte.blogspot.com.br/2018/03/alternativa-ao-gksu-no-debian-e.html?spref=fb
