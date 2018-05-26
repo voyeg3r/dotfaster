@@ -13,6 +13,7 @@ export ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump"
 
 export EDITOR=nvim
 export BROWSER=firefox
+# export GIT_PAGER="vim - -R -c 'set foldmethod=syntax"
 
 export LANG="pt_BR.UTF-8"
 export LANGUAGE="pt_BR:pt:pt_PT"

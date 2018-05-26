@@ -1,0 +1,10 @@
+# source: https://www.reddit.com/r/vim/comments/ri7lj/using_vim_as_a_pager_for_git/c463il5
+
+git log -p $@ | vim - -R -c 'set foldmethod=syntax'
+
+# The '$@' inserts the full string of arguments you passed to the command.
+# If you save this as 'git-log' and make it executable, you can call it like this:
+
+# $ git-log
+# $ git-log -40
+# $ git-log --since=1week

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 26 16:00
+# dicasvim.md Intro - Last Change: 2018 mai 26 18:17
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -10,6 +10,7 @@
 + https://sanctum.geek.nz/arabesque/
 
 # Viewing git log in vim
++ https://www.reddit.com/r/vim/comments/ri7lj/using_vim_as_a_pager_for_git/
 
     git log --follow -p -- bin/aleatorios.py | vim - -R -c 'set foldmethod=syntax'
 
