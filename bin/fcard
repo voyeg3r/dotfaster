@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 # Author:       Sergio Araujo
-# Last Change:  2018 mai 28 16:07
+# Last Change:  2018 mai 28 19:40
 # Created:      qui 26 jan 2017 15:45:14 BRT
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
@@ -32,6 +32,7 @@ import sys
 
 argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
 argument = ''.join(argument).lower()
+
 check = string.ascii_lowercase + ' '
 
 output = unicodedata.normalize('NFKD', argument).encode('ascii', 'ignore')
@@ -40,7 +41,6 @@ output = ''.join(ch for ch in output if ch in check)
 output = output.replace(' ', '-')
 output = output + '.mp3'
 
-print("Your string was copied to the clipboard:")
+# print("Your string was copied to the clipboard:")
 print(output)
 pyperclip.copy(output)
-

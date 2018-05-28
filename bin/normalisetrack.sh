@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Criado em: 09-30-2015
 
-# Last Change: 2018 mai 28 14:35
+# Last Change: 2018 mai 28 16:16
 # vim:ft=sh:fdm=syntax:nu:
 # Instituicao: instituicao
 # Proposito do script: normalise audio tracks
@@ -28,6 +28,5 @@ filename="${1%.*}"
 
 sox -v ${value} "$1" ${filename}-changed.${extension} 2>/dev/null
 rm -f "$1" && mv "${filename}-changed.${extension}" "${filename}.${extension}"
-
 
 

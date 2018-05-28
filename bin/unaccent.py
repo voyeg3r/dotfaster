@@ -2,9 +2,9 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #         Created:  23-01-2017
-#     Last Change:  2018 mai 28 16:07
-#    What it does:  Remove accents of a given text
-#          Author:  sergio luiz araujo silva
+#     Last Change:  2018 mai 28 20:03
+#    What it does:  Remove accents of a given text and lowercases it
+#          Author:  Sergio Luiz Araujo Silva
 #            Site:  http://vivaotux.blogspot.com
 #         twitter:  @voyeg3r
 # ------------------------------------------------
@@ -15,30 +15,41 @@ import sys
 
 ''' Removes accents from a given string
 
+    References:
     https://docs.python.org/3.6/library/unicodedata
 
     unaccent.py "Ação, pé, alçapão --> Acao, pe, alcapao"
 
     echo Ação, pé, alçapão | unaccent.py
     Acao, pe, alcapao
+
+    You can also import
+
+    from unaccent import unaccent
+    print(unaccent('AÇÃO INCONGRUENTE?'))
 '''
 
-argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
-argument = ''.join(argument).lower()
-check = string.ascii_lowercase + ' '
+def main():
+    '''This function will get sys.argv or stdin as argument
+    and return it without punctuation and in lowercase'''
+    argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
+    argument = ''.join(argument).lower()
+    print(unaccent(argument))
 
 def unaccent(text):
     '''
-    Removes accents from a givem text
-    unacent(text) --> string '''
+    This function can be imported as flows:
+
+            from unaccent import unaccent
+
+    It removes accents from a givem text
+    unacent('TEXT UPPERCASE AND EXCLAMATION') --> 'text uppercase and exclamation' '''
+    text = text.lower()
+    check = string.ascii_lowercase + ' '
     output = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore')
     output = output.decode('utf-8')
     output = ''.join(ch for ch in output if ch in check)
     return output
 
-
-print(unaccent(argument))
-
-# if __name__ == '__main__':
-#         main()
-
+if __name__ == '__main__':
+    main()
