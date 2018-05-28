@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
 # Author:       Sergio Araujo
-# Last Change:  2018 mai 17 19:30
+# Last Change:  2018 mai 28 16:07
 # Created:      qui 26 jan 2017 15:45:14 BRT
 # email:        <voyeg3r ✉ gmail.com>
 # Github:       https://github.com/voyeg3r
@@ -16,6 +16,7 @@
     o comando no Arch-linux é este:
 
     yaourt -S python-pyperclip
+    https://docs.python.org/3.6/library/unicodedata
 
     Here we make use of pyperclip library
     Python module for cross-platform clipboard functions
@@ -24,28 +25,22 @@
     https://github.com/asweigart/pyperclip
 """
 
-
+import unicodedata
 import string
 import pyperclip
+import sys
 
+argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
+argument = ''.join(argument).lower()
+check = string.ascii_lowercase + ' '
 
-# as we have a string we can lower case it
-text = pyperclip.paste().lower()
+output = unicodedata.normalize('NFKD', argument).encode('ascii', 'ignore')
+output = output.decode('utf-8')
+output = ''.join(ch for ch in output if ch in check)
+output = output.replace(' ', '-')
+output = output + '.mp3'
 
-text = ''.join(ch for ch in text if ch not in string.punctuation)
-middle = text.replace(' ','-')
-middle = middle.replace('’','-')
-
-ending='.mp3' # extensão desejada
-
-# string.punctuation - has all this:
-# '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~''"'
-
-#output = start + middle + ending
-output = middle + ending
-
-print('your clipboard is:\n', output, sep='')
-# print(output)
-
+print("Your string was copied to the clipboard:")
+print(output)
 pyperclip.copy(output)
 

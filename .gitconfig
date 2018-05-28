@@ -38,4 +38,6 @@
 [credential]
     helper = cache --timeout=3600
 [merge]
-	tool = vimdiff
+	tool = vim
+[diff]
+    tool = vim

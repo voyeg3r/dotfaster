@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mai 12 11:39
+#      Last Change: 2018 mai 28 12:44
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -600,6 +600,7 @@ makepkg -si
 
 # anki
 yaourt -S  mplayer aur/python-pyaudio lame sox aur/audio-recorder
+sudo pacman -S community/sox
 
 # watch movies throug torrents
 yaourt -S aur/popcorntime-git

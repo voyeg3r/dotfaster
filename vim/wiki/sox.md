@@ -1,4 +1,9 @@
-# sox.md - Last Change: qui 07 dez 2017 09:05:28 -03
+# sox.md - Last Change: 2018 mai 28 14:47
+
+# How to batch split audio files wherever there is silence?
++ https://stackoverflow.com/questions/20014064
+
+    sox -V3 orig.wav p.wav silence -l  0  1 0.5 0.1% : newfile : restart
 
 # Afinando o violão pelo bash
 
@@ -30,6 +35,10 @@ You can then call sox again using this number:
 And if you're feeling particularly good you can put the whole command on a single line as follows:
 
     sox -v `sox before.wav -n stat -v 2>&1` before.wav after.wav
+
+Another option
+
+    sox input.mp3 output.mp3 gain -n 5 2>/dev/null
 
 # Puting away mosquitos with play
 + https://stackoverflow.com/a/24241901/2571881

@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #         Created:  23-01-2017
-#     Last Change:  2018 mai 24 14:30
+#     Last Change:  2018 mai 28 16:07
 #    What it does:  Remove accents of a given text
 #          Author:  sergio luiz araujo silva
 #            Site:  http://vivaotux.blogspot.com
@@ -10,9 +10,12 @@
 # ------------------------------------------------
 
 import unicodedata
+import string
 import sys
 
 ''' Removes accents from a given string
+
+    https://docs.python.org/3.6/library/unicodedata
 
     unaccent.py "Ação, pé, alçapão --> Acao, pe, alcapao"
 
@@ -22,6 +25,7 @@ import sys
 
 argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
 argument = ''.join(argument).lower()
+check = string.ascii_lowercase + ' '
 
 def unaccent(text):
     '''
@@ -29,6 +33,7 @@ def unaccent(text):
     unacent(text) --> string '''
     output = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore')
     output = output.decode('utf-8')
+    output = ''.join(ch for ch in output if ch in check)
     return output
 
 

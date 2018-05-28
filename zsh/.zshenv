@@ -11,9 +11,11 @@ export ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump"
 
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir "$ZSH_CACHE_DIR"
 
-export EDITOR=nvim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export GIT_EDITOR=vim
 export BROWSER=firefox
-# export GIT_PAGER="vim - -R -c 'set foldmethod=syntax"
+#export GIT_PAGER="vim - -R -c 'set foldmethod=syntax"
 
 export LANG="pt_BR.UTF-8"
 export LANGUAGE="pt_BR:pt:pt_PT"

@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 26 18:17
+# dicasvim.md Intro - Last Change: 2018 mai 26 19:11
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -9,10 +9,19 @@
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
 
-# Viewing git log in vim
+# Using vim as a pager for git
 + https://www.reddit.com/r/vim/comments/ri7lj/using_vim_as_a_pager_for_git/
++ https://medium.com/usevim/git-and-vimdiff-a762d72ced86
 
     git log --follow -p -- bin/aleatorios.py | vim - -R -c 'set foldmethod=syntax'
+
+    # This will show the entire history of the file (including history beyond renames and with diffs for each change).
+
+    git log --follow -p -- file
+
+    git config --global diff.tool nvim -d
+    git config --global merge.tool nvim -d
+    git config --global difftool.prompt false
 
 # Hexa chars substitution
 Substituição de caracteres hexadecimal

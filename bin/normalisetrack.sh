@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Criado em: 09-30-2015
 
-# Last Change: Qua 30 Set 2015 17:13:39 BRT
+# Last Change: 2018 mai 28 14:35
 # vim:ft=sh:fdm=syntax:nu:
 # Instituicao: instituicao
 # Proposito do script: normalise audio tracks
@@ -21,10 +21,13 @@
 #
 # sox -v `sox before.wav -n stat -v 2>&1` before.wav after.wav
 
-filename="$1"
-extension="${filename##*.}"
-filename="${filename%.*}"
 
-sox -v  `sox "$1" -n stat -v 2>&1` "$1" ${filename}-changed.${extension}
+value=$(sox $1 -n stat -v 2>&1 )
+extension="${1##*.}"
+filename="${1%.*}"
+
+sox -v ${value} "$1" ${filename}-changed.${extension} 2>/dev/null
 rm -f "$1" && mv "${filename}-changed.${extension}" "${filename}.${extension}"
+
+
 

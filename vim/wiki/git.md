@@ -1,4 +1,4 @@
-# git.md - Last Change: 2018 mai 26 18:27
+# git.md - Last Change: 2018 mai 26 18:29
 + https://www.alexkras.com/19-git-tips-for-everyday-use/
 + [primeiros passos](https://git-scm.com/book/pt-br/v1/Primeiros-passos-Uma-Breve-Hist%C3%B3ria-do-Git)
 
@@ -20,7 +20,7 @@
     git config --global credential.helper 'cache --timeout=3600'
     git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
-# Viewing git log in vim
+# Using vim as a pager for git
 + https://www.reddit.com/r/vim/comments/ri7lj/using_vim_as_a_pager_for_git/
 
     git log --follow -p -- bin/aleatorios.py | vim - -R -c 'set foldmethod=syntax'
