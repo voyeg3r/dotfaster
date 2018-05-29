@@ -1,4 +1,4 @@
-# zshell.md - Last Change: 2018 mai 26 07:13
+# zshell.md - Last Change: 2018 mai 29 09:28
 Arquivo: zshell tips and tricks
 
 + [[autrageously zsh tips](autrageously-zsh-tips.md)]
@@ -937,7 +937,7 @@ one three
 
 # print file name without extension
 
-    echo $filename:r
+    echo $filename:e  (extension)
     echo $filename:t  (basename)
     echo $filename:h  (dirname)
     echo $filename:r  (extension removed)

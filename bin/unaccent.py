@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #         Created:  23-01-2017
-#     Last Change:  2018 mai 28 20:03
+#     Last Change:  2018 mai 29 06:11
 #    What it does:  Remove accents of a given text and lowercases it
 #          Author:  Sergio Luiz Araujo Silva
 #            Site:  http://vivaotux.blogspot.com
@@ -23,7 +23,7 @@ import sys
     echo Ação, pé, alçapão | unaccent.py
     Acao, pe, alcapao
 
-    You can also import
+    You can also import it
 
     from unaccent import unaccent
     print(unaccent('AÇÃO INCONGRUENTE?'))

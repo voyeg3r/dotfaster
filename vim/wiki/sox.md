@@ -1,4 +1,4 @@
-# sox.md - Last Change: 2018 mai 28 14:47
+# sox.md - Last Change: 2018 mai 29 09:45
 
 # How to batch split audio files wherever there is silence?
 + https://stackoverflow.com/questions/20014064
@@ -26,8 +26,7 @@ https://www.learnosity.com/blog/2009/11/normalising-audio-with-sox/
 
     sox before.wav -n stat -v
 
-This will return a number like: 4.234
-
+This will return a number like: `4.234`
 You can then call sox again using this number:
 
     sox -v 4.234 before.wav after.wav

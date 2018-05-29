@@ -4,7 +4,7 @@ priority 1
 snippet zsh "zsh header" bA
 #!/usr/bin/env zsh
 #     Created: `date +%c`
-# Last Change:  2018 mai 26 07:41
+# Last Change:  2018 mai 29 10:43
 #      Author:  ${1:`!v g:snips_author`}
 #     Twitter:  ${2:`!v g:snips_twitter`}
 #     Licence:  GPL (see http://www.gnu.org/licenses/gpl.txt)
@@ -71,23 +71,22 @@ fi
 ${0:# Press ctrl-j to jump here}
 endsnippet
 
-snippet has
-NEEDED_COMMANDS="${1:program}"
+snippet has "Description" w
+NEEDED_COMMANDS=(${1:comandos})
 missing_counter=0
-for needed_command in $NEEDED_COMMANDS; do
-    if ! hash "$needed_command" >/dev/null 2>&1; then
-        printf "Command not found in PATH: %s\n" "$needed_command" >&2
+for cmd in $NEEDED_COMMANDS; do
+    if ! (( $+commands[$cmd] )); then
+        echo "Command $cmd is missing!" >&2
         ((missing_counter++))
     fi
 done
 if ((missing_counter > 0)); then
-    printf "Minimum %d commands are missing in PATH, aborting" "$missing_counter" >&2
+    echo "At least one command is missing!" >&2
     exit 1
 fi
-${2}
 endsnippet
 
-snippet if "if"
+snippet if "if" w
 if ${1:condition}; then
 	${2:# statements}
 fi
