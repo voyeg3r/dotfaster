@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 20 17:02
+# dicas Sobre python3 - Last Change: 2018 mai 29 19:30
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -1238,6 +1238,7 @@ Embedding the REPL in any Python application is easy:
 + [python pandas](python-pandas.md) (data analisys) pip install pandas
 + heapq
 + (controling keyboard) pip install pyautogui
++ (move to trash instead of deleting) pip install send2trash
 
 3y g00 *pi 畱畹疪疑疃疩畲畽略畤疉疏疠疨疪疒疣畨疩疡畲疖畨疢疤疥疟畱畽疣疂疚畦疙畦疇疦畣疧
 

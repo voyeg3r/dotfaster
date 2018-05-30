@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mai 28 12:44
+#      Last Change: 2018 mai 29 11:03
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -803,6 +803,10 @@ sudo yaourt -S corebird-git
 sudo yaourt -S youtube-dl
 sudo pacman -Syu
 sudo pacman -Syu sox
+
+# normalize audio files
+yaourt gnormalize
+
 sudo pacman -Syu xorg-utils pavucontrol
 gnome-{documents,music,maps,photos,tweak-tool,extra} dconf-editor
 sudo pacman -S --noconfirm audacity
