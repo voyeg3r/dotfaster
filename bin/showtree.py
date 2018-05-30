@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #    Creation Date:  11-02-2017
-#      Last Change:  ter 29 nov 2016 09:21:52 BRT
+#      Last Change:  2018 mai 30 09:09
 # this script aims:  show files and dirs recursively
 #           author:  sergio luiz araujo silva
 #             site:  http://vivaotux.blogspot.com
@@ -10,9 +10,7 @@
 #  ------------------------------------------------
 # Obs: to rename files we have to use -->  topdown=False
 
-
 import os
-
 
 search_folder = '.'
 

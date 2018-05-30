@@ -1,4 +1,4 @@
-# .zshrc - Last Change: 2018 mar 26 08:52
+# .zshrc - Last Change: 2018 mai 30 07:46
 # todo: clean bin dir to make load faster
 
 autoload colors && colors
@@ -44,7 +44,7 @@ RPROMPT='${vim_mode} ${vcs_info_msg_0_}'
 # for f in $ZDOTDIR/plugins/**/*.plugin.zsh; source $f
 
 source ~/.dotfiles/zsh/aliases
-source .dotfiles/zsh/themes/xxf/xxf.zsh-theme
+#source .dotfiles/zsh/themes/xxf/xxf.zsh-theme
 source ~/.dotfiles/bin/fasd
 
 for f in $ZDOTDIR/functions.d/^(*.zwc)(.); source $f

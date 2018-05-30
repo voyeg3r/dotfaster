@@ -34,21 +34,16 @@ Para mais detalhes veja o comando [[date]]
 # Criando uma extrutura completa
 [[image:pastas.png]]
 
-
     mkdir -p docs/{img/{fotos,icons,wallpapers,svg},textos/{artigos,man},tmp}
 
     mkdir -p backups/{sales,development,hr}/{jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez}/{dom,seg,ter,qua,qui,sex,sab}
 
-
-
     mkdir -p project/{lib/ext,bin,src,doc/{html,info,pdf},demo/stat/a}
-
 
 Podemos criar pastas sob demanda
 
   [ -e ~/tmp ] || mkdir ~/tmp ; cd ~/tmp
   # existe ~/tmp? se não crie, em seguida entre na mesma
-
 
 # se obtiver erro ao entrar numa pasta
 
@@ -60,7 +55,6 @@ $ mkdir !*
 
     mkdir /home/user/foo
 
-
 # criando uma pasta e entrando na mesma
 
     function mkcd () { mkdir -p "$@" && cd "$@"; }
@@ -68,6 +62,10 @@ $ mkdir !*
 # cirando 100 pastas de 000 a 100
 
     mkdir $(printf "%03d " {1..100})
+
+Nesse exemplo criei dez pastas para renomear
+
+    mkdir FOLDER\ AÇÃO\ {001..010}
 
 outro modo
 

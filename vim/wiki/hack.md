@@ -1,4 +1,4 @@
-# hack.md - Last Change: 2018 mai 05 10:14
+# hack.md - Last Change: 2018 mai 30 08:10
 
 See more at [dicasgoogle](dicasgoogle.md)
 
@@ -218,6 +218,9 @@ or .net
 		me@rescam.org
 
 # some cartoon sounds
+
+    # mega command line tool
+    https://mega.nz/cmd
 
 + http://tinyurl.com/HBmega  .nz/#!gxJz2SZa!YqtK7EudLoNx5oIjisyr8in1c9xSmdQ6QkqPGcOTHy8
 + http://tinyurl.com/HB1mega

@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 29 19:30
+# dicas Sobre python3 - Last Change: 2018 mai 30 09:29
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -1571,6 +1571,13 @@ for dpath, dnames, fnames in os.walk('/path/to/directory'):
         if f.startswith('cheese_'):
             os.rename(f, f.replace('cheese_', ''))
 
+import os
+for fileName in os.listdir("."):
+    os.rename(fileName, fileName.replace("CHEESE_CHEESE_", "CHEESE_"))
+
+import os
+for fileName in os.listdir('.'):
+  os.rename(fileName, fileName.replace(' ', '_').lower())
 
 import os
 for f in os.listdir('.'):
