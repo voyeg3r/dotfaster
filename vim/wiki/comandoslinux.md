@@ -250,6 +250,7 @@
 + [mplayer](mplayer.md)
 + [[mpg123](mpg123)]
 + [mv](mv.md)
++ [mvconv](mvconv)
 + [mysql](mysql.md)
 + [nano](nano.md)
 + [narrowregionplugin](narrowregionplugin.md)

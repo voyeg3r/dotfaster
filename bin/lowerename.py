@@ -3,7 +3,7 @@
 # ------------------------------------------------
 #            File:  lowerename.py
 #         Created:  2018 mai 30 09:27
-#     Last Change:  2018 mai 30 09:49
+#     Last Change:  2018 mai 30 12:30
 #          Author:  sergio luiz araujo silva
 #            Site:  http://vivaotux.blogspot.com
 #         twitter:  @voyeg3r
@@ -29,5 +29,9 @@ def unaccent(text):
 
 for fileName in os.listdir('.'):
     Newname = unaccent(fileName)
-    os.rename(fileName, Newname.replace(' ', '-'))
-
+    if not os.path.isfile(Newname):
+        os.rename(fileName, Newname.replace(' ', '-'))
+    else:
+        print(f'{FileName} already exists!')
+        Othername = input('Type and anternative name: ')
+        os.rename(fileName, Othername.replace(' ', '-'))

@@ -1,4 +1,4 @@
-# dicas Sobre python3 - Last Change: 2018 mai 30 09:29
+# dicas Sobre python3 - Last Change: 2018 mai 30 10:39
 + https://www.youtube.com/channel/UCEBb1b_L6zDS3xTUrIALZOw (MIT course)
 
 ``` markdown
@@ -1578,6 +1578,9 @@ for fileName in os.listdir("."):
 import os
 for fileName in os.listdir('.'):
   os.rename(fileName, fileName.replace(' ', '_').lower())
+
+s = 'foo-bar#baz?qux@127/\\9]'
+"".join( x for x in s if (x.isalnum() or x in "._- "))
 
 import os
 for f in os.listdir('.'):

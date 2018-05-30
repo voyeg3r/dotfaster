@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mai 20 20:33
+" Last Change: 2018 mai 30 15:10
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -463,6 +463,7 @@ endfunction
 "nnoremap <silent> <Leader>c :call CloseAllBuffersButCurrent()<CR>
 nnoremap <Leader>c :call CloseAllBuffersButCurrent()<CR>
 command! -nargs=0 CloseBuffers :call CloseAllBuffersButCurrent()
+command! -nargs=0 BO :call CloseAllBuffersButCurrent()
 " substitute word under cursor - This map is used for spell
 " nnoremap <Leader>s :call Preserve('%s/\<<C-r><C-w>\>//g\<left><left>')
 " Scroll split window

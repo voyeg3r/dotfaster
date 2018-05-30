@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mai 29 11:03
+#      Last Change: 2018 mai 30 12:23
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -41,6 +41,11 @@
 # update manager and pacman database extraction utility
 sudo pacman -S expac
 yaourt -S pamac-aur
+
+# convert filename encode
+sudo pacman -S convmv
+# See also
+# for f in `ls *`;do  mv $f ${f//[^A-Za-z0-9._-]/_}; done
 
 # live-usb creator
 yaourt etcher
