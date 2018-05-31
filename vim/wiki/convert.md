@@ -18,11 +18,11 @@ Add a dropshadow to the image.
 
     convert -resize 50% myfigure.png myfigure.jpg
 
-### converter jpg to png
+## converter jpg to png
 
     for i in *.jpg; do convert "$i" "${i%.jpg}.png" && rm "$i" && echo "$i is converted."; done
 
-### converter todas as páginas de um pdf para png
+## converter todas as páginas de um pdf para png
 
     convert arquivo.pdf img.png
 

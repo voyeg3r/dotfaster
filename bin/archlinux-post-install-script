@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =================================================
 #          Created: Dom 29/Dez/2013 hs 07:08
-#      Last Change: 2018 mai 30 12:23
+#      Last Change: 2018 mai 31 08:17
 # This script aims: arch linux post install script
 #           Author: Sérgio Luiz Araújo Silva
 #             Site: http://vivaotux.blogspot.com
@@ -46,6 +46,9 @@ yaourt -S pamac-aur
 sudo pacman -S convmv
 # See also
 # for f in `ls *`;do  mv $f ${f//[^A-Za-z0-9._-]/_}; done
+
+# powerful calculator and mesurement converter
+yaourt qalculate
 
 # live-usb creator
 yaourt etcher

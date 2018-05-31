@@ -1,7 +1,7 @@
 # Introdução
 ``` markdown
 Created:	 qua 11 jan 2017 06:45:53 BRT
-Last Change: 2018 abr 29 08:15
+Last Change: 2018 mai 31 10:31
 ```
 
 Sed é um editor de streams, ou seja, ele manipula fluxos
@@ -184,6 +184,10 @@ sed -e '/address2/,+1s/address1/address2/' eri.txt
 ## se a inteção é apenas imprimir a linha subsequente a um padrão
 
     sed -n '/pattern/{n;p}' < file
+
+## se o objetivo for deletar a linha após um padrão faça
+
+    sed -i.backup '/patter/{n;d;}' file
 
 # Print even lines or odd lines
 

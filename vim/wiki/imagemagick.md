@@ -1,6 +1,6 @@
 # Imagemagick -  Created: qua 11 jan 2017 11:07:58 BRT
 
-Last Change: 2018 mai 12 09:29
+Last Change: 2018 mai 31 09:18
 
 # recortando uma imagem grande para impressão
 Primeiro exiba as características da imagem
@@ -106,6 +106,7 @@ done
     mogrify -format jpg *.gif
 
 # Criando uma miniatura (trumbnail)
+
     convert -sample 25%x25% input.jpg output.jpg
 
 Para fazer isto em um grupo de imagens faça:

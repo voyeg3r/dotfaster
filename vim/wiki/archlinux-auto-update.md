@@ -1,4 +1,4 @@
-# Archlinux automatic update - Last Change: dom 24 dez 2017 17:06:18 -03
+# Archlinux automatic update - Last Change: 2018 mai 31 10:43
 + http://www.techrapid.co.uk/2017/04/automatically-update-arch-linux-with-systemd.html
 
 ## Create a systemd service (autoupdate.service) using a text editor such as neovim:
@@ -66,3 +66,5 @@ upgrade the package:
 Note: Use the "--force" command to force package to be removed or upgraded, but
 use carefully. If the above steps doesn't work you can try another method from
 ArchWiki pacman's guide
+
+tags: archlinux

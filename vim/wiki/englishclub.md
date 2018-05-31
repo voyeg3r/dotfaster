@@ -1,4 +1,4 @@
-# English Club - Last Change: 2018 mai 22 12:22
+# English Club - Last Change: 2018 mai 31 08:22
 
 # Introdução
 
@@ -11,6 +11,8 @@ dia-a-dia dos estudantes, não dependendo exclusivamente de
 professores ou local, uma vez que na nternet existem
 inúmeros recursos como skype, twitter, e-mais etc. que
 facilitam a interação dos membros do clube.
+
++ [quantumleapenglish](quantumleapenglish.md)
 
 # Metodologia
 

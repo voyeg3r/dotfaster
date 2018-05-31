@@ -304,7 +304,7 @@
 + [pythoneocaminhodomeio](pythoneocaminhodomeio.md)
 + [pythonsoluctions](pythonsoluctions.md)
 + [pythonsolutions](pythonsolutions.md)
-+ [quantumleapenglish](quantumleapenglish.md)
++ [qalc](qalc)
 + [radios](radios.md)
 + [random](random.md)
 + [rcp](rcp.md)

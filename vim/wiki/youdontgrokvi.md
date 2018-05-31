@@ -260,3 +260,5 @@ I've described here should work on any old copy of vi from 20 or 30 years ago.
 
 There are people who have used considerably more of vi's power than I ever
 will.
+
+tags: vim, nvim

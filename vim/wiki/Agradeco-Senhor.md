@@ -35,4 +35,7 @@ Quando me dizes “não” com teu amor,
 E sempre que te rogue o que não deva,
 Não me atendas, Senhor!...
 
-Do livro Antologia da Espiritualidade, de Maria Dolores, obra psicografada pelo médium Francisco Cândido Xavier.
+Do livro Antologia da Espiritualidade, de Maria Dolores, obra psicografada pelo
+médium Francisco Cândido Xavier.
+
+tags: orações, preces, espiritualidade, espiritismo
