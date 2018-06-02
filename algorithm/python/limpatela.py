@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # # -*- coding: UTF-8 -*-
 # Criado em:Qui 04/Mar/2010 hs 14:02
-# Last Change: 2018 mai 16 15:53
+# Last Change: 2018 jun 01 20:06
 # vim:ft=python:nolist:nu:
 # Instituicao: none
 # Proposito do script: limpar a tela

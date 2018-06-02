@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# vim: ai ts=4 sts=4 et sw=4
-# Author:       Sergio Araujo
-# Last Change:  2018 mai 24 14:41
-# File:         Receives integers, sums them and show mean
-# Created:      qua 01 mar 2017 16:01:47 BRT
-# email:        <voyeg3r ✉ gmail.com>
-# Github:       https://github.com/voyeg3r
-# twitter:      @voyeg3r
+#         vim: ai ts=4 sts=4 et sw=4
+#      Author: Sergio Araujo
+# Last Change: 2018 jun 01 20:05
+#        File: Receives integers, sums them and show mean
+#     Created: qua 01 mar 2017 16:01:47 BRT
+#       email: <voyeg3r ✉ gmail.com>
+#      Github: https://github.com/voyeg3r
+#     twitter: @voyeg3r
 
 # book: Programming in Python3 pg 34
 

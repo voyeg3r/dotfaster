@@ -1,4 +1,4 @@
-# dicasvim.md Intro - Last Change: 2018 mai 26 19:11
+# dicasvim.md Intro - Last Change: 2018 jun 02 15:56
     vim: set ts=4 et:
 
 + http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/#navigation
@@ -8,6 +8,20 @@
 + http://vimcolors.com/
 + https://vimgifs.com
 + https://sanctum.geek.nz/arabesque/
+
+
+# Align numbers
+
+    0.02
+    -0.25
+    -4.13
+    5.24
+    -11.36
+    40.61
+    -141.20
+
+    vip
+    :Align \.
 
 # Using vim as a pager for git
 + https://www.reddit.com/r/vim/comments/ri7lj/using_vim_as_a_pager_for_git/

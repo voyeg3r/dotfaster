@@ -1,4 +1,4 @@
-# hack.md - Last Change: 2018 mai 30 08:10
+# hack.md - Last Change: 2018 jun 01 17:41
 
 See more at [dicasgoogle](dicasgoogle.md)
 
@@ -229,3 +229,5 @@ or .net
 + http://tinyurl.com/HB4mega
 + http://tinyurl.com/HB5mega
 
+# transfer big files between two machines
++ https://takeafile.com/

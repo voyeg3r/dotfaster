@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # # -*- coding: UTF-8 -*-
-# Criado em:Sex 12/Mar/2010 hs 07:34
-# Last Change: 2018 mai 26 16:02
 # vim:ft=python:nolist:nu:
-# Instituicao: none
-# Proposito do script: gerar sequencia de numeros aleatórios
-# Autor: Sérgio Luiz Araújo Silva
-# site: http://vivaotux.blogspot.com
+#            Criado em: Sex 12/Mar/2010 hs 07:34
+#          Last Change: 2018 jun 01 19:44
+#          Instituicao: none
+#  Proposito do script: gerar sequencia de numeros aleatórios
+#                Autor: Sérgio Luiz Araújo Silva
+#                 site: http://vivaotux.blogspot.com
 
 import random
 

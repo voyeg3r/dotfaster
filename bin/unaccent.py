@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #         Created:  23-01-2017
-#     Last Change:  2018 mai 30 10:55
+#     Last Change:  2018 jun 02 17:56
 #    What it does:  Remove accents of a given text and lowercases it
 #          Author:  Sergio Luiz Araujo Silva
 #            Site:  http://vivaotux.blogspot.com
@@ -32,6 +32,10 @@ def main():
     '''This function will get sys.argv or stdin as argument
     and return it without punctuation and in lowercase'''
     argument = sys.argv[1:] if len(sys.argv) > 1 else sys.stdin.read()
+
+    if isinstance(argument, list):
+        argument = " ".join(str(item) for item in argument)
+
     argument = ''.join(argument).lower()
     print(unaccent(argument))
 

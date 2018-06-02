@@ -1,4 +1,4 @@
-# rm.md - Last Change: 2018 jan 16 18:12
+# rm.md - Last Change: 2018 mai 31 18:45
 
 Há uma versão mais sergura do rm chamada [trash cli](trash-cli.md)
 
@@ -9,12 +9,12 @@ pasta e tudo que houver nas mesma.
 
 # apagar arquivos que não correspondem a determinadas extensões
 
-				rm !(*.foo|*.bar|*.baz)
-                ls | grep -v '\.txt' | xargs rm -f
+    rm !(*.foo|*.bar|*.baz)
+    ls | grep -v '\.txt' | xargs rm -f
 
 delete all the files except ‘html‘ file all at once, in a smart way.
 
-				rm -r !(*.html)
+    rm -r !(*.html)
 
 # Apagar arquivos com espaço no nome (com confirmação)
 

@@ -3,7 +3,7 @@
 # ------------------------------------------------
 #            File:  leadingzeros.py
 #         Created:  2018 mai 22 19:47
-#     Last Change:  2018 mai 23 09:54
+#     Last Change:  2018 jun 01 20:06
 #          Author:  sergio luiz araujo silva
 #            Site:  http://vivaotux.blogspot.com
 #         twitter:  @voyeg3r

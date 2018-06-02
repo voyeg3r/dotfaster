@@ -1,4 +1,14 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: ai ts=4 sts=4 et sw=4
+#        File:  <+Filename Here+>
+#      Author:  Sergio Araujo
+#     Purpose:  <+this script aims...+>
+# Last Change:  2018 jun 01 20:06
+#     Created:  sex 01 jun 2018 20:06:14 -03
+#       email:  <voyeg3r ✉ gmail.com>
+#      Github:  https://github.com/voyeg3r
+#     twitter:  @voyeg3r
 
 # example helloworld.py
 

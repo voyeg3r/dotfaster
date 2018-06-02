@@ -1,4 +1,4 @@
-# dd.md - Last Change: 2017 nov 08 09:02
+# dd.md - Last Change: 2018 mai 31 18:38
 O comando dd pode ser usado para gerar imagens de cd:
 
 	dd if=/dev/cdrom of=imagem.iso

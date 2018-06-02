@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # # -*- coding: UTF-8 -*-
-# Criado em:Qui 11/Mar/2010 hs 14:50
-# Last Change: Qui 11 Mar 2010 14:53:27 BRT
 # vim:ft=python:nolist:nu:
-# Instituicao: <+nome+>
+#           Criado em: Qui 11/Mar/2010 hs 14: 50
+#         Last Change: 2018 jun 01 19:56
+#         Instituicao: <+nome+>
 # Proposito do script: <+descreva+>
-# Autor: <+seuNome+>
-# site: <+seuSite+>
+#               Autor: <+seuNome+>
+#                site: <+seuSite+>
 """
    Um fazendeiro tem um bando de porcos e um bando de galinhas.
    Ele sai para o terreiro e observa 20 cabeças e 56 pernas.

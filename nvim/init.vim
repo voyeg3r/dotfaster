@@ -1,5 +1,5 @@
 "   nvim file: ~/.config/nvim/init.vim
-" Last Change: 2018 mai 30 15:10
+" Last Change: 2018 jun 02 10:28
 "         vim: ff=unix ai et ts=4
 "      Author: Sérgio Luiz Araújo Silva
 "   Reference: http://sergioaraujo.pbworks.com/w/page/15864094/vimrc
@@ -201,6 +201,7 @@ Plug 'tpope/vim-surround',
       \ '<Plug>YSsurround', '<Plug>VSurround', '<Plug>VgSurround'] }
 Plug 'tpope/vim-unimpaired'
 Plug 'godlygeek/tabular', { 'on': ['Tabularize'] }
+Plug 'jezcope/vim-align', { 'on' : 'Align' }
 Plug 'tommcdo/vim-exchange'
 "Plug 'nelstrom/vim-visual-star-search'
 "Plug 'nelstrom/vim-markdown-folding'

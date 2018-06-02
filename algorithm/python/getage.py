@@ -2,7 +2,7 @@
 # # -*- coding: UTF-8 -*-"
 # ------------------------------------------------
 #   Creation Date:  01-03-2017
-#     Last Change: ter 29 nov 2016 09:21:52 BRT
+#     Last Change:  2018 jun 01 20:00
 # this script aim:  Programming in Python pg 37
 #          author:  sergio luiz araujo silva
 #            site:  http://vivaotux.blogspot.com
